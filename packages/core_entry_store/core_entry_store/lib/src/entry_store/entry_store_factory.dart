@@ -30,5 +30,5 @@ class EntryStoreFactory<Event> {
       _entryStoreConstructor(
           path: _path,
           persistenceId: _persistenceId,
-          eventConverter: eventConverter);
+          eventConverter: eventConverter,);
 }

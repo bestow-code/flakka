@@ -1,5 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+/// Foundation for Core Entry Store
 library core_entry_store;
 
 export 'src/entry_json_converter.dart';
