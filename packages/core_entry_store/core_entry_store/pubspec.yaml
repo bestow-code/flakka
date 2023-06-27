@@ -1,5 +1,5 @@
 name: core_entry_store
-version: 0.1.0
+version: 0.1.1
 description: A store for core platform's Entry
 repository: https://github.com/bestow-code/flakka
 

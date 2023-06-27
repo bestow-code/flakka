@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`core_entry_store` - `v0.1.1`](#core_entry_store---v011)
+
+---
+
+#### `core_entry_store` - `v0.1.1`
+
+ - **FEAT**(core_entry_store): initial import (#13).
+
+
+## 2023-06-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`core_common` - `v0.1.0+2`](#core_common---v0102)
  - [`core_entry` - `v0.1.1+1`](#core_entry---v0111)
 
