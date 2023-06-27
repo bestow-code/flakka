@@ -12,9 +12,9 @@ on:
     branches:
       - main
     paths:
-      - packages/core_common/lib/**
-      - packages/core_entry/lib/**
-      - packages/core_entry_store/**
+      - packages/core_common/**
+      - packages/core_entry/**
+      - packages/core_entry_store/core_entry_store/**
       - .github/workflows/core_entry_store.yaml
 
 jobs:
@@ -30,6 +30,6 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
-      working_directory: packages/core_entry_store
+      working_directory: packages/core_entry_store/core_entry_store
       coverage_excludes: '**/*.g.dart **/*.freezed.dart'
       min_coverage: 0
