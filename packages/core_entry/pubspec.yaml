@@ -1,5 +1,5 @@
 name: core_entry
-version: 0.1.1
+version: 0.1.1+1
 description: Common libraries for flakka core platform
 repository: https://github.com/bestow-code/flakka
 
@@ -7,7 +7,7 @@ environment:
   sdk: '^3.0.5'
 
 dependencies:
-  core_common: ^0.1.0+1
+  core_common: ^0.1.0+2
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
 

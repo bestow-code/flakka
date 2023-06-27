@@ -1,3 +1,8 @@
+## 0.1.0+2
+
+ - **REFACTOR**(core_common): refactored test (bump test) (#11).
+ - **REFACTOR**(core_common): refactored test (bump test).
+
 ## 0.1.0+1
 
  - **REFACTOR**(core_common): refactored test (bump test) (#11).
