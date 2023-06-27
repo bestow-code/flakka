@@ -1,0 +1,21 @@
+name: core_common
+version: 0.1.0-1.alpha
+
+environment:
+  sdk: ^3.1.0-163.1.beta
+
+dependencies:
+  freezed_annotation:
+  meta:
+
+dev_dependencies:
+  test: ^1.21.0
+  very_good_analysis:
+
+index_generator:
+  exclude:
+    - '**.*.dart'
+  indexes:
+    - path: lib
+      include:
+        - src

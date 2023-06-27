@@ -1,0 +1,12 @@
+name: _flakka
+description: A starting point for Dart libraries or applications.
+version: 0.1.0-1.alpha
+publish_to: none
+
+environment:
+  sdk: ^3.1.0-163.1.beta
+
+dev_dependencies:
+  melos: ^3.1.0
+  lints: ^2.0.0
+  very_good_analysis:
