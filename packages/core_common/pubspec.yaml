@@ -4,7 +4,7 @@ description: Common libraries for flakka core platform
 repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: ^3.1.0-163.1.beta
+  sdk: ^3.0.5
 
 dependencies:
   freezed_annotation: ^2.2.0

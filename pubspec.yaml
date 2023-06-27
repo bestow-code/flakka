@@ -4,7 +4,7 @@ version: 0.1.0-1.alpha
 publish_to: none
 
 environment:
-  sdk: ^3.1.0-163.1.beta
+  sdk: ^3.0.5
 
 dev_dependencies:
   melos: ^3.1.0
