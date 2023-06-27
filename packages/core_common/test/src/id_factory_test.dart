@@ -6,4 +6,11 @@ void main() {
     final idFactory = IdFactory.increment(0);
     expect(idFactory.create(), '1'); // TODO: expect 0
   });
+  test('random', () {
+    final idFactory = IdFactory.random();
+    expect(
+      idFactory.create(),
+      isA<String>().having((p0) => p0.length > 10, 'length > 10', true),
+    ); // TODO: expect 0
+  });
 }
