@@ -1,16 +1,17 @@
 name: core_common
 version: 0.1.0-1.alpha
+description: Common libraries for Flakka core platform
 
 environment:
   sdk: ^3.1.0-163.1.beta
 
 dependencies:
-  freezed_annotation:
-  meta:
+  freezed_annotation: ^2.2.0
+  meta: ^1.9.1
 
 dev_dependencies:
   test: ^1.21.0
-  very_good_analysis:
+  very_good_analysis: 5.0.0+1
 
 index_generator:
   exclude:

@@ -4,7 +4,6 @@ ide:
     moduleNamePrefix: ''
 command:
   bootstrap:
-    usePubspecOverrides: true
     runPubGetOffline: true
     runPubGetInParallel: true
 packages:
