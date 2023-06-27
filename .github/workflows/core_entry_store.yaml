@@ -28,9 +28,7 @@ jobs:
       modified_files_only: false
 
   build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+#    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+    uses: ./.github/workflows/dart_support_package.yml
     with:
       working_directory: packages/core_entry_store/core_entry_store
-      coverage_excludes: '**/*.g.dart **/*.freezed.dart'
-      setup: 'mkdir coverage && touch coverage/lcov.info'
-      min_coverage: 0
