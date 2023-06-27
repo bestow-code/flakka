@@ -23,3 +23,4 @@ index_generator:
     - path: lib
       include:
         - src
+      docs: Entry model and support

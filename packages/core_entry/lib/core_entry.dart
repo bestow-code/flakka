@@ -1,5 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+/// Entry model and support
 library core_entry;
 
 export 'src/entry/entry.dart';
