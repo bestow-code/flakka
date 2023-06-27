@@ -8,5 +8,4 @@ environment:
 
 dev_dependencies:
   melos: ^3.1.0
-  lints: ^2.0.0
-  very_good_analysis:
+  very_good_analysis: 5.0.0+1
