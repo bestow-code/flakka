@@ -13,6 +13,7 @@ on:
       - main
     paths:
       - packages/core_common/**
+      - .github/workflows/core_common.yaml
 
 jobs:
   semantic_pull_request:
