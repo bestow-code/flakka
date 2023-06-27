@@ -27,6 +27,5 @@ jobs:
     with:
       working_directory: packages/core_common
       coverage_excludes: '**/*.g.dart **/*.freezed.dart'
-      runs_on: self-hosted
       dart_sdk: beta
       min_coverage: 0
