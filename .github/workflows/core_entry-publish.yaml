@@ -1,9 +1,9 @@
-name: core_common-publish
+name: core_entry-publish
 
 on:
   push:
     tags:
-      - 'core_common-v[0-9]+.[0-9]+.[0-9]+*'
+      - 'core_entry-v[0-9]+.[0-9]+.[0-9]+*'
 
 jobs:
   publish:
@@ -11,4 +11,4 @@ jobs:
       id-token: write
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
     with:
-      working-directory: packages/core_common
+      working-directory: packages/core_entry

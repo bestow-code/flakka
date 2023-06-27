@@ -1,4 +1,4 @@
-name: core_common
+name: core_entry
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
