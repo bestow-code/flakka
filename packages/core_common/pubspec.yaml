@@ -1,6 +1,7 @@
 name: core_common
 version: 0.1.0-1.alpha
-description: Common libraries for Flakka core platform
+description: Common libraries for flakka core platform
+repository: https://github.com/bestow-code/flakka
 
 environment:
   sdk: ^3.1.0-163.1.beta
