@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object core_event_sourced
+object core_entry_store_firebase
+object core_entry_store_fake
+object core_entry_store_test_util
+object core_event_sourced_e2e_test
+object core_entry_store
+object core_entry
+object core_aggregate
+object core_aggregate_dev
+object core_aggregate_build
+object core_aggregate_test
+object core_aggregate_annotation
+object core_aggregate_e2e_test
+core_event_sourced --> core_entry
+core_event_sourced --> core_entry_store
+
+core_entry_store_firebase --> core_entry_store
+core_entry_store --> core_entry
+core_entry_store_fake --> core_entry_store
+core_entry_store_test_util --> core_entry_store
+core_entry_store_firebase --> core_entry_store_test_util
+core_entry_store_fake --> core_entry_store_test_util
+core_event_sourced_e2e_test ---> core_event_sourced
+core_event_sourced_e2e_test ---> core_entry_store_fake
+core_event_sourced_e2e_test ---> core_entry_store_firebase
+core_aggregate --> core_aggregate_annotation
+
+core_aggregate_dev --> core_aggregate_build
+core_aggregate_dev --> core_aggregate_test
+'core_aggregate_test --> core_aggregate
+core_aggregate_dev --> core_aggregate_annotation
+core_aggregate_build --> core_aggregate_annotation
+core_aggregate_e2e_test --> core_aggregate
+core_aggregate_e2e_test --> core_aggregate_dev
+core_aggregate --> core_event_sourced
+core_aggregate_test --> core_entry_store_fake
+
+@enduml
