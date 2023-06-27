@@ -5,6 +5,7 @@ void main() {
   test('increment', () {
     final idFactory = IdFactory.increment(0);
     expect(idFactory.create(), '1'); // TODO: expect 0
+    expect(idFactory.create(), '2');
   });
   test('random', () {
     final idFactory = IdFactory.random();
