@@ -29,6 +29,6 @@ jobs:
 
   build:
 #    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
-    uses: ./.github/workflows/dart_support_package.yml
+    uses: ./.github/workflows/dart_support_package.yaml
     with:
       working_directory: packages/core_entry_store/core_entry_store
