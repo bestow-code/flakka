@@ -1,0 +1,26 @@
+name: core_common
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  verify_and_test:
+    name: Verify and Test
+    uses: ./.github/workflows/dart_package.yaml
+    with:
+      runs_on: self-hosted
+      coverage_excludes: '**/*.g.dart **/*.freezed.dart'
+      working_directory: packages/core_common
+      dart_sdk: beta
+      min_coverage: 0
