@@ -9,7 +9,7 @@ class EntryStoreUpdate<Event> with _$EntryStoreUpdate<Event> {
   factory EntryStoreUpdate.upstreamEntryRef({required EntryRef entryRef}) =
       EntryStoreUpdateUpstreamEntryRef;
 
-  factory EntryStoreUpdate.entryCollectionSnapshot(
-          {required EntryCollectionSnapshot<Event> snapshot,}) =
-      EntryStoreUpdateEntryCollectionSnapshot<Event>;
+  factory EntryStoreUpdate.entryCollectionSnapshot({
+    required EntryCollectionSnapshot<Event> snapshot,
+  }) = EntryStoreUpdateEntryCollectionSnapshot<Event>;
 }

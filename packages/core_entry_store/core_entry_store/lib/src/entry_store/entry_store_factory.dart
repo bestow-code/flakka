@@ -7,9 +7,9 @@ import 'package:core_entry_store/src/entry_store/entry_store.dart';
 //   required JsonEventConverter<Event> eventConverter,
 // });
 typedef EntryStoreConstructor = EntryStore<Event> Function<Event>({
-required String path,
-required String persistenceId,
-required JsonEventConverter<Event> eventConverter,
+  required String path,
+  required String persistenceId,
+  required JsonEventConverter<Event> eventConverter,
 });
 
 class EntryStoreFactory<Event> {
@@ -17,8 +17,7 @@ class EntryStoreFactory<Event> {
     required String path,
     required String persistenceId,
     required EntryStoreConstructor entryStoreConstructor,
-  })
-      : _entryStoreConstructor = entryStoreConstructor,
+  })  : _entryStoreConstructor = entryStoreConstructor,
         _persistenceId = persistenceId,
         _path = path;
 
@@ -26,9 +25,12 @@ class EntryStoreFactory<Event> {
   final String _persistenceId;
   final EntryStoreConstructor _entryStoreConstructor;
 
-  EntryStore<Event> create(JsonEventConverter<Event> eventConverter,) =>
+  EntryStore<Event> create(
+    JsonEventConverter<Event> eventConverter,
+  ) =>
       _entryStoreConstructor(
-          path: _path,
-          persistenceId: _persistenceId,
-          eventConverter: eventConverter,);
+        path: _path,
+        persistenceId: _persistenceId,
+        eventConverter: eventConverter,
+      );
 }
