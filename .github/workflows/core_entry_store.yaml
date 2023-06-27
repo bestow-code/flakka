@@ -32,4 +32,5 @@ jobs:
     with:
       working_directory: packages/core_entry_store/core_entry_store
       coverage_excludes: '**/*.g.dart **/*.freezed.dart'
+      setup: 'mkdir coverage && touch coverage/lcov.info'
       min_coverage: 0
