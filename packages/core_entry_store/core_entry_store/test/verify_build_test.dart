@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 void main() {
   test('ensure_build', () {
     expectBuildClean(
-        packageRelativeDirectory: 'packages/core_entry_store/core_entry_store',);
+      packageRelativeDirectory: 'packages/core_entry_store/core_entry_store',
+    );
   });
 }
