@@ -20,3 +20,4 @@ index_generator:
     - path: lib
       include:
         - src
+      docs: Common libraries for core_platform
