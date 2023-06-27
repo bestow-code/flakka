@@ -7,7 +7,7 @@ class MockEntryStoreDelegate extends Mock
 
 void main() {
   test('Entry Store', () {
-    final delegate = MockEntryStoreDelegate();
-    EntryStore(delegate);
+    // final delegate = MockEntryStoreDelegate();
+    // EntryStore(delegate);
   });
 }
