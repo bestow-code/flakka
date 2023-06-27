@@ -1,11 +1,6 @@
 import 'package:core_entry/core_entry.dart';
 import 'package:core_entry_store/src/entry_store/entry_store.dart';
 
-// typedef EntryStoreFactory = EntryStore<Event> Function<Event>({
-//   required String path,
-//   required String persistenceId,
-//   required JsonEventConverter<Event> eventConverter,
-// });
 typedef EntryStoreConstructor = EntryStore<Event> Function<Event>({
   required String path,
   required String persistenceId,
