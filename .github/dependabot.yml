@@ -1,0 +1,18 @@
+version: 2
+enable-beta-ecosystems: true
+updates:
+
+  - package-ecosystem: "pub"
+    directory: "/packages/core_event_source"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "pub"
+    directory: "/packages/core_event_source_test_util"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "pub"
+    directory: "/packages/flutter_core_event_source"
+    schedule:
+      interval: "daily"
