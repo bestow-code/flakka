@@ -10,7 +10,7 @@ void main() {
     final idFactory = IdFactory.random();
     expect(
       idFactory.create(),
-      isA<String>().having((p0) => p0.length > 10, 'length > 10', true),
-    ); // TODO: expect 0
+      isA<String>().having((p0) => p0.length == 20, 'length == 20', true),
+    );
   });
 }
