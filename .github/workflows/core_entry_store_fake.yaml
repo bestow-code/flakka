@@ -14,6 +14,8 @@ on:
     paths:
       - packages/core_common/**
       - packages/core_entry/**
+      - packages/core_entry_store/core_entry_store/**
+      - packages/core_entry_store/core_entry_store_test/**
       - packages/core_entry_store/core_entry_store_fake/**
       - .github/workflows/core_entry_store_fake.yaml
 
@@ -32,3 +34,4 @@ jobs:
 #    uses: ./.github/workflows/dart_support_package.yaml
     with:
       working_directory: packages/core_entry_store/core_entry_store_fake
+      min_coverage: 60
