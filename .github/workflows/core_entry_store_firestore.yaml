@@ -1,4 +1,4 @@
-name: core_entry_store_firebase
+name: core_entry_store_firestore
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -9,6 +9,13 @@ on:
     branches:
       - master
       - main
+    paths:
+      - packages/core_common/**
+      - packages/core_entry/**
+      - packages/core_entry_store/core_entry_store/**
+      - packages/core_entry_store/core_entry_store_test/**
+      - packages/core_entry_store/core_entry_store_firestore/**
+      - .github/workflows/core_entry_firestore.yaml
   push:
     branches:
       - master
@@ -29,6 +36,5 @@ jobs:
       runs_on: self-hosted
       coverage_excludes: '**/*.g.dart **/*.freezed.dart'
       working_directory: packages/core_entry_store/core_entry_store_firestore
-      flutter_channel: beta
       min_coverage: 0
       analyze_directories: "lib integration_test"
