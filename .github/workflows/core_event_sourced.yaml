@@ -32,4 +32,5 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
       working_directory: packages/core_event_sourced
+      coverage_excludes: '**/*.g.dart **/*.freezed.dart'
       min_coverage: 60
