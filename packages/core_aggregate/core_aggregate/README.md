@@ -1,0 +1,1 @@
+Support for core aggregates
