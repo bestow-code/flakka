@@ -1,4 +1,4 @@
-name: core_entry_store
+name: core_entry_store_fake
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,7 +15,9 @@ on:
       - packages/core_common/**
       - packages/core_entry/**
       - packages/core_entry_store/core_entry_store/**
-      - .github/workflows/core_entry_store.yaml
+      - packages/core_entry_store/core_entry_store_test/**
+      - packages/core_entry_store/core_entry_store_fake/**
+      - .github/workflows/core_entry_store_fake.yaml
 
 jobs:
   semantic_pull_request:
@@ -28,7 +30,8 @@ jobs:
       modified_files_only: false
 
   build:
-#    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
-    uses: ./.github/workflows/dart_support_package.yaml
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+#    uses: ./.github/workflows/dart_support_package.yaml
     with:
-      working_directory: packages/core_entry_store/core_entry_store
+      working_directory: packages/core_entry_store/core_entry_store_fake
+      min_coverage: 60

@@ -10,6 +10,18 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/core_entry/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core_entry/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core_entry/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_fake/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_fake/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_fake/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_firestore/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_firestore/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_firestore/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_test/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_entry_store/core_entry_store_test/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
