@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`core_aggregate_annotation` - `v0.1.1`](#core_aggregate_annotation---v011)
+
+---
+
+#### `core_aggregate_annotation` - `v0.1.1`
+
+ - **FEAT**: import core_aggregate_annotation.
+
+
+## 2023-06-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`core_entry_store` - `v0.1.2`](#core_entry_store---v012)
  - [`core_entry_store_fake` - `v0.1.0-alpha.3`](#core_entry_store_fake---v010-alpha3)
  - [`core_entry_store_test` - `v0.1.1`](#core_entry_store_test---v011)
