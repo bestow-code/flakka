@@ -1,4 +1,4 @@
-name: core_entry_store_fake
+name: core_event_sourced
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,9 +15,8 @@ on:
       - packages/core_common/**
       - packages/core_entry/**
       - packages/core_entry_store/core_entry_store/**
-      - packages/core_entry_store/core_entry_store_test/**
-      - packages/core_entry_store/core_entry_store_fake/**
-      - .github/workflows/core_entry_store_fake.yaml
+      - packages/core_event_sourced/**
+      - .github/workflows/core_event_sourced.yaml
 
 jobs:
   semantic_pull_request:
@@ -31,7 +30,6 @@ jobs:
 
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
-#    uses: ./.github/workflows/dart_support_package.yaml
     with:
-      working_directory: packages/core_entry_store/core_entry_store_fake
+      working_directory: packages/core_event_sourced
       min_coverage: 60
