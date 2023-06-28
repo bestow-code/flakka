@@ -1,5 +1,5 @@
 name: core_entry_store_firestore
-version: 0.1.0+1
+version: 0.1.0+2
 description: A Firestore adapter for core platform's Core Entry Store
 repository: https://github.com/bestow-code/flakka
 

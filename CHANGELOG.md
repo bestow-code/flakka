@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-06-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`core_entry_store` - `v0.1.2`](#core_entry_store---v012)
+ - [`core_entry_store_fake` - `v0.1.0-alpha.3`](#core_entry_store_fake---v010-alpha3)
+ - [`core_entry_store_test` - `v0.1.1`](#core_entry_store_test---v011)
+ - [`core_entry_store_firestore` - `v0.1.0+2`](#core_entry_store_firestore---v0102)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `core_entry_store_firestore` - `v0.1.0+2`
+
+---
+
+#### `core_entry_store` - `v0.1.2`
+
+ - **FIX**: test.
+ - **FIX**: test.
+ - **FIX**: test.
+ - **FIX**: add license, pin sdk upper bound.
+ - **FEAT**: Add core entry store alts (#14).
+
+#### `core_entry_store_fake` - `v0.1.0-alpha.3`
+
+ - **FEAT**: Add core entry store alts (#14).
+
+#### `core_entry_store_test` - `v0.1.1`
+
+ - **FEAT**: Add core entry store alts (#14).
+
+
 ## 2023-06-27
 
 ### Changes

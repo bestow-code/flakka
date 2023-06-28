@@ -1,3 +1,11 @@
+## 0.1.2
+
+ - **FIX**: test.
+ - **FIX**: test.
+ - **FIX**: test.
+ - **FIX**: add license, pin sdk upper bound.
+ - **FEAT**: Add core entry store alts (#14).
+
 ## 0.1.1+2
 
  - **FIX**: test.
