@@ -1,47 +1,35 @@
 name: core_entry_store_firestore
 version: 0.1.0+1
-publish_to: none
+description: A Firestore adapter for core platform's Core Entry Store
+repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: '>=3.1.0-163.1.beta <4.0.0'
-  flutter: '>=3.12.0-1.1.pre'
+  sdk: '^3.0.5'
+  flutter: '^3.10.5'
+
 dependencies:
-  async:
-  bloc:
-  bloc_concurrency:
   cloud_firestore:
   collection:
   core_common:
   core_entry:
   core_entry_store:
-  debounce_throttle:
-  directed_graph:
-  fake_cloud_firestore:
   firebase_core:
   flutter:
     sdk: flutter
-  flutter_test:
-    sdk: flutter
   freezed_annotation:
-  integration_test:
-    sdk: flutter
-  json_annotation: ^4.8.0
-  logging:
-  meta:
   rxdart:
-  test:
+
+
 
 dev_dependencies:
-  bloc_test:
   build_runner:
   core_entry_store_test:
   freezed:
+  integration_test:
+    sdk: flutter
   json_serializable:
-  lints: ^2.0.1
-  matcher:
-  melos: ^3.0.0
-  mocktail: ^0.3.0
   very_good_analysis:
+
 index_generator:
   exclude:
     - '**.*.dart'
