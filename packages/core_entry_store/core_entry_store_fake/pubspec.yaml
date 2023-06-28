@@ -1,35 +1,21 @@
 name: core_entry_store_fake
-version: 0.1.0+1
-publish_to: none
+version: 0.1.0-alpha.1
+description: A store for core platform's Entry
+repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: '>=3.0.0-290.3.beta <4.0.0'
+  sdk: '^3.0.5'
+
 dependencies:
-  async:
-  bloc:
-  bloc_concurrency:
-  collection:
-  core_entry:
-  core_entry_store:
-  debounce_throttle:
-  directed_graph:
-  freezed_annotation:
-  json_annotation: ^4.8.0
-  logging:
-  meta:
-  rxdart:
+  async: ^2.11.0
+  collection: ^1.17.2
+  core_entry: ^0.1.1+1
+  core_entry_store: ^0.1.1+1
+  rxdart: ^0.27.7
 
 dev_dependencies:
-  bloc_test:
-  build_runner:
-  core_entry_store_test_util:
-  freezed:
-  json_serializable:
-  lints: ^2.0.1
-  matcher:
-  melos: ^3.0.0
+  core_entry_store_test:
   mocktail: ^0.3.0
-  test:
   very_good_analysis:
 
 index_generator:
@@ -39,3 +25,4 @@ index_generator:
     - path: lib
       include:
         - src
+      docs: Fake for Core Entry Store
