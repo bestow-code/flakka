@@ -5,19 +5,19 @@ repository: https://github.com/bestow-code/flakka
 
 environment:
   sdk: '^3.0.5'
-  flutter: '^3.10.5'
+  flutter: '>=3.10.5'
 
 dependencies:
-  cloud_firestore:
-  collection:
-  core_common:
-  core_entry:
-  core_entry_store:
-  firebase_core:
+  cloud_firestore: ^4.8.2
+  collection: ^1.17.2
+  core_common: ^0.1.0+2
+  core_entry: ^0.1.1+1
+  core_entry_store:  ^0.1.2
+  firebase_core:  ^2.14.0
   flutter:
     sdk: flutter
-  freezed_annotation:
-  rxdart:
+  freezed_annotation:  ^2.2.0
+  rxdart: ^0.27.7
 
 
 
