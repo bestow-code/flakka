@@ -71,8 +71,8 @@ void main() {
           expect(
               graphState.copyAndApply(EntryCollectionSnapshot.pending(
                   [EntrySnapshot(entry1a, isPending: false)])),
-              isA<GraphStateReady<TestEvent>>()
-                  .having((p0) => p0.pending, 'graph data entries', {entry1b.ref}));
+              isA<GraphStateReady<TestEvent>>().having(
+                  (p0) => p0.pending, 'graph data entries', {entry1b.ref}));
         });
       });
     });

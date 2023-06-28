@@ -39,7 +39,8 @@ void main() {
 
   setUp(() {
     entryFactory = EntryFactory.increment();
-    initialEntry = entryFactory.create(refs: [], events: [],ref: EntryRef.initial);
+    initialEntry =
+        entryFactory.create(refs: [], events: [], ref: EntryRef.initial);
     entry1b = entryFactory.create(refs: [initialEntry.ref], events: []);
     entry1a = entryFactory.create(refs: [initialEntry.ref], events: []);
     entry2 = entryFactory.create(refs: [entry1a.ref, entry1b.ref], events: []);
@@ -187,7 +188,8 @@ void main2() {
   group('GraphImpl - ', () {
     setUp(() {
       entryFactory = EntryFactory.increment();
-      initialEntry = entryFactory.create(ref: EntryRef.initial, refs: [], events: []);
+      initialEntry =
+          entryFactory.create(ref: EntryRef.initial, refs: [], events: []);
       initialState = GraphState<TestEvent>.initial(
         upstreamEntryRef: initialEntry.ref,
       );

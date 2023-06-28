@@ -38,7 +38,6 @@ class TestHandle {
 
 class MockJournal extends Mock implements Journal<TestEvent> {}
 
-
 void main() {
   late MockJournal journal;
   setUp(() => journal = MockJournal());

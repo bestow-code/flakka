@@ -1,9 +1,7 @@
 import 'package:test/test.dart';
 
 void main() {
-  test('', () {
-
-  });
+  test('', () {});
 }
 // import 'package:core_aggregate/core_aggregate.dart';
 // // import 'package:core_common/core_common.dart';
