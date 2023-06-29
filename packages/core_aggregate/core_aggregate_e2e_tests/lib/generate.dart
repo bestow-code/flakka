@@ -167,7 +167,7 @@ Future<void> prepare(String path, {bool runPubGet = true}) async {
 Future<void> validate(String path) async {
   // await run('dart run --enable-experiment=class-modifiers test ', workingDirectory: path, runInShell: true);
   await run(
-    'flutter test --enable-experiment=class-modifiers  ',
+    'dart test',
     workingDirectory: path,
     runInShell: true,
   );
