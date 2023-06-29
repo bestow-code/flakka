@@ -1,0 +1,12 @@
+@startuml
+
+interface DescriptorBuilder<AnnotationT, DescriptorT> {
+  DescriptorT read(ClassElement classElement);
+}
+
+class ApiComponentDescriptorBuilder extends DescriptorBuilder {}
+class AggregateDescriptorBuilder extends DescriptorBuilder {}
+class RootDescriptorBuilder extends DescriptorBuilder {}
+class CoreSourceBuilder implements Builder{}
+
+@enduml
