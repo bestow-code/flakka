@@ -13,7 +13,8 @@ void main() async {
         ..createSync())
       // .createTempSync()
       .path;
-  await generate(bricksPath: bricksPath, packagePath: tmpPath, packageRelativePath: '');
+  await generate(
+      bricksPath: bricksPath, packagePath: tmpPath, packageRelativePath: '');
   await prepare(tmpPath);
   await validate(tmpPath);
   // packageDirectory.deleteSync(recursive: true);
