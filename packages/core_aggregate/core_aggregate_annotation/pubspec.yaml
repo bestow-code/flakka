@@ -1,5 +1,5 @@
 name: core_aggregate_annotation
-version: 0.1.1
+version: 0.1.2
 description: Metadata classes for annotating Core Aggregate definitions
 repository: https://github.com/bestow-code/flakka
 

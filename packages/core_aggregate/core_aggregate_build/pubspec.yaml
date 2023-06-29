@@ -1,5 +1,5 @@
 name: core_aggregate_build
-version: 0.1.0
+version: 0.1.0+1
 description: Build support libraries for defining Core Aggregates
 repository: https://github.com/bestow-code/flakka
 
@@ -7,11 +7,11 @@ environment:
   sdk: ^3.0.5
 
 dependencies:
-  analyzer: ^5.13.0
+  analyzer: 
   build: ^2.4.0
   code_builder: ^4.5.0
   collection: ^1.17.2
-  core_aggregate_annotation: ^0.1.1
+  core_aggregate_annotation: ^0.1.2
   freezed_annotation: ^2.2.0
   glob: ^2.1.1
   json_annotation: ^4.8.1

@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`core_aggregate_annotation` - `v0.1.2`](#core_aggregate_annotation---v012)
+ - [`core_aggregate_build` - `v0.1.0+1`](#core_aggregate_build---v0101)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `core_aggregate_build` - `v0.1.0+1`
+
+---
+
+#### `core_aggregate_annotation` - `v0.1.2`
+
+ - **FEAT**: import core_aggregate_annotation.
+
+
+## 2023-06-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`core_aggregate_annotation` - `v0.1.1`](#core_aggregate_annotation---v011)
 
 ---
