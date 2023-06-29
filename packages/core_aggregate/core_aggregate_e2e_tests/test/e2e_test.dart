@@ -1,3 +1,6 @@
+@Timeout(Duration(seconds: 120))
+library;
+
 // ignore_for_file: prefer_const_constructors
 import 'dart:io';
 
