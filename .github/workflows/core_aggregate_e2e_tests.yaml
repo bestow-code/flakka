@@ -1,4 +1,4 @@
-name: core_aggregate_e2e_tests
+name: brick_validator
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,9 +20,9 @@ on:
       - packages/core_aggregate/core_aggregate_annotation/**
       - packages/core_aggregate/core_aggregate/**
       - packages/core_aggregate/core_aggregate_build/**
-      - packages/core_aggregate/core_aggregate_e2e_tests/**
+      - packages/core_aggregate/brick_validator/**
       - packages/core_aggregate/bricks/**
-      - .github/workflows/core_aggregate_e2e_tests.yaml
+      - .github/workflows/brick_validator.yaml
 
 jobs:
   semantic_pull_request:
@@ -37,5 +37,5 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
-      working_directory: packages/core_aggregate/core_aggregate_e2e_tests
+      working_directory: packages/core_aggregate/brick_validator
       min_coverage: 0

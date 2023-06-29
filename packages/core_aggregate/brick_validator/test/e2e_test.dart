@@ -4,7 +4,7 @@ library;
 // ignore_for_file: prefer_const_constructors
 import 'dart:io';
 
-import 'package:core_aggregate_e2e_tests/generate.dart';
+import 'package:brick_validator/generate.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
