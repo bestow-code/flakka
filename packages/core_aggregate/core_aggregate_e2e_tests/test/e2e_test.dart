@@ -26,7 +26,10 @@ void main() {
     Directory(p.join(tmpPath, 'lib')).deleteSync(recursive: true);
     Directory(p.join(tmpPath, 'test')).deleteSync(recursive: true);
     await generate(
-        bricksPath: bricksPath, packagePath: tmpPath, createPackage: false);
+      bricksPath: bricksPath,
+      packagePath: tmpPath,
+      createPackage: false,
+    );
     await prepare(tmpPath, runPubGet: false);
     await validate(tmpPath);
   });
