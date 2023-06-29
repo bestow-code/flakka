@@ -1,0 +1,17 @@
+name: test_integration
+description: core resources for dart library package
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.32 <0.1.0"
+
+vars:
+  package_name:
+    type: string
+  packages_rel_path:
+    type: string
+    default: ../../
+#    description: Subject name
+#    default: core_package
+#    prompt: What is package being tested?
