@@ -1,29 +1,15 @@
+import 'package:core_data/core_data.dart';
+import 'package:rxdart/rxdart.dart';
+
 import '../../core_event_sourced.dart';
 
-abstract interface class StateEventProcessor<Event, State> {
-  void evaluate(
-      ApplicationEffect Function(StateEventSink<State, Event> stateEventSink)
-          handler);
-}
-
-abstract class Application<Event, State, View>
-    implements StateEventProcessor<Event, State> {
+abstract class Application<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> {
   void evaluate(
       ApplicationEffect Function(StateEventSink<State, Event> stateEventSink)
           handler);
 
   void start();
 
-  Value<View> get view;
-}
-
-abstract class CoreEventSourcedInstance<Event, State, View>
-    implements StateEventProcessor<Event, State> {
-  void evaluate(
-      ApplicationEffect Function(StateEventSink<State, Event> stateEventSink)
-      handler);
-
-  void start();
-
-  Value<View> get view;
+  ValueStream<View> get view;
 }
