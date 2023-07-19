@@ -1,0 +1,30 @@
+name: core_data_store_fake
+version: 0.1.0-alpha.3
+description: A store for core platform's Entry
+repository: https://github.com/bestow-code/flakka
+
+environment:
+  sdk: '^3.0.5'
+
+dependencies:
+  async: ^2.11.0
+  collection: ^1.17.1
+  core_data:
+  core_data_store:
+  get_it: ^7.6.0
+  rxdart: ^0.27.7
+
+dev_dependencies:
+  core_data_store_test_suite:
+  mocktail: ^0.3.0
+  test: ^1.24.4
+  very_good_analysis: ^5.0.0+1
+
+index_generator:
+  exclude:
+    - '**.*.dart'
+  indexes:
+    - path: lib
+      include:
+        - src
+      docs: Fake for Core Entry Store

@@ -1,5 +1,5 @@
-import 'package:core_entry/core_entry.dart';
-import 'package:core_entry_store/core_entry_store.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data_store/core_data_store.dart';
 import 'package:core_event_sourced/src/graph/entry_compare_result.dart';
 import 'package:core_event_sourced/src/graph/graph_data.dart';
 import 'package:test/test.dart';
@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 import 'graph_impl_test.dart';
 
 void main() {
-  late EntryFactory<TestEvent> entryFactory;
+  late EntryFactory entryFactory;
   late Entry<TestEvent> initialEntry;
   late Entry<TestEvent> entry1a;
   late Entry<TestEvent> entry1b;

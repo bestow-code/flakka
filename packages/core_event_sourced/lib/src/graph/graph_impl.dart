@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:core_entry/core_entry.dart';
-import 'package:core_entry_store/core_entry_store.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data_store/core_data_store.dart';
+import 'package:core_data/core_data.dart';
 import 'package:core_event_sourced/src/graph/entry_compare_result.dart';
 import 'package:core_event_sourced/src/graph/graph.dart';
 import 'package:core_event_sourced/src/graph/graph_event.dart';
 import 'package:core_event_sourced/src/graph/graph_state.dart';
 
-class GraphImpl<Event> extends Bloc<GraphEvent<Event>, GraphState<Event>>
+class GraphImpl<Event extends CoreEvent> extends Bloc<GraphEvent<Event>, GraphState<Event>>
     implements Graph<Event> {
   GraphImpl(
     super.initialState, {

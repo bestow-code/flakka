@@ -3,15 +3,15 @@ version: 0.1.0+1
 publish_to: none
 
 environment:
-  sdk: '>=3.0.0-290.3.beta <4.0.0'
+  sdk: '>=3.0.5 <4.0.0'
 dependencies:
   bloc:
   core_aggregate:
   core_aggregate_annotation:
   core_common:
-  core_entry:
-  core_entry_store:
-  core_entry_store_fake:
+  core_data_store:
+  core_data_store_fake:
+  core_event:
   core_event_sourced:
   freezed_annotation:
   json_annotation: ^4.8.1
@@ -45,11 +45,13 @@ dependency_overrides:
     path: {{{ packages_rel_path }}}../core_aggregate_build
   core_common:
     path: {{{ packages_rel_path }}}../../core_common
-  core_entry:
-    path: {{{ packages_rel_path }}}../../core_entry
-  core_entry_store:
-    path: {{{ packages_rel_path }}}../../core_entry_store/core_entry_store
-  core_entry_store_fake:
-    path: {{{ packages_rel_path }}}../../core_entry_store/core_entry_store_fake
+  core_data:
+    path: {{{ packages_rel_path }}}../../core_data
+  core_data_store:
+    path: {{{ packages_rel_path }}}../../core_data_store/core_data_store
+  core_data_store_fake:
+    path: {{{ packages_rel_path }}}../../core_data_store/core_data_store_fake
+  core_data_store_test:
+    path: {{{ packages_rel_path }}}../../core_data_store/core_data_store_test
   core_event_sourced:
     path: {{{ packages_rel_path }}}../../core_event_sourced

@@ -18,45 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ServiceEffect<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T response) persist,
     required TResult Function(T response) none,
     required TResult Function(String? message) fail,
+    required TResult Function(T response) persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T response)? persist,
     TResult? Function(T response)? none,
     TResult? Function(String? message)? fail,
+    TResult? Function(T response)? persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T response)? persist,
     TResult Function(T response)? none,
     TResult Function(String? message)? fail,
+    TResult Function(T response)? persist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceEffectPersist<T> value) persist,
     required TResult Function(ServiceEffectNone<T> value) none,
     required TResult Function(ServiceEffectFail<T> value) fail,
+    required TResult Function(ServiceEffectPersist<T> value) persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceEffectPersist<T> value)? persist,
     TResult? Function(ServiceEffectNone<T> value)? none,
     TResult? Function(ServiceEffectFail<T> value)? fail,
+    TResult? Function(ServiceEffectPersist<T> value)? persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceEffectPersist<T> value)? persist,
     TResult Function(ServiceEffectNone<T> value)? none,
     TResult Function(ServiceEffectFail<T> value)? fail,
+    TResult Function(ServiceEffectPersist<T> value)? persist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,148 +78,6 @@ class _$ServiceEffectCopyWithImpl<T, $Res, $Val extends ServiceEffect<T>>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ServiceEffectPersistCopyWith<T, $Res> {
-  factory _$$ServiceEffectPersistCopyWith(_$ServiceEffectPersist<T> value,
-          $Res Function(_$ServiceEffectPersist<T>) then) =
-      __$$ServiceEffectPersistCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({T response});
-}
-
-/// @nodoc
-class __$$ServiceEffectPersistCopyWithImpl<T, $Res>
-    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectPersist<T>>
-    implements _$$ServiceEffectPersistCopyWith<T, $Res> {
-  __$$ServiceEffectPersistCopyWithImpl(_$ServiceEffectPersist<T> _value,
-      $Res Function(_$ServiceEffectPersist<T>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? response = freezed,
-  }) {
-    return _then(_$ServiceEffectPersist<T>(
-      response: freezed == response
-          ? _value.response
-          : response // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ServiceEffectPersist<T> implements ServiceEffectPersist<T> {
-  const _$ServiceEffectPersist({required this.response});
-
-  @override
-  final T response;
-
-  @override
-  String toString() {
-    return 'ServiceEffect<$T>.persist(response: $response)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ServiceEffectPersist<T> &&
-            const DeepCollectionEquality().equals(other.response, response));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ServiceEffectPersistCopyWith<T, _$ServiceEffectPersist<T>> get copyWith =>
-      __$$ServiceEffectPersistCopyWithImpl<T, _$ServiceEffectPersist<T>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(T response) persist,
-    required TResult Function(T response) none,
-    required TResult Function(String? message) fail,
-  }) {
-    return persist(response);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T response)? persist,
-    TResult? Function(T response)? none,
-    TResult? Function(String? message)? fail,
-  }) {
-    return persist?.call(response);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T response)? persist,
-    TResult Function(T response)? none,
-    TResult Function(String? message)? fail,
-    required TResult orElse(),
-  }) {
-    if (persist != null) {
-      return persist(response);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ServiceEffectPersist<T> value) persist,
-    required TResult Function(ServiceEffectNone<T> value) none,
-    required TResult Function(ServiceEffectFail<T> value) fail,
-  }) {
-    return persist(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceEffectPersist<T> value)? persist,
-    TResult? Function(ServiceEffectNone<T> value)? none,
-    TResult? Function(ServiceEffectFail<T> value)? fail,
-  }) {
-    return persist?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceEffectPersist<T> value)? persist,
-    TResult Function(ServiceEffectNone<T> value)? none,
-    TResult Function(ServiceEffectFail<T> value)? fail,
-    required TResult orElse(),
-  }) {
-    if (persist != null) {
-      return persist(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ServiceEffectPersist<T> implements ServiceEffect<T> {
-  const factory ServiceEffectPersist({required final T response}) =
-      _$ServiceEffectPersist<T>;
-
-  T get response;
-  @JsonKey(ignore: true)
-  _$$ServiceEffectPersistCopyWith<T, _$ServiceEffectPersist<T>> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -288,9 +146,9 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T response) persist,
     required TResult Function(T response) none,
     required TResult Function(String? message) fail,
+    required TResult Function(T response) persist,
   }) {
     return none(response);
   }
@@ -298,9 +156,9 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T response)? persist,
     TResult? Function(T response)? none,
     TResult? Function(String? message)? fail,
+    TResult? Function(T response)? persist,
   }) {
     return none?.call(response);
   }
@@ -308,9 +166,9 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T response)? persist,
     TResult Function(T response)? none,
     TResult Function(String? message)? fail,
+    TResult Function(T response)? persist,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -322,9 +180,9 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceEffectPersist<T> value) persist,
     required TResult Function(ServiceEffectNone<T> value) none,
     required TResult Function(ServiceEffectFail<T> value) fail,
+    required TResult Function(ServiceEffectPersist<T> value) persist,
   }) {
     return none(this);
   }
@@ -332,9 +190,9 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceEffectPersist<T> value)? persist,
     TResult? Function(ServiceEffectNone<T> value)? none,
     TResult? Function(ServiceEffectFail<T> value)? fail,
+    TResult? Function(ServiceEffectPersist<T> value)? persist,
   }) {
     return none?.call(this);
   }
@@ -342,9 +200,9 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceEffectPersist<T> value)? persist,
     TResult Function(ServiceEffectNone<T> value)? none,
     TResult Function(ServiceEffectFail<T> value)? fail,
+    TResult Function(ServiceEffectPersist<T> value)? persist,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -429,9 +287,9 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T response) persist,
     required TResult Function(T response) none,
     required TResult Function(String? message) fail,
+    required TResult Function(T response) persist,
   }) {
     return fail(message);
   }
@@ -439,9 +297,9 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T response)? persist,
     TResult? Function(T response)? none,
     TResult? Function(String? message)? fail,
+    TResult? Function(T response)? persist,
   }) {
     return fail?.call(message);
   }
@@ -449,9 +307,9 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T response)? persist,
     TResult Function(T response)? none,
     TResult Function(String? message)? fail,
+    TResult Function(T response)? persist,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -463,9 +321,9 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceEffectPersist<T> value) persist,
     required TResult Function(ServiceEffectNone<T> value) none,
     required TResult Function(ServiceEffectFail<T> value) fail,
+    required TResult Function(ServiceEffectPersist<T> value) persist,
   }) {
     return fail(this);
   }
@@ -473,9 +331,9 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceEffectPersist<T> value)? persist,
     TResult? Function(ServiceEffectNone<T> value)? none,
     TResult? Function(ServiceEffectFail<T> value)? fail,
+    TResult? Function(ServiceEffectPersist<T> value)? persist,
   }) {
     return fail?.call(this);
   }
@@ -483,9 +341,9 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceEffectPersist<T> value)? persist,
     TResult Function(ServiceEffectNone<T> value)? none,
     TResult Function(ServiceEffectFail<T> value)? fail,
+    TResult Function(ServiceEffectPersist<T> value)? persist,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -501,5 +359,147 @@ abstract class ServiceEffectFail<T> implements ServiceEffect<T> {
   String? get message;
   @JsonKey(ignore: true)
   _$$ServiceEffectFailCopyWith<T, _$ServiceEffectFail<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ServiceEffectPersistCopyWith<T, $Res> {
+  factory _$$ServiceEffectPersistCopyWith(_$ServiceEffectPersist<T> value,
+          $Res Function(_$ServiceEffectPersist<T>) then) =
+      __$$ServiceEffectPersistCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T response});
+}
+
+/// @nodoc
+class __$$ServiceEffectPersistCopyWithImpl<T, $Res>
+    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectPersist<T>>
+    implements _$$ServiceEffectPersistCopyWith<T, $Res> {
+  __$$ServiceEffectPersistCopyWithImpl(_$ServiceEffectPersist<T> _value,
+      $Res Function(_$ServiceEffectPersist<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? response = freezed,
+  }) {
+    return _then(_$ServiceEffectPersist<T>(
+      response: freezed == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ServiceEffectPersist<T> implements ServiceEffectPersist<T> {
+  const _$ServiceEffectPersist({required this.response});
+
+  @override
+  final T response;
+
+  @override
+  String toString() {
+    return 'ServiceEffect<$T>.persist(response: $response)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServiceEffectPersist<T> &&
+            const DeepCollectionEquality().equals(other.response, response));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServiceEffectPersistCopyWith<T, _$ServiceEffectPersist<T>> get copyWith =>
+      __$$ServiceEffectPersistCopyWithImpl<T, _$ServiceEffectPersist<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T response) none,
+    required TResult Function(String? message) fail,
+    required TResult Function(T response) persist,
+  }) {
+    return persist(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T response)? none,
+    TResult? Function(String? message)? fail,
+    TResult? Function(T response)? persist,
+  }) {
+    return persist?.call(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T response)? none,
+    TResult Function(String? message)? fail,
+    TResult Function(T response)? persist,
+    required TResult orElse(),
+  }) {
+    if (persist != null) {
+      return persist(response);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServiceEffectNone<T> value) none,
+    required TResult Function(ServiceEffectFail<T> value) fail,
+    required TResult Function(ServiceEffectPersist<T> value) persist,
+  }) {
+    return persist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServiceEffectNone<T> value)? none,
+    TResult? Function(ServiceEffectFail<T> value)? fail,
+    TResult? Function(ServiceEffectPersist<T> value)? persist,
+  }) {
+    return persist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServiceEffectNone<T> value)? none,
+    TResult Function(ServiceEffectFail<T> value)? fail,
+    TResult Function(ServiceEffectPersist<T> value)? persist,
+    required TResult orElse(),
+  }) {
+    if (persist != null) {
+      return persist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ServiceEffectPersist<T> implements ServiceEffect<T> {
+  const factory ServiceEffectPersist({required final T response}) =
+      _$ServiceEffectPersist<T>;
+
+  T get response;
+  @JsonKey(ignore: true)
+  _$$ServiceEffectPersistCopyWith<T, _$ServiceEffectPersist<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

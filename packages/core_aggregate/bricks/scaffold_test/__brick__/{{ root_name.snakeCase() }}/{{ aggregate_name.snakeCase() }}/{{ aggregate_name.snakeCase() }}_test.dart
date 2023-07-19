@@ -3,8 +3,8 @@ library;
 
 import 'package:{{ package_name.snakeCase() }}/aggregate1_api.dart';
 import 'package:{{ package_name.snakeCase() }}/aggregate1_impl.dart';
-import 'package:core_entry/core_entry.dart';
-import 'package:core_entry_store/core_entry_store.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data_store/core_data_store.dart';
 import 'package:core_entry_store_fake/core_entry_store_fake.dart';
 import 'package:test/test.dart';
 
@@ -13,9 +13,9 @@ void main() {
   // late Aggregate1Root root;
   const path = 'ex1/1';
   const entryStoreId = '1';
-  late EntryStoreFactory<Aggregate1Event> entryStoreFactory;
+  late EntryStoreFactory entryStoreFactory;
   void buildEntryStore() {
-    entryStoreFactory = EntryStoreFake.providerFor<Aggregate1Event>()
+    entryStoreFactory = EntryStoreFake.providerFor()
         .source(path)
         .id(entryStoreId);
   }
@@ -92,7 +92,7 @@ void main() {
               ];
               for (final event in events) {
                 expect(
-                  converter.fromJsonObject(converter.toJsonObject(event)),
+                  converter.fromJson(converter.toJson(event)),
                   event,
                 );
               }

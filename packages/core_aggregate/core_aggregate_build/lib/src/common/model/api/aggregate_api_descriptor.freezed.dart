@@ -191,19 +191,23 @@ class _$_AggregateApiDescriptor extends _AggregateApiDescriptor {
         (other.runtimeType == runtimeType &&
             other is _$_AggregateApiDescriptor &&
             (identical(other.scope, scope) || other.scope == scope) &&
-            (identical(other.entityRef, entityRef) ||
-                other.entityRef == entityRef) &&
-            (identical(other.service, service) || other.service == service) &&
-            (identical(other.aggregateView, aggregateView) ||
-                other.aggregateView == aggregateView) &&
-            (identical(other.entityView, entityView) ||
-                other.entityView == entityView));
+            const DeepCollectionEquality().equals(other.entityRef, entityRef) &&
+            const DeepCollectionEquality().equals(other.service, service) &&
+            const DeepCollectionEquality()
+                .equals(other.aggregateView, aggregateView) &&
+            const DeepCollectionEquality()
+                .equals(other.entityView, entityView));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, scope, entityRef, service, aggregateView, entityView);
+      runtimeType,
+      scope,
+      const DeepCollectionEquality().hash(entityRef),
+      const DeepCollectionEquality().hash(service),
+      const DeepCollectionEquality().hash(aggregateView),
+      const DeepCollectionEquality().hash(entityView));
 
   @JsonKey(ignore: true)
   @override

@@ -1,0 +1,20 @@
+@startuml
+'
+'class CoreAggregateRoot {
+'
+'}
+'object EntryCollectionSnapshot
+object UpstreamUpdate
+object Request
+
+''object GraphUpdate
+'object Request
+'object ResultTask
+'
+'
+'
+'
+'EntryCollectionSnapshot -> Graph
+''Graph -> GraphUpdate
+
+@enduml

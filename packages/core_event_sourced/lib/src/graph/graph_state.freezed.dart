@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$GraphState<Event> {
+mixin _$GraphState<Event extends CoreEvent> {
   EntryRef get upstreamEntryRef => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -68,7 +68,7 @@ mixin _$GraphState<Event> {
 }
 
 /// @nodoc
-abstract class $GraphStateCopyWith<Event, $Res> {
+abstract class $GraphStateCopyWith<Event extends CoreEvent, $Res> {
   factory $GraphStateCopyWith(
           GraphState<Event> value, $Res Function(GraphState<Event>) then) =
       _$GraphStateCopyWithImpl<Event, $Res, GraphState<Event>>;
@@ -79,7 +79,8 @@ abstract class $GraphStateCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class _$GraphStateCopyWithImpl<Event, $Res, $Val extends GraphState<Event>>
+class _$GraphStateCopyWithImpl<Event extends CoreEvent, $Res,
+        $Val extends GraphState<Event>>
     implements $GraphStateCopyWith<Event, $Res> {
   _$GraphStateCopyWithImpl(this._value, this._then);
 
@@ -111,7 +112,7 @@ class _$GraphStateCopyWithImpl<Event, $Res, $Val extends GraphState<Event>>
 }
 
 /// @nodoc
-abstract class _$$GraphStateInitialCopyWith<Event, $Res>
+abstract class _$$GraphStateInitialCopyWith<Event extends CoreEvent, $Res>
     implements $GraphStateCopyWith<Event, $Res> {
   factory _$$GraphStateInitialCopyWith(_$GraphStateInitial<Event> value,
           $Res Function(_$GraphStateInitial<Event>) then) =
@@ -125,7 +126,7 @@ abstract class _$$GraphStateInitialCopyWith<Event, $Res>
 }
 
 /// @nodoc
-class __$$GraphStateInitialCopyWithImpl<Event, $Res>
+class __$$GraphStateInitialCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$GraphStateCopyWithImpl<Event, $Res, _$GraphStateInitial<Event>>
     implements _$$GraphStateInitialCopyWith<Event, $Res> {
   __$$GraphStateInitialCopyWithImpl(_$GraphStateInitial<Event> _value,
@@ -148,7 +149,8 @@ class __$$GraphStateInitialCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$GraphStateInitial<Event> extends GraphStateInitial<Event> {
+class _$GraphStateInitial<Event extends CoreEvent>
+    extends GraphStateInitial<Event> {
   _$GraphStateInitial({required this.upstreamEntryRef}) : super._();
 
   @override
@@ -248,7 +250,8 @@ class _$GraphStateInitial<Event> extends GraphStateInitial<Event> {
   }
 }
 
-abstract class GraphStateInitial<Event> extends GraphState<Event> {
+abstract class GraphStateInitial<Event extends CoreEvent>
+    extends GraphState<Event> {
   factory GraphStateInitial({required final EntryRef upstreamEntryRef}) =
       _$GraphStateInitial<Event>;
   GraphStateInitial._() : super._();
@@ -262,7 +265,7 @@ abstract class GraphStateInitial<Event> extends GraphState<Event> {
 }
 
 /// @nodoc
-abstract class _$$GraphStateReadyCopyWith<Event, $Res>
+abstract class _$$GraphStateReadyCopyWith<Event extends CoreEvent, $Res>
     implements $GraphStateCopyWith<Event, $Res> {
   factory _$$GraphStateReadyCopyWith(_$GraphStateReady<Event> value,
           $Res Function(_$GraphStateReady<Event>) then) =
@@ -280,7 +283,7 @@ abstract class _$$GraphStateReadyCopyWith<Event, $Res>
 }
 
 /// @nodoc
-class __$$GraphStateReadyCopyWithImpl<Event, $Res>
+class __$$GraphStateReadyCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$GraphStateCopyWithImpl<Event, $Res, _$GraphStateReady<Event>>
     implements _$$GraphStateReadyCopyWith<Event, $Res> {
   __$$GraphStateReadyCopyWithImpl(_$GraphStateReady<Event> _value,
@@ -321,7 +324,8 @@ class __$$GraphStateReadyCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$GraphStateReady<Event> extends GraphStateReady<Event> {
+class _$GraphStateReady<Event extends CoreEvent>
+    extends GraphStateReady<Event> {
   _$GraphStateReady(
       {required this.upstreamEntryRef,
       required this.graphData,
@@ -438,7 +442,8 @@ class _$GraphStateReady<Event> extends GraphStateReady<Event> {
   }
 }
 
-abstract class GraphStateReady<Event> extends GraphState<Event> {
+abstract class GraphStateReady<Event extends CoreEvent>
+    extends GraphState<Event> {
   factory GraphStateReady(
       {required final EntryRef upstreamEntryRef,
       required final GraphData<Event> graphData,

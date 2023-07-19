@@ -67,13 +67,13 @@ class ${root.scope.pascalCase}State with _\$${root.scope.pascalCase}State {
 
 void _emitRootEventConverter(RootImplDescriptor root, StringSink output) {
   output.write('''
-    class ${root.scope.pascalCase}EventConverter extends JsonEventConverter<${root.scope.pascalCase}Event> {
+    class ${root.scope.pascalCase}EventConverter extends CoreEventConverter<${root.scope.pascalCase}Event> {
       @override
-      ${root.scope.pascalCase}Event fromJsonObject(Map<String, dynamic> jsonObject) =>
+      ${root.scope.pascalCase}Event fromJson(Map<String, dynamic> jsonObject) =>
           ${root.scope.pascalCase}Event.fromJson(jsonObject);
     
       @override
-      Map<String, dynamic> toJsonObject(${root.scope.pascalCase}Event event) => event.toJson();
+      Map<String, dynamic> toJson(${root.scope.pascalCase}Event event) => event.toJson();
     }
   ''');
 }
@@ -81,7 +81,7 @@ void _emitRootEventConverter(RootImplDescriptor root, StringSink output) {
 void _emitRootEvent(RootImplDescriptor root, StringSink output) {
   output.write('''
     @freezed
-    class ${root.scope.pascalCase}Event with _\$${root.scope.pascalCase}Event {
+    class ${root.scope.pascalCase}Event with _\$${root.scope.pascalCase}Event implements CoreEvent {
       const ${root.scope.pascalCase}Event._();
     
       ${root.aggregates.map(
@@ -250,14 +250,14 @@ void _emitRootFactory(RootImplDescriptor root, StringSink output) {
   output.write('''
     class ${root.scope.pascalCase}Factory {
       ${root.scope.pascalCase}Factory({
-        required EntryStoreFactory<${root.scope.pascalCase}Event> entryStoreFactory,
-        required EntryFactory<${root.scope.pascalCase}Event> entryFactory,
+        required EntryStoreFactory entryStoreFactory,
+        required EntryFactory entryFactory,
       })  : _entryFactory = entryFactory,
             _entryStoreFactory = entryStoreFactory;
     
-      final EntryStoreFactory<${root.scope.pascalCase}Event> _entryStoreFactory;
+      final EntryStoreFactory _entryStoreFactory;
     
-      final EntryFactory<${root.scope.pascalCase}Event> _entryFactory;
+      final EntryFactory _entryFactory;
     
       Future<${root.scope.pascalCase}Root> create() async {
         final eventConverter = ${root.scope.pascalCase}EventConverter();
@@ -280,7 +280,7 @@ void _emitRootFactory(RootImplDescriptor root, StringSink output) {
         );
     
         application.start();
-        await Future.delayed(Duration.zero);
+        await Future<void>.delayed(Duration.zero);
         return root;
       }
     }

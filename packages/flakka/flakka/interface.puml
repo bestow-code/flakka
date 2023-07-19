@@ -1,0 +1,45 @@
+@startuml
+
+' configuration for entry store
+' EntryStoreFactory<Aggregate1Event>
+' EntryFactory<Aggregate1Event>
+abstract class CorePersistence<Event extends CoreEvent> {
+  Future<({CoreStore<Event>, Entry initialEntry, EntryRef head})> initialize(String path);
+}
+abstract class CorePersistenceBase<Event> extends CorePersistence {}
+class PersistenceFake extends CorePersistenceBase {}
+' loading / starting aggregate instance
+' Aggregate1Factory
+abstract class CoreAggregateApplication {
+  Future<CoreAggregateRoot> start(String path);
+}
+
+class FlakkaApp extends CoreAggregateApplication {
+  Future<CoreAggregateRoot> start(String path);
+
+}
+
+FlakkaApp --> Aggregate1Root
+CoreAggregateApplication --> CorePersistence
+
+' providing / following local and remote state (updates),
+' execute commands and append events to the journal
+' Instance of Aggregate1RootImpl
+abstract class CoreAggregateRoot<Event extends CoreEvent> extends CoreEventSourcedInstance {}
+
+class Aggregate1Root extends CoreAggregateRoot {}
+
+CoreAggregateApplication -> CoreAggregateRoot
+
+
+
+
+abstract class CoreEntryStore<Event extends CoreEvent>  {
+  Stream<EntryCollectionSnapshot<Event>> getSnapshotStream(EntryRef? start);
+  Future<void> append(Entry<Event> entry);
+  Future<void> fastForward(EntryRef next, {required bool Function(EntryRef previous) isFastForward});
+}
+
+class EntryStoreFake extends CoreEntryStore{}
+
+@enduml

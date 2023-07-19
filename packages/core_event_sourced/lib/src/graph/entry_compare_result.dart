@@ -1,10 +1,12 @@
-import 'package:core_entry/core_entry.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'entry_compare_result.freezed.dart';
 
 @freezed
-class EntryCompareResult<Event> with _$EntryCompareResult<Event> {
+class EntryCompareResult<Event extends CoreEvent>
+    with _$EntryCompareResult<Event> {
   factory EntryCompareResult.ahead({
     // required EntryRef entryRef,
     required Iterable<Entry<Event>> entries,

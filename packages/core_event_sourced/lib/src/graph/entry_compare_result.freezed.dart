@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EntryCompareResult<Event> {
+mixin _$EntryCompareResult<Event extends CoreEvent> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Iterable<Entry<Event>> entries) ahead,
@@ -82,14 +82,14 @@ mixin _$EntryCompareResult<Event> {
 }
 
 /// @nodoc
-abstract class $EntryCompareResultCopyWith<Event, $Res> {
+abstract class $EntryCompareResultCopyWith<Event extends CoreEvent, $Res> {
   factory $EntryCompareResultCopyWith(EntryCompareResult<Event> value,
           $Res Function(EntryCompareResult<Event>) then) =
       _$EntryCompareResultCopyWithImpl<Event, $Res, EntryCompareResult<Event>>;
 }
 
 /// @nodoc
-class _$EntryCompareResultCopyWithImpl<Event, $Res,
+class _$EntryCompareResultCopyWithImpl<Event extends CoreEvent, $Res,
         $Val extends EntryCompareResult<Event>>
     implements $EntryCompareResultCopyWith<Event, $Res> {
   _$EntryCompareResultCopyWithImpl(this._value, this._then);
@@ -101,7 +101,8 @@ class _$EntryCompareResultCopyWithImpl<Event, $Res,
 }
 
 /// @nodoc
-abstract class _$$EntryCompareResultAheadCopyWith<Event, $Res> {
+abstract class _$$EntryCompareResultAheadCopyWith<Event extends CoreEvent,
+    $Res> {
   factory _$$EntryCompareResultAheadCopyWith(
           _$EntryCompareResultAhead<Event> value,
           $Res Function(_$EntryCompareResultAhead<Event>) then) =
@@ -111,7 +112,7 @@ abstract class _$$EntryCompareResultAheadCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$EntryCompareResultAheadCopyWithImpl<Event, $Res>
+class __$$EntryCompareResultAheadCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryCompareResultCopyWithImpl<Event, $Res,
         _$EntryCompareResultAhead<Event>>
     implements _$$EntryCompareResultAheadCopyWith<Event, $Res> {
@@ -136,7 +137,7 @@ class __$$EntryCompareResultAheadCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryCompareResultAhead<Event>
+class _$EntryCompareResultAhead<Event extends CoreEvent>
     implements EntryCompareResultAhead<Event> {
   _$EntryCompareResultAhead({required this.entries});
 
@@ -256,7 +257,7 @@ class _$EntryCompareResultAhead<Event>
   }
 }
 
-abstract class EntryCompareResultAhead<Event>
+abstract class EntryCompareResultAhead<Event extends CoreEvent>
     implements EntryCompareResult<Event> {
   factory EntryCompareResultAhead(
           {required final Iterable<Entry<Event>> entries}) =
@@ -270,7 +271,8 @@ abstract class EntryCompareResultAhead<Event>
 }
 
 /// @nodoc
-abstract class _$$EntryCompareResultBehindCopyWith<Event, $Res> {
+abstract class _$$EntryCompareResultBehindCopyWith<Event extends CoreEvent,
+    $Res> {
   factory _$$EntryCompareResultBehindCopyWith(
           _$EntryCompareResultBehind<Event> value,
           $Res Function(_$EntryCompareResultBehind<Event>) then) =
@@ -280,7 +282,7 @@ abstract class _$$EntryCompareResultBehindCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$EntryCompareResultBehindCopyWithImpl<Event, $Res>
+class __$$EntryCompareResultBehindCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryCompareResultCopyWithImpl<Event, $Res,
         _$EntryCompareResultBehind<Event>>
     implements _$$EntryCompareResultBehindCopyWith<Event, $Res> {
@@ -305,7 +307,7 @@ class __$$EntryCompareResultBehindCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryCompareResultBehind<Event>
+class _$EntryCompareResultBehind<Event extends CoreEvent>
     implements EntryCompareResultBehind<Event> {
   _$EntryCompareResultBehind({required final Set<EntryRef> entryRefs})
       : _entryRefs = entryRefs;
@@ -433,7 +435,7 @@ class _$EntryCompareResultBehind<Event>
   }
 }
 
-abstract class EntryCompareResultBehind<Event>
+abstract class EntryCompareResultBehind<Event extends CoreEvent>
     implements EntryCompareResult<Event> {
   factory EntryCompareResultBehind({required final Set<EntryRef> entryRefs}) =
       _$EntryCompareResultBehind<Event>;
@@ -446,7 +448,8 @@ abstract class EntryCompareResultBehind<Event>
 }
 
 /// @nodoc
-abstract class _$$EntryCompareResultDivergentCopyWith<Event, $Res> {
+abstract class _$$EntryCompareResultDivergentCopyWith<Event extends CoreEvent,
+    $Res> {
   factory _$$EntryCompareResultDivergentCopyWith(
           _$EntryCompareResultDivergent<Event> value,
           $Res Function(_$EntryCompareResultDivergent<Event>) then) =
@@ -459,7 +462,7 @@ abstract class _$$EntryCompareResultDivergentCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$EntryCompareResultDivergentCopyWithImpl<Event, $Res>
+class __$$EntryCompareResultDivergentCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryCompareResultCopyWithImpl<Event, $Res,
         _$EntryCompareResultDivergent<Event>>
     implements _$$EntryCompareResultDivergentCopyWith<Event, $Res> {
@@ -502,7 +505,7 @@ class __$$EntryCompareResultDivergentCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryCompareResultDivergent<Event>
+class _$EntryCompareResultDivergent<Event extends CoreEvent>
     implements EntryCompareResultDivergent<Event> {
   _$EntryCompareResultDivergent(
       {required this.entryRef,
@@ -641,7 +644,7 @@ class _$EntryCompareResultDivergent<Event>
   }
 }
 
-abstract class EntryCompareResultDivergent<Event>
+abstract class EntryCompareResultDivergent<Event extends CoreEvent>
     implements EntryCompareResult<Event> {
   factory EntryCompareResultDivergent(
           {required final EntryRef entryRef,
@@ -659,7 +662,8 @@ abstract class EntryCompareResultDivergent<Event>
 }
 
 /// @nodoc
-abstract class _$$EntryCompareResultEqualCopyWith<Event, $Res> {
+abstract class _$$EntryCompareResultEqualCopyWith<Event extends CoreEvent,
+    $Res> {
   factory _$$EntryCompareResultEqualCopyWith(
           _$EntryCompareResultEqual<Event> value,
           $Res Function(_$EntryCompareResultEqual<Event>) then) =
@@ -667,7 +671,7 @@ abstract class _$$EntryCompareResultEqualCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$EntryCompareResultEqualCopyWithImpl<Event, $Res>
+class __$$EntryCompareResultEqualCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryCompareResultCopyWithImpl<Event, $Res,
         _$EntryCompareResultEqual<Event>>
     implements _$$EntryCompareResultEqualCopyWith<Event, $Res> {
@@ -679,7 +683,7 @@ class __$$EntryCompareResultEqualCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryCompareResultEqual<Event>
+class _$EntryCompareResultEqual<Event extends CoreEvent>
     implements EntryCompareResultEqual<Event> {
   _$EntryCompareResultEqual();
 
@@ -786,13 +790,14 @@ class _$EntryCompareResultEqual<Event>
   }
 }
 
-abstract class EntryCompareResultEqual<Event>
+abstract class EntryCompareResultEqual<Event extends CoreEvent>
     implements EntryCompareResult<Event> {
   factory EntryCompareResultEqual() = _$EntryCompareResultEqual<Event>;
 }
 
 /// @nodoc
-abstract class _$$EntryCompareResultUnknownCopyWith<Event, $Res> {
+abstract class _$$EntryCompareResultUnknownCopyWith<Event extends CoreEvent,
+    $Res> {
   factory _$$EntryCompareResultUnknownCopyWith(
           _$EntryCompareResultUnknown<Event> value,
           $Res Function(_$EntryCompareResultUnknown<Event>) then) =
@@ -800,7 +805,7 @@ abstract class _$$EntryCompareResultUnknownCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$EntryCompareResultUnknownCopyWithImpl<Event, $Res>
+class __$$EntryCompareResultUnknownCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryCompareResultCopyWithImpl<Event, $Res,
         _$EntryCompareResultUnknown<Event>>
     implements _$$EntryCompareResultUnknownCopyWith<Event, $Res> {
@@ -812,7 +817,7 @@ class __$$EntryCompareResultUnknownCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryCompareResultUnknown<Event>
+class _$EntryCompareResultUnknown<Event extends CoreEvent>
     implements EntryCompareResultUnknown<Event> {
   _$EntryCompareResultUnknown();
 
@@ -919,7 +924,7 @@ class _$EntryCompareResultUnknown<Event>
   }
 }
 
-abstract class EntryCompareResultUnknown<Event>
+abstract class EntryCompareResultUnknown<Event extends CoreEvent>
     implements EntryCompareResult<Event> {
   factory EntryCompareResultUnknown() = _$EntryCompareResultUnknown<Event>;
 }

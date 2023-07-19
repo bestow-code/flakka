@@ -1,14 +1,7 @@
-import 'package:core_entry/core_entry.dart';
+import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'upstream_entry_status.freezed.dart';
-
-// @freezed
-// class UpstreamForwardReady with _$UpstreamForwardReady {
-//   factory UpstreamForwardReady({
-//     required EntryRef to,
-//   }) = _UpstreamForwardReady;
-// }
 
 @freezed
 class UpstreamEntryStatus with _$UpstreamEntryStatus {

@@ -10,7 +10,7 @@ dependencies:
   analyzer: ^5.13.0
   build: ^2.4.0
   code_builder: ^4.5.0
-  collection: ^1.17.2
+  collection: ^1.17.1
   core_aggregate_annotation: ^0.1.2
   freezed_annotation: ^2.2.0
   glob: ^2.1.1

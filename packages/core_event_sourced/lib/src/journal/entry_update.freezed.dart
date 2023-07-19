@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EntryUpdate<Event> {
+mixin _$EntryUpdate<Event extends CoreEvent> {
   EntryRef get entryRef => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -77,7 +77,7 @@ mixin _$EntryUpdate<Event> {
 }
 
 /// @nodoc
-abstract class $EntryUpdateCopyWith<Event, $Res> {
+abstract class $EntryUpdateCopyWith<Event extends CoreEvent, $Res> {
   factory $EntryUpdateCopyWith(
           EntryUpdate<Event> value, $Res Function(EntryUpdate<Event>) then) =
       _$EntryUpdateCopyWithImpl<Event, $Res, EntryUpdate<Event>>;
@@ -88,7 +88,8 @@ abstract class $EntryUpdateCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class _$EntryUpdateCopyWithImpl<Event, $Res, $Val extends EntryUpdate<Event>>
+class _$EntryUpdateCopyWithImpl<Event extends CoreEvent, $Res,
+        $Val extends EntryUpdate<Event>>
     implements $EntryUpdateCopyWith<Event, $Res> {
   _$EntryUpdateCopyWithImpl(this._value, this._then);
 
@@ -120,7 +121,7 @@ class _$EntryUpdateCopyWithImpl<Event, $Res, $Val extends EntryUpdate<Event>>
 }
 
 /// @nodoc
-abstract class _$$EntryUpdateAppendCopyWith<Event, $Res>
+abstract class _$$EntryUpdateAppendCopyWith<Event extends CoreEvent, $Res>
     implements $EntryUpdateCopyWith<Event, $Res> {
   factory _$$EntryUpdateAppendCopyWith(_$EntryUpdateAppend<Event> value,
           $Res Function(_$EntryUpdateAppend<Event>) then) =
@@ -135,7 +136,7 @@ abstract class _$$EntryUpdateAppendCopyWith<Event, $Res>
 }
 
 /// @nodoc
-class __$$EntryUpdateAppendCopyWithImpl<Event, $Res>
+class __$$EntryUpdateAppendCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryUpdateCopyWithImpl<Event, $Res, _$EntryUpdateAppend<Event>>
     implements _$$EntryUpdateAppendCopyWith<Event, $Res> {
   __$$EntryUpdateAppendCopyWithImpl(_$EntryUpdateAppend<Event> _value,
@@ -171,7 +172,8 @@ class __$$EntryUpdateAppendCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryUpdateAppend<Event> implements EntryUpdateAppend<Event> {
+class _$EntryUpdateAppend<Event extends CoreEvent>
+    implements EntryUpdateAppend<Event> {
   _$EntryUpdateAppend(this.entryRef, this.entry);
 
   @override
@@ -283,7 +285,8 @@ class _$EntryUpdateAppend<Event> implements EntryUpdateAppend<Event> {
   }
 }
 
-abstract class EntryUpdateAppend<Event> implements EntryUpdate<Event> {
+abstract class EntryUpdateAppend<Event extends CoreEvent>
+    implements EntryUpdate<Event> {
   factory EntryUpdateAppend(final EntryRef entryRef, final Entry<Event> entry) =
       _$EntryUpdateAppend<Event>;
 
@@ -297,7 +300,7 @@ abstract class EntryUpdateAppend<Event> implements EntryUpdate<Event> {
 }
 
 /// @nodoc
-abstract class _$$EntryUpdateForwardCopyWith<Event, $Res>
+abstract class _$$EntryUpdateForwardCopyWith<Event extends CoreEvent, $Res>
     implements $EntryUpdateCopyWith<Event, $Res> {
   factory _$$EntryUpdateForwardCopyWith(_$EntryUpdateForward<Event> value,
           $Res Function(_$EntryUpdateForward<Event>) then) =
@@ -311,7 +314,7 @@ abstract class _$$EntryUpdateForwardCopyWith<Event, $Res>
 }
 
 /// @nodoc
-class __$$EntryUpdateForwardCopyWithImpl<Event, $Res>
+class __$$EntryUpdateForwardCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryUpdateCopyWithImpl<Event, $Res, _$EntryUpdateForward<Event>>
     implements _$$EntryUpdateForwardCopyWith<Event, $Res> {
   __$$EntryUpdateForwardCopyWithImpl(_$EntryUpdateForward<Event> _value,
@@ -339,7 +342,8 @@ class __$$EntryUpdateForwardCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryUpdateForward<Event> implements EntryUpdateForward<Event> {
+class _$EntryUpdateForward<Event extends CoreEvent>
+    implements EntryUpdateForward<Event> {
   _$EntryUpdateForward(this.entryRef, this.entries);
 
   @override
@@ -451,7 +455,8 @@ class _$EntryUpdateForward<Event> implements EntryUpdateForward<Event> {
   }
 }
 
-abstract class EntryUpdateForward<Event> implements EntryUpdate<Event> {
+abstract class EntryUpdateForward<Event extends CoreEvent>
+    implements EntryUpdate<Event> {
   factory EntryUpdateForward(
           final EntryRef entryRef, final Iterable<Entry<Event>> entries) =
       _$EntryUpdateForward<Event>;
@@ -466,7 +471,7 @@ abstract class EntryUpdateForward<Event> implements EntryUpdate<Event> {
 }
 
 /// @nodoc
-abstract class _$$EntryUpdateMergeCopyWith<Event, $Res>
+abstract class _$$EntryUpdateMergeCopyWith<Event extends CoreEvent, $Res>
     implements $EntryUpdateCopyWith<Event, $Res> {
   factory _$$EntryUpdateMergeCopyWith(_$EntryUpdateMerge<Event> value,
           $Res Function(_$EntryUpdateMerge<Event>) then) =
@@ -481,7 +486,7 @@ abstract class _$$EntryUpdateMergeCopyWith<Event, $Res>
 }
 
 /// @nodoc
-class __$$EntryUpdateMergeCopyWithImpl<Event, $Res>
+class __$$EntryUpdateMergeCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$EntryUpdateCopyWithImpl<Event, $Res, _$EntryUpdateMerge<Event>>
     implements _$$EntryUpdateMergeCopyWith<Event, $Res> {
   __$$EntryUpdateMergeCopyWithImpl(_$EntryUpdateMerge<Event> _value,
@@ -514,7 +519,8 @@ class __$$EntryUpdateMergeCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$EntryUpdateMerge<Event> implements EntryUpdateMerge<Event> {
+class _$EntryUpdateMerge<Event extends CoreEvent>
+    implements EntryUpdateMerge<Event> {
   _$EntryUpdateMerge(this.entryRef, this.entries, final Set<EntryRef> base)
       : _base = base;
 
@@ -638,7 +644,8 @@ class _$EntryUpdateMerge<Event> implements EntryUpdateMerge<Event> {
   }
 }
 
-abstract class EntryUpdateMerge<Event> implements EntryUpdate<Event> {
+abstract class EntryUpdateMerge<Event extends CoreEvent>
+    implements EntryUpdate<Event> {
   factory EntryUpdateMerge(
       final EntryRef entryRef,
       final Iterable<Entry<Event>> entries,

@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$GraphEvent<Event> {
+mixin _$GraphEvent<Event extends CoreEvent> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(EntryRef entryRef) upstreamEntry,
@@ -64,14 +64,15 @@ mixin _$GraphEvent<Event> {
 }
 
 /// @nodoc
-abstract class $GraphEventCopyWith<Event, $Res> {
+abstract class $GraphEventCopyWith<Event extends CoreEvent, $Res> {
   factory $GraphEventCopyWith(
           GraphEvent<Event> value, $Res Function(GraphEvent<Event>) then) =
       _$GraphEventCopyWithImpl<Event, $Res, GraphEvent<Event>>;
 }
 
 /// @nodoc
-class _$GraphEventCopyWithImpl<Event, $Res, $Val extends GraphEvent<Event>>
+class _$GraphEventCopyWithImpl<Event extends CoreEvent, $Res,
+        $Val extends GraphEvent<Event>>
     implements $GraphEventCopyWith<Event, $Res> {
   _$GraphEventCopyWithImpl(this._value, this._then);
 
@@ -82,7 +83,8 @@ class _$GraphEventCopyWithImpl<Event, $Res, $Val extends GraphEvent<Event>>
 }
 
 /// @nodoc
-abstract class _$$GraphEventUpstreamEntryCopyWith<Event, $Res> {
+abstract class _$$GraphEventUpstreamEntryCopyWith<Event extends CoreEvent,
+    $Res> {
   factory _$$GraphEventUpstreamEntryCopyWith(
           _$GraphEventUpstreamEntry<Event> value,
           $Res Function(_$GraphEventUpstreamEntry<Event>) then) =
@@ -94,7 +96,7 @@ abstract class _$$GraphEventUpstreamEntryCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$GraphEventUpstreamEntryCopyWithImpl<Event, $Res>
+class __$$GraphEventUpstreamEntryCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$GraphEventCopyWithImpl<Event, $Res,
         _$GraphEventUpstreamEntry<Event>>
     implements _$$GraphEventUpstreamEntryCopyWith<Event, $Res> {
@@ -127,7 +129,7 @@ class __$$GraphEventUpstreamEntryCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$GraphEventUpstreamEntry<Event>
+class _$GraphEventUpstreamEntry<Event extends CoreEvent>
     implements GraphEventUpstreamEntry<Event> {
   _$GraphEventUpstreamEntry({required this.entryRef});
 
@@ -228,7 +230,8 @@ class _$GraphEventUpstreamEntry<Event>
   }
 }
 
-abstract class GraphEventUpstreamEntry<Event> implements GraphEvent<Event> {
+abstract class GraphEventUpstreamEntry<Event extends CoreEvent>
+    implements GraphEvent<Event> {
   factory GraphEventUpstreamEntry({required final EntryRef entryRef}) =
       _$GraphEventUpstreamEntry<Event>;
 
@@ -239,7 +242,8 @@ abstract class GraphEventUpstreamEntry<Event> implements GraphEvent<Event> {
 }
 
 /// @nodoc
-abstract class _$$GraphEventEntryCollectionUpdateCopyWith<Event, $Res> {
+abstract class _$$GraphEventEntryCollectionUpdateCopyWith<
+    Event extends CoreEvent, $Res> {
   factory _$$GraphEventEntryCollectionUpdateCopyWith(
           _$GraphEventEntryCollectionUpdate<Event> value,
           $Res Function(_$GraphEventEntryCollectionUpdate<Event>) then) =
@@ -251,7 +255,8 @@ abstract class _$$GraphEventEntryCollectionUpdateCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class __$$GraphEventEntryCollectionUpdateCopyWithImpl<Event, $Res>
+class __$$GraphEventEntryCollectionUpdateCopyWithImpl<Event extends CoreEvent,
+        $Res>
     extends _$GraphEventCopyWithImpl<Event, $Res,
         _$GraphEventEntryCollectionUpdate<Event>>
     implements _$$GraphEventEntryCollectionUpdateCopyWith<Event, $Res> {
@@ -285,7 +290,7 @@ class __$$GraphEventEntryCollectionUpdateCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$GraphEventEntryCollectionUpdate<Event>
+class _$GraphEventEntryCollectionUpdate<Event extends CoreEvent>
     implements GraphEventEntryCollectionUpdate<Event> {
   _$GraphEventEntryCollectionUpdate({required this.snapshot});
 
@@ -387,7 +392,7 @@ class _$GraphEventEntryCollectionUpdate<Event>
   }
 }
 
-abstract class GraphEventEntryCollectionUpdate<Event>
+abstract class GraphEventEntryCollectionUpdate<Event extends CoreEvent>
     implements GraphEvent<Event> {
   factory GraphEventEntryCollectionUpdate(
           {required final EntryCollectionSnapshot<Event> snapshot}) =

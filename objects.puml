@@ -1,0 +1,18 @@
+@startuml
+'object TestPersistence
+'object TestApp
+
+'class TestAggregateRoot extends CoreAggregateRoot {}
+abstract class CoreAggregateRoot extends Application {}
+abstract class Application {}
+class Journal {}
+Application --> Journal
+
+class DataStore {}
+
+Journal --> DataStore
+
+DataStore --> DataStoreLocal
+DataStoreLocal --> DataStoreRemote
+DataStore --> DataStoreRemote
+@enduml

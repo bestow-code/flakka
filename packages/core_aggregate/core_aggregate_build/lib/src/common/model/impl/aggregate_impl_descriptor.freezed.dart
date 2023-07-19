@@ -242,25 +242,32 @@ class _$_AggregateImplDescriptor extends _AggregateImplDescriptor {
         (other.runtimeType == runtimeType &&
             other is _$_AggregateImplDescriptor &&
             (identical(other.scope, scope) || other.scope == scope) &&
-            (identical(other.entityRef, entityRef) ||
-                other.entityRef == entityRef) &&
-            (identical(other.service, service) || other.service == service) &&
-            (identical(other.aggregateView, aggregateView) ||
-                other.aggregateView == aggregateView) &&
-            (identical(other.entityView, entityView) ||
-                other.entityView == entityView) &&
-            (identical(other.entityCommand, entityCommand) ||
-                other.entityCommand == entityCommand) &&
-            (identical(other.entityState, entityState) ||
-                other.entityState == entityState) &&
-            (identical(other.entityEvent, entityEvent) ||
-                other.entityEvent == entityEvent));
+            const DeepCollectionEquality().equals(other.entityRef, entityRef) &&
+            const DeepCollectionEquality().equals(other.service, service) &&
+            const DeepCollectionEquality()
+                .equals(other.aggregateView, aggregateView) &&
+            const DeepCollectionEquality()
+                .equals(other.entityView, entityView) &&
+            const DeepCollectionEquality()
+                .equals(other.entityCommand, entityCommand) &&
+            const DeepCollectionEquality()
+                .equals(other.entityState, entityState) &&
+            const DeepCollectionEquality()
+                .equals(other.entityEvent, entityEvent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, scope, entityRef, service,
-      aggregateView, entityView, entityCommand, entityState, entityEvent);
+  int get hashCode => Object.hash(
+      runtimeType,
+      scope,
+      const DeepCollectionEquality().hash(entityRef),
+      const DeepCollectionEquality().hash(service),
+      const DeepCollectionEquality().hash(aggregateView),
+      const DeepCollectionEquality().hash(entityView),
+      const DeepCollectionEquality().hash(entityCommand),
+      const DeepCollectionEquality().hash(entityState),
+      const DeepCollectionEquality().hash(entityEvent));
 
   @JsonKey(ignore: true)
   @override

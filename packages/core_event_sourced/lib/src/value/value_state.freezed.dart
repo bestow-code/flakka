@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ValueState<T, Event> {
+mixin _$ValueState<T, Event extends CoreEvent> {
   EntryRef get entryRef => throw _privateConstructorUsedError;
   Map<EntryRef, T> get values => throw _privateConstructorUsedError;
 
@@ -25,7 +25,7 @@ mixin _$ValueState<T, Event> {
 }
 
 /// @nodoc
-abstract class $ValueStateCopyWith<T, Event, $Res> {
+abstract class $ValueStateCopyWith<T, Event extends CoreEvent, $Res> {
   factory $ValueStateCopyWith(ValueState<T, Event> value,
           $Res Function(ValueState<T, Event>) then) =
       _$ValueStateCopyWithImpl<T, Event, $Res, ValueState<T, Event>>;
@@ -36,7 +36,7 @@ abstract class $ValueStateCopyWith<T, Event, $Res> {
 }
 
 /// @nodoc
-class _$ValueStateCopyWithImpl<T, Event, $Res,
+class _$ValueStateCopyWithImpl<T, Event extends CoreEvent, $Res,
         $Val extends ValueState<T, Event>>
     implements $ValueStateCopyWith<T, Event, $Res> {
   _$ValueStateCopyWithImpl(this._value, this._then);
@@ -74,7 +74,7 @@ class _$ValueStateCopyWithImpl<T, Event, $Res,
 }
 
 /// @nodoc
-abstract class _$$_ValueImplCopyWith<T, Event, $Res>
+abstract class _$$_ValueImplCopyWith<T, Event extends CoreEvent, $Res>
     implements $ValueStateCopyWith<T, Event, $Res> {
   factory _$$_ValueImplCopyWith(_$_ValueImpl<T, Event> value,
           $Res Function(_$_ValueImpl<T, Event>) then) =
@@ -88,7 +88,7 @@ abstract class _$$_ValueImplCopyWith<T, Event, $Res>
 }
 
 /// @nodoc
-class __$$_ValueImplCopyWithImpl<T, Event, $Res>
+class __$$_ValueImplCopyWithImpl<T, Event extends CoreEvent, $Res>
     extends _$ValueStateCopyWithImpl<T, Event, $Res, _$_ValueImpl<T, Event>>
     implements _$$_ValueImplCopyWith<T, Event, $Res> {
   __$$_ValueImplCopyWithImpl(_$_ValueImpl<T, Event> _value,
@@ -116,7 +116,7 @@ class __$$_ValueImplCopyWithImpl<T, Event, $Res>
 
 /// @nodoc
 
-class _$_ValueImpl<T, Event> extends _ValueImpl<T, Event> {
+class _$_ValueImpl<T, Event extends CoreEvent> extends _ValueImpl<T, Event> {
   _$_ValueImpl(this.entryRef, final Map<EntryRef, T> values)
       : _values = values,
         super._();
@@ -158,7 +158,8 @@ class _$_ValueImpl<T, Event> extends _ValueImpl<T, Event> {
           this, _$identity);
 }
 
-abstract class _ValueImpl<T, Event> extends ValueState<T, Event> {
+abstract class _ValueImpl<T, Event extends CoreEvent>
+    extends ValueState<T, Event> {
   factory _ValueImpl(final EntryRef entryRef, final Map<EntryRef, T> values) =
       _$_ValueImpl<T, Event>;
   _ValueImpl._() : super._();

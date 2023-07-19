@@ -2,15 +2,15 @@
 import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
-import 'package:core_entry/core_entry.dart';
-import 'package:core_entry_store/core_entry_store.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data_store/core_data_store.dart';
 import 'package:core_event_sourced/src/graph/entry_compare_result.dart';
 import 'package:core_event_sourced/src/graph/graph_data.dart';
 import 'package:core_event_sourced/src/graph/graph_impl.dart';
 import 'package:core_event_sourced/src/graph/graph_state.dart';
 import 'package:test/test.dart';
 
-class TestEvent {}
+class TestEvent implements CoreEvent {}
 
 const graphTest = blocTest<GraphImpl<TestEvent>, GraphState<TestEvent>>;
 
@@ -21,7 +21,7 @@ void main() {
 
   late Stream<EntryCollectionSnapshot<TestEvent>> entryCollectionSnapshotStream;
   late Stream<EntryRef> upstreamEntryRefStream;
-  late EntryFactory<TestEvent> entryFactory;
+  late EntryFactory entryFactory;
 
   //
   late Entry<TestEvent> initialEntry;
@@ -175,7 +175,7 @@ void main() {
 void main2() {
   late GraphState<TestEvent> initialState;
 
-  late EntryFactory<TestEvent> entryFactory;
+  late EntryFactory entryFactory;
 
   //
   late Entry<TestEvent> initialEntry;

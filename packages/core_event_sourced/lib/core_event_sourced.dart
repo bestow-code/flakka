@@ -3,9 +3,9 @@
 library core_event_sourced;
 
 export 'src/application/application.dart';
-export 'src/application/application_behavior.dart';
 export 'src/application/application_impl.dart';
 export 'src/application/event_handler.dart';
+export 'src/application/event_sourced_behavior.dart';
 export 'src/application/request_handler_factory.dart';
 export 'src/application/state_event_sink.dart';
 export 'src/graph/entry_compare_result.dart';

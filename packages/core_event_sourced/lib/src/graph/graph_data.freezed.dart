@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$GraphData<Event> {
+mixin _$GraphData<Event extends CoreEvent> {
   Map<EntryRef, Entry<Event>> get entries => throw _privateConstructorUsedError;
   Map<EntryRef, Set<EntryRef>> get edges => throw _privateConstructorUsedError;
 
@@ -25,7 +25,7 @@ mixin _$GraphData<Event> {
 }
 
 /// @nodoc
-abstract class $GraphDataCopyWith<Event, $Res> {
+abstract class $GraphDataCopyWith<Event extends CoreEvent, $Res> {
   factory $GraphDataCopyWith(
           GraphData<Event> value, $Res Function(GraphData<Event>) then) =
       _$GraphDataCopyWithImpl<Event, $Res, GraphData<Event>>;
@@ -36,8 +36,8 @@ abstract class $GraphDataCopyWith<Event, $Res> {
 }
 
 /// @nodoc
-class _$GraphDataCopyWithImpl<Event, $Res, $Val extends GraphData<Event>>
-    implements $GraphDataCopyWith<Event, $Res> {
+class _$GraphDataCopyWithImpl<Event extends CoreEvent, $Res,
+    $Val extends GraphData<Event>> implements $GraphDataCopyWith<Event, $Res> {
   _$GraphDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -65,7 +65,7 @@ class _$GraphDataCopyWithImpl<Event, $Res, $Val extends GraphData<Event>>
 }
 
 /// @nodoc
-abstract class _$$_GraphDataCopyWith<Event, $Res>
+abstract class _$$_GraphDataCopyWith<Event extends CoreEvent, $Res>
     implements $GraphDataCopyWith<Event, $Res> {
   factory _$$_GraphDataCopyWith(
           _$_GraphData<Event> value, $Res Function(_$_GraphData<Event>) then) =
@@ -78,7 +78,7 @@ abstract class _$$_GraphDataCopyWith<Event, $Res>
 }
 
 /// @nodoc
-class __$$_GraphDataCopyWithImpl<Event, $Res>
+class __$$_GraphDataCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$GraphDataCopyWithImpl<Event, $Res, _$_GraphData<Event>>
     implements _$$_GraphDataCopyWith<Event, $Res> {
   __$$_GraphDataCopyWithImpl(
@@ -106,7 +106,7 @@ class __$$_GraphDataCopyWithImpl<Event, $Res>
 
 /// @nodoc
 
-class _$_GraphData<Event> extends _GraphData<Event> {
+class _$_GraphData<Event extends CoreEvent> extends _GraphData<Event> {
   _$_GraphData(
       {required final Map<EntryRef, Entry<Event>> entries,
       required final Map<EntryRef, Set<EntryRef>> edges})
@@ -157,7 +157,7 @@ class _$_GraphData<Event> extends _GraphData<Event> {
       __$$_GraphDataCopyWithImpl<Event, _$_GraphData<Event>>(this, _$identity);
 }
 
-abstract class _GraphData<Event> extends GraphData<Event> {
+abstract class _GraphData<Event extends CoreEvent> extends GraphData<Event> {
   factory _GraphData(
       {required final Map<EntryRef, Entry<Event>> entries,
       required final Map<EntryRef, Set<EntryRef>> edges}) = _$_GraphData<Event>;

@@ -1,14 +1,15 @@
 import 'package:collection/collection.dart';
-import 'package:core_entry/core_entry.dart';
-import 'package:core_entry_store/core_entry_store.dart';
-import 'package:core_event_sourced/src/graph/entry_compare_result.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data_store/core_data_store.dart';
 import 'package:directed_graph/directed_graph.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../core_event_sourced.dart';
 
 part 'graph_data.freezed.dart';
 
 @freezed
-class GraphData<Event> with _$GraphData<Event> {
+class GraphData<Event extends CoreEvent> with _$GraphData<Event> {
   GraphData._();
 
   factory GraphData.empty() => GraphData(

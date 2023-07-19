@@ -16,3 +16,14 @@ abstract class Application<Event, State, View>
 
   Value<View> get view;
 }
+
+abstract class CoreEventSourcedInstance<Event, State, View>
+    implements StateEventProcessor<Event, State> {
+  void evaluate(
+      ApplicationEffect Function(StateEventSink<State, Event> stateEventSink)
+      handler);
+
+  void start();
+
+  Value<View> get view;
+}

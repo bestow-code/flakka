@@ -1,0 +1,15 @@
+@startuml
+object flakka
+object flakka_flame
+object core_aggregate
+object core_event_sourced
+object core_data_store
+flakka_flame --> core_data_store
+flakka --> core_aggregate
+object core_data
+
+core_data_store -> core_data
+core_event_sourced --> core_data_store
+core_event_sourced --> core_data
+core_aggregate --> core_event_sourced
+@enduml

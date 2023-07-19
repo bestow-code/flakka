@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart' show Closable;
+import 'package:core_data/core_data.dart';
 import 'package:core_event_sourced/core_event_sourced.dart';
 
-class ApplicationImpl<Event, State, View>
+class ApplicationImpl<Event extends CoreEvent, State, View>
     extends Application<Event, State, View> implements Closable {
   ApplicationImpl({
     required Journal<Event> journal,
@@ -42,8 +43,9 @@ class ApplicationImpl<Event, State, View>
 
   @override
   void evaluate(
-      ApplicationEffect Function(StateEventSink<State, Event> stateEventSink)
-          handler) {
+    ApplicationEffect Function(StateEventSink<State, Event> stateEventSink)
+        handler,
+  ) {
     _journal.request(() {
       final stateEventSink = _stateEventSinkFactory(_state.current);
       return handler(stateEventSink).map(

@@ -1,4 +1,4 @@
-import 'package:core_entry/core_entry.dart';
+import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'journal_state.freezed.dart';

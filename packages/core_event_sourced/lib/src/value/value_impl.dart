@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart' hide EventHandler;
+import 'package:core_data/core_data.dart';
 import 'package:core_event_sourced/src/application/event_handler.dart';
 import 'package:core_event_sourced/src/journal/entry_update.dart';
 import 'package:core_event_sourced/src/value/value.dart';
 import 'package:core_event_sourced/src/value/value_state.dart';
 
-class ValueImpl<T, Event> extends BlocBase<ValueState<T, Event>> with Value<T> {
+class ValueImpl<T, Event extends CoreEvent> extends BlocBase<ValueState<T, Event>> with Value<T> {
   ValueImpl(
     super.state,
     Stream<EntryUpdate<Event>> entryUpdateStream,

@@ -12,7 +12,7 @@ on:
     branches:
       - main
     paths:
-      - packages/core_entry_store/core_entry_store_test/**
+      - packages/core_data_store/core_entry_store_test/**
       - .github/workflows/core_entry_store_test.yaml
 
 jobs:
@@ -28,4 +28,4 @@ jobs:
   build:
     uses: ./.github/workflows/dart_support_package.yaml
     with:
-      working_directory: packages/core_entry_store/core_entry_store_test
+      working_directory: packages/core_data_store/core_entry_store_test

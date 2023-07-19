@@ -1,15 +1,18 @@
 import 'package:core_aggregate/core_aggregate.dart';
-import 'package:core_event_sourced/core_event_sourced.dart';
+import 'package:core_data/core_data.dart';
+
+import 'core_event_handler.dart';
+import 'event_sourced_behavior.dart';
 
 class RootContext {}
 
-abstract mixin class RootBehavior<RootEvent, RootState, RootView>
+abstract mixin class RootBehavior<RootEvent extends CoreEvent, RootState, RootView>
     implements EventSourcedBehavior<RootEvent, RootState, RootView> {}
 
 abstract mixin class AggregateBehavior<
-        RootEvent,
+        RootEvent extends CoreEvent,
         CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
-        EntityEvent,
+        EntityEvent extends CoreEvent,
         EntityState,
         AggregateView,
         EntityView,
@@ -69,7 +72,7 @@ abstract mixin class AggregateBehavior<
 
 abstract mixin class CollectionBehavior<
         CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
-        EntityEvent,
+        EntityEvent extends CoreEvent,
         EntityState,
         EntityView,
         EntityRef>
@@ -77,7 +80,7 @@ abstract mixin class CollectionBehavior<
         EventSourcedBehavior<CollectionEvent, Map<EntityRef, EntityState>,
             Map<EntityRef, EntityView>> {
   @override
-  CoreEventHandler<CollectionEvent, Map<EntityRef, EntityState>>
+  EventHandler<CollectionEvent, Map<EntityRef, EntityState>>
       get stateEventHandler => (state, event) => Map.of(state)
         ..[event.entityRef] = entityBehavior.stateEventHandler(
           state[event.entityRef] ?? entityBehavior.initialStateFactory(),
@@ -85,7 +88,7 @@ abstract mixin class CollectionBehavior<
         );
 
   @override
-  CoreEventHandler<CollectionEvent, Map<EntityRef, EntityView>>
+  EventHandler<CollectionEvent, Map<EntityRef, EntityView>>
       get viewEventHandler => (view, event) => Map.of(view)
         ..[event.entityRef] = entityBehavior.viewEventHandler(
           view[event.entityRef] ?? entityBehavior.initialViewFactory(),

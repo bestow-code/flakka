@@ -1,4 +1,5 @@
-import 'package:core_entry/core_entry.dart';
+import 'package:core_data/core_data.dart';
+import 'package:core_data/core_data.dart';
 import 'package:core_event_sourced/src/application/event_handler.dart';
 import 'package:core_event_sourced/src/journal/entry_update.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -6,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'value_state.freezed.dart';
 
 @freezed
-class ValueState<T, Event> with _$ValueState<T, Event> {
+class ValueState<T, Event extends CoreEvent> with _$ValueState<T, Event> {
   factory ValueState(
     EntryRef entryRef,
     Map<EntryRef, T> values,
