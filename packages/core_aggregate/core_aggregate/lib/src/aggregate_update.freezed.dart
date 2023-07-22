@@ -19,28 +19,28 @@ mixin _$AggregateUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EntryRef ref, EntryRef parent,
-            Iterable<Event> events, State state, View view)
+    required TResult Function(
+            Ref ref, Ref parent, Iterable<Event> events, State state, View view)
         append,
-    required TResult Function(EntryRef ref, EntryRef parent) done,
+    required TResult Function(Ref ref, Ref parent) done,
     required TResult Function() forward,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult? Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult? Function(EntryRef ref, EntryRef parent)? done,
+    TResult? Function(Ref ref, Ref parent)? done,
     TResult? Function()? forward,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult Function(EntryRef ref, EntryRef parent)? done,
+    TResult Function(Ref ref, Ref parent)? done,
     TResult Function()? forward,
     required TResult orElse(),
   }) =>
@@ -107,14 +107,10 @@ abstract class _$$AggregateUpdateAppendCopyWith<Event extends CoreEvent,
       __$$AggregateUpdateAppendCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call(
-      {EntryRef ref,
-      EntryRef parent,
-      Iterable<Event> events,
-      State state,
-      View view});
+      {Ref ref, Ref parent, Iterable<Event> events, State state, View view});
 
-  $EntryRefCopyWith<$Res> get ref;
-  $EntryRefCopyWith<$Res> get parent;
+  $RefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
@@ -141,11 +137,11 @@ class __$$AggregateUpdateAppendCopyWithImpl<Event extends CoreEvent,
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       parent: null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -163,16 +159,16 @@ class __$$AggregateUpdateAppendCopyWithImpl<Event extends CoreEvent,
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get ref {
-    return $EntryRefCopyWith<$Res>(_value.ref, (value) {
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
       return _then(_value.copyWith(ref: value));
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get parent {
-    return $EntryRefCopyWith<$Res>(_value.parent, (value) {
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
       return _then(_value.copyWith(parent: value));
     });
   }
@@ -191,9 +187,9 @@ class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
       required this.view});
 
   @override
-  final EntryRef ref;
+  final Ref ref;
   @override
-  final EntryRef parent;
+  final Ref parent;
   @override
   final Iterable<Event> events;
   @override
@@ -238,10 +234,10 @@ class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EntryRef ref, EntryRef parent,
-            Iterable<Event> events, State state, View view)
+    required TResult Function(
+            Ref ref, Ref parent, Iterable<Event> events, State state, View view)
         append,
-    required TResult Function(EntryRef ref, EntryRef parent) done,
+    required TResult Function(Ref ref, Ref parent) done,
     required TResult Function() forward,
   }) {
     return append(ref, parent, events, state, view);
@@ -250,10 +246,10 @@ class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult? Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult? Function(EntryRef ref, EntryRef parent)? done,
+    TResult? Function(Ref ref, Ref parent)? done,
     TResult? Function()? forward,
   }) {
     return append?.call(ref, parent, events, state, view);
@@ -262,10 +258,10 @@ class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult Function(EntryRef ref, EntryRef parent)? done,
+    TResult Function(Ref ref, Ref parent)? done,
     TResult Function()? forward,
     required TResult orElse(),
   }) {
@@ -319,14 +315,14 @@ abstract class AggregateUpdateAppend<
     State extends CoreState,
     View extends CoreView> implements AggregateUpdate<Event, State, View> {
   factory AggregateUpdateAppend(
-      {required final EntryRef ref,
-      required final EntryRef parent,
+      {required final Ref ref,
+      required final Ref parent,
       required final Iterable<Event> events,
       required final State state,
       required final View view}) = _$AggregateUpdateAppend<Event, State, View>;
 
-  EntryRef get ref;
-  EntryRef get parent;
+  Ref get ref;
+  Ref get parent;
   Iterable<Event> get events;
   State get state;
   View get view;
@@ -344,10 +340,10 @@ abstract class _$$AggregateUpdateDoneCopyWith<Event extends CoreEvent,
           $Res Function(_$AggregateUpdateDone<Event, State, View>) then) =
       __$$AggregateUpdateDoneCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({EntryRef ref, EntryRef parent});
+  $Res call({Ref ref, Ref parent});
 
-  $EntryRefCopyWith<$Res> get ref;
-  $EntryRefCopyWith<$Res> get parent;
+  $RefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
@@ -371,26 +367,26 @@ class __$$AggregateUpdateDoneCopyWithImpl<Event extends CoreEvent,
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       parent: null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get ref {
-    return $EntryRefCopyWith<$Res>(_value.ref, (value) {
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
       return _then(_value.copyWith(ref: value));
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get parent {
-    return $EntryRefCopyWith<$Res>(_value.parent, (value) {
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
       return _then(_value.copyWith(parent: value));
     });
   }
@@ -403,9 +399,9 @@ class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
   _$AggregateUpdateDone({required this.ref, required this.parent});
 
   @override
-  final EntryRef ref;
+  final Ref ref;
   @override
-  final EntryRef parent;
+  final Ref parent;
 
   @override
   String toString() {
@@ -435,10 +431,10 @@ class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EntryRef ref, EntryRef parent,
-            Iterable<Event> events, State state, View view)
+    required TResult Function(
+            Ref ref, Ref parent, Iterable<Event> events, State state, View view)
         append,
-    required TResult Function(EntryRef ref, EntryRef parent) done,
+    required TResult Function(Ref ref, Ref parent) done,
     required TResult Function() forward,
   }) {
     return done(ref, parent);
@@ -447,10 +443,10 @@ class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult? Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult? Function(EntryRef ref, EntryRef parent)? done,
+    TResult? Function(Ref ref, Ref parent)? done,
     TResult? Function()? forward,
   }) {
     return done?.call(ref, parent);
@@ -459,10 +455,10 @@ class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult Function(EntryRef ref, EntryRef parent)? done,
+    TResult Function(Ref ref, Ref parent)? done,
     TResult Function()? forward,
     required TResult orElse(),
   }) {
@@ -516,11 +512,11 @@ abstract class AggregateUpdateDone<
     State extends CoreState,
     View extends CoreView> implements AggregateUpdate<Event, State, View> {
   factory AggregateUpdateDone(
-          {required final EntryRef ref, required final EntryRef parent}) =
-      _$AggregateUpdateDone<Event, State, View>;
+      {required final Ref ref,
+      required final Ref parent}) = _$AggregateUpdateDone<Event, State, View>;
 
-  EntryRef get ref;
-  EntryRef get parent;
+  Ref get ref;
+  Ref get parent;
   @JsonKey(ignore: true)
   _$$AggregateUpdateDoneCopyWith<Event, State, View,
           _$AggregateUpdateDone<Event, State, View>>
@@ -573,10 +569,10 @@ class _$AggregateUpdateForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EntryRef ref, EntryRef parent,
-            Iterable<Event> events, State state, View view)
+    required TResult Function(
+            Ref ref, Ref parent, Iterable<Event> events, State state, View view)
         append,
-    required TResult Function(EntryRef ref, EntryRef parent) done,
+    required TResult Function(Ref ref, Ref parent) done,
     required TResult Function() forward,
   }) {
     return forward();
@@ -585,10 +581,10 @@ class _$AggregateUpdateForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult? Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult? Function(EntryRef ref, EntryRef parent)? done,
+    TResult? Function(Ref ref, Ref parent)? done,
     TResult? Function()? forward,
   }) {
     return forward?.call();
@@ -597,10 +593,10 @@ class _$AggregateUpdateForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef ref, EntryRef parent, Iterable<Event> events,
-            State state, View view)?
+    TResult Function(Ref ref, Ref parent, Iterable<Event> events, State state,
+            View view)?
         append,
-    TResult Function(EntryRef ref, EntryRef parent)? done,
+    TResult Function(Ref ref, Ref parent)? done,
     TResult Function()? forward,
     required TResult orElse(),
   }) {

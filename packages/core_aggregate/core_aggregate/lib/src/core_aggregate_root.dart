@@ -22,7 +22,7 @@ abstract class CoreAggregateRootBase<
     State extends CoreState,
     View extends CoreView> extends CoreAggregateRoot<Event, State, View> {
   CoreAggregateRootBase({
-    required EntryRef initialEntryRef,
+    required Ref initialEntryRef,
     required State initialState,
     required View initialView,
     required RootBehavior<Event, State, View> behavior,
@@ -35,7 +35,7 @@ abstract class CoreAggregateRootBase<
 
   // state
   @override
-  final BehaviorSubject<EntryRef> entryRef;
+  final BehaviorSubject<Ref> entryRef;
 
   @override
   final BehaviorSubject<State> state;
@@ -45,14 +45,14 @@ abstract class CoreAggregateRootBase<
 
   // input
   @override
-  final PublishSubject<Iterable<Entry<Event>>> entries = PublishSubject();
+  final PublishSubject<Iterable<Entry>> entries = PublishSubject();
 
   @override
   final PublishSubject<CoreRequestHandler<State, Event>> request =
       PublishSubject();
 
   @override
-  final PublishSubject<EntryRef> upstreamEntryRef = PublishSubject();
+  final PublishSubject<Ref> upstreamEntryRef = PublishSubject();
 
   // output
   @override

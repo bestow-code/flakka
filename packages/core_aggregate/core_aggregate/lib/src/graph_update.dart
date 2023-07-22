@@ -9,14 +9,14 @@ part 'graph_update.freezed.dart';
 class GraphUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$GraphUpdate<Event, State, View> {
   factory GraphUpdate.forward({
-    required EntryRef entryRef,
-    required DirectedGraph<Entry<Event>> graph,
+    required Ref entryRef,
+    required DirectedGraph<Entry> graph,
   }) = GraphUpdateForward<Event, State, View>;
 
   factory GraphUpdate.reset({
-    required EntryRef entryRef,
-    required DirectedGraph<Entry<Event>> graph,
-    required Map<EntryRef, State> state,
-    required Map<EntryRef, View> view,
+    required Ref entryRef,
+    required DirectedGraph<Entry> graph,
+    required Map<Ref, State> state,
+    required Map<Ref, View> view,
   }) = GraphUpdateReset<Event, State, View>;
 }

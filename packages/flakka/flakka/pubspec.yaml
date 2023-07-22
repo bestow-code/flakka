@@ -10,7 +10,7 @@ environment:
 dependencies:
   core_aggregate:
   core_data:
-  core_data_store:
+  core_datastore:
 
 dev_dependencies:
   lints: ^2.0.0

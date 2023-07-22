@@ -6,8 +6,8 @@ import 'aggregate_update.dart';
 typedef UpstreamUpdate<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
     = ({
-  EntryRef ref,
-  Map<EntryRef, State> state,
-  Map<EntryRef, View> view,
+  Ref ref,
+  Map<Ref, State> state,
+  Map<Ref, View> view,
   AggregateUpdate<Event, State, View>? update
 });

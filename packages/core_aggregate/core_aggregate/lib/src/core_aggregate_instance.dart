@@ -118,8 +118,8 @@ class AggregateInstanceEvent<Event extends CoreEvent, State extends CoreState,
 class AggregateInstanceState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$AggregateInstanceState<Event, State, View> {
   factory AggregateInstanceState({
-    required EntryRef ref,
-    required Map<EntryRef, StateView<State, View>> stateView,
+    required Ref ref,
+    required Map<Ref, StateView<State, View>> stateView,
     AggregateUpdate<Event, State, View>? update,
   }) = _AggregateInstanceState<Event, State, View>;
 }

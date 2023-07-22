@@ -14,8 +14,8 @@ on:
     paths:
       - packages/core_common/**
       - packages/core_entry/**
-      - packages/core_data_store/core_data_store/**
-      - packages/core_data_store/core_entry_store_fake/**
+      - packages/core_datastore/core_datastore/**
+      - packages/core_datastore/core_entry_store_fake/**
       - packages/core_event_sourced/**
       - packages/core_aggregate/core_aggregate_annotation/**
       - packages/core_aggregate/core_aggregate/**

@@ -423,8 +423,8 @@ abstract class AggregateInstanceEventGraph<Event extends CoreEvent,
 /// @nodoc
 mixin _$AggregateInstanceState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  EntryRef get ref => throw _privateConstructorUsedError;
-  Map<EntryRef, ({State state, View view})> get stateView =>
+  Ref get ref => throw _privateConstructorUsedError;
+  Map<Ref, ({State state, View view})> get stateView =>
       throw _privateConstructorUsedError;
   AggregateUpdate<Event, State, View>? get update =>
       throw _privateConstructorUsedError;
@@ -445,11 +445,11 @@ abstract class $AggregateInstanceStateCopyWith<Event extends CoreEvent,
           AggregateInstanceState<Event, State, View>>;
   @useResult
   $Res call(
-      {EntryRef ref,
-      Map<EntryRef, ({State state, View view})> stateView,
+      {Ref ref,
+      Map<Ref, ({State state, View view})> stateView,
       AggregateUpdate<Event, State, View>? update});
 
-  $EntryRefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get ref;
   $AggregateUpdateCopyWith<Event, State, View, $Res>? get update;
 }
 
@@ -479,11 +479,11 @@ class _$AggregateInstanceStateCopyWithImpl<
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<EntryRef, ({State state, View view})>,
+              as Map<Ref, ({State state, View view})>,
       update: freezed == update
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
@@ -493,8 +493,8 @@ class _$AggregateInstanceStateCopyWithImpl<
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get ref {
-    return $EntryRefCopyWith<$Res>(_value.ref, (value) {
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
       return _then(_value.copyWith(ref: value) as $Val);
     });
   }
@@ -526,12 +526,12 @@ abstract class _$$_AggregateInstanceStateCopyWith<
   @override
   @useResult
   $Res call(
-      {EntryRef ref,
-      Map<EntryRef, ({State state, View view})> stateView,
+      {Ref ref,
+      Map<Ref, ({State state, View view})> stateView,
       AggregateUpdate<Event, State, View>? update});
 
   @override
-  $EntryRefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get ref;
   @override
   $AggregateUpdateCopyWith<Event, State, View, $Res>? get update;
 }
@@ -558,11 +558,11 @@ class __$$_AggregateInstanceStateCopyWithImpl<Event extends CoreEvent,
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       stateView: null == stateView
           ? _value._stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<EntryRef, ({State state, View view})>,
+              as Map<Ref, ({State state, View view})>,
       update: freezed == update
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
@@ -578,15 +578,15 @@ class _$_AggregateInstanceState<Event extends CoreEvent,
     implements _AggregateInstanceState<Event, State, View> {
   _$_AggregateInstanceState(
       {required this.ref,
-      required final Map<EntryRef, ({State state, View view})> stateView,
+      required final Map<Ref, ({State state, View view})> stateView,
       this.update})
       : _stateView = stateView;
 
   @override
-  final EntryRef ref;
-  final Map<EntryRef, ({State state, View view})> _stateView;
+  final Ref ref;
+  final Map<Ref, ({State state, View view})> _stateView;
   @override
-  Map<EntryRef, ({State state, View view})> get stateView {
+  Map<Ref, ({State state, View view})> get stateView {
     if (_stateView is EqualUnmodifiableMapView) return _stateView;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_stateView);
@@ -631,15 +631,15 @@ abstract class _AggregateInstanceState<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements AggregateInstanceState<Event, State, View> {
   factory _AggregateInstanceState(
-          {required final EntryRef ref,
-          required final Map<EntryRef, ({State state, View view})> stateView,
+          {required final Ref ref,
+          required final Map<Ref, ({State state, View view})> stateView,
           final AggregateUpdate<Event, State, View>? update}) =
       _$_AggregateInstanceState<Event, State, View>;
 
   @override
-  EntryRef get ref;
+  Ref get ref;
   @override
-  Map<EntryRef, ({State state, View view})> get stateView;
+  Map<Ref, ({State state, View view})> get stateView;
   @override
   AggregateUpdate<Event, State, View>? get update;
   @override

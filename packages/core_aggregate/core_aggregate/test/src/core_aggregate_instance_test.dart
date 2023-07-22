@@ -10,7 +10,7 @@ import 'common.dart';
 
 void main() {
   late AggregateInstance<TestEvent, TestState, TestView> instance;
-  const initialRef = EntryRef('a');
+  const initialRef = Ref('a');
   final initialState = TestState(0);
   final initialView = TestView(1);
 

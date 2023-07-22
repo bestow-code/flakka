@@ -6,11 +6,21 @@ part of 'entry_ref.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EntryRef _$$_EntryRefFromJson(Map<String, dynamic> json) => _$_EntryRef(
+_$_Ref _$$_RefFromJson(Map<String, dynamic> json) => _$_Ref(
       json['value'] as String,
     );
 
-Map<String, dynamic> _$$_EntryRefToJson(_$_EntryRef instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_RefToJson(_$_Ref instance) => <String, dynamic>{
       'value': instance.value,
+    };
+
+_$_HeadRef _$$_HeadRefFromJson(Map<String, dynamic> json) => _$_HeadRef(
+      Ref.fromJson(json['ref'] as Map<String, dynamic>),
+      const DateTimeConverter().fromJson(json['createdAt'] as int),
+    );
+
+Map<String, dynamic> _$$_HeadRefToJson(_$_HeadRef instance) =>
+    <String, dynamic>{
+      'ref': instance.ref.toJson(),
+      'createdAt': const DateTimeConverter().toJson(instance.createdAt),
     };

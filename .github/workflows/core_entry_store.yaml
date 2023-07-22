@@ -1,4 +1,4 @@
-name: core_data_store
+name: core_datastore
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,8 +14,8 @@ on:
     paths:
       - packages/core_common/**
       - packages/core_entry/**
-      - packages/core_data_store/core_data_store/**
-      - .github/workflows/core_data_store.yaml
+      - packages/core_datastore/core_datastore/**
+      - .github/workflows/core_datastore.yaml
 
 jobs:
   semantic_pull_request:
@@ -31,4 +31,4 @@ jobs:
 #    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     uses: ./.github/workflows/dart_support_package.yaml
     with:
-      working_directory: packages/core_data_store/core_data_store
+      working_directory: packages/core_datastore/core_datastore

@@ -12,5 +12,5 @@ class EntryRefFactory {
 
   final IdFactory _idFactory;
 
-  EntryRef create() => EntryRef(_idFactory.create());
+  Ref create() => Ref(_idFactory.create());
 }

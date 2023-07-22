@@ -8,16 +8,16 @@ part 'aggregate_update.freezed.dart';
 class AggregateUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$AggregateUpdate<Event, State, View> {
   factory AggregateUpdate.append({
-    required EntryRef ref,
-    required EntryRef parent,
+    required Ref ref,
+    required Ref parent,
     required Iterable<Event> events,
     required State state,
     required View view,
   }) = AggregateUpdateAppend<Event, State, View>;
 
   factory AggregateUpdate.done({
-    required EntryRef ref,
-    required EntryRef parent,
+    required Ref ref,
+    required Ref parent,
   }) = AggregateUpdateDone;
 
   factory AggregateUpdate.forward() =

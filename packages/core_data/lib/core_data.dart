@@ -11,3 +11,4 @@ export 'src/entry/entry_factory.dart';
 export 'src/entry/entry_ref.dart';
 export 'src/entry/entry_ref_factory.dart';
 export 'src/json.dart';
+export 'src/state_view.dart';

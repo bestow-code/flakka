@@ -6,26 +6,16 @@ part of 'entry.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Entry<Event> _$EntryFromJson<Event extends CoreEvent>(
-  Map<String, dynamic> json,
-  Event Function(Object? json) fromJsonEvent,
-) =>
-    Entry<Event>(
-      ref: EntryRef.fromJson(json['ref'] as Map<String, dynamic>),
+_$_Entry _$$_EntryFromJson(Map<String, dynamic> json) => _$_Entry(
+      ref: Ref.fromJson(json['ref'] as Map<String, dynamic>),
       refs: (json['refs'] as List<dynamic>)
-          .map((e) => EntryRef.fromJson(e as Map<String, dynamic>))
+          .map((e) => Ref.fromJson(e as Map<String, dynamic>))
           .toList(),
-      events: (json['events'] as List<dynamic>).map(fromJsonEvent).toList(),
       createdAt: const DateTimeConverter().fromJson(json['createdAt'] as int),
     );
 
-Map<String, dynamic> _$EntryToJson<Event extends CoreEvent>(
-  Entry<Event> instance,
-  Object? Function(Event value) toJsonEvent,
-) =>
-    <String, dynamic>{
-      'ref': instance.ref,
-      'refs': instance.refs,
-      'events': instance.events.map(toJsonEvent).toList(),
+Map<String, dynamic> _$$_EntryToJson(_$_Entry instance) => <String, dynamic>{
+      'ref': instance.ref.toJson(),
+      'refs': instance.refs.map((e) => e.toJson()).toList(),
       'createdAt': const DateTimeConverter().toJson(instance.createdAt),
     };

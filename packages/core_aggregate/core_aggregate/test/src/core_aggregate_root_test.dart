@@ -10,7 +10,7 @@ import 'common.dart';
 void main() {
   group('service-method execution', () {
     late TestAggregateRoot root;
-    const initialEntryRef = EntryRef.initial;
+    const initialEntryRef = Ref.initial;
     // group('.evaluate', () {
     //   setUp(() {
     //     final initialState = TestState(0);

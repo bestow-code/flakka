@@ -17,36 +17,29 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GraphUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  EntryRef get entryRef => throw _privateConstructorUsedError;
-  DirectedGraph<Entry<Event>> get graph => throw _privateConstructorUsedError;
+  Ref get entryRef => throw _privateConstructorUsedError;
+  DirectedGraph<Entry> get graph => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            EntryRef entryRef, DirectedGraph<Entry<Event>> graph)
-        forward,
-    required TResult Function(
-            EntryRef entryRef,
-            DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state,
-            Map<EntryRef, View> view)
+    required TResult Function(Ref entryRef, DirectedGraph<Entry> graph) forward,
+    required TResult Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)
         reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph)?
-        forward,
-    TResult? Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state, Map<EntryRef, View> view)?
+    TResult? Function(Ref entryRef, DirectedGraph<Entry> graph)? forward,
+    TResult? Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)?
         reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph)?
-        forward,
-    TResult Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state, Map<EntryRef, View> view)?
+    TResult Function(Ref entryRef, DirectedGraph<Entry> graph)? forward,
+    TResult Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)?
         reset,
     required TResult orElse(),
   }) =>
@@ -85,9 +78,9 @@ abstract class $GraphUpdateCopyWith<Event extends CoreEvent,
       _$GraphUpdateCopyWithImpl<Event, State, View, $Res,
           GraphUpdate<Event, State, View>>;
   @useResult
-  $Res call({EntryRef entryRef, DirectedGraph<Entry<Event>> graph});
+  $Res call({Ref entryRef, DirectedGraph<Entry> graph});
 
-  $EntryRefCopyWith<$Res> get entryRef;
+  $RefCopyWith<$Res> get entryRef;
 }
 
 /// @nodoc
@@ -115,18 +108,18 @@ class _$GraphUpdateCopyWithImpl<
       entryRef: null == entryRef
           ? _value.entryRef
           : entryRef // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       graph: null == graph
           ? _value.graph
           : graph // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Entry<Event>>,
+              as DirectedGraph<Entry>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get entryRef {
-    return $EntryRefCopyWith<$Res>(_value.entryRef, (value) {
+  $RefCopyWith<$Res> get entryRef {
+    return $RefCopyWith<$Res>(_value.entryRef, (value) {
       return _then(_value.copyWith(entryRef: value) as $Val);
     });
   }
@@ -144,10 +137,10 @@ abstract class _$$GraphUpdateForwardCopyWith<
       __$$GraphUpdateForwardCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call({EntryRef entryRef, DirectedGraph<Entry<Event>> graph});
+  $Res call({Ref entryRef, DirectedGraph<Entry> graph});
 
   @override
-  $EntryRefCopyWith<$Res> get entryRef;
+  $RefCopyWith<$Res> get entryRef;
 }
 
 /// @nodoc
@@ -171,11 +164,11 @@ class __$$GraphUpdateForwardCopyWithImpl<Event extends CoreEvent,
       entryRef: null == entryRef
           ? _value.entryRef
           : entryRef // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       graph: null == graph
           ? _value.graph
           : graph // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Entry<Event>>,
+              as DirectedGraph<Entry>,
     ));
   }
 }
@@ -187,9 +180,9 @@ class _$GraphUpdateForward<Event extends CoreEvent, State extends CoreState,
   _$GraphUpdateForward({required this.entryRef, required this.graph});
 
   @override
-  final EntryRef entryRef;
+  final Ref entryRef;
   @override
-  final DirectedGraph<Entry<Event>> graph;
+  final DirectedGraph<Entry> graph;
 
   @override
   String toString() {
@@ -221,14 +214,9 @@ class _$GraphUpdateForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            EntryRef entryRef, DirectedGraph<Entry<Event>> graph)
-        forward,
-    required TResult Function(
-            EntryRef entryRef,
-            DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state,
-            Map<EntryRef, View> view)
+    required TResult Function(Ref entryRef, DirectedGraph<Entry> graph) forward,
+    required TResult Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)
         reset,
   }) {
     return forward(entryRef, graph);
@@ -237,10 +225,9 @@ class _$GraphUpdateForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph)?
-        forward,
-    TResult? Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state, Map<EntryRef, View> view)?
+    TResult? Function(Ref entryRef, DirectedGraph<Entry> graph)? forward,
+    TResult? Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)?
         reset,
   }) {
     return forward?.call(entryRef, graph);
@@ -249,10 +236,9 @@ class _$GraphUpdateForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph)?
-        forward,
-    TResult Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state, Map<EntryRef, View> view)?
+    TResult Function(Ref entryRef, DirectedGraph<Entry> graph)? forward,
+    TResult Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)?
         reset,
     required TResult orElse(),
   }) {
@@ -300,14 +286,14 @@ abstract class GraphUpdateForward<
     State extends CoreState,
     View extends CoreView> implements GraphUpdate<Event, State, View> {
   factory GraphUpdateForward(
-          {required final EntryRef entryRef,
-          required final DirectedGraph<Entry<Event>> graph}) =
+          {required final Ref entryRef,
+          required final DirectedGraph<Entry> graph}) =
       _$GraphUpdateForward<Event, State, View>;
 
   @override
-  EntryRef get entryRef;
+  Ref get entryRef;
   @override
-  DirectedGraph<Entry<Event>> get graph;
+  DirectedGraph<Entry> get graph;
   @override
   @JsonKey(ignore: true)
   _$$GraphUpdateForwardCopyWith<Event, State, View,
@@ -328,13 +314,13 @@ abstract class _$$GraphUpdateResetCopyWith<
   @override
   @useResult
   $Res call(
-      {EntryRef entryRef,
-      DirectedGraph<Entry<Event>> graph,
-      Map<EntryRef, State> state,
-      Map<EntryRef, View> view});
+      {Ref entryRef,
+      DirectedGraph<Entry> graph,
+      Map<Ref, State> state,
+      Map<Ref, View> view});
 
   @override
-  $EntryRefCopyWith<$Res> get entryRef;
+  $RefCopyWith<$Res> get entryRef;
 }
 
 /// @nodoc
@@ -360,19 +346,19 @@ class __$$GraphUpdateResetCopyWithImpl<Event extends CoreEvent,
       entryRef: null == entryRef
           ? _value.entryRef
           : entryRef // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       graph: null == graph
           ? _value.graph
           : graph // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Entry<Event>>,
+              as DirectedGraph<Entry>,
       state: null == state
           ? _value._state
           : state // ignore: cast_nullable_to_non_nullable
-              as Map<EntryRef, State>,
+              as Map<Ref, State>,
       view: null == view
           ? _value._view
           : view // ignore: cast_nullable_to_non_nullable
-              as Map<EntryRef, View>,
+              as Map<Ref, View>,
     ));
   }
 }
@@ -384,26 +370,26 @@ class _$GraphUpdateReset<Event extends CoreEvent, State extends CoreState,
   _$GraphUpdateReset(
       {required this.entryRef,
       required this.graph,
-      required final Map<EntryRef, State> state,
-      required final Map<EntryRef, View> view})
+      required final Map<Ref, State> state,
+      required final Map<Ref, View> view})
       : _state = state,
         _view = view;
 
   @override
-  final EntryRef entryRef;
+  final Ref entryRef;
   @override
-  final DirectedGraph<Entry<Event>> graph;
-  final Map<EntryRef, State> _state;
+  final DirectedGraph<Entry> graph;
+  final Map<Ref, State> _state;
   @override
-  Map<EntryRef, State> get state {
+  Map<Ref, State> get state {
     if (_state is EqualUnmodifiableMapView) return _state;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_state);
   }
 
-  final Map<EntryRef, View> _view;
+  final Map<Ref, View> _view;
   @override
-  Map<EntryRef, View> get view {
+  Map<Ref, View> get view {
     if (_view is EqualUnmodifiableMapView) return _view;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_view);
@@ -445,14 +431,9 @@ class _$GraphUpdateReset<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            EntryRef entryRef, DirectedGraph<Entry<Event>> graph)
-        forward,
-    required TResult Function(
-            EntryRef entryRef,
-            DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state,
-            Map<EntryRef, View> view)
+    required TResult Function(Ref entryRef, DirectedGraph<Entry> graph) forward,
+    required TResult Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)
         reset,
   }) {
     return reset(entryRef, graph, state, view);
@@ -461,10 +442,9 @@ class _$GraphUpdateReset<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph)?
-        forward,
-    TResult? Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state, Map<EntryRef, View> view)?
+    TResult? Function(Ref entryRef, DirectedGraph<Entry> graph)? forward,
+    TResult? Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)?
         reset,
   }) {
     return reset?.call(entryRef, graph, state, view);
@@ -473,10 +453,9 @@ class _$GraphUpdateReset<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph)?
-        forward,
-    TResult Function(EntryRef entryRef, DirectedGraph<Entry<Event>> graph,
-            Map<EntryRef, State> state, Map<EntryRef, View> view)?
+    TResult Function(Ref entryRef, DirectedGraph<Entry> graph)? forward,
+    TResult Function(Ref entryRef, DirectedGraph<Entry> graph,
+            Map<Ref, State> state, Map<Ref, View> view)?
         reset,
     required TResult orElse(),
   }) {
@@ -524,18 +503,18 @@ abstract class GraphUpdateReset<
     State extends CoreState,
     View extends CoreView> implements GraphUpdate<Event, State, View> {
   factory GraphUpdateReset(
-          {required final EntryRef entryRef,
-          required final DirectedGraph<Entry<Event>> graph,
-          required final Map<EntryRef, State> state,
-          required final Map<EntryRef, View> view}) =
+          {required final Ref entryRef,
+          required final DirectedGraph<Entry> graph,
+          required final Map<Ref, State> state,
+          required final Map<Ref, View> view}) =
       _$GraphUpdateReset<Event, State, View>;
 
   @override
-  EntryRef get entryRef;
+  Ref get entryRef;
   @override
-  DirectedGraph<Entry<Event>> get graph;
-  Map<EntryRef, State> get state;
-  Map<EntryRef, View> get view;
+  DirectedGraph<Entry> get graph;
+  Map<Ref, State> get state;
+  Map<Ref, View> get view;
   @override
   @JsonKey(ignore: true)
   _$$GraphUpdateResetCopyWith<Event, State, View,

@@ -24,18 +24,19 @@ class EntryFactory {
   final EntryRefFactory entryRefFactory;
   final DateTimeFactory dateTimeFactory;
 
-  Entry<Event> initial<Event extends CoreEvent>() =>
-      create(ref: EntryRef.initial, refs: [], events: []);
+  Entry initial() => create(
+        ref: Ref.initial,
+        refs: [],
+      );
 
-  Entry<Event> create<Event extends CoreEvent>({
-    required List<EntryRef> refs,
-    required List<Event> events,
-    EntryRef? ref,
+  Entry create({
+    required List<Ref> refs,
+    Ref? ref,
   }) =>
-      Entry<Event>(
+      Entry(
         ref: ref ?? entryRefFactory.create(),
         refs: refs,
-        events: events,
+        // events: events,
         createdAt: dateTimeFactory.create(),
       );
 }

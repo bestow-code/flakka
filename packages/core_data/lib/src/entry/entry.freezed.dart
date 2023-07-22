@@ -14,36 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Entry _$EntryFromJson(Map<String, dynamic> json) {
+  return _Entry.fromJson(json);
+}
+
 /// @nodoc
-mixin _$Entry<Event extends CoreEvent> {
-  EntryRef get ref => throw _privateConstructorUsedError;
-  List<EntryRef> get refs => throw _privateConstructorUsedError;
-  List<Event> get events => throw _privateConstructorUsedError;
+mixin _$Entry {
+  Ref get ref => throw _privateConstructorUsedError;
+  List<Ref> get refs =>
+      throw _privateConstructorUsedError; // required List<Event> events,
   @DateTimeConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EntryCopyWith<Event, Entry<Event>> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EntryCopyWith<Entry> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EntryCopyWith<Event extends CoreEvent, $Res> {
-  factory $EntryCopyWith(Entry<Event> value, $Res Function(Entry<Event>) then) =
-      _$EntryCopyWithImpl<Event, $Res, Entry<Event>>;
+abstract class $EntryCopyWith<$Res> {
+  factory $EntryCopyWith(Entry value, $Res Function(Entry) then) =
+      _$EntryCopyWithImpl<$Res, Entry>;
   @useResult
-  $Res call(
-      {EntryRef ref,
-      List<EntryRef> refs,
-      List<Event> events,
-      @DateTimeConverter() DateTime createdAt});
+  $Res call({Ref ref, List<Ref> refs, @DateTimeConverter() DateTime createdAt});
 
-  $EntryRefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
-class _$EntryCopyWithImpl<Event extends CoreEvent, $Res,
-    $Val extends Entry<Event>> implements $EntryCopyWith<Event, $Res> {
+class _$EntryCopyWithImpl<$Res, $Val extends Entry>
+    implements $EntryCopyWith<$Res> {
   _$EntryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -56,22 +56,17 @@ class _$EntryCopyWithImpl<Event extends CoreEvent, $Res,
   $Res call({
     Object? ref = null,
     Object? refs = null,
-    Object? events = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       refs: null == refs
           ? _value.refs
           : refs // ignore: cast_nullable_to_non_nullable
-              as List<EntryRef>,
-      events: null == events
-          ? _value.events
-          : events // ignore: cast_nullable_to_non_nullable
-              as List<Event>,
+              as List<Ref>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -81,37 +76,29 @@ class _$EntryCopyWithImpl<Event extends CoreEvent, $Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryRefCopyWith<$Res> get ref {
-    return $EntryRefCopyWith<$Res>(_value.ref, (value) {
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
       return _then(_value.copyWith(ref: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_EntryCopyWith<Event extends CoreEvent, $Res>
-    implements $EntryCopyWith<Event, $Res> {
-  factory _$$_EntryCopyWith(
-          _$_Entry<Event> value, $Res Function(_$_Entry<Event>) then) =
-      __$$_EntryCopyWithImpl<Event, $Res>;
+abstract class _$$_EntryCopyWith<$Res> implements $EntryCopyWith<$Res> {
+  factory _$$_EntryCopyWith(_$_Entry value, $Res Function(_$_Entry) then) =
+      __$$_EntryCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {EntryRef ref,
-      List<EntryRef> refs,
-      List<Event> events,
-      @DateTimeConverter() DateTime createdAt});
+  $Res call({Ref ref, List<Ref> refs, @DateTimeConverter() DateTime createdAt});
 
   @override
-  $EntryRefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
-class __$$_EntryCopyWithImpl<Event extends CoreEvent, $Res>
-    extends _$EntryCopyWithImpl<Event, $Res, _$_Entry<Event>>
-    implements _$$_EntryCopyWith<Event, $Res> {
-  __$$_EntryCopyWithImpl(
-      _$_Entry<Event> _value, $Res Function(_$_Entry<Event>) _then)
+class __$$_EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res, _$_Entry>
+    implements _$$_EntryCopyWith<$Res> {
+  __$$_EntryCopyWithImpl(_$_Entry _value, $Res Function(_$_Entry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,22 +106,17 @@ class __$$_EntryCopyWithImpl<Event extends CoreEvent, $Res>
   $Res call({
     Object? ref = null,
     Object? refs = null,
-    Object? events = null,
     Object? createdAt = null,
   }) {
-    return _then(_$_Entry<Event>(
+    return _then(_$_Entry(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as EntryRef,
+              as Ref,
       refs: null == refs
           ? _value._refs
           : refs // ignore: cast_nullable_to_non_nullable
-              as List<EntryRef>,
-      events: null == events
-          ? _value._events
-          : events // ignore: cast_nullable_to_non_nullable
-              as List<Event>,
+              as List<Ref>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -144,91 +126,86 @@ class __$$_EntryCopyWithImpl<Event extends CoreEvent, $Res>
 }
 
 /// @nodoc
-
-class _$_Entry<Event extends CoreEvent> extends _Entry<Event> {
+@JsonSerializable()
+class _$_Entry extends _Entry {
   _$_Entry(
       {required this.ref,
-      required final List<EntryRef> refs,
-      required final List<Event> events,
+      required final List<Ref> refs,
       @DateTimeConverter() required this.createdAt})
       : _refs = refs,
-        _events = events,
         super._();
 
+  factory _$_Entry.fromJson(Map<String, dynamic> json) =>
+      _$$_EntryFromJson(json);
+
   @override
-  final EntryRef ref;
-  final List<EntryRef> _refs;
+  final Ref ref;
+  final List<Ref> _refs;
   @override
-  List<EntryRef> get refs {
+  List<Ref> get refs {
     if (_refs is EqualUnmodifiableListView) return _refs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_refs);
   }
 
-  final List<Event> _events;
-  @override
-  List<Event> get events {
-    if (_events is EqualUnmodifiableListView) return _events;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_events);
-  }
-
+// required List<Event> events,
   @override
   @DateTimeConverter()
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Entry<$Event>(ref: $ref, refs: $refs, events: $events, createdAt: $createdAt)';
+    return 'Entry(ref: $ref, refs: $refs, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Entry<Event> &&
+            other is _$_Entry &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._refs, _refs) &&
-            const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      ref,
-      const DeepCollectionEquality().hash(_refs),
-      const DeepCollectionEquality().hash(_events),
-      createdAt);
+      runtimeType, ref, const DeepCollectionEquality().hash(_refs), createdAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EntryCopyWith<Event, _$_Entry<Event>> get copyWith =>
-      __$$_EntryCopyWithImpl<Event, _$_Entry<Event>>(this, _$identity);
+  _$$_EntryCopyWith<_$_Entry> get copyWith =>
+      __$$_EntryCopyWithImpl<_$_Entry>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_EntryToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Entry<Event extends CoreEvent> extends Entry<Event> {
+abstract class _Entry extends Entry {
   factory _Entry(
-          {required final EntryRef ref,
-          required final List<EntryRef> refs,
-          required final List<Event> events,
-          @DateTimeConverter() required final DateTime createdAt}) =
-      _$_Entry<Event>;
+      {required final Ref ref,
+      required final List<Ref> refs,
+      @DateTimeConverter() required final DateTime createdAt}) = _$_Entry;
   _Entry._() : super._();
 
+  factory _Entry.fromJson(Map<String, dynamic> json) = _$_Entry.fromJson;
+
   @override
-  EntryRef get ref;
+  Ref get ref;
   @override
-  List<EntryRef> get refs;
-  @override
-  List<Event> get events;
-  @override
+  List<Ref> get refs;
+  @override // required List<Event> events,
   @DateTimeConverter()
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_EntryCopyWith<Event, _$_Entry<Event>> get copyWith =>
+  _$$_EntryCopyWith<_$_Entry> get copyWith =>
       throw _privateConstructorUsedError;
 }
