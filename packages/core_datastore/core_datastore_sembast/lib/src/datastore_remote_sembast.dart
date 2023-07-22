@@ -2,9 +2,9 @@ import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:sembast/sembast.dart';
 
-class DataStoreRemoteInMemory<Event extends CoreEvent>
+class DatastoreRemoteSembast<Event extends CoreEvent>
     implements DatastoreRemote<Event> {
-  DataStoreRemoteInMemory(this.db);
+  DatastoreRemoteSembast(this.db);
 
   final headRefStore = StoreRef<String, Map<String, dynamic>>.main();
   final entryStore = StoreRef<String, Map<String, dynamic>>.main();

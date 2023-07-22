@@ -1,12 +1,12 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_datastore_sembast/src/data_store_remote_in_memory.dart';
+import 'package:core_datastore_sembast/src/datastore_remote_sembast.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_memory.dart';
 import 'package:spec/spec.dart';
 // import 'package:test/test.dart';
 
-late DataStoreRemoteInMemory dataStoreRemote;
+late DatastoreRemoteSembast dataStoreRemote;
 
 late ({Ref? instance, Ref main}) config;
 
@@ -31,7 +31,7 @@ const path = '/test1';
 void main() {
   setUp(() async => factory.deleteDatabase(path));
   setUp(() async => db = await factory.openDatabase(path));
-  setUp(() => dataStoreRemote = DataStoreRemoteInMemory(db));
+  setUp(() => dataStoreRemote = DatastoreRemoteSembast(db));
   group('initialize', () {
     group('new application, new instance', () {
       test('sets mainRef', () async {

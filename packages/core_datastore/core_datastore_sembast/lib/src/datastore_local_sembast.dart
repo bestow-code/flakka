@@ -1,7 +1,7 @@
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 
-class DataStoreLocalMemory<Event extends CoreEvent, State extends CoreState,
+class DatastoreLocalSembast<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DatastoreLocal<Event, State, View> {
   @override
   Future<Ref?> initialize() {
