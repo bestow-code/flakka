@@ -9,5 +9,5 @@ abstract class DatastoreLocalFactory<Event extends CoreEvent,
 
 abstract class DatastoreRemoteFactory<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
-  Future<DatastoreRemote<Event>> get(String path);
+  Future<DatastoreRemote<Event>> getDatastore(String path);
 }

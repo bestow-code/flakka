@@ -32,7 +32,9 @@ class TestView with _$TestView implements CoreView {
 typedef TestStateView = StateView<TestState, TestView>;
 
 TestStateView testStateViewEventHandler(
-        TestStateView stateView, TestEvent event) =>
+  TestStateView stateView,
+  TestEvent event,
+) =>
     (
       state: testStateEventHandler(stateView.state, event),
       view: testViewEventHandler(stateView.view, event)
@@ -43,3 +45,45 @@ TestState testStateEventHandler(TestState state, TestEvent event) =>
 
 TestView testViewEventHandler(TestView view, TestEvent event) =>
     TestView(view.value * event.value);
+
+class TestEventConverter extends DataConverter<TestEvent> {
+  @override
+  TestEvent? fromJson(JsonMap? json) =>
+      (json == null) ? null : TestEvent.fromJson(json);
+
+  @override
+  JsonMap toJson(TestEvent data) => data.toJson();
+}
+
+class TestStateConverter extends DataConverter<TestState> {
+  @override
+  TestState? fromJson(JsonMap? json) =>
+      (json == null) ? null : TestState.fromJson(json);
+
+  @override
+  JsonMap toJson(TestState data) => data.toJson();
+}
+
+class TestViewConverter extends DataConverter<TestView> {
+  @override
+  TestView? fromJson(JsonMap? json) =>
+      (json == null) ? null : TestView.fromJson(json);
+
+  @override
+  JsonMap toJson(TestView data) => data.toJson();
+}
+
+class TestApplicationDataConverter
+    extends ApplicationDataConverter<TestEvent, TestState, TestView> {
+  factory TestApplicationDataConverter() => TestApplicationDataConverter._(
+        eventConverter: TestEventConverter(),
+        stateConverter: TestStateConverter(),
+        viewConverter: TestViewConverter(),
+      );
+
+  TestApplicationDataConverter._({
+    required super.eventConverter,
+    required super.stateConverter,
+    required super.viewConverter,
+  });
+}

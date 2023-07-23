@@ -5,7 +5,7 @@ import '../core_datastore_test.dart';
 
 void main() {}
 
-void testGroupDataStoreLocal(
+void testGroupDatastoreLocal(
     DatastoreLocalFactory<TestEvent, TestState, TestView>
         datastoreFactoryLocal) {
   group('append events-entry', () {

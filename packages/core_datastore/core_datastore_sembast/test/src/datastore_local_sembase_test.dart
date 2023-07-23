@@ -7,5 +7,5 @@ DatastoreLocalFactory<TestEvent, TestState, TestView>
 }
 
 void main() {
-  testGroupDataStoreLocal(datastoreFactoryLocal);
+  testGroupDatastoreLocal(datastoreFactoryLocal);
 }

@@ -6,21 +6,21 @@ abstract mixin class CoreEventConverter<Event extends CoreEvent> {
   JsonMap toJson(Event event);
 }
 
-abstract mixin class CoreDataConverter<Data extends CoreData> {
+abstract mixin class DataConverter<Data extends CoreData> {
   Data? fromJson(JsonMap? json);
 
   JsonMap toJson(Data data);
 }
 
-abstract class CoreApplicationDataConverter<Event extends CoreEvent,
+abstract class ApplicationDataConverter<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
-  CoreApplicationDataConverter({
+  ApplicationDataConverter({
     required this.eventConverter,
     required this.stateConverter,
     required this.viewConverter,
   });
 
-  final CoreDataConverter<Event> eventConverter;
-  final CoreDataConverter<State> stateConverter;
-  final CoreDataConverter<View> viewConverter;
+  final DataConverter<Event> eventConverter;
+  final DataConverter<State> stateConverter;
+  final DataConverter<View> viewConverter;
 }
