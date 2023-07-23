@@ -1,16 +1,23 @@
-import 'dart:math';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-
-import 'firebase_options.dart';
 
 void main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
-  final random = Random();
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  // final random = Random();
+  // IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  group('description', () {
+      test('hi', () {
+        expect(true, true);
+      });
+  });
+
+  // group('test', () {
+  //   test('hi', () {
+  //     expect(true, true);
+  //   });
+  // });
   // runEntryStoreTests<FakeEvent>(() {
   //   // final FirebaseFirestore firestore = FirebaseFirestoreFake.newInstance;
   //

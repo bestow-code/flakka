@@ -1,5 +1,6 @@
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:sembast/sembast.dart';
 
 class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
@@ -7,7 +8,8 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
   DatastoreRemoteSembast({
     required Database database,
     required ApplicationDataConverter<Event, State, View> dataConverter,
-  }) : _dataConverter = dataConverter, _database = database;
+  })  : _dataConverter = dataConverter,
+        _database = database;
 
   late final Database _database;
   final ApplicationDataConverter<Event, State, View> _dataConverter;
@@ -15,7 +17,6 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
   final headRefStore = StoreRef<String, Map<String, dynamic>>.main();
   final entryStore = StoreRef<String, Map<String, dynamic>>.main();
   final eventsStore = StoreRef<String, List<Map<String, dynamic>>>.main();
-
 
   @override
   Future<({Ref? instance, Ref main})> initialize({
@@ -33,8 +34,10 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
             .put(transaction, ifEmpty.ref.toJson());
       }
     });
-    final mainRef = Ref.fromJson((await headRefStore.record('main').get(_database))!);
-    final instanceRefMaybe = await headRefStore.record('instance').get(_database);
+    final mainRef =
+        Ref.fromJson((await headRefStore.record('main').get(_database))!);
+    final instanceRefMaybe =
+        await headRefStore.record('instance').get(_database);
     return (
       main: mainRef,
       instance:
@@ -43,8 +46,10 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  Future<void> appendEvents(Iterable<Event> events,
-      {required Entry entry,}) async {
+  Future<void> appendEvents(
+    Iterable<Event> events, {
+    required Entry entry,
+  }) async {
     await _database.transaction((transaction) async {
       events.map(_dataConverter.eventConverter.toJson);
       await entryStore.record(entry.ref.value).put(transaction, entry.toJson());
@@ -82,8 +87,20 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
       });
 
   @override
-  Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot =>
-      throw UnimplementedError();
+  Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot {
+    return entryStore
+        .query()
+        .onSnapshot(_database)
+        .map((event) => event?.value)
+        .whereNotNull()
+        .map(Entry.fromJson)
+        .map(
+          (event) => (
+            hasPendingWrites: true,
+            snapshots: [(hasPendingWrite: true, snapshot: event)]
+          ),
+        );
+  }
 
   @override
   Stream<CollectionSnapshot<Iterable<Event>>> get eventsCollectionSnapshot =>

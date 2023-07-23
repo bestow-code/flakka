@@ -23,7 +23,7 @@ class ApplicationBase<Event extends CoreEvent, State extends CoreState,
 
   FutureOr<void> _handle(ApplicationEvent<Event, State, View> event,
       Emitter<ApplicationState<State, View>> emit) {
-    event.map(request: (request) {
+    event.map(request: (request) async{
       throw UnimplementedError();
     }, journal: (journal) {
       throw UnimplementedError();

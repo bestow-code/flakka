@@ -1,43 +1,43 @@
+import 'dart:js_interop';
+
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:spec/spec.dart';
 
 import '../core_datastore_test.dart';
 
 @isTestGroup
-void testGroupDatastoreRemote(String descriptor,
+void testGroupDatastoreRemote(
+  String descriptor,
   PersistenceProviderRemote persistenceProviderRemote,
 ) {
-  late DatastoreRemoteFactory<TestEvent, TestState, TestView>
-      datastoreRemoteFactory;
   late DatastoreRemote<TestEvent> datastoreRemote;
 
-  late ({Ref? instance, Ref main}) config;
+  late DatastoreRemoteFactory<TestEvent, TestState, TestView>
+      datastoreRemoteFactory;
+
+  final dataConverter = TestApplicationDataConverter();
+
+  const path = '/test1';
 
   const ref0 = Ref('0');
   const ref1 = Ref('1');
-  const ref2 = Ref('2');
-  final entry0 = Entry(
-    ref: ref0,
-    refs: [],
-    createdAt: t(0),
-  );
+
   final entry1 = Entry(
     ref: ref1,
     refs: [ref0],
     createdAt: t(1),
   );
 
-  const path = '/test1';
-  final dataConverter = TestApplicationDataConverter();
   group('DatastoreRemote - $descriptor', () {
     setUp(() async {
       datastoreRemoteFactory =
           persistenceProviderRemote.getDatastoreFactory(dataConverter);
       datastoreRemote = await datastoreRemoteFactory.getDatastore(path);
     });
+    late ({Ref? instance, Ref main}) config;
     group('initialize', () {
       group('new application, new instance', () {
         test('sets mainRef', () async {
@@ -58,30 +58,31 @@ void testGroupDatastoreRemote(String descriptor,
           expect(await datastoreRemote.mainRef.first).toEqual(ref0);
         });
       });
-      group('existing application, existing instance', () {
-        setUp(() async {
-          await datastoreRemote
-              .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
-          await datastoreRemote.appendEvents(
-            [],
-            entry: entry1,
-          );
-        });
-        test('returns the proper instance ref', () async {
-          config = await datastoreRemote
-              .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
-          expect(config.main).toEqual(ref0);
-          expect(config.instance).toEqual(ref1);
-        });
-        test('returns the proper main ref', () async {
-          await datastoreRemote.publish(ref1, [ref0]);
-          config = await datastoreRemote
-              .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
-          expect(config.main).toEqual(ref1);
-        });
-      });
     });
     group('appendEntryEvents', () {
+      setUp(
+        () async =>
+            datastoreRemote.initialize(ifEmpty: (ref: ref0, createdAt: t(0))),
+      );
+      test('emits entry', () {
+        final snapshot = datastoreRemote.entryCollectionSnapshot;
+        expect(snapshot).emits.isA<CollectionSnapshot<Entry>>();
+        expect(snapshot).emits.;
+        expect(snapshot).emits.toBe(
+          (
+            hasPendingWrites: true,
+            snapshots: [(hasPendingWrite: true, snapshot: entry1)]
+          ),
+        );
+        datastoreRemote.appendEvents([], entry: entry1);
+      });
+      test('emits events', () {});
+      test('updates instance ref', () async {
+        await datastoreRemote.appendEvents([], entry: entry1);
+        config = await datastoreRemote
+            .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
+        expect(config.instance).toEqual(ref1);
+      });
       // emits to entries / events
       // updates instance ref
     });

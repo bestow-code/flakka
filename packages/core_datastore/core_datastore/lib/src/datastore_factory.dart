@@ -4,7 +4,7 @@ import '../core_datastore.dart';
 
 abstract class DatastoreLocalFactory<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
-  Future<DatastoreLocal<Event, State, View>> get(String path);
+  Future<DatastoreLocal<Event, State, View>> getDatastore(String path);
 }
 
 abstract class DatastoreRemoteFactory<Event extends CoreEvent,
