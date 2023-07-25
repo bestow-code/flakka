@@ -10,12 +10,18 @@ abstract class DatastoreRemote<Event extends CoreEvent> {
 
   Future<void> appendEvents(
     Iterable<Event> events, {
-    required Entry entry,
+    required Ref ref,
+    required Ref parent,
+    required DateTime createdAt,
     required int sequenceNumber,
   });
 
-  Future<void> appendMerge({
-    required Entry entry,
+  Future<void> appendMerge(
+    Ref merge, {
+    required Ref ref,
+    required Ref parent,
+    required DateTime createdAt,
+    required int sequenceNumber,
   });
 
   Future<void> forward(Ref ref);

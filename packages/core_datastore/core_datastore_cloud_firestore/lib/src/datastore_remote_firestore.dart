@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:core_datastore_cloud_firestore/src/firestore_adapter.dart';
+import 'package:rxdart/rxdart.dart';
 
 class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DatastoreRemote<Event> {
@@ -27,9 +28,12 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   @override
   Future<void> appendEvents(
     Iterable<Event> events, {
-    required Entry entry,
+    required Ref ref,
+    required Ref parent,
+    required DateTime createdAt,
     required int sequenceNumber,
   }) async {
+    final entry = Entry(ref: ref, refs: [parent], createdAt: createdAt);
     await adapter.firestore.runTransaction((transaction) async {
       transaction
         ..set(
@@ -37,13 +41,24 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
           Events(ref: entry.ref, data: events),
         )
         ..set(adapter.entry.doc(entry.ref.value), entry)
-        ..set(adapter.instanceRef.doc(), HeadRef(entry.ref, sequenceNumber));
+        ..set(
+            adapter.instanceHeadRef.doc(), HeadRef(entry.ref, sequenceNumber));
     });
   }
 
   @override
-  Future<void> appendMerge({required Entry entry}) {
-    throw UnimplementedError();
+  Future<void> appendMerge(Ref merge,
+      {required Ref ref,
+      required Ref parent,
+      required DateTime createdAt,
+      required int sequenceNumber}) async {
+    final entry = Entry(ref: ref, refs: [parent, merge], createdAt: createdAt);
+    await adapter.firestore.runTransaction((transaction) async {
+      transaction
+        ..set(adapter.entry.doc(entry.ref.value), entry)
+        ..set(
+            adapter.instanceHeadRef.doc(), HeadRef(entry.ref, sequenceNumber));
+    });
   }
 
   @override
@@ -70,8 +85,8 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
       final mainRefMaybe = await transaction.get(adapter.mainRef);
       if (mainRefMaybe.exists) {
         final mainRef = mainRefMaybe.data()!;
-        final instanceRef = (await adapter.instanceRef
-                .orderBy('createdAt', descending: true)
+        final instanceRef = (await adapter.instanceHeadRef
+                .orderBy('sequenceNumber', descending: true)
                 .limit(1)
                 .get())
             .docs
@@ -80,15 +95,23 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
             .ref;
         return (main: mainRef, instance: instanceRef);
       } else {
-        await adapter.mainRef.set(ifEmpty.ref);
-        return (main: ifEmpty.ref, instance: null);
+        final entry =
+            Entry(ref: ifEmpty.ref, refs: [], createdAt: ifEmpty.createdAt);
+        transaction
+          ..set(adapter.mainRef, entry.ref)
+          ..set(adapter.mainHeadRef.doc(entry.ref.value), HeadRef(entry.ref, 0))
+          ..set(
+            adapter.entry.doc(entry.ref.value),
+            entry,
+          );
+        return (main: entry.ref, instance: null);
       }
     });
   }
 
   @override
   Stream<Ref> get mainRef =>
-      adapter.mainRef.snapshots().map((event) => event.data()!);
+      adapter.mainRef.snapshots().map((event) => event.data()).whereNotNull();
 
   @override
   Future<bool> publish(Ref ref, Iterable<Ref> from) {

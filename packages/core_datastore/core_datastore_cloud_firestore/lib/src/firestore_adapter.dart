@@ -23,7 +23,16 @@ class FirestoreAdapter<Event extends CoreEvent, State extends CoreState,
       fromFirestore: (snapshot, _) => Ref.fromJson(snapshot.data()!),
       toFirestore: (ref, _) => ref.toJson());
 
-  CollectionReference<HeadRef> get instanceRef => _base
+  CollectionReference<HeadRef> get instanceHeadRef => _base
+      .collection('instance')
+      .doc(persistenceId)
+      .collection('head')
+      .withConverter(
+        fromFirestore: (snapshot, _) => HeadRef.fromJson(snapshot.data()!),
+        toFirestore: (ref, _) => ref.toJson(),
+      );
+
+  CollectionReference<HeadRef> get mainHeadRef => _base
       .collection('instance')
       .doc(persistenceId)
       .collection('head')
