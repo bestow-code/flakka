@@ -147,8 +147,7 @@ HeadRef _$HeadRefFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HeadRef {
   Ref get ref => throw _privateConstructorUsedError;
-  @DateTimeConverter()
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  int get sequenceNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -160,7 +159,7 @@ abstract class $HeadRefCopyWith<$Res> {
   factory $HeadRefCopyWith(HeadRef value, $Res Function(HeadRef) then) =
       _$HeadRefCopyWithImpl<$Res, HeadRef>;
   @useResult
-  $Res call({Ref ref, @DateTimeConverter() DateTime createdAt});
+  $Res call({Ref ref, int sequenceNumber});
 
   $RefCopyWith<$Res> get ref;
 }
@@ -179,17 +178,17 @@ class _$HeadRefCopyWithImpl<$Res, $Val extends HeadRef>
   @override
   $Res call({
     Object? ref = null,
-    Object? createdAt = null,
+    Object? sequenceNumber = null,
   }) {
     return _then(_value.copyWith(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -209,7 +208,7 @@ abstract class _$$_HeadRefCopyWith<$Res> implements $HeadRefCopyWith<$Res> {
       __$$_HeadRefCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Ref ref, @DateTimeConverter() DateTime createdAt});
+  $Res call({Ref ref, int sequenceNumber});
 
   @override
   $RefCopyWith<$Res> get ref;
@@ -226,17 +225,17 @@ class __$$_HeadRefCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ref = null,
-    Object? createdAt = null,
+    Object? sequenceNumber = null,
   }) {
     return _then(_$_HeadRef(
       null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
-      null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -244,7 +243,7 @@ class __$$_HeadRefCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HeadRef implements _HeadRef {
-  const _$_HeadRef(this.ref, @DateTimeConverter() this.createdAt);
+  const _$_HeadRef(this.ref, this.sequenceNumber);
 
   factory _$_HeadRef.fromJson(Map<String, dynamic> json) =>
       _$$_HeadRefFromJson(json);
@@ -252,12 +251,11 @@ class _$_HeadRef implements _HeadRef {
   @override
   final Ref ref;
   @override
-  @DateTimeConverter()
-  final DateTime createdAt;
+  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'HeadRef(ref: $ref, createdAt: $createdAt)';
+    return 'HeadRef(ref: $ref, sequenceNumber: $sequenceNumber)';
   }
 
   @override
@@ -266,13 +264,13 @@ class _$_HeadRef implements _HeadRef {
         (other.runtimeType == runtimeType &&
             other is _$_HeadRef &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ref, createdAt);
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -289,17 +287,14 @@ class _$_HeadRef implements _HeadRef {
 }
 
 abstract class _HeadRef implements HeadRef {
-  const factory _HeadRef(
-          final Ref ref, @DateTimeConverter() final DateTime createdAt) =
-      _$_HeadRef;
+  const factory _HeadRef(final Ref ref, final int sequenceNumber) = _$_HeadRef;
 
   factory _HeadRef.fromJson(Map<String, dynamic> json) = _$_HeadRef.fromJson;
 
   @override
   Ref get ref;
   @override
-  @DateTimeConverter()
-  DateTime get createdAt;
+  int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
   _$$_HeadRefCopyWith<_$_HeadRef> get copyWith =>

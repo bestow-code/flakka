@@ -18,7 +18,7 @@ abstract interface class CoreState implements CoreData {}
 class Events<Event extends CoreEvent> with _$Events<Event> {
   factory Events({
     required Ref ref,
-    required List<Event> data,
+    required Iterable<Event> data,
   }) = _Events<Event>;
 
   // factory Category.fromJson(Map<String, dynamic> json, T Function(Object?) fromJsonT) => _$CategoryFromJson(json, fromJsonT);

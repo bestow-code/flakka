@@ -22,7 +22,7 @@ Events<Event> _$EventsFromJson<Event extends CoreEvent>(
 /// @nodoc
 mixin _$Events<Event extends CoreEvent> {
   Ref get ref => throw _privateConstructorUsedError;
-  List<Event> get data => throw _privateConstructorUsedError;
+  Iterable<Event> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(Event) toJsonEvent) =>
       throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $EventsCopyWith<Event extends CoreEvent, $Res> {
           Events<Event> value, $Res Function(Events<Event>) then) =
       _$EventsCopyWithImpl<Event, $Res, Events<Event>>;
   @useResult
-  $Res call({Ref ref, List<Event> data});
+  $Res call({Ref ref, Iterable<Event> data});
 
   $RefCopyWith<$Res> get ref;
 }
@@ -66,7 +66,7 @@ class _$EventsCopyWithImpl<Event extends CoreEvent, $Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Event>,
+              as Iterable<Event>,
     ) as $Val);
   }
 
@@ -87,7 +87,7 @@ abstract class _$$_EventsCopyWith<Event extends CoreEvent, $Res>
       __$$_EventsCopyWithImpl<Event, $Res>;
   @override
   @useResult
-  $Res call({Ref ref, List<Event> data});
+  $Res call({Ref ref, Iterable<Event> data});
 
   @override
   $RefCopyWith<$Res> get ref;
@@ -113,9 +113,9 @@ class __$$_EventsCopyWithImpl<Event extends CoreEvent, $Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
       data: null == data
-          ? _value._data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Event>,
+              as Iterable<Event>,
     ));
   }
 }
@@ -123,8 +123,7 @@ class __$$_EventsCopyWithImpl<Event extends CoreEvent, $Res>
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$_Events<Event extends CoreEvent> implements _Events<Event> {
-  _$_Events({required this.ref, required final List<Event> data})
-      : _data = data;
+  _$_Events({required this.ref, required this.data});
 
   factory _$_Events.fromJson(
           Map<String, dynamic> json, Event Function(Object?) fromJsonEvent) =>
@@ -132,13 +131,8 @@ class _$_Events<Event extends CoreEvent> implements _Events<Event> {
 
   @override
   final Ref ref;
-  final List<Event> _data;
   @override
-  List<Event> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+  final Iterable<Event> data;
 
   @override
   String toString() {
@@ -151,13 +145,13 @@ class _$_Events<Event extends CoreEvent> implements _Events<Event> {
         (other.runtimeType == runtimeType &&
             other is _$_Events<Event> &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, ref, const DeepCollectionEquality().hash(_data));
+      Object.hash(runtimeType, ref, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -172,8 +166,9 @@ class _$_Events<Event extends CoreEvent> implements _Events<Event> {
 }
 
 abstract class _Events<Event extends CoreEvent> implements Events<Event> {
-  factory _Events({required final Ref ref, required final List<Event> data}) =
-      _$_Events<Event>;
+  factory _Events(
+      {required final Ref ref,
+      required final Iterable<Event> data}) = _$_Events<Event>;
 
   factory _Events.fromJson(
           Map<String, dynamic> json, Event Function(Object?) fromJsonEvent) =
@@ -182,7 +177,7 @@ abstract class _Events<Event extends CoreEvent> implements Events<Event> {
   @override
   Ref get ref;
   @override
-  List<Event> get data;
+  Iterable<Event> get data;
   @override
   @JsonKey(ignore: true)
   _$$_EventsCopyWith<Event, _$_Events<Event>> get copyWith =>

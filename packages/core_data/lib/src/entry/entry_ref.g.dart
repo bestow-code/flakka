@@ -16,11 +16,11 @@ Map<String, dynamic> _$$_RefToJson(_$_Ref instance) => <String, dynamic>{
 
 _$_HeadRef _$$_HeadRefFromJson(Map<String, dynamic> json) => _$_HeadRef(
       Ref.fromJson(json['ref'] as Map<String, dynamic>),
-      const DateTimeConverter().fromJson(json['createdAt'] as int),
+      json['sequenceNumber'] as int,
     );
 
 Map<String, dynamic> _$$_HeadRefToJson(_$_HeadRef instance) =>
     <String, dynamic>{
       'ref': instance.ref.toJson(),
-      'createdAt': const DateTimeConverter().toJson(instance.createdAt),
+      'sequenceNumber': instance.sequenceNumber,
     };

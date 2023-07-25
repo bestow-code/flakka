@@ -3,4 +3,4 @@ typedef CollectionSnapshot<T> = ({
   bool hasPendingWrites
 });
 
-typedef DataSnapshot<T> = ({T snapshot, bool hasPendingWrite});
+typedef DataSnapshot<T> = ({T data, bool hasPendingWrite});

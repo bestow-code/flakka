@@ -22,7 +22,8 @@ class Ref with _$Ref {
 class HeadRef with _$HeadRef {
   const factory HeadRef(
     Ref ref,
-    @DateTimeConverter() DateTime createdAt,
+    int sequenceNumber,
+    // @DateTimeConverter() DateTime createdAt,
   ) = _HeadRef;
 
   factory HeadRef.fromJson(Map<String, dynamic> json) =>

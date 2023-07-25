@@ -12,7 +12,7 @@ _$_Events<Event> _$$_EventsFromJson<Event extends CoreEvent>(
 ) =>
     _$_Events<Event>(
       ref: Ref.fromJson(json['ref'] as Map<String, dynamic>),
-      data: (json['data'] as List<dynamic>).map(fromJsonEvent).toList(),
+      data: (json['data'] as List<dynamic>).map(fromJsonEvent),
     );
 
 Map<String, dynamic> _$$_EventsToJson<Event extends CoreEvent>(

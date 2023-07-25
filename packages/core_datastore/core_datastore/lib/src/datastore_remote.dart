@@ -11,12 +11,12 @@ abstract class DatastoreRemote<Event extends CoreEvent> {
   Future<void> appendEvents(
     Iterable<Event> events, {
     required Entry entry,
+    required int sequenceNumber,
   });
 
   Future<void> appendMerge({
     required Entry entry,
-  }
-  );
+  });
 
   Future<void> forward(Ref ref);
 
@@ -30,5 +30,5 @@ abstract class DatastoreRemote<Event extends CoreEvent> {
   /// Stream of additions and metadata changes for the [Entry] collection
   Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot;
 
-  Stream<CollectionSnapshot<Iterable<Event>>> get eventsCollectionSnapshot;
+  Stream<CollectionSnapshot<Events<Event>>> get eventsCollectionSnapshot;
 }

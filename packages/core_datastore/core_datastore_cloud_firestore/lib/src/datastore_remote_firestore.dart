@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:core_datastore_cloud_firestore/src/firestore_adapter.dart';
@@ -24,8 +25,20 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   //     .collection('log');
 
   @override
-  Future<void> appendEvents(Iterable<Event> events, {required Entry entry}) {
-    throw UnimplementedError();
+  Future<void> appendEvents(
+    Iterable<Event> events, {
+    required Entry entry,
+    required int sequenceNumber,
+  }) async {
+    await adapter.firestore.runTransaction((transaction) async {
+      transaction
+        ..set(
+          adapter.events.doc(entry.ref.value),
+          Events(ref: entry.ref, data: events),
+        )
+        ..set(adapter.entry.doc(entry.ref.value), entry)
+        ..set(adapter.instanceRef.doc(), HeadRef(entry.ref, sequenceNumber));
+    });
   }
 
   @override
@@ -34,12 +47,15 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot =>
-      throw UnimplementedError();
+  Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot => adapter.entry
+      .snapshots(includeMetadataChanges: true)
+      .map(_snapshotToCollection);
 
   @override
-  Stream<CollectionSnapshot<Iterable<Event>>> get eventsCollectionSnapshot =>
-      throw UnimplementedError();
+  Stream<CollectionSnapshot<Events<Event>>> get eventsCollectionSnapshot =>
+      adapter.events
+          .snapshots(includeMetadataChanges: true)
+          .map(_snapshotToCollection);
 
   @override
   Future<void> forward(Ref ref) {
@@ -78,4 +94,14 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   Future<bool> publish(Ref ref, Iterable<Ref> from) {
     throw UnimplementedError();
   }
+
+  CollectionSnapshot<T> _snapshotToCollection<T>(
+    QuerySnapshot<T> snapshot,
+  ) =>
+      (
+        hasPendingWrites: snapshot.metadata.hasPendingWrites,
+        snapshots: snapshot.docs.map(
+          (e) => (data: e.data(), hasPendingWrite: e.metadata.hasPendingWrites),
+        )
+      );
 }

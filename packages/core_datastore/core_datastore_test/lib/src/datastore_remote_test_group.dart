@@ -1,4 +1,6 @@
-import 'dart:async';
+// ignore_for_file: unawaited_futures
+@Timeout(Duration(milliseconds: 500))
+library;
 
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
@@ -7,6 +9,8 @@ import 'package:meta/meta.dart';
 import 'package:test/test.dart';
 
 import '../core_datastore_test.dart';
+
+const _timeout = Timeout(Duration(milliseconds: 200));
 
 @isTestGroup
 void testDatastoreRemote(
@@ -63,36 +67,38 @@ void testDatastoreRemote(
       setUp(
         () => datastoreRemote.initialize(ifEmpty: (ref: ref0, createdAt: t(0))),
       );
-      test('emits entry', () async {
-        unawaited(
+      test(
+        'emits entry',
+        () async {
           expectLater(
             datastoreRemote.entryCollectionSnapshot
                 .skip(1)
-                .map((e) => e.snapshots.map((e) => e.snapshot)),
+                .map((e) => e.snapshots.map((e) => e.data)),
             emits(contains(entry1)),
-          ),
-        );
-        await datastoreRemote.appendEvents([], entry: entry1);
-      });
-      test('emits events', () async {
-        unawaited(
-          expectLater(
-            datastoreRemote.eventsCollectionSnapshot
-                .skip(1)
-                .map((e) => e.snapshots.map((e) => e.snapshot)),
-            emits(contains(entry1)),
-          ),
-        );
-        await datastoreRemote.appendEvents([], entry: entry1);
+          );
 
+          await datastoreRemote
+              .appendEvents([], entry: entry1, sequenceNumber: 1);
+        },
+        timeout: _timeout,
+      );
+      test('emits events', () async {
+        final testEvent1 = TestEvent(1);
+        expectLater(
+          datastoreRemote.eventsCollectionSnapshot.skip(1).map((e) =>
+              e.snapshots.map((e) => e.data.data).expand((element) => element)),
+          emits([testEvent1]),
+        );
+        await datastoreRemote
+            .appendEvents([testEvent1], entry: entry1, sequenceNumber: 1);
       });
       test('updates instance ref', () async {
-        await datastoreRemote.appendEvents([], entry: entry1);
+        await datastoreRemote
+            .appendEvents([], entry: entry1, sequenceNumber: 1);
         config = await datastoreRemote
             .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
         expect(config.instance, ref1);
       });
-
     });
     group('appendEntryMerge', () {
       // emits to entries
