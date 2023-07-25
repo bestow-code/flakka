@@ -10,7 +10,7 @@ abstract class PersistenceProviderLocal {
       ApplicationDataConverter<Event, State, View> dataConverter);
 }
 
-abstract class PersistenceProviderRemote {
+abstract mixin class PersistenceProviderRemote {
   DatastoreRemoteFactory<Event, State, View> getDatastoreFactory<
           Event extends CoreEvent,
           State extends CoreState,
@@ -19,7 +19,7 @@ abstract class PersistenceProviderRemote {
 }
 
 abstract class PersistenceProviderBase {
-  PersistenceProviderBase(this.persistenceId);
+  PersistenceProviderBase({required this.persistenceId});
 
   final String persistenceId;
 }

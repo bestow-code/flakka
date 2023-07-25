@@ -2,7 +2,7 @@ import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:meta/meta.dart';
-import 'package:spec/spec.dart';
+import 'package:test/test.dart';
 
 import '../core_datastore_test.dart';
 

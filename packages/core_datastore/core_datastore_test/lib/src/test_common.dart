@@ -48,8 +48,8 @@ TestView testViewEventHandler(TestView view, TestEvent event) =>
 
 class TestEventConverter extends DataConverter<TestEvent> {
   @override
-  TestEvent? fromJson(JsonMap? json) =>
-      (json == null) ? null : TestEvent.fromJson(json);
+  TestEvent fromJson(JsonMap json) =>
+      TestEvent.fromJson(json);
 
   @override
   JsonMap toJson(TestEvent data) => data.toJson();
@@ -57,8 +57,8 @@ class TestEventConverter extends DataConverter<TestEvent> {
 
 class TestStateConverter extends DataConverter<TestState> {
   @override
-  TestState? fromJson(JsonMap? json) =>
-      (json == null) ? null : TestState.fromJson(json);
+  TestState fromJson(JsonMap json) =>
+      TestState.fromJson(json);
 
   @override
   JsonMap toJson(TestState data) => data.toJson();
@@ -66,8 +66,8 @@ class TestStateConverter extends DataConverter<TestState> {
 
 class TestViewConverter extends DataConverter<TestView> {
   @override
-  TestView? fromJson(JsonMap? json) =>
-      (json == null) ? null : TestView.fromJson(json);
+  TestView fromJson(JsonMap json) =>
+      TestView.fromJson(json);
 
   @override
   JsonMap toJson(TestView data) => data.toJson();

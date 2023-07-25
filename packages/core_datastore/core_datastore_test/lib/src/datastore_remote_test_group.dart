@@ -1,15 +1,15 @@
-import 'dart:js_interop';
+import 'dart:async';
 
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:meta/meta.dart';
-import 'package:spec/spec.dart';
+import 'package:test/test.dart';
 
 import '../core_datastore_test.dart';
 
 @isTestGroup
-void testGroupDatastoreRemote(
+void testDatastoreRemote(
   String descriptor,
   PersistenceProviderRemote persistenceProviderRemote,
 ) {
@@ -20,7 +20,7 @@ void testGroupDatastoreRemote(
 
   final dataConverter = TestApplicationDataConverter();
 
-  const path = '/test1';
+  const path = '/objects/test1';
 
   const ref0 = Ref('0');
   const ref1 = Ref('1');
@@ -43,9 +43,9 @@ void testGroupDatastoreRemote(
         test('sets mainRef', () async {
           config = await datastoreRemote
               .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
-          expect(config.main).toEqual(ref0);
-          expect(config.instance).toBeNull();
-          expect(await datastoreRemote.mainRef.first).toEqual(ref0);
+          expect(config.main, ref0);
+          expect(config.instance, null);
+          expect(await datastoreRemote.mainRef.first, ref0);
         });
       });
       group('existing application, new instance', () {
@@ -54,37 +54,45 @@ void testGroupDatastoreRemote(
               .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
           config = await datastoreRemote
               .initialize(ifEmpty: (ref: ref1, createdAt: t(0)));
-          expect(config.main).toEqual(ref0);
-          expect(await datastoreRemote.mainRef.first).toEqual(ref0);
+          expect(config.main, ref0);
+          expect(await datastoreRemote.mainRef.first, ref0);
         });
       });
     });
     group('appendEntryEvents', () {
       setUp(
-        () async =>
-            datastoreRemote.initialize(ifEmpty: (ref: ref0, createdAt: t(0))),
+        () => datastoreRemote.initialize(ifEmpty: (ref: ref0, createdAt: t(0))),
       );
-      test('emits entry', () {
-        final snapshot = datastoreRemote.entryCollectionSnapshot;
-        expect(snapshot).emits.isA<CollectionSnapshot<Entry>>();
-        expect(snapshot).emits.;
-        expect(snapshot).emits.toBe(
-          (
-            hasPendingWrites: true,
-            snapshots: [(hasPendingWrite: true, snapshot: entry1)]
+      test('emits entry', () async {
+        unawaited(
+          expectLater(
+            datastoreRemote.entryCollectionSnapshot
+                .skip(1)
+                .map((e) => e.snapshots.map((e) => e.snapshot)),
+            emits(contains(entry1)),
           ),
         );
-        datastoreRemote.appendEvents([], entry: entry1);
+        await datastoreRemote.appendEvents([], entry: entry1);
       });
-      test('emits events', () {});
+      test('emits events', () async {
+        unawaited(
+          expectLater(
+            datastoreRemote.eventsCollectionSnapshot
+                .skip(1)
+                .map((e) => e.snapshots.map((e) => e.snapshot)),
+            emits(contains(entry1)),
+          ),
+        );
+        await datastoreRemote.appendEvents([], entry: entry1);
+
+      });
       test('updates instance ref', () async {
         await datastoreRemote.appendEvents([], entry: entry1);
         config = await datastoreRemote
             .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
-        expect(config.instance).toEqual(ref1);
+        expect(config.instance, ref1);
       });
-      // emits to entries / events
-      // updates instance ref
+
     });
     group('appendEntryMerge', () {
       // emits to entries
@@ -100,26 +108,3 @@ void testGroupDatastoreRemote(
     });
   });
 }
-
-// void testGroupDataStoreLocal(
-//     DatastoreLocalFactory<TestEvent, TestState, TestView>
-//         datastoreFactoryLocal) {
-//   group('append events-entry', () {
-//     // add entry to stream
-//     // add events to stream
-//     // add stateView to stream
-//     // updates instance ref
-//   });
-//   group('append merge-entry', () {
-//     // add entry to stream
-//     // add events to stream
-//     // add stateView to stream
-//     // updates instance ref
-//   });
-//   group('forward instance', () {
-//     // add entry to stream
-//     // add events to stream
-//     // add stateView to stream
-//     // updates instance ref
-//   });
-// }

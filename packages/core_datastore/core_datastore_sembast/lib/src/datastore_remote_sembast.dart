@@ -1,6 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:sembast/sembast.dart';
 
 class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
@@ -14,9 +14,9 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
   late final Database _database;
   final ApplicationDataConverter<Event, State, View> _dataConverter;
 
-  final headRefStore = StoreRef<String, Map<String, dynamic>>.main();
-  final entryStore = StoreRef<String, Map<String, dynamic>>.main();
-  final eventsStore = StoreRef<String, List<Map<String, dynamic>>>.main();
+  final headRefStore = StoreRef<String, Map<String, dynamic>>('head');
+  final entryStore = StoreRef<String, Map<String, dynamic>>('entry');
+  final eventsStore = StoreRef<String, List<Map<String, dynamic>>>('events');
 
   @override
   Future<({Ref? instance, Ref main})> initialize({
@@ -90,14 +90,13 @@ class DatastoreRemoteSembast<Event extends CoreEvent, State extends CoreState,
   Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot {
     return entryStore
         .query()
-        .onSnapshot(_database)
-        .map((event) => event?.value)
-        .whereNotNull()
-        .map(Entry.fromJson)
+        .onSnapshots(_database)
+        .map((snapshots) => snapshots.map((e) => e.value).whereNotNull().map(Entry.fromJson))
         .map(
-          (event) => (
+          (entries) => (
             hasPendingWrites: true,
-            snapshots: [(hasPendingWrite: true, snapshot: event)]
+            snapshots:
+                entries.map((entry) => (hasPendingWrite: true, snapshot: entry))
           ),
         );
   }

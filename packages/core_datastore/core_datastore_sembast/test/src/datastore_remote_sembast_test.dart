@@ -3,7 +3,7 @@ import 'package:core_datastore_test/core_datastore_test.dart';
 import 'package:sembast/sembast_memory.dart';
 
 void main() {
-  testGroupDatastoreRemote('Sembast',
+  testDatastoreRemote('Sembast',
     PersistenceProviderRemoteSembast(
       databaseFactory: databaseFactoryMemory,
       pathBase: './',
