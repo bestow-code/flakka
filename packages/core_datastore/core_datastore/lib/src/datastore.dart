@@ -18,28 +18,6 @@ abstract interface class DataStore<Event extends CoreEvent,
 
   Stream<Ref> get mainRef;
 
-  StreamSink<DataStoreEffect> get dataStoreEffectSink;
+  StreamSink<DatastoreEffect> get dataStoreEffectSink;
 
-  Future<void> appendEntryEvents(
-    Entry entry,
-    Iterable<Event> events, {
-    required StateView<State, View> stateView,
-  }) async {}
-
-  Future<void> appendEntryMerge(
-    Entry entry, {
-    required Ref base,
-    required StateView<State, View> stateView,
-  }) async {}
-
-  Future<void> forwardFast(
-    Ref ref, {
-    required ({State state, View view}) stateView,
-  });
-
-  Future<void> forwardReset(
-    Ref ref, {
-    required ({State state, View view}) stateView,
-    required Ref base,
-  });
 }

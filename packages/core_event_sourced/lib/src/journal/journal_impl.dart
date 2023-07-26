@@ -6,19 +6,19 @@ import '../../core_event_sourced.dart';
 part 'journal_impl.freezed.dart';
 
 @freezed
-class JournalState with _$JournalState {
-  factory JournalState.initial({
-    @Default(Ref.initial) Ref entryRef,
-    required Ref onStartEntryRef,
-  }) = JournalStateInitial;
-
-  factory JournalState.ready({
-    required Ref entryRef,
-  }) = JournalStateReady;
+class JournalState<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> with _$JournalState<Event, State, View> {
+  factory JournalState({
+    required Ref base,
+    required Map<Ref, StateView> stateView,
+    required Graph graph,
+    required Map<Ref, Iterable<Event>> events,
+    // published
+  }) = _JournalState<Event, State, View>;
 }
 
 @freezed
 class JournalEvent<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalEvent<Event, State, View> {
-factory JournalEvent.hello() = JournalEventHello;
+  factory JournalEvent.hello() = JournalEventHello;
 }
