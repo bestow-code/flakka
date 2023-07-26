@@ -15,34 +15,34 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   @override
   Future<({Ref main, Ref? instance})> initialize({
     required ({DateTime createdAt, Ref ref}) ifEmpty,
-  }) {
-    return adapter.firestore.runTransaction((transaction) async {
-      final mainRefMaybe = await transaction.get(adapter.mainRef);
-      if (mainRefMaybe.exists) {
-        final mainRef = mainRefMaybe.data()!;
-        final instanceRef = (await adapter.instanceHeadRef
-                .orderBy('sequenceNumber', descending: true)
-                .limit(1)
-                .get())
-            .docs
-            .singleOrNull
-            ?.data()
-            .ref;
-        return (main: mainRef, instance: instanceRef);
-      } else {
-        final entry =
-            Entry(ref: ifEmpty.ref, refs: [], createdAt: ifEmpty.createdAt);
-        transaction
-          ..set(adapter.mainRef, entry.ref)
-          ..set(adapter.mainHeadRef.doc(entry.ref.value), HeadRef(entry.ref, 0))
-          ..set(
-            adapter.entry.doc(entry.ref.value),
-            entry,
-          );
-        return (main: entry.ref, instance: null);
-      }
-    });
-  }
+  }) =>
+      adapter.firestore.runTransaction((transaction) async {
+        final mainRefMaybe = await transaction.get(adapter.mainRef);
+        if (mainRefMaybe.exists) {
+          final mainRef = mainRefMaybe.data()!;
+          final instanceRef = (await adapter.instanceHeadRef
+                  .orderBy('sequenceNumber', descending: true)
+                  .limit(1)
+                  .get())
+              .docs
+              .singleOrNull
+              ?.data()
+              .ref;
+          return (main: mainRef, instance: instanceRef);
+        } else {
+          transaction
+            ..set(adapter.mainRef, ifEmpty.ref)
+            ..set(
+              adapter.mainHeadRef.doc(ifEmpty.ref.value),
+              HeadRef(ifEmpty.ref, 0),
+            )
+            ..set(
+              adapter.entry.doc(ifEmpty.ref.value),
+              Entry(ref: ifEmpty.ref, refs: [], createdAt: ifEmpty.createdAt),
+            );
+          return (main: ifEmpty.ref, instance: null);
+        }
+      });
 
   @override
   Future<void> appendEvents(
@@ -51,21 +51,21 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
     required Ref parent,
     required DateTime createdAt,
     required int sequenceNumber,
-  }) async {
-    final entry = Entry(ref: ref, refs: [parent], createdAt: createdAt);
-    await adapter.firestore.runTransaction((transaction) async {
-      transaction
-        ..set(
-          adapter.events.doc(entry.ref.value),
-          Events(ref: entry.ref, data: events),
-        )
-        ..set(adapter.entry.doc(entry.ref.value), entry)
-        ..set(
-          adapter.instanceHeadRef.doc(),
-          HeadRef(entry.ref, sequenceNumber),
-        );
-    });
-  }
+  }) async =>
+      (adapter.firestore.batch()
+            ..set(
+              adapter.events.doc(ref.value),
+              Events(ref: ref, data: events),
+            )
+            ..set(
+              adapter.entry.doc(ref.value),
+              Entry(ref: ref, refs: [parent], createdAt: createdAt),
+            )
+            ..set(
+              adapter.instanceHeadRef.doc(),
+              HeadRef(ref, sequenceNumber),
+            ))
+          .commit();
 
   @override
   Future<void> appendMerge(
@@ -74,28 +74,27 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
     required Ref parent,
     required DateTime createdAt,
     required int sequenceNumber,
-  }) async {
-    final entry = Entry(ref: ref, refs: [parent, merge], createdAt: createdAt);
-    await adapter.firestore.runTransaction((transaction) async {
-      transaction
-        ..set(adapter.entry.doc(entry.ref.value), entry)
-        ..set(
-          adapter.instanceHeadRef.doc(),
-          HeadRef(entry.ref, sequenceNumber),
-        );
-    });
-  }
+  }) async =>
+      (adapter.firestore.batch()
+            ..set(
+              adapter.entry.doc(ref.value),
+              Entry(ref: ref, refs: [parent, merge], createdAt: createdAt),
+            )
+            ..set(
+              adapter.instanceHeadRef.doc(),
+              HeadRef(ref, sequenceNumber),
+            ))
+          .commit();
 
   @override
   Future<void> forward(
     Ref ref, {
     required DateTime createdAt,
     required int sequenceNumber,
-  }) async {
-    await adapter.instanceHeadRef.doc().set(
-          HeadRef(ref, sequenceNumber),
-        );
-  }
+  }) async =>
+      adapter.instanceHeadRef.doc().set(
+            HeadRef(ref, sequenceNumber),
+          );
 
   @override
   Future<void> publish(Ref ref,
