@@ -30,7 +30,7 @@ abstract class DatastoreRemote<Event extends CoreEvent> {
     required int sequenceNumber,
   });
 
-  Future<bool> publish(
+  Future<void> publish(
     Ref ref, {
     required Iterable<Ref> from,
     required DateTime createdAt,

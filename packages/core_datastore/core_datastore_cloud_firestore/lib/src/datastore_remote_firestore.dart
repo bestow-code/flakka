@@ -98,11 +98,11 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  Future<bool> publish(Ref ref,
+  Future<void> publish(Ref ref,
           {required Iterable<Ref> from,
           required DateTime createdAt,
           required int sequenceNumber}) async =>
-      adapter.firestore.runTransaction<bool>((transaction) async {
+      adapter.firestore.runTransaction<void>((transaction) async {
         if (from.contains((await transaction.get(adapter.mainRef)).data()!)) {
           transaction
             ..update(adapter.mainRef, ref.toJson())
@@ -110,9 +110,6 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
               adapter.mainHeadRef.doc(),
               HeadRef(ref, sequenceNumber),
             );
-          return true;
-        } else {
-          return false;
         }
       });
 
