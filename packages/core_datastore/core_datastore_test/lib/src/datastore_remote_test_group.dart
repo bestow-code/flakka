@@ -151,10 +151,34 @@ void testDatastoreRemote(
       });
     });
     group('forwardInstance', () {
-      // emits to entries
-      // updates instance ref
+      setUp(
+        () => datastoreRemote.initialize(ifEmpty: (ref: ref0, createdAt: t(0))),
+      );
+      test('updates instance ref', () async {
+        await datastoreRemote.forward(
+          entry1.ref,
+          createdAt: entry1.createdAt,
+          sequenceNumber: 1,
+        );
+        config = await datastoreRemote
+            .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
+        expect(config.instance, ref1);
+      });
     });
     group('publishMain', () {
+      setUp(
+            () => datastoreRemote.initialize(ifEmpty: (ref: ref0, createdAt: t(0))),
+      );
+      test('updates main ref', () async {
+        await datastoreRemote.publish(
+          entry1.ref,from: [ref0],
+          createdAt: entry1.createdAt,
+          sequenceNumber: 1,
+        );
+        config = await datastoreRemote
+            .initialize(ifEmpty: (ref: ref0, createdAt: t(0)));
+        expect(config.instance, ref1);
+      });
       // emits to mainRef
       // updates main ref
     });

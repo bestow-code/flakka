@@ -12,71 +12,6 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
 
   final FirestoreAdapter<Event, State, View> adapter;
 
-  Future<Ref> get ref async => (await adapter.mainRef.get()).data()!;
-
-  // Future<Ref?> get instanceRef async => (await object.get()).data()!;
-
-  // Ref get refInstance;
-
-  // late final logMain = firestore.doc(path).collection('log');
-  // late final logInstance = firestore
-  //     .doc(path)
-  //     .collection('instance')
-  //     .doc(persistenceId)
-  //     .collection('log');
-
-  @override
-  Future<void> appendEvents(
-    Iterable<Event> events, {
-    required Ref ref,
-    required Ref parent,
-    required DateTime createdAt,
-    required int sequenceNumber,
-  }) async {
-    final entry = Entry(ref: ref, refs: [parent], createdAt: createdAt);
-    await adapter.firestore.runTransaction((transaction) async {
-      transaction
-        ..set(
-          adapter.events.doc(entry.ref.value),
-          Events(ref: entry.ref, data: events),
-        )
-        ..set(adapter.entry.doc(entry.ref.value), entry)
-        ..set(
-            adapter.instanceHeadRef.doc(), HeadRef(entry.ref, sequenceNumber));
-    });
-  }
-
-  @override
-  Future<void> appendMerge(Ref merge,
-      {required Ref ref,
-      required Ref parent,
-      required DateTime createdAt,
-      required int sequenceNumber}) async {
-    final entry = Entry(ref: ref, refs: [parent, merge], createdAt: createdAt);
-    await adapter.firestore.runTransaction((transaction) async {
-      transaction
-        ..set(adapter.entry.doc(entry.ref.value), entry)
-        ..set(
-            adapter.instanceHeadRef.doc(), HeadRef(entry.ref, sequenceNumber));
-    });
-  }
-
-  @override
-  Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot => adapter.entry
-      .snapshots(includeMetadataChanges: true)
-      .map(_snapshotToCollection);
-
-  @override
-  Stream<CollectionSnapshot<Events<Event>>> get eventsCollectionSnapshot =>
-      adapter.events
-          .snapshots(includeMetadataChanges: true)
-          .map(_snapshotToCollection);
-
-  @override
-  Future<void> forward(Ref ref) {
-    throw UnimplementedError();
-  }
-
   @override
   Future<({Ref main, Ref? instance})> initialize({
     required ({DateTime createdAt, Ref ref}) ifEmpty,
@@ -110,13 +45,91 @@ class DatastoreRemoteFirestore<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
+  Future<void> appendEvents(
+    Iterable<Event> events, {
+    required Ref ref,
+    required Ref parent,
+    required DateTime createdAt,
+    required int sequenceNumber,
+  }) async {
+    final entry = Entry(ref: ref, refs: [parent], createdAt: createdAt);
+    await adapter.firestore.runTransaction((transaction) async {
+      transaction
+        ..set(
+          adapter.events.doc(entry.ref.value),
+          Events(ref: entry.ref, data: events),
+        )
+        ..set(adapter.entry.doc(entry.ref.value), entry)
+        ..set(
+          adapter.instanceHeadRef.doc(),
+          HeadRef(entry.ref, sequenceNumber),
+        );
+    });
+  }
+
+  @override
+  Future<void> appendMerge(
+    Ref merge, {
+    required Ref ref,
+    required Ref parent,
+    required DateTime createdAt,
+    required int sequenceNumber,
+  }) async {
+    final entry = Entry(ref: ref, refs: [parent, merge], createdAt: createdAt);
+    await adapter.firestore.runTransaction((transaction) async {
+      transaction
+        ..set(adapter.entry.doc(entry.ref.value), entry)
+        ..set(
+          adapter.instanceHeadRef.doc(),
+          HeadRef(entry.ref, sequenceNumber),
+        );
+    });
+  }
+
+  @override
+  Future<void> forward(
+    Ref ref, {
+    required DateTime createdAt,
+    required int sequenceNumber,
+  }) async {
+    await adapter.instanceHeadRef.doc().set(
+          HeadRef(ref, sequenceNumber),
+        );
+  }
+
+  @override
+  Future<bool> publish(Ref ref,
+          {required Iterable<Ref> from,
+          required DateTime createdAt,
+          required int sequenceNumber}) async =>
+      adapter.firestore.runTransaction<bool>((transaction) async {
+        if (from.contains((await transaction.get(adapter.mainRef)).data()!)) {
+          transaction
+            ..update(adapter.mainRef, ref.toJson())
+            ..set(
+              adapter.mainHeadRef.doc(),
+              HeadRef(ref, sequenceNumber),
+            );
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+  @override
   Stream<Ref> get mainRef =>
       adapter.mainRef.snapshots().map((event) => event.data()).whereNotNull();
 
   @override
-  Future<bool> publish(Ref ref, Iterable<Ref> from) {
-    throw UnimplementedError();
-  }
+  Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot => adapter.entry
+      .snapshots(includeMetadataChanges: true)
+      .map(_snapshotToCollection);
+
+  @override
+  Stream<CollectionSnapshot<Events<Event>>> get eventsCollectionSnapshot =>
+      adapter.events
+          .snapshots(includeMetadataChanges: true)
+          .map(_snapshotToCollection);
 
   CollectionSnapshot<T> _snapshotToCollection<T>(
     QuerySnapshot<T> snapshot,
