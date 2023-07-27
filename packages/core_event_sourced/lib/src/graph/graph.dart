@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:directed_graph/directed_graph.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,7 +15,33 @@ class Graph with _$Graph {
     required Map<Ref, DateTime> createdAt,
   }) = _Graph;
 
+  factory Graph.empty({
+    required Ref base,
+  }) {
+    final createdAt = {base: t(0)};
+    return Graph(
+      base: base,
+      main: base,
+      directed: DirectedGraph({base: {}}, comparator: refComparator(createdAt)),
+      createdAt: createdAt,
+    );
+  }
+
   Graph._();
+
+  Graph copyWithNewEntry(Iterable<Entry> entry) {
+    final edges = {
+      ...directed.data,
+      ...Map.fromEntries(entry.map((e) => MapEntry(e.ref, e.refs.toSet())))
+    };
+    final createdAt = {
+      ...this.createdAt,
+      ...Map.fromEntries(entry.map((e) => MapEntry(e.ref, e.createdAt)))
+    };
+    return copyWith(
+      directed: DirectedGraph(edges, comparator: refComparator(createdAt)),
+    );
+  }
 
   EntryComparison compareToMain(Ref instance) {
     if (instance == main) {

@@ -7,24 +7,36 @@ part 'journal_effect.freezed.dart';
 class JournalEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalEffect<Event, State, View> {
   factory JournalEffect.appendEvents({
-    required Entry entry,
+    required Ref ref,
+    required Ref parent,
+    required Iterable<Event> events,
     required StateView<State, View> stateView,
+    required DateTime createdAt,
+    required int sequenceNumber,
   }) = JournalEffectAppendEvents<Event, State, View>;
 
   factory JournalEffect.appendMerge({
-    required Entry entry,
-    required Ref base,
+    required Ref ref,
+    required Ref parent,
+    required Ref mergeParent,
+    required Ref mergeBase,
     required StateView<State, View> stateView,
+    required int sequenceNumber,
+    required DateTime createdAt,
   }) = JournalEffectAppendMerge<Event, State, View>;
 
   factory JournalEffect.forwardFast({
-    required Ref entryRef,
+    required Ref ref,
     required StateView<State, View> stateView,
-  }) = JournalEffectForwardFast;
+    required int sequenceNumber,
+    required DateTime createdAt,
+  }) = JournalEffectForwardFast<Event, State, View>;
 
   factory JournalEffect.forwardReset({
-    required Ref entryRef,
-    required Ref base,
+    required Ref ref,
+    required Ref resetBase,
     required StateView<State, View> stateView,
-  }) = JournalEffectForwardReset;
+    required int sequenceNumber,
+    required DateTime createdAt,
+  }) = JournalEffectForwardReset<Event, State, View>;
 }

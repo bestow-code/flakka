@@ -11,24 +11,6 @@ class JournalUpdate<Event extends CoreEvent, State extends CoreState,
     required Ref main,
     required DirectedGraph<Entry> graph,
     required Map<Ref, Iterable<Event>> events,
-    required Map<Ref, StateView<State,View>> stateView,
+    required Map<Ref, StateView<State, View>> stateView,
   }) = _JournalUpdate;
-}
-
-
-class Graph {
-
-}
-
-// ready, behind, divergent, unknown
-@freezed
-class RefComparison with _$RefComparison {
-  factory RefComparison.behind({
-    required Ref main,
-    required Ref instance,
-    required Ref base,
-    required Iterable<Ref> path,
-
-}) = RefComparisonBehind;
-  factory RefComparison() = _RefComparison;
 }

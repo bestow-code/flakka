@@ -1,4 +1,5 @@
-import 'package:core_common/core_common.dart';
+import 'dart:core';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'entry_ref.freezed.dart';
@@ -17,6 +18,16 @@ class Ref with _$Ref {
 
   static const Ref initial = Ref(_kInitialRefValue);
 }
+
+int Function(Ref, Ref) refComparator(Map<Ref, DateTime> createdAt) =>
+    (Ref a, Ref b) {
+      final dateTimeComparison = createdAt[a]!.compareTo(createdAt[b]!);
+      if (dateTimeComparison != 0) {
+        return dateTimeComparison;
+      } else {
+        return a.value.compareTo(b.value);
+      }
+    };
 
 @freezed
 class HeadRef with _$HeadRef {

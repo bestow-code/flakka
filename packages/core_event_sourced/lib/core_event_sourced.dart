@@ -8,6 +8,7 @@ export 'src/application/model/application_effect.dart';
 export 'src/application/model/request_effect.dart';
 export 'src/event_handler.dart';
 export 'src/event_sourced_behavior.dart';
+export 'src/graph/graph.dart';
 export 'src/journal/journal.dart';
 export 'src/journal/journal_impl.dart';
 export 'src/journal/model/journal_effect.dart';
