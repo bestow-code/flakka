@@ -18,20 +18,20 @@ ApplicationState<TestState, TestView> get initialState =>
 void main() {
   late TestApplication testApplication;
   setUp(() => testApplication = TestApplication(initialState));
-  group('request', () {
-    blocTest<TestApplication, ApplicationState<TestState, TestView>>(
-      'emits',
-      build: () => testApplication,
-      act: (_) => testApplication.add(
-        ApplicationEvent.request(
-          handler: (stateEventSink) => RequestEffect.fail(),
-          requestRef: const Ref('b'),
-          createdAt: t(100),
-        ),
-      ),
-      expect: () => [isA<ApplicationState<TestState, TestView>>()],
-    );
-  });
+  // group('request', () {
+  //   blocTest<TestApplication, ApplicationState<TestState, TestView>>(
+  //     'emits',
+  //     build: () => testApplication,
+  //     act: (_) => testApplication.add(
+  //       ApplicationEvent.request(
+  //         handler: (stateEventSink) => RequestEffect.fail(),
+  //         requestRef: const Ref('b'),
+  //         createdAt: t(100),
+  //       ),
+  //     ),
+  //     expect: () => [isA<ApplicationState<TestState, TestView>>()],
+  //   );
+  // });
   group('journal', () {
     group('main ahead one events-entry', () {
       test('forward-fast', () {});

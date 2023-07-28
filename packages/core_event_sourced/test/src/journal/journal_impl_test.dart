@@ -148,7 +148,9 @@ void main() {
             emits(
               initialState.copyWith(
                 graph: graph.copyWithNewEntry([entry1a]),
-                events: {ref1a: [testEvent1]},
+                events: {
+                  ref1a: [testEvent1]
+                },
                 pending: JournalStatePending.empty(),
               ),
             ),
@@ -158,8 +160,73 @@ void main() {
       });
     });
     group('events', () {
-      test('pending', () {});
-      test('ready', () {});
+      test('entry-pending', () {
+        main = ref0;
+        buildGraph();
+        initialStateView = {base: (state: TestState(0), view: TestView(1))};
+        final testEvent1 = TestEvent(2);
+        initialState = JournalState<TestEvent, TestState, TestView>(
+          graph: graph,
+          events: {},
+          stateView: initialStateView,
+          pending: JournalStatePending.empty(),
+        );
+        journal = JournalImpl(initialState);
+        unawaited(
+          expectLater(
+            journal.stream,
+            emits(
+              initialState.copyWith.pending(events: {
+                ref1a: [testEvent1]
+              }),
+            ),
+          ),
+        );
+        journal.datastoreUpdateSink.add(
+          DatastoreUpdate.events(
+            data: {
+              ref1a: [testEvent1]
+            },
+          ),
+        );
+      });
+      test('entry-ready', () {
+        main = ref0;
+        buildGraph();
+        initialStateView = {base: (state: TestState(0), view: TestView(1))};
+        final testEvent1 = TestEvent(2);
+
+        initialState = JournalState<TestEvent, TestState, TestView>(
+          graph: graph,
+          events: {},
+          stateView: initialStateView,
+          pending: JournalStatePending<TestEvent>.empty().copyWith(
+            entry: {ref1a: entry1a},
+          ),
+        );
+        journal = JournalImpl(initialState);
+        unawaited(
+          expectLater(
+            journal.stream,
+            emits(
+              initialState.copyWith(
+                graph: graph.copyWithNewEntry([entry1a]),
+                events: {
+                  ref1a: [testEvent1]
+                },
+                pending: JournalStatePending.empty(),
+              ),
+            ),
+          ),
+        );
+        journal.datastoreUpdateSink.add(
+          DatastoreUpdate.events(
+            data: {
+              ref1a: [testEvent1]
+            },
+          ),
+        );
+      });
     });
     group('main ref', () {
       test('pending', () {});
