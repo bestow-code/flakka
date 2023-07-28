@@ -171,14 +171,15 @@ class __$$_JournalStateCopyWithImpl<Event extends CoreEvent,
 /// @nodoc
 
 class _$_JournalState<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements _JournalState<Event, State, View> {
+    View extends CoreView> extends _JournalState<Event, State, View> {
   _$_JournalState(
       {required this.graph,
       required final Map<Ref, Iterable<Event>> events,
       required final Map<Ref, ({CoreState state, CoreView view})> stateView,
       required this.pending})
       : _events = events,
-        _stateView = stateView;
+        _stateView = stateView,
+        super._();
 
   @override
   final Graph graph;
@@ -236,13 +237,14 @@ class _$_JournalState<Event extends CoreEvent, State extends CoreState,
 }
 
 abstract class _JournalState<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements JournalState<Event, State, View> {
+    View extends CoreView> extends JournalState<Event, State, View> {
   factory _JournalState(
           {required final Graph graph,
           required final Map<Ref, Iterable<Event>> events,
           required final Map<Ref, ({CoreState state, CoreView view})> stateView,
           required final JournalStatePending<Event> pending}) =
       _$_JournalState<Event, State, View>;
+  _JournalState._() : super._();
 
   @override
   Graph get graph;
@@ -381,13 +383,14 @@ class __$$_JournalStatePendingCopyWithImpl<Event extends CoreEvent, $Res>
 /// @nodoc
 
 class _$_JournalStatePending<Event extends CoreEvent>
-    implements _JournalStatePending<Event> {
+    extends _JournalStatePending<Event> {
   _$_JournalStatePending(
       {required final Map<Ref, Iterable<Event>> events,
       required final Map<Ref, Entry> entry,
       required this.main})
       : _events = events,
-        _entry = entry;
+        _entry = entry,
+        super._();
 
   final Map<Ref, Iterable<Event>> _events;
   @override
@@ -439,11 +442,12 @@ class _$_JournalStatePending<Event extends CoreEvent>
 }
 
 abstract class _JournalStatePending<Event extends CoreEvent>
-    implements JournalStatePending<Event> {
+    extends JournalStatePending<Event> {
   factory _JournalStatePending(
       {required final Map<Ref, Iterable<Event>> events,
       required final Map<Ref, Entry> entry,
       required final Ref? main}) = _$_JournalStatePending<Event>;
+  _JournalStatePending._() : super._();
 
   @override
   Map<Ref, Iterable<Event>> get events;

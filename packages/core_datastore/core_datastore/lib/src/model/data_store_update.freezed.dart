@@ -42,7 +42,7 @@ mixin _$DatastoreUpdate<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DatastoreUpdateEntry<Event, State, View> value)
-        entry,
+        entryUpdate,
     required TResult Function(DatastoreUpdateEvents<Event, State, View> value)
         events,
     required TResult Function(DatastoreUpdateMain<Event, State, View> value)
@@ -199,13 +199,13 @@ class _$DatastoreUpdateEntry<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DatastoreUpdateEntry<Event, State, View> value)
-        entry,
+        entryUpdate,
     required TResult Function(DatastoreUpdateEvents<Event, State, View> value)
         events,
     required TResult Function(DatastoreUpdateMain<Event, State, View> value)
         main,
   }) {
-    return entry(this);
+    return entryUpdate(this);
   }
 
   @override
@@ -362,7 +362,7 @@ class _$DatastoreUpdateEvents<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DatastoreUpdateEntry<Event, State, View> value)
-        entry,
+        entryUpdate,
     required TResult Function(DatastoreUpdateEvents<Event, State, View> value)
         events,
     required TResult Function(DatastoreUpdateMain<Event, State, View> value)
@@ -528,7 +528,7 @@ class _$DatastoreUpdateMain<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DatastoreUpdateEntry<Event, State, View> value)
-        entry,
+        entryUpdate,
     required TResult Function(DatastoreUpdateEvents<Event, State, View> value)
         events,
     required TResult Function(DatastoreUpdateMain<Event, State, View> value)
