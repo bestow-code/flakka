@@ -4,7 +4,6 @@ import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:core_event_sourced/core_event_sourced.dart';
-import 'package:directed_graph/directed_graph.dart';
 import 'package:test/test.dart';
 
 import '../application/test_common.dart';
@@ -63,12 +62,13 @@ void main() {
   );
 
   void buildGraph() {
-    graph = Graph(
-      base: base,
-      main: main,
-      directed: DirectedGraph(edges, comparator: refComparator(createdAt)),
-      createdAt: createdAt,
-    );
+    graph = Graph.empty(base: entry0);
+    // graph = Graph(
+    //   base: base,
+    //   main: main,
+    //   directed: DirectedGraph(edges, comparator: refComparator(createdAt)),
+    //   createdAt: createdAt,
+    // );
   }
 
   late Map<Ref, Iterable<TestEvent>> initialEvents;
@@ -81,8 +81,29 @@ void main() {
 
   group('datastore update', () {
     group('entry', () {
-      test('merge', () {});
-      test('events pending', () async {
+      test('merge adds to graph', () async {
+        main = ref0;
+        buildGraph();
+        graph = graph.copyWithNewEntry([entry1a,entry1b]);
+        initialStateView = {base: (state: TestState(0), view: TestView(1))};
+        initialState = JournalState<TestEvent, TestState, TestView>(
+          graph: graph,
+          events: {},
+          stateView: initialStateView,
+          pending: JournalStatePending.empty(),
+        );
+        journal = JournalImpl(initialState);
+        final nextGraph = graph.copyWithNewEntry([entry2]);
+        final nextState = initialState.copyWith(graph: nextGraph);
+        unawaited(expectLater(
+          journal.stream,
+          emits(
+            equals(nextState),
+          ),
+        ));
+        journal.datastoreUpdateSink.add(DatastoreUpdate.entry(data: [entry2]));
+      });
+      test('events-pending', () async {
         main = ref0;
         buildGraph();
         initialStateView = {base: (state: TestState(0), view: TestView(1))};
@@ -93,22 +114,19 @@ void main() {
           pending: JournalStatePending.empty(),
         );
         journal = JournalImpl(initialState);
-
         unawaited(expectLater(
           journal.stream,
           emits(
-            initialState.copyWith.pending(
-              entry: Map.of(initialState.pending.entry)..[ref1a] = entry1a,
-            ),
+            initialState.copyWith.pending(entry: {ref1a: entry1a}),
           ),
         ));
         journal.datastoreUpdateSink.add(DatastoreUpdate.entry(data: [entry1a]));
       });
-      test('events ready', () {});
+      test('events-ready', () {});
     });
     group('events', () {
-      test('ref pending', () {});
-      test('ref ready', () {});
+      test('pending', () {});
+      test('ready', () {});
     });
     group('main ref', () {
       test('pending', () {});

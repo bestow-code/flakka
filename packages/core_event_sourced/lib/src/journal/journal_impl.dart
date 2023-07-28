@@ -17,17 +17,42 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
     implements JournalInternal<Event, State, View> {
   JournalImpl(super.initialState) {
     on<JournalEventDatastore<Event, State, View>>((event, emit) {
-      event.map(datastore: (datastore) {
-        datastore.update
-            .map(entry: (event) {
-
-              for(final entry in event.data) {
-                if(entry.refs.length > 1) {
-                  // state.copyWith(graph: )
-                }
-              }
-        }, events: (events) {}, main: (main) {});
-      });
+      event.map(
+        datastore: (datastore) {
+          datastore.update.map(
+            entry: (entryEvent) {
+              // 1. find ready entries
+              final ready = entryEvent.data.where(
+                (element) =>
+                    element.refs.length > 1 ||
+                    state.pending.entry.containsKey(element.ref),
+              );
+              // 2. Prepare next pending
+              final pendingRemainder = Map.of(state.pending.entry)
+                ..removeWhere((key, value) => ready.contains(value));
+              final pendingAdditions = Map.fromEntries(
+                entryEvent.data
+                    .where(
+                      (element) =>
+                          !state.pending.entry.containsKey(element.ref) &&
+                          element.refs.length == 1,
+                    )
+                    .map((e) => MapEntry(e.ref, e)),
+              );
+              emit(
+                state.copyWith(
+                  graph: state.graph.copyWithNewEntry(ready),
+                  pending: state.pending.copyWith(
+                    entry: {...pendingRemainder, ...pendingAdditions},
+                  ),
+                ),
+              );
+            },
+            events: (events) {},
+            main: (main) {},
+          );
+        },
+      );
     });
     Rx.merge([
       datastoreUpdateSink.stream

@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:directed_graph/directed_graph.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,13 +15,14 @@ class Graph with _$Graph {
   }) = _Graph;
 
   factory Graph.empty({
-    required Ref base,
+    required Entry base,
   }) {
-    final createdAt = {base: t(0)};
+    final createdAt = {base.ref: base.createdAt};
     return Graph(
-      base: base,
-      main: base,
-      directed: DirectedGraph({base: {}}, comparator: refComparator(createdAt)),
+      base: base.ref,
+      main: base.ref,
+      directed:
+          DirectedGraph({base.ref: {}}, comparator: refComparator(createdAt)),
       createdAt: createdAt,
     );
   }
@@ -34,12 +34,16 @@ class Graph with _$Graph {
       ...directed.data,
       ...Map.fromEntries(entry.map((e) => MapEntry(e.ref, e.refs.toSet())))
     };
-    final createdAt = {
-      ...this.createdAt,
+    final nextCreatedAt = {
+      ...createdAt,
       ...Map.fromEntries(entry.map((e) => MapEntry(e.ref, e.createdAt)))
     };
     return copyWith(
-      directed: DirectedGraph(edges, comparator: refComparator(createdAt)),
+      directed: DirectedGraph(
+        edges,
+        comparator: refComparator(nextCreatedAt),
+      ),
+      createdAt: nextCreatedAt,
     );
   }
 
