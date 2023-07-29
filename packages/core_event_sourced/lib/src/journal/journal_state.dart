@@ -32,7 +32,7 @@ class JournalState<Event extends CoreEvent, State extends CoreState,
     );
 
     final pendingAndPromoted =
-        pending.copyWithAndPromote(entry: eventsEntries, events: events);
+        pending.copyWithAndPromote(entry: eventsEntries, events: events,main: main);
     final promotedEvents = pendingAndPromoted.promoted
         .map((key, value) => MapEntry(key, value.events));
     final promotedEntry =
@@ -49,11 +49,10 @@ class JournalState<Event extends CoreEvent, State extends CoreState,
 
     final pendingMain = next.pending.main;
     if (pendingMain != null) {
-      if (graph.main == pending.main) {
+      if (graph.main == pendingMain) {
         return next.copyWith.pending(main: null);
-      } else if (graph.fullCompletePathTo(pendingMain).isNotEmpty) {
-        // throw UnimplementedError();
-        return next.copyWith.graph(main: pendingMain);
+      } else if (graph.completeFullPath(graph.main, pendingMain).length > 1) {
+        return next.copyWith.graph(main: pendingMain).copyWith.pending(main: null);
       } else {
         return next;
       }

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Graph {
   Ref get base => throw _privateConstructorUsedError;
   Ref get main => throw _privateConstructorUsedError;
-  DirectedGraph<Ref> get directed => throw _privateConstructorUsedError;
+  Map<Ref, Set<Ref>> get edges => throw _privateConstructorUsedError;
   Map<Ref, DateTime> get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $GraphCopyWith<$Res> {
   $Res call(
       {Ref base,
       Ref main,
-      DirectedGraph<Ref> directed,
+      Map<Ref, Set<Ref>> edges,
       Map<Ref, DateTime> createdAt});
 
   $RefCopyWith<$Res> get base;
@@ -55,7 +55,7 @@ class _$GraphCopyWithImpl<$Res, $Val extends Graph>
   $Res call({
     Object? base = null,
     Object? main = null,
-    Object? directed = null,
+    Object? edges = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +67,10 @@ class _$GraphCopyWithImpl<$Res, $Val extends Graph>
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
               as Ref,
-      directed: null == directed
-          ? _value.directed
-          : directed // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Ref>,
+      edges: null == edges
+          ? _value.edges
+          : edges // ignore: cast_nullable_to_non_nullable
+              as Map<Ref, Set<Ref>>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ abstract class _$$_GraphCopyWith<$Res> implements $GraphCopyWith<$Res> {
   $Res call(
       {Ref base,
       Ref main,
-      DirectedGraph<Ref> directed,
+      Map<Ref, Set<Ref>> edges,
       Map<Ref, DateTime> createdAt});
 
   @override
@@ -124,7 +124,7 @@ class __$$_GraphCopyWithImpl<$Res> extends _$GraphCopyWithImpl<$Res, _$_Graph>
   $Res call({
     Object? base = null,
     Object? main = null,
-    Object? directed = null,
+    Object? edges = null,
     Object? createdAt = null,
   }) {
     return _then(_$_Graph(
@@ -136,10 +136,10 @@ class __$$_GraphCopyWithImpl<$Res> extends _$GraphCopyWithImpl<$Res, _$_Graph>
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
               as Ref,
-      directed: null == directed
-          ? _value.directed
-          : directed // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Ref>,
+      edges: null == edges
+          ? _value._edges
+          : edges // ignore: cast_nullable_to_non_nullable
+              as Map<Ref, Set<Ref>>,
       createdAt: null == createdAt
           ? _value._createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -154,17 +154,24 @@ class _$_Graph extends _Graph {
   _$_Graph(
       {required this.base,
       required this.main,
-      required this.directed,
+      required final Map<Ref, Set<Ref>> edges,
       required final Map<Ref, DateTime> createdAt})
-      : _createdAt = createdAt,
+      : _edges = edges,
+        _createdAt = createdAt,
         super._();
 
   @override
   final Ref base;
   @override
   final Ref main;
+  final Map<Ref, Set<Ref>> _edges;
   @override
-  final DirectedGraph<Ref> directed;
+  Map<Ref, Set<Ref>> get edges {
+    if (_edges is EqualUnmodifiableMapView) return _edges;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_edges);
+  }
+
   final Map<Ref, DateTime> _createdAt;
   @override
   Map<Ref, DateTime> get createdAt {
@@ -175,7 +182,7 @@ class _$_Graph extends _Graph {
 
   @override
   String toString() {
-    return 'Graph(base: $base, main: $main, directed: $directed, createdAt: $createdAt)';
+    return 'Graph(base: $base, main: $main, edges: $edges, createdAt: $createdAt)';
   }
 
   @override
@@ -185,7 +192,7 @@ class _$_Graph extends _Graph {
             other is _$_Graph &&
             (identical(other.base, base) || other.base == base) &&
             (identical(other.main, main) || other.main == main) &&
-            const DeepCollectionEquality().equals(other.directed, directed) &&
+            const DeepCollectionEquality().equals(other._edges, _edges) &&
             const DeepCollectionEquality()
                 .equals(other._createdAt, _createdAt));
   }
@@ -195,7 +202,7 @@ class _$_Graph extends _Graph {
       runtimeType,
       base,
       main,
-      const DeepCollectionEquality().hash(directed),
+      const DeepCollectionEquality().hash(_edges),
       const DeepCollectionEquality().hash(_createdAt));
 
   @JsonKey(ignore: true)
@@ -209,7 +216,7 @@ abstract class _Graph extends Graph {
   factory _Graph(
       {required final Ref base,
       required final Ref main,
-      required final DirectedGraph<Ref> directed,
+      required final Map<Ref, Set<Ref>> edges,
       required final Map<Ref, DateTime> createdAt}) = _$_Graph;
   _Graph._() : super._();
 
@@ -218,7 +225,7 @@ abstract class _Graph extends Graph {
   @override
   Ref get main;
   @override
-  DirectedGraph<Ref> get directed;
+  Map<Ref, Set<Ref>> get edges;
   @override
   Map<Ref, DateTime> get createdAt;
   @override

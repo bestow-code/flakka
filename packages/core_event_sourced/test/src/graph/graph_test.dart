@@ -1,7 +1,6 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_event_sourced/src/graph/graph.dart';
-import 'package:directed_graph/directed_graph.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -34,33 +33,33 @@ void main() {
     ref2: t(2),
   };
 
-  void buildGraph() {
+  void buildGraph([Iterable<Ref>? refs]) {
+    final edges2 = refs == null
+        ? edges
+        : ({...edges}..removeWhere((key, value) => !refs.contains(key)));
+    final createdAt2 = refs == null
+        ? createdAt
+        : ({...createdAt}..removeWhere((key, value) => !refs.contains(key)));
     graph = Graph(
       base: base,
-      main: main,
-      directed: DirectedGraph(edges),
-      createdAt: createdAt,
+      main: main,edges: edges2,
+      createdAt: createdAt2,
     );
   }
 
   EntryComparison comparison;
-  group('Graph.fullCompletePathTo',(){
-    test('complete path', (){
+  group('Graph.fullCompletePathTo', () {
+    test('incomplete path', () {
       main = ref0;
-      final createdAt2 = Map.of(createdAt)..remove(ref1b);
-      graph=Graph(
-        base: base,
-        main: main,
-        directed: DirectedGraph(Map.of(edges)..remove(ref1b),comparator: refComparator(createdAt2) ),
-        createdAt: createdAt2,
-      );
+      buildGraph([ref0, ref1a, ref2]);
       instance = ref2;
-      print(graph.directed.reachableVertices(ref2));
-
-      print(graph.directed.outDegreeMap);
-      // final path = graph.fullCompletePathTo(instance);
-      // expect(path, [ref0,ref1a,ref1b,ref2]);
-
+      expect(graph.completeFullPath(main, instance), <Ref>[]);
+    });
+    test('complete path', () {
+      main = ref0;
+      buildGraph();
+      instance = ref2;
+      expect(graph.completeFullPath(main, instance), [ref0,ref1a,ref1b,ref2]);
     });
   });
   group('Graph.compareMainTo', () {

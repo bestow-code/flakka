@@ -10,24 +10,26 @@ class Graph with _$Graph {
   factory Graph({
     required Ref base,
     required Ref main,
-    required DirectedGraph<Ref> directed,
+    required Map<Ref, Set<Ref>> edges,
     required Map<Ref, DateTime> createdAt,
   }) = _Graph;
 
-  factory Graph.empty({
-    required Entry base,
-  }) {
-    final createdAt = {base.ref: base.createdAt};
-    return Graph(
-      base: base.ref,
-      main: base.ref,
-      directed:
-          DirectedGraph({base.ref: {}}, comparator: refComparator(createdAt)),
-      createdAt: createdAt,
-    );
-  }
+  // factory Graph.empty({
+  //   required Entry base,
+  // }) {
+  //   final createdAt = {base.ref: base.createdAt};
+  //   return Graph(
+  //     base: base.ref,
+  //     main: base.ref,
+  //     edges: {base.ref: {}},
+  //     createdAt: createdAt,
+  //   );
+  // }
 
   Graph._();
+
+  late final DirectedGraph<Ref> directed =
+      DirectedGraph(edges, comparator: refComparator(createdAt));
 
   Graph copyAndAppend({
     required Ref ref,
@@ -36,9 +38,7 @@ class Graph with _$Graph {
   }) {
     final nextCreatedAt = {...this.createdAt, ref: createdAt};
     return copyWith(
-      directed: DirectedGraph({
-        ...directed.data..[ref] = refs
-      }, comparator: refComparator(nextCreatedAt)),
+      edges: {...directed.data..[ref] = refs},
       createdAt: nextCreatedAt,
     );
   }
@@ -60,7 +60,7 @@ class Graph with _$Graph {
 
   Graph copyWithNewEntry(Iterable<Entry> entry) {
     final edges = {
-      ...directed.data,
+      ...this.edges,
       ...Map.fromEntries(entry.map((e) => MapEntry(e.ref, e.refs.toSet())))
     };
     final nextCreatedAt = {
@@ -68,10 +68,7 @@ class Graph with _$Graph {
       ...Map.fromEntries(entry.map((e) => MapEntry(e.ref, e.createdAt)))
     };
     return copyWith(
-      directed: DirectedGraph(
-        edges,
-        comparator: refComparator(nextCreatedAt),
-      ),
+      edges: edges,
       createdAt: nextCreatedAt,
     );
   }
@@ -80,7 +77,7 @@ class Graph with _$Graph {
     if (instance == main) {
       return EntryComparison.equal(main: main, instance: instance);
     } else {
-      final instanceToMain = _getPath(instance, main);
+      final instanceToMain = completeFullPath(instance, main);
       if (instanceToMain.isNotEmpty) {
         return EntryComparison.behind(
           main: main,
@@ -88,7 +85,7 @@ class Graph with _$Graph {
           path: instanceToMain,
         );
       } else {
-        final mainToInstance = _getPath(main, instance);
+        final mainToInstance = completeFullPath(main, instance);
         if (mainToInstance.isNotEmpty) {
           return EntryComparison.ahead(
             main: main,
@@ -96,8 +93,8 @@ class Graph with _$Graph {
             path: mainToInstance,
           );
         } else {
-          final baseToMain = _getPath(base, main);
-          final baseToInstance = _getPath(base, instance);
+          final baseToMain = completeFullPath(base, main);
+          final baseToInstance = completeFullPath(base, instance);
           var index = 0;
           while (baseToMain[index] == baseToInstance[index]) {
             index += 1;
@@ -116,8 +113,14 @@ class Graph with _$Graph {
     }
   }
 
-  List<Ref> _getPath(Ref from, Ref to) =>
-      _sort(directed.paths(to, from).expand((element) => element));
+  List<Ref> completeFullPath(Ref from, Ref to) {
+    final refs =
+        _sort(directed.paths(to, from).expand((element) => element).toSet());
+    final edges = directed.data;
+    final reachable =
+        refs.skip(1).fold(<Ref>{}, (all, ref) => all..addAll(edges[ref] ?? []));
+    return reachable.every((ref) => createdAt.containsKey(ref)) ? refs : [];
+  }
 
   List<Ref> _sort(Iterable<Ref> refs) => refs.sorted((a, b) {
         final dateTimeComparison = createdAt[a]!.compareTo(createdAt[b]!);
@@ -127,22 +130,6 @@ class Graph with _$Graph {
           return a.value.compareTo(b.value);
         }
       });
-
-  Graph copyWithNewMain(Ref ref) {
-    return copyWith(main: ref);
-  }
-
-  Iterable<Ref> fullCompletePathTo(Ref pendingMain) {
-    final path = _getPath(pendingMain, main);
-    if (path.length > 1) {
-      final graph = DirectedGraph(
-          Map.fromEntries(directed.data.entries
-              .where((element) => path.contains(element.key))),
-          comparator: directed.comparator);
-      // graph.outDegreeMap.
-    }
-    throw UnimplementedError();
-  }
 }
 
 @freezed

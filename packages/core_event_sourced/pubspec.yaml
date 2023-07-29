@@ -22,7 +22,7 @@ dependencies:
   rxdart: ^0.27.7
 
 dev_dependencies:
-
+  core_datastore_test:
   bloc_test:
   build_runner:
   lints: ^2.0.1
