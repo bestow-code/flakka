@@ -3,41 +3,40 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'data_store_effect.freezed.dart';
 
-@freezed
-class DataStoreEffect<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> with _$DataStoreEffect<Event, State, View> {
-  factory DataStoreEffect() = _DataStoreEffect<Event, State, View>;
-}
+
 
 @freezed
 class DatastoreEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DatastoreEffect<Event, State, View> {
-  factory DatastoreEffect.appendEvents(
-    Iterable<Event> events, {
+  factory DatastoreEffect.appendEvents({
     required Ref ref,
     required Ref parent,
+    required Iterable<Event> events,
+    required StateView<State, View> stateView,
     required DateTime createdAt,
     required int sequenceNumber,
   }) = DatastoreEffectAppendEvents<Event, State, View>;
 
-  factory DatastoreEffect.appendMerge(
-    Ref merge, {
+  factory DatastoreEffect.appendMerge({
     required Ref ref,
     required Ref parent,
+    required Ref mergeParent,
+    required StateView<State, View> stateView,
     required DateTime createdAt,
     required int sequenceNumber,
   }) = DatastoreEffectAppendMerge<Event, State, View>;
 
-  factory DatastoreEffect.forward(
-    Ref ref, {
+  factory DatastoreEffect.forward({
+    required Ref ref,
+    required StateView<State, View> stateView,
     required DateTime createdAt,
     required int sequenceNumber,
   }) = DatastoreEffectForward<Event, State, View>;
 
-  factory DatastoreEffect.publish(
-    Ref ref, {
+  factory DatastoreEffect.publish({
+    required Ref ref,
+    required StateView<State, View> stateView,
     required Iterable<Ref> from,
     required DateTime createdAt,
-    required int sequenceNumber,
   }) = DatastoreEffectPublish<Event, State, View>;
 }

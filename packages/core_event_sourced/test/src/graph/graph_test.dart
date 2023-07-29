@@ -44,6 +44,25 @@ void main() {
   }
 
   EntryComparison comparison;
+  group('Graph.fullCompletePathTo',(){
+    test('complete path', (){
+      main = ref0;
+      final createdAt2 = Map.of(createdAt)..remove(ref1b);
+      graph=Graph(
+        base: base,
+        main: main,
+        directed: DirectedGraph(Map.of(edges)..remove(ref1b),comparator: refComparator(createdAt2) ),
+        createdAt: createdAt2,
+      );
+      instance = ref2;
+      print(graph.directed.reachableVertices(ref2));
+
+      print(graph.directed.outDegreeMap);
+      // final path = graph.fullCompletePathTo(instance);
+      // expect(path, [ref0,ref1a,ref1b,ref2]);
+
+    });
+  });
   group('Graph.compareMainTo', () {
     test('instance equals main', () {
       main = ref0;

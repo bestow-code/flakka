@@ -61,6 +61,12 @@ void main() {
     createdAt: createdAt[ref2]!,
   );
 
+  final testEvent0 = TestEvent(2);
+  final testEvents0 = [testEvent0];
+  final testState0 = TestState(0);
+  final testView0 = TestView(1);
+  final testStateView0 = (state: testState0, view: testView0);
+
   void buildGraph() {
     graph = Graph.empty(base: entry0);
     // graph = Graph(
@@ -79,13 +85,15 @@ void main() {
     Ref main,
   }) pending;
 
+  setUp(() {
+    main = ref0;
+    buildGraph();
+  });
   group('datastore update', () {
     group('entry', () {
       test('merge adds to graph', () async {
-        main = ref0;
-        buildGraph();
         graph = graph.copyWithNewEntry([entry1a, entry1b]);
-        initialStateView = {base: (state: TestState(0), view: TestView(1))};
+        initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
           events: {},
@@ -106,9 +114,7 @@ void main() {
         journal.datastoreUpdateSink.add(DatastoreUpdate.entry(data: [entry2]));
       });
       test('events-pending', () async {
-        main = ref0;
-        buildGraph();
-        initialStateView = {base: (state: TestState(0), view: TestView(1))};
+        initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
           events: {},
@@ -127,17 +133,14 @@ void main() {
         journal.datastoreUpdateSink.add(DatastoreUpdate.entry(data: [entry1a]));
       });
       test('events-ready', () {
-        main = ref0;
-        buildGraph();
-        initialStateView = {base: (state: TestState(0), view: TestView(1))};
-        final testEvent1 = TestEvent(2);
+        initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
           events: {},
           stateView: initialStateView,
           pending: JournalStatePending<TestEvent>.empty().copyWith(
             events: {
-              ref1a: [testEvent1]
+              ref1a: [testEvent0]
             },
           ),
         );
@@ -149,7 +152,7 @@ void main() {
               initialState.copyWith(
                 graph: graph.copyWithNewEntry([entry1a]),
                 events: {
-                  ref1a: [testEvent1]
+                  ref1a: [testEvent0]
                 },
                 pending: JournalStatePending.empty(),
               ),
@@ -161,10 +164,7 @@ void main() {
     });
     group('events', () {
       test('entry-pending', () {
-        main = ref0;
-        buildGraph();
-        initialStateView = {base: (state: TestState(0), view: TestView(1))};
-        final testEvent1 = TestEvent(2);
+        initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
           events: {},
@@ -176,25 +176,24 @@ void main() {
           expectLater(
             journal.stream,
             emits(
-              initialState.copyWith.pending(events: {
-                ref1a: [testEvent1]
-              }),
+              initialState.copyWith.pending(
+                events: {
+                  ref1a: [testEvent0]
+                },
+              ),
             ),
           ),
         );
         journal.datastoreUpdateSink.add(
           DatastoreUpdate.events(
             data: {
-              ref1a: [testEvent1]
+              ref1a: [testEvent0]
             },
           ),
         );
       });
       test('entry-ready', () {
-        main = ref0;
-        buildGraph();
-        initialStateView = {base: (state: TestState(0), view: TestView(1))};
-        final testEvent1 = TestEvent(2);
+        initialStateView = {base: (state: testState0, view: testView0)};
 
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
@@ -212,7 +211,7 @@ void main() {
               initialState.copyWith(
                 graph: graph.copyWithNewEntry([entry1a]),
                 events: {
-                  ref1a: [testEvent1]
+                  ref1a: [testEvent0]
                 },
                 pending: JournalStatePending.empty(),
               ),
@@ -222,7 +221,7 @@ void main() {
         journal.datastoreUpdateSink.add(
           DatastoreUpdate.events(
             data: {
-              ref1a: [testEvent1]
+              ref1a: [testEvent0]
             },
           ),
         );
@@ -234,9 +233,134 @@ void main() {
     });
   });
   group('journal effect', () {
-    group('append events', () {});
-    group('append merge', () {});
-    group('forward fast', () {});
-    group('forward reset', () {});
+    setUp(() {
+      initialState = JournalState<TestEvent, TestState, TestView>(
+        graph: graph,
+        events: {},
+        stateView: {ref0: testStateView0},
+        pending: JournalStatePending.empty(),
+      );
+      journal = JournalImpl(initialState);
+    });
+    group('append events', () {
+      void act() {
+        journal.journalEffectSink.add(
+          JournalEffect.appendEvents(
+            ref: ref1a,
+            parent: ref0,
+            events: testEvents0,
+            stateView: testStateView0,
+            createdAt: t(1),
+            sequenceNumber: 1,
+          ),
+        );
+      }
+
+      group('emits state', () {
+        test('updated graph', () async {
+          unawaited(
+            expectLater(
+              journal.stream.map((state) => state.graph),
+              emits(
+                isA<Graph>()
+                    .having(
+                      (p0) => p0.directed.edgeExists(ref1a, ref0),
+                      'ref1a edge',
+                      true,
+                    )
+                    .having((p0) => p0.createdAt[ref1a], 'createdAt', t(1)),
+              ),
+            ),
+          );
+          act();
+        });
+        test('updated events', () {
+          unawaited(
+            expectLater(
+              journal.stream.map((state) => state.events[ref1a]),
+              emits(testEvents0),
+            ),
+          );
+          act();
+        });
+        test('updated stateView', () {
+          unawaited(
+            expectLater(
+              journal.stream.map((state) => state.stateView[ref1a]),
+              emits(testStateView0),
+            ),
+          );
+          act();
+        });
+      });
+      group('emits datastore.appendEvents effect', () {
+        test('expected values', () {
+          unawaited(
+            expectLater(
+              journal.datastoreEffect,
+              emits(
+                DatastoreEffect<TestEvent, TestState, TestView>.appendEvents(
+                  ref: ref1a,
+                  parent: ref0,
+                  events: testEvents0,
+                  stateView: testStateView0,
+                  createdAt: t(1),
+                  sequenceNumber: 1,
+                ),
+              ),
+            ),
+          );
+          act();
+        });
+      });
+    });
+    group('append merge', () {
+      // setup merge-ready state
+      void act() {
+        journal.journalEffectSink.add(
+          JournalEffect.appendMerge(
+            ref: ref2,
+            parent: ref1a,
+            mergeParent: ref1b,
+            stateView: testStateView0,
+            createdAt: t(2),
+            sequenceNumber: 2,
+          ),
+        );
+      }
+
+      group('emits state', () {
+        // action is to appendMerge
+        test('updated graph', () {});
+        test('updated events', () {});
+        test('updated stateView', () {});
+      });
+      group('emits datastore.appendMerge effect', () {
+        test('expected values', () {
+          unawaited(
+            expectLater(
+              journal.datastoreEffect,
+              emits(
+                DatastoreEffect<TestEvent, TestState, TestView>.appendMerge(
+                  ref: ref2,
+                  parent: ref1a,
+                  mergeParent: ref1b,
+                  stateView: testStateView0,
+                  createdAt: t(2),
+                  sequenceNumber: 2,
+                ),
+              ),
+            ),
+          );
+          act();
+        });
+      });
+    });
+    group('forward', () {
+      group('emits state', () {
+        test('updated stateView', () {});
+      });
+      test('emits datastore.forward effect', () {});
+    });
   });
 }

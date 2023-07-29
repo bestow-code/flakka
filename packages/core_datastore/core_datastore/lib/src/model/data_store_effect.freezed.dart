@@ -15,130 +15,87 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DataStoreEffect<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> {}
-
-/// @nodoc
-abstract class $DataStoreEffectCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory $DataStoreEffectCopyWith(DataStoreEffect<Event, State, View> value,
-          $Res Function(DataStoreEffect<Event, State, View>) then) =
-      _$DataStoreEffectCopyWithImpl<Event, State, View, $Res,
-          DataStoreEffect<Event, State, View>>;
-}
-
-/// @nodoc
-class _$DataStoreEffectCopyWithImpl<
-        Event extends CoreEvent,
-        State extends CoreState,
-        View extends CoreView,
-        $Res,
-        $Val extends DataStoreEffect<Event, State, View>>
-    implements $DataStoreEffectCopyWith<Event, State, View, $Res> {
-  _$DataStoreEffectCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_DataStoreEffectCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory _$$_DataStoreEffectCopyWith(
-          _$_DataStoreEffect<Event, State, View> value,
-          $Res Function(_$_DataStoreEffect<Event, State, View>) then) =
-      __$$_DataStoreEffectCopyWithImpl<Event, State, View, $Res>;
-}
-
-/// @nodoc
-class __$$_DataStoreEffectCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$DataStoreEffectCopyWithImpl<Event, State, View, $Res,
-        _$_DataStoreEffect<Event, State, View>>
-    implements _$$_DataStoreEffectCopyWith<Event, State, View, $Res> {
-  __$$_DataStoreEffectCopyWithImpl(
-      _$_DataStoreEffect<Event, State, View> _value,
-      $Res Function(_$_DataStoreEffect<Event, State, View>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_DataStoreEffect<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements _DataStoreEffect<Event, State, View> {
-  _$_DataStoreEffect();
-
-  @override
-  String toString() {
-    return 'DataStoreEffect<$Event, $State, $View>()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_DataStoreEffect<Event, State, View>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-}
-
-abstract class _DataStoreEffect<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> implements DataStoreEffect<Event, State, View> {
-  factory _DataStoreEffect() = _$_DataStoreEffect<Event, State, View>;
-}
-
-/// @nodoc
 mixin _$DatastoreEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   Ref get ref => throw _privateConstructorUsedError;
+  ({State state, View view}) get stateView =>
+      throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  int get sequenceNumber => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendEvents,
-    required TResult Function(Ref merge, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendMerge,
-    required TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)
-        forward,
     required TResult Function(
-            Ref ref, Iterable<Ref> from, DateTime createdAt, int sequenceNumber)
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendEvents,
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendMerge,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)
         publish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult? Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult? Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult? Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
     required TResult orElse(),
   }) =>
@@ -195,7 +152,8 @@ abstract class $DatastoreEffectCopyWith<Event extends CoreEvent,
       _$DatastoreEffectCopyWithImpl<Event, State, View, $Res,
           DatastoreEffect<Event, State, View>>;
   @useResult
-  $Res call({Ref ref, DateTime createdAt, int sequenceNumber});
+  $Res call(
+      {Ref ref, ({State state, View view}) stateView, DateTime createdAt});
 
   $RefCopyWith<$Res> get ref;
 }
@@ -219,22 +177,22 @@ class _$DatastoreEffectCopyWithImpl<
   @override
   $Res call({
     Object? ref = null,
+    Object? stateView = null,
     Object? createdAt = null,
-    Object? sequenceNumber = null,
   }) {
     return _then(_value.copyWith(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 
@@ -261,9 +219,10 @@ abstract class _$$DatastoreEffectAppendEventsCopyWith<
   @override
   @useResult
   $Res call(
-      {Iterable<Event> events,
-      Ref ref,
+      {Ref ref,
       Ref parent,
+      Iterable<Event> events,
+      ({State state, View view}) stateView,
       DateTime createdAt,
       int sequenceNumber});
 
@@ -287,17 +246,14 @@ class __$$DatastoreEffectAppendEventsCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = null,
     Object? ref = null,
     Object? parent = null,
+    Object? events = null,
+    Object? stateView = null,
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
     return _then(_$DatastoreEffectAppendEvents<Event, State, View>(
-      null == events
-          ? _value.events
-          : events // ignore: cast_nullable_to_non_nullable
-              as Iterable<Event>,
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -306,6 +262,14 @@ class __$$DatastoreEffectAppendEventsCopyWithImpl<Event extends CoreEvent,
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as Ref,
+      events: null == events
+          ? _value.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as Iterable<Event>,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -331,18 +295,22 @@ class __$$DatastoreEffectAppendEventsCopyWithImpl<Event extends CoreEvent,
 class _$DatastoreEffectAppendEvents<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements DatastoreEffectAppendEvents<Event, State, View> {
-  _$DatastoreEffectAppendEvents(this.events,
+  _$DatastoreEffectAppendEvents(
       {required this.ref,
       required this.parent,
+      required this.events,
+      required this.stateView,
       required this.createdAt,
       required this.sequenceNumber});
 
   @override
-  final Iterable<Event> events;
-  @override
   final Ref ref;
   @override
   final Ref parent;
+  @override
+  final Iterable<Event> events;
+  @override
+  final ({State state, View view}) stateView;
   @override
   final DateTime createdAt;
   @override
@@ -350,7 +318,7 @@ class _$DatastoreEffectAppendEvents<Event extends CoreEvent,
 
   @override
   String toString() {
-    return 'DatastoreEffect<$Event, $State, $View>.appendEvents(events: $events, ref: $ref, parent: $parent, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DatastoreEffect<$Event, $State, $View>.appendEvents(ref: $ref, parent: $parent, events: $events, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
@@ -358,9 +326,11 @@ class _$DatastoreEffectAppendEvents<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DatastoreEffectAppendEvents<Event, State, View> &&
-            const DeepCollectionEquality().equals(other.events, events) &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.parent, parent) || other.parent == parent) &&
+            const DeepCollectionEquality().equals(other.events, events) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
@@ -370,9 +340,10 @@ class _$DatastoreEffectAppendEvents<Event extends CoreEvent,
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(events),
       ref,
       parent,
+      const DeepCollectionEquality().hash(events),
+      stateView,
       createdAt,
       sequenceNumber);
 
@@ -390,55 +361,93 @@ class _$DatastoreEffectAppendEvents<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendEvents,
-    required TResult Function(Ref merge, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendMerge,
-    required TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)
-        forward,
     required TResult Function(
-            Ref ref, Iterable<Ref> from, DateTime createdAt, int sequenceNumber)
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendEvents,
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendMerge,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)
         publish,
   }) {
-    return appendEvents(events, ref, parent, createdAt, sequenceNumber);
+    return appendEvents(
+        ref, parent, events, stateView, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult? Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult? Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult? Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
   }) {
-    return appendEvents?.call(events, ref, parent, createdAt, sequenceNumber);
+    return appendEvents?.call(
+        ref, parent, events, stateView, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
     required TResult orElse(),
   }) {
     if (appendEvents != null) {
-      return appendEvents(events, ref, parent, createdAt, sequenceNumber);
+      return appendEvents(
+          ref, parent, events, stateView, createdAt, sequenceNumber);
     }
     return orElse();
   }
@@ -497,20 +506,23 @@ abstract class DatastoreEffectAppendEvents<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements DatastoreEffect<Event, State, View> {
-  factory DatastoreEffectAppendEvents(final Iterable<Event> events,
+  factory DatastoreEffectAppendEvents(
           {required final Ref ref,
           required final Ref parent,
+          required final Iterable<Event> events,
+          required final ({State state, View view}) stateView,
           required final DateTime createdAt,
           required final int sequenceNumber}) =
       _$DatastoreEffectAppendEvents<Event, State, View>;
 
-  Iterable<Event> get events;
   @override
   Ref get ref;
   Ref get parent;
+  Iterable<Event> get events;
+  @override
+  ({State state, View view}) get stateView;
   @override
   DateTime get createdAt;
-  @override
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
@@ -533,12 +545,17 @@ abstract class _$$DatastoreEffectAppendMergeCopyWith<
   @override
   @useResult
   $Res call(
-      {Ref merge, Ref ref, Ref parent, DateTime createdAt, int sequenceNumber});
+      {Ref ref,
+      Ref parent,
+      Ref mergeParent,
+      ({State state, View view}) stateView,
+      DateTime createdAt,
+      int sequenceNumber});
 
-  $RefCopyWith<$Res> get merge;
   @override
   $RefCopyWith<$Res> get ref;
   $RefCopyWith<$Res> get parent;
+  $RefCopyWith<$Res> get mergeParent;
 }
 
 /// @nodoc
@@ -555,17 +572,14 @@ class __$$DatastoreEffectAppendMergeCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merge = null,
     Object? ref = null,
     Object? parent = null,
+    Object? mergeParent = null,
+    Object? stateView = null,
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
     return _then(_$DatastoreEffectAppendMerge<Event, State, View>(
-      null == merge
-          ? _value.merge
-          : merge // ignore: cast_nullable_to_non_nullable
-              as Ref,
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -574,6 +588,14 @@ class __$$DatastoreEffectAppendMergeCopyWithImpl<Event extends CoreEvent,
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as Ref,
+      mergeParent: null == mergeParent
+          ? _value.mergeParent
+          : mergeParent // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -587,17 +609,17 @@ class __$$DatastoreEffectAppendMergeCopyWithImpl<Event extends CoreEvent,
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get merge {
-    return $RefCopyWith<$Res>(_value.merge, (value) {
-      return _then(_value.copyWith(merge: value));
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
+      return _then(_value.copyWith(parent: value));
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get parent {
-    return $RefCopyWith<$Res>(_value.parent, (value) {
-      return _then(_value.copyWith(parent: value));
+  $RefCopyWith<$Res> get mergeParent {
+    return $RefCopyWith<$Res>(_value.mergeParent, (value) {
+      return _then(_value.copyWith(mergeParent: value));
     });
   }
 }
@@ -607,18 +629,22 @@ class __$$DatastoreEffectAppendMergeCopyWithImpl<Event extends CoreEvent,
 class _$DatastoreEffectAppendMerge<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements DatastoreEffectAppendMerge<Event, State, View> {
-  _$DatastoreEffectAppendMerge(this.merge,
+  _$DatastoreEffectAppendMerge(
       {required this.ref,
       required this.parent,
+      required this.mergeParent,
+      required this.stateView,
       required this.createdAt,
       required this.sequenceNumber});
 
   @override
-  final Ref merge;
-  @override
   final Ref ref;
   @override
   final Ref parent;
+  @override
+  final Ref mergeParent;
+  @override
+  final ({State state, View view}) stateView;
   @override
   final DateTime createdAt;
   @override
@@ -626,7 +652,7 @@ class _$DatastoreEffectAppendMerge<Event extends CoreEvent,
 
   @override
   String toString() {
-    return 'DatastoreEffect<$Event, $State, $View>.appendMerge(merge: $merge, ref: $ref, parent: $parent, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DatastoreEffect<$Event, $State, $View>.appendMerge(ref: $ref, parent: $parent, mergeParent: $mergeParent, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
@@ -634,9 +660,12 @@ class _$DatastoreEffectAppendMerge<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DatastoreEffectAppendMerge<Event, State, View> &&
-            (identical(other.merge, merge) || other.merge == merge) &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.parent, parent) || other.parent == parent) &&
+            (identical(other.mergeParent, mergeParent) ||
+                other.mergeParent == mergeParent) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
@@ -644,8 +673,8 @@ class _$DatastoreEffectAppendMerge<Event extends CoreEvent,
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, merge, ref, parent, createdAt, sequenceNumber);
+  int get hashCode => Object.hash(runtimeType, ref, parent, mergeParent,
+      stateView, createdAt, sequenceNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -661,55 +690,93 @@ class _$DatastoreEffectAppendMerge<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendEvents,
-    required TResult Function(Ref merge, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendMerge,
-    required TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)
-        forward,
     required TResult Function(
-            Ref ref, Iterable<Ref> from, DateTime createdAt, int sequenceNumber)
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendEvents,
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendMerge,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)
         publish,
   }) {
-    return appendMerge(merge, ref, parent, createdAt, sequenceNumber);
+    return appendMerge(
+        ref, parent, mergeParent, stateView, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult? Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult? Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult? Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
   }) {
-    return appendMerge?.call(merge, ref, parent, createdAt, sequenceNumber);
+    return appendMerge?.call(
+        ref, parent, mergeParent, stateView, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
     required TResult orElse(),
   }) {
     if (appendMerge != null) {
-      return appendMerge(merge, ref, parent, createdAt, sequenceNumber);
+      return appendMerge(
+          ref, parent, mergeParent, stateView, createdAt, sequenceNumber);
     }
     return orElse();
   }
@@ -768,20 +835,23 @@ abstract class DatastoreEffectAppendMerge<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements DatastoreEffect<Event, State, View> {
-  factory DatastoreEffectAppendMerge(final Ref merge,
+  factory DatastoreEffectAppendMerge(
           {required final Ref ref,
           required final Ref parent,
+          required final Ref mergeParent,
+          required final ({State state, View view}) stateView,
           required final DateTime createdAt,
           required final int sequenceNumber}) =
       _$DatastoreEffectAppendMerge<Event, State, View>;
 
-  Ref get merge;
   @override
   Ref get ref;
   Ref get parent;
+  Ref get mergeParent;
+  @override
+  ({State state, View view}) get stateView;
   @override
   DateTime get createdAt;
-  @override
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
@@ -802,7 +872,11 @@ abstract class _$$DatastoreEffectForwardCopyWith<
       __$$DatastoreEffectForwardCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call({Ref ref, DateTime createdAt, int sequenceNumber});
+  $Res call(
+      {Ref ref,
+      ({State state, View view}) stateView,
+      DateTime createdAt,
+      int sequenceNumber});
 
   @override
   $RefCopyWith<$Res> get ref;
@@ -823,14 +897,19 @@ class __$$DatastoreEffectForwardCopyWithImpl<Event extends CoreEvent,
   @override
   $Res call({
     Object? ref = null,
+    Object? stateView = null,
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
     return _then(_$DatastoreEffectForward<Event, State, View>(
-      null == ref
+      ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -848,11 +927,16 @@ class __$$DatastoreEffectForwardCopyWithImpl<Event extends CoreEvent,
 class _$DatastoreEffectForward<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
     implements DatastoreEffectForward<Event, State, View> {
-  _$DatastoreEffectForward(this.ref,
-      {required this.createdAt, required this.sequenceNumber});
+  _$DatastoreEffectForward(
+      {required this.ref,
+      required this.stateView,
+      required this.createdAt,
+      required this.sequenceNumber});
 
   @override
   final Ref ref;
+  @override
+  final ({State state, View view}) stateView;
   @override
   final DateTime createdAt;
   @override
@@ -860,7 +944,7 @@ class _$DatastoreEffectForward<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'DatastoreEffect<$Event, $State, $View>.forward(ref: $ref, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DatastoreEffect<$Event, $State, $View>.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
@@ -869,6 +953,8 @@ class _$DatastoreEffectForward<Event extends CoreEvent, State extends CoreState,
         (other.runtimeType == runtimeType &&
             other is _$DatastoreEffectForward<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
@@ -876,7 +962,8 @@ class _$DatastoreEffectForward<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, createdAt, sequenceNumber);
+  int get hashCode =>
+      Object.hash(runtimeType, ref, stateView, createdAt, sequenceNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -889,55 +976,90 @@ class _$DatastoreEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendEvents,
-    required TResult Function(Ref merge, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendMerge,
-    required TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)
-        forward,
     required TResult Function(
-            Ref ref, Iterable<Ref> from, DateTime createdAt, int sequenceNumber)
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendEvents,
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendMerge,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)
         publish,
   }) {
-    return forward(ref, createdAt, sequenceNumber);
+    return forward(ref, stateView, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult? Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult? Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult? Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
   }) {
-    return forward?.call(ref, createdAt, sequenceNumber);
+    return forward?.call(ref, stateView, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
     required TResult orElse(),
   }) {
     if (forward != null) {
-      return forward(ref, createdAt, sequenceNumber);
+      return forward(ref, stateView, createdAt, sequenceNumber);
     }
     return orElse();
   }
@@ -996,16 +1118,19 @@ abstract class DatastoreEffectForward<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements DatastoreEffect<Event, State, View> {
-  factory DatastoreEffectForward(final Ref ref,
-          {required final DateTime createdAt,
+  factory DatastoreEffectForward(
+          {required final Ref ref,
+          required final ({State state, View view}) stateView,
+          required final DateTime createdAt,
           required final int sequenceNumber}) =
       _$DatastoreEffectForward<Event, State, View>;
 
   @override
   Ref get ref;
   @override
-  DateTime get createdAt;
+  ({State state, View view}) get stateView;
   @override
+  DateTime get createdAt;
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
@@ -1027,7 +1152,10 @@ abstract class _$$DatastoreEffectPublishCopyWith<
   @override
   @useResult
   $Res call(
-      {Ref ref, Iterable<Ref> from, DateTime createdAt, int sequenceNumber});
+      {Ref ref,
+      ({State state, View view}) stateView,
+      Iterable<Ref> from,
+      DateTime createdAt});
 
   @override
   $RefCopyWith<$Res> get ref;
@@ -1048,15 +1176,19 @@ class __$$DatastoreEffectPublishCopyWithImpl<Event extends CoreEvent,
   @override
   $Res call({
     Object? ref = null,
+    Object? stateView = null,
     Object? from = null,
     Object? createdAt = null,
-    Object? sequenceNumber = null,
   }) {
     return _then(_$DatastoreEffectPublish<Event, State, View>(
-      null == ref
+      ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
       from: null == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -1065,10 +1197,6 @@ class __$$DatastoreEffectPublishCopyWithImpl<Event extends CoreEvent,
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -1078,23 +1206,24 @@ class __$$DatastoreEffectPublishCopyWithImpl<Event extends CoreEvent,
 class _$DatastoreEffectPublish<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
     implements DatastoreEffectPublish<Event, State, View> {
-  _$DatastoreEffectPublish(this.ref,
-      {required this.from,
-      required this.createdAt,
-      required this.sequenceNumber});
+  _$DatastoreEffectPublish(
+      {required this.ref,
+      required this.stateView,
+      required this.from,
+      required this.createdAt});
 
   @override
   final Ref ref;
   @override
+  final ({State state, View view}) stateView;
+  @override
   final Iterable<Ref> from;
   @override
   final DateTime createdAt;
-  @override
-  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'DatastoreEffect<$Event, $State, $View>.publish(ref: $ref, from: $from, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DatastoreEffect<$Event, $State, $View>.publish(ref: $ref, stateView: $stateView, from: $from, createdAt: $createdAt)';
   }
 
   @override
@@ -1103,16 +1232,16 @@ class _$DatastoreEffectPublish<Event extends CoreEvent, State extends CoreState,
         (other.runtimeType == runtimeType &&
             other is _$DatastoreEffectPublish<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref,
-      const DeepCollectionEquality().hash(from), createdAt, sequenceNumber);
+  int get hashCode => Object.hash(runtimeType, ref, stateView,
+      const DeepCollectionEquality().hash(from), createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -1125,55 +1254,90 @@ class _$DatastoreEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendEvents,
-    required TResult Function(Ref merge, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)
-        appendMerge,
-    required TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)
-        forward,
     required TResult Function(
-            Ref ref, Iterable<Ref> from, DateTime createdAt, int sequenceNumber)
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendEvents,
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendMerge,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)
         publish,
   }) {
-    return publish(ref, from, createdAt, sequenceNumber);
+    return publish(ref, stateView, from, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult? Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult? Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult? Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
   }) {
-    return publish?.call(ref, from, createdAt, sequenceNumber);
+    return publish?.call(ref, stateView, from, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events, Ref ref, Ref parent,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
         appendEvents,
-    TResult Function(Ref merge, Ref ref, Ref parent, DateTime createdAt,
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
             int sequenceNumber)?
         appendMerge,
-    TResult Function(Ref ref, DateTime createdAt, int sequenceNumber)? forward,
-    TResult Function(Ref ref, Iterable<Ref> from, DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            DateTime createdAt, int sequenceNumber)?
+        forward,
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            Iterable<Ref> from, DateTime createdAt)?
         publish,
     required TResult orElse(),
   }) {
     if (publish != null) {
-      return publish(ref, from, createdAt, sequenceNumber);
+      return publish(ref, stateView, from, createdAt);
     }
     return orElse();
   }
@@ -1232,19 +1396,20 @@ abstract class DatastoreEffectPublish<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements DatastoreEffect<Event, State, View> {
-  factory DatastoreEffectPublish(final Ref ref,
-          {required final Iterable<Ref> from,
-          required final DateTime createdAt,
-          required final int sequenceNumber}) =
+  factory DatastoreEffectPublish(
+          {required final Ref ref,
+          required final ({State state, View view}) stateView,
+          required final Iterable<Ref> from,
+          required final DateTime createdAt}) =
       _$DatastoreEffectPublish<Event, State, View>;
 
   @override
   Ref get ref;
+  @override
+  ({State state, View view}) get stateView;
   Iterable<Ref> get from;
   @override
   DateTime get createdAt;
-  @override
-  int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
   _$$DatastoreEffectPublishCopyWith<Event, State, View,

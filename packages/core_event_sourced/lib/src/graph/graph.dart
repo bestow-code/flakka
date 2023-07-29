@@ -29,6 +29,35 @@ class Graph with _$Graph {
 
   Graph._();
 
+  Graph copyAndAppend({
+    required Ref ref,
+    required Set<Ref> refs,
+    required DateTime createdAt,
+  }) {
+    final nextCreatedAt = {...this.createdAt, ref: createdAt};
+    return copyWith(
+      directed: DirectedGraph({
+        ...directed.data..[ref] = refs
+      }, comparator: refComparator(nextCreatedAt)),
+      createdAt: nextCreatedAt,
+    );
+  }
+
+  // Graph copyAndAppendMerge({
+  //   required Ref ref,
+  //   required Ref parent,
+  //   required Ref mergeParent,
+  //   required DateTime createdAt,
+  // }) {
+  //   final nextCreatedAt = {...this.createdAt, ref: createdAt};
+  //   return copyWith(
+  //     directed: DirectedGraph({
+  //       ...directed.data..[ref] = {parent, mergeParent}
+  //     }, comparator: refComparator(nextCreatedAt)),
+  //     createdAt: nextCreatedAt,
+  //   );
+  // }
+
   Graph copyWithNewEntry(Iterable<Entry> entry) {
     final edges = {
       ...directed.data,
@@ -98,6 +127,22 @@ class Graph with _$Graph {
           return a.value.compareTo(b.value);
         }
       });
+
+  Graph copyWithNewMain(Ref ref) {
+    return copyWith(main: ref);
+  }
+
+  Iterable<Ref> fullCompletePathTo(Ref pendingMain) {
+    final path = _getPath(pendingMain, main);
+    if (path.length > 1) {
+      final graph = DirectedGraph(
+          Map.fromEntries(directed.data.entries
+              .where((element) => path.contains(element.key))),
+          comparator: directed.comparator);
+      // graph.outDegreeMap.
+    }
+    throw UnimplementedError();
+  }
 }
 
 @freezed

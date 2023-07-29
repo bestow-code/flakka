@@ -6,7 +6,6 @@ import 'package:core_datastore/core_datastore.dart';
 
 import '../../core_event_sourced.dart';
 
-
 abstract interface class Journal<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> implements Closable {
   StreamSink<JournalEffect> get journalEffectSink;
@@ -18,7 +17,7 @@ abstract interface class JournalInternal<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Journal<Event, State, View> {
-  StreamSink<DatastoreUpdate<Event,State,View>> get datastoreUpdateSink;
+  StreamSink<DatastoreUpdate<Event, State, View>> get datastoreUpdateSink;
 
-  Stream<DataStoreEffect<Event,State,View>> get dataStoreEffect;
+  Stream<DatastoreEffect<Event, State, View>> get datastoreEffect;
 }

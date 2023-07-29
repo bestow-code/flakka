@@ -19,24 +19,15 @@ class JournalEffect<Event extends CoreEvent, State extends CoreState,
     required Ref ref,
     required Ref parent,
     required Ref mergeParent,
-    required Ref mergeBase,
     required StateView<State, View> stateView,
     required int sequenceNumber,
     required DateTime createdAt,
   }) = JournalEffectAppendMerge<Event, State, View>;
 
-  factory JournalEffect.forwardFast({
+  factory JournalEffect.forward({
     required Ref ref,
     required StateView<State, View> stateView,
     required int sequenceNumber,
     required DateTime createdAt,
-  }) = JournalEffectForwardFast<Event, State, View>;
-
-  factory JournalEffect.forwardReset({
-    required Ref ref,
-    required Ref resetBase,
-    required StateView<State, View> stateView,
-    required int sequenceNumber,
-    required DateTime createdAt,
-  }) = JournalEffectForwardReset<Event, State, View>;
+  }) = JournalEffectForward;
 }

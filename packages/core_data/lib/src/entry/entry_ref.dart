@@ -21,11 +21,20 @@ class Ref with _$Ref {
 
 int Function(Ref, Ref) refComparator(Map<Ref, DateTime> createdAt) =>
     (Ref a, Ref b) {
-      final dateTimeComparison = createdAt[a]!.compareTo(createdAt[b]!);
-      if (dateTimeComparison != 0) {
-        return dateTimeComparison;
-      } else {
+      if (createdAt[a] == null && createdAt[b] == null) {
         return a.value.compareTo(b.value);
+      } else if (createdAt[a] != null && createdAt[b] != null) {
+        final dateTimeComparison = createdAt[a]!.compareTo(createdAt[b]!);
+        if (dateTimeComparison != 0) {
+          return dateTimeComparison;
+        } else {
+          return a.value.compareTo(b.value);
+        }
+      } else if (createdAt[a] != null) {
+        return 1;
+      } else {
+        assert(createdAt[b] != null, 'createdAt not found for ${b}');
+        return -1;
       }
     };
 
