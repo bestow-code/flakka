@@ -102,6 +102,9 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
                 ),
               );
             },
+            none: (_) {
+              datastoreEffect.add(DatastoreEffect.none());
+            },
           );
         },
       );
@@ -130,8 +133,8 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
   final PublishSubject<JournalUpdate<Event, State, View>> journalUpdate =
       PublishSubject();
 
-  Future<JournalState<Event, State, View>> prepare(Ref ref) async {
-    // stream.firstWhere((element) => state.graph.)
-    throw UnimplementedError();
-  }
+  // Future<JournalState<Event, State, View>> prepare(Ref ref) async {
+  //   // stream.firstWhere((element) => state.graph.)
+  //   throw UnimplementedError();
+  // }
 }

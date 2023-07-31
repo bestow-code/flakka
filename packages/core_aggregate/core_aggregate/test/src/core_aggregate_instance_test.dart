@@ -20,9 +20,9 @@ void main() {
   TestView viewEventHandler(TestView view, TestEvent event) =>
       TestView(view.value * event.value);
 
-  late EntryRefFactory entryRefFactory;
+  late RefFactory entryRefFactory;
   setUp(() {
-    entryRefFactory = EntryRefFactory.increment();
+    entryRefFactory = RefFactory.increment();
   });
   group('.request', () {
     setUp(() {

@@ -4,8 +4,9 @@ class DateTimeFactory {
   factory DateTimeFactory.increment([int? start]) {
     var count = start ?? 0;
     return DateTimeFactory(() {
+      final next=DateTime.fromMillisecondsSinceEpoch(count);
       count = count + 1;
-      return DateTime.fromMillisecondsSinceEpoch(count);
+      return next;
     });
   }
 

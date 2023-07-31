@@ -1,6 +1,7 @@
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_event_sourced/core_event_sourced.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -19,7 +20,7 @@ class AggregateInstance<Event extends CoreEvent, State extends CoreState,
     required State Function(State, Event) stateEventHandler,
     required View Function(View, Event) viewEventHandler,
     required AggregateInstanceState<Event, State, View> initialState,
-    required EntryRefFactory entryRefFactory,
+    required RefFactory entryRefFactory,
   })  : _stateEventHandler = stateEventHandler,
         _viewEventHandler = viewEventHandler,
         _entryRefFactory = entryRefFactory {
@@ -36,7 +37,7 @@ class AggregateInstance<Event extends CoreEvent, State extends CoreState,
   final CoreEventHandler<Event, State> _stateEventHandler;
   final CoreEventHandler<Event, View> _viewEventHandler;
 
-  final EntryRefFactory _entryRefFactory;
+  final RefFactory _entryRefFactory;
 
   // input
   final PublishSubject<CoreRequestHandler<State, Event>> request =

@@ -35,7 +35,7 @@ void _emitRootView(RootImplDescriptor root, StringSink output) {
       : '';
   output.write('''
     @freezed
-    class ${root.scope.pascalCase}View with _\$${root.scope.pascalCase}View {
+    class ${root.scope.pascalCase}View with _\$${root.scope.pascalCase}View implements CoreView {
       factory ${root.scope.pascalCase}View(
         $aggregateViewRecordsBlock
       ) = _${root.scope.pascalCase}View;

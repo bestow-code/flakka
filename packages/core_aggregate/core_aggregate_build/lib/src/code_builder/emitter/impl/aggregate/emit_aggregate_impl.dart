@@ -12,7 +12,7 @@ void emitAggregateImpl(
 
 @freezed
 class ${aggregate.scope.pascalCase}AggregateViewImpl
-    with _\$${aggregate.scope.pascalCase}AggregateViewImpl, ${aggregate.scope.pascalCase}AggregateView {
+    with _\$${aggregate.scope.pascalCase}AggregateViewImpl, ${aggregate.scope.pascalCase}AggregateView, CoreView {
   @With<${aggregate.scope.pascalCase}AggregateView>()
   factory ${aggregate.scope.pascalCase}AggregateViewImpl({
     required int total,

@@ -10,18 +10,18 @@ class EntryFactory {
   factory EntryFactory.standard() => EntryFactory.randomRefCreatedNow();
 
   factory EntryFactory.randomRefCreatedNow() => EntryFactory(
-        entryRefFactory: EntryRefFactory.basic(),
+        entryRefFactory: RefFactory.basic(),
         dateTimeFactory: DateTimeFactory.now(),
       );
 
   factory EntryFactory.increment([int? start]) {
     return EntryFactory(
-      entryRefFactory: EntryRefFactory.increment(start ?? 0),
+      entryRefFactory: RefFactory.increment(start ?? 0),
       dateTimeFactory: DateTimeFactory.increment(start ?? 0),
     );
   }
 
-  final EntryRefFactory entryRefFactory;
+  final RefFactory entryRefFactory;
   final DateTimeFactory dateTimeFactory;
 
   Entry initial() => create(

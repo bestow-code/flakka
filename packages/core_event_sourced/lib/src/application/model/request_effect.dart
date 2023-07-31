@@ -9,9 +9,9 @@ class RequestEffect<Event extends CoreEvent> with _$RequestEffect<Event> {
 
   factory RequestEffect.none() = RequestEffectNone;
 
-  factory RequestEffect.done() = RequestEffectDone<Event>;
+  // factory RequestEffect.done() = RequestEffectDone<Event>;
 
-  factory RequestEffect.fail({
-    String? message,
-  }) = RequestEffectFail<Event>;
+  // factory RequestEffect.fail({
+  //   String? message,
+  // }) = RequestEffectFail<Event>;
 }

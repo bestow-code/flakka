@@ -17,11 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  Ref get ref => throw _privateConstructorUsedError;
-  ({State state, View view}) get stateView =>
-      throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  int get sequenceNumber => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -43,6 +38,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)
         forward,
+    required TResult Function() none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +62,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +86,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult Function()? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -102,6 +100,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
         appendMerge,
     required TResult Function(JournalEffectForward<Event, State, View> value)
         forward,
+    required TResult Function(JournalEffectNone<Event, State, View> value) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +110,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     TResult? Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult? Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult? Function(JournalEffectNone<Event, State, View> value)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -120,13 +120,10 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     TResult Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult Function(JournalEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $JournalEffectCopyWith<Event, State, View, JournalEffect<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -136,14 +133,6 @@ abstract class $JournalEffectCopyWith<Event extends CoreEvent,
           $Res Function(JournalEffect<Event, State, View>) then) =
       _$JournalEffectCopyWithImpl<Event, State, View, $Res,
           JournalEffect<Event, State, View>>;
-  @useResult
-  $Res call(
-      {Ref ref,
-      ({State state, View view}) stateView,
-      DateTime createdAt,
-      int sequenceNumber});
-
-  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -160,55 +149,15 @@ class _$JournalEffectCopyWithImpl<
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? stateView = null,
-    Object? createdAt = null,
-    Object? sequenceNumber = null,
-  }) {
-    return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      stateView: null == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$JournalEffectAppendEventsCopyWith<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView,
-    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
+abstract class _$$JournalEffectAppendEventsCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$JournalEffectAppendEventsCopyWith(
           _$JournalEffectAppendEvents<Event, State, View> value,
           $Res Function(_$JournalEffectAppendEvents<Event, State, View>) then) =
       __$$JournalEffectAppendEventsCopyWithImpl<Event, State, View, $Res>;
-  @override
   @useResult
   $Res call(
       {Ref ref,
@@ -218,7 +167,6 @@ abstract class _$$JournalEffectAppendEventsCopyWith<
       DateTime createdAt,
       int sequenceNumber});
 
-  @override
   $RefCopyWith<$Res> get ref;
   $RefCopyWith<$Res> get parent;
 }
@@ -270,6 +218,14 @@ class __$$JournalEffectAppendEventsCopyWithImpl<Event extends CoreEvent,
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 
   @override
@@ -371,6 +327,7 @@ class _$JournalEffectAppendEvents<Event extends CoreEvent,
     required TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)
         forward,
+    required TResult Function() none,
   }) {
     return appendEvents(
         ref, parent, events, stateView, createdAt, sequenceNumber);
@@ -398,6 +355,7 @@ class _$JournalEffectAppendEvents<Event extends CoreEvent,
     TResult? Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult? Function()? none,
   }) {
     return appendEvents?.call(
         ref, parent, events, stateView, createdAt, sequenceNumber);
@@ -425,6 +383,7 @@ class _$JournalEffectAppendEvents<Event extends CoreEvent,
     TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (appendEvents != null) {
@@ -445,6 +404,7 @@ class _$JournalEffectAppendEvents<Event extends CoreEvent,
         appendMerge,
     required TResult Function(JournalEffectForward<Event, State, View> value)
         forward,
+    required TResult Function(JournalEffectNone<Event, State, View> value) none,
   }) {
     return appendEvents(this);
   }
@@ -457,6 +417,7 @@ class _$JournalEffectAppendEvents<Event extends CoreEvent,
     TResult? Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult? Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult? Function(JournalEffectNone<Event, State, View> value)? none,
   }) {
     return appendEvents?.call(this);
   }
@@ -469,6 +430,7 @@ class _$JournalEffectAppendEvents<Event extends CoreEvent,
     TResult Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult Function(JournalEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) {
     if (appendEvents != null) {
@@ -491,17 +453,12 @@ abstract class JournalEffectAppendEvents<
           required final int sequenceNumber}) =
       _$JournalEffectAppendEvents<Event, State, View>;
 
-  @override
   Ref get ref;
   Ref get parent;
   Iterable<Event> get events;
-  @override
   ({State state, View view}) get stateView;
-  @override
   DateTime get createdAt;
-  @override
   int get sequenceNumber;
-  @override
   @JsonKey(ignore: true)
   _$$JournalEffectAppendEventsCopyWith<Event, State, View,
           _$JournalEffectAppendEvents<Event, State, View>>
@@ -509,16 +466,12 @@ abstract class JournalEffectAppendEvents<
 }
 
 /// @nodoc
-abstract class _$$JournalEffectAppendMergeCopyWith<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView,
-    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
+abstract class _$$JournalEffectAppendMergeCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$JournalEffectAppendMergeCopyWith(
           _$JournalEffectAppendMerge<Event, State, View> value,
           $Res Function(_$JournalEffectAppendMerge<Event, State, View>) then) =
       __$$JournalEffectAppendMergeCopyWithImpl<Event, State, View, $Res>;
-  @override
   @useResult
   $Res call(
       {Ref ref,
@@ -528,7 +481,6 @@ abstract class _$$JournalEffectAppendMergeCopyWith<
       int sequenceNumber,
       DateTime createdAt});
 
-  @override
   $RefCopyWith<$Res> get ref;
   $RefCopyWith<$Res> get parent;
   $RefCopyWith<$Res> get mergeParent;
@@ -581,6 +533,14 @@ class __$$JournalEffectAppendMergeCopyWithImpl<Event extends CoreEvent,
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 
   @override
@@ -685,6 +645,7 @@ class _$JournalEffectAppendMerge<Event extends CoreEvent,
     required TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)
         forward,
+    required TResult Function() none,
   }) {
     return appendMerge(
         ref, parent, mergeParent, stateView, sequenceNumber, createdAt);
@@ -712,6 +673,7 @@ class _$JournalEffectAppendMerge<Event extends CoreEvent,
     TResult? Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult? Function()? none,
   }) {
     return appendMerge?.call(
         ref, parent, mergeParent, stateView, sequenceNumber, createdAt);
@@ -739,6 +701,7 @@ class _$JournalEffectAppendMerge<Event extends CoreEvent,
     TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (appendMerge != null) {
@@ -759,6 +722,7 @@ class _$JournalEffectAppendMerge<Event extends CoreEvent,
         appendMerge,
     required TResult Function(JournalEffectForward<Event, State, View> value)
         forward,
+    required TResult Function(JournalEffectNone<Event, State, View> value) none,
   }) {
     return appendMerge(this);
   }
@@ -771,6 +735,7 @@ class _$JournalEffectAppendMerge<Event extends CoreEvent,
     TResult? Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult? Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult? Function(JournalEffectNone<Event, State, View> value)? none,
   }) {
     return appendMerge?.call(this);
   }
@@ -783,6 +748,7 @@ class _$JournalEffectAppendMerge<Event extends CoreEvent,
     TResult Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult Function(JournalEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) {
     if (appendMerge != null) {
@@ -805,17 +771,12 @@ abstract class JournalEffectAppendMerge<
           required final DateTime createdAt}) =
       _$JournalEffectAppendMerge<Event, State, View>;
 
-  @override
   Ref get ref;
   Ref get parent;
   Ref get mergeParent;
-  @override
   ({State state, View view}) get stateView;
-  @override
   int get sequenceNumber;
-  @override
   DateTime get createdAt;
-  @override
   @JsonKey(ignore: true)
   _$$JournalEffectAppendMergeCopyWith<Event, State, View,
           _$JournalEffectAppendMerge<Event, State, View>>
@@ -823,16 +784,12 @@ abstract class JournalEffectAppendMerge<
 }
 
 /// @nodoc
-abstract class _$$JournalEffectForwardCopyWith<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView,
-    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
+abstract class _$$JournalEffectForwardCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$JournalEffectForwardCopyWith(
           _$JournalEffectForward<Event, State, View> value,
           $Res Function(_$JournalEffectForward<Event, State, View>) then) =
       __$$JournalEffectForwardCopyWithImpl<Event, State, View, $Res>;
-  @override
   @useResult
   $Res call(
       {Ref ref,
@@ -840,7 +797,6 @@ abstract class _$$JournalEffectForwardCopyWith<
       int sequenceNumber,
       DateTime createdAt});
 
-  @override
   $RefCopyWith<$Res> get ref;
 }
 
@@ -881,6 +837,14 @@ class __$$JournalEffectForwardCopyWithImpl<Event extends CoreEvent,
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 }
 
@@ -956,6 +920,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)
         forward,
+    required TResult Function() none,
   }) {
     return forward(ref, stateView, sequenceNumber, createdAt);
   }
@@ -982,6 +947,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult? Function()? none,
   }) {
     return forward?.call(ref, stateView, sequenceNumber, createdAt);
   }
@@ -1008,6 +974,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, ({State state, View view}) stateView,
             int sequenceNumber, DateTime createdAt)?
         forward,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -1027,6 +994,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
         appendMerge,
     required TResult Function(JournalEffectForward<Event, State, View> value)
         forward,
+    required TResult Function(JournalEffectNone<Event, State, View> value) none,
   }) {
     return forward(this);
   }
@@ -1039,6 +1007,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     TResult? Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult? Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult? Function(JournalEffectNone<Event, State, View> value)? none,
   }) {
     return forward?.call(this);
   }
@@ -1051,6 +1020,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     TResult Function(JournalEffectAppendMerge<Event, State, View> value)?
         appendMerge,
     TResult Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult Function(JournalEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -1071,17 +1041,193 @@ abstract class JournalEffectForward<
           required final DateTime createdAt}) =
       _$JournalEffectForward<Event, State, View>;
 
-  @override
   Ref get ref;
-  @override
   ({State state, View view}) get stateView;
-  @override
   int get sequenceNumber;
-  @override
   DateTime get createdAt;
-  @override
   @JsonKey(ignore: true)
   _$$JournalEffectForwardCopyWith<Event, State, View,
           _$JournalEffectForward<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$JournalEffectNoneCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory _$$JournalEffectNoneCopyWith(
+          _$JournalEffectNone<Event, State, View> value,
+          $Res Function(_$JournalEffectNone<Event, State, View>) then) =
+      __$$JournalEffectNoneCopyWithImpl<Event, State, View, $Res>;
+}
+
+/// @nodoc
+class __$$JournalEffectNoneCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$JournalEffectCopyWithImpl<Event, State, View, $Res,
+        _$JournalEffectNone<Event, State, View>>
+    implements _$$JournalEffectNoneCopyWith<Event, State, View, $Res> {
+  __$$JournalEffectNoneCopyWithImpl(
+      _$JournalEffectNone<Event, State, View> _value,
+      $Res Function(_$JournalEffectNone<Event, State, View>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements JournalEffectNone<Event, State, View> {
+  _$JournalEffectNone();
+
+  @override
+  String toString() {
+    return 'JournalEffect<$Event, $State, $View>.none()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JournalEffectNone<Event, State, View>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)
+        appendEvents,
+    required TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            int sequenceNumber,
+            DateTime createdAt)
+        appendMerge,
+    required TResult Function(Ref ref, ({State state, View view}) stateView,
+            int sequenceNumber, DateTime createdAt)
+        forward,
+    required TResult Function() none,
+  }) {
+    return none();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
+        appendEvents,
+    TResult? Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            int sequenceNumber,
+            DateTime createdAt)?
+        appendMerge,
+    TResult? Function(Ref ref, ({State state, View view}) stateView,
+            int sequenceNumber, DateTime createdAt)?
+        forward,
+    TResult? Function()? none,
+  }) {
+    return none?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Iterable<Event> events,
+            ({State state, View view}) stateView,
+            DateTime createdAt,
+            int sequenceNumber)?
+        appendEvents,
+    TResult Function(
+            Ref ref,
+            Ref parent,
+            Ref mergeParent,
+            ({State state, View view}) stateView,
+            int sequenceNumber,
+            DateTime createdAt)?
+        appendMerge,
+    TResult Function(Ref ref, ({State state, View view}) stateView,
+            int sequenceNumber, DateTime createdAt)?
+        forward,
+    TResult Function()? none,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            JournalEffectAppendEvents<Event, State, View> value)
+        appendEvents,
+    required TResult Function(
+            JournalEffectAppendMerge<Event, State, View> value)
+        appendMerge,
+    required TResult Function(JournalEffectForward<Event, State, View> value)
+        forward,
+    required TResult Function(JournalEffectNone<Event, State, View> value) none,
+  }) {
+    return none(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JournalEffectAppendEvents<Event, State, View> value)?
+        appendEvents,
+    TResult? Function(JournalEffectAppendMerge<Event, State, View> value)?
+        appendMerge,
+    TResult? Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult? Function(JournalEffectNone<Event, State, View> value)? none,
+  }) {
+    return none?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(JournalEffectAppendEvents<Event, State, View> value)?
+        appendEvents,
+    TResult Function(JournalEffectAppendMerge<Event, State, View> value)?
+        appendMerge,
+    TResult Function(JournalEffectForward<Event, State, View> value)? forward,
+    TResult Function(JournalEffectNone<Event, State, View> value)? none,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class JournalEffectNone<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements JournalEffect<Event, State, View> {
+  factory JournalEffectNone() = _$JournalEffectNone<Event, State, View>;
 }

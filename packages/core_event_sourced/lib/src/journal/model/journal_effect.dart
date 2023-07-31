@@ -30,4 +30,7 @@ class JournalEffect<Event extends CoreEvent, State extends CoreState,
     required int sequenceNumber,
     required DateTime createdAt,
   }) = JournalEffectForward;
+
+
+  factory JournalEffect.none() = JournalEffectNone;
 }

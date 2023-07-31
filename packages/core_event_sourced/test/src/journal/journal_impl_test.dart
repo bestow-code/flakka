@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bloc_test/bloc_test.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore/core_datastore.dart';
@@ -82,7 +83,6 @@ void main() {
     );
   }
 
-  late Map<Ref, Iterable<TestEvent>> initialEvents;
   late Map<Ref, StateView<TestState, TestView>> initialStateView;
   late ({
     Map<Ref, Iterable<TestEvent>> events,
@@ -168,7 +168,7 @@ void main() {
       });
     });
     group('events', () {
-      test('entry-pending', () async{
+      test('entry-pending', () async {
         initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
@@ -450,6 +450,32 @@ void main() {
         });
       });
       test('emits datastore.forward effect', () {});
+    });
+    group('none', () {
+      void act() {
+        journal.journalEffectSink.add(
+          JournalEffect.none(),
+        );
+      }
+
+      blocTest<JournalImpl<TestEvent, TestState, TestView>,
+          JournalState<TestEvent, TestState, TestView>>(
+        "doesn't emit state",
+        build: () => journal,
+        act: (_) => act(),
+        expect: Iterable.empty,
+      );
+      test('emits DatastoreEffect.none', () {
+        unawaited(
+          expectLater(
+            journal.datastoreEffect,
+            emits(
+              DatastoreEffect<TestEvent, TestState, TestView>.none(),
+            ),
+          ),
+        );
+        act();
+      });
     });
   });
 }

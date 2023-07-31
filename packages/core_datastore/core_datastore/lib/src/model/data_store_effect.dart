@@ -3,8 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'data_store_effect.freezed.dart';
 
-
-
 @freezed
 class DatastoreEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DatastoreEffect<Event, State, View> {
@@ -39,4 +37,6 @@ class DatastoreEffect<Event extends CoreEvent, State extends CoreState,
     required Iterable<Ref> from,
     required DateTime createdAt,
   }) = DatastoreEffectPublish<Event, State, View>;
+
+  factory DatastoreEffect.none() = DatastoreEffectNone;
 }

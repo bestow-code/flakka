@@ -11,7 +11,7 @@ dependencies:
   core_common:
   core_datastore:
   core_datastore_sembast:
-  core_event:
+  core_data:
   core_event_sourced:
   freezed_annotation:
   json_annotation: ^4.8.1

@@ -31,14 +31,14 @@ class TestView with _$TestView implements CoreView {
 
 typedef TestStateView = StateView<TestState, TestView>;
 
-TestStateView testStateViewEventHandler(
-  TestStateView stateView,
-  TestEvent event,
-) =>
-    (
-      state: testStateEventHandler(stateView.state, event),
-      view: testViewEventHandler(stateView.view, event)
-    );
+// TestStateView testStateViewEventHandler(
+//   TestStateView stateView,
+//   TestEvent event,
+// ) =>
+//     (
+//       state: testStateEventHandler(stateView.state, event),
+//       view: testViewEventHandler(stateView.view, event)
+//     );
 
 TestState testStateEventHandler(TestState state, TestEvent event) =>
     TestState(state.value + event.value);

@@ -17,10 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$JournalUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  Ref get main => throw _privateConstructorUsedError;
-  DirectedGraph<Entry> get graph => throw _privateConstructorUsedError;
+  Graph get graph => throw _privateConstructorUsedError;
   Map<Ref, Iterable<Event>> get events => throw _privateConstructorUsedError;
-  Map<Ref, ({State state, View view})> get stateView =>
+  Map<Ref, ({CoreState state, CoreView view})> get stateView =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,12 +36,11 @@ abstract class $JournalUpdateCopyWith<Event extends CoreEvent,
           JournalUpdate<Event, State, View>>;
   @useResult
   $Res call(
-      {Ref main,
-      DirectedGraph<Entry> graph,
+      {Graph graph,
       Map<Ref, Iterable<Event>> events,
-      Map<Ref, ({State state, View view})> stateView});
+      Map<Ref, ({CoreState state, CoreView view})> stateView});
 
-  $RefCopyWith<$Res> get main;
+  $GraphCopyWith<$Res> get graph;
 }
 
 /// @nodoc
@@ -63,20 +61,15 @@ class _$JournalUpdateCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? main = null,
     Object? graph = null,
     Object? events = null,
     Object? stateView = null,
   }) {
     return _then(_value.copyWith(
-      main: null == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as Ref,
       graph: null == graph
           ? _value.graph
           : graph // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Entry>,
+              as Graph,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -84,15 +77,15 @@ class _$JournalUpdateCopyWithImpl<
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, ({State state, View view})>,
+              as Map<Ref, ({CoreState state, CoreView view})>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get main {
-    return $RefCopyWith<$Res>(_value.main, (value) {
-      return _then(_value.copyWith(main: value) as $Val);
+  $GraphCopyWith<$Res> get graph {
+    return $GraphCopyWith<$Res>(_value.graph, (value) {
+      return _then(_value.copyWith(graph: value) as $Val);
     });
   }
 }
@@ -109,13 +102,12 @@ abstract class _$$_JournalUpdateCopyWith<
   @override
   @useResult
   $Res call(
-      {Ref main,
-      DirectedGraph<Entry> graph,
+      {Graph graph,
       Map<Ref, Iterable<Event>> events,
-      Map<Ref, ({State state, View view})> stateView});
+      Map<Ref, ({CoreState state, CoreView view})> stateView});
 
   @override
-  $RefCopyWith<$Res> get main;
+  $GraphCopyWith<$Res> get graph;
 }
 
 /// @nodoc
@@ -131,20 +123,15 @@ class __$$_JournalUpdateCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? main = null,
     Object? graph = null,
     Object? events = null,
     Object? stateView = null,
   }) {
     return _then(_$_JournalUpdate<Event, State, View>(
-      main: null == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as Ref,
       graph: null == graph
           ? _value.graph
           : graph // ignore: cast_nullable_to_non_nullable
-              as DirectedGraph<Entry>,
+              as Graph,
       events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
@@ -152,7 +139,7 @@ class __$$_JournalUpdateCopyWithImpl<Event extends CoreEvent,
       stateView: null == stateView
           ? _value._stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, ({State state, View view})>,
+              as Map<Ref, ({CoreState state, CoreView view})>,
     ));
   }
 }
@@ -162,17 +149,14 @@ class __$$_JournalUpdateCopyWithImpl<Event extends CoreEvent,
 class _$_JournalUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _JournalUpdate<Event, State, View> {
   _$_JournalUpdate(
-      {required this.main,
-      required this.graph,
+      {required this.graph,
       required final Map<Ref, Iterable<Event>> events,
-      required final Map<Ref, ({State state, View view})> stateView})
+      required final Map<Ref, ({CoreState state, CoreView view})> stateView})
       : _events = events,
         _stateView = stateView;
 
   @override
-  final Ref main;
-  @override
-  final DirectedGraph<Entry> graph;
+  final Graph graph;
   final Map<Ref, Iterable<Event>> _events;
   @override
   Map<Ref, Iterable<Event>> get events {
@@ -181,9 +165,9 @@ class _$_JournalUpdate<Event extends CoreEvent, State extends CoreState,
     return EqualUnmodifiableMapView(_events);
   }
 
-  final Map<Ref, ({State state, View view})> _stateView;
+  final Map<Ref, ({CoreState state, CoreView view})> _stateView;
   @override
-  Map<Ref, ({State state, View view})> get stateView {
+  Map<Ref, ({CoreState state, CoreView view})> get stateView {
     if (_stateView is EqualUnmodifiableMapView) return _stateView;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_stateView);
@@ -191,7 +175,7 @@ class _$_JournalUpdate<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'JournalUpdate<$Event, $State, $View>(main: $main, graph: $graph, events: $events, stateView: $stateView)';
+    return 'JournalUpdate<$Event, $State, $View>(graph: $graph, events: $events, stateView: $stateView)';
   }
 
   @override
@@ -199,8 +183,7 @@ class _$_JournalUpdate<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_JournalUpdate<Event, State, View> &&
-            (identical(other.main, main) || other.main == main) &&
-            const DeepCollectionEquality().equals(other.graph, graph) &&
+            (identical(other.graph, graph) || other.graph == graph) &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             const DeepCollectionEquality()
                 .equals(other._stateView, _stateView));
@@ -209,8 +192,7 @@ class _$_JournalUpdate<Event extends CoreEvent, State extends CoreState,
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      main,
-      const DeepCollectionEquality().hash(graph),
+      graph,
       const DeepCollectionEquality().hash(_events),
       const DeepCollectionEquality().hash(_stateView));
 
@@ -226,20 +208,17 @@ class _$_JournalUpdate<Event extends CoreEvent, State extends CoreState,
 abstract class _JournalUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements JournalUpdate<Event, State, View> {
   factory _JournalUpdate(
-          {required final Ref main,
-          required final DirectedGraph<Entry> graph,
-          required final Map<Ref, Iterable<Event>> events,
-          required final Map<Ref, ({State state, View view})> stateView}) =
-      _$_JournalUpdate<Event, State, View>;
+      {required final Graph graph,
+      required final Map<Ref, Iterable<Event>> events,
+      required final Map<Ref, ({CoreState state, CoreView view})>
+          stateView}) = _$_JournalUpdate<Event, State, View>;
 
   @override
-  Ref get main;
-  @override
-  DirectedGraph<Entry> get graph;
+  Graph get graph;
   @override
   Map<Ref, Iterable<Event>> get events;
   @override
-  Map<Ref, ({State state, View view})> get stateView;
+  Map<Ref, ({CoreState state, CoreView view})> get stateView;
   @override
   @JsonKey(ignore: true)
   _$$_JournalUpdateCopyWith<Event, State, View,

@@ -1,5 +1,6 @@
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_event_sourced/core_event_sourced.dart';
 
 class TestAggregateRoot
     extends CoreAggregateRootBase<TestEvent, TestState, TestView> {

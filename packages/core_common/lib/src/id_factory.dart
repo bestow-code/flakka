@@ -10,8 +10,9 @@ class IdFactory {
   factory IdFactory.increment(int? start) {
     var count = start ?? 0;
     return IdFactory(() {
+      final id = count.toString();
       count = count + 1;
-      return count.toString();
+      return id;
     });
   }
 

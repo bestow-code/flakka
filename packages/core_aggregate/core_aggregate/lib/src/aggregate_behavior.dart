@@ -1,8 +1,7 @@
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_event_sourced/core_event_sourced.dart';
 
-import 'core_event_handler.dart';
-import 'event_sourced_behavior.dart';
 
 class RootContext {}
 

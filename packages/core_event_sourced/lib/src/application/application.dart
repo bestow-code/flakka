@@ -16,9 +16,9 @@ abstract interface class ApplicationInternal<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements CoreApplication<Event, State, View> {
-  StreamSink<JournalUpdate> get journalUpdate;
+  StreamSink<JournalUpdate<Event, State, View>> get journalUpdate;
 
-  Stream<JournalEffect> get journalEffect;
+  Stream<JournalEffect<Event, State, View>> get journalEffect;
 }
 
 typedef RequestHandler<State extends CoreState, Event extends CoreEvent>
