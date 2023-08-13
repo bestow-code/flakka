@@ -5,31 +5,31 @@ import 'package:core_datastore_cloud_firestore/src/firestore_adapter.dart';
 
 import '../core_datastore_cloud_firestore.dart';
 
-class PersistenceProviderRemoteFirestore extends PersistenceProviderBase
-    with PersistenceProviderRemote {
-  PersistenceProviderRemoteFirestore({
-    required FirebaseFirestore Function() firestoreFactory,
-    required String pathBase,
-    required super.persistenceId,
-  })  : _pathBase = pathBase,
-        _firestoreFactory = firestoreFactory;
-
-  final FirebaseFirestore Function() _firestoreFactory;
-  final String _pathBase;
-
-  @override
-  DatastoreRemoteFactory<Event, State, View> getDatastoreFactory<
-          Event extends CoreEvent,
-          State extends CoreState,
-          View extends CoreView>(
-    ApplicationDataConverter<Event, State, View> dataConverter,
-  ) =>
-      DatastoreRemoteFactoryFirestore(
-        firestoreFactory: _firestoreFactory,
-        dataConverter: dataConverter,
-        persistenceId: persistenceId,
-      );
-}
+// class PersistenceProviderRemoteFirestore extends PersistenceProviderBase
+//     with PersistenceProviderRemote {
+//   PersistenceProviderRemoteFirestore({
+//     required FirebaseFirestore Function() firestoreFactory,
+//     required String pathBase,
+//     required super.persistenceId,
+//   })  : _pathBase = pathBase,
+//         _firestoreFactory = firestoreFactory;
+//
+//   final FirebaseFirestore Function() _firestoreFactory;
+//   final String _pathBase;
+//
+//   @override
+//   DatastoreRemoteFactory<Event, State, View> getDatastoreFactory<
+//           Event extends CoreEvent,
+//           State extends CoreState,
+//           View extends CoreView>(
+//     ApplicationDataConverter<Event, State, View> dataConverter,
+//   ) =>
+//       DatastoreRemoteFactoryFirestore(
+//         firestoreFactory: _firestoreFactory,
+//         dataConverter: dataConverter,
+//         persistenceId: persistenceId,
+//       );
+// }
 
 class DatastoreRemoteFactoryFirestore<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
@@ -47,7 +47,7 @@ class DatastoreRemoteFactoryFirestore<Event extends CoreEvent,
   final String _persistenceId;
 
   @override
-  Future<DatastoreRemote<Event>> getDatastore(String path) async =>
+  Future<DatastoreRemote<Event>> get(String path) async =>
       DatastoreRemoteFirestore(
         adapter: FirestoreAdapter(
           persistenceId: _persistenceId,

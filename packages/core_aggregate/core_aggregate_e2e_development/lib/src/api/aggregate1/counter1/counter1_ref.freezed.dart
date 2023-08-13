@@ -136,7 +136,7 @@ class _$_Counter1Ref implements _Counter1Ref {
   }
 }
 
-abstract class _Counter1Ref implements Counter1Ref {
+abstract class _Counter1Ref implements Counter1Ref, InvalidType {
   factory _Counter1Ref(final String value) = _$_Counter1Ref;
 
   factory _Counter1Ref.fromJson(Map<String, dynamic> json) =

@@ -12,8 +12,8 @@ packages:
   - 'packages/*/*/*'
   - 'packages/*/*/*/*'
 ignore:
-#  - packages/core_aggregate/brick_validator/tmp/**
-  - packages/core_aggregate/core_aggregate_e2e_development
+  #  - packages/core_aggregate/brick_validator/tmp/**
+  #  - packages/core_aggregate/core_aggregate_e2e_development
   - "**/bricks/*"
   - "**/bricks/**/*"
 scripts:
@@ -33,11 +33,17 @@ scripts:
     run: |
       melos exec -c 30 -- \
         flutter pub global run index_generator
+  build_watcher:
+    run: flutter pub run build_runner watch --delete-conflicting-outputs
+    exec:
+      concurrency: 20
+    packageFilters:
+      scope:
+
   watch:
     run: |
       melos exec --depends-on=build_runner -c 35 \
         --include-dependencies \
-        --ignore *e2e_tests* \
         --ignore e2e_core_aggregate_test_integration \
         -- \
         flutter pub run build_runner watch --delete-conflicting-outputs --enable-experiment records --enable-experiment class-modifiers

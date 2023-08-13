@@ -1,4 +1,13 @@
 @startuml
+'Ref
+'Event
+'State
+'View
+'Entity
+'Collection
+'Scope
+'Root
+
 'object TestPersistence
 'object TestApp
 

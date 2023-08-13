@@ -1,25 +1,36 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 
 import '../core_datastore.dart';
 
-abstract class PersistenceProviderLocal {
-  DatastoreLocalFactory<Event, State, View> getDatastoreFactory<
+class PersistenceProvider {
+  PersistenceProvider({
+    required this.serviceLocator,
+    required this.local,
+    required this.remote,
+  });
+
+  final ServiceLocator serviceLocator;
+  final LocalPersistenceProvider local;
+  final PersistenceProviderRemote remote;
+
+  DatastoreFactory<Event, State, View> getDatastoreFactory<
           Event extends CoreEvent,
           State extends CoreState,
-          View extends CoreView>(
-      ApplicationDataConverter<Event, State, View> dataConverter);
+          View extends CoreView>({
+    required String persistenceId,
+  }) =>
+      serviceLocator.sync(
+        param1: (local: local, remote: remote),
+        param2: persistenceId,
+      );
 }
 
-abstract mixin class PersistenceProviderRemote {
-  DatastoreRemoteFactory<Event, State, View> getDatastoreFactory<
-          Event extends CoreEvent,
-          State extends CoreState,
-          View extends CoreView>(
-      ApplicationDataConverter<Event, State, View> dataConverter);
-}
 
 abstract class PersistenceProviderBase {
-  PersistenceProviderBase({required this.persistenceId});
+  PersistenceProviderBase({
+    required this.serviceLocator,
+  });
 
-  final String persistenceId;
+  final ServiceLocator serviceLocator;
 }

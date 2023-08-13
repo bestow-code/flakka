@@ -1,7 +1,7 @@
 export 'counter1_aggregate_impl.dart';
-export 'behavior/counter1_command_handler.dart';
-export 'behavior/counter1_request_handler.dart';
-export 'behavior/counter1_state_event_handler.dart';
+export 'handler/counter1_command_handler.dart';
+export 'handler/counter1_request_handler.dart';
+export 'handler/counter1_state_event_handler.dart';
 export 'counter1_aggregate_impl.dart';
 export 'model/counter1_command.dart';
 export 'model/counter1_event.dart';

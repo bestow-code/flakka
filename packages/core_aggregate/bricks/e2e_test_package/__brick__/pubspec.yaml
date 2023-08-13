@@ -46,7 +46,9 @@ dependency_overrides:
   core_common:
     path: {{{ packages_rel_path }}}../../core_common
   core_data:
-    path: {{{ packages_rel_path }}}../../core_data
+    path: {{{ packages_rel_path }}}../../core_data/core_data
+  core_data_test:
+    path: {{{ packages_rel_path }}}../../core_data/core_data_test
   core_datastore:
     path: {{{ packages_rel_path }}}../../core_datastore/core_datastore
   core_datastore_sembast:
@@ -54,4 +56,6 @@ dependency_overrides:
   core_datastore_test:
     path: {{{ packages_rel_path }}}../../core_datastore/core_datastore_test
   core_event_sourced:
-    path: {{{ packages_rel_path }}}../../core_event_sourced
+    path: {{{ packages_rel_path }}}../../core_event_sourced/core_event_sourced
+  core_event_sourced_test:
+    path: {{{ packages_rel_path }}}../../core_event_sourced/core_event_sourced_test

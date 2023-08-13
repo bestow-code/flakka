@@ -11,7 +11,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../aggregate1_api.dart';
 import '../../../aggregate1_impl.dart';
 
-part 'aggregate1_root_impl.core.dart';
+part 'aggregate1_root_impl.core2.dart';
 part 'aggregate1_root_impl.freezed.dart';
 part 'aggregate1_root_impl.g.dart';
 

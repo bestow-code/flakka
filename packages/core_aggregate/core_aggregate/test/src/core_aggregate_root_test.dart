@@ -8,8 +8,12 @@ import 'package:test/test.dart';
 import 'common.dart';
 
 void main() {
+  group('scope-getter', () {
+    setUp(() => null);
+    group('provides scope',(){});
+  });
   group('service-method execution', () {
-    late TestAggregateRoot root;
+    // late TestAggregateRoot root;
     const initialEntryRef = Ref.initial;
     // group('.evaluate', () {
     //   setUp(() {

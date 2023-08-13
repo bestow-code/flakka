@@ -1,4 +1,22 @@
 @startuml
+class CoreApplication
+class CoreRoot
+ CoreRoot --> CoreApplication
+class CoreScope
+CoreRoot --> CoreScope
+class CoreEntityCollection
+CoreScope --> CoreEntityCollection
+class CoreEntity
+CoreEntityCollection --> CoreEntity
+class CoreRootHandle
+class CoreScopeHandle
+CoreRootHandle --> CoreScopeHandle
+class CoreCollectionHandle
+CoreScopeHandle --> CoreCollectionHandle
+class CoreEntityHandle
+CoreCollectionHandle --> CoreEntityHandle
+@enduml
+@startuml
 
 ' configuration for entry store
 ' EntryStoreFactory<Aggregate1Event>
@@ -10,26 +28,26 @@ abstract class CorePersistenceBase<Event> extends CorePersistence {}
 class PersistenceFake extends CorePersistenceBase {}
 ' loading / starting aggregate instance
 ' Aggregate1Factory
-abstract class CoreAggregateApplication {
-  Future<CoreAggregateRoot> start(String path);
+abstract class CoreApplication {
+  Future<CoreRoot> start(String path);
 }
 
-class FlakkaApp extends CoreAggregateApplication {
-  Future<CoreAggregateRoot> start(String path);
+class FlakkaApp extends CoreApplication {
+  Future<CoreRoot> start(String path);
 
 }
 
 FlakkaApp --> Aggregate1Root
-CoreAggregateApplication --> CorePersistence
+CoreApplication --> CorePersistence
 
 ' providing / following local and remote state (updates),
 ' execute commands and append events to the journal
 ' Instance of Aggregate1RootImpl
-abstract class CoreAggregateRoot<Event extends CoreEvent> extends CoreEventSourcedInstance {}
+abstract class CoreRoot<Event extends CoreEvent> extends CoreEventSourcedInstance {}
 
-class Aggregate1Root extends CoreAggregateRoot {}
+class Aggregate1Root extends CoreRoot {}
 
-CoreAggregateApplication -> CoreAggregateRoot
+CoreApplication -> CoreRoot
 
 
 

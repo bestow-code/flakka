@@ -2,8 +2,8 @@ import 'package:core_aggregate_e2e_tests_test_integration_core_aggregate_e2e_dev
 import 'package:test/test.dart';
 
 void main() {
-  test('', () {
-    expect(Counter2AggregateViewEventHandler().total(0, Aggregate1Event.empty()),
-        0,);
-  });
+  // test('', () {
+  //   expect(Counter2AggregateViewEventHandler().total(0, Aggregate1Event.empty()),
+  //       0,);
+  // });
 }

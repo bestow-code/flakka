@@ -1,12 +1,12 @@
 import 'package:core_aggregate/core_aggregate.dart';
-import 'package:core_data/core_data.dart';
 
-sealed
-class FlakkaApp extends AggregateProvider{
-  // FlakkaApp(super.persistence);
-  // static FlakkaApp app([FlakkaPersistence? persistence]) {
-  //   throw UnimplementedError();
-  // }
+sealed class FlakkaApp extends RootProvider {
+  FlakkaApp(
+      {required super.journalProvider, required super.serviceLocatorAsync});
+// FlakkaApp(super.persistence);
+// static FlakkaApp app([FlakkaPersistence? persistence]) {
+//   throw UnimplementedError();
+// }
 }
 
 // class FlakkaPersistence extends CoreAggregatePersistence {
