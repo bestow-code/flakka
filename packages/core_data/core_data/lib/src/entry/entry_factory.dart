@@ -25,7 +25,7 @@ class EntryFactory {
   final DateTimeFactory dateTimeFactory;
 
   Entry initial() => create(
-        ref: Ref.initial,
+        ref: entryRefFactory.create(),
         refs: [],
       );
 

@@ -6,9 +6,10 @@ abstract class LocalDatastoreAdapter {
   //
   Future<({Ref ref, int sequenceNumber})> initialize({
     required ({
+      int sequenceNumber,
       Ref ref,
       DateTime createdAt,
-      StateViewData Function()? stateViewData
+      StateViewData Function()? stateViewData,
     }) ifEmpty,
   });
 

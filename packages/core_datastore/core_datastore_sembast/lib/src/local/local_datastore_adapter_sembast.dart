@@ -13,35 +13,48 @@ class LocalDatastoreAdapterSembast implements LocalDatastoreAdapter {
   final String persistenceId;
   final Database database;
 
-  final headRefStore = StoreRef<String, JsonMap>('head');
+  late StoreRef<int, JsonMap> headRefStore =
+      StoreRef<int, JsonMap>('head/$persistenceId');
   final entryStore = StoreRef<String, JsonMap>('entry');
   final eventStore = StoreRef<String, JsonMap>('events');
 
   @override
   Future<({Ref ref, int sequenceNumber})> initialize({
     required ({
+      int sequenceNumber,
       DateTime createdAt,
       Ref ref,
-      StateViewData Function()? stateViewData
+      StateViewData Function()? stateViewData,
     }) ifEmpty,
   }) async {
-    return await database.transaction((transaction) async {
-      if ((await headRefStore.record(persistenceId).get(transaction)) == null) {
+    return database.transaction((transaction) async {
+      final headRef2 = await headRefStore
+          .query(
+            finder: Finder(limit: 1, sortOrders: [SortOrder(Field.key)]),
+          )
+          .getSnapshot(transaction);
+      // final headRef = await headRefStore.record(persistenceId).get(transaction);
+
+      if (headRef2 == null) {
         final entry =
-            Entry(ref: ifEmpty.ref, refs: [], createdAt: ifEmpty.createdAt);
+            Entry.initial(ref: ifEmpty.ref, createdAt: ifEmpty.createdAt);
         await entryStore
             .record(ifEmpty.ref.value)
             .put(transaction, entry.toJson());
+        final sequenceNumber = ifEmpty.sequenceNumber ?? 0;
         await headRefStore
-            .record(persistenceId)
+            .record(sequenceNumber)
             .put(transaction, ifEmpty.ref.toJson());
         assert(
           ifEmpty.stateViewData == null,
           'StateView storage not supported',
         );
-        return (ref: ifEmpty.ref, sequenceNumber: 0);
+        return (ref: ifEmpty.ref, sequenceNumber: sequenceNumber);
       } else {
-        throw UnimplementedError();
+        return (
+          ref: Ref.fromJson(headRef2.value),
+          sequenceNumber: headRef2.key
+        );
       }
     });
   }

@@ -8,15 +8,12 @@ part 'entry_ref.g.dart';
 
 @freezed
 class Ref with _$Ref {
-  const factory Ref(
+  @Assert('value.isNotEmpty', 'value is empty')
+   factory Ref(
     String value,
   ) = _Ref;
 
   factory Ref.fromJson(Map<String, dynamic> json) => _$RefFromJson(json);
-
-  static const _kInitialRefValue = '[INITIAL]';
-
-  static const Ref initial = Ref(_kInitialRefValue);
 }
 
 int Function(Ref, Ref) refComparator(Map<Ref, DateTime> createdAt) =>
@@ -33,7 +30,7 @@ int Function(Ref, Ref) refComparator(Map<Ref, DateTime> createdAt) =>
       } else if (createdAt[a] != null) {
         return 1;
       } else {
-        assert(createdAt[b] != null, 'createdAt not found for ${b}');
+        assert(createdAt[b] != null, 'createdAt not found for $b');
         return -1;
       }
     };

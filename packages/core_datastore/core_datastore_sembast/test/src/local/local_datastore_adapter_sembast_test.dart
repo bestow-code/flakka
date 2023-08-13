@@ -1,14 +1,9 @@
-import 'dart:math';
-
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_data_test/core_data_test.dart';
 import 'package:core_datastore/core_datastore.dart';
 import 'package:core_datastore_sembast/core_datastore_sembast.dart';
 import 'package:get_it/get_it.dart';
-import 'package:sembast/sembast.dart';
-import 'package:sembast/sembast_memory.dart';
-import 'package:test/test.dart';
+import 'package:glados/glados.dart';
 
 void main() {
   final getIt = GetIt.asNewInstance();
@@ -34,34 +29,54 @@ void Function() localDatastoreGroup({
       late LocalDatastoreAdapterFactory adapterFactory;
       late LocalDatastoreAdapter adapter;
       final random = Random();
-      const path = '/0';
+      late String path;
       setUp(() async {
-        persistenceId = random.nextInt(100).toString();
+        persistenceId = random.nextInt(10000).toString();
+        path = '/${random.nextInt(10000)}';
+      });
+      Glados2(any.nonEmptyUppercaseLetters, any.nonEmptyUppercaseLetters)
+          .test('new instance', (persistenceId, refValue) async {
         provider = providerFactory();
         adapterFactory =
             provider.getLocalDatastoreAdapterFactory(persistenceId);
         adapter = await adapterFactory.get(path);
-      });
-      test('hello world', () async {
-        const ref = Ref('a');
-
+        final ref = Ref(refValue);
         final response = await adapter.initialize(
-            ifEmpty: (ref: ref, createdAt: t(0), stateViewData: null));
-        expect(response.ref, ref);
-        // await datastoreLocal.initialize();
-        // expect(true, false);
+          ifEmpty: (
+            sequenceNumber: 0,
+            ref: ref,
+            createdAt: t(0),
+            stateViewData: null
+          ),
+        );
+        expect(response, (ref: ref, sequenceNumber: 0));
+      });
+      Glados3(any.nonEmptyUppercaseLetters, any.nonEmptyUppercaseLetters,
+              any.nonEmptyUppercaseLetters)
+          .test('existing instance, multiple calls',
+              (persistenceId, refValue, ref2Value) async {
+        provider = providerFactory();
+        adapterFactory =
+            provider.getLocalDatastoreAdapterFactory(persistenceId);
+        adapter = await adapterFactory.get(path);
+        final ref = Ref(refValue);
+        await adapter.initialize(
+          ifEmpty: (
+            sequenceNumber: 2,
+            ref: ref,
+            createdAt: t(0),
+            stateViewData: null
+          ),
+        );
+        final ref2 = Ref(ref2Value);
+        final response2 = await adapter.initialize(
+          ifEmpty: (
+            sequenceNumber: 0,
+            ref: ref2,
+            createdAt: t(0),
+            stateViewData: null
+          ),
+        );
+        expect(response2, (ref: ref, sequenceNumber: 2));
       });
     };
-
-// @isTestGroup
-// void createDatastoreLocalTestGroup(
-//   String description, {
-//   required PersistenceProviderLocalSembast Function(String persistenceId)
-//       provider,
-// }) {
-//   group(description, () {
-//     test('hello world', () {
-//       expect(true, false);
-//     });
-//   });
-// }

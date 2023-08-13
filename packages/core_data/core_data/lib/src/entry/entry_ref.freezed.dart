@@ -90,7 +90,7 @@ class __$$_RefCopyWithImpl<$Res> extends _$RefCopyWithImpl<$Res, _$_Ref>
 /// @nodoc
 @JsonSerializable()
 class _$_Ref implements _Ref {
-  const _$_Ref(this.value);
+  _$_Ref(this.value) : assert(value.isNotEmpty, 'value is empty');
 
   factory _$_Ref.fromJson(Map<String, dynamic> json) => _$$_RefFromJson(json);
 
@@ -129,7 +129,7 @@ class _$_Ref implements _Ref {
 }
 
 abstract class _Ref implements Ref {
-  const factory _Ref(final String value) = _$_Ref;
+  factory _Ref(final String value) = _$_Ref;
 
   factory _Ref.fromJson(Map<String, dynamic> json) = _$_Ref.fromJson;
 

@@ -27,14 +27,14 @@ class Entry with _$Entry implements Comparable<Entry>, CoreData {
 
   const Entry._();
 
-  factory Entry.epoch() =>
-      Entry.newInitialEntry(createdAt: DateTime.fromMillisecondsSinceEpoch(0));
+  // factory Entry.epoch() =>
+  //     Entry.newInitialEntry(createdAt: DateTime.fromMillisecondsSinceEpoch(0));
 
-  static Entry newInitialEntry({
+  static Entry initial({required Ref ref,
     DateTime? createdAt,
   }) =>
       Entry(
-        ref: Ref.initial,
+        ref: ref,
         refs: [],
         // events: [],
         createdAt: createdAt ?? DateTime.now(),
