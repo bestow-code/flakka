@@ -1,7 +1,7 @@
-
 import 'package:core_common/core_common.dart';
+import 'package:core_data/core_data.dart';
 
-import '../core_data.dart';
+import '../core_datastore.dart';
 
 class ApplicationDataConverterProvider {
   ApplicationDataConverterProvider(this.serviceLocator);

@@ -1,4 +1,4 @@
-import '../core_data.dart';
+import 'package:core_data/core_data.dart';
 
 abstract mixin class CoreEventConverter<Event extends CoreEvent> {
   Event fromJson(JsonMap json);

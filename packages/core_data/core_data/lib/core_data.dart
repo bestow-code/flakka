@@ -3,13 +3,10 @@
 /// Common libraries for core_platform
 library core_data;
 
-export 'src/application_data_converter.dart';
-export 'src/application_data_converter_provider.dart';
 export 'src/core_data/core_data.dart';
 export 'src/core_data/core_data_event.dart';
 export 'src/core_data/core_data_state.dart';
 export 'src/core_event.dart';
-export 'src/core_event_json_converter.dart';
 export 'src/graph.dart';
 export 'src/journal/journal.dart';
 export 'src/journal/journal_event.dart';

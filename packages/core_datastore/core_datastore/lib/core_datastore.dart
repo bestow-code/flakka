@@ -3,6 +3,9 @@
 /// Foundation for Core Entry Store
 library core_datastore;
 
+export 'src/application_data_converter.dart';
+export 'src/application_data_converter_provider.dart';
+export 'src/core_event_json_converter.dart';
 export 'src/datastore.dart';
 export 'src/datastore_factory.dart';
 export 'src/entry/entry.dart';

@@ -4,3 +4,4 @@
 library core_datastore_test;
 
 export 'src/test_common.dart';
+export 'src/test_data_converter.dart';

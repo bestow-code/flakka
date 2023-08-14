@@ -14,14 +14,6 @@ class TestEvent with _$TestEvent implements CoreEvent {
       _$TestEventFromJson(json);
 }
 
-@Singleton(as: DataConverter<TestEvent>)
-class TestEventConverter extends DataConverter<TestEvent> {
-  @override
-  TestEvent fromJson(JsonMap json) => TestEvent.fromJson(json);
-
-  @override
-  JsonMap toJson(TestEvent data) => data.toJson();
-}
 
 @freezed
 class TestState with _$TestState implements CoreState {
@@ -31,14 +23,6 @@ class TestState with _$TestState implements CoreState {
       _$TestStateFromJson(json);
 }
 
-@Singleton(as: DataConverter<TestState>)
-class TestStateConverter extends DataConverter<TestState> {
-  @override
-  TestState fromJson(JsonMap json) => TestState.fromJson(json);
-
-  @override
-  JsonMap toJson(TestState data) => data.toJson();
-}
 
 @freezed
 class TestView with _$TestView implements CoreView {
@@ -46,23 +30,4 @@ class TestView with _$TestView implements CoreView {
 
   factory TestView.fromJson(Map<String, dynamic> json) =>
       _$TestViewFromJson(json);
-}
-
-@Singleton(as: DataConverter<TestView>)
-class TestViewConverter extends DataConverter<TestView> {
-  @override
-  TestView fromJson(JsonMap json) => TestView.fromJson(json);
-
-  @override
-  JsonMap toJson(TestView data) => data.toJson();
-}
-
-@injectable
-class TestApplicationDataConverter
-    extends ApplicationDataConverter<TestEvent, TestState, TestView> {
-  TestApplicationDataConverter({
-    required super.eventConverter,
-    required super.stateConverter,
-    required super.viewConverter,
-  });
 }

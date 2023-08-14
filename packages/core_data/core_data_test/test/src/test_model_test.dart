@@ -9,8 +9,6 @@ void main() {
   configureDependencies();
   test('', () {
     final getIt = GetIt.instance;
-    final converter = getIt<TestApplicationDataConverter>();
-    print(converter);
   });
 }
 @injectable
