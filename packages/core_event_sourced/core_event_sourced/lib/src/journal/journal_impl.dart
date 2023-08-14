@@ -94,7 +94,7 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
                 ),
               );
               datastoreEffect.add(
-                DatastoreEffect.forward(
+                DataEffect.forward(
                   ref: forward.ref,
                   stateView: forward.stateView,
                   createdAt: forward.createdAt,
@@ -103,7 +103,7 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
               );
             },
             none: (_) {
-              datastoreEffect.add(DatastoreEffect.none());
+              datastoreEffect.add(DataEffect.none());
             },
           );
         },
@@ -118,7 +118,7 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  final PublishSubject<DatastoreUpdate<Event, State, View>>
+  final PublishSubject<DataUpdate<Event, State, View>>
       datastoreUpdateSink = PublishSubject();
 
   @override
@@ -126,7 +126,7 @@ class JournalImpl<Event extends CoreEvent, State extends CoreState,
       PublishSubject();
 
   @override
-  final PublishSubject<DatastoreEffect<Event, State, View>> datastoreEffect =
+  final PublishSubject<DataEffect<Event, State, View>> datastoreEffect =
       PublishSubject();
 
   @override

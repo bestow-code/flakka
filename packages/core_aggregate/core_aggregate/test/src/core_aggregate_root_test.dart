@@ -14,7 +14,7 @@ void main() {
   });
   group('service-method execution', () {
     // late TestAggregateRoot root;
-    const initialEntryRef = Ref.initial;
+    final initialEntryRef = Ref('0');
     // group('.evaluate', () {
     //   setUp(() {
     //     final initialState = TestState(0);

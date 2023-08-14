@@ -7,7 +7,7 @@ abstract class LocalDatastore<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   Future<Ref?> initialize();
 
-  StreamSink<LocalDatastoreEffect<Event, State, View>> get effectSink;
+  StreamSink<LocalDataEffect<Event, State, View>> get effectSink;
 
   Stream<Iterable<Entry>> get entry;
 

@@ -10,7 +10,7 @@ part 'journal_event.freezed.dart';
 class JournalEvent<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalEvent<Event, State, View> {
   factory JournalEvent.datastore({
-    required DatastoreUpdate<Event, State, View> update,
+    required DataUpdate<Event, State, View> update,
   }) = JournalEventDatastore<Event, State, View>;
 
   factory JournalEvent.journal(

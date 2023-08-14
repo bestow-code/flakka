@@ -17,7 +17,7 @@ abstract interface class JournalInternal<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Journal<Event, State, View> {
-  StreamSink<DatastoreUpdate<Event, State, View>> get datastoreUpdateSink;
+  StreamSink<DataUpdate<Event, State, View>> get datastoreUpdateSink;
 
-  Stream<DatastoreEffect<Event, State, View>> get datastoreEffect;
+  Stream<DataEffect<Event, State, View>> get datastoreEffect;
 }

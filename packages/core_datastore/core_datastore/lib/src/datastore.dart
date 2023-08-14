@@ -31,7 +31,7 @@ abstract interface class Datastore<Event extends CoreEvent, State extends CoreSt
     throw UnimplementedError();
   }
 
-  StreamSink<DatastoreEffect> get dataStoreEffectSink {
+  StreamSink<DataEffect> get dataStoreEffectSink {
     throw UnimplementedError();
   }
 }

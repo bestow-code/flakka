@@ -2,6 +2,7 @@ import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
+import 'package:core_datastore/core_datastore.dart';
 import 'package:core_datastore_test/core_datastore_test.dart';
 import 'package:core_event_sourced/core_event_sourced.dart';
 import 'package:test/test.dart';
@@ -20,10 +21,10 @@ void main() {
   late Ref main;
   late Ref instance;
 
-  const ref0 = Ref('0');
-  const ref1a = Ref('1a');
-  const ref1b = Ref('1b');
-  const ref2 = Ref('2');
+  final ref0 = Ref('0');
+  final ref1a = Ref('1a');
+  final ref1b = Ref('1b');
+  final ref2 = Ref('2');
 
   base = ref0;
 

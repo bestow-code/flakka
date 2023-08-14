@@ -19,20 +19,19 @@ mixin _$JournalEvent<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DatastoreUpdate<Event, State, View> update)
-        datastore,
+    required TResult Function(DataUpdate<Event, State, View> update) datastore,
     required TResult Function(JournalEffect<Event, State, View> effect) journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DatastoreUpdate<Event, State, View> update)? datastore,
+    TResult? Function(DataUpdate<Event, State, View> update)? datastore,
     TResult? Function(JournalEffect<Event, State, View> effect)? journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DatastoreUpdate<Event, State, View> update)? datastore,
+    TResult Function(DataUpdate<Event, State, View> update)? datastore,
     TResult Function(JournalEffect<Event, State, View> effect)? journal,
     required TResult orElse(),
   }) =>
@@ -95,9 +94,9 @@ abstract class _$$JournalEventDatastoreCopyWith<Event extends CoreEvent,
           $Res Function(_$JournalEventDatastore<Event, State, View>) then) =
       __$$JournalEventDatastoreCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({DatastoreUpdate<Event, State, View> update});
+  $Res call({DataUpdate<Event, State, View> update});
 
-  $DatastoreUpdateCopyWith<Event, State, View, $Res> get update;
+  $DataUpdateCopyWith<Event, State, View, $Res> get update;
 }
 
 /// @nodoc
@@ -120,14 +119,14 @@ class __$$JournalEventDatastoreCopyWithImpl<Event extends CoreEvent,
       update: null == update
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
-              as DatastoreUpdate<Event, State, View>,
+              as DataUpdate<Event, State, View>,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $DatastoreUpdateCopyWith<Event, State, View, $Res> get update {
-    return $DatastoreUpdateCopyWith<Event, State, View, $Res>(_value.update,
+  $DataUpdateCopyWith<Event, State, View, $Res> get update {
+    return $DataUpdateCopyWith<Event, State, View, $Res>(_value.update,
         (value) {
       return _then(_value.copyWith(update: value));
     });
@@ -142,7 +141,7 @@ class _$JournalEventDatastore<Event extends CoreEvent, State extends CoreState,
   _$JournalEventDatastore({required this.update});
 
   @override
-  final DatastoreUpdate<Event, State, View> update;
+  final DataUpdate<Event, State, View> update;
 
   @override
   String toString() {
@@ -171,8 +170,7 @@ class _$JournalEventDatastore<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DatastoreUpdate<Event, State, View> update)
-        datastore,
+    required TResult Function(DataUpdate<Event, State, View> update) datastore,
     required TResult Function(JournalEffect<Event, State, View> effect) journal,
   }) {
     return datastore(update);
@@ -181,7 +179,7 @@ class _$JournalEventDatastore<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DatastoreUpdate<Event, State, View> update)? datastore,
+    TResult? Function(DataUpdate<Event, State, View> update)? datastore,
     TResult? Function(JournalEffect<Event, State, View> effect)? journal,
   }) {
     return datastore?.call(update);
@@ -190,7 +188,7 @@ class _$JournalEventDatastore<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DatastoreUpdate<Event, State, View> update)? datastore,
+    TResult Function(DataUpdate<Event, State, View> update)? datastore,
     TResult Function(JournalEffect<Event, State, View> effect)? journal,
     required TResult orElse(),
   }) {
@@ -241,10 +239,10 @@ abstract class JournalEventDatastore<
     State extends CoreState,
     View extends CoreView> implements JournalEvent<Event, State, View> {
   factory JournalEventDatastore(
-          {required final DatastoreUpdate<Event, State, View> update}) =
+          {required final DataUpdate<Event, State, View> update}) =
       _$JournalEventDatastore<Event, State, View>;
 
-  DatastoreUpdate<Event, State, View> get update;
+  DataUpdate<Event, State, View> get update;
   @JsonKey(ignore: true)
   _$$JournalEventDatastoreCopyWith<Event, State, View,
           _$JournalEventDatastore<Event, State, View>>
@@ -334,8 +332,7 @@ class _$JournalEventJournal<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DatastoreUpdate<Event, State, View> update)
-        datastore,
+    required TResult Function(DataUpdate<Event, State, View> update) datastore,
     required TResult Function(JournalEffect<Event, State, View> effect) journal,
   }) {
     return journal(effect);
@@ -344,7 +341,7 @@ class _$JournalEventJournal<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DatastoreUpdate<Event, State, View> update)? datastore,
+    TResult? Function(DataUpdate<Event, State, View> update)? datastore,
     TResult? Function(JournalEffect<Event, State, View> effect)? journal,
   }) {
     return journal?.call(effect);
@@ -353,7 +350,7 @@ class _$JournalEventJournal<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DatastoreUpdate<Event, State, View> update)? datastore,
+    TResult Function(DataUpdate<Event, State, View> update)? datastore,
     TResult Function(JournalEffect<Event, State, View> effect)? journal,
     required TResult orElse(),
   }) {

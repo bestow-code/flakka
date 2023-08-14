@@ -25,7 +25,7 @@ class DatastoreLocalSembast<Event extends CoreEvent, State extends CoreState,
       get stateView => throw UnimplementedError();
 
   @override
-  StreamSink<LocalDatastoreEffect<Event, State, View>> get effectSink =>
+  StreamSink<LocalDataEffect<Event, State, View>> get effectSink =>
       throw UnimplementedError();
 
   @override

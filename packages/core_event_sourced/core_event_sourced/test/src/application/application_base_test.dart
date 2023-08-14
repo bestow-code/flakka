@@ -4,6 +4,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
+import 'package:core_datastore/core_datastore.dart';
 import 'package:core_datastore_test/core_datastore_test.dart';
 import 'package:core_event_sourced/core_event_sourced.dart';
 import 'package:test/test.dart';
@@ -23,7 +24,7 @@ class TestApplication extends ApplicationBase<TestEvent, TestState, TestView> {
 }
 
 ApplicationState<TestState, TestView> get initialState => ApplicationState(
-      ref: const Ref('0'),
+      ref: Ref('0'),
       stateView: (
         state: TestState(0),
         view: TestView(1),
@@ -55,10 +56,10 @@ void main() {
   late Ref main;
   late Ref instance;
 
-  const ref0 = Ref('0');
-  const ref1a = Ref('1a');
-  const ref1b = Ref('1b');
-  const ref2 = Ref('2');
+  final ref0 = Ref('0');
+  final ref1a = Ref('1a');
+  final ref1b = Ref('1b');
+  final ref2 = Ref('2');
 
   base = ref0;
 
@@ -146,7 +147,7 @@ void main() {
               application.stream,
               emits(
                 initialState.copyWith(
-                  ref: const Ref('1'),
+                  ref: Ref('1'),
                   sequenceNumber: 1,
                   stateView: testStateView1,
                 ),
@@ -162,8 +163,8 @@ void main() {
               application.journalEffect,
               emits(
                 JournalEffect.appendEvents(
-                  ref: const Ref('1'),
-                  parent: const Ref('0'),
+                  ref: Ref('1'),
+                  parent: Ref('0'),
                   events: [TestEvent(2)],
                   stateView: (state: TestState(2), view: TestView(2)),
                   createdAt: t(1),

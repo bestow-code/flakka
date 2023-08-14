@@ -1,8 +1,5 @@
 import 'package:core_data/core_data.dart';
-import 'package:directed_graph/directed_graph.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../core_event_sourced.dart';
 
 part 'journal_update.freezed.dart';
 
