@@ -2,14 +2,14 @@
 object flakka
 object flakka_flame
 object core_aggregate
-object core_event_sourced
+object core_application
 object core_datastore
 flakka_flame --> core_datastore
 flakka --> core_aggregate
 object core_data
 
 core_datastore --> core_data
-core_event_sourced --> core_datastore
-core_event_sourced --> core_data
-core_aggregate --> core_event_sourced
+core_application --> core_datastore
+core_application --> core_data
+core_aggregate --> core_application
 @enduml

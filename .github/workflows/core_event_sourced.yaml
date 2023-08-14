@@ -1,4 +1,4 @@
-name: core_event_sourced
+name: core_application
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,8 +15,8 @@ on:
       - packages/core_common/**
       - packages/core_entry/**
       - packages/core_datastore/core_datastore/**
-      - packages/core_event_sourced/**
-      - .github/workflows/core_event_sourced.yaml
+      - packages/core_application/**
+      - .github/workflows/core_application.yaml
 
 jobs:
   semantic_pull_request:
@@ -31,6 +31,6 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
-      working_directory: packages/core_event_sourced
+      working_directory: packages/core_application
       coverage_excludes: '**/*.g.dart **/*.freezed.dart'
       min_coverage: 60

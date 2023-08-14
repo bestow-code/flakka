@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_aggregate_annotation/core_aggregate_annotation.dart';
-import 'package:core_event_sourced/core_event_sourced.dart';
+import 'package:core_application/core_application.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../aggregate1_api.dart';

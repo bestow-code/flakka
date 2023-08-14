@@ -6,13 +6,13 @@ part 'core_event.freezed.dart';
 
 part 'core_event.g.dart';
 
-abstract interface class CoreData {}
+abstract interface class CoreObject {}
 
-abstract interface class CoreEvent implements CoreData {}
+abstract interface class CoreEvent implements CoreObject {}
 
-abstract interface class CoreView implements CoreData {}
+abstract interface class CoreView implements CoreObject {}
 
-abstract interface class CoreState implements CoreData {}
+abstract interface class CoreState implements CoreObject {}
 
 abstract interface class CoreHandle {}
 abstract interface class CoreAdapter {}

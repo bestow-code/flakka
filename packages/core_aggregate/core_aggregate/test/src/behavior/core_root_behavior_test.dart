@@ -1,6 +1,6 @@
 import 'package:core_aggregate/core_aggregate.dart';
-import 'package:core_event_sourced/src/event_handler.dart';
-import 'package:core_event_sourced/src/event_sourced_behavior.dart';
+import 'package:core_application/src/event_handler.dart';
+import 'package:core_application/src/event_sourced_behavior.dart';
 import 'package:test/test.dart';
 
 void main() {

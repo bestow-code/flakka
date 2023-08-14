@@ -6,7 +6,7 @@ abstract mixin class CoreEventConverter<Event extends CoreEvent> {
   JsonMap toJson(Event event);
 }
 
-abstract mixin class DataConverter<Data extends CoreData> {
+abstract mixin class DataConverter<Data extends CoreObject> {
   Data fromJson(JsonMap json);
 
   JsonMap toJson(Data data);

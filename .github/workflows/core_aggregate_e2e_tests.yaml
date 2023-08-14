@@ -16,7 +16,7 @@ on:
       - packages/core_entry/**
       - packages/core_datastore/core_datastore/**
       - packages/core_datastore/core_entry_store_fake/**
-      - packages/core_event_sourced/**
+      - packages/core_application/**
       - packages/core_aggregate/core_aggregate_annotation/**
       - packages/core_aggregate/core_aggregate/**
       - packages/core_aggregate/core_aggregate_build/**

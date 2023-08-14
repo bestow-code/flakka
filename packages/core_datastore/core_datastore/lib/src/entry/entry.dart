@@ -8,7 +8,7 @@ part 'entry.g.dart';
 
 @freezed
 // @JsonSerializable(genericArgumentFactories: true)
-class Entry with _$Entry implements Comparable<Entry>, CoreData {
+class Entry with _$Entry implements Comparable<Entry>, CoreObject {
   factory Entry({
     required Ref ref,
     required List<Ref> refs,

@@ -12,7 +12,7 @@ dependencies:
   core_datastore:
   core_datastore_sembast:
   core_data:
-  core_event_sourced:
+  core_application:
   freezed_annotation:
   json_annotation: ^4.8.1
 dev_dependencies:
@@ -55,7 +55,7 @@ dependency_overrides:
     path: {{{ packages_rel_path }}}../../core_datastore/core_datastore_sembast
   core_datastore_test:
     path: {{{ packages_rel_path }}}../../core_datastore/core_datastore_test
-  core_event_sourced:
-    path: {{{ packages_rel_path }}}../../core_event_sourced/core_event_sourced
-  core_event_sourced_test:
-    path: {{{ packages_rel_path }}}../../core_event_sourced/core_event_sourced_test
+  core_application:
+    path: {{{ packages_rel_path }}}../../core_application/core_application
+  core_application_test:
+    path: {{{ packages_rel_path }}}../../core_application/core_application_test

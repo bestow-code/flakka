@@ -1,7 +1,7 @@
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_datastore_test/core_datastore_test.dart';
-import 'package:core_event_sourced/core_event_sourced.dart';
+import 'package:core_application/core_application.dart';
 
 // class TestAggregateRoot
 //     extends AggregateRootBase<TestEvent, TestState, TestView> {

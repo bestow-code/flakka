@@ -7,6 +7,7 @@ export 'src/datastore.dart';
 export 'src/datastore_factory.dart';
 export 'src/entry/entry.dart';
 export 'src/entry/entry_factory.dart';
+export 'src/journal_provider.dart';
 export 'src/local/local_datastore.dart';
 export 'src/local/local_datastore_adapter.dart';
 export 'src/local/local_datastore_adapter_factory.dart';

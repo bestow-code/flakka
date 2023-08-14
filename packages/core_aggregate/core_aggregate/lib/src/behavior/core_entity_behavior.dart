@@ -1,5 +1,5 @@
 import 'package:core_aggregate/core_aggregate.dart';
-import 'package:core_event_sourced/core_event_sourced.dart';
+import 'package:core_application/core_application.dart';
 
 abstract interface class CoreEntityBehavior<
 // adapter
