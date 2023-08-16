@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the refComparator function from the core_data library, for the Dart programming language.">
+  <title>refComparator function - core_data library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">core_data</a></li>
+    <li><a href="../core_data/core_data-library.html">core_data</a></li>
+    <li class="self-crumb">refComparator function</li>
+  </ol>
+  <div class="self-name">refComparator</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-function">refComparator</span> function 
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a> Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="../core_data/Ref-class.html">Ref</a></span>, </span><span class="parameter" id="param-"><span class="type-annotation"><a href="../core_data/Ref-class.html">Ref</a></span></span>)</span></span>
+<span class="name ">refComparator</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="refComparator-param-createdAt"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../core_data/Ref-class.html">Ref</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> <span class="parameter-name">createdAt</span></span></li>
+</ol>)
+
+        
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">int Function(Ref, Ref) refComparator(Map&lt;Ref, DateTime&gt; createdAt) =&gt;
+    (Ref a, Ref b) {
+      if (createdAt[a] == null &amp;&amp; createdAt[b] == null) {
+        return a.value.compareTo(b.value);
+      } else if (createdAt[a] != null &amp;&amp; createdAt[b] != null) {
+        final dateTimeComparison = createdAt[a]!.compareTo(createdAt[b]!);
+        if (dateTimeComparison != 0) {
+          return dateTimeComparison;
+        } else {
+          return a.value.compareTo(b.value);
+        }
+      } else if (createdAt[a] != null) {
+        return 1;
+      } else {
+        assert(createdAt[b] != null, &#39;createdAt not found for $b&#39;);
+        return -1;
+      }
+    };</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">core_data</a></li>
+  <li><a href="../core_data/core_data-library.html">core_data</a></li>
+  <li class="self-crumb">refComparator function</li>
+</ol>
+
+
+    <h5>core_data library</h5>
+    <ol>
+      <li class="section-title"><a href="../core_data/core_data-library.html#classes">Classes</a></li>
+        <li><a href="../core_data/CoreAdapter-class.html">CoreAdapter</a></li>
+        <li><a href="../core_data/CoreData-class.html">CoreData</a></li>
+        <li><a href="../core_data/CoreDataEvent-class.html">CoreDataEvent</a></li>
+        <li><a href="../core_data/CoreDataEventEffect-class.html">CoreDataEventEffect</a></li>
+        <li><a href="../core_data/CoreDataEventSource-class.html">CoreDataEventSource</a></li>
+        <li><a href="../core_data/CoreDataState-class.html">CoreDataState</a></li>
+        <li><a href="../core_data/CoreDataStatePending-class.html">CoreDataStatePending</a></li>
+        <li><a href="../core_data/CoreEvent-class.html">CoreEvent</a></li>
+        <li><a href="../core_data/CoreHandle-class.html">CoreHandle</a></li>
+        <li><a href="../core_data/CoreObject-class.html">CoreObject</a></li>
+        <li><a href="../core_data/CoreState-class.html">CoreState</a></li>
+        <li><a href="../core_data/CoreView-class.html">CoreView</a></li>
+        <li><a href="../core_data/DataEffect-class.html">DataEffect</a></li>
+        <li><a href="../core_data/DataEffectAppend-class.html">DataEffectAppend</a></li>
+        <li><a href="../core_data/DataEffectForward-class.html">DataEffectForward</a></li>
+        <li><a href="../core_data/DataEffectNone-class.html">DataEffectNone</a></li>
+        <li><a href="../core_data/DataEffectPublish-class.html">DataEffectPublish</a></li>
+        <li><a href="../core_data/DatastoreRemoteEffect-class.html">DatastoreRemoteEffect</a></li>
+        <li><a href="../core_data/DatastoreRemoteEffectAppend-class.html">DatastoreRemoteEffectAppend</a></li>
+        <li><a href="../core_data/DatastoreRemoteEffectForward-class.html">DatastoreRemoteEffectForward</a></li>
+        <li><a href="../core_data/DatastoreRemoteEffectNone-class.html">DatastoreRemoteEffectNone</a></li>
+        <li><a href="../core_data/DatastoreRemoteEffectPublish-class.html">DatastoreRemoteEffectPublish</a></li>
+        <li><a href="../core_data/DataUpdate-class.html">DataUpdate</a></li>
+        <li><a href="../core_data/DataUpdateEntry-class.html">DataUpdateEntry</a></li>
+        <li><a href="../core_data/DataUpdateEvents-class.html">DataUpdateEvents</a></li>
+        <li><a href="../core_data/DataUpdateMain-class.html">DataUpdateMain</a></li>
+        <li><a href="../core_data/EntryComparison-class.html">EntryComparison</a></li>
+        <li><a href="../core_data/EntryComparisonAhead-class.html">EntryComparisonAhead</a></li>
+        <li><a href="../core_data/EntryComparisonBehind-class.html">EntryComparisonBehind</a></li>
+        <li><a href="../core_data/EntryComparisonDiverged-class.html">EntryComparisonDiverged</a></li>
+        <li><a href="../core_data/EntryComparisonEqual-class.html">EntryComparisonEqual</a></li>
+        <li><a href="../core_data/Events-class.html">Events</a></li>
+        <li><a href="../core_data/Graph-class.html">Graph</a></li>
+        <li><a href="../core_data/HeadRef-class.html">HeadRef</a></li>
+        <li><a href="../core_data/Journal-class.html">Journal</a></li>
+        <li><a href="../core_data/JournalEffect-class.html">JournalEffect</a></li>
+        <li><a href="../core_data/JournalEffectAppendEvents-class.html">JournalEffectAppendEvents</a></li>
+        <li><a href="../core_data/JournalEffectAppendMerge-class.html">JournalEffectAppendMerge</a></li>
+        <li><a href="../core_data/JournalEffectForward-class.html">JournalEffectForward</a></li>
+        <li><a href="../core_data/JournalEffectNone-class.html">JournalEffectNone</a></li>
+        <li><a href="../core_data/JournalEvent-class.html">JournalEvent</a></li>
+        <li><a href="../core_data/JournalEventDatastore-class.html">JournalEventDatastore</a></li>
+        <li><a href="../core_data/JournalEventJournal-class.html">JournalEventJournal</a></li>
+        <li><a href="../core_data/JournalImpl-class.html">JournalImpl</a></li>
+        <li><a href="../core_data/JournalInternal-class.html">JournalInternal</a></li>
+        <li><a href="../core_data/JournalState-class.html">JournalState</a></li>
+        <li><a href="../core_data/JournalStatePending-class.html">JournalStatePending</a></li>
+        <li><a href="../core_data/JournalUpdate-class.html">JournalUpdate</a></li>
+        <li><a href="../core_data/LocalDataEffect-class.html">LocalDataEffect</a></li>
+        <li><a href="../core_data/LocalDataEffectAdd-class.html">LocalDataEffectAdd</a></li>
+        <li><a href="../core_data/LocalDataEffectAppend-class.html">LocalDataEffectAppend</a></li>
+        <li><a href="../core_data/LocalDataEffectForward-class.html">LocalDataEffectForward</a></li>
+        <li><a href="../core_data/LocalDataEffectNone-class.html">LocalDataEffectNone</a></li>
+        <li><a href="../core_data/Ref-class.html">Ref</a></li>
+        <li><a href="../core_data/RefFactory-class.html">RefFactory</a></li>
+
+
+
+
+
+      <li class="section-title"><a href="../core_data/core_data-library.html#functions">Functions</a></li>
+        <li><a href="../core_data/refComparator.html">refComparator</a></li>
+
+
+      <li class="section-title"><a href="../core_data/core_data-library.html#typedefs">Typedefs</a></li>
+        <li><a href="../core_data/JsonMap.html">JsonMap</a></li>
+        <li><a href="../core_data/StateView.html">StateView</a></li>
+        <li><a href="../core_data/StateViewData.html">StateViewData</a></li>
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    core_data
+      0.1.0-alpha.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

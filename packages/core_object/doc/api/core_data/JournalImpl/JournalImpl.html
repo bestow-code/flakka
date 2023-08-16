@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the JournalImpl constructor from Class JournalImpl from the core_data library, for the Dart programming language.">
+  <title>JournalImpl constructor - JournalImpl - core_data library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">core_data</a></li>
+    <li><a href="../../core_data/core_data-library.html">core_data</a></li>
+    <li><a href="../../core_data/JournalImpl-class.html">JournalImpl<span class="signature">&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span></a></li>
+    <li class="self-crumb">JournalImpl constructor</li>
+  </ol>
+  <div class="self-name">JournalImpl</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-constructor">JournalImpl&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span> constructor 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+      <span class="name ">JournalImpl&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-initialState"><span class="type-annotation"><a href="../../core_data/JournalState-class.html">JournalState</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">initialState</span></span></li>
+</ol>)
+    </section>
+
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">JournalImpl(super.initialState) {
+  on&lt;JournalEvent&lt;Event, State, View&gt;&gt;((event, emit) {
+    event.map(
+      datastore: (datastore) {
+        datastore.update.map(
+          entry: (entryUpdate) {
+            emit(state.copyWithAndPromote(entry: entryUpdate.data));
+          },
+          events: (eventsUpdate) {
+            emit(state.copyWithAndPromote(events: eventsUpdate.data));
+          },
+          main: (mainUpdate) {
+            emit(state.copyWithAndPromote(main: mainUpdate.ref));
+          },
+        );
+      },
+      journal: (journal) {
+        journal.effect.map(
+          appendEvents: (appendEvents) {
+            emit(
+              state.copyWith(
+                graph: state.graph.copyAndAppend(
+                  ref: appendEvents.ref,
+                  refs: {appendEvents.parent},
+                  createdAt: appendEvents.createdAt,
+                ),
+                events: {
+                  ...state.events,
+                  appendEvents.ref: appendEvents.events
+                },
+                stateView: {
+                  ...state.stateView,
+                  appendEvents.ref: appendEvents.stateView
+                },
+              ),
+            );
+            &#47;&#47; datastoreEffect.add(
+            &#47;&#47;   DatastoreEffect.appendEvents(
+            &#47;&#47;     ref: appendEvents.ref,
+            &#47;&#47;     parent: appendEvents.parent,
+            &#47;&#47;     events: appendEvents.events,
+            &#47;&#47;     stateView: appendEvents.stateView,
+            &#47;&#47;     createdAt: appendEvents.createdAt,
+            &#47;&#47;     sequenceNumber: appendEvents.sequenceNumber,
+            &#47;&#47;   ),
+            &#47;&#47; );
+          },
+          appendMerge: (appendMerge) {
+            emit(
+              state.copyWith(
+                graph: state.graph.copyAndAppend(
+                  ref: appendMerge.ref,
+                  refs: {appendMerge.parent, appendMerge.mergeParent},
+                  createdAt: appendMerge.createdAt,
+                ),
+                stateView: {
+                  ...state.stateView,
+                  appendMerge.ref: appendMerge.stateView
+                },
+              ),
+            );
+            &#47;&#47; datastoreEffect.add(
+            &#47;&#47;   DatastoreEffect.appendMerge(
+            &#47;&#47;     ref: appendMerge.ref,
+            &#47;&#47;     parent: appendMerge.parent,
+            &#47;&#47;     mergeParent: appendMerge.mergeParent,
+            &#47;&#47;     stateView: appendMerge.stateView,
+            &#47;&#47;     createdAt: appendMerge.createdAt,
+            &#47;&#47;     sequenceNumber: appendMerge.sequenceNumber,
+            &#47;&#47;   ),
+            &#47;&#47; );
+          },
+          forward: (forward) {
+            emit(
+              state.copyWith(
+                stateView: {
+                  ...state.stateView,
+                  forward.ref: forward.stateView
+                },
+              ),
+            );
+            datastoreEffect.add(
+              DataEffect.forward(
+                ref: forward.ref,
+                stateView: forward.stateView,
+                createdAt: forward.createdAt,
+                sequenceNumber: forward.sequenceNumber,
+              ),
+            );
+          },
+          none: (_) {
+            datastoreEffect.add(DataEffect.none());
+          },
+        );
+      },
+    );
+  });
+  Rx.merge([
+    datastoreUpdateSink.stream
+        .map((update) =&gt; JournalEvent.datastore(update: update)),
+    journalEffectSink.stream
+        .map((effect) =&gt; JournalEvent.journal(effect: effect)),
+  ]).listen(add);
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">core_data</a></li>
+  <li><a href="../../core_data/core_data-library.html">core_data</a></li>
+  <li><a href="../../core_data/JournalImpl-class.html">JournalImpl<span class="signature">&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span></a></li>
+  <li class="self-crumb">JournalImpl constructor</li>
+</ol>
+
+
+    <h5>JournalImpl class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../core_data/JournalImpl-class.html#constructors">Constructors</a></li>
+          <li><a href="../../core_data/JournalImpl/JournalImpl.html">JournalImpl</a></li>
+
+
+        <li class="section-title">
+          <a href="../../core_data/JournalImpl-class.html#instance-properties">Properties</a>
+        </li>
+          <li><a href="../../core_data/JournalImpl/datastoreEffect.html">datastoreEffect</a></li>
+          <li><a href="../../core_data/JournalImpl/datastoreUpdateSink.html">datastoreUpdateSink</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/BlocBase/isClosed.html">isClosed</a></li>
+          <li><a href="../../core_data/JournalImpl/journalEffectSink.html">journalEffectSink</a></li>
+          <li><a href="../../core_data/JournalImpl/journalUpdate.html">journalUpdate</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/BlocBase/state.html">state</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/BlocBase/stream.html">stream</a></li>
+
+        <li class="section-title inherited"><a href="../../core_data/JournalImpl-class.html#instance-methods">Methods</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/Bloc/add.html">add</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/BlocBase/addError.html">addError</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/Bloc/close.html">close</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/Bloc/emit.html">emit</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/Bloc/on.html">on</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/BlocBase/onChange.html">onChange</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/BlocBase/onError.html">onError</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/Bloc/onEvent.html">onEvent</a></li>
+          <li class="inherited"><a href="https://pub.dev/documentation/bloc/8.1.2/bloc/Bloc/onTransition.html">onTransition</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../core_data/JournalImpl-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    core_data
+      0.1.0-alpha.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

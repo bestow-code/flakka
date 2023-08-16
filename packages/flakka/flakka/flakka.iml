@@ -2,63 +2,6 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../..">
-      <sourceFolder url="file://$MODULE_DIR$/../../.." isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_fake/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_fake/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_fake/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_firestore/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_firestore/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_firestore/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_test/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_test/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_entry_store/core_entry_store_test/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_annotation/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_annotation/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_annotation/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_build/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_build/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_build/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/brick_validator/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/brick_validator/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/brick_validator/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_e2e_development/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_e2e_development/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_e2e_development/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_event/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_event/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_event/build" />
-      <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../flakka_dev/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../flakka_dev/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../flakka_dev/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../flakka_flame/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../flakka_flame/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../flakka_flame/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_test/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_test/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_aggregate/core_aggregate_test/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_application/core_application/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_application/core_application/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_application/core_application/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_application/core_application_test/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_application/core_application_test/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/../../core_application/core_application_test/build" />
-    </content>
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />

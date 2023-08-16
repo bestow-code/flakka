@@ -4,7 +4,6 @@ library core_application;
 
 export 'src/application/application.dart';
 export 'src/application/application_base.dart';
-export 'src/application/application_provider.dart';
 export 'src/application/model/application_effect.dart';
 export 'src/application/model/request_effect.dart';
 export 'src/event_handler.dart';
