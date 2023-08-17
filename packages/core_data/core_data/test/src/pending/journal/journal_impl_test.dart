@@ -4,13 +4,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
-import 'package:core_object/core_object.dart';
-
-// import 'package:core_datastore/core_datastore.dart';
-// import 'package:core_application/core_application.dart';
 import 'package:test/test.dart';
-
-// import '../application/test_model.dart';
 
 void main() {
   late JournalImpl<TestEvent, TestState, TestView> journal;
@@ -23,7 +17,6 @@ void main() {
 
   late Ref base;
   late Ref main;
-  late Ref instance;
 
   final ref0 = Ref('0');
   final ref1a = Ref('1a');
@@ -103,7 +96,7 @@ void main() {
         initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending.empty(),
         );
@@ -124,7 +117,7 @@ void main() {
         initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending.empty(),
         );
@@ -143,12 +136,10 @@ void main() {
         initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending<TestEvent>.empty().copyWith(
-            events: {
-              ref1a: [testEvent0]
-            },
+            event: {ref1a: testEvent0},
           ),
         );
         journal = JournalImpl(initialState);
@@ -158,9 +149,7 @@ void main() {
             emits(
               initialState.copyWith(
                 graph: graph.copyWithNewEntry([entry1a]),
-                events: {
-                  ref1a: [testEvent0]
-                },
+                event: {ref1a: testEvent0},
                 pending: JournalStatePending.empty(),
               ),
             ),
@@ -174,7 +163,7 @@ void main() {
         initialStateView = {base: (state: testState0, view: testView0)};
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending.empty(),
         );
@@ -184,18 +173,14 @@ void main() {
             journal.stream,
             emits(
               initialState.copyWith.pending(
-                events: {
-                  ref1a: [testEvent0]
-                },
+                event: {ref1a: testEvent0},
               ),
             ),
           ),
         );
         journal.datastoreUpdateSink.add(
-          DataUpdate.events(
-            data: {
-              ref1a: [testEvent0]
-            },
+          DataUpdate.event(
+            data: {ref1a: testEvent0},
           ),
         );
       });
@@ -204,7 +189,7 @@ void main() {
 
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending<TestEvent>.empty().copyWith(
             entry: {ref1a: entry1a},
@@ -217,19 +202,15 @@ void main() {
             emits(
               initialState.copyWith(
                 graph: graph.copyWithNewEntry([entry1a]),
-                events: {
-                  ref1a: [testEvent0]
-                },
+                event: {ref1a: testEvent0},
                 pending: JournalStatePending.empty(),
               ),
             ),
           ),
         );
         journal.datastoreUpdateSink.add(
-          DataUpdate.events(
-            data: {
-              ref1a: [testEvent0]
-            },
+          DataUpdate.event(
+            data: {ref1a: testEvent0},
           ),
         );
       });
@@ -245,7 +226,7 @@ void main() {
 
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending<TestEvent>.empty(),
         );
@@ -267,7 +248,7 @@ void main() {
 
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending<TestEvent>.empty(),
         );
@@ -291,7 +272,7 @@ void main() {
 
         initialState = JournalState<TestEvent, TestState, TestView>(
           graph: graph,
-          events: {},
+          event: {},
           stateView: initialStateView,
           pending: JournalStatePending<TestEvent>.empty(),
         );
@@ -312,7 +293,7 @@ void main() {
     setUp(() {
       initialState = JournalState<TestEvent, TestState, TestView>(
         graph: graph,
-        events: {},
+        event: {},
         stateView: {ref0: testStateView0},
         pending: JournalStatePending.empty(),
       );
@@ -321,10 +302,10 @@ void main() {
     group('append events', () {
       void act() {
         journal.journalEffectSink.add(
-          JournalEffect.appendEvents(
+          JournalEffect.appendEvent(
             ref: ref1a,
             parent: ref0,
-            events: testEvents0,
+            event: testEvent0,
             stateView: testStateView0,
             createdAt: t(1),
             sequenceNumber: 1,
@@ -353,7 +334,7 @@ void main() {
         test('updated events', () {
           unawaited(
             expectLater(
-              journal.stream.map((state) => state.events[ref1a]),
+              journal.stream.map((state) => state.event[ref1a]),
               emits(testEvents0),
             ),
           );

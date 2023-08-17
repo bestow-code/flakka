@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_aggregate_annotation/core_aggregate_annotation.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_datastore/core_datastore.dart';
+import 'package:core_objectstore/core_objectstore.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_application/core_application.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

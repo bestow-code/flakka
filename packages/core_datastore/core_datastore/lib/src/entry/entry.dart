@@ -8,7 +8,7 @@ part 'entry.g.dart';
 
 @freezed
 // @JsonSerializable(genericArgumentFactories: true)
-class Entry with _$Entry implements Comparable<Entry>, JsonMap {
+class Entry with _$Entry implements Comparable<Entry> {
   factory Entry({
     required Ref ref,
     required List<Ref> refs,

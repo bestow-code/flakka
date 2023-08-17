@@ -45,5 +45,5 @@ abstract class DatastoreRemote<Event extends CoreEvent> {
   /// Stream of additions and metadata changes for the [Entry] collection
   Stream<CollectionSnapshot<Entry>> get entryCollectionSnapshot;
 
-  Stream<CollectionSnapshot<Events<Event>>> get eventsCollectionSnapshot;
+  Stream<CollectionSnapshot<Event>> get eventCollectionSnapshot;
 }

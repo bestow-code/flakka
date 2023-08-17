@@ -4,8 +4,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
-import 'package:core_datastore/core_datastore.dart';
-import 'package:core_datastore_test/core_datastore_test.dart';
+import 'package:core_objectstore/core_objectstore.dart';
+import 'package:core_objectstore_test/core_objectstore_test.dart';
 import 'package:core_application/core_application.dart';
 import 'package:test/test.dart';
 
@@ -162,10 +162,10 @@ void main() {
             expectLater(
               application.journalEffect,
               emits(
-                JournalEffect.appendEvents(
+                JournalEffect.appendEvent(
                   ref: Ref('1'),
                   parent: Ref('0'),
-                  events: [TestEvent(2)],
+                  event: TestEvent(2),
                   stateView: (state: TestState(2), view: TestView(2)),
                   createdAt: t(1),
                   sequenceNumber: 1,

@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:core_data/core_data.dart';
 import 'package:core_application/core_application.dart';
+import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'core_aggregate_application.freezed.dart';
-
 
 abstract interface class CoreAggregateApplication<
     Handle,
@@ -21,10 +20,10 @@ abstract interface class CoreAggregateApplication<
 class AggregateRequest<Handle, State extends CoreState, Event extends CoreEvent>
     with _$AggregateRequest<Handle, State, Event> {
   factory AggregateRequest(
-      AggregateRequestHandler<Handle, State, Event> handler, {
-        Ref? ref,
-        DateTime? createdAt,
-      }) = _AggregateRequest<Handle, State, Event>;
+    AggregateRequestHandler<Handle, State, Event> handler, {
+    Ref? ref,
+    DateTime? createdAt,
+  }) = _AggregateRequest<Handle, State, Event>;
 }
 
 typedef AggregateRequestHandler<Handle, State extends CoreState,

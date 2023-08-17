@@ -1,5 +1,5 @@
 import 'package:core_common/core_common.dart';
-import 'package:core_datastore/core_datastore.dart';
+import 'package:core_objectstore/core_objectstore.dart';
 import 'package:core_application/core_application.dart';
 
 import '../core_aggregate.dart';

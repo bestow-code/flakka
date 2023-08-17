@@ -9,8 +9,8 @@ dependencies:
   core_aggregate:
   core_aggregate_annotation:
   core_common:
-  core_datastore:
-  core_datastore_sembast:
+  core_objectstore:
+  core_objectstore_sembast:
   core_data:
   core_application:
   freezed_annotation:
@@ -49,12 +49,12 @@ dependency_overrides:
     path: {{{ packages_rel_path }}}../../core_data/core_data
   core_data_test:
     path: {{{ packages_rel_path }}}../../core_data/core_data_test
-  core_datastore:
-    path: {{{ packages_rel_path }}}../../core_datastore/core_datastore
-  core_datastore_sembast:
-    path: {{{ packages_rel_path }}}../../core_datastore/core_datastore_sembast
-  core_datastore_test:
-    path: {{{ packages_rel_path }}}../../core_datastore/core_datastore_test
+  core_objectstore:
+    path: {{{ packages_rel_path }}}../../core_objectstore/core_objectstore
+  core_objectstore_sembast:
+    path: {{{ packages_rel_path }}}../../core_objectstore/core_objectstore_sembast
+  core_objectstore_test:
+    path: {{{ packages_rel_path }}}../../core_objectstore/core_objectstore_test
   core_application:
     path: {{{ packages_rel_path }}}../../core_application/core_application
   core_application_test:

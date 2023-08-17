@@ -13,7 +13,7 @@ dependencies:
   collection: ^1.17.1
   core_common:
   core_data:
-  core_datastore:
+  core_objectstore:
   core_application:
   debounce_throttle: ^2.0.0
   directed_graph: ^0.3.9
@@ -25,7 +25,7 @@ dependencies:
 dev_dependencies:
   bloc_test:
   build_runner:
-  core_datastore_test:
+  core_objectstore_test:
   lints: ^2.0.1
   freezed:
   json_serializable:

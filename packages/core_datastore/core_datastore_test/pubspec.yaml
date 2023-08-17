@@ -13,7 +13,7 @@ dependencies:
   core_data:
   core_data_test:
   core_datastore:
-  core_entry:
+  core_object:
   freezed_annotation: ^2.2.0
   get_it:
   injectable:

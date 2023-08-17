@@ -10,7 +10,7 @@ environment:
 dependencies:
   core_aggregate:
   core_data:
-  core_datastore:
+  core_objectstore:
   get_it: 
 
 dev_dependencies:

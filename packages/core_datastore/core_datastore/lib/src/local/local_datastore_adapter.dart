@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:core_data/core_data.dart';
+import 'package:core_object/core_object.dart';
 
 abstract class LocalDatastoreAdapter {
   //
@@ -9,26 +10,26 @@ abstract class LocalDatastoreAdapter {
       int sequenceNumber,
       Ref ref,
       DateTime createdAt,
-      StateViewData Function()? stateViewData,
+      StateViewObject Function()? stateViewData,
     }) ifEmpty,
   });
 
   Future<void> add({
     required Map<Ref,
-            ({JsonMap? entry, JsonMap? event, StateViewData? stateView})>
+            ({JsonMap? entry, JsonMap? event, StateViewObject? stateView})>
         data,
   });
 
   Future<void> append({
     required JsonMap entry,
     required JsonMap? event,
-    required StateViewData? stateView,
+    required StateViewObject? stateView,
     required int sequenceNumber,
   });
 
   Future<void> forward({
     required Ref ref,
-    required StateViewData? stateView,
+    required StateViewObject? stateView,
     required int sequenceNumber,
   });
 
@@ -36,5 +37,5 @@ abstract class LocalDatastoreAdapter {
 
   Stream<Map<Ref, JsonMap>> get eventAll;
 
-  Stream<Map<Ref, StateViewData>> get stateViewAll;
+  Stream<Map<Ref, StateViewObject>> get stateViewAll;
 }

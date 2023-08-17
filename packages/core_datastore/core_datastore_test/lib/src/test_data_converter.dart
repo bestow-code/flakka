@@ -1,6 +1,6 @@
-import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
 import 'package:core_datastore/core_datastore.dart';
+import 'package:core_object/core_object.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -21,7 +21,6 @@ class TestViewConverter extends DataConverter<TestView> {
   @override
   JsonMap toJson(TestView data) => data.toJson();
 }
-
 
 @Singleton(as: DataConverter<TestState>)
 class TestStateConverter extends DataConverter<TestState> {

@@ -3,11 +3,9 @@
 /// Common libraries for core_platform
 library core_object;
 
-export 'src/model/data_source_update.dart';
-export 'src/pending/core_object.dart';
-export 'src/pending/json.dart';
-export 'src/pending/model/object_effect.dart';
-export 'src/pending/model/object_update.dart';
-export 'src/pending/ref.dart';
-export 'src/pending/ref_factory.dart';
-export 'src/pending/state_view.dart';
+export 'src/core_object.dart';
+export 'src/json_map.dart';
+export 'src/model/local_object_effect.dart';
+export 'src/model/object_update.dart';
+export 'src/model/remote_object_effect.dart';
+export 'src/state_view.dart';

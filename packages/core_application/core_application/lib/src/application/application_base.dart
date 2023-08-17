@@ -82,10 +82,10 @@ class ApplicationBase<Event extends CoreEvent, State extends CoreState,
                       .fold(state.stateView.view, viewEventHandler),
                 ),
               );
-              final effect = JournalEffect.appendEvents(
+              final effect = JournalEffect.appendEvent(
                 ref: next.ref,
                 parent: state.ref,
-                events: stateEventSink.events,
+                event: stateEventSink.events.first,
                 stateView: next.stateView,
                 createdAt: request.createdAtRef.createdAt,
                 sequenceNumber: next.sequenceNumber,
