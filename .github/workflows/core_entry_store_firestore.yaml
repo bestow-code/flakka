@@ -12,9 +12,9 @@ on:
     paths:
       - packages/core_common/**
       - packages/core_entry/**
-      - packages/core_datastore/core_datastore/**
-      - packages/core_datastore/core_entry_store_test/**
-      - packages/core_datastore/core_entry_store_firestore/**
+      - packages/core_data_store/core_data_store/**
+      - packages/core_data_store/core_entry_store_test/**
+      - packages/core_data_store/core_entry_store_firestore/**
       - .github/workflows/core_entry_firestore.yaml
   push:
     branches:
@@ -23,9 +23,9 @@ on:
     paths:
       - packages/core_common/**
       - packages/core_entry/**
-      - packages/core_datastore/core_datastore/**
-      - packages/core_datastore/core_entry_store_test/**
-      - packages/core_datastore/core_entry_store_firestore/**
+      - packages/core_data_store/core_data_store/**
+      - packages/core_data_store/core_entry_store_test/**
+      - packages/core_data_store/core_entry_store_firestore/**
       - .github/workflows/core_entry_firestore.yaml
 
 jobs:
@@ -35,6 +35,6 @@ jobs:
     with:
       runs_on: self-hosted
       coverage_excludes: '**/*.g.dart **/*.freezed.dart'
-      working_directory: packages/core_datastore/core_entry_store_firestore
+      working_directory: packages/core_data_store/core_entry_store_firestore
       min_coverage: 0
       analyze_directories: "lib integration_test"
