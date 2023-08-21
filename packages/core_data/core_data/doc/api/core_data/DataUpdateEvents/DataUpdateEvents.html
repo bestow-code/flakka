@@ -58,7 +58,7 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">DataUpdateEvents&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-data">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../core_data/Ref-class.html">Ref</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">data</span>}</span></li>
+      <span class="name ">DataUpdateEvents&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-data">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../core_data/Ref-class.html">Ref</a></span>, <span class="type-parameter">Event</span>&gt;</span></span> <span class="parameter-name">data</span>}</span></li>
 </ol>)
     </section>
 
@@ -68,7 +68,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">factory DataUpdateEvents({required final Map&lt;Ref, Iterable&lt;Event&gt;&gt; data}) =
+  <pre class="language-dart"><code class="language-dart">factory DataUpdateEvents({required final Map&lt;Ref, Event&gt; data}) =
     _$DataUpdateEvents&lt;Event, State, View&gt;;</code></pre>
 </section>
 

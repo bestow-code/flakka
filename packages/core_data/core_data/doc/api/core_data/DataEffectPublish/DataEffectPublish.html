@@ -59,9 +59,7 @@
     <section class="multi-line-signature">
       
       <span class="name ">DataEffectPublish&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-ref">{<span>required</span> <span class="type-annotation"><a href="../../core_data/Ref-class.html">Ref</a></span> <span class="parameter-name">ref</span>, </span></li>
-<li><span class="parameter" id="-param-stateView"><span>required</span> <span class="type-annotation">((<span class="field">{<span class="type-annotation">State</span> <span class="field-name">state</span>, </span><span class="field"><span class="type-annotation">View</span> <span class="field-name">view</span>}</span>)?)</span> <span class="parameter-name">stateView</span>, </span></li>
-<li><span class="parameter" id="-param-from"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../core_data/Ref-class.html">Ref</a></span>&gt;</span></span> <span class="parameter-name">from</span>, </span></li>
-<li><span class="parameter" id="-param-createdAt"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">createdAt</span>}</span></li>
+<li><span class="parameter" id="-param-ancestors"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../core_data/Ref-class.html">Ref</a></span>&gt;</span></span> <span class="parameter-name">ancestors</span>}</span></li>
 </ol>)
     </section>
 
@@ -72,10 +70,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory DataEffectPublish(
-        {required final Ref ref,
-        required final ({State state, View view})? stateView,
-        required final Iterable&lt;Ref&gt; from,
-        required final DateTime createdAt}) =
+        {required final Ref ref, required final Set&lt;Ref&gt; ancestors}) =
     _$DataEffectPublish&lt;Event, State, View&gt;;</code></pre>
 </section>
 
@@ -107,13 +102,11 @@
         <li class="section-title">
           <a href="../../core_data/DataEffectPublish-class.html#instance-properties">Properties</a>
         </li>
+          <li><a href="../../core_data/DataEffectPublish/ancestors.html">ancestors</a></li>
           <li><a href="../../core_data/DataEffectPublish/copyWith.html">copyWith</a></li>
-          <li><a href="../../core_data/DataEffectPublish/createdAt.html">createdAt</a></li>
-          <li><a href="../../core_data/DataEffectPublish/from.html">from</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li><a href="../../core_data/DataEffectPublish/ref.html">ref</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li><a href="../../core_data/DataEffectPublish/stateView.html">stateView</a></li>
 
         <li class="section-title inherited"><a href="../../core_data/DataEffectPublish-class.html#instance-methods">Methods</a></li>
           <li class="inherited"><a href="../../core_data/DataEffect/map.html">map</a></li>

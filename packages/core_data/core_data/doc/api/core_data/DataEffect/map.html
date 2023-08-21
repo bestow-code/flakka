@@ -65,7 +65,10 @@
   </div>
 
 <span class="returntype">TResult</span>
-<span class="name ">map</span>&lt;<wbr><span class="type-parameter">TResult extends Object?</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="map-param-append">{<span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">append</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataEffectAppend-class.html">DataEffectAppend</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
+<span class="name ">map</span>&lt;<wbr><span class="type-parameter">TResult extends Object?</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="map-param-initialize">{<span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">initialize</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataEffectInitialize-class.html">DataEffectInitialize</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
+</ol>
+), </span></li>
+<li><span class="parameter" id="map-param-append"><span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">append</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataEffectAppend-class.html">DataEffectAppend</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
 </ol>
 ), </span></li>
 <li><span class="parameter" id="map-param-forward"><span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">forward</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataEffectForward-class.html">DataEffectForward</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
@@ -90,6 +93,8 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@optionalTypeArgs
 TResult map&lt;TResult extends Object?&gt;({
+  required TResult Function(DataEffectInitialize&lt;Event, State, View&gt; value)
+      initialize,
   required TResult Function(DataEffectAppend&lt;Event, State, View&gt; value)
       append,
   required TResult Function(DataEffectForward&lt;Event, State, View&gt; value)
@@ -125,6 +130,7 @@ TResult map&lt;TResult extends Object?&gt;({
         <li class="section-title"><a href="../../core_data/DataEffect-class.html#constructors">Constructors</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.append.html">append</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.forward.html">forward</a></li>
+          <li><a href="../../core_data/DataEffect/DataEffect.initialize.html">initialize</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.none.html">none</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.publish.html">publish</a></li>
 

@@ -3,20 +3,11 @@
 /// Common libraries for core_platform
 library core_data;
 
-export 'src/core_data/core_data.dart';
-export 'src/core_data/core_data_event.dart';
-export 'src/core_data/core_data_state.dart';
 export 'src/core_event.dart';
-export 'src/graph.dart';
-export 'src/journal/journal.dart';
-export 'src/journal/journal_event.dart';
-export 'src/journal/journal_impl.dart';
-export 'src/journal_state.dart';
-export 'src/journal_state_pending.dart';
-export 'src/model/data_effect.dart';
-export 'src/model/data_update.dart';
-export 'src/model/journal_effect.dart';
-export 'src/model/journal_update.dart';
+export 'src/core_state.dart';
+export 'src/core_view.dart';
+export 'src/data_effect.dart';
+export 'src/data_update.dart';
 export 'src/ref.dart';
 export 'src/ref_factory.dart';
 export 'src/state_view.dart';

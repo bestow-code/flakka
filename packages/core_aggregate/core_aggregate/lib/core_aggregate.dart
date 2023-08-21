@@ -25,3 +25,4 @@ export 'src/model/ref.dart';
 export 'src/model/state.dart';
 export 'src/model/view.dart';
 export 'src/state_event_sink.dart';
+export 'src/state_event_sink/state_event_sink.dart';

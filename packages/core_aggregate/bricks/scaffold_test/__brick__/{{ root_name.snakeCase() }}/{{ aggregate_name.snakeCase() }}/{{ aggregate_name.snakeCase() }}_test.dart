@@ -4,7 +4,7 @@ library;
 import 'package:{{ package_name.snakeCase() }}/aggregate1_api.dart';
 import 'package:{{ package_name.snakeCase() }}/aggregate1_impl.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_objectstore/core_objectstore.dart';
+import 'package:core_object_store/core_object_store.dart';
 import 'package:core_entry_store_fake/core_entry_store_fake.dart';
 import 'package:test/test.dart';
 

@@ -9,7 +9,7 @@ environment:
 dependencies:
   core_common:
   core_data:
-  core_objectstore:
+  core_object_store:
   core_application:
   directed_graph: ^0.3.9
   freezed_annotation: ^2.2.0
@@ -19,7 +19,7 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.5
   core_data_test:
-  core_objectstore_test:
+  core_object_store_test:
   dependency_validator: ^3.0.0
   freezed: ^2.3.5
   json_serializable: ^6.7.0

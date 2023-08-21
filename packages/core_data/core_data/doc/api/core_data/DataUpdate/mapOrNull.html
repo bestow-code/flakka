@@ -65,10 +65,13 @@
   </div>
 
 <span class="returntype">TResult?</span>
-<span class="name ">mapOrNull</span>&lt;<wbr><span class="type-parameter">TResult extends Object?</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="mapOrNull-param-entry">{<span class="type-annotation">TResult?</span> <span class="parameter-name">entry</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataUpdateEntry-class.html">DataUpdateEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
+<span class="name ">mapOrNull</span>&lt;<wbr><span class="type-parameter">TResult extends Object?</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="mapOrNull-param-initialize">{<span class="type-annotation">TResult?</span> <span class="parameter-name">initialize</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataUpdateInitialize-class.html">DataUpdateInitialize</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
 </ol>
 )?, </span></li>
-<li><span class="parameter" id="mapOrNull-param-events"><span class="type-annotation">TResult?</span> <span class="parameter-name">events</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataUpdateEvents-class.html">DataUpdateEvents</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
+<li><span class="parameter" id="mapOrNull-param-entry"><span class="type-annotation">TResult?</span> <span class="parameter-name">entry</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataUpdateEntry-class.html">DataUpdateEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
+</ol>
+)?, </span></li>
+<li><span class="parameter" id="mapOrNull-param-event"><span class="type-annotation">TResult?</span> <span class="parameter-name">event</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataUpdateEvents-class.html">DataUpdateEvents</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
 </ol>
 )?, </span></li>
 <li><span class="parameter" id="mapOrNull-param-main"><span class="type-annotation">TResult?</span> <span class="parameter-name">main</span>(<ol class="parameter-list"><li><span class="parameter" id="param-value"><span class="type-annotation"><a href="../../core_data/DataUpdateMain-class.html">DataUpdateMain</a><span class="signature">&lt;<wbr><span class="type-parameter">Event</span>, <span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">value</span></span></li>
@@ -87,8 +90,10 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@optionalTypeArgs
 TResult? mapOrNull&lt;TResult extends Object?&gt;({
+  TResult? Function(DataUpdateInitialize&lt;Event, State, View&gt; value)?
+      initialize,
   TResult? Function(DataUpdateEntry&lt;Event, State, View&gt; value)? entry,
-  TResult? Function(DataUpdateEvents&lt;Event, State, View&gt; value)? events,
+  TResult? Function(DataUpdateEvents&lt;Event, State, View&gt; value)? event,
   TResult? Function(DataUpdateMain&lt;Event, State, View&gt; value)? main,
 }) =&gt;
     throw _privateConstructorUsedError;</code></pre>
@@ -117,7 +122,8 @@ TResult? mapOrNull&lt;TResult extends Object?&gt;({
 
         <li class="section-title"><a href="../../core_data/DataUpdate-class.html#constructors">Constructors</a></li>
           <li><a href="../../core_data/DataUpdate/DataUpdate.entry.html">entry</a></li>
-          <li><a href="../../core_data/DataUpdate/DataUpdate.events.html">events</a></li>
+          <li><a href="../../core_data/DataUpdate/DataUpdate.event.html">event</a></li>
+          <li><a href="../../core_data/DataUpdate/DataUpdate.initialize.html">initialize</a></li>
           <li><a href="../../core_data/DataUpdate/DataUpdate.main.html">main</a></li>
 
 

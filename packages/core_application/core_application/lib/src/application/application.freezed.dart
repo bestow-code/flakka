@@ -15,35 +15,93 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Request<State extends CoreState, Event extends CoreEvent> {
-  RequestHandler<State, Event> get handler =>
+mixin _$ApplicationEvent<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> {
+  ({DateTime createdAt, Ref ref}) get createdAtRef =>
       throw _privateConstructorUsedError;
-  Ref? get ref => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)
+        request,
+    required TResult Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)
+        journal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        request,
+    TResult? Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        journal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        request,
+    TResult Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        journal,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApplicationEventRequest<Event, State, View> value)
+        request,
+    required TResult Function(ApplicationEventJournal<Event, State, View> value)
+        journal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApplicationEventRequest<Event, State, View> value)?
+        request,
+    TResult? Function(ApplicationEventJournal<Event, State, View> value)?
+        journal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApplicationEventRequest<Event, State, View> value)?
+        request,
+    TResult Function(ApplicationEventJournal<Event, State, View> value)?
+        journal,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RequestCopyWith<State, Event, Request<State, Event>> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ApplicationEventCopyWith<Event, State, View,
+          ApplicationEvent<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RequestCopyWith<State extends CoreState,
-    Event extends CoreEvent, $Res> {
-  factory $RequestCopyWith(Request<State, Event> value,
-          $Res Function(Request<State, Event>) then) =
-      _$RequestCopyWithImpl<State, Event, $Res, Request<State, Event>>;
+abstract class $ApplicationEventCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory $ApplicationEventCopyWith(ApplicationEvent<Event, State, View> value,
+          $Res Function(ApplicationEvent<Event, State, View>) then) =
+      _$ApplicationEventCopyWithImpl<Event, State, View, $Res,
+          ApplicationEvent<Event, State, View>>;
   @useResult
-  $Res call(
-      {RequestHandler<State, Event> handler, Ref? ref, DateTime? createdAt});
-
-  $RefCopyWith<$Res>? get ref;
+  $Res call({({DateTime createdAt, Ref ref}) createdAtRef});
 }
 
 /// @nodoc
-class _$RequestCopyWithImpl<State extends CoreState, Event extends CoreEvent,
-        $Res, $Val extends Request<State, Event>>
-    implements $RequestCopyWith<State, Event, $Res> {
-  _$RequestCopyWithImpl(this._value, this._then);
+class _$ApplicationEventCopyWithImpl<
+        Event extends CoreEvent,
+        State extends CoreState,
+        View extends CoreView,
+        $Res,
+        $Val extends ApplicationEvent<Event, State, View>>
+    implements $ApplicationEventCopyWith<Event, State, View, $Res> {
+  _$ApplicationEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -53,142 +111,390 @@ class _$RequestCopyWithImpl<State extends CoreState, Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? handler = null,
-    Object? ref = freezed,
-    Object? createdAt = freezed,
+    Object? createdAtRef = null,
   }) {
     return _then(_value.copyWith(
-      handler: null == handler
-          ? _value.handler
-          : handler // ignore: cast_nullable_to_non_nullable
-              as RequestHandler<State, Event>,
-      ref: freezed == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      createdAtRef: null == createdAtRef
+          ? _value.createdAtRef
+          : createdAtRef // ignore: cast_nullable_to_non_nullable
+              as ({DateTime createdAt, Ref ref}),
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res>? get ref {
-    if (_value.ref == null) {
-      return null;
-    }
-
-    return $RefCopyWith<$Res>(_value.ref!, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$_RequestCopyWith<
-    State extends CoreState,
+abstract class _$$ApplicationEventRequestCopyWith<
     Event extends CoreEvent,
-    $Res> implements $RequestCopyWith<State, Event, $Res> {
-  factory _$$_RequestCopyWith(_$_Request<State, Event> value,
-          $Res Function(_$_Request<State, Event>) then) =
-      __$$_RequestCopyWithImpl<State, Event, $Res>;
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $ApplicationEventCopyWith<Event, State, View, $Res> {
+  factory _$$ApplicationEventRequestCopyWith(
+          _$ApplicationEventRequest<Event, State, View> value,
+          $Res Function(_$ApplicationEventRequest<Event, State, View>) then) =
+      __$$ApplicationEventRequestCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call(
-      {RequestHandler<State, Event> handler, Ref? ref, DateTime? createdAt});
-
-  @override
-  $RefCopyWith<$Res>? get ref;
+      {RequestHandler<State, Event> handler,
+      ({DateTime createdAt, Ref ref}) createdAtRef});
 }
 
 /// @nodoc
-class __$$_RequestCopyWithImpl<State extends CoreState, Event extends CoreEvent,
-        $Res>
-    extends _$RequestCopyWithImpl<State, Event, $Res, _$_Request<State, Event>>
-    implements _$$_RequestCopyWith<State, Event, $Res> {
-  __$$_RequestCopyWithImpl(_$_Request<State, Event> _value,
-      $Res Function(_$_Request<State, Event>) _then)
+class __$$ApplicationEventRequestCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$ApplicationEventCopyWithImpl<Event, State, View, $Res,
+        _$ApplicationEventRequest<Event, State, View>>
+    implements _$$ApplicationEventRequestCopyWith<Event, State, View, $Res> {
+  __$$ApplicationEventRequestCopyWithImpl(
+      _$ApplicationEventRequest<Event, State, View> _value,
+      $Res Function(_$ApplicationEventRequest<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? handler = null,
-    Object? ref = freezed,
-    Object? createdAt = freezed,
+    Object? createdAtRef = null,
   }) {
-    return _then(_$_Request<State, Event>(
-      null == handler
+    return _then(_$ApplicationEventRequest<Event, State, View>(
+      handler: null == handler
           ? _value.handler
           : handler // ignore: cast_nullable_to_non_nullable
               as RequestHandler<State, Event>,
-      ref: freezed == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      createdAtRef: null == createdAtRef
+          ? _value.createdAtRef
+          : createdAtRef // ignore: cast_nullable_to_non_nullable
+              as ({DateTime createdAt, Ref ref}),
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Request<State extends CoreState, Event extends CoreEvent>
-    implements _Request<State, Event> {
-  _$_Request(this.handler, {this.ref, this.createdAt});
+class _$ApplicationEventRequest<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
+    implements ApplicationEventRequest<Event, State, View> {
+  _$ApplicationEventRequest(
+      {required this.handler, required this.createdAtRef});
 
   @override
   final RequestHandler<State, Event> handler;
   @override
-  final Ref? ref;
-  @override
-  final DateTime? createdAt;
+  final ({DateTime createdAt, Ref ref}) createdAtRef;
 
   @override
   String toString() {
-    return 'Request<$State, $Event>(handler: $handler, ref: $ref, createdAt: $createdAt)';
+    return 'ApplicationEvent<$Event, $State, $View>.request(handler: $handler, createdAtRef: $createdAtRef)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Request<State, Event> &&
+            other is _$ApplicationEventRequest<Event, State, View> &&
             (identical(other.handler, handler) || other.handler == handler) &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.createdAtRef, createdAtRef) ||
+                other.createdAtRef == createdAtRef));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, handler, ref, createdAt);
+  int get hashCode => Object.hash(runtimeType, handler, createdAtRef);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestCopyWith<State, Event, _$_Request<State, Event>> get copyWith =>
-      __$$_RequestCopyWithImpl<State, Event, _$_Request<State, Event>>(
-          this, _$identity);
+  _$$ApplicationEventRequestCopyWith<Event, State, View,
+          _$ApplicationEventRequest<Event, State, View>>
+      get copyWith => __$$ApplicationEventRequestCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ApplicationEventRequest<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)
+        request,
+    required TResult Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)
+        journal,
+  }) {
+    return request(handler, createdAtRef);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        request,
+    TResult? Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        journal,
+  }) {
+    return request?.call(handler, createdAtRef);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        request,
+    TResult Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        journal,
+    required TResult orElse(),
+  }) {
+    if (request != null) {
+      return request(handler, createdAtRef);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApplicationEventRequest<Event, State, View> value)
+        request,
+    required TResult Function(ApplicationEventJournal<Event, State, View> value)
+        journal,
+  }) {
+    return request(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApplicationEventRequest<Event, State, View> value)?
+        request,
+    TResult? Function(ApplicationEventJournal<Event, State, View> value)?
+        journal,
+  }) {
+    return request?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApplicationEventRequest<Event, State, View> value)?
+        request,
+    TResult Function(ApplicationEventJournal<Event, State, View> value)?
+        journal,
+    required TResult orElse(),
+  }) {
+    if (request != null) {
+      return request(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _Request<State extends CoreState, Event extends CoreEvent>
-    implements Request<State, Event> {
-  factory _Request(final RequestHandler<State, Event> handler,
-      {final Ref? ref, final DateTime? createdAt}) = _$_Request<State, Event>;
+abstract class ApplicationEventRequest<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements ApplicationEvent<Event, State, View> {
+  factory ApplicationEventRequest(
+          {required final RequestHandler<State, Event> handler,
+          required final ({DateTime createdAt, Ref ref}) createdAtRef}) =
+      _$ApplicationEventRequest<Event, State, View>;
 
-  @override
   RequestHandler<State, Event> get handler;
   @override
-  Ref? get ref;
-  @override
-  DateTime? get createdAt;
+  ({DateTime createdAt, Ref ref}) get createdAtRef;
   @override
   @JsonKey(ignore: true)
-  _$$_RequestCopyWith<State, Event, _$_Request<State, Event>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ApplicationEventRequestCopyWith<Event, State, View,
+          _$ApplicationEventRequest<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ApplicationEventJournalCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $ApplicationEventCopyWith<Event, State, View, $Res> {
+  factory _$$ApplicationEventJournalCopyWith(
+          _$ApplicationEventJournal<Event, State, View> value,
+          $Res Function(_$ApplicationEventJournal<Event, State, View>) then) =
+      __$$ApplicationEventJournalCopyWithImpl<Event, State, View, $Res>;
+  @override
+  @useResult
+  $Res call(
+      {Journal<Event, State, View> update,
+      ({DateTime createdAt, Ref ref}) createdAtRef});
+}
+
+/// @nodoc
+class __$$ApplicationEventJournalCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$ApplicationEventCopyWithImpl<Event, State, View, $Res,
+        _$ApplicationEventJournal<Event, State, View>>
+    implements _$$ApplicationEventJournalCopyWith<Event, State, View, $Res> {
+  __$$ApplicationEventJournalCopyWithImpl(
+      _$ApplicationEventJournal<Event, State, View> _value,
+      $Res Function(_$ApplicationEventJournal<Event, State, View>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? update = null,
+    Object? createdAtRef = null,
+  }) {
+    return _then(_$ApplicationEventJournal<Event, State, View>(
+      update: null == update
+          ? _value.update
+          : update // ignore: cast_nullable_to_non_nullable
+              as Journal<Event, State, View>,
+      createdAtRef: null == createdAtRef
+          ? _value.createdAtRef
+          : createdAtRef // ignore: cast_nullable_to_non_nullable
+              as ({DateTime createdAt, Ref ref}),
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ApplicationEventJournal<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
+    implements ApplicationEventJournal<Event, State, View> {
+  _$ApplicationEventJournal({required this.update, required this.createdAtRef});
+
+  @override
+  final Journal<Event, State, View> update;
+  @override
+  final ({DateTime createdAt, Ref ref}) createdAtRef;
+
+  @override
+  String toString() {
+    return 'ApplicationEvent<$Event, $State, $View>.journal(update: $update, createdAtRef: $createdAtRef)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApplicationEventJournal<Event, State, View> &&
+            (identical(other.update, update) || other.update == update) &&
+            (identical(other.createdAtRef, createdAtRef) ||
+                other.createdAtRef == createdAtRef));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, update, createdAtRef);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApplicationEventJournalCopyWith<Event, State, View,
+          _$ApplicationEventJournal<Event, State, View>>
+      get copyWith => __$$ApplicationEventJournalCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ApplicationEventJournal<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)
+        request,
+    required TResult Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)
+        journal,
+  }) {
+    return journal(update, createdAtRef);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        request,
+    TResult? Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        journal,
+  }) {
+    return journal?.call(update, createdAtRef);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RequestHandler<State, Event> handler,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        request,
+    TResult Function(Journal<Event, State, View> update,
+            ({DateTime createdAt, Ref ref}) createdAtRef)?
+        journal,
+    required TResult orElse(),
+  }) {
+    if (journal != null) {
+      return journal(update, createdAtRef);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApplicationEventRequest<Event, State, View> value)
+        request,
+    required TResult Function(ApplicationEventJournal<Event, State, View> value)
+        journal,
+  }) {
+    return journal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApplicationEventRequest<Event, State, View> value)?
+        request,
+    TResult? Function(ApplicationEventJournal<Event, State, View> value)?
+        journal,
+  }) {
+    return journal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApplicationEventRequest<Event, State, View> value)?
+        request,
+    TResult Function(ApplicationEventJournal<Event, State, View> value)?
+        journal,
+    required TResult orElse(),
+  }) {
+    if (journal != null) {
+      return journal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApplicationEventJournal<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements ApplicationEvent<Event, State, View> {
+  factory ApplicationEventJournal(
+          {required final Journal<Event, State, View> update,
+          required final ({DateTime createdAt, Ref ref}) createdAtRef}) =
+      _$ApplicationEventJournal<Event, State, View>;
+
+  Journal<Event, State, View> get update;
+  @override
+  ({DateTime createdAt, Ref ref}) get createdAtRef;
+  @override
+  @JsonKey(ignore: true)
+  _$$ApplicationEventJournalCopyWith<Event, State, View,
+          _$ApplicationEventJournal<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -61,7 +61,7 @@
       <span class="name ">DataEffect&lt;<wbr><span class="type-parameter">Event extends CoreEvent</span>, <span class="type-parameter">State extends CoreState</span>, <span class="type-parameter">View extends CoreView</span>&gt;.append</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="append-param-ref">{<span>required</span> <span class="type-annotation"><a href="../../core_data/Ref-class.html">Ref</a></span> <span class="parameter-name">ref</span>, </span></li>
 <li><span class="parameter" id="append-param-parent"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../core_data/Ref-class.html">Ref</a></span>&gt;</span></span> <span class="parameter-name">parent</span>, </span></li>
 <li><span class="parameter" id="append-param-event"><span>required</span> <span class="type-annotation">Event?</span> <span class="parameter-name">event</span>, </span></li>
-<li><span class="parameter" id="append-param-stateView"><span>required</span> <span class="type-annotation"><a href="../../core_data/StateView.html">StateView</a><span class="signature">&lt;<wbr><span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span>?</span> <span class="parameter-name">stateView</span>, </span></li>
+<li><span class="parameter" id="append-param-stateView"><span>required</span> <span class="type-annotation"><a href="../../core_data/StateView.html">StateView</a><span class="signature">&lt;<wbr><span class="type-parameter">State</span>, <span class="type-parameter">View</span>&gt;</span></span> <span class="parameter-name">stateView</span>, </span></li>
 <li><span class="parameter" id="append-param-createdAt"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">createdAt</span>, </span></li>
 <li><span class="parameter" id="append-param-sequenceNumber"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">sequenceNumber</span>}</span></li>
 </ol>)
@@ -77,7 +77,7 @@
   required Ref ref,
   required Iterable&lt;Ref&gt; parent,
   required Event? event,
-  required StateView&lt;State, View&gt;? stateView,
+  required StateView&lt;State, View&gt; stateView,
   required DateTime createdAt,
   required int sequenceNumber,
 }) = DataEffectAppend;</code></pre>
@@ -107,6 +107,7 @@
         <li class="section-title"><a href="../../core_data/DataEffect-class.html#constructors">Constructors</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.append.html">append</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.forward.html">forward</a></li>
+          <li><a href="../../core_data/DataEffect/DataEffect.initialize.html">initialize</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.none.html">none</a></li>
           <li><a href="../../core_data/DataEffect/DataEffect.publish.html">publish</a></li>
 

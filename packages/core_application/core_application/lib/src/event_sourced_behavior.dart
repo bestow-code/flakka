@@ -22,10 +22,13 @@ abstract interface class EventSourcedBehavior<
 
   HandleFactory<Handle, State, Event> get handleFactory;
 }
+abstract interface class CoreHandle {}
+
+abstract interface class CoreAdapter {}
 
 typedef HandleFactory<Handle extends CoreHandle, State extends CoreState,
         Event extends CoreEvent>
-    = Handle Function(StateEventSink<State, Event> stateEventSink);
+    = Handle Function(State state);
 
 typedef AdapterFactory<Adapter extends CoreAdapter, Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
