@@ -25,7 +25,9 @@ dependencies:
 dev_dependencies:
   bloc_test:
   build_runner:
-  core_data_test:
+  core_application_store_test:
+#  core_application_store_test:
+  core_journal_store_test:
   core_object_store_test:
   freezed:
   lints: ^2.0.1

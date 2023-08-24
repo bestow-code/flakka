@@ -19,80 +19,57 @@ mixin _$DataUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref) initial,
     required TResult Function(
-            Ref main,
             Map<Ref, Set<Ref>> edges,
             Map<Ref, DateTime> createdAt,
             Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
             Set<Ref> pending)
-        initialize,
-    required TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)
-        entry,
-    required TResult Function(Map<Ref, Event> data) event,
+        eventGraph,
     required TResult Function(Ref ref) main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult? Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult? Function(Map<Ref, Event> data)? event,
+    TResult? Function(Ref ref)? initial,
+    TResult? Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
     TResult? Function(Ref ref)? main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult Function(Map<Ref, Event> data)? event,
+    TResult Function(Ref ref)? initial,
+    TResult Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
     TResult Function(Ref ref)? main,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataUpdateInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataUpdateEntry<Event, State, View> value) entry,
-    required TResult Function(DataUpdateEvents<Event, State, View> value) event,
+    required TResult Function(DataUpdateInitial<Event, State, View> value)
+        initial,
+    required TResult Function(DataUpdateEventGraph<Event, State, View> value)
+        eventGraph,
     required TResult Function(DataUpdateMain<Event, State, View> value) main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult? Function(DataUpdateEvents<Event, State, View> value)? event,
+    TResult? Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult? Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
     TResult? Function(DataUpdateMain<Event, State, View> value)? main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult Function(DataUpdateEvents<Event, State, View> value)? event,
+    TResult Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
     TResult Function(DataUpdateMain<Event, State, View> value)? main,
     required TResult orElse(),
   }) =>
@@ -125,50 +102,215 @@ class _$DataUpdateCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$DataUpdateInitializeCopyWith<Event extends CoreEvent,
+abstract class _$$DataUpdateInitialCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataUpdateInitializeCopyWith(
-          _$DataUpdateInitialize<Event, State, View> value,
-          $Res Function(_$DataUpdateInitialize<Event, State, View>) then) =
-      __$$DataUpdateInitializeCopyWithImpl<Event, State, View, $Res>;
+  factory _$$DataUpdateInitialCopyWith(
+          _$DataUpdateInitial<Event, State, View> value,
+          $Res Function(_$DataUpdateInitial<Event, State, View>) then) =
+      __$$DataUpdateInitialCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call(
-      {Ref main,
-      Map<Ref, Set<Ref>> edges,
-      Map<Ref, DateTime> createdAt,
-      Map<Ref, Event> event,
-      Map<Ref, ({CoreState state, CoreView view})> stateView,
-      Set<Ref> pending});
+  $Res call({Ref ref});
 
-  $RefCopyWith<$Res> get main;
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
-class __$$DataUpdateInitializeCopyWithImpl<Event extends CoreEvent,
+class __$$DataUpdateInitialCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
-        _$DataUpdateInitialize<Event, State, View>>
-    implements _$$DataUpdateInitializeCopyWith<Event, State, View, $Res> {
-  __$$DataUpdateInitializeCopyWithImpl(
-      _$DataUpdateInitialize<Event, State, View> _value,
-      $Res Function(_$DataUpdateInitialize<Event, State, View>) _then)
+        _$DataUpdateInitial<Event, State, View>>
+    implements _$$DataUpdateInitialCopyWith<Event, State, View, $Res> {
+  __$$DataUpdateInitialCopyWithImpl(
+      _$DataUpdateInitial<Event, State, View> _value,
+      $Res Function(_$DataUpdateInitial<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? main = null,
+    Object? ref = null,
+  }) {
+    return _then(_$DataUpdateInitial<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DataUpdateInitial<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements DataUpdateInitial<Event, State, View> {
+  _$DataUpdateInitial({required this.ref});
+
+  @override
+  final Ref ref;
+
+  @override
+  String toString() {
+    return 'DataUpdate<$Event, $State, $View>.initial(ref: $ref)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataUpdateInitial<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataUpdateInitialCopyWith<Event, State, View,
+          _$DataUpdateInitial<Event, State, View>>
+      get copyWith => __$$DataUpdateInitialCopyWithImpl<Event, State, View,
+          _$DataUpdateInitial<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref) initial,
+    required TResult Function(
+            Map<Ref, Set<Ref>> edges,
+            Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event,
+            Set<Ref> pending)
+        eventGraph,
+    required TResult Function(Ref ref) main,
+  }) {
+    return initial(ref);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Ref ref)? initial,
+    TResult? Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
+    TResult? Function(Ref ref)? main,
+  }) {
+    return initial?.call(ref);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Ref ref)? initial,
+    TResult Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
+    TResult Function(Ref ref)? main,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(ref);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DataUpdateInitial<Event, State, View> value)
+        initial,
+    required TResult Function(DataUpdateEventGraph<Event, State, View> value)
+        eventGraph,
+    required TResult Function(DataUpdateMain<Event, State, View> value) main,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult? Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
+    TResult? Function(DataUpdateMain<Event, State, View> value)? main,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
+    TResult Function(DataUpdateMain<Event, State, View> value)? main,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DataUpdateInitial<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements DataUpdate<Event, State, View> {
+  factory DataUpdateInitial({required final Ref ref}) =
+      _$DataUpdateInitial<Event, State, View>;
+
+  Ref get ref;
+  @JsonKey(ignore: true)
+  _$$DataUpdateInitialCopyWith<Event, State, View,
+          _$DataUpdateInitial<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DataUpdateEventGraphCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory _$$DataUpdateEventGraphCopyWith(
+          _$DataUpdateEventGraph<Event, State, View> value,
+          $Res Function(_$DataUpdateEventGraph<Event, State, View>) then) =
+      __$$DataUpdateEventGraphCopyWithImpl<Event, State, View, $Res>;
+  @useResult
+  $Res call(
+      {Map<Ref, Set<Ref>> edges,
+      Map<Ref, DateTime> createdAt,
+      Map<Ref, Event> event,
+      Set<Ref> pending});
+}
+
+/// @nodoc
+class __$$DataUpdateEventGraphCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
+        _$DataUpdateEventGraph<Event, State, View>>
+    implements _$$DataUpdateEventGraphCopyWith<Event, State, View, $Res> {
+  __$$DataUpdateEventGraphCopyWithImpl(
+      _$DataUpdateEventGraph<Event, State, View> _value,
+      $Res Function(_$DataUpdateEventGraph<Event, State, View>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
     Object? edges = null,
     Object? createdAt = null,
     Object? event = null,
-    Object? stateView = null,
     Object? pending = null,
   }) {
-    return _then(_$DataUpdateInitialize<Event, State, View>(
-      main: null == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as Ref,
+    return _then(_$DataUpdateEventGraph<Event, State, View>(
       edges: null == edges
           ? _value._edges
           : edges // ignore: cast_nullable_to_non_nullable
@@ -181,45 +323,28 @@ class __$$DataUpdateInitializeCopyWithImpl<Event extends CoreEvent,
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
               as Map<Ref, Event>,
-      stateView: null == stateView
-          ? _value._stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, ({CoreState state, CoreView view})>,
       pending: null == pending
           ? _value._pending
           : pending // ignore: cast_nullable_to_non_nullable
               as Set<Ref>,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get main {
-    return $RefCopyWith<$Res>(_value.main, (value) {
-      return _then(_value.copyWith(main: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$DataUpdateInitialize<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements DataUpdateInitialize<Event, State, View> {
-  _$DataUpdateInitialize(
-      {required this.main,
-      required final Map<Ref, Set<Ref>> edges,
+class _$DataUpdateEventGraph<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements DataUpdateEventGraph<Event, State, View> {
+  _$DataUpdateEventGraph(
+      {required final Map<Ref, Set<Ref>> edges,
       required final Map<Ref, DateTime> createdAt,
       required final Map<Ref, Event> event,
-      required final Map<Ref, ({CoreState state, CoreView view})> stateView,
       required final Set<Ref> pending})
       : _edges = edges,
         _createdAt = createdAt,
         _event = event,
-        _stateView = stateView,
         _pending = pending;
 
-  @override
-  final Ref main;
   final Map<Ref, Set<Ref>> _edges;
   @override
   Map<Ref, Set<Ref>> get edges {
@@ -244,14 +369,6 @@ class _$DataUpdateInitialize<Event extends CoreEvent, State extends CoreState,
     return EqualUnmodifiableMapView(_event);
   }
 
-  final Map<Ref, ({CoreState state, CoreView view})> _stateView;
-  @override
-  Map<Ref, ({CoreState state, CoreView view})> get stateView {
-    if (_stateView is EqualUnmodifiableMapView) return _stateView;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_stateView);
-  }
-
   final Set<Ref> _pending;
   @override
   Set<Ref> get pending {
@@ -262,105 +379,76 @@ class _$DataUpdateInitialize<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'DataUpdate<$Event, $State, $View>.initialize(main: $main, edges: $edges, createdAt: $createdAt, event: $event, stateView: $stateView, pending: $pending)';
+    return 'DataUpdate<$Event, $State, $View>.eventGraph(edges: $edges, createdAt: $createdAt, event: $event, pending: $pending)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataUpdateInitialize<Event, State, View> &&
-            (identical(other.main, main) || other.main == main) &&
+            other is _$DataUpdateEventGraph<Event, State, View> &&
             const DeepCollectionEquality().equals(other._edges, _edges) &&
             const DeepCollectionEquality()
                 .equals(other._createdAt, _createdAt) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
-            const DeepCollectionEquality()
-                .equals(other._stateView, _stateView) &&
             const DeepCollectionEquality().equals(other._pending, _pending));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      main,
       const DeepCollectionEquality().hash(_edges),
       const DeepCollectionEquality().hash(_createdAt),
       const DeepCollectionEquality().hash(_event),
-      const DeepCollectionEquality().hash(_stateView),
       const DeepCollectionEquality().hash(_pending));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataUpdateInitializeCopyWith<Event, State, View,
-          _$DataUpdateInitialize<Event, State, View>>
-      get copyWith => __$$DataUpdateInitializeCopyWithImpl<Event, State, View,
-          _$DataUpdateInitialize<Event, State, View>>(this, _$identity);
+  _$$DataUpdateEventGraphCopyWith<Event, State, View,
+          _$DataUpdateEventGraph<Event, State, View>>
+      get copyWith => __$$DataUpdateEventGraphCopyWithImpl<Event, State, View,
+          _$DataUpdateEventGraph<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref) initial,
     required TResult Function(
-            Ref main,
             Map<Ref, Set<Ref>> edges,
             Map<Ref, DateTime> createdAt,
             Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
             Set<Ref> pending)
-        initialize,
-    required TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)
-        entry,
-    required TResult Function(Map<Ref, Event> data) event,
+        eventGraph,
     required TResult Function(Ref ref) main,
   }) {
-    return initialize(
-        this.main, edges, createdAt, this.event, stateView, pending);
+    return eventGraph(edges, createdAt, event, pending);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult? Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult? Function(Map<Ref, Event> data)? event,
+    TResult? Function(Ref ref)? initial,
+    TResult? Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
     TResult? Function(Ref ref)? main,
   }) {
-    return initialize?.call(
-        this.main, edges, createdAt, this.event, stateView, pending);
+    return eventGraph?.call(edges, createdAt, event, pending);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult Function(Map<Ref, Event> data)? event,
+    TResult Function(Ref ref)? initial,
+    TResult Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
     TResult Function(Ref ref)? main,
     required TResult orElse(),
   }) {
-    if (initialize != null) {
-      return initialize(
-          this.main, edges, createdAt, this.event, stateView, pending);
+    if (eventGraph != null) {
+      return eventGraph(edges, createdAt, event, pending);
     }
     return orElse();
   }
@@ -368,447 +456,60 @@ class _$DataUpdateInitialize<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataUpdateInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataUpdateEntry<Event, State, View> value) entry,
-    required TResult Function(DataUpdateEvents<Event, State, View> value) event,
+    required TResult Function(DataUpdateInitial<Event, State, View> value)
+        initial,
+    required TResult Function(DataUpdateEventGraph<Event, State, View> value)
+        eventGraph,
     required TResult Function(DataUpdateMain<Event, State, View> value) main,
   }) {
-    return initialize(this);
+    return eventGraph(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult? Function(DataUpdateEvents<Event, State, View> value)? event,
+    TResult? Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult? Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
     TResult? Function(DataUpdateMain<Event, State, View> value)? main,
   }) {
-    return initialize?.call(this);
+    return eventGraph?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult Function(DataUpdateEvents<Event, State, View> value)? event,
+    TResult Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
     TResult Function(DataUpdateMain<Event, State, View> value)? main,
     required TResult orElse(),
   }) {
-    if (initialize != null) {
-      return initialize(this);
+    if (eventGraph != null) {
+      return eventGraph(this);
     }
     return orElse();
   }
 }
 
-abstract class DataUpdateInitialize<
+abstract class DataUpdateEventGraph<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements DataUpdate<Event, State, View> {
-  factory DataUpdateInitialize(
-          {required final Ref main,
-          required final Map<Ref, Set<Ref>> edges,
+  factory DataUpdateEventGraph(
+          {required final Map<Ref, Set<Ref>> edges,
           required final Map<Ref, DateTime> createdAt,
           required final Map<Ref, Event> event,
-          required final Map<Ref, ({CoreState state, CoreView view})> stateView,
           required final Set<Ref> pending}) =
-      _$DataUpdateInitialize<Event, State, View>;
+      _$DataUpdateEventGraph<Event, State, View>;
 
-  Ref get main;
   Map<Ref, Set<Ref>> get edges;
   Map<Ref, DateTime> get createdAt;
   Map<Ref, Event> get event;
-  Map<Ref, ({CoreState state, CoreView view})> get stateView;
   Set<Ref> get pending;
   @JsonKey(ignore: true)
-  _$$DataUpdateInitializeCopyWith<Event, State, View,
-          _$DataUpdateInitialize<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DataUpdateEntryCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataUpdateEntryCopyWith(
-          _$DataUpdateEntry<Event, State, View> value,
-          $Res Function(_$DataUpdateEntry<Event, State, View>) then) =
-      __$$DataUpdateEntryCopyWithImpl<Event, State, View, $Res>;
-  @useResult
-  $Res call({Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data});
-}
-
-/// @nodoc
-class __$$DataUpdateEntryCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
-        _$DataUpdateEntry<Event, State, View>>
-    implements _$$DataUpdateEntryCopyWith<Event, State, View, $Res> {
-  __$$DataUpdateEntryCopyWithImpl(_$DataUpdateEntry<Event, State, View> _value,
-      $Res Function(_$DataUpdateEntry<Event, State, View>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$DataUpdateEntry<Event, State, View>(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements DataUpdateEntry<Event, State, View> {
-  _$DataUpdateEntry({required this.data});
-
-  @override
-  final Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data;
-
-  @override
-  String toString() {
-    return 'DataUpdate<$Event, $State, $View>.entry(data: $data)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataUpdateEntry<Event, State, View> &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataUpdateEntryCopyWith<Event, State, View,
-          _$DataUpdateEntry<Event, State, View>>
-      get copyWith => __$$DataUpdateEntryCopyWithImpl<Event, State, View,
-          _$DataUpdateEntry<Event, State, View>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)
-        initialize,
-    required TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)
-        entry,
-    required TResult Function(Map<Ref, Event> data) event,
-    required TResult Function(Ref ref) main,
-  }) {
-    return entry(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult? Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult? Function(Map<Ref, Event> data)? event,
-    TResult? Function(Ref ref)? main,
-  }) {
-    return entry?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult Function(Map<Ref, Event> data)? event,
-    TResult Function(Ref ref)? main,
-    required TResult orElse(),
-  }) {
-    if (entry != null) {
-      return entry(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DataUpdateInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataUpdateEntry<Event, State, View> value) entry,
-    required TResult Function(DataUpdateEvents<Event, State, View> value) event,
-    required TResult Function(DataUpdateMain<Event, State, View> value) main,
-  }) {
-    return entry(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult? Function(DataUpdateEvents<Event, State, View> value)? event,
-    TResult? Function(DataUpdateMain<Event, State, View> value)? main,
-  }) {
-    return entry?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult Function(DataUpdateEvents<Event, State, View> value)? event,
-    TResult Function(DataUpdateMain<Event, State, View> value)? main,
-    required TResult orElse(),
-  }) {
-    if (entry != null) {
-      return entry(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements DataUpdate<Event, State, View> {
-  factory DataUpdateEntry(
-      {required final Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})>
-          data}) = _$DataUpdateEntry<Event, State, View>;
-
-  Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> get data;
-  @JsonKey(ignore: true)
-  _$$DataUpdateEntryCopyWith<Event, State, View,
-          _$DataUpdateEntry<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DataUpdateEventsCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataUpdateEventsCopyWith(
-          _$DataUpdateEvents<Event, State, View> value,
-          $Res Function(_$DataUpdateEvents<Event, State, View>) then) =
-      __$$DataUpdateEventsCopyWithImpl<Event, State, View, $Res>;
-  @useResult
-  $Res call({Map<Ref, Event> data});
-}
-
-/// @nodoc
-class __$$DataUpdateEventsCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
-        _$DataUpdateEvents<Event, State, View>>
-    implements _$$DataUpdateEventsCopyWith<Event, State, View, $Res> {
-  __$$DataUpdateEventsCopyWithImpl(
-      _$DataUpdateEvents<Event, State, View> _value,
-      $Res Function(_$DataUpdateEvents<Event, State, View>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$DataUpdateEvents<Event, State, View>(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, Event>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DataUpdateEvents<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements DataUpdateEvents<Event, State, View> {
-  _$DataUpdateEvents({required final Map<Ref, Event> data}) : _data = data;
-
-  final Map<Ref, Event> _data;
-  @override
-  Map<Ref, Event> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
-  }
-
-  @override
-  String toString() {
-    return 'DataUpdate<$Event, $State, $View>.event(data: $data)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataUpdateEvents<Event, State, View> &&
-            const DeepCollectionEquality().equals(other._data, _data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataUpdateEventsCopyWith<Event, State, View,
-          _$DataUpdateEvents<Event, State, View>>
-      get copyWith => __$$DataUpdateEventsCopyWithImpl<Event, State, View,
-          _$DataUpdateEvents<Event, State, View>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)
-        initialize,
-    required TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)
-        entry,
-    required TResult Function(Map<Ref, Event> data) event,
-    required TResult Function(Ref ref) main,
-  }) {
-    return event(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult? Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult? Function(Map<Ref, Event> data)? event,
-    TResult? Function(Ref ref)? main,
-  }) {
-    return event?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult Function(Map<Ref, Event> data)? event,
-    TResult Function(Ref ref)? main,
-    required TResult orElse(),
-  }) {
-    if (event != null) {
-      return event(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DataUpdateInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataUpdateEntry<Event, State, View> value) entry,
-    required TResult Function(DataUpdateEvents<Event, State, View> value) event,
-    required TResult Function(DataUpdateMain<Event, State, View> value) main,
-  }) {
-    return event(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult? Function(DataUpdateEvents<Event, State, View> value)? event,
-    TResult? Function(DataUpdateMain<Event, State, View> value)? main,
-  }) {
-    return event?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult Function(DataUpdateEvents<Event, State, View> value)? event,
-    TResult Function(DataUpdateMain<Event, State, View> value)? main,
-    required TResult orElse(),
-  }) {
-    if (event != null) {
-      return event(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DataUpdateEvents<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> implements DataUpdate<Event, State, View> {
-  factory DataUpdateEvents({required final Map<Ref, Event> data}) =
-      _$DataUpdateEvents<Event, State, View>;
-
-  Map<Ref, Event> get data;
-  @JsonKey(ignore: true)
-  _$$DataUpdateEventsCopyWith<Event, State, View,
-          _$DataUpdateEvents<Event, State, View>>
+  _$$DataUpdateEventGraphCopyWith<Event, State, View,
+          _$DataUpdateEventGraph<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -892,18 +593,13 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref) initial,
     required TResult Function(
-            Ref main,
             Map<Ref, Set<Ref>> edges,
             Map<Ref, DateTime> createdAt,
             Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
             Set<Ref> pending)
-        initialize,
-    required TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)
-        entry,
-    required TResult Function(Map<Ref, Event> data) event,
+        eventGraph,
     required TResult Function(Ref ref) main,
   }) {
     return main(ref);
@@ -912,18 +608,10 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult? Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult? Function(Map<Ref, Event> data)? event,
+    TResult? Function(Ref ref)? initial,
+    TResult? Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
     TResult? Function(Ref ref)? main,
   }) {
     return main?.call(ref);
@@ -932,18 +620,10 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref main,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Event> event,
-            Map<Ref, ({CoreState state, CoreView view})> stateView,
-            Set<Ref> pending)?
-        initialize,
-    TResult Function(
-            Iterable<({DateTime createdAt, Ref ref, Set<Ref> refs})> data)?
-        entry,
-    TResult Function(Map<Ref, Event> data)? event,
+    TResult Function(Ref ref)? initial,
+    TResult Function(Map<Ref, Set<Ref>> edges, Map<Ref, DateTime> createdAt,
+            Map<Ref, Event> event, Set<Ref> pending)?
+        eventGraph,
     TResult Function(Ref ref)? main,
     required TResult orElse(),
   }) {
@@ -956,10 +636,10 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataUpdateInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataUpdateEntry<Event, State, View> value) entry,
-    required TResult Function(DataUpdateEvents<Event, State, View> value) event,
+    required TResult Function(DataUpdateInitial<Event, State, View> value)
+        initial,
+    required TResult Function(DataUpdateEventGraph<Event, State, View> value)
+        eventGraph,
     required TResult Function(DataUpdateMain<Event, State, View> value) main,
   }) {
     return main(this);
@@ -968,10 +648,9 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult? Function(DataUpdateEvents<Event, State, View> value)? event,
+    TResult? Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult? Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
     TResult? Function(DataUpdateMain<Event, State, View> value)? main,
   }) {
     return main?.call(this);
@@ -980,10 +659,9 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataUpdateInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataUpdateEntry<Event, State, View> value)? entry,
-    TResult Function(DataUpdateEvents<Event, State, View> value)? event,
+    TResult Function(DataUpdateInitial<Event, State, View> value)? initial,
+    TResult Function(DataUpdateEventGraph<Event, State, View> value)?
+        eventGraph,
     TResult Function(DataUpdateMain<Event, State, View> value)? main,
     required TResult orElse(),
   }) {

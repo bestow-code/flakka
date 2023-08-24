@@ -10,9 +10,8 @@ environment:
 dependencies:
   async: ^2.11.0
   core_common: ^0.1.0+2
-  core_data:
-  core_data_test:
   core_object_store:
+  core_object_store_sembast_test:
   freezed_annotation: ^2.2.0
   get_it:
   injectable:

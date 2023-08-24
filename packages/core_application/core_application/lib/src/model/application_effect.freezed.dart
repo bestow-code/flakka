@@ -19,45 +19,25 @@ mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
-        initialize,
+    required TResult Function() initialize,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        start,
     required TResult Function(Ref ref, Event event, DateTime createdAt) request,
     required TResult Function(ApplicationJournalEffect effect) journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult? Function()? initialize,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult? Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult? Function(ApplicationJournalEffect effect)? journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult Function()? initialize,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult Function(ApplicationJournalEffect effect)? journal,
     required TResult orElse(),
@@ -68,6 +48,8 @@ mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
     required TResult Function(
             ApplicationEffectInitialize<Event, State, View> value)
         initialize,
+    required TResult Function(ApplicationEffectStart<Event, State, View> value)
+        start,
     required TResult Function(
             ApplicationEffectRequest<Event, State, View> value)
         request,
@@ -80,6 +62,7 @@ mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult? Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult? Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -90,6 +73,7 @@ mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -133,11 +117,6 @@ abstract class _$$ApplicationEffectInitializeCopyWith<Event extends CoreEvent,
           $Res Function(_$ApplicationEffectInitialize<Event, State, View>)
               then) =
       __$$ApplicationEffectInitializeCopyWithImpl<Event, State, View, $Res>;
-  @useResult
-  $Res call(
-      {({DateTime createdAt, Ref ref, ({State state, View view}) stateView})
-              Function()
-          ifEmpty});
 }
 
 /// @nodoc
@@ -151,24 +130,6 @@ class __$$ApplicationEffectInitializeCopyWithImpl<Event extends CoreEvent,
       _$ApplicationEffectInitialize<Event, State, View> _value,
       $Res Function(_$ApplicationEffectInitialize<Event, State, View>) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ifEmpty = null,
-  }) {
-    return _then(_$ApplicationEffectInitialize<Event, State, View>(
-      ifEmpty: null == ifEmpty
-          ? _value.ifEmpty
-          : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                  Function(),
-    ));
-  }
 }
 
 /// @nodoc
@@ -176,93 +137,57 @@ class __$$ApplicationEffectInitializeCopyWithImpl<Event extends CoreEvent,
 class _$ApplicationEffectInitialize<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationEffectInitialize<Event, State, View> {
-  _$ApplicationEffectInitialize({required this.ifEmpty});
-
-  @override
-  final ({DateTime createdAt, Ref ref, ({State state, View view}) stateView})
-      Function() ifEmpty;
+  _$ApplicationEffectInitialize();
 
   @override
   String toString() {
-    return 'ApplicationEffect<$Event, $State, $View>.initialize(ifEmpty: $ifEmpty)';
+    return 'ApplicationEffect<$Event, $State, $View>.initialize()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationEffectInitialize<Event, State, View> &&
-            (identical(other.ifEmpty, ifEmpty) || other.ifEmpty == ifEmpty));
+            other is _$ApplicationEffectInitialize<Event, State, View>);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ifEmpty);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplicationEffectInitializeCopyWith<Event, State, View,
-          _$ApplicationEffectInitialize<Event, State, View>>
-      get copyWith => __$$ApplicationEffectInitializeCopyWithImpl<
-          Event,
-          State,
-          View,
-          _$ApplicationEffectInitialize<Event, State, View>>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
-        initialize,
+    required TResult Function() initialize,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        start,
     required TResult Function(Ref ref, Event event, DateTime createdAt) request,
     required TResult Function(ApplicationJournalEffect effect) journal,
   }) {
-    return initialize(ifEmpty);
+    return initialize();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult? Function()? initialize,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult? Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult? Function(ApplicationJournalEffect effect)? journal,
   }) {
-    return initialize?.call(ifEmpty);
+    return initialize?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult Function()? initialize,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult Function(ApplicationJournalEffect effect)? journal,
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize(ifEmpty);
+      return initialize();
     }
     return orElse();
   }
@@ -273,6 +198,8 @@ class _$ApplicationEffectInitialize<Event extends CoreEvent,
     required TResult Function(
             ApplicationEffectInitialize<Event, State, View> value)
         initialize,
+    required TResult Function(ApplicationEffectStart<Event, State, View> value)
+        start,
     required TResult Function(
             ApplicationEffectRequest<Event, State, View> value)
         request,
@@ -288,6 +215,7 @@ class _$ApplicationEffectInitialize<Event extends CoreEvent,
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult? Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult? Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -301,6 +229,7 @@ class _$ApplicationEffectInitialize<Event extends CoreEvent,
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -318,20 +247,202 @@ abstract class ApplicationEffectInitialize<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements ApplicationEffect<Event, State, View> {
-  factory ApplicationEffectInitialize(
-      {required final ({
-        DateTime createdAt,
-        Ref ref,
-        ({State state, View view}) stateView
-      })
-              Function()
-          ifEmpty}) = _$ApplicationEffectInitialize<Event, State, View>;
+  factory ApplicationEffectInitialize() =
+      _$ApplicationEffectInitialize<Event, State, View>;
+}
 
-  ({DateTime createdAt, Ref ref, ({State state, View view}) stateView})
-      Function() get ifEmpty;
+/// @nodoc
+abstract class _$$ApplicationEffectStartCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory _$$ApplicationEffectStartCopyWith(
+          _$ApplicationEffectStart<Event, State, View> value,
+          $Res Function(_$ApplicationEffectStart<Event, State, View>) then) =
+      __$$ApplicationEffectStartCopyWithImpl<Event, State, View, $Res>;
+  @useResult
+  $Res call({Ref ref, ({State state, View view}) stateView});
+
+  $RefCopyWith<$Res> get ref;
+}
+
+/// @nodoc
+class __$$ApplicationEffectStartCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$ApplicationEffectCopyWithImpl<Event, State, View, $Res,
+        _$ApplicationEffectStart<Event, State, View>>
+    implements _$$ApplicationEffectStartCopyWith<Event, State, View, $Res> {
+  __$$ApplicationEffectStartCopyWithImpl(
+      _$ApplicationEffectStart<Event, State, View> _value,
+      $Res Function(_$ApplicationEffectStart<Event, State, View>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? stateView = null,
+  }) {
+    return _then(_$ApplicationEffectStart<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ApplicationEffectStart<Event extends CoreEvent, State extends CoreState,
+        View extends CoreView>
+    implements ApplicationEffectStart<Event, State, View> {
+  _$ApplicationEffectStart({required this.ref, required this.stateView});
+
+  @override
+  final Ref ref;
+  @override
+  final ({State state, View view}) stateView;
+
+  @override
+  String toString() {
+    return 'ApplicationEffect<$Event, $State, $View>.start(ref: $ref, stateView: $stateView)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApplicationEffectStart<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, stateView);
+
   @JsonKey(ignore: true)
-  _$$ApplicationEffectInitializeCopyWith<Event, State, View,
-          _$ApplicationEffectInitialize<Event, State, View>>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApplicationEffectStartCopyWith<Event, State, View,
+          _$ApplicationEffectStart<Event, State, View>>
+      get copyWith => __$$ApplicationEffectStartCopyWithImpl<Event, State, View,
+          _$ApplicationEffectStart<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        start,
+    required TResult Function(Ref ref, Event event, DateTime createdAt) request,
+    required TResult Function(ApplicationJournalEffect effect) journal,
+  }) {
+    return start(ref, stateView);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? start,
+    TResult? Function(Ref ref, Event event, DateTime createdAt)? request,
+    TResult? Function(ApplicationJournalEffect effect)? journal,
+  }) {
+    return start?.call(ref, stateView);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? start,
+    TResult Function(Ref ref, Event event, DateTime createdAt)? request,
+    TResult Function(ApplicationJournalEffect effect)? journal,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(ref, stateView);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            ApplicationEffectInitialize<Event, State, View> value)
+        initialize,
+    required TResult Function(ApplicationEffectStart<Event, State, View> value)
+        start,
+    required TResult Function(
+            ApplicationEffectRequest<Event, State, View> value)
+        request,
+    required TResult Function(
+            ApplicationEffectJournal<Event, State, View> value)
+        journal,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApplicationEffectInitialize<Event, State, View> value)?
+        initialize,
+    TResult? Function(ApplicationEffectStart<Event, State, View> value)? start,
+    TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
+        request,
+    TResult? Function(ApplicationEffectJournal<Event, State, View> value)?
+        journal,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApplicationEffectInitialize<Event, State, View> value)?
+        initialize,
+    TResult Function(ApplicationEffectStart<Event, State, View> value)? start,
+    TResult Function(ApplicationEffectRequest<Event, State, View> value)?
+        request,
+    TResult Function(ApplicationEffectJournal<Event, State, View> value)?
+        journal,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApplicationEffectStart<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements ApplicationEffect<Event, State, View> {
+  factory ApplicationEffectStart(
+          {required final Ref ref,
+          required final ({State state, View view}) stateView}) =
+      _$ApplicationEffectStart<Event, State, View>;
+
+  Ref get ref;
+  ({State state, View view}) get stateView;
+  @JsonKey(ignore: true)
+  _$$ApplicationEffectStartCopyWith<Event, State, View,
+          _$ApplicationEffectStart<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -440,15 +551,9 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
-        initialize,
+    required TResult Function() initialize,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        start,
     required TResult Function(Ref ref, Event event, DateTime createdAt) request,
     required TResult Function(ApplicationJournalEffect effect) journal,
   }) {
@@ -458,15 +563,8 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult? Function()? initialize,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult? Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult? Function(ApplicationJournalEffect effect)? journal,
   }) {
@@ -476,15 +574,8 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult Function()? initialize,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult Function(ApplicationJournalEffect effect)? journal,
     required TResult orElse(),
@@ -501,6 +592,8 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
     required TResult Function(
             ApplicationEffectInitialize<Event, State, View> value)
         initialize,
+    required TResult Function(ApplicationEffectStart<Event, State, View> value)
+        start,
     required TResult Function(
             ApplicationEffectRequest<Event, State, View> value)
         request,
@@ -516,6 +609,7 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult? Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult? Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -529,6 +623,7 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -647,15 +742,9 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
-        initialize,
+    required TResult Function() initialize,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        start,
     required TResult Function(Ref ref, Event event, DateTime createdAt) request,
     required TResult Function(ApplicationJournalEffect effect) journal,
   }) {
@@ -665,15 +754,8 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult? Function()? initialize,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult? Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult? Function(ApplicationJournalEffect effect)? journal,
   }) {
@@ -683,15 +765,8 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              DateTime createdAt,
-              Ref ref,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
-        initialize,
+    TResult Function()? initialize,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? start,
     TResult Function(Ref ref, Event event, DateTime createdAt)? request,
     TResult Function(ApplicationJournalEffect effect)? journal,
     required TResult orElse(),
@@ -708,6 +783,8 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
     required TResult Function(
             ApplicationEffectInitialize<Event, State, View> value)
         initialize,
+    required TResult Function(ApplicationEffectStart<Event, State, View> value)
+        start,
     required TResult Function(
             ApplicationEffectRequest<Event, State, View> value)
         request,
@@ -723,6 +800,7 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult? Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult? Function(ApplicationEffectJournal<Event, State, View> value)?
@@ -736,6 +814,7 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApplicationEffectInitialize<Event, State, View> value)?
         initialize,
+    TResult Function(ApplicationEffectStart<Event, State, View> value)? start,
     TResult Function(ApplicationEffectRequest<Event, State, View> value)?
         request,
     TResult Function(ApplicationEffectJournal<Event, State, View> value)?

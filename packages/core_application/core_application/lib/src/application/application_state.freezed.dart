@@ -16,14 +16,46 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApplicationState<State extends CoreState, View extends CoreView> {
-  Ref get ref => throw _privateConstructorUsedError;
-  int get sequenceNumber => throw _privateConstructorUsedError;
-  ({State state, View view}) get stateView =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Ref ref, ({State state, View view}) stateView) $default, {
+    required TResult Function() initial,
+  }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ApplicationStateCopyWith<State, View, ApplicationState<State, View>>
-      get copyWith => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Ref ref, ({State state, View view}) stateView)?
+        $default, {
+    TResult? Function()? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Ref ref, ({State state, View view}) stateView)? $default, {
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ApplicationState<State, View> value) $default, {
+    required TResult Function(ApplicationStateInitial<State, View> value)
+        initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ApplicationState<State, View> value)? $default, {
+    TResult? Function(ApplicationStateInitial<State, View> value)? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ApplicationState<State, View> value)? $default, {
+    TResult Function(ApplicationStateInitial<State, View> value)? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -33,11 +65,6 @@ abstract class $ApplicationStateCopyWith<State extends CoreState,
           $Res Function(ApplicationState<State, View>) then) =
       _$ApplicationStateCopyWithImpl<State, View, $Res,
           ApplicationState<State, View>>;
-  @useResult
-  $Res call(
-      {Ref ref, int sequenceNumber, ({State state, View view}) stateView});
-
-  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -50,53 +77,17 @@ class _$ApplicationStateCopyWithImpl<State extends CoreState,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? sequenceNumber = null,
-    Object? stateView = null,
-  }) {
-    return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      stateView: null == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_ApplicationStateCopyWith<
-    State extends CoreState,
-    View extends CoreView,
-    $Res> implements $ApplicationStateCopyWith<State, View, $Res> {
+abstract class _$$_ApplicationStateCopyWith<State extends CoreState,
+    View extends CoreView, $Res> {
   factory _$$_ApplicationStateCopyWith(_$_ApplicationState<State, View> value,
           $Res Function(_$_ApplicationState<State, View>) then) =
       __$$_ApplicationStateCopyWithImpl<State, View, $Res>;
-  @override
   @useResult
-  $Res call(
-      {Ref ref, int sequenceNumber, ({State state, View view}) stateView});
+  $Res call({Ref ref, ({State state, View view}) stateView});
 
-  @override
   $RefCopyWith<$Res> get ref;
 }
 
@@ -114,7 +105,6 @@ class __$$_ApplicationStateCopyWithImpl<State extends CoreState,
   @override
   $Res call({
     Object? ref = null,
-    Object? sequenceNumber = null,
     Object? stateView = null,
   }) {
     return _then(_$_ApplicationState<State, View>(
@@ -122,15 +112,19 @@ class __$$_ApplicationStateCopyWithImpl<State extends CoreState,
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
               as ({State state, View view}),
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 }
 
@@ -138,21 +132,16 @@ class __$$_ApplicationStateCopyWithImpl<State extends CoreState,
 
 class _$_ApplicationState<State extends CoreState, View extends CoreView>
     implements _ApplicationState<State, View> {
-  _$_ApplicationState(
-      {required this.ref,
-      required this.sequenceNumber,
-      required this.stateView});
+  _$_ApplicationState({required this.ref, required this.stateView});
 
   @override
   final Ref ref;
-  @override
-  final int sequenceNumber;
   @override
   final ({State state, View view}) stateView;
 
   @override
   String toString() {
-    return 'ApplicationState<$State, $View>(ref: $ref, sequenceNumber: $sequenceNumber, stateView: $stateView)';
+    return 'ApplicationState<$State, $View>(ref: $ref, stateView: $stateView)';
   }
 
   @override
@@ -161,14 +150,12 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
         (other.runtimeType == runtimeType &&
             other is _$_ApplicationState<State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber, stateView);
+  int get hashCode => Object.hash(runtimeType, ref, stateView);
 
   @JsonKey(ignore: true)
   @override
@@ -176,24 +163,194 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
   _$$_ApplicationStateCopyWith<State, View, _$_ApplicationState<State, View>>
       get copyWith => __$$_ApplicationStateCopyWithImpl<State, View,
           _$_ApplicationState<State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Ref ref, ({State state, View view}) stateView) $default, {
+    required TResult Function() initial,
+  }) {
+    return $default(ref, stateView);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Ref ref, ({State state, View view}) stateView)?
+        $default, {
+    TResult? Function()? initial,
+  }) {
+    return $default?.call(ref, stateView);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Ref ref, ({State state, View view}) stateView)? $default, {
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(ref, stateView);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ApplicationState<State, View> value) $default, {
+    required TResult Function(ApplicationStateInitial<State, View> value)
+        initial,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ApplicationState<State, View> value)? $default, {
+    TResult? Function(ApplicationStateInitial<State, View> value)? initial,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ApplicationState<State, View> value)? $default, {
+    TResult Function(ApplicationStateInitial<State, View> value)? initial,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ApplicationState<State extends CoreState, View extends CoreView>
     implements ApplicationState<State, View> {
   factory _ApplicationState(
           {required final Ref ref,
-          required final int sequenceNumber,
           required final ({State state, View view}) stateView}) =
       _$_ApplicationState<State, View>;
 
-  @override
   Ref get ref;
-  @override
-  int get sequenceNumber;
-  @override
   ({State state, View view}) get stateView;
-  @override
   @JsonKey(ignore: true)
   _$$_ApplicationStateCopyWith<State, View, _$_ApplicationState<State, View>>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ApplicationStateInitialCopyWith<State extends CoreState,
+    View extends CoreView, $Res> {
+  factory _$$ApplicationStateInitialCopyWith(
+          _$ApplicationStateInitial<State, View> value,
+          $Res Function(_$ApplicationStateInitial<State, View>) then) =
+      __$$ApplicationStateInitialCopyWithImpl<State, View, $Res>;
+}
+
+/// @nodoc
+class __$$ApplicationStateInitialCopyWithImpl<State extends CoreState,
+        View extends CoreView, $Res>
+    extends _$ApplicationStateCopyWithImpl<State, View, $Res,
+        _$ApplicationStateInitial<State, View>>
+    implements _$$ApplicationStateInitialCopyWith<State, View, $Res> {
+  __$$ApplicationStateInitialCopyWithImpl(
+      _$ApplicationStateInitial<State, View> _value,
+      $Res Function(_$ApplicationStateInitial<State, View>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ApplicationStateInitial<State extends CoreState, View extends CoreView>
+    implements ApplicationStateInitial<State, View> {
+  _$ApplicationStateInitial();
+
+  @override
+  String toString() {
+    return 'ApplicationState<$State, $View>.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApplicationStateInitial<State, View>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Ref ref, ({State state, View view}) stateView) $default, {
+    required TResult Function() initial,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Ref ref, ({State state, View view}) stateView)?
+        $default, {
+    TResult? Function()? initial,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Ref ref, ({State state, View view}) stateView)? $default, {
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ApplicationState<State, View> value) $default, {
+    required TResult Function(ApplicationStateInitial<State, View> value)
+        initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ApplicationState<State, View> value)? $default, {
+    TResult? Function(ApplicationStateInitial<State, View> value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ApplicationState<State, View> value)? $default, {
+    TResult Function(ApplicationStateInitial<State, View> value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApplicationStateInitial<State extends CoreState,
+    View extends CoreView> implements ApplicationState<State, View> {
+  factory ApplicationStateInitial() = _$ApplicationStateInitial<State, View>;
 }

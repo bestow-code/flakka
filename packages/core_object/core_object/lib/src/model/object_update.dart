@@ -8,13 +8,14 @@ part 'object_update.freezed.dart';
 class ObjectUpdate with _$ObjectUpdate {
   factory ObjectUpdate.initial({
     required ({
-      String main,
-      String instance,
-      Map<String, Set<String>> edges,
-      Map<String, DateTime> createdAt,
-      Map<String, JsonMap> event,
-      Map<String, StateViewObject> stateView,
-      Set<String> pending,
+    String ref,
+      // String main,
+      // String instance,
+      // Map<String, Set<String>> edges,
+      // Map<String, DateTime> createdAt,
+      // Map<String, JsonMap> event,
+      // Map<String, StateViewObject> stateView,
+      // Set<String> pending,
     }) data,
   }) = ObjectUpdateInitial;
 

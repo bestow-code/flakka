@@ -18,22 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectUpdate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)
-        initial,
+    required TResult Function(({String ref}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -44,22 +29,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult? Function(({String ref}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -70,22 +40,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult Function(({String ref}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -149,17 +104,7 @@ abstract class _$$ObjectUpdateInitialCopyWith<$Res> {
           $Res Function(_$ObjectUpdateInitial) then) =
       __$$ObjectUpdateInitialCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {({
-        Map<String, DateTime> createdAt,
-        Map<String, Set<String>> edges,
-        Map<String, Map<String, dynamic>> event,
-        String instance,
-        String main,
-        Set<String> pending,
-        Map<String,
-            ({Map<String, dynamic> state, Map<String, dynamic> view})> stateView
-      }) data});
+  $Res call({({String ref}) data});
 }
 
 /// @nodoc
@@ -179,20 +124,7 @@ class __$$ObjectUpdateInitialCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }),
+              as ({String ref}),
     ));
   }
 }
@@ -203,16 +135,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   _$ObjectUpdateInitial({required this.data});
 
   @override
-  final ({
-    Map<String, DateTime> createdAt,
-    Map<String, Set<String>> edges,
-    Map<String, Map<String, dynamic>> event,
-    String instance,
-    String main,
-    Set<String> pending,
-    Map<String,
-        ({Map<String, dynamic> state, Map<String, dynamic> view})> stateView
-  }) data;
+  final ({String ref}) data;
 
   @override
   String toString() {
@@ -240,22 +163,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)
-        initial,
+    required TResult Function(({String ref}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -269,22 +177,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult? Function(({String ref}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -298,22 +191,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult Function(({String ref}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -370,28 +248,10 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
 }
 
 abstract class ObjectUpdateInitial implements ObjectUpdate {
-  factory ObjectUpdateInitial(
-      {required final ({
-        Map<String, DateTime> createdAt,
-        Map<String, Set<String>> edges,
-        Map<String, Map<String, dynamic>> event,
-        String instance,
-        String main,
-        Set<String> pending,
-        Map<String,
-            ({Map<String, dynamic> state, Map<String, dynamic> view})> stateView
-      }) data}) = _$ObjectUpdateInitial;
+  factory ObjectUpdateInitial({required final ({String ref}) data}) =
+      _$ObjectUpdateInitial;
 
-  ({
-    Map<String, DateTime> createdAt,
-    Map<String, Set<String>> edges,
-    Map<String, Map<String, dynamic>> event,
-    String instance,
-    String main,
-    Set<String> pending,
-    Map<String,
-        ({Map<String, dynamic> state, Map<String, dynamic> view})> stateView
-  }) get data;
+  ({String ref}) get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateInitialCopyWith<_$ObjectUpdateInitial> get copyWith =>
       throw _privateConstructorUsedError;
@@ -470,22 +330,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)
-        initial,
+    required TResult Function(({String ref}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -499,22 +344,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult? Function(({String ref}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -528,22 +358,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult Function(({String ref}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -681,22 +496,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)
-        initial,
+    required TResult Function(({String ref}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -710,22 +510,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult? Function(({String ref}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -739,22 +524,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult Function(({String ref}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -892,22 +662,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)
-        initial,
+    required TResult Function(({String ref}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -921,22 +676,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult? Function(({String ref}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -950,22 +690,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult Function(({String ref}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1096,22 +821,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)
-        initial,
+    required TResult Function(({String ref}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -1125,22 +835,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult? Function(({String ref}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1154,22 +849,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Map<String, DateTime> createdAt,
-              Map<String, Set<String>> edges,
-              Map<String, Map<String, dynamic>> event,
-              String instance,
-              String main,
-              Set<String> pending,
-              Map<
-                  String,
-                  ({
-                    Map<String, dynamic> state,
-                    Map<String, dynamic> view
-                  })> stateView
-            }) data)?
-        initial,
+    TResult Function(({String ref}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,

@@ -1,10 +1,16 @@
 import 'package:core_object_store/core_object_store.dart';
 import 'package:core_object_store_sembast/core_object_store_sembast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sembast/sembast_memory.dart';
 import 'package:test/test.dart';
 
-void main() {
-  late PersistenceProviderLocal provider;
+import '../test_common.dart';
+
+void main() async {
+  await configureDependencies();
+  final getIt = GetIt.instance;
+  final provider = getIt.get<PersistenceProviderLocal>();
+  // late PersistenceProviderLocal provider;
   const persistenceId = 'persistence-1';
   late ObjectStoreLocalAdapterFactory factory;
   late ObjectStoreLocalAdapter adapter;
@@ -29,9 +35,7 @@ void main() {
             stateViewData: stateViewData,
           );
       setUp(() async {
-        provider = PersistenceProviderLocalSembast(
-          databaseFactory: databaseFactoryMemoryFs,
-        );
+        final provider = getIt.get<PersistenceProviderLocal>();
         factory = provider.getLocalAdapterFactory(persistenceId);
         adapter = await factory.getLocalAdapter(path);
       });

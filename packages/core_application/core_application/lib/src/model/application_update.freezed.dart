@@ -19,19 +19,20 @@ mixin _$ApplicationUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({State state, View view}) stateView) initial,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        initial,
     required TResult Function(dynamic journal) journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({State state, View view}) stateView)? initial,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? initial,
     TResult? Function(dynamic journal)? journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({State state, View view}) stateView)? initial,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? initial,
     TResult Function(dynamic journal)? journal,
     required TResult orElse(),
   }) =>
@@ -99,7 +100,9 @@ abstract class _$$ApplicationUpdateInitialCopyWith<Event extends CoreEvent,
           $Res Function(_$ApplicationUpdateInitial<Event, State, View>) then) =
       __$$ApplicationUpdateInitialCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({({State state, View view}) stateView});
+  $Res call({Ref ref, ({State state, View view}) stateView});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -116,14 +119,27 @@ class __$$ApplicationUpdateInitialCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ref = null,
     Object? stateView = null,
   }) {
     return _then(_$ApplicationUpdateInitial<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
               as ({State state, View view}),
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 }
 
@@ -132,14 +148,16 @@ class __$$ApplicationUpdateInitialCopyWithImpl<Event extends CoreEvent,
 class _$ApplicationUpdateInitial<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationUpdateInitial<Event, State, View> {
-  _$ApplicationUpdateInitial({required this.stateView});
+  _$ApplicationUpdateInitial({required this.ref, required this.stateView});
 
+  @override
+  final Ref ref;
   @override
   final ({State state, View view}) stateView;
 
   @override
   String toString() {
-    return 'ApplicationUpdate<$Event, $State, $View>.initial(stateView: $stateView)';
+    return 'ApplicationUpdate<$Event, $State, $View>.initial(ref: $ref, stateView: $stateView)';
   }
 
   @override
@@ -147,12 +165,13 @@ class _$ApplicationUpdateInitial<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationUpdateInitial<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateView);
+  int get hashCode => Object.hash(runtimeType, ref, stateView);
 
   @JsonKey(ignore: true)
   @override
@@ -168,30 +187,31 @@ class _$ApplicationUpdateInitial<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({State state, View view}) stateView) initial,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        initial,
     required TResult Function(dynamic journal) journal,
   }) {
-    return initial(stateView);
+    return initial(ref, stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({State state, View view}) stateView)? initial,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? initial,
     TResult? Function(dynamic journal)? journal,
   }) {
-    return initial?.call(stateView);
+    return initial?.call(ref, stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({State state, View view}) stateView)? initial,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? initial,
     TResult Function(dynamic journal)? journal,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(stateView);
+      return initial(ref, stateView);
     }
     return orElse();
   }
@@ -241,9 +261,11 @@ abstract class ApplicationUpdateInitial<
     State extends CoreState,
     View extends CoreView> implements ApplicationUpdate<Event, State, View> {
   factory ApplicationUpdateInitial(
-          {required final ({State state, View view}) stateView}) =
+          {required final Ref ref,
+          required final ({State state, View view}) stateView}) =
       _$ApplicationUpdateInitial<Event, State, View>;
 
+  Ref get ref;
   ({State state, View view}) get stateView;
   @JsonKey(ignore: true)
   _$$ApplicationUpdateInitialCopyWith<Event, State, View,
@@ -328,7 +350,8 @@ class _$ApplicationUpdateJournal<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({State state, View view}) stateView) initial,
+    required TResult Function(Ref ref, ({State state, View view}) stateView)
+        initial,
     required TResult Function(dynamic journal) journal,
   }) {
     return journal(this.journal);
@@ -337,7 +360,7 @@ class _$ApplicationUpdateJournal<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({State state, View view}) stateView)? initial,
+    TResult? Function(Ref ref, ({State state, View view}) stateView)? initial,
     TResult? Function(dynamic journal)? journal,
   }) {
     return journal?.call(this.journal);
@@ -346,7 +369,7 @@ class _$ApplicationUpdateJournal<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({State state, View view}) stateView)? initial,
+    TResult Function(Ref ref, ({State state, View view}) stateView)? initial,
     TResult Function(dynamic journal)? journal,
     required TResult orElse(),
   }) {

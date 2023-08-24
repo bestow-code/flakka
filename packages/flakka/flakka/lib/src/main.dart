@@ -40,9 +40,11 @@ main() {
     journalUpdate: journalStore.update,
   );
 
-  final application = Application(
+  final application = Application(ApplicationState.initial(),
     applicationEffect: applicationStore.effect,
     applicationUpdate: applicationStore.update,
   );
+
+  // application.
   // application.requestSink
 }

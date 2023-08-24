@@ -7,6 +7,7 @@ part 'application_update.freezed.dart';
 class ApplicationUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$ApplicationUpdate<Event, State, View> {
   factory ApplicationUpdate.initial({
+    required Ref ref,
     required StateView<State, View> stateView,
   }) = ApplicationUpdateInitial<Event, State, View>;
 

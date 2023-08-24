@@ -5,5 +5,5 @@ abstract class PersistenceProviderLocal extends PersistenceProviderBase {
     required super.serviceLocator,
   });
 
-  ObjectStoreLocalAdapterFactory getObjectStoreLocalAdapterFactory(String persistenceId);
+  ObjectStoreLocalAdapterFactory getLocalAdapterFactory(String persistenceId);
 }

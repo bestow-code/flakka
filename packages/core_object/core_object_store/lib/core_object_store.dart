@@ -3,6 +3,7 @@
 /// Foundation for Core Entry Store
 library core_object_store;
 
+export 'src/entry_props.dart';
 export 'src/local/object_store_local.dart';
 export 'src/local/object_store_local_adapter.dart';
 export 'src/local/object_store_local_adapter_factory.dart';

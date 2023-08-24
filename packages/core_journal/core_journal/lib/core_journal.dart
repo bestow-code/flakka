@@ -5,4 +5,5 @@ library core_journal;
 
 export 'src/core_journal.dart';
 export 'src/journal_effect.dart';
+export 'src/journal_segment.dart';
 export 'src/journal_update.dart';

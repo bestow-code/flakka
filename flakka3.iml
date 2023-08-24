@@ -25,6 +25,18 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/core_data/core_data_store_test/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core_data/core_data_store_test/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core_data/core_data_store_test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_application/core_application_store_test/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_application/core_application_store_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_application/core_application_store_test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_journal/core_journal_store_test/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_journal/core_journal_store_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_journal/core_journal_store_test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_object/core_object_store_sembast_test/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_object/core_object_store_sembast_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core_object/core_object_store_sembast_test/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

@@ -7,6 +7,7 @@ part 'journal_update.freezed.dart';
 @freezed
 class JournalUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalUpdate<Event, State, View> {
+
   factory JournalUpdate({
     required CoreJournal<Event, State, View> journal,
   }) = _JournalUpdate<Event, State, View>;

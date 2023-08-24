@@ -2,7 +2,7 @@ import '../../core_object_store.dart';
 
 // Remote Factory
 abstract class ObjectStoreRemoteAdapterFactory {
-  Future<ObjectStoreRemoteAdapter> get(String path);
+  Future<ObjectStoreRemoteAdapter> getRemoteAdapter(String path);
 }
 
 // - Base

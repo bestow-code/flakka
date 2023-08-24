@@ -5,5 +5,5 @@ abstract class PersistenceProviderRemote extends PersistenceProviderBase {
     required super.serviceLocator,
   });
 
-  ObjectStoreRemoteAdapterFactory getObjectStoreFactory(String persistenceId);
+  ObjectStoreRemoteAdapterFactory getRemoteAdapterFactory(String persistenceId);
 }
