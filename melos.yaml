@@ -13,7 +13,7 @@ packages:
   - 'packages/*/*/*/*'
 ignore:
   #  - packages/core_aggregate/brick_validator/tmp/**
-  #  - packages/core_aggregate/core_aggregate_e2e_development
+  - packages/core_aggregate/**
   - "**/bricks/*"
   - "**/bricks/**/*"
 scripts:
