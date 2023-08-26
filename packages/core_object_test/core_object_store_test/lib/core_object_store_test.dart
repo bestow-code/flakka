@@ -5,4 +5,3 @@ library core_object_store_test;
 
 export 'src/micro_package.dart';
 export 'src/package_module.dart';
-export 'src/test_common.dart';

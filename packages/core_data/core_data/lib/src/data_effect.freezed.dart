@@ -20,13 +20,7 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
+            ({Ref ref, int sequenceNumber}) Function() ifEmpty)
         initialize,
     required TResult Function(
             Ref ref,
@@ -45,14 +39,7 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult? Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult? Function(
             Ref ref,
@@ -71,14 +58,7 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult Function(
             Ref ref,
@@ -165,10 +145,7 @@ abstract class _$$DataEffectInitializeCopyWith<Event extends CoreEvent,
           $Res Function(_$DataEffectInitialize<Event, State, View>) then) =
       __$$DataEffectInitializeCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call(
-      {({Ref ref, int sequenceNumber, ({State state, View view}) stateView})
-              Function()
-          ifEmpty});
+  $Res call({({Ref ref, int sequenceNumber}) Function() ifEmpty});
 }
 
 /// @nodoc
@@ -191,12 +168,7 @@ class __$$DataEffectInitializeCopyWithImpl<Event extends CoreEvent,
       ifEmpty: null == ifEmpty
           ? _value.ifEmpty
           : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                  Function(),
+              as ({Ref ref, int sequenceNumber}) Function(),
     ));
   }
 }
@@ -208,8 +180,7 @@ class _$DataEffectInitialize<Event extends CoreEvent, State extends CoreState,
   _$DataEffectInitialize({required this.ifEmpty});
 
   @override
-  final ({Ref ref, int sequenceNumber, ({State state, View view}) stateView})
-      Function() ifEmpty;
+  final ({Ref ref, int sequenceNumber}) Function() ifEmpty;
 
   @override
   String toString() {
@@ -239,13 +210,7 @@ class _$DataEffectInitialize<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
+            ({Ref ref, int sequenceNumber}) Function() ifEmpty)
         initialize,
     required TResult Function(
             Ref ref,
@@ -267,14 +232,7 @@ class _$DataEffectInitialize<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult? Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult? Function(
             Ref ref,
@@ -296,14 +254,7 @@ class _$DataEffectInitialize<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult Function(
             Ref ref,
@@ -378,16 +329,10 @@ abstract class DataEffectInitialize<
     State extends CoreState,
     View extends CoreView> implements DataEffect<Event, State, View> {
   factory DataEffectInitialize(
-      {required final ({
-        Ref ref,
-        int sequenceNumber,
-        ({State state, View view}) stateView
-      })
-              Function()
-          ifEmpty}) = _$DataEffectInitialize<Event, State, View>;
+          {required final ({Ref ref, int sequenceNumber}) Function() ifEmpty}) =
+      _$DataEffectInitialize<Event, State, View>;
 
-  ({Ref ref, int sequenceNumber, ({State state, View view}) stateView})
-      Function() get ifEmpty;
+  ({Ref ref, int sequenceNumber}) Function() get ifEmpty;
   @JsonKey(ignore: true)
   _$$DataEffectInitializeCopyWith<Event, State, View,
           _$DataEffectInitialize<Event, State, View>>
@@ -539,13 +484,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
+            ({Ref ref, int sequenceNumber}) Function() ifEmpty)
         initialize,
     required TResult Function(
             Ref ref,
@@ -567,14 +506,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult? Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult? Function(
             Ref ref,
@@ -597,14 +529,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult Function(
             Ref ref,
@@ -818,13 +743,7 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
+            ({Ref ref, int sequenceNumber}) Function() ifEmpty)
         initialize,
     required TResult Function(
             Ref ref,
@@ -846,14 +765,7 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult? Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult? Function(
             Ref ref,
@@ -875,14 +787,7 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult Function(
             Ref ref,
@@ -1072,13 +977,7 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
+            ({Ref ref, int sequenceNumber}) Function() ifEmpty)
         initialize,
     required TResult Function(
             Ref ref,
@@ -1100,14 +999,7 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult? Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult? Function(
             Ref ref,
@@ -1129,14 +1021,7 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult Function(
             Ref ref,
@@ -1266,13 +1151,7 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)
+            ({Ref ref, int sequenceNumber}) Function() ifEmpty)
         initialize,
     required TResult Function(
             Ref ref,
@@ -1294,14 +1173,7 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult? Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult? Function(
             Ref ref,
@@ -1323,14 +1195,7 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ({
-              Ref ref,
-              int sequenceNumber,
-              ({State state, View view}) stateView
-            })
-                    Function()
-                ifEmpty)?
+    TResult Function(({Ref ref, int sequenceNumber}) Function() ifEmpty)?
         initialize,
     TResult Function(
             Ref ref,

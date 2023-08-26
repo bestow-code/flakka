@@ -1,15 +1,37 @@
-@startuml
-object flakka
-object flakka_flame
-object core_aggregate
-object core_application
-object core_data_store
-flakka_flame --> core_data_store
-flakka --> core_aggregate
-object core_data
+Here is the graph with the objects sorted alphabetically:
 
-core_data_store --> core_data
-core_application --> core_data_store
-core_application --> core_data
-core_aggregate --> core_application
+@startuml
+object object_persistence   
+object object_persistence_base
+object object_persistence_local
+object object_persistence_local_test
+object object_persistence_remote
+object object_persistence_remote_test 
+object object_persistence_test
+
+
+object_persistence --> object_persistence_remote
+
+
+object_persistence_remote --> object_persistence_base
+
+
+object_persistence_remote_test --> object_persistence_remote
+object_persistence_remote_test <.. object_persistence_remote
+
+object_persistence_test <-- object_persistence
+object_persistence_test ..> object_persistence
+
+object_persistence_test --> object_persistence_remote_test
+
+object_persistence_local_test --> object_persistence_local
+
+object_persistence_local_test <.. object_persistence_local
+
+object_persistence --> object_persistence_local
+
+object_persistence_local --> object_persistence_base
+
+object_persistence_test --> object_persistence_local_test
+
 @enduml
