@@ -73,6 +73,10 @@ class ObjectEffectLocal with _$ObjectEffectLocal {
 
 @freezed
 class ObjectEffectRemote with _$ObjectEffectRemote {
+  factory ObjectEffectRemote.initialize({
+    required ({String ref, int createdAt}) ifEmpty,
+  }) = ObjectEffectRemoteInitialize;
+
   factory ObjectEffectRemote.append({
     required String ref,
     required Iterable<String> parent,

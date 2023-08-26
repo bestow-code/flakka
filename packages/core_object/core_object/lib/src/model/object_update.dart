@@ -8,7 +8,8 @@ part 'object_update.freezed.dart';
 class ObjectUpdate with _$ObjectUpdate {
   factory ObjectUpdate.initial({
     required ({
-    String ref,
+      String ref,
+      int sequenceNumber,
       // String main,
       // String instance,
       // Map<String, Set<String>> edges,
@@ -41,6 +42,7 @@ class ObjectUpdateLocal with _$ObjectUpdateLocal {
 
   factory ObjectUpdateLocal.initial({
     required String ref,
+    required int sequenceNumber,
   }) = ObjectUpdateLocalInitial;
 
   factory ObjectUpdateLocal.entry({
@@ -63,10 +65,8 @@ class ObjectUpdateLocal with _$ObjectUpdateLocal {
 @freezed
 class ObjectUpdateRemote with _$ObjectUpdateRemote {
   factory ObjectUpdateRemote.initial({
-    required ({
-      String main,
-      String? instance,
-    }) data,
+    required String ref,
+    required int sequenceNumber,
   }) = ObjectUpdateRemoteInitial;
 
   factory ObjectUpdateRemote.entry({

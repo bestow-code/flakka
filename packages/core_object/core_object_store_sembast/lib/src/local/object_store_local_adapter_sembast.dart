@@ -66,9 +66,6 @@ class ObjectStoreLocalAdapterSembast implements ObjectStoreLocalAdapter {
           entry,
       Map<String, JsonMap>? event,
       Map<String, StateViewObject>? stateView}) {
-// TODO: implement add
     throw UnimplementedError();
   }
 }
-
-typedef EntryObject = ({List<String> parent, int createdAt});

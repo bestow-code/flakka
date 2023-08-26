@@ -8,7 +8,7 @@ abstract class ObjectStoreRemoteAdapterFactory {
 // - Base
 abstract class ObjectStoreRemoteAdapterFactoryBase
     implements ObjectStoreRemoteAdapterFactory {
-  ObjectStoreRemoteAdapterFactoryBase(this.persistenceId);
+  ObjectStoreRemoteAdapterFactoryBase({required this.persistenceId,});
 
   final String persistenceId;
 }

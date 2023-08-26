@@ -1,4 +1,4 @@
-//@GeneratedMicroModule;CoreJournalTestPackageModule;package:core_journal_test/src/micro_package.module.dart
+//@GeneratedMicroModule;CoreJournalStoreTestPackageModule;package:core_journal_store_test/src/micro_package.module.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -9,7 +9,7 @@ import 'dart:async' as _i2;
 
 import 'package:injectable/injectable.dart' as _i1;
 
-class CoreJournalTestPackageModule extends _i1.MicroPackageModule {
+class CoreJournalStoreTestPackageModule extends _i1.MicroPackageModule {
 // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {}

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectUpdate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref}) data) initial,
+    required TResult Function(({String ref, int sequenceNumber}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -29,7 +29,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref}) data)? initial,
+    TResult? Function(({String ref, int sequenceNumber}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -40,7 +40,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref}) data)? initial,
+    TResult Function(({String ref, int sequenceNumber}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -104,7 +104,7 @@ abstract class _$$ObjectUpdateInitialCopyWith<$Res> {
           $Res Function(_$ObjectUpdateInitial) then) =
       __$$ObjectUpdateInitialCopyWithImpl<$Res>;
   @useResult
-  $Res call({({String ref}) data});
+  $Res call({({String ref, int sequenceNumber}) data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$ObjectUpdateInitialCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ({String ref}),
+              as ({String ref, int sequenceNumber}),
     ));
   }
 }
@@ -135,7 +135,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   _$ObjectUpdateInitial({required this.data});
 
   @override
-  final ({String ref}) data;
+  final ({String ref, int sequenceNumber}) data;
 
   @override
   String toString() {
@@ -163,7 +163,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref}) data) initial,
+    required TResult Function(({String ref, int sequenceNumber}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -177,7 +177,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref}) data)? initial,
+    TResult? Function(({String ref, int sequenceNumber}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -191,7 +191,7 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref}) data)? initial,
+    TResult Function(({String ref, int sequenceNumber}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -248,10 +248,11 @@ class _$ObjectUpdateInitial implements ObjectUpdateInitial {
 }
 
 abstract class ObjectUpdateInitial implements ObjectUpdate {
-  factory ObjectUpdateInitial({required final ({String ref}) data}) =
+  factory ObjectUpdateInitial(
+          {required final ({String ref, int sequenceNumber}) data}) =
       _$ObjectUpdateInitial;
 
-  ({String ref}) get data;
+  ({String ref, int sequenceNumber}) get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateInitialCopyWith<_$ObjectUpdateInitial> get copyWith =>
       throw _privateConstructorUsedError;
@@ -330,7 +331,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref}) data) initial,
+    required TResult Function(({String ref, int sequenceNumber}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -344,7 +345,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref}) data)? initial,
+    TResult? Function(({String ref, int sequenceNumber}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -358,7 +359,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref}) data)? initial,
+    TResult Function(({String ref, int sequenceNumber}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -496,7 +497,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref}) data) initial,
+    required TResult Function(({String ref, int sequenceNumber}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -510,7 +511,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref}) data)? initial,
+    TResult? Function(({String ref, int sequenceNumber}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -524,7 +525,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref}) data)? initial,
+    TResult Function(({String ref, int sequenceNumber}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -662,7 +663,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref}) data) initial,
+    required TResult Function(({String ref, int sequenceNumber}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -676,7 +677,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref}) data)? initial,
+    TResult? Function(({String ref, int sequenceNumber}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -690,7 +691,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref}) data)? initial,
+    TResult Function(({String ref, int sequenceNumber}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -821,7 +822,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref}) data) initial,
+    required TResult Function(({String ref, int sequenceNumber}) data) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -835,7 +836,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref}) data)? initial,
+    TResult? Function(({String ref, int sequenceNumber}) data)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -849,7 +850,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref}) data)? initial,
+    TResult Function(({String ref, int sequenceNumber}) data)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -919,7 +920,7 @@ mixin _$ObjectUpdateLocal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -940,7 +941,7 @@ mixin _$ObjectUpdateLocal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -961,7 +962,7 @@ mixin _$ObjectUpdateLocal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1071,7 +1072,7 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -1095,7 +1096,7 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1119,7 +1120,7 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1197,7 +1198,7 @@ abstract class _$$ObjectUpdateLocalInitialCopyWith<$Res> {
           $Res Function(_$ObjectUpdateLocalInitial) then) =
       __$$ObjectUpdateLocalInitialCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref});
+  $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
@@ -1212,12 +1213,17 @@ class __$$ObjectUpdateLocalInitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ref = null,
+    Object? sequenceNumber = null,
   }) {
     return _then(_$ObjectUpdateLocalInitial(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1225,14 +1231,16 @@ class __$$ObjectUpdateLocalInitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
-  _$ObjectUpdateLocalInitial({required this.ref});
+  _$ObjectUpdateLocalInitial({required this.ref, required this.sequenceNumber});
 
   @override
   final String ref;
+  @override
+  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'ObjectUpdateLocal.initial(ref: $ref)';
+    return 'ObjectUpdateLocal.initial(ref: $ref, sequenceNumber: $sequenceNumber)';
   }
 
   @override
@@ -1240,11 +1248,13 @@ class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectUpdateLocalInitial &&
-            (identical(other.ref, ref) || other.ref == ref));
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref);
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1258,7 +1268,7 @@ class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -1275,14 +1285,14 @@ class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
             }) data)
         stateView,
   }) {
-    return initial(ref);
+    return initial(ref, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1299,14 +1309,14 @@ class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
             }) data)?
         stateView,
   }) {
-    return initial?.call(ref);
+    return initial?.call(ref, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1325,7 +1335,7 @@ class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(ref);
+      return initial(ref, sequenceNumber);
     }
     return orElse();
   }
@@ -1375,10 +1385,12 @@ class _$ObjectUpdateLocalInitial implements ObjectUpdateLocalInitial {
 }
 
 abstract class ObjectUpdateLocalInitial implements ObjectUpdateLocal {
-  factory ObjectUpdateLocalInitial({required final String ref}) =
-      _$ObjectUpdateLocalInitial;
+  factory ObjectUpdateLocalInitial(
+      {required final String ref,
+      required final int sequenceNumber}) = _$ObjectUpdateLocalInitial;
 
   String get ref;
+  int get sequenceNumber;
   @JsonKey(ignore: true)
   _$$ObjectUpdateLocalInitialCopyWith<_$ObjectUpdateLocalInitial>
       get copyWith => throw _privateConstructorUsedError;
@@ -1459,7 +1471,7 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -1483,7 +1495,7 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1507,7 +1519,7 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1659,7 +1671,7 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -1683,7 +1695,7 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1707,7 +1719,7 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1855,7 +1867,7 @@ class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -1879,7 +1891,7 @@ class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -1903,7 +1915,7 @@ class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2063,7 +2075,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pending,
-    required TResult Function(String ref) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -2087,7 +2099,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pending,
-    TResult? Function(String ref)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2111,7 +2123,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pending,
-    TResult Function(String ref)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2197,10 +2209,9 @@ abstract class ObjectUpdateLocalStateView implements ObjectUpdateLocal {
 
 /// @nodoc
 mixin _$ObjectUpdateRemote {
-  Object get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String? instance, String main}) data) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -2220,7 +2231,7 @@ mixin _$ObjectUpdateRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String? instance, String main}) data)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2240,7 +2251,7 @@ mixin _$ObjectUpdateRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String? instance, String main}) data)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2315,7 +2326,7 @@ abstract class _$$ObjectUpdateRemoteInitialCopyWith<$Res> {
           $Res Function(_$ObjectUpdateRemoteInitial) then) =
       __$$ObjectUpdateRemoteInitialCopyWithImpl<$Res>;
   @useResult
-  $Res call({({String? instance, String main}) data});
+  $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
@@ -2329,13 +2340,18 @@ class __$$ObjectUpdateRemoteInitialCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? ref = null,
+    Object? sequenceNumber = null,
   }) {
     return _then(_$ObjectUpdateRemoteInitial(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as ({String? instance, String main}),
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -2343,14 +2359,17 @@ class __$$ObjectUpdateRemoteInitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
-  _$ObjectUpdateRemoteInitial({required this.data});
+  _$ObjectUpdateRemoteInitial(
+      {required this.ref, required this.sequenceNumber});
 
   @override
-  final ({String? instance, String main}) data;
+  final String ref;
+  @override
+  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'ObjectUpdateRemote.initial(data: $data)';
+    return 'ObjectUpdateRemote.initial(ref: $ref, sequenceNumber: $sequenceNumber)';
   }
 
   @override
@@ -2358,11 +2377,13 @@ class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectUpdateRemoteInitial &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -2374,7 +2395,7 @@ class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String? instance, String main}) data) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -2391,13 +2412,13 @@ class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
             }) data)
         stateView,
   }) {
-    return initial(data);
+    return initial(ref, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String? instance, String main}) data)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2414,13 +2435,13 @@ class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
             }) data)?
         stateView,
   }) {
-    return initial?.call(data);
+    return initial?.call(ref, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String? instance, String main}) data)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2439,7 +2460,7 @@ class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(data);
+      return initial(ref, sequenceNumber);
     }
     return orElse();
   }
@@ -2488,11 +2509,11 @@ class _$ObjectUpdateRemoteInitial implements ObjectUpdateRemoteInitial {
 
 abstract class ObjectUpdateRemoteInitial implements ObjectUpdateRemote {
   factory ObjectUpdateRemoteInitial(
-          {required final ({String? instance, String main}) data}) =
-      _$ObjectUpdateRemoteInitial;
+      {required final String ref,
+      required final int sequenceNumber}) = _$ObjectUpdateRemoteInitial;
 
-  @override
-  ({String? instance, String main}) get data;
+  String get ref;
+  int get sequenceNumber;
   @JsonKey(ignore: true)
   _$$ObjectUpdateRemoteInitialCopyWith<_$ObjectUpdateRemoteInitial>
       get copyWith => throw _privateConstructorUsedError;
@@ -2572,7 +2593,7 @@ class _$ObjectUpdateRemoteEntry implements ObjectUpdateRemoteEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String? instance, String main}) data) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -2595,7 +2616,7 @@ class _$ObjectUpdateRemoteEntry implements ObjectUpdateRemoteEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String? instance, String main}) data)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2618,7 +2639,7 @@ class _$ObjectUpdateRemoteEntry implements ObjectUpdateRemoteEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String? instance, String main}) data)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2689,7 +2710,6 @@ abstract class ObjectUpdateRemoteEntry implements ObjectUpdateRemote {
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
           data}) = _$ObjectUpdateRemoteEntry;
 
-  @override
   Map<String, ({int createdAt, Iterable<String> refs})> get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateRemoteEntryCopyWith<_$ObjectUpdateRemoteEntry> get copyWith =>
@@ -2768,7 +2788,7 @@ class _$ObjectUpdateRemoteEvent implements ObjectUpdateRemoteEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String? instance, String main}) data) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -2791,7 +2811,7 @@ class _$ObjectUpdateRemoteEvent implements ObjectUpdateRemoteEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String? instance, String main}) data)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2814,7 +2834,7 @@ class _$ObjectUpdateRemoteEvent implements ObjectUpdateRemoteEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String? instance, String main}) data)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -2884,7 +2904,6 @@ abstract class ObjectUpdateRemoteEvent implements ObjectUpdateRemote {
   factory ObjectUpdateRemoteEvent({required final Map<String, JsonMap> data}) =
       _$ObjectUpdateRemoteEvent;
 
-  @override
   Map<String, JsonMap> get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateRemoteEventCopyWith<_$ObjectUpdateRemoteEvent> get copyWith =>
@@ -2961,7 +2980,7 @@ class _$ObjectUpdateRemoteStateViewRef
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String? instance, String main}) data) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -2984,7 +3003,7 @@ class _$ObjectUpdateRemoteStateViewRef
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String? instance, String main}) data)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -3007,7 +3026,7 @@ class _$ObjectUpdateRemoteStateViewRef
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String? instance, String main}) data)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -3078,7 +3097,6 @@ abstract class ObjectUpdateRemoteStateViewRef implements ObjectUpdateRemote {
           {required final Iterable<({int createdAt, String ref})> data}) =
       _$ObjectUpdateRemoteStateViewRef;
 
-  @override
   Iterable<({int createdAt, String ref})> get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateRemoteStateViewRefCopyWith<_$ObjectUpdateRemoteStateViewRef>
@@ -3169,7 +3187,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String? instance, String main}) data) initial,
+    required TResult Function(String ref, int sequenceNumber) initial,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -3192,7 +3210,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String? instance, String main}) data)? initial,
+    TResult? Function(String ref, int sequenceNumber)? initial,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -3215,7 +3233,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String? instance, String main}) data)? initial,
+    TResult Function(String ref, int sequenceNumber)? initial,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -3291,7 +3309,6 @@ abstract class ObjectUpdateRemoteStateView implements ObjectUpdateRemote {
         }) stateViewObject
       }) data}) = _$ObjectUpdateRemoteStateView;
 
-  @override
   ({
     String ref,
     ({Map<String, dynamic> state, Map<String, dynamic> view}) stateViewObject

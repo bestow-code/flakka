@@ -1,25 +1,29 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:core_object/core_object.dart';
 
-abstract interface class CoreObjectStoreRemote {
-  StreamSink<ObjectEffectRemote> get effect;
+import '../../core_object_store.dart';
 
-  Stream<ObjectUpdateRemote> get update;
-}
+class ObjectStoreRemote extends Cubit<ObjectStoreState>
+    implements CoreObjectStoreRemote {
+  ObjectStoreRemote(
+      super.initialState, {
+        required ObjectStoreRemoteAdapter adapter,
+      }) : _adapter = adapter {
+    _effect.stream.listen((event) {
+      _update.add(ObjectUpdateRemote.initial(ref: '1', sequenceNumber: 1));
+    });
+  }
 
-class ObjectStoreRemote implements CoreObjectStoreRemote {
-  ObjectStoreRemote({
-    required ObjectRemoteStoreAdapter adapter,
-  }) : _adapter = adapter;
-
-  final ObjectRemoteStoreAdapter _adapter;
+  final ObjectStoreRemoteAdapter _adapter;
 
   @override
-  StreamSink<ObjectEffectRemote> get effect => throw UnimplementedError();
+  StreamSink<ObjectEffectRemote> get effect => _effect.sink;
+
+  final _effect = StreamController<ObjectEffectRemote>.broadcast();
 
   @override
-  Stream<ObjectUpdateRemote> get update => throw UnimplementedError();
+  Stream<ObjectUpdateRemote> get update => _update.stream;
+  final _update = StreamController<ObjectUpdateRemote>();
 }
-
-abstract interface class ObjectRemoteStoreAdapter {}
