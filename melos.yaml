@@ -58,7 +58,7 @@ scripts:
   build_watcher:
     run: flutter pub run build_runner watch --delete-conflicting-outputs
     exec:
-      concurrency: 20
+      concurrency: 40
     packageFilters:
       scope:
 
