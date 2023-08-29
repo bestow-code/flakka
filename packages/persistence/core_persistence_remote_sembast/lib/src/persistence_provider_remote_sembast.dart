@@ -4,7 +4,7 @@ import 'package:sembast/sembast_memory.dart';
 
 import '../core_persistence_remote_sembast.dart';
 
-class PersistenceProviderRemoteSembast implements PersistenceProviderRemote {
+class PersistenceProviderRemoteSembast implements CorePersistenceProviderRemote {
   PersistenceProviderRemoteSembast({
     required this.databaseFactory,
   });
@@ -15,7 +15,7 @@ class PersistenceProviderRemoteSembast implements PersistenceProviderRemote {
   final DatabaseFactory databaseFactory;
 
   @override
-  PersistenceAdapterRemoteFactory getAdapterFactory(
+  CorePersistenceAdapterRemoteFactory getAdapterFactory(
           String persistenceId) =>
       PersistenceAdapterRemoteFactorySembast(
         persistenceId: persistenceId,

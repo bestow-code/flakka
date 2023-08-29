@@ -2,13 +2,13 @@ import 'package:core_persistence_remote/src/persistence_adapter_remote.dart';
 import 'package:meta/meta.dart';
 
 
-abstract class PersistenceAdapterRemoteFactory {
-  Future<PersistenceAdapterRemote> getAdapter(String path);
+abstract class CorePersistenceAdapterRemoteFactory {
+  Future<CorePersistenceAdapterRemote> getAdapter(String path);
 }
 
 // - Base
 abstract class PersistenceAdapterRemoteFactoryBase
-    implements PersistenceAdapterRemoteFactory {
+    implements CorePersistenceAdapterRemoteFactory {
   PersistenceAdapterRemoteFactoryBase({
     required String persistenceId,
   }) : _persistenceId = persistenceId;

@@ -3,7 +3,7 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:sembast/sembast.dart';
 
-class PersistenceAdapterRemoteSembast implements PersistenceAdapterRemote {
+class PersistenceAdapterRemoteSembast implements CorePersistenceAdapterRemote {
   PersistenceAdapterRemoteSembast({
     required String persistenceId,
     required Database database,

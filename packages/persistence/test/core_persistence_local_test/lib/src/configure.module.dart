@@ -17,7 +17,7 @@ class CorePersistenceLocalTestPackageModule extends _i1.MicroPackageModule {
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
     final defaultTestModule = _$DefaultTestModule();
-    gh.factory<_i3.PersistenceProviderLocal>(
+    gh.factory<_i3.PersistenceProviderLocalBase>(
         () => defaultTestModule.getPersistenceProvider());
   }
 }

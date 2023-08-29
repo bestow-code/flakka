@@ -10,14 +10,14 @@ class ObjectStoreLocal extends Cubit<ObjectStoreLocalState>
     implements CoreObjectStoreLocal {
   ObjectStoreLocal(
     super.initialState, {
-    required PersistenceAdapterLocal adapter,
+    required CorePersistenceAdapterLocal adapter,
   }) : _adapter = adapter {
     _effect.stream.listen((event) {
       _update.add(ObjectUpdateLocal.initial(ref: '1', sequenceNumber: 1));
     });
   }
 
-  final PersistenceAdapterLocal _adapter;
+  final CorePersistenceAdapterLocal _adapter;
 
   @override
   StreamSink<ObjectEffectLocal> get effect => _effect.sink;

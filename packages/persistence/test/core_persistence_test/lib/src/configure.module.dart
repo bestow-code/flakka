@@ -23,8 +23,8 @@ class CorePersistenceTestPackageModule extends _i1.MicroPackageModule {
     final defaultTestModule = _$DefaultTestModule();
     gh.factory<_i4.PersistenceProvider>(
         () => defaultTestModule.getPersistenceProvider(
-              gh<_i5.PersistenceProviderLocal>(),
-              gh<_i6.PersistenceProviderRemote>(),
+              gh<_i5.CorePersistenceProviderLocal>(),
+              gh<_i6.CorePersistenceProviderRemote>(),
             ));
   }
 }

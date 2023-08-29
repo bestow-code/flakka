@@ -16,7 +16,7 @@ void main() async {
       databaseFactory: databaseFactory,
     );
   });
-  late PersistenceAdapterRemote adapter;
+  late CorePersistenceAdapterRemote adapter;
   const path = '/1';
 
   group('ObjectStoreRemoteAdapter', () {

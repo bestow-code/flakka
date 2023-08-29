@@ -1,14 +1,9 @@
 import 'package:meta/meta.dart';
 
-import '../core_persistence_local.dart';
+import '../../core_persistence_local.dart';
 
-abstract class PersistenceAdapterLocalFactory {
-  Future<PersistenceAdapterLocal> getAdapter(String path);
-}
-
-// - Base
 abstract class PersistenceAdapterLocalFactoryBase
-    implements PersistenceAdapterLocalFactory {
+    implements CorePersistenceAdapterLocalFactory {
   PersistenceAdapterLocalFactoryBase({
     required String persistenceId,
   }) : _persistenceId = persistenceId;

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:core_object/core_object.dart';
 
-abstract class CorePersistenceAdapterRemote {
+abstract interface class CorePersistenceAdapterLocal {
   Future<({String ref, int sequenceNumber})?> initialize({
   required ({
   String ref,

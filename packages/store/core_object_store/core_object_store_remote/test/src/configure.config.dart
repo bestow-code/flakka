@@ -32,7 +32,7 @@ extension GetItInjectableX on _i1.GetIt {
     await _i3.CoreObjectStoreRemoteTestPackageModule().init(gh);
     final module = _$Module();
     gh.factory<_i4.ObjectStoreRemote>(
-        () => module.getObjectStoreRemote(gh<_i5.PersistenceAdapterRemote>()));
+        () => module.getObjectStoreRemote(gh<_i5.CorePersistenceAdapterRemote>()));
     return this;
   }
 }

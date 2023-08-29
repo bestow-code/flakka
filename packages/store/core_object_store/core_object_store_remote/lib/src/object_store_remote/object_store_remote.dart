@@ -11,14 +11,14 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
     implements CoreObjectStoreRemote {
   ObjectStoreRemote(
     super.initialState, {
-    required PersistenceAdapterRemote adapter,
+    required CorePersistenceAdapterRemote adapter,
   }) : _adapter = adapter {
     _effect.stream.listen((event) {
       _update.add(ObjectUpdateRemote.initial(ref: '1', sequenceNumber: 1));
     });
   }
 
-  final PersistenceAdapterRemote _adapter;
+  final CorePersistenceAdapterRemote _adapter;
 
   @override
   StreamSink<ObjectEffectRemote> get effect => _effect.sink;

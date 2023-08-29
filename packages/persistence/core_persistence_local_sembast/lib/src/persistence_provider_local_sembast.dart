@@ -3,18 +3,18 @@ import 'package:core_persistence_local_sembast/core_persistence_local_sembast.da
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_memory.dart';
 
-class PersistenceProviderLocalSembast implements PersistenceProviderLocal {
-
+class PersistenceProviderLocalSembast implements PersistenceProviderLocalBase {
   PersistenceProviderLocalSembast({
     required this.databaseFactory,
   });
+
   factory PersistenceProviderLocalSembast.inMemory() =>
       PersistenceProviderLocalSembast(databaseFactory: databaseFactoryMemoryFs);
 
   final DatabaseFactory databaseFactory;
 
   @override
-  PersistenceAdapterLocalFactory getAdapterFactory(String persistenceId) =>
+  CorePersistenceAdapterLocalFactory getAdapterFactory(String persistenceId) =>
       PersistenceAdapterLocalFactorySembast(
         persistenceId: persistenceId,
         databaseFactory: databaseFactory,

@@ -12,6 +12,9 @@ dependencies:
   core_object:
   core_object_store_local:
   core_object_store_remote:
+  core_persistence:
+  core_persistence_local:
+  core_persistence_remote:
   freezed_annotation: ^2.2.0
   get_it:
   injectable:

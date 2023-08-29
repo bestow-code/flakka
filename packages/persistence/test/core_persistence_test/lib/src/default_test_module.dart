@@ -9,8 +9,8 @@ import 'package:injectable/injectable.dart';
 abstract class DefaultTestModule {
   @injectable
   PersistenceProvider getPersistenceProvider(
-    PersistenceProviderLocal local,
-    PersistenceProviderRemote remote,
+    CorePersistenceProviderLocal local,
+    CorePersistenceProviderRemote remote,
   ) =>
       PersistenceProvider(
         local: PersistenceProviderLocalSembast.inMemory(),

@@ -19,7 +19,7 @@ Future<void> configureDependencies() async => getIt.init();
 
 @module
 abstract class Module {
-  ObjectStoreRemote getObjectStoreRemote(PersistenceAdapterRemote adapter) =>
+  ObjectStoreRemote getObjectStoreRemote(CorePersistenceAdapterRemote adapter) =>
       ObjectStoreRemote(
         ObjectStoreRemoteState.initial(),
         adapter: adapter,

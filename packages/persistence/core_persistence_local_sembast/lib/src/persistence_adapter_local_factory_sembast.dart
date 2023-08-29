@@ -4,16 +4,17 @@ import 'package:sembast/sembast.dart';
 import '../core_persistence_local_sembast.dart';
 
 class PersistenceAdapterLocalFactorySembast
-    extends PersistenceAdapterLocalFactoryBase {
+    implements CorePersistenceAdapterLocalFactory {
   PersistenceAdapterLocalFactorySembast({
-    required super.persistenceId,
+    required this.persistenceId,
     required this.databaseFactory,
   });
 
+  final String persistenceId;
   final DatabaseFactory databaseFactory;
 
   @override
-  Future<PersistenceAdapterLocal> getAdapter(String path) async =>
+  Future<PersistenceAdapterLocalBase> getAdapter(String path) async =>
       PersistenceAdapterLocalSembast(
         persistenceId: persistenceId,
         database: await databaseFactory.openDatabase(path),

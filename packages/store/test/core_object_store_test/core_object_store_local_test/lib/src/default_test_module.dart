@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class DefaultTestModule {
   @injectable
-  Future<ObjectStoreLocal> getObjectStoreLocal(Future<PersistenceAdapterLocal> adapterLocal) async=>
+  Future<ObjectStoreLocal> getObjectStoreLocal(Future<PersistenceAdapterLocalBase> adapterLocal) async=>
       ObjectStoreLocal(
         ObjectStoreLocalState.initial(),
         adapter: await adapterLocal,
