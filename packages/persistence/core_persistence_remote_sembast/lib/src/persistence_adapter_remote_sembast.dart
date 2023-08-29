@@ -14,59 +14,64 @@ class PersistenceAdapterRemoteSembast implements CorePersistenceAdapterRemote {
   final Database _database;
 
   late final store = (
-    head: StoreRef<int, String>('head/$_persistenceId'),
+    head: (
+      instance: StoreRef<int, String>('head/$_persistenceId'),
+      main: StoreRef<int, String>('head/main')
+    ),
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event')
   );
 
   @override
   Future<({String ref, int sequenceNumber})?> initialize({
-    required ({
-      int createdAt,
-      String ref,
-      int sequenceNumber,
-      StateViewObject? stateViewData
-    })
+    required ({int createdAt, String ref, StateViewObject? stateViewData})
             Function()?
         ifEmpty,
   }) =>
       _database.transaction((transaction) async {
-        final headRef = await store.head
+        final instanceHeadRef = await store.head.instance
             .query(
               finder:
                   Finder(limit: 1, sortOrders: [SortOrder(Field.key, false)]),
             )
             .getSnapshot(transaction);
-        if (headRef == null) {
-          if (ifEmpty == null) {
-            return null;
-          } else {
-            final createWith = ifEmpty();
-            await store.head
-                .record(createWith.sequenceNumber)
-                .put(transaction, createWith.ref);
-            final entryProps =
-                EntryProps(parent: [], createdAt: createWith.createdAt);
-            await store.entry.record(createWith.ref).put(
-                  transaction,
-                  entryProps.toJson(),
-                );
-            return (
-              ref: createWith.ref,
-              sequenceNumber: createWith.sequenceNumber
-            );
-          }
+        if (instanceHeadRef != null) {
+          return (
+            ref: instanceHeadRef.value,
+            sequenceNumber: instanceHeadRef.key
+          );
+        }
+        final mainHeadRef = await store.head.instance
+            .query(
+              finder:
+                  Finder(limit: 1, sortOrders: [SortOrder(Field.key, false)]),
+            )
+            .getSnapshot(transaction);
+        if (mainHeadRef != null) {
+          return (ref: mainHeadRef.value, sequenceNumber: 0);
+        }
+        if (ifEmpty == null) {
+          throw Exception('ifEmpty required for new instance');
         } else {
-          return (ref: headRef.value, sequenceNumber: headRef.key);
+          final createWith = ifEmpty();
+          await store.head.main.record(0).put(transaction, createWith.ref);
+          await store.head.instance.record(0).put(transaction, createWith.ref);
+          final entryProps =
+              EntryProps(parent: [], createdAt: createWith.createdAt);
+          await store.entry.record(createWith.ref).put(
+                transaction,
+                entryProps.toJson(),
+              );
+          return (ref: createWith.ref, sequenceNumber: 0);
         }
       });
 
   @override
-  Future<void> add(
-      {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
-          entry,
-      Map<String, JsonMap>? event,
-      Map<String, StateViewObject>? stateView}) {
+  Future<void> add({
+    Map<String, ({int createdAt, Iterable<String> parent, String ref})>? entry,
+    Map<String, JsonMap>? event,
+    Map<String, StateViewObject>? stateView,
+  }) {
     throw UnimplementedError();
   }
 }
