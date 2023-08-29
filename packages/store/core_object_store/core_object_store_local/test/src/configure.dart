@@ -19,9 +19,6 @@ Future<void> configureDependencies() async => getIt.init();
 
 @module
 abstract class Module {
-  ObjectStoreLocal getObjectStoreLocal(PersistenceAdapterLocal adapter) =>
-      ObjectStoreLocal(
-        ObjectStoreLocalState.initial(),
-        adapter: adapter,
-      );
+  @Named('instance1')
+  String get id => 'hello';
 }

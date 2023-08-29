@@ -21,8 +21,8 @@ class CoreObjectStoreLocalTestPackageModule extends _i1.MicroPackageModule {
   _i2.FutureOr<void> init(_i1.GetItHelper gh) async {
     await _i3.CorePersistenceLocalTestPackageModule().init(gh);
     final defaultTestModule = _$DefaultTestModule();
-    gh.factory<_i4.ObjectStoreLocal>(() => defaultTestModule
-        .getObjectStoreLocal(gh<_i5.PersistenceAdapterLocal>()));
+    gh.factoryAsync<_i4.ObjectStoreLocal>(() => defaultTestModule
+        .getObjectStoreLocal(gh<_i2.Future<_i5.PersistenceAdapterLocal>>()));
   }
 }
 

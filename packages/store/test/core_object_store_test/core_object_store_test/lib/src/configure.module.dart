@@ -21,9 +21,9 @@ class CoreObjectStoreTestPackageModule extends _i1.MicroPackageModule {
   _i2.FutureOr<void> init(_i1.GetItHelper gh) async {
     await _i3.CoreObjectStoreLocalTestPackageModule().init(gh);
     final defaultTestModule = _$DefaultTestModule();
-    gh.factory<_i4.CoreObjectStore>(() => defaultTestModule.getObjectStore(
-          gh<_i5.CoreObjectStoreLocal>(),
-          gh<_i6.CoreObjectStoreRemote>(),
+    gh.factoryAsync<_i4.CoreObjectStore>(() => defaultTestModule.getObjectStore(
+          gh<_i2.Future<_i5.CoreObjectStoreLocal>>(),
+          gh<_i2.Future<_i6.CoreObjectStoreRemote>>(),
         ));
   }
 }
