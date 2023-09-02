@@ -17,14 +17,20 @@ void main() {
   configureDependencies();
 
   blocTest<ObjectStoreLocal, ObjectStoreLocalState>(
-    'hello',
+    'initialize',
     setUp: () async {
       objectStore = await GetIt.instance.getAsync<ObjectStoreLocal>();
       update = objectStore.update.first;
     },
     build: () => objectStore,
     act: (objectStore) async {
-      const ifEmpty = (ref: '0', createdAt: 1);
+      InitialObjectInstanceProps ifEmpty() => (
+            ref: '0',
+            createdAt: 1,
+            sequenceNumber: 0,
+          );
+
+
       objectStore.effect.add(ObjectEffectLocal.initialize(ifEmpty: ifEmpty));
     },
     verify: (objectStore) async {

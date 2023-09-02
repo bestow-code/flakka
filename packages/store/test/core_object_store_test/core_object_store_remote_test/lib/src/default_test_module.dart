@@ -4,11 +4,15 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class DefaultTestModule {
-  @injectable
-  ObjectStoreRemote getObjectStoreRemote(
-          CorePersistenceAdapterRemote adapterRemote) =>
-      ObjectStoreRemote(
-        ObjectStoreRemoteState.initial(),
-        adapter: adapterRemote,
-      );
+  ObjectStoreRemoteProvider getObjectStoreRemoteProvider(
+      CorePersistenceRemoteProvider persistenceProviderRemote) =>
+      ObjectStoreRemoteProvider(persistenceProviderRemote);
+
+  // @injectable
+  // ObjectStoreRemote getObjectStoreRemote(
+  //     CorePersistenceAdapterRemote adapterRemote) =>
+  //     ObjectStoreRemote(
+  //       ObjectStoreRemoteState.initial(),
+  //       adapter: adapterRemote,
+  //     );
 }

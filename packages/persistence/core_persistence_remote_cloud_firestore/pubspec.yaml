@@ -4,8 +4,8 @@ description: A Firestore adapter for core platform's Core Entry Store
 repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: '^3.0.5'
-  flutter: '>=3.10.5'
+  sdk: '^3.1.0'
+  flutter: '>=3.13.2'
 
 dependencies:
   cloud_firestore: ^4.8.2

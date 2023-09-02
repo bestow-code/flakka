@@ -6,9 +6,9 @@ part 'object_store_remote_state.freezed.dart';
 class ObjectStoreRemoteState with _$ObjectStoreRemoteState {
   factory ObjectStoreRemoteState.initial() = ObjectStoreRemoteStateInitial;
 
-  factory ObjectStoreRemoteState.initializing({
-    required ({String ref, int sequenceNumber}) Function()? ifEmpty,
-  }) = ObjectStoreRemoteStateInitializing;
+  // factory ObjectStoreRemoteState.initializing({
+  //   required ({String ref, int sequenceNumber}) Function()? ifEmpty,
+  // }) = ObjectStoreRemoteStateInitializing;
 
   factory ObjectStoreRemoteState.ready() = ObjectStoreRemoteStateReady;
 }

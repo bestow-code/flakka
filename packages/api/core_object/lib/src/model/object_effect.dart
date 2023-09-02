@@ -4,10 +4,24 @@ import '../../../core_object.dart';
 
 part 'object_effect.freezed.dart';
 
+typedef IfEmptyCallback = InitialObjectProps Function();
+
+typedef InitialObjectProps = ({
+  String ref,
+  int createdAt,
+});
+typedef IfEmptyCallbackLocal = InitialObjectInstanceProps Function();
+
+typedef InitialObjectInstanceProps = ({
+  String ref,
+  int createdAt,
+  int sequenceNumber,
+});
+
 @freezed
 class ObjectEffect with _$ObjectEffect {
   factory ObjectEffect.initialize({
-    required ({String ref, int createdAt}) ifEmpty,
+    required IfEmptyCallback ifEmpty,
   }) = ObjectEffectInitialize;
 
   factory ObjectEffect.append({
@@ -38,7 +52,7 @@ class ObjectEffect with _$ObjectEffect {
 @freezed
 class ObjectEffectLocal with _$ObjectEffectLocal {
   factory ObjectEffectLocal.initialize({
-    required ({String ref, int createdAt})? ifEmpty,
+    required IfEmptyCallbackLocal? ifEmpty,
   }) = ObjectEffectLocalInitialize;
 
   factory ObjectEffectLocal.append({
@@ -74,7 +88,8 @@ class ObjectEffectLocal with _$ObjectEffectLocal {
 @freezed
 class ObjectEffectRemote with _$ObjectEffectRemote {
   factory ObjectEffectRemote.initialize({
-    required ({String ref, int createdAt}) ifEmpty,
+    required IfEmptyCallback?
+        ifEmpty,
   }) = ObjectEffectRemoteInitialize;
 
   factory ObjectEffectRemote.append({

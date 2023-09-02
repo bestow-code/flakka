@@ -12,19 +12,27 @@ import 'package:test/test.dart';
 import 'configure.dart';
 
 void main() {
-  late ObjectStoreLocal objectStore;
+  late ObjectStoreLocalProvider provider;
+  late ObjectStoreLocalFactory factory;
+  late ObjectStoreLocal store;
   late Future<ObjectUpdateLocal> update;
   configureDependencies();
 
   blocTest<ObjectStoreLocal, ObjectStoreLocalState>(
-    'hello',
+    'initialize',
     setUp: () async {
-      objectStore = await GetIt.instance.getAsync<ObjectStoreLocal>();
-      update = objectStore.update.first;
+      provider = GetIt.instance.get<ObjectStoreLocalProvider>();
+      factory = provider.getFactory('1');
+      store = await factory.getInstance('1');
+      update = store.update.first;
     },
-    build: () => objectStore,
+    build: () => store,
     act: (objectStore) async {
-      const ifEmpty = (ref: '0', createdAt: 1);
+      InitialObjectInstanceProps ifEmpty() => (
+            ref: '0',
+            createdAt: 1,
+            sequenceNumber: 0,
+          );
       objectStore.effect.add(ObjectEffectLocal.initialize(ifEmpty: ifEmpty));
     },
     verify: (objectStore) async {

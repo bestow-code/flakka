@@ -5,11 +5,11 @@ class ObjectStoreLocalProvider implements CoreObjectStoreLocalProvider {
   ObjectStoreLocalProvider(this.persistenceProviderLocal);
 
   factory ObjectStoreLocalProvider.from(
-    CorePersistenceProviderLocal persistenceProviderLocal,
+    CorePersistenceLocalProvider persistenceProviderLocal,
   ) =>
       ObjectStoreLocalProvider(persistenceProviderLocal);
 
-  final CorePersistenceProviderLocal persistenceProviderLocal;
+  final CorePersistenceLocalProvider persistenceProviderLocal;
 
   @override
   ObjectStoreLocalFactory getFactory(String persistenceId) =>

@@ -3,8 +3,8 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:sembast/sembast.dart';
 
-class PersistenceAdapterRemoteSembast implements CorePersistenceAdapterRemote {
-  PersistenceAdapterRemoteSembast({
+class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
+  PersistenceRemoteAdapterSembast({
     required String persistenceId,
     required Database database,
   })  : _persistenceId = persistenceId,
@@ -23,11 +23,8 @@ class PersistenceAdapterRemoteSembast implements CorePersistenceAdapterRemote {
   );
 
   @override
-  Future<({String ref, int sequenceNumber})?> initialize({
-    required ({int createdAt, String ref, StateViewObject? stateViewData})
-            Function()?
-        ifEmpty,
-  }) =>
+  Future<ObjectInstanceHead> initialize(
+          {required IfEmptyCallback? ifEmpty}) =>
       _database.transaction((transaction) async {
         final instanceHeadRef = await store.head.instance
             .query(

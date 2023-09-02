@@ -38,4 +38,10 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
 @freezed
 class ObjectStoreState with _$ObjectStoreState {
   factory ObjectStoreState.initial() = ObjectStoreStateInitial;
+
+  factory ObjectStoreState.initializing({
+    required IfEmptyCallback ifEmpty,
+  }) = ObjectStoreStateInitializing;
+
+  factory ObjectStoreState.ready() = ObjectStoreStateReady;
 }

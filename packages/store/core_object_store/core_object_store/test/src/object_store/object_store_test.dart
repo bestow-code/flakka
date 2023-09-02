@@ -24,7 +24,7 @@ void main() {
     },
     build: () => objectStore,
     act: (objectStore) async {
-      const ifEmpty = (ref: '0', createdAt: 1);
+      InitialObjectProps ifEmpty() => (ref: '0', createdAt: 1);
       objectStore.effect.add(ObjectEffect.initialize(ifEmpty: ifEmpty));
     },
     verify: (objectStore) async {

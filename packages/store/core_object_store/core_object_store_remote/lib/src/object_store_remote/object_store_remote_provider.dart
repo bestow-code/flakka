@@ -5,11 +5,11 @@ class ObjectStoreRemoteProvider implements CoreObjectStoreRemoteProvider {
   ObjectStoreRemoteProvider(this.persistenceProviderRemote);
 
   factory ObjectStoreRemoteProvider.from(
-    CorePersistenceProviderRemote persistenceProviderRemote,
+    CorePersistenceRemoteProvider persistenceProviderRemote,
   ) =>
       ObjectStoreRemoteProvider(persistenceProviderRemote);
 
-  final CorePersistenceProviderRemote persistenceProviderRemote;
+  final CorePersistenceRemoteProvider persistenceProviderRemote;
 
   @override
   ObjectStoreRemoteFactory getFactory(String persistenceId) =>

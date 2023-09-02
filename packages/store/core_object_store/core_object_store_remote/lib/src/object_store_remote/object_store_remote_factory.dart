@@ -6,10 +6,11 @@ import 'package:core_persistence_remote/core_persistence_remote.dart';
 class ObjectStoreRemoteFactory implements CoreObjectStoreRemoteFactory {
   ObjectStoreRemoteFactory({required this.adapterFactory});
 
-  final CorePersistenceAdapterRemoteFactory adapterFactory;
+  final CorePersistenceRemoteAdapterFactory adapterFactory;
 
   @override
-  Future<CoreObjectStoreRemote> getInstance(String path) {
-    throw UnimplementedError();
-  }
+  Future<ObjectStoreRemote> getInstance(String path) async => ObjectStoreRemote(
+        ObjectStoreRemoteState.initial(),
+        adapter: await adapterFactory.getAdapter(path),
+      );
 }

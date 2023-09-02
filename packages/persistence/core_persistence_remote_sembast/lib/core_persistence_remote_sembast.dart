@@ -3,6 +3,6 @@
 /// Fake for Core Entry Store
 library core_persistence_remote_sembast;
 
-export 'src/persistence_adapter_remote_factory_sembast.dart';
-export 'src/persistence_adapter_remote_sembast.dart';
-export 'src/persistence_provider_remote_sembast.dart';
+export 'src/persistence_remote_adapter_factory_sembast.dart';
+export 'src/persistence_remote_adapter_sembast.dart';
+export 'src/persistence_remote_provider_sembast.dart';

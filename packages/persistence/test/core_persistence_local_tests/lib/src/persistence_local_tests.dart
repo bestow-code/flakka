@@ -2,11 +2,11 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:test/test.dart';
 
 void Function() persistenceAdapterLocalTests(
-  CorePersistenceProviderLocal Function() persistenceProviderLocalFactory,
+  CorePersistenceLocalProvider Function() persistenceProviderLocalFactory,
 ) {
   return () {
-    late CorePersistenceProviderLocal persistenceProviderLocal;
-    late CorePersistenceAdapterLocalFactory adapterLocalFactory;
+    late CorePersistenceLocalProvider persistenceProviderLocal;
+    late CorePersistenceLocalAdapterFactory adapterLocalFactory;
     late String persistenceId;
     setUp(() {
       persistenceId = 'persistence-1';
@@ -14,7 +14,7 @@ void Function() persistenceAdapterLocalTests(
       adapterLocalFactory =
           persistenceProviderLocal.getAdapterFactory(persistenceId);
     });
-    late CorePersistenceAdapterLocal adapter;
+    late CorePersistenceLocalAdapter adapter;
     const path = '/1';
 
     group('ObjectStoreLocalAdapter', () {
@@ -39,8 +39,6 @@ void Function() persistenceAdapterLocalTests(
               stateViewData: stateViewData,
             );
         setUp(() async {
-          // final provider = getIt.get<PersistenceProviderLocal>();
-          // adapterLocalFactory = provider.getAdapterFactory(persistenceId);
           adapter = await adapterLocalFactory.getAdapter(path);
         });
         group('- for an uninitialized instance', () {

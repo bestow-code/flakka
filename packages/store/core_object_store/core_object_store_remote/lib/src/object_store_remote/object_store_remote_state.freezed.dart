@@ -19,25 +19,18 @@ mixin _$ObjectStoreRemoteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
     required TResult Function() ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult? Function()? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult Function()? ready,
     required TResult orElse(),
   }) =>
@@ -45,22 +38,18 @@ mixin _$ObjectStoreRemoteState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectStoreRemoteStateInitial value) initial,
-    required TResult Function(ObjectStoreRemoteStateInitializing value)
-        initializing,
     required TResult Function(ObjectStoreRemoteStateReady value) ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult? Function(ObjectStoreRemoteStateInitializing value)? initializing,
     TResult? Function(ObjectStoreRemoteStateReady value)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult Function(ObjectStoreRemoteStateInitializing value)? initializing,
     TResult Function(ObjectStoreRemoteStateReady value)? ready,
     required TResult orElse(),
   }) =>
@@ -129,9 +118,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
     required TResult Function() ready,
   }) {
     return initial();
@@ -141,8 +127,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult? Function()? ready,
   }) {
     return initial?.call();
@@ -152,8 +136,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult Function()? ready,
     required TResult orElse(),
   }) {
@@ -167,8 +149,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectStoreRemoteStateInitial value) initial,
-    required TResult Function(ObjectStoreRemoteStateInitializing value)
-        initializing,
     required TResult Function(ObjectStoreRemoteStateReady value) ready,
   }) {
     return initial(this);
@@ -178,7 +158,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult? Function(ObjectStoreRemoteStateInitializing value)? initializing,
     TResult? Function(ObjectStoreRemoteStateReady value)? ready,
   }) {
     return initial?.call(this);
@@ -188,7 +167,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult Function(ObjectStoreRemoteStateInitializing value)? initializing,
     TResult Function(ObjectStoreRemoteStateReady value)? ready,
     required TResult orElse(),
   }) {
@@ -201,160 +179,6 @@ class _$ObjectStoreRemoteStateInitial implements ObjectStoreRemoteStateInitial {
 
 abstract class ObjectStoreRemoteStateInitial implements ObjectStoreRemoteState {
   factory ObjectStoreRemoteStateInitial() = _$ObjectStoreRemoteStateInitial;
-}
-
-/// @nodoc
-abstract class _$$ObjectStoreRemoteStateInitializingCopyWith<$Res> {
-  factory _$$ObjectStoreRemoteStateInitializingCopyWith(
-          _$ObjectStoreRemoteStateInitializing value,
-          $Res Function(_$ObjectStoreRemoteStateInitializing) then) =
-      __$$ObjectStoreRemoteStateInitializingCopyWithImpl<$Res>;
-  @useResult
-  $Res call({({String ref, int sequenceNumber}) Function()? ifEmpty});
-}
-
-/// @nodoc
-class __$$ObjectStoreRemoteStateInitializingCopyWithImpl<$Res>
-    extends _$ObjectStoreRemoteStateCopyWithImpl<$Res,
-        _$ObjectStoreRemoteStateInitializing>
-    implements _$$ObjectStoreRemoteStateInitializingCopyWith<$Res> {
-  __$$ObjectStoreRemoteStateInitializingCopyWithImpl(
-      _$ObjectStoreRemoteStateInitializing _value,
-      $Res Function(_$ObjectStoreRemoteStateInitializing) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ifEmpty = freezed,
-  }) {
-    return _then(_$ObjectStoreRemoteStateInitializing(
-      ifEmpty: freezed == ifEmpty
-          ? _value.ifEmpty
-          : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as ({String ref, int sequenceNumber}) Function()?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectStoreRemoteStateInitializing
-    implements ObjectStoreRemoteStateInitializing {
-  _$ObjectStoreRemoteStateInitializing({required this.ifEmpty});
-
-  @override
-  final ({String ref, int sequenceNumber}) Function()? ifEmpty;
-
-  @override
-  String toString() {
-    return 'ObjectStoreRemoteState.initializing(ifEmpty: $ifEmpty)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectStoreRemoteStateInitializing &&
-            (identical(other.ifEmpty, ifEmpty) || other.ifEmpty == ifEmpty));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, ifEmpty);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectStoreRemoteStateInitializingCopyWith<
-          _$ObjectStoreRemoteStateInitializing>
-      get copyWith => __$$ObjectStoreRemoteStateInitializingCopyWithImpl<
-          _$ObjectStoreRemoteStateInitializing>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
-    required TResult Function() ready,
-  }) {
-    return initializing(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
-    TResult? Function()? ready,
-  }) {
-    return initializing?.call(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) {
-    if (initializing != null) {
-      return initializing(ifEmpty);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreRemoteStateInitial value) initial,
-    required TResult Function(ObjectStoreRemoteStateInitializing value)
-        initializing,
-    required TResult Function(ObjectStoreRemoteStateReady value) ready,
-  }) {
-    return initializing(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult? Function(ObjectStoreRemoteStateInitializing value)? initializing,
-    TResult? Function(ObjectStoreRemoteStateReady value)? ready,
-  }) {
-    return initializing?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult Function(ObjectStoreRemoteStateInitializing value)? initializing,
-    TResult Function(ObjectStoreRemoteStateReady value)? ready,
-    required TResult orElse(),
-  }) {
-    if (initializing != null) {
-      return initializing(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectStoreRemoteStateInitializing
-    implements ObjectStoreRemoteState {
-  factory ObjectStoreRemoteStateInitializing(
-      {required final ({String ref, int sequenceNumber}) Function()?
-          ifEmpty}) = _$ObjectStoreRemoteStateInitializing;
-
-  ({String ref, int sequenceNumber}) Function()? get ifEmpty;
-  @JsonKey(ignore: true)
-  _$$ObjectStoreRemoteStateInitializingCopyWith<
-          _$ObjectStoreRemoteStateInitializing>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -400,9 +224,6 @@ class _$ObjectStoreRemoteStateReady implements ObjectStoreRemoteStateReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
     required TResult Function() ready,
   }) {
     return ready();
@@ -412,8 +233,6 @@ class _$ObjectStoreRemoteStateReady implements ObjectStoreRemoteStateReady {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult? Function()? ready,
   }) {
     return ready?.call();
@@ -423,8 +242,6 @@ class _$ObjectStoreRemoteStateReady implements ObjectStoreRemoteStateReady {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult Function()? ready,
     required TResult orElse(),
   }) {
@@ -438,8 +255,6 @@ class _$ObjectStoreRemoteStateReady implements ObjectStoreRemoteStateReady {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectStoreRemoteStateInitial value) initial,
-    required TResult Function(ObjectStoreRemoteStateInitializing value)
-        initializing,
     required TResult Function(ObjectStoreRemoteStateReady value) ready,
   }) {
     return ready(this);
@@ -449,7 +264,6 @@ class _$ObjectStoreRemoteStateReady implements ObjectStoreRemoteStateReady {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult? Function(ObjectStoreRemoteStateInitializing value)? initializing,
     TResult? Function(ObjectStoreRemoteStateReady value)? ready,
   }) {
     return ready?.call(this);
@@ -459,7 +273,6 @@ class _$ObjectStoreRemoteStateReady implements ObjectStoreRemoteStateReady {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectStoreRemoteStateInitial value)? initial,
-    TResult Function(ObjectStoreRemoteStateInitializing value)? initializing,
     TResult Function(ObjectStoreRemoteStateReady value)? ready,
     required TResult orElse(),
   }) {

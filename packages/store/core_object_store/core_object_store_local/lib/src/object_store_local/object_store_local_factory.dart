@@ -8,10 +8,10 @@ class ObjectStoreLocalFactory implements CoreObjectStoreLocalFactory {
     required this.adapterFactory,
   });
 
-  final CorePersistenceAdapterLocalFactory adapterFactory;
+  final CorePersistenceLocalAdapterFactory adapterFactory;
 
   @override
-  Future<CoreObjectStoreLocal> getInstance(String path) async =>
+  Future<ObjectStoreLocal> getInstance(String path) async =>
       ObjectStoreLocal(
         ObjectStoreLocalState.initial(),
         adapter: await adapterFactory.getAdapter(path),

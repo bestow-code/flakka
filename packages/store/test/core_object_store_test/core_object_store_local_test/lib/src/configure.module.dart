@@ -23,7 +23,7 @@ class CoreObjectStoreLocalTestPackageModule extends _i1.MicroPackageModule {
     final defaultTestModule = _$DefaultTestModule();
     gh.factoryAsync<_i4.ObjectStoreLocal>(() =>
         defaultTestModule.getObjectStoreLocal(
-            gh<_i2.Future<_i5.PersistenceAdapterLocalBase>>()));
+            gh<_i2.Future<_i5.PersistenceLocalAdapterBase>>()));
   }
 }
 

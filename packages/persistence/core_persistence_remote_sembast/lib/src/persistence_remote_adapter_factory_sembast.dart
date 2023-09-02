@@ -14,8 +14,8 @@ class PersistenceAdapterRemoteFactorySembast
   final DatabaseFactory databaseFactory;
 
   @override
-  Future<CorePersistenceAdapterRemote> getAdapter(String path) async =>
-      PersistenceAdapterRemoteSembast(
+  Future<CorePersistenceRemoteAdapter> getAdapter(String path) async =>
+      PersistenceRemoteAdapterSembast(
         persistenceId: persistenceId,
         database: await databaseFactory.openDatabase(path),
       );

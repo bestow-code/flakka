@@ -3,6 +3,9 @@
 /// Foundation for Core Entry Store
 library core_persistence_remote;
 
-export 'src/persistence_adapter_remote.dart';
-export 'src/persistence_adapter_remote_factory.dart';
-export 'src/persistence_provider_remote.dart';
+export 'src/core_persistence_remote_adapter.dart';
+export 'src/core_persistence_remote_adapter_factory.dart';
+export 'src/core_persistence_remote_provider.dart';
+export 'src/persistence_remote/persistence_remote_adapter_base.dart';
+export 'src/persistence_remote/persistence_remote_adapter_factory_base.dart';
+export 'src/persistence_remote/persistence_remote_provider_base.dart';

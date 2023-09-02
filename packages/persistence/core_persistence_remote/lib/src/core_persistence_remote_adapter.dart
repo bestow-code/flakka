@@ -1,24 +1,18 @@
 import 'dart:async';
 
 import 'package:core_object/core_object.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract interface class CorePersistenceAdapterLocal {
-  Future<({String ref, int sequenceNumber})?> initialize({
-  required ({
-  String ref,
-  int sequenceNumber,
-  int createdAt,
-  StateViewObject? stateViewData,
-  })
-  Function()?
-  ifEmpty,
-});
+abstract class CorePersistenceRemoteAdapter {
+  Future<ObjectInstanceHead> initialize({
+    required IfEmptyCallback? ifEmpty,
+  });
 
-Future<void> add({
-  Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
-  Map<String, JsonMap>? event,
-  Map<String, StateViewObject>? stateView,
-});
+  Future<void> add({
+    Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
+    Map<String, JsonMap>? event,
+    Map<String, StateViewObject>? stateView,
+  });
 //
 // Future<void> append({
 //   required JsonMap entry,

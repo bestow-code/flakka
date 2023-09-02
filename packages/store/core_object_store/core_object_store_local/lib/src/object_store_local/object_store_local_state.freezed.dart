@@ -19,25 +19,18 @@ mixin _$ObjectStoreLocalState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
     required TResult Function() ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult? Function()? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult Function()? ready,
     required TResult orElse(),
   }) =>
@@ -45,22 +38,18 @@ mixin _$ObjectStoreLocalState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateInitializing value)
-        initializing,
     required TResult Function(ObjectStoreLocalStateReady value) ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateInitializing value)? initializing,
     TResult? Function(ObjectStoreLocalStateReady value)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateInitializing value)? initializing,
     TResult Function(ObjectStoreLocalStateReady value)? ready,
     required TResult orElse(),
   }) =>
@@ -129,9 +118,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
     required TResult Function() ready,
   }) {
     return initial();
@@ -141,8 +127,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult? Function()? ready,
   }) {
     return initial?.call();
@@ -152,8 +136,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult Function()? ready,
     required TResult orElse(),
   }) {
@@ -167,8 +149,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateInitializing value)
-        initializing,
     required TResult Function(ObjectStoreLocalStateReady value) ready,
   }) {
     return initial(this);
@@ -178,7 +158,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateInitializing value)? initializing,
     TResult? Function(ObjectStoreLocalStateReady value)? ready,
   }) {
     return initial?.call(this);
@@ -188,7 +167,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateInitializing value)? initializing,
     TResult Function(ObjectStoreLocalStateReady value)? ready,
     required TResult orElse(),
   }) {
@@ -201,160 +179,6 @@ class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
 
 abstract class ObjectStoreLocalStateInitial implements ObjectStoreLocalState {
   factory ObjectStoreLocalStateInitial() = _$ObjectStoreLocalStateInitial;
-}
-
-/// @nodoc
-abstract class _$$ObjectStoreLocalStateInitializingCopyWith<$Res> {
-  factory _$$ObjectStoreLocalStateInitializingCopyWith(
-          _$ObjectStoreLocalStateInitializing value,
-          $Res Function(_$ObjectStoreLocalStateInitializing) then) =
-      __$$ObjectStoreLocalStateInitializingCopyWithImpl<$Res>;
-  @useResult
-  $Res call({({String ref, int sequenceNumber}) Function()? ifEmpty});
-}
-
-/// @nodoc
-class __$$ObjectStoreLocalStateInitializingCopyWithImpl<$Res>
-    extends _$ObjectStoreLocalStateCopyWithImpl<$Res,
-        _$ObjectStoreLocalStateInitializing>
-    implements _$$ObjectStoreLocalStateInitializingCopyWith<$Res> {
-  __$$ObjectStoreLocalStateInitializingCopyWithImpl(
-      _$ObjectStoreLocalStateInitializing _value,
-      $Res Function(_$ObjectStoreLocalStateInitializing) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ifEmpty = freezed,
-  }) {
-    return _then(_$ObjectStoreLocalStateInitializing(
-      ifEmpty: freezed == ifEmpty
-          ? _value.ifEmpty
-          : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as ({String ref, int sequenceNumber}) Function()?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectStoreLocalStateInitializing
-    implements ObjectStoreLocalStateInitializing {
-  _$ObjectStoreLocalStateInitializing({required this.ifEmpty});
-
-  @override
-  final ({String ref, int sequenceNumber}) Function()? ifEmpty;
-
-  @override
-  String toString() {
-    return 'ObjectStoreLocalState.initializing(ifEmpty: $ifEmpty)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectStoreLocalStateInitializing &&
-            (identical(other.ifEmpty, ifEmpty) || other.ifEmpty == ifEmpty));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, ifEmpty);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectStoreLocalStateInitializingCopyWith<
-          _$ObjectStoreLocalStateInitializing>
-      get copyWith => __$$ObjectStoreLocalStateInitializingCopyWithImpl<
-          _$ObjectStoreLocalStateInitializing>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
-    required TResult Function() ready,
-  }) {
-    return initializing(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
-    TResult? Function()? ready,
-  }) {
-    return initializing?.call(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) {
-    if (initializing != null) {
-      return initializing(ifEmpty);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateInitializing value)
-        initializing,
-    required TResult Function(ObjectStoreLocalStateReady value) ready,
-  }) {
-    return initializing(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateInitializing value)? initializing,
-    TResult? Function(ObjectStoreLocalStateReady value)? ready,
-  }) {
-    return initializing?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateInitializing value)? initializing,
-    TResult Function(ObjectStoreLocalStateReady value)? ready,
-    required TResult orElse(),
-  }) {
-    if (initializing != null) {
-      return initializing(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectStoreLocalStateInitializing
-    implements ObjectStoreLocalState {
-  factory ObjectStoreLocalStateInitializing(
-      {required final ({String ref, int sequenceNumber}) Function()?
-          ifEmpty}) = _$ObjectStoreLocalStateInitializing;
-
-  ({String ref, int sequenceNumber}) Function()? get ifEmpty;
-  @JsonKey(ignore: true)
-  _$$ObjectStoreLocalStateInitializingCopyWith<
-          _$ObjectStoreLocalStateInitializing>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -400,9 +224,6 @@ class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            ({String ref, int sequenceNumber}) Function()? ifEmpty)
-        initializing,
     required TResult Function() ready,
   }) {
     return ready();
@@ -412,8 +233,6 @@ class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult? Function()? ready,
   }) {
     return ready?.call();
@@ -423,8 +242,6 @@ class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(({String ref, int sequenceNumber}) Function()? ifEmpty)?
-        initializing,
     TResult Function()? ready,
     required TResult orElse(),
   }) {
@@ -438,8 +255,6 @@ class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateInitializing value)
-        initializing,
     required TResult Function(ObjectStoreLocalStateReady value) ready,
   }) {
     return ready(this);
@@ -449,7 +264,6 @@ class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateInitializing value)? initializing,
     TResult? Function(ObjectStoreLocalStateReady value)? ready,
   }) {
     return ready?.call(this);
@@ -459,7 +273,6 @@ class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateInitializing value)? initializing,
     TResult Function(ObjectStoreLocalStateReady value)? ready,
     required TResult orElse(),
   }) {
