@@ -5,12 +5,12 @@ import 'package:core_persistence_remote/core_persistence_remote.dart';
 
 abstract class PersistenceRemoteAdapterBase
     implements CorePersistenceRemoteAdapter {
-  @override
-  Future<void> add({
-    Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
-    Map<String, JsonMap>? event,
-    Map<String, StateViewObject>? stateView,
-  });
+  // @override
+  // Future<void> add({
+  //   Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
+  //   Map<String, JsonMap>? event,
+  //   Map<String, StateViewObject>? stateView,
+  // });
 }
 
 // Future<void> append({

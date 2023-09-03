@@ -4,7 +4,7 @@ import 'package:sembast/sembast.dart';
 import '../core_persistence_remote_sembast.dart';
 
 class PersistenceAdapterRemoteFactorySembast
-    extends PersistenceAdapterRemoteFactoryBase {
+    extends PersistenceRemoteAdapterFactoryBase {
   PersistenceAdapterRemoteFactorySembast({
     required super.persistenceId,
     required this.databaseFactory,

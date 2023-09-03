@@ -6,16 +6,3 @@ abstract class CorePersistenceRemoteAdapterFactory {
 
   Future<CorePersistenceRemoteAdapter> getAdapter(String path);
 }
-
-// - Base
-abstract class PersistenceAdapterRemoteFactoryBase
-    implements CorePersistenceRemoteAdapterFactory {
-  PersistenceAdapterRemoteFactoryBase({
-    required String persistenceId,
-  }) : _persistenceId = persistenceId;
-
-  final String _persistenceId;
-
-  @protected
-  String get persistenceId => _persistenceId;
-}
