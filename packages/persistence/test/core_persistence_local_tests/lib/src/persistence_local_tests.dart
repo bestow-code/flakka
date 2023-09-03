@@ -16,69 +16,52 @@ void Function() persistenceAdapterLocalTests(
     });
     late CorePersistenceLocalAdapter adapter;
     const path = '/1';
+    const ref0 = 'ref0';
+    const ref1 = 'ref1';
+    const sequenceNumber0 = 42;
+    const sequenceNumber1 = 43;
+    const createdAt = 1;
+    const stateViewData =
+        (state: <String, dynamic>{}, view: <String, dynamic>{});
+    ({
+      int createdAt,
+      String ref,
+      int sequenceNumber,
+    }) ifEmpty() => (
+          ref: ref0,
+          sequenceNumber: sequenceNumber0,
+          createdAt: createdAt,
+        );
+    setUp(() async {
+      adapter = await adapterLocalFactory.getAdapter(path);
+    });
 
-    group('ObjectStoreLocalAdapter', () {
-      group('.initialize()', () {
-        const ref0 = 'ref0';
-        const sequenceNumber = 42;
-        const createdAt = 1;
-        const stateViewData =
-            (state: <String, dynamic>{}, view: <String, dynamic>{});
-        ({
-          int createdAt,
-          String ref,
-          int sequenceNumber,
-          ({
-            Map<String, dynamic> state,
-            Map<String, dynamic> view
-          }) stateViewData
-        }) ifEmpty() => (
-              ref: ref0,
-              sequenceNumber: sequenceNumber,
-              createdAt: createdAt,
-              stateViewData: stateViewData,
-            );
-        setUp(() async {
-          adapter = await adapterLocalFactory.getAdapter(path);
-        });
-        group('- for an uninitialized instance', () {
-          test('ifEmpty == null', () async {
-            expect(await adapter.initialize(ifEmpty: null), null);
-          });
-          test('ifEmpty !=null', () async {
+    group('Persistence adapter - local', () {
+      group('Initialize', () {
+        group('New instance', () {
+          test('success', () async {
             expect(
-              await adapter.initialize(ifEmpty: ifEmpty),
-              (ref: ref0, sequenceNumber: sequenceNumber),
+              await adapter.inspect(),
+              null,
             );
           });
         });
-        group('- for an initialized instance', () {
+        group('Existing instance', () {
           setUp(() async {
-            await adapter.initialize(ifEmpty: ifEmpty);
+            await adapterLocalFactory.delete(path);
+            adapter = await adapterLocalFactory.getAdapter(path);
+            await adapter
+                .initialize(data: (ref: ref0, sequenceNumber: sequenceNumber0));
           });
-          test('ifEmpty == null', () async {
-            expect(
-              await adapter.initialize(ifEmpty: null),
-              (ref: ref0, sequenceNumber: sequenceNumber),
-            );
+          test('inspect', () async {
+            expect(await adapter.inspect(),
+                (ref: ref0, sequenceNumber: sequenceNumber0));
           });
-          test('ifEmpty !=null', () async {
-            const ref1 = 'ref1';
-            const sequenceNumber2 = 99;
-            const createdAt = 1;
-            const stateViewData =
-                (state: <String, dynamic>{}, view: <String, dynamic>{});
-            expect(
-              await adapter.initialize(
-                ifEmpty: () => (
-                  ref: ref1,
-                  sequenceNumber: sequenceNumber2,
-                  createdAt: createdAt,
-                  stateViewData: stateViewData,
-                ),
-              ),
-              (ref: ref0, sequenceNumber: sequenceNumber),
-            );
+          test('2nd call to initialize throws', () async {
+            await expectLater(
+                adapter.initialize(
+                    data: (ref: ref1, sequenceNumber: sequenceNumber1)),
+                throwsA(isA<AssertionError>()));
           });
         });
       });

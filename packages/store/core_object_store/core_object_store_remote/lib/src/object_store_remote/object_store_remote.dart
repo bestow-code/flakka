@@ -12,44 +12,35 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
     super.initialState, {
     required CorePersistenceRemoteAdapter adapter,
   }) : _adapter = adapter {
-    _effect.stream.listen((event) async {
-      await event.map(
-        initialize: (initialize) async {
-          await state.map(
-            initial: (initial) async {
-              final result = await _adapter.initialize(
-                ifEmpty: initialize.ifEmpty,
-              );
-              _update.add(
-                ObjectUpdateRemote.initial(
-                  ref: result.ref,
-                  sequenceNumber: result.sequenceNumber,
-                ),
-              );
-              emit(ObjectStoreRemoteState.ready());
-            },
-            ready: (ready) {
-              addError(UnsupportedError('instance already initialized'));
-            },
-          );
-        },
-        append: (append) {},
-        forward: (forward) {},
-        publish: (publish) {},
-        none: (none) {},
-      );
-      // _update.add(ObjectUpdateRemote.initial(ref: '1', sequenceNumber: 1));
-    });
+    _effect.stream.listen(_handleEffect);
   }
 
   final CorePersistenceRemoteAdapter _adapter;
 
+  final _effect = StreamController<ObjectEffectRemote>.broadcast();
+
+  final _update = StreamController<ObjectUpdateRemote>();
+
   @override
   StreamSink<ObjectEffectRemote> get effect => _effect.sink;
 
-  final _effect = StreamController<ObjectEffectRemote>.broadcast();
-
   @override
   Stream<ObjectUpdateRemote> get update => _update.stream;
-  final _update = StreamController<ObjectUpdateRemote>();
+
+  @override
+  Future<void> start() async {
+    emit(ObjectStoreRemoteState.ready());
+  }
+
+  @override
+  Future<InitialObjectInstanceData> initialize(
+      {required IfEmptyCallback ifEmpty}) async {
+    final result = await _adapter.initialize(
+      ifEmpty: ifEmpty,
+    );
+    emit(ObjectStoreRemoteState.ready());
+    return result;
+  }
+
+  void _handleEffect(ObjectEffectRemote event) {}
 }

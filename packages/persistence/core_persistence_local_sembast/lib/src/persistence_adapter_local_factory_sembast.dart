@@ -19,4 +19,7 @@ class PersistenceAdapterLocalFactorySembast
         persistenceId: persistenceId,
         database: await databaseFactory.openDatabase(path),
       );
+
+  @override
+  Future<void> delete(String path) => databaseFactory.deleteDatabase(path);
 }

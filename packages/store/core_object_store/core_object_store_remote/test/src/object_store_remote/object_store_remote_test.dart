@@ -35,9 +35,8 @@ void main() {
                 ref: '0',
                 createdAt: 1,
               );
-          unawaited(expectLater(store.update,
-              emits(ObjectUpdateRemote.initial(ref: '0', sequenceNumber: 0))));
-          store.effect.add(ObjectEffectRemote.initialize(ifEmpty: ifEmpty));
+          expect(await store.initialize(ifEmpty: ifEmpty),
+              (ref: '0', sequenceNumber: 0));
         });
         // blocTest<ObjectStoreRemote, ObjectStoreRemoteState>(
         //   'success',

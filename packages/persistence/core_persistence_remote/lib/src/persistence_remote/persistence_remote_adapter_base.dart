@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:core_object/core_object.dart';
-import 'package:core_persistence_base/src/object_instance_head.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 
 abstract class PersistenceRemoteAdapterBase
@@ -12,15 +11,7 @@ abstract class PersistenceRemoteAdapterBase
     Map<String, JsonMap>? event,
     Map<String, StateViewObject>? stateView,
   });
-
-  @override
-  Future<ObjectInstanceHead> initialize(
-      {required IfEmptyCallback? ifEmpty,}) {
-    throw UnimplementedError();
-  }
-//
 }
-
 
 // Future<void> append({
 //   required JsonMap entry,

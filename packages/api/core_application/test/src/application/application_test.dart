@@ -34,11 +34,11 @@ void main() {
         expectLater(
           applicationEffect.stream,
           emitsInOrder([
-            ApplicationEffect<TestEvent, TestState, TestView>.initialize(),
-            ApplicationEffect<TestEvent, TestState, TestView>.start(
-              ref: ref,
-              stateView: stateView,
-            ),
+            // ApplicationEffect<TestEvent, TestState, TestView>.initialize(),
+            // ApplicationEffect<TestEvent, TestState, TestView>.start(
+            //   ref: ref,
+            //   stateView: stateView,
+            // ),
           ]),
         );
       },

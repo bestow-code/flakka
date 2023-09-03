@@ -30,4 +30,11 @@ class ApplicationStore<Event extends CoreEvent, State extends CoreState,
   @override
   Stream<ApplicationUpdate<CoreEvent, CoreState, CoreView>> get update =>
       _update;
+
+  @override
+  Future<InitialApplicationInstanceData<CoreState, CoreView>> initialize(
+      InitialApplicationProps Function() ifEmpty) {
+    // TODO: implement initialize
+    throw UnimplementedError();
+  }
 }

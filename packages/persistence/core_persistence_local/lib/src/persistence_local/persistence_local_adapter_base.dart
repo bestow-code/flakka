@@ -6,26 +6,6 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 abstract class PersistenceLocalAdapterBase
     implements CorePersistenceLocalAdapter {
 
-  @override
-  Future<({String ref, int sequenceNumber})?> initialize({
-    required ({
-      String ref,
-      int sequenceNumber,
-      int createdAt,
-      StateViewObject? stateViewData,
-    })
-            Function()?
-        ifEmpty,
-  });
-
-  @override
-  Future<void> add({
-    Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
-    Map<String, JsonMap>? event,
-    Map<String, StateViewObject>? stateView,
-  });
-//
-
 }
 
 

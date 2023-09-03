@@ -20,10 +20,7 @@ void Function() persistenceAdapterRemoteTests(
     group('Persistence Adapter - Remote', () {
       group('Initialization', () {
         const ref0 = 'ref0';
-        const sequenceNumber = 42;
         const createdAt = 1;
-        const stateViewData =
-            (state: <String, dynamic>{}, view: <String, dynamic>{});
         ({
           int createdAt,
           String ref,
@@ -34,7 +31,7 @@ void Function() persistenceAdapterRemoteTests(
         setUp(() async {
           adapter = await adapterRemoteFactory.getAdapter(path);
         });
-        group('- for an uninitialized instance', () {
+        group('New instance', () {
           // test('ifEmpty == null', () async {
           //   await expectLater(
           //     adapter.initialize(ifEmpty: null),
@@ -48,7 +45,7 @@ void Function() persistenceAdapterRemoteTests(
             );
           });
         });
-        group('- for an initialized instance', () {
+        group('Existing instance', () {
           setUp(() async {
             await adapter.initialize(ifEmpty: ifEmpty);
           });

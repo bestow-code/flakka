@@ -6,22 +6,42 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class DefaultTestModule {
   @injectable
-  Future<CoreObjectStore> getObjectStore(
-    Future<CoreObjectStoreLocal> local,
-    Future<CoreObjectStoreRemote> remote,
-  ) async {
-    late final CoreObjectStoreLocal localValue;
-    late final CoreObjectStoreRemote remoteValue;
+  CoreObjectStoreProvider getObjectStoreProvider(
+    ObjectStoreRemoteProvider remoteProvider,
+    ObjectStoreLocalProvider localProvider,
+  ) =>
+      ObjectStoreProvider(
+        localProvider: localProvider,
+        remoteProvider: remoteProvider,
+      );
 
-    await Future.wait([
-      local.then((value) => localValue = value),
-      remote.then((value) => remoteValue = value)
-    ]);
+  @injectable
+  CoreObjectStoreFactory getObjectStoreFactory(
+    CoreObjectStoreLocalFactory localFactory,
+    CoreObjectStoreRemoteFactory remoteFactory,
+  ) =>
+      ObjectStoreFactory(
+        localFactory: localFactory,
+        remoteFactory: remoteFactory,
+      );
 
-    return ObjectStore(
-      ObjectStoreState.initial(),
-      local: localValue,
-      remote: remoteValue,
-    );
-  }
+// @injectable
+// Future<CoreObjectStore> getObjectStore(
+//   Future<CoreObjectStoreLocal> local,
+//   Future<CoreObjectStoreRemote> remote,
+// ) async {
+//   late final CoreObjectStoreLocal localValue;
+//   late final CoreObjectStoreRemote remoteValue;
+//
+//   await Future.wait([
+//     local.then((value) => localValue = value),
+//     remote.then((value) => remoteValue = value)
+//   ]);
+//
+//   return ObjectStore(
+//     ObjectStoreState.initial(),
+//     local: localValue,
+//     remote: remoteValue,
+//   );
+// }
 }

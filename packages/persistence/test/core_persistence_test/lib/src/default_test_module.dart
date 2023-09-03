@@ -13,7 +13,7 @@ abstract class DefaultTestModule {
     CorePersistenceRemoteProvider remote,
   ) =>
       PersistenceProvider(
-        local: PersistenceProviderLocalSembast.inMemory(),
-        remote: PersistenceProviderRemoteSembast.inMemory(),
+        local: local,
+        remote: remote,
       );
 }

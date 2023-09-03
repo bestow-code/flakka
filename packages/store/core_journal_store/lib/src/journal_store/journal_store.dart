@@ -25,4 +25,10 @@ class JournalStore<Event extends CoreEvent, State extends CoreState,
 
   @override
   Stream<JournalUpdate<Event, State, View>> get update => _update;
+
+  @override
+  Future<InitialJournalInstanceData> initialize(
+      InitialJournalProps Function() ifEmpty) {
+    throw UnimplementedError();
+  }
 }

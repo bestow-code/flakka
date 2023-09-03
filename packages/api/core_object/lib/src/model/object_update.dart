@@ -6,19 +6,6 @@ part 'object_update.freezed.dart';
 
 @freezed
 class ObjectUpdate with _$ObjectUpdate {
-  factory ObjectUpdate.initial({
-    required ({
-      String ref,
-      int sequenceNumber,
-      // String main,
-      // String instance,
-      // Map<String, Set<String>> edges,
-      // Map<String, DateTime> createdAt,
-      // Map<String, JsonMap> event,
-      // Map<String, StateViewObject> stateView,
-      // Set<String> pending,
-    }) data,
-  }) = ObjectUpdateInitial;
 
   factory ObjectUpdate.entry({
     required Map<String, ({Iterable<String> refs, int createdAt})> data,
@@ -29,7 +16,7 @@ class ObjectUpdate with _$ObjectUpdate {
   }) = ObjectUpdateEvent;
 
   factory ObjectUpdate.stateView({required Map<String, StateViewObject> data}) =
-      ObjectUpdateStateView;
+  ObjectUpdateStateView;
 
   factory ObjectUpdate.main({
     required String ref,
@@ -39,11 +26,6 @@ class ObjectUpdate with _$ObjectUpdate {
 @freezed
 class ObjectUpdateLocal with _$ObjectUpdateLocal {
   factory ObjectUpdateLocal.pending() = ObjectUpdateLocalPending;
-
-  factory ObjectUpdateLocal.initial({
-    required String ref,
-    required int sequenceNumber,
-  }) = ObjectUpdateLocalInitial;
 
   factory ObjectUpdateLocal.entry({
     required Map<String, ({Iterable<String> refs, int createdAt})> data,
@@ -58,16 +40,12 @@ class ObjectUpdateLocal with _$ObjectUpdateLocal {
   }) = ObjectUpdateLocalStateViewRef;
 
   factory ObjectUpdateLocal.stateView({
-    required ({String ref, StateViewObject stateView}) data,
+    required({String ref, StateViewObject stateView}) data,
   }) = ObjectUpdateLocalStateView;
 }
 
 @freezed
 class ObjectUpdateRemote with _$ObjectUpdateRemote {
-  factory ObjectUpdateRemote.initial({
-    required String ref,
-    required int sequenceNumber,
-  }) = ObjectUpdateRemoteInitial;
 
   factory ObjectUpdateRemote.entry({
     required Map<String, ({Iterable<String> refs, int createdAt})> data,
@@ -82,6 +60,6 @@ class ObjectUpdateRemote with _$ObjectUpdateRemote {
   }) = ObjectUpdateRemoteStateViewRef;
 
   factory ObjectUpdateRemote.stateView({
-    required ({String ref, StateViewObject stateViewObject}) data,
+    required({String ref, StateViewObject stateViewObject}) data,
   }) = ObjectUpdateRemoteStateView;
 }

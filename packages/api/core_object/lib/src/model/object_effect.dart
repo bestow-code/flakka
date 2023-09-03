@@ -18,12 +18,13 @@ typedef InitialObjectInstanceProps = ({
   int sequenceNumber,
 });
 
+typedef InitialObjectInstanceData = ({
+  String ref,
+  int sequenceNumber,
+});
+
 @freezed
 class ObjectEffect with _$ObjectEffect {
-  factory ObjectEffect.initialize({
-    required IfEmptyCallback ifEmpty,
-  }) = ObjectEffectInitialize;
-
   factory ObjectEffect.append({
     required String ref,
     required Iterable<String> parent,
@@ -51,10 +52,6 @@ class ObjectEffect with _$ObjectEffect {
 
 @freezed
 class ObjectEffectLocal with _$ObjectEffectLocal {
-  factory ObjectEffectLocal.initialize({
-    required IfEmptyCallbackLocal? ifEmpty,
-  }) = ObjectEffectLocalInitialize;
-
   factory ObjectEffectLocal.append({
     required String ref,
     required Iterable<String> parent,
@@ -87,11 +84,6 @@ class ObjectEffectLocal with _$ObjectEffectLocal {
 
 @freezed
 class ObjectEffectRemote with _$ObjectEffectRemote {
-  factory ObjectEffectRemote.initialize({
-    required IfEmptyCallback?
-        ifEmpty,
-  }) = ObjectEffectRemoteInitialize;
-
   factory ObjectEffectRemote.append({
     required String ref,
     required Iterable<String> parent,

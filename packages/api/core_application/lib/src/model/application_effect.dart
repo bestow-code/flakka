@@ -6,14 +6,6 @@ part 'application_effect.freezed.dart';
 @freezed
 class ApplicationEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$ApplicationEffect<Event, State, View> {
-  factory ApplicationEffect.initialize() =
-      ApplicationEffectInitialize<Event, State, View>;
-
-  factory ApplicationEffect.start({
-    required Ref ref,
-    required StateView<State, View> stateView,
-  }) = ApplicationEffectStart;
-
   factory ApplicationEffect.request({
     required Ref ref,
     required Event event,

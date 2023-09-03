@@ -24,12 +24,12 @@ class Application<Event extends CoreEvent, State extends CoreState,
           state.map(
             (_) => null,
             initial: (_) {
-              applicationEffect.add(
-                ApplicationEffect.start(
-                  ref: initial.ref,
-                  stateView: initial.stateView,
-                ),
-              );
+              // applicationEffect.add(
+              //   ApplicationEffect.start(
+              //     ref: initial.ref,
+              //     stateView: initial.stateView,
+              //   ),
+              // );
               emit(
                 ApplicationState(
                   ref: initial.ref,
@@ -42,7 +42,6 @@ class Application<Event extends CoreEvent, State extends CoreState,
         journal: (journal) {},
       );
     });
-    _applicationEffect.add(ApplicationEffect.initialize());
   }
 
   @override

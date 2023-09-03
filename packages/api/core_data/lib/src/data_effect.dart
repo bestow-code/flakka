@@ -6,16 +6,6 @@ part 'data_effect.freezed.dart';
 @freezed
 class DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DataEffect<Event, State, View> {
-  factory DataEffect.initialize({
-    required ({
-      Ref ref,
-      int sequenceNumber,
-      // StateView<State, View> stateView,
-    })
-            Function()
-        ifEmpty,
-  }) = DataEffectInitialize;
-
   factory DataEffect.append({
     required Ref ref,
     required Iterable<Ref> parent,

@@ -1,5 +1,4 @@
 import 'package:core_object/core_object.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:sembast/sembast.dart';
 
@@ -20,16 +19,7 @@ class PersistenceAdapterLocalSembast implements PersistenceLocalAdapterBase {
   );
 
   @override
-  Future<({String ref, int sequenceNumber})?> initialize({
-    required ({
-      int createdAt,
-      String ref,
-      int sequenceNumber,
-      StateViewObject? stateViewData
-    })
-            Function()?
-        ifEmpty,
-  }) =>
+  Future<InitialObjectInstanceData?> inspect() =>
       _database.transaction((transaction) async {
         final headRef = await store.head
             .query(
@@ -37,36 +27,29 @@ class PersistenceAdapterLocalSembast implements PersistenceLocalAdapterBase {
                   Finder(limit: 1, sortOrders: [SortOrder(Field.key, false)]),
             )
             .getSnapshot(transaction);
-        if (headRef == null) {
-          if (ifEmpty == null) {
-            return null;
-          } else {
-            final createWith = ifEmpty();
-            await store.head
-                .record(createWith.sequenceNumber)
-                .put(transaction, createWith.ref);
-            final entryProps =
-                EntryProps(parent: [], createdAt: createWith.createdAt);
-            await store.entry.record(createWith.ref).put(
-                  transaction,
-                  entryProps.toJson(),
-                );
-            return (
-              ref: createWith.ref,
-              sequenceNumber: createWith.sequenceNumber
-            );
-          }
-        } else {
-          return (ref: headRef.value, sequenceNumber: headRef.key);
-        }
+        return headRef != null
+            ? (ref: headRef.value, sequenceNumber: headRef.key)
+            : null;
       });
 
   @override
-  Future<void> add(
-      {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
-          entry,
-      Map<String, JsonMap>? event,
-      Map<String, StateViewObject>? stateView}) {
-    throw UnimplementedError();
-  }
+  Future<void> initialize({required InitialObjectInstanceData data}) =>
+      _database.transaction(
+        (transaction) async {
+          assert(
+            await store.head.count(transaction) == 0,
+            'initialize called on existing instance',
+          );
+          await store.head
+              .record(data.sequenceNumber)
+              .put(transaction, data.ref);
+        },
+      );
+
+  // @override
+  // Future<void> add(
+  //     {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+  //         entry,
+  //     Map<String, JsonMap>? event,
+  //     Map<String, StateViewObject>? stateView}) async {}
 }

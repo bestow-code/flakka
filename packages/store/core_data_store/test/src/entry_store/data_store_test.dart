@@ -29,7 +29,7 @@ void main() {
     act: (objectStore) async {
       ({Ref ref, int sequenceNumber}) ifEmpty() =>
           (ref: Ref('0'), sequenceNumber: 1);
-      objectStore.effect.add(DataEffect.initialize(ifEmpty: ifEmpty));
+      // objectStore.effect.add(DataEffect.initialize(ifEmpty: ifEmpty));
     },
     verify: (objectStore) async {
       expect(

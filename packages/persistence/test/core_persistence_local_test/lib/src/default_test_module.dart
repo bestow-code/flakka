@@ -5,6 +5,6 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class DefaultTestModule {
   @injectable
-  PersistenceLocalProviderBase getPersistenceProvider() =>
+  CorePersistenceLocalProvider getPersistenceProvider() =>
       PersistenceProviderLocalSembast.inMemory();
 }

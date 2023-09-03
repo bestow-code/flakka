@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -46,7 +45,6 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -74,7 +72,6 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -102,7 +99,6 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -111,7 +107,6 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -120,7 +115,6 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -146,215 +140,6 @@ class _$ObjectEffectCopyWithImpl<$Res, $Val extends ObjectEffect>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ObjectEffectInitializeCopyWith<$Res> {
-  factory _$$ObjectEffectInitializeCopyWith(_$ObjectEffectInitialize value,
-          $Res Function(_$ObjectEffectInitialize) then) =
-      __$$ObjectEffectInitializeCopyWithImpl<$Res>;
-  @useResult
-  $Res call({IfEmptyCallback ifEmpty});
-}
-
-/// @nodoc
-class __$$ObjectEffectInitializeCopyWithImpl<$Res>
-    extends _$ObjectEffectCopyWithImpl<$Res, _$ObjectEffectInitialize>
-    implements _$$ObjectEffectInitializeCopyWith<$Res> {
-  __$$ObjectEffectInitializeCopyWithImpl(_$ObjectEffectInitialize _value,
-      $Res Function(_$ObjectEffectInitialize) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ifEmpty = null,
-  }) {
-    return _then(_$ObjectEffectInitialize(
-      ifEmpty: null == ifEmpty
-          ? _value.ifEmpty
-          : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as IfEmptyCallback,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectEffectInitialize implements ObjectEffectInitialize {
-  _$ObjectEffectInitialize({required this.ifEmpty});
-
-  @override
-  final IfEmptyCallback ifEmpty;
-
-  @override
-  String toString() {
-    return 'ObjectEffect.initialize(ifEmpty: $ifEmpty)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectInitialize &&
-            (identical(other.ifEmpty, ifEmpty) || other.ifEmpty == ifEmpty));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, ifEmpty);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectEffectInitializeCopyWith<_$ObjectEffectInitialize> get copyWith =>
-      __$$ObjectEffectInitializeCopyWithImpl<_$ObjectEffectInitialize>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback ifEmpty) initialize,
-    required TResult Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
-        forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
-        publish,
-    required TResult Function() none,
-  }) {
-    return initialize(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback ifEmpty)? initialize,
-    TResult? Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
-    TResult? Function()? none,
-  }) {
-    return initialize?.call(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback ifEmpty)? initialize,
-    TResult Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(ifEmpty);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectInitialize value) initialize,
-    required TResult Function(ObjectEffectAppend value) append,
-    required TResult Function(ObjectEffectForward value) forward,
-    required TResult Function(ObjectEffectPublish value) publish,
-    required TResult Function(ObjectEffectNone value) none,
-  }) {
-    return initialize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectInitialize value)? initialize,
-    TResult? Function(ObjectEffectAppend value)? append,
-    TResult? Function(ObjectEffectForward value)? forward,
-    TResult? Function(ObjectEffectPublish value)? publish,
-    TResult? Function(ObjectEffectNone value)? none,
-  }) {
-    return initialize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectInitialize value)? initialize,
-    TResult Function(ObjectEffectAppend value)? append,
-    TResult Function(ObjectEffectForward value)? forward,
-    TResult Function(ObjectEffectPublish value)? publish,
-    TResult Function(ObjectEffectNone value)? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectEffectInitialize implements ObjectEffect {
-  factory ObjectEffectInitialize({required final IfEmptyCallback ifEmpty}) =
-      _$ObjectEffectInitialize;
-
-  IfEmptyCallback get ifEmpty;
-  @JsonKey(ignore: true)
-  _$$ObjectEffectInitializeCopyWith<_$ObjectEffectInitialize> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -493,7 +278,6 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -524,7 +308,6 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -556,7 +339,6 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -590,7 +372,6 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -602,7 +383,6 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -614,7 +394,6 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -752,7 +531,6 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -783,7 +561,6 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -814,7 +591,6 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -848,7 +624,6 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -860,7 +635,6 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -872,7 +646,6 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -989,7 +762,6 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1020,7 +792,6 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -1051,7 +822,6 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1085,7 +855,6 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -1097,7 +866,6 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -1109,7 +877,6 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -1175,7 +942,6 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1206,7 +972,6 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -1237,7 +1002,6 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1271,7 +1035,6 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -1283,7 +1046,6 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -1295,7 +1057,6 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -1317,7 +1078,6 @@ abstract class ObjectEffectNone implements ObjectEffect {
 mixin _$ObjectEffectLocal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallbackLocal? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1356,7 +1116,6 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -1395,7 +1154,6 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1435,7 +1193,6 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalInitialize value) initialize,
     required TResult Function(ObjectEffectLocalAppend value) append,
     required TResult Function(ObjectEffectLocalForward value) forward,
     required TResult Function(ObjectEffectLocalAdd value) add,
@@ -1444,7 +1201,6 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalInitialize value)? initialize,
     TResult? Function(ObjectEffectLocalAppend value)? append,
     TResult? Function(ObjectEffectLocalForward value)? forward,
     TResult? Function(ObjectEffectLocalAdd value)? add,
@@ -1453,7 +1209,6 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalInitialize value)? initialize,
     TResult Function(ObjectEffectLocalAppend value)? append,
     TResult Function(ObjectEffectLocalForward value)? forward,
     TResult Function(ObjectEffectLocalAdd value)? add,
@@ -1479,252 +1234,6 @@ class _$ObjectEffectLocalCopyWithImpl<$Res, $Val extends ObjectEffectLocal>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ObjectEffectLocalInitializeCopyWith<$Res> {
-  factory _$$ObjectEffectLocalInitializeCopyWith(
-          _$ObjectEffectLocalInitialize value,
-          $Res Function(_$ObjectEffectLocalInitialize) then) =
-      __$$ObjectEffectLocalInitializeCopyWithImpl<$Res>;
-  @useResult
-  $Res call({IfEmptyCallbackLocal? ifEmpty});
-}
-
-/// @nodoc
-class __$$ObjectEffectLocalInitializeCopyWithImpl<$Res>
-    extends _$ObjectEffectLocalCopyWithImpl<$Res, _$ObjectEffectLocalInitialize>
-    implements _$$ObjectEffectLocalInitializeCopyWith<$Res> {
-  __$$ObjectEffectLocalInitializeCopyWithImpl(
-      _$ObjectEffectLocalInitialize _value,
-      $Res Function(_$ObjectEffectLocalInitialize) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ifEmpty = freezed,
-  }) {
-    return _then(_$ObjectEffectLocalInitialize(
-      ifEmpty: freezed == ifEmpty
-          ? _value.ifEmpty
-          : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as IfEmptyCallbackLocal?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectEffectLocalInitialize implements ObjectEffectLocalInitialize {
-  _$ObjectEffectLocalInitialize({required this.ifEmpty});
-
-  @override
-  final IfEmptyCallbackLocal? ifEmpty;
-
-  @override
-  String toString() {
-    return 'ObjectEffectLocal.initialize(ifEmpty: $ifEmpty)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectLocalInitialize &&
-            (identical(other.ifEmpty, ifEmpty) || other.ifEmpty == ifEmpty));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, ifEmpty);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectEffectLocalInitializeCopyWith<_$ObjectEffectLocalInitialize>
-      get copyWith => __$$ObjectEffectLocalInitializeCopyWithImpl<
-          _$ObjectEffectLocalInitialize>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallbackLocal? ifEmpty) initialize,
-    required TResult Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
-        forward,
-    required TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
-                    })>
-                data)
-        add,
-    required TResult Function() none,
-  }) {
-    return initialize(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
-    TResult? Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        forward,
-    TResult? Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
-                    })>
-                data)?
-        add,
-    TResult? Function()? none,
-  }) {
-    return initialize?.call(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
-    TResult Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        forward,
-    TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
-                    })>
-                data)?
-        add,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(ifEmpty);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalInitialize value) initialize,
-    required TResult Function(ObjectEffectLocalAppend value) append,
-    required TResult Function(ObjectEffectLocalForward value) forward,
-    required TResult Function(ObjectEffectLocalAdd value) add,
-    required TResult Function(ObjectEffectLocalNone value) none,
-  }) {
-    return initialize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalInitialize value)? initialize,
-    TResult? Function(ObjectEffectLocalAppend value)? append,
-    TResult? Function(ObjectEffectLocalForward value)? forward,
-    TResult? Function(ObjectEffectLocalAdd value)? add,
-    TResult? Function(ObjectEffectLocalNone value)? none,
-  }) {
-    return initialize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalInitialize value)? initialize,
-    TResult Function(ObjectEffectLocalAppend value)? append,
-    TResult Function(ObjectEffectLocalForward value)? forward,
-    TResult Function(ObjectEffectLocalAdd value)? add,
-    TResult Function(ObjectEffectLocalNone value)? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectEffectLocalInitialize implements ObjectEffectLocal {
-  factory ObjectEffectLocalInitialize(
-          {required final IfEmptyCallbackLocal? ifEmpty}) =
-      _$ObjectEffectLocalInitialize;
-
-  IfEmptyCallbackLocal? get ifEmpty;
-  @JsonKey(ignore: true)
-  _$$ObjectEffectLocalInitializeCopyWith<_$ObjectEffectLocalInitialize>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1863,7 +1372,6 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallbackLocal? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1905,7 +1413,6 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -1948,7 +1455,6 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -1994,7 +1500,6 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalInitialize value) initialize,
     required TResult Function(ObjectEffectLocalAppend value) append,
     required TResult Function(ObjectEffectLocalForward value) forward,
     required TResult Function(ObjectEffectLocalAdd value) add,
@@ -2006,7 +1511,6 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalInitialize value)? initialize,
     TResult? Function(ObjectEffectLocalAppend value)? append,
     TResult? Function(ObjectEffectLocalForward value)? forward,
     TResult? Function(ObjectEffectLocalAdd value)? add,
@@ -2018,7 +1522,6 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalInitialize value)? initialize,
     TResult Function(ObjectEffectLocalAppend value)? append,
     TResult Function(ObjectEffectLocalForward value)? forward,
     TResult Function(ObjectEffectLocalAdd value)? add,
@@ -2157,7 +1660,6 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallbackLocal? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2199,7 +1701,6 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -2241,7 +1742,6 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2287,7 +1787,6 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalInitialize value) initialize,
     required TResult Function(ObjectEffectLocalAppend value) append,
     required TResult Function(ObjectEffectLocalForward value) forward,
     required TResult Function(ObjectEffectLocalAdd value) add,
@@ -2299,7 +1798,6 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalInitialize value)? initialize,
     TResult? Function(ObjectEffectLocalAppend value)? append,
     TResult? Function(ObjectEffectLocalForward value)? forward,
     TResult? Function(ObjectEffectLocalAdd value)? add,
@@ -2311,7 +1809,6 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalInitialize value)? initialize,
     TResult Function(ObjectEffectLocalAppend value)? append,
     TResult Function(ObjectEffectLocalForward value)? forward,
     TResult Function(ObjectEffectLocalAdd value)? add,
@@ -2459,7 +1956,6 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallbackLocal? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2501,7 +1997,6 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -2543,7 +2038,6 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2589,7 +2083,6 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalInitialize value) initialize,
     required TResult Function(ObjectEffectLocalAppend value) append,
     required TResult Function(ObjectEffectLocalForward value) forward,
     required TResult Function(ObjectEffectLocalAdd value) add,
@@ -2601,7 +2094,6 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalInitialize value)? initialize,
     TResult? Function(ObjectEffectLocalAppend value)? append,
     TResult? Function(ObjectEffectLocalForward value)? forward,
     TResult? Function(ObjectEffectLocalAdd value)? add,
@@ -2613,7 +2105,6 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalInitialize value)? initialize,
     TResult Function(ObjectEffectLocalAppend value)? append,
     TResult Function(ObjectEffectLocalForward value)? forward,
     TResult Function(ObjectEffectLocalAdd value)? add,
@@ -2691,7 +2182,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallbackLocal? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2733,7 +2223,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -2775,7 +2264,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallbackLocal? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2821,7 +2309,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalInitialize value) initialize,
     required TResult Function(ObjectEffectLocalAppend value) append,
     required TResult Function(ObjectEffectLocalForward value) forward,
     required TResult Function(ObjectEffectLocalAdd value) add,
@@ -2833,7 +2320,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalInitialize value)? initialize,
     TResult? Function(ObjectEffectLocalAppend value)? append,
     TResult? Function(ObjectEffectLocalForward value)? forward,
     TResult? Function(ObjectEffectLocalAdd value)? add,
@@ -2845,7 +2331,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalInitialize value)? initialize,
     TResult Function(ObjectEffectLocalAppend value)? append,
     TResult Function(ObjectEffectLocalForward value)? forward,
     TResult Function(ObjectEffectLocalAdd value)? add,
@@ -2867,7 +2352,6 @@ abstract class ObjectEffectLocalNone implements ObjectEffectLocal {
 mixin _$ObjectEffectRemote {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2895,7 +2379,6 @@ mixin _$ObjectEffectRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -2923,7 +2406,6 @@ mixin _$ObjectEffectRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -2951,7 +2433,6 @@ mixin _$ObjectEffectRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectRemoteInitialize value) initialize,
     required TResult Function(ObjectEffectRemoteAppend value) append,
     required TResult Function(ObjectEffectRemoteForward value) forward,
     required TResult Function(ObjectEffectRemotePublish value) publish,
@@ -2960,7 +2441,6 @@ mixin _$ObjectEffectRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult? Function(ObjectEffectRemoteAppend value)? append,
     TResult? Function(ObjectEffectRemoteForward value)? forward,
     TResult? Function(ObjectEffectRemotePublish value)? publish,
@@ -2969,7 +2449,6 @@ mixin _$ObjectEffectRemote {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult Function(ObjectEffectRemoteAppend value)? append,
     TResult Function(ObjectEffectRemoteForward value)? forward,
     TResult Function(ObjectEffectRemotePublish value)? publish,
@@ -2995,219 +2474,6 @@ class _$ObjectEffectRemoteCopyWithImpl<$Res, $Val extends ObjectEffectRemote>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ObjectEffectRemoteInitializeCopyWith<$Res> {
-  factory _$$ObjectEffectRemoteInitializeCopyWith(
-          _$ObjectEffectRemoteInitialize value,
-          $Res Function(_$ObjectEffectRemoteInitialize) then) =
-      __$$ObjectEffectRemoteInitializeCopyWithImpl<$Res>;
-  @useResult
-  $Res call({IfEmptyCallback? ifEmpty});
-}
-
-/// @nodoc
-class __$$ObjectEffectRemoteInitializeCopyWithImpl<$Res>
-    extends _$ObjectEffectRemoteCopyWithImpl<$Res,
-        _$ObjectEffectRemoteInitialize>
-    implements _$$ObjectEffectRemoteInitializeCopyWith<$Res> {
-  __$$ObjectEffectRemoteInitializeCopyWithImpl(
-      _$ObjectEffectRemoteInitialize _value,
-      $Res Function(_$ObjectEffectRemoteInitialize) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ifEmpty = freezed,
-  }) {
-    return _then(_$ObjectEffectRemoteInitialize(
-      ifEmpty: freezed == ifEmpty
-          ? _value.ifEmpty
-          : ifEmpty // ignore: cast_nullable_to_non_nullable
-              as IfEmptyCallback?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectEffectRemoteInitialize implements ObjectEffectRemoteInitialize {
-  _$ObjectEffectRemoteInitialize({required this.ifEmpty});
-
-  @override
-  final IfEmptyCallback? ifEmpty;
-
-  @override
-  String toString() {
-    return 'ObjectEffectRemote.initialize(ifEmpty: $ifEmpty)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectRemoteInitialize &&
-            (identical(other.ifEmpty, ifEmpty) || other.ifEmpty == ifEmpty));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, ifEmpty);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectEffectRemoteInitializeCopyWith<_$ObjectEffectRemoteInitialize>
-      get copyWith => __$$ObjectEffectRemoteInitializeCopyWithImpl<
-          _$ObjectEffectRemoteInitialize>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback? ifEmpty) initialize,
-    required TResult Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
-        forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
-        publish,
-    required TResult Function() none,
-  }) {
-    return initialize(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback? ifEmpty)? initialize,
-    TResult? Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
-    TResult? Function()? none,
-  }) {
-    return initialize?.call(ifEmpty);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback? ifEmpty)? initialize,
-    TResult Function(
-            String ref,
-            Iterable<String> parent,
-            Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(ifEmpty);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectRemoteInitialize value) initialize,
-    required TResult Function(ObjectEffectRemoteAppend value) append,
-    required TResult Function(ObjectEffectRemoteForward value) forward,
-    required TResult Function(ObjectEffectRemotePublish value) publish,
-    required TResult Function(ObjectEffectRemoteNone value) none,
-  }) {
-    return initialize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectRemoteInitialize value)? initialize,
-    TResult? Function(ObjectEffectRemoteAppend value)? append,
-    TResult? Function(ObjectEffectRemoteForward value)? forward,
-    TResult? Function(ObjectEffectRemotePublish value)? publish,
-    TResult? Function(ObjectEffectRemoteNone value)? none,
-  }) {
-    return initialize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectRemoteInitialize value)? initialize,
-    TResult Function(ObjectEffectRemoteAppend value)? append,
-    TResult Function(ObjectEffectRemoteForward value)? forward,
-    TResult Function(ObjectEffectRemotePublish value)? publish,
-    TResult Function(ObjectEffectRemoteNone value)? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectEffectRemoteInitialize implements ObjectEffectRemote {
-  factory ObjectEffectRemoteInitialize(
-          {required final IfEmptyCallback? ifEmpty}) =
-      _$ObjectEffectRemoteInitialize;
-
-  IfEmptyCallback? get ifEmpty;
-  @JsonKey(ignore: true)
-  _$$ObjectEffectRemoteInitializeCopyWith<_$ObjectEffectRemoteInitialize>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3347,7 +2613,6 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -3378,7 +2643,6 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -3410,7 +2674,6 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -3444,7 +2707,6 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectRemoteInitialize value) initialize,
     required TResult Function(ObjectEffectRemoteAppend value) append,
     required TResult Function(ObjectEffectRemoteForward value) forward,
     required TResult Function(ObjectEffectRemotePublish value) publish,
@@ -3456,7 +2718,6 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult? Function(ObjectEffectRemoteAppend value)? append,
     TResult? Function(ObjectEffectRemoteForward value)? forward,
     TResult? Function(ObjectEffectRemotePublish value)? publish,
@@ -3468,7 +2729,6 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult Function(ObjectEffectRemoteAppend value)? append,
     TResult Function(ObjectEffectRemoteForward value)? forward,
     TResult Function(ObjectEffectRemotePublish value)? publish,
@@ -3607,7 +2867,6 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -3638,7 +2897,6 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -3669,7 +2927,6 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -3703,7 +2960,6 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectRemoteInitialize value) initialize,
     required TResult Function(ObjectEffectRemoteAppend value) append,
     required TResult Function(ObjectEffectRemoteForward value) forward,
     required TResult Function(ObjectEffectRemotePublish value) publish,
@@ -3715,7 +2971,6 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult? Function(ObjectEffectRemoteAppend value)? append,
     TResult? Function(ObjectEffectRemoteForward value)? forward,
     TResult? Function(ObjectEffectRemotePublish value)? publish,
@@ -3727,7 +2982,6 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult Function(ObjectEffectRemoteAppend value)? append,
     TResult Function(ObjectEffectRemoteForward value)? forward,
     TResult Function(ObjectEffectRemotePublish value)? publish,
@@ -3845,7 +3099,6 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -3876,7 +3129,6 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -3907,7 +3159,6 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -3941,7 +3192,6 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectRemoteInitialize value) initialize,
     required TResult Function(ObjectEffectRemoteAppend value) append,
     required TResult Function(ObjectEffectRemoteForward value) forward,
     required TResult Function(ObjectEffectRemotePublish value) publish,
@@ -3953,7 +3203,6 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult? Function(ObjectEffectRemoteAppend value)? append,
     TResult? Function(ObjectEffectRemoteForward value)? forward,
     TResult? Function(ObjectEffectRemotePublish value)? publish,
@@ -3965,7 +3214,6 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult Function(ObjectEffectRemoteAppend value)? append,
     TResult Function(ObjectEffectRemoteForward value)? forward,
     TResult Function(ObjectEffectRemotePublish value)? publish,
@@ -4031,7 +3279,6 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(IfEmptyCallback? ifEmpty) initialize,
     required TResult Function(
             String ref,
             Iterable<String> parent,
@@ -4062,7 +3309,6 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult? Function(
             String ref,
             Iterable<String> parent,
@@ -4093,7 +3339,6 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IfEmptyCallback? ifEmpty)? initialize,
     TResult Function(
             String ref,
             Iterable<String> parent,
@@ -4127,7 +3372,6 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectRemoteInitialize value) initialize,
     required TResult Function(ObjectEffectRemoteAppend value) append,
     required TResult Function(ObjectEffectRemoteForward value) forward,
     required TResult Function(ObjectEffectRemotePublish value) publish,
@@ -4139,7 +3383,6 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult? Function(ObjectEffectRemoteAppend value)? append,
     TResult? Function(ObjectEffectRemoteForward value)? forward,
     TResult? Function(ObjectEffectRemotePublish value)? publish,
@@ -4151,7 +3394,6 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectRemoteInitialize value)? initialize,
     TResult Function(ObjectEffectRemoteAppend value)? append,
     TResult Function(ObjectEffectRemoteForward value)? forward,
     TResult Function(ObjectEffectRemotePublish value)? publish,

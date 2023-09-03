@@ -62,6 +62,11 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
           return (ref: createWith.ref, sequenceNumber: 0);
         }
       });
+  @override
+  Future<void> start() {
+    // TODO: implement start
+    throw UnimplementedError();
+  }
 
   @override
   Future<void> add({
@@ -71,4 +76,5 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
   }) {
     throw UnimplementedError();
   }
+
 }

@@ -5,8 +5,10 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 
 abstract class CorePersistenceRemoteAdapter {
   Future<ObjectInstanceHead> initialize({
-    required IfEmptyCallback? ifEmpty,
+    required IfEmptyCallback ifEmpty,
   });
+
+  Future<void> start();
 
   Future<void> add({
     Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,

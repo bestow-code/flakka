@@ -8,7 +8,7 @@ import 'package:rxdart/rxdart.dart';
 import '../../core_data_store.dart';
 
 class DataStore<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView> extends Cubit<DataStoreState<Event,State,View>>
+        View extends CoreView> extends Cubit<DataStoreState<Event, State, View>>
     implements CoreDataStore<Event, State, View> {
   DataStore(
     super.initialState, {
@@ -29,4 +29,10 @@ class DataStore<Event extends CoreEvent, State extends CoreState,
 
   @override
   Stream<DataUpdate<Event, State, View>> get update => _update;
+
+  @override
+  Future<InitialDataInstanceData> initialize(
+      InitialDataProps Function() ifEmpty) {
+    throw UnimplementedError();
+  }
 }

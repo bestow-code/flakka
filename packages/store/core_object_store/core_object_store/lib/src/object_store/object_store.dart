@@ -17,9 +17,9 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
     required CoreObjectStoreRemote remote,
   })  : _local = local,
         _remote = remote {
-    _effect.listen((value) {
-      _update.add(ObjectUpdate.initial(data: (ref: '1', sequenceNumber: 1)));
-    });
+    _local.update.listen(_onLocalUpdate);
+    _remote.update.listen(_onRemoteUpdate);
+    _effect.listen(_handleEffect);
   }
 
   final CoreObjectStoreLocal _local;
@@ -33,15 +33,69 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
 
   @override
   Stream<ObjectUpdate> get update => _update;
+
+  void _onLocalUpdate(ObjectUpdateLocal event) {
+    // event.map(
+    //   pending: (pending) {},
+    //   entry: (entry) {},
+    //   event: (event) {},
+    //   stateViewRef: (stateViewRef) {},
+    //   stateView: (stateView) {},
+    // );
+  }
+
+  void _onRemoteUpdate(ObjectUpdateRemote event) {
+    event.map(
+      initial: (initial) {
+        // state.map(
+        //   initial: (initial) {},
+        //   initializing: (initializing) {
+        //     _local.effect.add(ObjectEffectLocal.initialize(ifEmpty: () =>));
+        //   },
+        //   ready: (ready) {},
+        // );
+      },
+      entry: (entry) {},
+      event: (event) {},
+      stateViewRef: (stateViewRef) {},
+      stateView: (stateView) {},
+    );
+  }
+
+  Future<void> _handleEffect(ObjectEffect effect) async {
+    await effect.map(
+      initialize: (initialize) async {},
+      append: (append) {},
+      forward: (forward) {},
+      publish: (publish) {},
+      none: (none) {},
+    );
+  }
+
+  @override
+  Future<InitialObjectInstanceData> initialize(
+      {required IfEmptyCallback ifEmpty}) async {
+    final initialObjectInstanceData = await _local.inspect();
+    if (initialObjectInstanceData != null) {
+      await _remote.start();
+      return initialObjectInstanceData;
+    } else {
+      final initialObjectInstanceData = await _remote.initialize(
+        ifEmpty: ifEmpty,
+      );
+      await _local.initialize(initialObjectInstanceData);
+      return initialObjectInstanceData;
+    }
+  }
 }
 
 @freezed
 class ObjectStoreState with _$ObjectStoreState {
   factory ObjectStoreState.initial() = ObjectStoreStateInitial;
 
-  factory ObjectStoreState.initializing({
-    required IfEmptyCallback ifEmpty,
-  }) = ObjectStoreStateInitializing;
+  // factory ObjectStoreState.initializing({
+  //   required IfEmptyCallback ifEmpty,
+  // }) = ObjectStoreStateInitializing;
 
   factory ObjectStoreState.ready() = ObjectStoreStateReady;
 }
