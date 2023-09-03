@@ -29,4 +29,4 @@ class CorePersistenceTestPackageModule extends _i1.MicroPackageModule {
   }
 }
 
-class _$DefaultTestModule extends _i7.DefaultTestModule {}
+class _$DefaultTestModule extends _i7.PersistenceLocalTestModule {}

@@ -8,7 +8,7 @@
 import 'dart:async' as _i2;
 
 import 'package:core_persistence_local/core_persistence_local.dart' as _i3;
-import 'package:core_persistence_local_test/src/default_test_module.dart'
+import 'package:core_persistence_local_test/src/persistence_local_test_module.dart'
     as _i4;
 import 'package:injectable/injectable.dart' as _i1;
 
