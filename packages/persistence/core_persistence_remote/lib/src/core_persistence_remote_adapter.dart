@@ -8,13 +8,13 @@ abstract class CorePersistenceRemoteAdapter {
     required IfEmptyCallback ifEmpty,
   });
 
-  Future<void> start();
-
-  Future<void> add({
-    Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
-    Map<String, JsonMap>? event,
-    Map<String, StateViewObject>? stateView,
-  });
+  // Future<void> start();
+  //
+  // Future<void> add({
+  //   Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
+  //   Map<String, JsonMap>? event,
+  //   Map<String, StateViewObject>? stateView,
+  // });
 //
 // Future<void> append({
 //   required JsonMap entry,

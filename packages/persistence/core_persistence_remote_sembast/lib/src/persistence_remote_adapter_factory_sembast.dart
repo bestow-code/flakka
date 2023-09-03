@@ -3,7 +3,6 @@ import 'package:sembast/sembast.dart';
 
 import '../core_persistence_remote_sembast.dart';
 
-
 class PersistenceAdapterRemoteFactorySembast
     extends PersistenceAdapterRemoteFactoryBase {
   PersistenceAdapterRemoteFactorySembast({
@@ -19,4 +18,8 @@ class PersistenceAdapterRemoteFactorySembast
         persistenceId: persistenceId,
         database: await databaseFactory.openDatabase(path),
       );
+
+  @override
+  Future<void> delete(String path) async =>
+      databaseFactory.deleteDatabase(path);
 }
