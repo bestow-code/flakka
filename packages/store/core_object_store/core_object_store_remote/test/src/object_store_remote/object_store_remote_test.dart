@@ -38,30 +38,6 @@ void main() {
           expect(await store.initialize(ifEmpty: ifEmpty),
               (ref: '0', sequenceNumber: 0));
         });
-        // blocTest<ObjectStoreRemote, ObjectStoreRemoteState>(
-        //   'success',
-        //   setUp: () async {
-        //     provider = GetIt.instance.get<ObjectStoreRemoteProvider>();
-        //     factory = provider.getFactory('1');
-        //     store = await factory.getInstance('2');
-        //     update = store.update.first;
-        //   },
-        //   build: () => store,
-        //   act: (objectStore) async {
-        //     InitialObjectProps ifEmpty() => (
-        //           ref: '0',
-        //           createdAt: 1,
-        //         );
-        //     objectStore.effect
-        //         .add(ObjectEffectRemote.initialize(ifEmpty: ifEmpty));
-        //   },
-        //   verify: (objectStore) async {
-        //     expect(
-        //       await update,
-        //       ObjectUpdateRemote.initial(ref: '0', sequenceNumber: 0),
-        //     );
-        //   },
-        // );
       });
       group('Existing object, New instance', () {});
       group('Existing instance', () {

@@ -33,8 +33,9 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
   }
 
   @override
-  Future<InitialObjectInstanceData> initialize(
-      {required IfEmptyCallback ifEmpty}) async {
+  Future<InitialObjectInstanceData> initialize({
+    required IfEmptyCallback ifEmpty,
+  }) async {
     final result = await _adapter.initialize(
       ifEmpty: ifEmpty,
     );
