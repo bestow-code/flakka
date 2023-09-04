@@ -14,7 +14,7 @@ void main() {
   configureDependencies();
 
   group('ObjectStoreRemote', () {
-    late ObjectStoreRemoteProvider provider;
+    late ObjectStoreRemoteFactoryProvider provider;
     late ObjectStoreRemoteFactory factory;
     late ObjectStoreRemote store;
     Future<void> Function() storeInitializer(
@@ -22,7 +22,7 @@ void main() {
       String persistenceId,
     ) =>
         () async {
-          provider = GetIt.instance.get<ObjectStoreRemoteProvider>();
+          provider = GetIt.instance.get<ObjectStoreRemoteFactoryProvider>();
           factory = provider.getFactory(persistenceId);
           store = await factory.getInstance(path);
         };
@@ -40,10 +40,7 @@ void main() {
         });
       });
       group('Existing object, New instance', () {});
-      group('Existing instance', () {
-        // success (ifEmpty == null)
-        // failure (ifEmpty - some value)
-      });
+      group('Existing instance', () {});
     });
   });
 }

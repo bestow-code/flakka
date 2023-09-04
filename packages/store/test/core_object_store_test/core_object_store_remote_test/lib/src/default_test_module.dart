@@ -4,9 +4,9 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class DefaultTestModule {
-  ObjectStoreRemoteProvider getObjectStoreRemoteProvider(
+  ObjectStoreRemoteFactoryProvider getObjectStoreRemoteProvider(
       CorePersistenceRemoteProvider persistenceProviderRemote) =>
-      ObjectStoreRemoteProvider(persistenceProviderRemote);
+      ObjectStoreRemoteFactoryProvider(persistenceProviderRemote);
 
   // @injectable
   // ObjectStoreRemote getObjectStoreRemote(

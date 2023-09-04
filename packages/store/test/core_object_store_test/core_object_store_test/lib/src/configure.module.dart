@@ -29,10 +29,10 @@ class CoreObjectStoreTestPackageModule extends _i1.MicroPackageModule {
               gh<_i6.CoreObjectStoreLocalFactory>(),
               gh<_i7.CoreObjectStoreRemoteFactory>(),
             ));
-    gh.factory<_i5.CoreObjectStoreProvider>(
+    gh.factory<_i5.CoreObjectStoreFactoryProvider>(
         () => defaultTestModule.getObjectStoreProvider(
-              gh<_i7.ObjectStoreRemoteProvider>(),
-              gh<_i6.ObjectStoreLocalProvider>(),
+              gh<_i7.ObjectStoreRemoteFactoryProvider>(),
+              gh<_i6.ObjectStoreLocalFactoryProvider>(),
             ));
   }
 }

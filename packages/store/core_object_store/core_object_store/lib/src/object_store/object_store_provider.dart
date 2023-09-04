@@ -4,21 +4,21 @@ import 'package:core_persistence/core_persistence.dart';
 
 import '../../core_object_store.dart';
 
-class ObjectStoreProvider implements CoreObjectStoreProvider {
-  factory ObjectStoreProvider.from(
+class ObjectStoreFactoryProvider implements CoreObjectStoreFactoryProvider {
+  factory ObjectStoreFactoryProvider.from(
           CorePersistenceProvider persistenceProvider) =>
-      ObjectStoreProvider(
-        localProvider: ObjectStoreLocalProvider.from(persistenceProvider.local),
-        remoteProvider: ObjectStoreRemoteProvider.from(persistenceProvider.remote),
+      ObjectStoreFactoryProvider(
+        localProvider: ObjectStoreLocalFactoryProvider.from(persistenceProvider.local),
+        remoteProvider: ObjectStoreRemoteFactoryProvider.from(persistenceProvider.remote),
       );
 
-  ObjectStoreProvider({
+  ObjectStoreFactoryProvider({
     required this.localProvider,
     required this.remoteProvider,
   });
 
-  final CoreObjectStoreLocalProvider localProvider;
-  final CoreObjectStoreRemoteProvider remoteProvider;
+  final CoreObjectStoreLocalFactoryProvider localProvider;
+  final CoreObjectStoreRemoteFactoryProvider remoteProvider;
 
   @override
   ObjectStoreFactory getFactory(String persistenceId) => ObjectStoreFactory(

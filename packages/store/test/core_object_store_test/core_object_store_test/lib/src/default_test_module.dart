@@ -6,11 +6,11 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class DefaultTestModule {
   @injectable
-  CoreObjectStoreProvider getObjectStoreProvider(
-    ObjectStoreRemoteProvider remoteProvider,
-    ObjectStoreLocalProvider localProvider,
+  CoreObjectStoreFactoryProvider getObjectStoreProvider(
+    ObjectStoreRemoteFactoryProvider remoteProvider,
+    ObjectStoreLocalFactoryProvider localProvider,
   ) =>
-      ObjectStoreProvider(
+      ObjectStoreFactoryProvider(
         localProvider: localProvider,
         remoteProvider: remoteProvider,
       );

@@ -1,13 +1,13 @@
 import 'package:core_object_store_remote/core_object_store_remote.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 
-class ObjectStoreRemoteProvider implements CoreObjectStoreRemoteProvider {
-  ObjectStoreRemoteProvider(this.persistenceProviderRemote);
+class ObjectStoreRemoteFactoryProvider implements CoreObjectStoreRemoteFactoryProvider {
+  ObjectStoreRemoteFactoryProvider(this.persistenceProviderRemote);
 
-  factory ObjectStoreRemoteProvider.from(
+  factory ObjectStoreRemoteFactoryProvider.from(
     CorePersistenceRemoteProvider persistenceProviderRemote,
   ) =>
-      ObjectStoreRemoteProvider(persistenceProviderRemote);
+      ObjectStoreRemoteFactoryProvider(persistenceProviderRemote);
 
   final CorePersistenceRemoteProvider persistenceProviderRemote;
 
