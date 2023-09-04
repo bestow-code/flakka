@@ -17,6 +17,34 @@ ignore:
   - "**/bricks/*"
   - "**/bricks/**/*"
 scripts:
+  coverage:clean:
+    run: rm -rf coverage
+    exec:
+      concurrency: 10
+    packageFilters:
+      dirExists: coverage
+  coverage:test:
+    run: dart test --coverage=./coverage
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope:
+        - core_persistence_remote_sembast
+#        - core_persistence_local_sembast
+      dirExists:
+        - 'test'
+  coverage:format:
+    run: dart pub global run coverage:format_coverage --in=coverage --out=coverage/lcov.info --lcov --report-on=lib  --packages=.dart_tool/package_config.json -b "$MELOS_ROOT_PATH"
+    exec:
+      concurrency: 1
+    packageFilters:
+      dirExists: coverage/test
+  coverage:combine:
+    run: dart pub global run combine_coverage --repo-path="$MELOS_ROOT_PATH"
+  coverage:report:
+    run: genhtml -o ./coverage/report ./coverage/lcov.info
+  coverage:open:
+    run: open ./coverage/report/index.html
   doc:
     run: dart doc
     exec:

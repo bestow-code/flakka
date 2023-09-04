@@ -4,12 +4,12 @@ import 'package:test/test.dart';
 void main() {
   test('increment', () {
     final idFactory = IdFactory.increment(0);
-    expect(idFactory.create(), '1'); // TODO: expect 0
+    expect(idFactory.create(), '0');
   });
   test('increment twice', () {
     final idFactory = IdFactory.increment(0);
-    expect(idFactory.create(), '1'); // TODO: expect 0
-    expect(idFactory.create(), '2');
+    expect(idFactory.create(), '0'); // TODO: expect 0
+    expect(idFactory.create(), '1');
   });
   test('random', () {
     final idFactory = IdFactory.random();

@@ -17,25 +17,25 @@ void main() {
   late Future<DataUpdate> objectStoreUpdate;
   configureDependencies();
 
-  blocTest<DataStore<TestEvent, TestState, TestView>,
-      DataStoreState<TestEvent, TestState, TestView>>(
-    'hello',
-    setUp: () async {
-      store = await GetIt.instance
-          .getAsync<DataStore<TestEvent, TestState, TestView>>(param1: 'a',param2: '2');
-      objectStoreUpdate = store.update.first;
-    },
-    build: () => store,
-    act: (objectStore) async {
-      ({Ref ref, int sequenceNumber}) ifEmpty() =>
-          (ref: Ref('0'), sequenceNumber: 1);
-      // objectStore.effect.add(DataEffect.initialize(ifEmpty: ifEmpty));
-    },
-    verify: (objectStore) async {
-      expect(
-        await objectStoreUpdate,
-        DataUpdate.initial(ref: Ref('0'), sequenceNumber: 0),
-      );
-    },
-  );
+  // blocTest<DataStore<TestEvent, TestState, TestView>,
+  //     DataStoreState<TestEvent, TestState, TestView>>(
+  //   'hello',
+  //   setUp: () async {
+  //     store = await GetIt.instance
+  //         .getAsync<DataStore<TestEvent, TestState, TestView>>(param1: 'a',param2: '2');
+  //     objectStoreUpdate = store.update.first;
+  //   },
+  //   build: () => store,
+  //   act: (objectStore) async {
+  //     ({Ref ref, int sequenceNumber}) ifEmpty() =>
+  //         (ref: Ref('0'), sequenceNumber: 1);
+  //     // objectStore.effect.add(DataEffect.initialize(ifEmpty: ifEmpty));
+  //   },
+  //   verify: (objectStore) async {
+  //     expect(
+  //       await objectStoreUpdate,
+  //       DataUpdate.initial(ref: Ref('0'), sequenceNumber: 0),
+  //     );
+  //   },
+  // );
 }

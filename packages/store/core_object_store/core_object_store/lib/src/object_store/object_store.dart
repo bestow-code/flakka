@@ -46,15 +46,6 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
 
   void _onRemoteUpdate(ObjectUpdateRemote event) {
     event.map(
-      initial: (initial) {
-        // state.map(
-        //   initial: (initial) {},
-        //   initializing: (initializing) {
-        //     _local.effect.add(ObjectEffectLocal.initialize(ifEmpty: () =>));
-        //   },
-        //   ready: (ready) {},
-        // );
-      },
       entry: (entry) {},
       event: (event) {},
       stateViewRef: (stateViewRef) {},
@@ -64,7 +55,6 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
 
   Future<void> _handleEffect(ObjectEffect effect) async {
     await effect.map(
-      initialize: (initialize) async {},
       append: (append) {},
       forward: (forward) {},
       publish: (publish) {},
@@ -73,8 +63,9 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
   }
 
   @override
-  Future<InitialObjectInstanceData> initialize(
-      {required IfEmptyCallback ifEmpty}) async {
+  Future<InitialObjectInstanceData> initialize({
+    required IfEmptyCallback ifEmpty,
+  }) async {
     final initialObjectInstanceData = await _local.inspect();
     if (initialObjectInstanceData != null) {
       await _remote.start();
