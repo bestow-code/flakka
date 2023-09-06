@@ -22,6 +22,15 @@ abstract interface class EventSourcedBehavior<
 
   HandleFactory<Handle, State, Event> get handleFactory;
 }
+
+abstract interface class ApplicationBehavior<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView> {
+  StateView<State, View> Function() get initialStateViewFactory;
+
+  ({EventHandler<Event, State> state, EventHandler<Event, View> view})
+      get eventHandler;
+}
+
 abstract interface class CoreHandle {}
 
 abstract interface class CoreAdapter {}

@@ -21,17 +21,17 @@ class CoreDataStoreTestPackageModule extends _i1.MicroPackageModule {
   _i2.FutureOr<void> init(_i1.GetItHelper gh) async {
     await _i3.CoreObjectStoreTestPackageModule().init(gh);
     final coreDataStoreTestModule = _$CoreDataStoreTestModule();
-    gh.singleton<_i4.DataConverter<_i5.TestView>>(_i6.TestViewConverter());
-    gh.singleton<_i4.DataConverter<_i5.TestState>>(_i6.TestStateConverter());
-    gh.singleton<_i4.DataConverter<_i5.TestEvent>>(_i6.TestEventConverter());
+    gh.singleton<_i4.ObjectConverter<_i5.TestView>>(_i6.TestViewConverter());
+    gh.singleton<_i4.ObjectConverter<_i5.TestState>>(_i6.TestStateConverter());
+    gh.singleton<_i4.ObjectConverter<_i5.TestEvent>>(_i6.TestEventConverter());
     gh.factoryAsync<_i4.DataStore<_i5.TestEvent, _i5.TestState, _i5.TestView>>(
         () => coreDataStoreTestModule
             .getCoreObjectStore(gh<_i2.Future<_i7.ObjectStore>>()));
     gh.factory<_i6.TestApplicationDataConverter>(
         () => _i6.TestApplicationDataConverter(
-              eventConverter: gh<_i4.DataConverter<_i5.TestEvent>>(),
-              stateConverter: gh<_i4.DataConverter<_i5.TestState>>(),
-              viewConverter: gh<_i4.DataConverter<_i5.TestView>>(),
+              eventConverter: gh<dynamic>(),
+              stateConverter: gh<dynamic>(),
+              viewConverter: gh<dynamic>(),
             ));
   }
 }

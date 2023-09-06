@@ -20,13 +20,13 @@ class CorePersistenceTestPackageModule extends _i1.MicroPackageModule {
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) async {
     await _i3.CorePersistenceLocalTestPackageModule().init(gh);
-    final defaultTestModule = _$DefaultTestModule();
+    final persistenceLocalTestModule = _$PersistenceLocalTestModule();
     gh.factory<_i4.PersistenceProvider>(
-        () => defaultTestModule.getPersistenceProvider(
+        () => persistenceLocalTestModule.getPersistenceProvider(
               gh<_i5.CorePersistenceLocalProvider>(),
               gh<_i6.CorePersistenceRemoteProvider>(),
             ));
   }
 }
 
-class _$DefaultTestModule extends _i7.PersistenceLocalTestModule {}
+class _$PersistenceLocalTestModule extends _i7.PersistenceLocalTestModule {}

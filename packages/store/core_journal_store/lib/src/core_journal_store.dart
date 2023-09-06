@@ -15,4 +15,6 @@ abstract interface class CoreJournalStore<Event extends CoreEvent,
 }
 
 typedef InitialJournalProps = ({Ref ref, DateTime createdAt});
-typedef InitialJournalInstanceData = ({Ref ref, int sequenceNumber});
+typedef InitialJournalInstanceData<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
+    = ({Ref ref, JournalStateEvents<Event, State, View> initial});

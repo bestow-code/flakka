@@ -15,3 +15,16 @@ class JournalSegment<Event extends CoreEvent, State extends CoreState,
     required Iterable<Event> events,
   }) = JournalSegmentInitial<Event, State, View>;
 }
+@freezed
+class JournalStateEvents<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> with _$JournalStateEvents<Event, State, View> {
+  factory JournalStateEvents({
+    required State start,
+    required Iterable<Event> events,
+  }) = _JournalStateEvents<Event, State, View>;
+
+  factory JournalStateEvents.initial({
+    required Iterable<Event> events,
+  }) = JournalStateEventsInitial<Event, State, View>;
+}
+// StateEventSequence

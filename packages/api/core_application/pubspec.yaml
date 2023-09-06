@@ -25,11 +25,13 @@ dependencies:
 dev_dependencies:
   bloc_test:
   build_runner:
+  core_application_test:
   core_application_store_test:
-#  core_application_store_test:
   core_journal_store_test:
   core_object_store_test:
   freezed:
+  get_it:
+  injectable:
   lints: ^2.0.1
   json_serializable:
   matcher:

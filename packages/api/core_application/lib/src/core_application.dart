@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rxdart/rxdart.dart';
 
 import '../core_application.dart';
 
@@ -12,8 +12,7 @@ abstract interface class CoreApplication<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
   StreamSink<Request<State, Event>> get request;
 
-
-  ValueStream<View> get view;
+  StateStreamable<View> get view;
 }
 
 @freezed

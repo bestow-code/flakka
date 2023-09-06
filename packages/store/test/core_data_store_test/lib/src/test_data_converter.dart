@@ -13,8 +13,8 @@ class TestApplicationDataConverter
   });
 }
 
-@Singleton(as: DataConverter<TestView>)
-class TestViewConverter extends DataConverter<TestView> {
+@Singleton(as: ObjectConverter<TestView>)
+class TestViewConverter extends ObjectConverter<TestView> {
   @override
   TestView fromJson(JsonMap json) => TestView.fromJson(json);
 
@@ -22,8 +22,8 @@ class TestViewConverter extends DataConverter<TestView> {
   JsonMap toJson(TestView data) => data.toJson();
 }
 
-@Singleton(as: DataConverter<TestState>)
-class TestStateConverter extends DataConverter<TestState> {
+@Singleton(as: ObjectConverter<TestState>)
+class TestStateConverter extends ObjectConverter<TestState> {
   @override
   TestState fromJson(JsonMap json) => TestState.fromJson(json);
 
@@ -31,8 +31,8 @@ class TestStateConverter extends DataConverter<TestState> {
   JsonMap toJson(TestState data) => data.toJson();
 }
 
-@Singleton(as: DataConverter<TestEvent>)
-class TestEventConverter extends DataConverter<TestEvent> {
+@Singleton(as: ObjectConverter<TestEvent>)
+class TestEventConverter extends ObjectConverter<TestEvent> {
   @override
   TestEvent fromJson(JsonMap json) => TestEvent.fromJson(json);
 

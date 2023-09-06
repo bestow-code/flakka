@@ -2,4 +2,5 @@
 
 library core_application_test;
 
-export 'src/application_test.dart';
+export 'src/test_application.dart';
+export 'src/test_application_behavior.dart';

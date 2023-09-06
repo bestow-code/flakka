@@ -13,6 +13,7 @@ dependencies:
   collection: ^1.17.1
   core_common:
   core_data:
+  core_data_test:
   core_object_store:
   core_application:
   debounce_throttle: ^2.0.0

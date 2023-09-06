@@ -18,20 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ApplicationState<State extends CoreState, View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Ref ref, ({State state, View view}) stateView) $default, {
+    TResult Function(
+            @Deprecated('demote') Ref ref, ({State state, View view}) stateView)
+        $default, {
     required TResult Function() initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Ref ref, ({State state, View view}) stateView)?
+    TResult? Function(@Deprecated('demote') Ref ref,
+            ({State state, View view}) stateView)?
         $default, {
     TResult? Function()? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Ref ref, ({State state, View view}) stateView)? $default, {
+    TResult Function(@Deprecated('demote') Ref ref,
+            ({State state, View view}) stateView)?
+        $default, {
     TResult Function()? initial,
     required TResult orElse(),
   }) =>
@@ -86,7 +91,8 @@ abstract class _$$_ApplicationStateCopyWith<State extends CoreState,
           $Res Function(_$_ApplicationState<State, View>) then) =
       __$$_ApplicationStateCopyWithImpl<State, View, $Res>;
   @useResult
-  $Res call({Ref ref, ({State state, View view}) stateView});
+  $Res call(
+      {@Deprecated('demote') Ref ref, ({State state, View view}) stateView});
 
   $RefCopyWith<$Res> get ref;
 }
@@ -132,9 +138,11 @@ class __$$_ApplicationStateCopyWithImpl<State extends CoreState,
 
 class _$_ApplicationState<State extends CoreState, View extends CoreView>
     implements _ApplicationState<State, View> {
-  _$_ApplicationState({required this.ref, required this.stateView});
+  _$_ApplicationState(
+      {@Deprecated('demote') required this.ref, required this.stateView});
 
   @override
+  @Deprecated('demote')
   final Ref ref;
   @override
   final ({State state, View view}) stateView;
@@ -167,7 +175,9 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Ref ref, ({State state, View view}) stateView) $default, {
+    TResult Function(
+            @Deprecated('demote') Ref ref, ({State state, View view}) stateView)
+        $default, {
     required TResult Function() initial,
   }) {
     return $default(ref, stateView);
@@ -176,7 +186,8 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Ref ref, ({State state, View view}) stateView)?
+    TResult? Function(@Deprecated('demote') Ref ref,
+            ({State state, View view}) stateView)?
         $default, {
     TResult? Function()? initial,
   }) {
@@ -186,7 +197,9 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Ref ref, ({State state, View view}) stateView)? $default, {
+    TResult Function(@Deprecated('demote') Ref ref,
+            ({State state, View view}) stateView)?
+        $default, {
     TResult Function()? initial,
     required TResult orElse(),
   }) {
@@ -232,10 +245,11 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
 abstract class _ApplicationState<State extends CoreState, View extends CoreView>
     implements ApplicationState<State, View> {
   factory _ApplicationState(
-          {required final Ref ref,
+          {@Deprecated('demote') required final Ref ref,
           required final ({State state, View view}) stateView}) =
       _$_ApplicationState<State, View>;
 
+  @Deprecated('demote')
   Ref get ref;
   ({State state, View view}) get stateView;
   @JsonKey(ignore: true)
@@ -288,7 +302,9 @@ class _$ApplicationStateInitial<State extends CoreState, View extends CoreView>
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Ref ref, ({State state, View view}) stateView) $default, {
+    TResult Function(
+            @Deprecated('demote') Ref ref, ({State state, View view}) stateView)
+        $default, {
     required TResult Function() initial,
   }) {
     return initial();
@@ -297,7 +313,8 @@ class _$ApplicationStateInitial<State extends CoreState, View extends CoreView>
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Ref ref, ({State state, View view}) stateView)?
+    TResult? Function(@Deprecated('demote') Ref ref,
+            ({State state, View view}) stateView)?
         $default, {
     TResult? Function()? initial,
   }) {
@@ -307,7 +324,9 @@ class _$ApplicationStateInitial<State extends CoreState, View extends CoreView>
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Ref ref, ({State state, View view}) stateView)? $default, {
+    TResult Function(@Deprecated('demote') Ref ref,
+            ({State state, View view}) stateView)?
+        $default, {
     TResult Function()? initial,
     required TResult orElse(),
   }) {

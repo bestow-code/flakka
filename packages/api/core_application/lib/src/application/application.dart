@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart' hide EventHandler;
 import 'package:core_application/core_application.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
-import 'package:rxdart/rxdart.dart';
 
 // part 'application.freezed.dart';
 
@@ -48,7 +47,7 @@ class Application<Event extends CoreEvent, State extends CoreState,
   StreamSink<Request<State, Event>> get request => throw UnimplementedError();
 
   @override
-  ValueStream<View> get view => throw UnimplementedError();
+  StateStreamable<View> get view => throw UnimplementedError();
 
   final StreamSink<ApplicationEffect<Event, State, View>> _applicationEffect;
   final Stream<ApplicationUpdate<Event, State, View>> _applicationUpdate;
