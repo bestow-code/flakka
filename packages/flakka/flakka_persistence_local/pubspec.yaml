@@ -1,4 +1,4 @@
-name: flakka_object
+name: flakka_persistence_local
 description: A sample command-line application.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
@@ -9,8 +9,9 @@ environment:
 dependencies:
   bloc: ^8.1.2
   core_common: ^0.1.0+2
-  core_object:
-  core_data:
+#  core_object:
+#  core_data:
+  core_persistence_local:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
   rxdart: ^0.27.7
