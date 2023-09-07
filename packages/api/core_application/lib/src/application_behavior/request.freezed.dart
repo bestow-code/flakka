@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Request<State extends CoreState, Event extends CoreEvent> {
   RequestHandler<State, Event> get handler =>
       throw _privateConstructorUsedError;
-  Ref? get ref => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  Ref get ref => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestCopyWith<State, Event, Request<State, Event>> get copyWith =>
@@ -34,9 +34,9 @@ abstract class $RequestCopyWith<State extends CoreState,
       _$RequestCopyWithImpl<State, Event, $Res, Request<State, Event>>;
   @useResult
   $Res call(
-      {RequestHandler<State, Event> handler, Ref? ref, DateTime? createdAt});
+      {RequestHandler<State, Event> handler, Ref ref, DateTime createdAt});
 
-  $RefCopyWith<$Res>? get ref;
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -54,33 +54,29 @@ class _$RequestCopyWithImpl<State extends CoreState, Event extends CoreEvent,
   @override
   $Res call({
     Object? handler = null,
-    Object? ref = freezed,
-    Object? createdAt = freezed,
+    Object? ref = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       handler: null == handler
           ? _value.handler
           : handler // ignore: cast_nullable_to_non_nullable
               as RequestHandler<State, Event>,
-      ref: freezed == ref
+      ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as Ref?,
-      createdAt: freezed == createdAt
+              as Ref,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res>? get ref {
-    if (_value.ref == null) {
-      return null;
-    }
-
-    return $RefCopyWith<$Res>(_value.ref!, (value) {
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
       return _then(_value.copyWith(ref: value) as $Val);
     });
   }
@@ -97,10 +93,10 @@ abstract class _$$_RequestCopyWith<
   @override
   @useResult
   $Res call(
-      {RequestHandler<State, Event> handler, Ref? ref, DateTime? createdAt});
+      {RequestHandler<State, Event> handler, Ref ref, DateTime createdAt});
 
   @override
-  $RefCopyWith<$Res>? get ref;
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -116,22 +112,22 @@ class __$$_RequestCopyWithImpl<State extends CoreState, Event extends CoreEvent,
   @override
   $Res call({
     Object? handler = null,
-    Object? ref = freezed,
-    Object? createdAt = freezed,
+    Object? ref = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_Request<State, Event>(
       null == handler
           ? _value.handler
           : handler // ignore: cast_nullable_to_non_nullable
               as RequestHandler<State, Event>,
-      ref: freezed == ref
+      ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as Ref?,
-      createdAt: freezed == createdAt
+              as Ref,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -140,14 +136,14 @@ class __$$_RequestCopyWithImpl<State extends CoreState, Event extends CoreEvent,
 
 class _$_Request<State extends CoreState, Event extends CoreEvent>
     implements _Request<State, Event> {
-  _$_Request(this.handler, {this.ref, this.createdAt});
+  _$_Request(this.handler, {required this.ref, required this.createdAt});
 
   @override
   final RequestHandler<State, Event> handler;
   @override
-  final Ref? ref;
+  final Ref ref;
   @override
-  final DateTime? createdAt;
+  final DateTime createdAt;
 
   @override
   String toString() {
@@ -179,14 +175,15 @@ class _$_Request<State extends CoreState, Event extends CoreEvent>
 abstract class _Request<State extends CoreState, Event extends CoreEvent>
     implements Request<State, Event> {
   factory _Request(final RequestHandler<State, Event> handler,
-      {final Ref? ref, final DateTime? createdAt}) = _$_Request<State, Event>;
+      {required final Ref ref,
+      required final DateTime createdAt}) = _$_Request<State, Event>;
 
   @override
   RequestHandler<State, Event> get handler;
   @override
-  Ref? get ref;
+  Ref get ref;
   @override
-  DateTime? get createdAt;
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_RequestCopyWith<State, Event, _$_Request<State, Event>> get copyWith =>

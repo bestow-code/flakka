@@ -10,7 +10,7 @@ class Request<State extends CoreState, Event extends CoreEvent>
     with _$Request<State, Event> {
   factory Request(
     RequestHandler<State, Event> handler, {
-    Ref? ref,
-    DateTime? createdAt,
+    required Ref ref,
+    required DateTime createdAt,
   }) = _Request<State, Event>;
 }

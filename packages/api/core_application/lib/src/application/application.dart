@@ -11,13 +11,17 @@ class Application<Event extends CoreEvent, State extends CoreState,
   //
   Application(
     super.initialState, {
+    required StateViewEventHandler<Event, State, View> eventHandler,
     required StreamSink<ApplicationEffect<Event, State, View>> effect,
     required Stream<ApplicationUpdate<Event, State, View>> update,
-  })  : _effect = effect,
+  })  : _eventHandler = eventHandler,
+        _effect = effect,
         _update = update {
     _update.listen(_onUpdate);
     _request.stream.listen(_handleRequest);
   }
+
+  final StateViewEventHandler<Event, State, View> _eventHandler;
 
   @override
   StreamSink<Request<State, Event>> get request => _request.sink;
@@ -31,7 +35,29 @@ class Application<Event extends CoreEvent, State extends CoreState,
 
   void _onUpdate(ApplicationUpdate<Event, State, View> update) {}
 
-  void _handleRequest(Request<State, Event> request) {}
+  void _handleRequest(Request<State, Event> request) {
+    request.handler(state.stateView.state).map(
+          persist: (persist) {
+            _effect.add(
+              ApplicationEffect.request(
+                ApplicationRequestEffect.persist(
+                  ref: request.ref,
+                  parent: state.ref,
+                  event: persist.event,
+                  createdAt: request.createdAt,
+                ),
+              ),
+            );
+            emit(
+              ApplicationState(
+                ref: request.ref,
+                stateView: _eventHandler.apply(persist.event, state.stateView),
+              ),
+            );
+          },
+          none: (none) {},
+        );
+  }
 }
 
 typedef DateTimeRefFactory = ({

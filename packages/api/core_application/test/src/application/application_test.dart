@@ -17,6 +17,9 @@ void main() {
         effect;
     late StreamController<ApplicationUpdate<TestEvent, TestState, TestView>>
         update;
+    final eventHandler = StateViewEventHandler<TestEvent, TestState, TestView>(
+        state: (state, event) => TestState(state.value + event.value),
+        view: (view, event) => TestView(view.value * event.value),);
     setUp(() {
       effect = ReplaySubject();
       update = StreamController();
@@ -27,6 +30,7 @@ void main() {
       ref: ref0,
       stateView: (state: TestState(0), view: TestView(1)),
     );
+    final t1 = DateTime.fromMillisecondsSinceEpoch(1);
     group('Request', () {
       group('Persist', () {
         blocTest<TestApplication, TestApplicationState>(
@@ -35,13 +39,14 @@ void main() {
             state0,
             effect: effect,
             update: update.stream,
+            eventHandler: eventHandler,
           ),
           act: (application) {
             application.request.add(
               Request(
                 (state) => RequestEffect.persist(event: TestEvent(2)),
                 ref: ref1,
-                createdAt: DateTime.fromMillisecondsSinceEpoch(1),
+                createdAt: t1,
               ),
             );
           },
@@ -53,14 +58,14 @@ void main() {
           ],
           verify: (application) {
             expect(
-              effect.values.single,
+              effect.values.singleOrNull,
               ApplicationEffect.request(
                 ApplicationRequestEffect<TestEvent, TestState,
                     TestView>.persist(
                   ref: ref1,
                   parent: ref0,
                   event: TestEvent(2),
-                  createdAt: DateTime.fromMillisecondsSinceEpoch(0),
+                  createdAt: t1,
                 ),
               ),
             );
