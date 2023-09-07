@@ -2,10 +2,10 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:test/test.dart';
 
 void Function() persistenceAdapterLocalTests(
-  CorePersistenceLocalProvider Function() persistenceProviderLocalFactory,
+  CorePersistenceLocalFactoryProvider Function() persistenceProviderLocalFactory,
 ) {
   return () {
-    late CorePersistenceLocalProvider persistenceProviderLocal;
+    late CorePersistenceLocalFactoryProvider persistenceProviderLocal;
     late CorePersistenceLocalAdapterFactory adapterLocalFactory;
     late String persistenceId;
     setUp(() {

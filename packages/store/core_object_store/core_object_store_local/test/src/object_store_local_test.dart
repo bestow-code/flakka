@@ -14,17 +14,17 @@ void main() {
   configureDependencies();
 
   group('ObjectStoreLocal', () {
-    late ObjectStoreLocalFactoryProvider provider;
-    late ObjectStoreLocalFactory factory;
+    // late ObjectStoreLocalFactoryProvider provider;
+    // late ObjectStoreLocalFactory factory;
     late ObjectStoreLocal store;
     Future<void> Function() storeInitializer(
       String path,
       String persistenceId,
     ) =>
         () async {
-          provider = GetIt.instance.get<ObjectStoreLocalFactoryProvider>();
-          factory = provider.getFactory(persistenceId);
-          store = await factory.getInstance(path);
+          // provider = GetIt.instance.get<ObjectStoreLocalFactoryProvider>();
+          // factory = provider.getFactory(persistenceId);
+          // store = await factory.getInstance(path);
         };
 
     group('Initialization', () {

@@ -9,9 +9,6 @@ import 'dart:async' as _i2;
 
 import 'package:core_persistence_base_test/core_persistence_base_test.dart'
     as _i3;
-import 'package:core_persistence_local/core_persistence_local.dart' as _i4;
-import 'package:core_persistence_local_test/src/persistence_local_test_module.dart'
-    as _i5;
 import 'package:injectable/injectable.dart' as _i1;
 
 class CorePersistenceLocalTestPackageModule extends _i1.MicroPackageModule {
@@ -19,10 +16,5 @@ class CorePersistenceLocalTestPackageModule extends _i1.MicroPackageModule {
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) async {
     await _i3.CorePersistenceBaseTestPackageModule().init(gh);
-    final defaultTestModule = _$DefaultTestModule();
-    gh.factory<_i4.CorePersistenceLocalProvider>(
-        () => defaultTestModule.getPersistenceProvider());
   }
 }
-
-class _$DefaultTestModule extends _i5.DefaultTestModule {}

@@ -1,15 +1,17 @@
-import 'package:core_object_store_local/core_object_store_local.dart';
-import 'package:core_object_store_remote/core_object_store_remote.dart';
-import 'package:core_persistence/core_persistence.dart';
+import 'package:flakka_object_local/flakka_object_local.dart';
+import 'package:flakka_object_remote/flakka_object_remote.dart';
+import 'package:flakka_persistence/flakka_persistence.dart';
 
-import '../../core_object_store.dart';
+import '../../flakka_object.dart';
 
 class ObjectStoreFactoryProvider implements CoreObjectStoreFactoryProvider {
   factory ObjectStoreFactoryProvider.from(
           CorePersistenceProvider persistenceProvider) =>
       ObjectStoreFactoryProvider(
-        localProvider: ObjectStoreLocalFactoryProvider.from(persistenceProvider.local),
-        remoteProvider: ObjectStoreRemoteFactoryProvider.from(persistenceProvider.remote),
+        localProvider:
+            ObjectStoreLocalFactoryProvider.from(persistenceProvider.local),
+        remoteProvider:
+            ObjectStoreRemoteFactoryProvider.from(persistenceProvider.remote),
       );
 
   ObjectStoreFactoryProvider({

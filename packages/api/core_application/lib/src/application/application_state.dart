@@ -7,9 +7,9 @@ part 'application_state.freezed.dart';
 class ApplicationState<State extends CoreState, View extends CoreView>
     with _$ApplicationState<State, View> {
   factory ApplicationState({
-   @Deprecated('demote') required Ref ref,
+    required Ref ref,
+    // required Ref? lastPublish,
     required StateView<State, View> stateView,
   }) = _ApplicationState<State, View>;
 
-  factory ApplicationState.initial() = ApplicationStateInitial;
 }

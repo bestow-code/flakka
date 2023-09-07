@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 abstract class PersistenceLocalTestModule {
   @injectable
   PersistenceProvider getPersistenceProvider(
-    CorePersistenceLocalProvider local,
+    CorePersistenceLocalFactoryProvider local,
     CorePersistenceRemoteProvider remote,
   ) =>
       PersistenceProvider(

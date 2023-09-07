@@ -3,5 +3,7 @@
 /// Common libraries for core_platform
 library flakka_object;
 
-export 'src/data_converter/data_converter_provider.dart';
-export 'src/data_converter/data_converter_registry.dart';
+export 'src/core_object_store_factory.dart';
+export 'src/core_object_store_factory_provider.dart';
+export 'src/object_store/object_store_factory.dart';
+export 'src/object_store/object_store_factory_provider.dart';

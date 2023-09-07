@@ -5,8 +5,4 @@ library core_journal_store;
 
 export 'src/core_journal_state.dart';
 export 'src/core_journal_store.dart';
-export 'src/core_journal_store_factory.dart';
-export 'src/core_journal_store_factory_provider.dart';
 export 'src/journal_store/journal_store.dart';
-export 'src/journal_store/journal_store_factory.dart';
-export 'src/journal_store/journal_store_factory_provider.dart';

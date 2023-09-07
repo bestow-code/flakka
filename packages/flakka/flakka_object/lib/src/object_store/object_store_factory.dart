@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:core_object_store/core_object_store.dart';
 import 'package:core_object_store_local/core_object_store_local.dart';
 import 'package:core_object_store_remote/core_object_store_remote.dart';
+import 'package:flakka_object_local/flakka_object_local.dart';
+import 'package:flakka_object_remote/flakka_object_remote.dart';
 
-import '../../core_object_store.dart';
+import '../../flakka_object.dart';
 
 class ObjectStoreFactory implements CoreObjectStoreFactory {
   ObjectStoreFactory({

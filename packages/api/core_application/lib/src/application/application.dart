@@ -5,52 +5,33 @@ import 'package:core_application/core_application.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 
-// part 'application.freezed.dart';
-
 class Application<Event extends CoreEvent, State extends CoreState,
         View extends CoreView> extends Cubit<ApplicationState<State, View>>
     implements CoreApplication<Event, State, View> {
+  //
   Application(
     super.initialState, {
-    required StreamSink<ApplicationEffect<Event, State, View>>
-        applicationEffect,
-    required Stream<ApplicationUpdate<Event, State, View>> applicationUpdate,
-  })  : _applicationEffect = applicationEffect,
-        _applicationUpdate = applicationUpdate {
-    _applicationUpdate.listen((update) {
-      update.map(
-        initial: (initial) {
-          state.map(
-            (_) => null,
-            initial: (_) {
-              // applicationEffect.add(
-              //   ApplicationEffect.start(
-              //     ref: initial.ref,
-              //     stateView: initial.stateView,
-              //   ),
-              // );
-              emit(
-                ApplicationState(
-                  ref: initial.ref,
-                  stateView: initial.stateView,
-                ),
-              );
-            },
-          );
-        },
-        journal: (journal) {},
-      );
-    });
+    required StreamSink<ApplicationEffect<Event, State, View>> effect,
+    required Stream<ApplicationUpdate<Event, State, View>> update,
+  })  : _effect = effect,
+        _update = update {
+    _update.listen(_onUpdate);
+    _request.stream.listen(_handleRequest);
   }
 
   @override
-  StreamSink<Request<State, Event>> get request => throw UnimplementedError();
+  StreamSink<Request<State, Event>> get request => _request.sink;
+  final _request = StreamController<Request<State, Event>>();
 
   @override
   StateStreamable<View> get view => throw UnimplementedError();
 
-  final StreamSink<ApplicationEffect<Event, State, View>> _applicationEffect;
-  final Stream<ApplicationUpdate<Event, State, View>> _applicationUpdate;
+  final StreamSink<ApplicationEffect<Event, State, View>> _effect;
+  final Stream<ApplicationUpdate<Event, State, View>> _update;
+
+  void _onUpdate(ApplicationUpdate<Event, State, View> update) {}
+
+  void _handleRequest(Request<State, Event> request) {}
 }
 
 typedef DateTimeRefFactory = ({

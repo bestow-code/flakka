@@ -4,7 +4,8 @@ import 'package:sembast/sembast.dart';
 import '../core_persistence_local_sembast.dart';
 
 class PersistenceAdapterLocalFactorySembast
-    implements CorePersistenceLocalAdapterFactory {
+    // implements CorePersistenceLocalAdapterFactory
+{
   PersistenceAdapterLocalFactorySembast({
     required this.persistenceId,
     required this.databaseFactory,

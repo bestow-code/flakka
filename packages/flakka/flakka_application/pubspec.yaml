@@ -9,10 +9,11 @@ environment:
 dependencies:
   bloc: ^8.1.2
   core_application:
+  core_application_store:
   core_common: ^0.1.0+2
   core_data:
   core_object:
-  flakka_data:
+  flakka_journal:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
   rxdart: ^0.27.7

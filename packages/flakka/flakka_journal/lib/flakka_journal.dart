@@ -3,6 +3,7 @@
 /// Common libraries for core_platform
 library flakka_journal;
 
-export 'src/application_behavior_registry.dart';
-export 'src/application_factory.dart';
-export 'src/application_factory_provider.dart';
+export 'src/core_journal_store_factory.dart';
+export 'src/core_journal_store_factory_provider.dart';
+export 'src/journal_store/journal_store_factory.dart';
+export 'src/journal_store/journal_store_factory_provider.dart';

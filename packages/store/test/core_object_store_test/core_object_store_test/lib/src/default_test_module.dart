@@ -5,25 +5,25 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class DefaultTestModule {
-  @injectable
-  CoreObjectStoreFactoryProvider getObjectStoreProvider(
-    ObjectStoreRemoteFactoryProvider remoteProvider,
-    ObjectStoreLocalFactoryProvider localProvider,
-  ) =>
-      ObjectStoreFactoryProvider(
-        localProvider: localProvider,
-        remoteProvider: remoteProvider,
-      );
-
-  @injectable
-  CoreObjectStoreFactory getObjectStoreFactory(
-    CoreObjectStoreLocalFactory localFactory,
-    CoreObjectStoreRemoteFactory remoteFactory,
-  ) =>
-      ObjectStoreFactory(
-        localFactory: localFactory,
-        remoteFactory: remoteFactory,
-      );
+  // @injectable
+  // CoreObjectStoreFactoryProvider getObjectStoreProvider(
+  //   ObjectStoreRemoteFactoryProvider remoteProvider,
+  //   ObjectStoreLocalFactoryProvider localProvider,
+  // ) =>
+  //     ObjectStoreFactoryProvider(
+  //       localProvider: localProvider,
+  //       remoteProvider: remoteProvider,
+  //     );
+  //
+  // @injectable
+  // CoreObjectStoreFactory getObjectStoreFactory(
+  //   CoreObjectStoreLocalFactory localFactory,
+  //   CoreObjectStoreRemoteFactory remoteFactory,
+  // ) =>
+  //     ObjectStoreFactory(
+  //       localFactory: localFactory,
+  //       remoteFactory: remoteFactory,
+  //     );
 
 // @injectable
 // Future<CoreObjectStore> getObjectStore(

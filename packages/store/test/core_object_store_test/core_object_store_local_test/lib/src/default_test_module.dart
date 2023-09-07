@@ -4,10 +4,10 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class DefaultTestModule {
-  @injectable
-  ObjectStoreLocalFactoryProvider getObjectStoreLocalProvider(
-          CorePersistenceLocalProvider persistenceProviderLocal) =>
-      ObjectStoreLocalFactoryProvider(persistenceProviderLocal);
+  // @injectable
+  // ObjectStoreLocalFactoryProvider getObjectStoreLocalProvider(
+  //         CorePersistenceLocalProvider persistenceProviderLocal) =>
+  //     ObjectStoreLocalFactoryProvider(persistenceProviderLocal);
 // Future<ObjectStoreLocal> getObjectStoreLocal(Future<PersistenceLocalAdapterBase> adapterLocal) async=>
 //     ObjectStoreLocal(
 //       ObjectStoreLocalState.initial(),

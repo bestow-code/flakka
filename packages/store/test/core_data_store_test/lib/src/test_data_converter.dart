@@ -1,12 +1,12 @@
+import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
-import 'package:core_data_store/core_data_store.dart';
 import 'package:core_object/core_object.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class TestApplicationDataConverter
-    extends ApplicationDataConverter<TestEvent, TestState, TestView> {
-  TestApplicationDataConverter({
+class TestDataConverter
+    extends DataConverter<TestEvent, TestState, TestView> {
+  TestDataConverter({
     required super.eventConverter,
     required super.stateConverter,
     required super.viewConverter,
