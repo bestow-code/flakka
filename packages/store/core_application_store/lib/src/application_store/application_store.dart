@@ -3,38 +3,49 @@ import 'dart:async';
 import 'package:core_application/core_application.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_journal/core_journal.dart';
-import 'package:rxdart/rxdart.dart';
 
 import '../../core_application_store.dart';
 
 class ApplicationStore<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements CoreApplicationStore<Event, State, View> {
   ApplicationStore({
-    required StreamSink<JournalEffect<CoreEvent, CoreState, CoreView>>
-        journalEffect,
-    required Stream<JournalUpdate<CoreEvent, CoreState, CoreView>>
-        journalUpdate,
-  })  : _journalUpdate = journalUpdate,
-        _journalEffect = journalEffect;
+    required StreamSink<JournalEffect<Event, State, View>> journalEffect,
+    required Stream<JournalUpdate<Event, State, View>> journalUpdate,
+  }) : _journalEffect = journalEffect {
+    journalUpdate.listen(_onJournalUpdate);
+    _journalEffect.add(JournalEffectNone<Event,State,View>());
+  }
+
+  final _applicationJournalEffect =
+      StreamController<ApplicationJournalEffect<State, View>>();
+
+  final _applicationRequestEffect =
+      StreamController<ApplicationRequestEffect<Event, State, View>>();
+
+  final _applicationJournalUpdate =
+      StreamController<ApplicationJournalUpdate<Event, State, View>>();
 
   final StreamSink<JournalEffect> _journalEffect;
-  final Stream<JournalUpdate> _journalUpdate;
-
-  final _effect = PublishSubject<ApplicationEffect<Event, State, View>>();
-  final _update = PublishSubject<ApplicationUpdate<Event, State, View>>();
 
   @override
-  StreamSink<ApplicationEffect<CoreEvent, CoreState, CoreView>> get effect =>
-      _effect;
+  StreamSink<ApplicationRequestEffect<Event, State, View>>
+      get applicationRequestEffect => _applicationRequestEffect.sink;
 
   @override
-  Stream<ApplicationUpdate<CoreEvent, CoreState, CoreView>> get update =>
-      _update;
+  StreamSink<ApplicationJournalEffect<State, View>>
+      get applicationJournalEffect => _applicationJournalEffect.sink;
+
+  @override
+  Stream<ApplicationJournalUpdate<Event, State, View>>
+      get applicationJournalUpdate => _applicationJournalUpdate.stream;
 
   @override
   Future<InitialApplicationInstanceData<CoreState, CoreView>> initialize(
       InitialApplicationProps Function() ifEmpty) {
-    // TODO: implement initialize
     throw UnimplementedError();
+  }
+
+  void _onJournalUpdate(JournalUpdate<Event, State, View> event) {
+
   }
 }

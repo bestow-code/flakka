@@ -13,32 +13,37 @@ import 'package:test/test.dart';
 
 void main() {
   group('Application', () {
-    late ReplaySubject<ApplicationEffect<TestEvent, TestState, TestView>>
-        effect;
-    late StreamController<ApplicationUpdate<TestEvent, TestState, TestView>>
+    late ReplaySubject<ApplicationRequestEffect<TestEvent, TestState, TestView>>
+        requestEffect;
+    late ReplaySubject<ApplicationJournalEffect<TestState, TestView>>
+        journalEffect;
+    late StreamController<ApplicationJournalUpdate<TestEvent, TestState, TestView>>
         update;
     final eventHandler = StateViewEventHandler<TestEvent, TestState, TestView>(
-        state: (state, event) => TestState(state.value + event.value),
-        view: (view, event) => TestView(view.value * event.value),);
+      state: (state, event) => TestState(state.value + event.value),
+      view: (view, event) => TestView(view.value * event.value),
+    );
     setUp(() {
-      effect = ReplaySubject();
+      requestEffect = ReplaySubject();
+      journalEffect = ReplaySubject();
       update = StreamController();
     });
-    final ref0 = Ref('ref0');
+    // final ref0 = Ref('ref0');
     final ref1 = Ref('ref1');
     final state0 = TestApplicationState(
-      ref: ref0,
+      // ref: ref0,
       stateView: (state: TestState(0), view: TestView(1)),
     );
     final t1 = DateTime.fromMillisecondsSinceEpoch(1);
     group('Request', () {
       group('Persist', () {
         blocTest<TestApplication, TestApplicationState>(
-          'updates state',
+          'Emits ApplicationRequestEffect',
           build: () => TestApplication(
             state0,
-            effect: effect,
-            update: update.stream,
+            requestEffect: requestEffect,
+            journalEffect: journalEffect,
+            journalUpdate: update.stream,
             eventHandler: eventHandler,
           ),
           act: (application) {
@@ -52,21 +57,15 @@ void main() {
           },
           expect: () => [
             TestApplicationState(
-              ref: ref1,
               stateView: (state: TestState(2), view: TestView(2)),
             ),
           ],
           verify: (application) {
             expect(
-              effect.values.singleOrNull,
-              ApplicationEffect.request(
-                ApplicationRequestEffect<TestEvent, TestState,
-                    TestView>.persist(
-                  ref: ref1,
-                  parent: ref0,
-                  event: TestEvent(2),
-                  createdAt: t1,
-                ),
+              requestEffect.values.singleOrNull,
+              ApplicationRequestEffect<TestEvent, TestState, TestView>.persist(
+                event: TestEvent(2),
+                stateView: (state: TestState(2), view: TestView(2)),
               ),
             );
           },

@@ -23,6 +23,7 @@ dev_dependencies:
   bloc_test:
   build_runner:
   core_data_test:
+  core_application_test:
   freezed: ^2.3.5
   json_serializable: ^6.7.0
   test: ^1.21.0

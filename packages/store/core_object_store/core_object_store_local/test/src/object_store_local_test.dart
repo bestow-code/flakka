@@ -5,49 +5,70 @@ import 'dart:async';
 
 import 'package:core_object/core_object.dart';
 import 'package:core_object_store_local/core_object_store_local.dart';
-import 'package:get_it/get_it.dart';
+import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'configure.dart';
+class MockPersistenceLocalAdapter extends Mock
+    implements CorePersistenceLocalAdapter {}
 
 void main() {
-  configureDependencies();
-
   group('ObjectStoreLocal', () {
-    // late ObjectStoreLocalFactoryProvider provider;
-    // late ObjectStoreLocalFactory factory;
-    late ObjectStoreLocal store;
+    late ObjectStoreLocal objectStoreLocal;
+
+    late MockPersistenceLocalAdapter localAdapter;
+
+    setUp(() {
+      localAdapter = MockPersistenceLocalAdapter();
+    });
     Future<void> Function() storeInitializer(
       String path,
       String persistenceId,
     ) =>
         () async {
-          // provider = GetIt.instance.get<ObjectStoreLocalFactoryProvider>();
-          // factory = provider.getFactory(persistenceId);
           // store = await factory.getInstance(path);
         };
+    const ref0 = 'ref0';
+    const ref1 = 'ref1';
 
-    group('Initialization', () {
-      setUp(storeInitializer('1', '1'));
-      group('New object', () {
-        test('success', () async {
-          InitialObjectInstanceProps ifEmpty() => (
-                ref: '0',
-                createdAt: 1,
-                sequenceNumber: 0,
-              );
-          // await store.i
-          // unawaited(expectLater(
-          //     store.update,
-          //     emits(ObjectUpdateLocal.initial(
-          //         data: (ref: '0', sequenceNumber: 0)))));
-        });
+    final t1 = DateTime.fromMillisecondsSinceEpoch(1);
+    group('DataEffect', () {
+      group('Append', () {
+        test('emits ObjectEffectLocalAppend and ObjectEffectRemoteAppend',
+            () async {});
       });
-      group('Existing object, New instance', () {});
-      group('Existing instance', () {
-        // success (ifEmpty == null)
-        // failure (ifEmpty - some value)
+    });
+  });
+  group('Initialization', () {
+    Future<void> Function() storeInitializer(
+      String path,
+      String persistenceId,
+    ) =>
+        () async {
+          // store = await factory.getInstance(path);
+        };
+    setUp(storeInitializer('1', '1'));
+    group('New object', () {
+      test('success', () async {
+        InitialObjectProps ifEmpty() => (
+              ref: '0',
+              createdAt: 1,
+            );
+        // unawaited(
+        //   expectLater(
+        //     store.update,
+        //     emits(
+        //       ObjectUpdate.initial(data: (ref: '0', sequenceNumber: 0)),
+        //     ),
+        //   ),
+        // );
+        // store.effect.add(ObjectEffect.initialize(ifEmpty: ifEmpty));
       });
+    });
+    group('Existing object, New instance', () {});
+    group('Existing instance', () {
+      // success (ifEmpty == null)
+      // failure (ifEmpty - some value)
     });
   });
 }

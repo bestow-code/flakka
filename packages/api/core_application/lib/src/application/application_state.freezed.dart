@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApplicationState<State extends CoreState, View extends CoreView> {
-  Ref get ref =>
-      throw _privateConstructorUsedError; // required Ref? lastPublish,
+// required Ref ref,
+// required Ref? lastPublish,
   ({State state, View view}) get stateView =>
       throw _privateConstructorUsedError;
 
@@ -34,9 +34,7 @@ abstract class $ApplicationStateCopyWith<State extends CoreState,
       _$ApplicationStateCopyWithImpl<State, View, $Res,
           ApplicationState<State, View>>;
   @useResult
-  $Res call({Ref ref, ({State state, View view}) stateView});
-
-  $RefCopyWith<$Res> get ref;
+  $Res call({({State state, View view}) stateView});
 }
 
 /// @nodoc
@@ -53,27 +51,14 @@ class _$ApplicationStateCopyWithImpl<State extends CoreState,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
     Object? stateView = null,
   }) {
     return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
               as ({State state, View view}),
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
   }
 }
 
@@ -87,10 +72,7 @@ abstract class _$$_ApplicationStateCopyWith<
       __$$_ApplicationStateCopyWithImpl<State, View, $Res>;
   @override
   @useResult
-  $Res call({Ref ref, ({State state, View view}) stateView});
-
-  @override
-  $RefCopyWith<$Res> get ref;
+  $Res call({({State state, View view}) stateView});
 }
 
 /// @nodoc
@@ -106,14 +88,9 @@ class __$$_ApplicationStateCopyWithImpl<State extends CoreState,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
     Object? stateView = null,
   }) {
     return _then(_$_ApplicationState<State, View>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
@@ -126,17 +103,16 @@ class __$$_ApplicationStateCopyWithImpl<State extends CoreState,
 
 class _$_ApplicationState<State extends CoreState, View extends CoreView>
     implements _ApplicationState<State, View> {
-  _$_ApplicationState({required this.ref, required this.stateView});
+  _$_ApplicationState({required this.stateView});
 
-  @override
-  final Ref ref;
+// required Ref ref,
 // required Ref? lastPublish,
   @override
   final ({State state, View view}) stateView;
 
   @override
   String toString() {
-    return 'ApplicationState<$State, $View>(ref: $ref, stateView: $stateView)';
+    return 'ApplicationState<$State, $View>(stateView: $stateView)';
   }
 
   @override
@@ -144,13 +120,12 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplicationState<State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, stateView);
+  int get hashCode => Object.hash(runtimeType, stateView);
 
   @JsonKey(ignore: true)
   @override
@@ -163,13 +138,11 @@ class _$_ApplicationState<State extends CoreState, View extends CoreView>
 abstract class _ApplicationState<State extends CoreState, View extends CoreView>
     implements ApplicationState<State, View> {
   factory _ApplicationState(
-          {required final Ref ref,
-          required final ({State state, View view}) stateView}) =
+          {required final ({State state, View view}) stateView}) =
       _$_ApplicationState<State, View>;
 
-  @override
-  Ref get ref;
-  @override // required Ref? lastPublish,
+  @override // required Ref ref,
+// required Ref? lastPublish,
   ({State state, View view}) get stateView;
   @override
   @JsonKey(ignore: true)

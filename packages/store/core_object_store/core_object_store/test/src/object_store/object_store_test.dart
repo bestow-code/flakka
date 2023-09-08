@@ -5,7 +5,7 @@ import 'dart:async';
 
 import 'package:core_object/core_object.dart';
 import 'package:core_object_store/core_object_store.dart';
-import 'package:get_it/get_it.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:test/test.dart';
 
 import '../configure.dart';
@@ -14,7 +14,18 @@ void main() {
   configureDependencies();
 
   group('ObjectStore', () {
-    late CoreObjectStore store;
+    late ObjectStore objectStore;
+
+    late ReplaySubject<ObjectEffectLocal> objectEffectLocal;
+    late ReplaySubject<ObjectEffectRemote> objectEffectRemote;
+
+    late StreamController<ObjectUpdate> objectUpdate;
+
+    setUp(() {
+      objectEffectLocal = ReplaySubject();
+      objectEffectRemote = ReplaySubject();
+      objectUpdate = StreamController();
+    });
     Future<void> Function() storeInitializer(
       String path,
       String persistenceId,
@@ -22,6 +33,37 @@ void main() {
         () async {
           // store = await factory.getInstance(path);
         };
+    const ref0 = 'ref0';
+    const ref1 = 'ref1';
+
+    final t1 = DateTime.fromMillisecondsSinceEpoch(1);
+    group('DataEffect', () {
+      group('Append', () {
+        test('emits ObjectEffectLocalAppend and ObjectEffectRemoteAppend',
+            () async {
+          expect(
+              objectEffectLocal.values.singleOrNull,
+              ObjectEffectLocal.append(
+                ref: ref1,
+                sequenceNumber: 1,
+                parent: [ref0],
+                event: {'value:': 2},
+                stateView: (state: {'value:': 2}, view: {'value:': 2}),
+                createdAt: 1,
+              ));
+          expect(
+              objectEffectRemote.values.singleOrNull,
+              ObjectEffectRemote.append(
+                ref: ref1,
+                sequenceNumber: 1,
+                parent: [ref0],
+                event: {'value:': 2},
+                stateView: (state: {'value:': 2}, view: {'value:': 2}),
+                createdAt: 1,
+              ));
+        });
+      });
+    });
 
     group('Initialization', () {
       setUp(storeInitializer('1', '1'));

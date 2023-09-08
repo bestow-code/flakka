@@ -12,12 +12,15 @@ class Application<Event extends CoreEvent, State extends CoreState,
   Application(
     super.initialState, {
     required StateViewEventHandler<Event, State, View> eventHandler,
-    required StreamSink<ApplicationEffect<Event, State, View>> effect,
-    required Stream<ApplicationUpdate<Event, State, View>> update,
-  })  : _eventHandler = eventHandler,
-        _effect = effect,
-        _update = update {
-    _update.listen(_onUpdate);
+    required StreamSink<ApplicationJournalEffect<State, View>> journalEffect,
+    required StreamSink<ApplicationRequestEffect<Event, State, View>>
+        requestEffect,
+    required Stream<ApplicationJournalUpdate<Event, State, View>> journalUpdate,
+  })  : _journalEffect = journalEffect,
+        _eventHandler = eventHandler,
+        _requestEffect = requestEffect,
+        _journalUpdate = journalUpdate {
+    _journalUpdate.listen(_onUpdate);
     _request.stream.listen(_handleRequest);
   }
 
@@ -30,28 +33,23 @@ class Application<Event extends CoreEvent, State extends CoreState,
   @override
   StateStreamable<View> get view => throw UnimplementedError();
 
-  final StreamSink<ApplicationEffect<Event, State, View>> _effect;
-  final Stream<ApplicationUpdate<Event, State, View>> _update;
+  final StreamSink<ApplicationRequestEffect<Event, State, View>> _requestEffect;
+  final StreamSink<ApplicationJournalEffect<State, View>> _journalEffect;
+  final Stream<ApplicationJournalUpdate<Event, State, View>> _journalUpdate;
 
-  void _onUpdate(ApplicationUpdate<Event, State, View> update) {}
+  void _onUpdate(ApplicationJournalUpdate<Event, State, View> update) {}
 
   void _handleRequest(Request<State, Event> request) {
     request.handler(state.stateView.state).map(
           persist: (persist) {
-            _effect.add(
-              ApplicationEffect.request(
-                ApplicationRequestEffect.persist(
-                  ref: request.ref,
-                  parent: state.ref,
-                  event: persist.event,
-                  createdAt: request.createdAt,
-                ),
-              ),
+            final next = _eventHandler.apply(persist.event, state.stateView);
+            _requestEffect.add(
+              ApplicationRequestEffect.persist(
+                  event: persist.event, stateView: next),
             );
             emit(
               ApplicationState(
-                ref: request.ref,
-                stateView: _eventHandler.apply(persist.event, state.stateView),
+                stateView: next,
               ),
             );
           },

@@ -6,7 +6,12 @@ import '../../core_application.dart';
 
 abstract interface class ApplicationIO<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
-  StreamSink<ApplicationEffect<Event,State,View>> get effect;
+  StreamSink<ApplicationJournalEffect<State, View>>
+      get applicationJournalEffect;
 
-  Stream<ApplicationUpdate<Event,State,View>> get update;
+  StreamSink<ApplicationRequestEffect<Event, State, View>>
+      get applicationRequestEffect;
+
+  Stream<ApplicationJournalUpdate<Event, State, View>>
+      get applicationJournalUpdate;
 }

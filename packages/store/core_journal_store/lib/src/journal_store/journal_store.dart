@@ -17,14 +17,14 @@ class JournalStore<Event extends CoreEvent, State extends CoreState,
   final StreamSink<DataEffect> _dataEffect;
   final Stream<DataUpdate> _dataUpdate;
 
-  final _effect = PublishSubject<JournalEffect<Event, State, View>>();
-  final _update = PublishSubject<JournalUpdate<Event, State, View>>();
+  final _journalEffect = PublishSubject<JournalEffect<Event, State, View>>();
+  final _journalUpdate = PublishSubject<JournalUpdate<Event, State, View>>();
 
   @override
-  StreamSink<JournalEffect<Event, State, View>> get effect => _effect;
+  StreamSink<JournalEffect<Event, State, View>> get effect => _journalEffect;
 
   @override
-  Stream<JournalUpdate<Event, State, View>> get update => _update;
+  Stream<JournalUpdate<Event, State, View>> get update => _journalUpdate;
 
   @override
   Future<InitialJournalInstanceData> initialize(

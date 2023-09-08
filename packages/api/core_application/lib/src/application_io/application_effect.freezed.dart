@@ -17,27 +17,36 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
+  Ref get parent => throw _privateConstructorUsedError;
   Object get effect => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ApplicationRequestEffect<Event, State, View> effect)
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)
         request,
-    required TResult Function(ApplicationJournalEffect effect) journal,
+    required TResult Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)
+        journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationRequestEffect<Event, State, View> effect)?
+    TResult? Function(
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)?
         request,
-    TResult? Function(ApplicationJournalEffect effect)? journal,
+    TResult? Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)?
+        journal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ApplicationRequestEffect<Event, State, View> effect)?
+    TResult Function(
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)?
         request,
-    TResult Function(ApplicationJournalEffect effect)? journal,
+    TResult Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)?
+        journal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +77,11 @@ mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ApplicationEffectCopyWith<Event, State, View,
+          ApplicationEffect<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -78,6 +92,10 @@ abstract class $ApplicationEffectCopyWith<Event extends CoreEvent,
           $Res Function(ApplicationEffect<Event, State, View>) then) =
       _$ApplicationEffectCopyWithImpl<Event, State, View, $Res,
           ApplicationEffect<Event, State, View>>;
+  @useResult
+  $Res call({Ref parent});
+
+  $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
@@ -94,18 +112,45 @@ class _$ApplicationEffectCopyWithImpl<
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? parent = null,
+  }) {
+    return _then(_value.copyWith(
+      parent: null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Ref,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
+      return _then(_value.copyWith(parent: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$ApplicationEffectRequestCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$ApplicationEffectRequestCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $ApplicationEffectCopyWith<Event, State, View, $Res> {
   factory _$$ApplicationEffectRequestCopyWith(
           _$ApplicationEffectRequest<Event, State, View> value,
           $Res Function(_$ApplicationEffectRequest<Event, State, View>) then) =
       __$$ApplicationEffectRequestCopyWithImpl<Event, State, View, $Res>;
+  @override
   @useResult
-  $Res call({ApplicationRequestEffect<Event, State, View> effect});
+  $Res call({Ref parent, ApplicationRequestEffect<Event, State, View> effect});
 
+  @override
+  $RefCopyWith<$Res> get parent;
   $ApplicationRequestEffectCopyWith<Event, State, View, $Res> get effect;
 }
 
@@ -123,10 +168,15 @@ class __$$ApplicationEffectRequestCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? parent = null,
     Object? effect = null,
   }) {
     return _then(_$ApplicationEffectRequest<Event, State, View>(
-      null == effect
+      parent: null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      effect: null == effect
           ? _value.effect
           : effect // ignore: cast_nullable_to_non_nullable
               as ApplicationRequestEffect<Event, State, View>,
@@ -148,14 +198,16 @@ class __$$ApplicationEffectRequestCopyWithImpl<Event extends CoreEvent,
 class _$ApplicationEffectRequest<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationEffectRequest<Event, State, View> {
-  _$ApplicationEffectRequest(this.effect);
+  _$ApplicationEffectRequest({required this.parent, required this.effect});
 
+  @override
+  final Ref parent;
   @override
   final ApplicationRequestEffect<Event, State, View> effect;
 
   @override
   String toString() {
-    return 'ApplicationEffect<$Event, $State, $View>.request(effect: $effect)';
+    return 'ApplicationEffect<$Event, $State, $View>.request(parent: $parent, effect: $effect)';
   }
 
   @override
@@ -163,11 +215,12 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationEffectRequest<Event, State, View> &&
+            (identical(other.parent, parent) || other.parent == parent) &&
             (identical(other.effect, effect) || other.effect == effect));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, effect);
+  int get hashCode => Object.hash(runtimeType, parent, effect);
 
   @JsonKey(ignore: true)
   @override
@@ -184,33 +237,41 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ApplicationRequestEffect<Event, State, View> effect)
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)
         request,
-    required TResult Function(ApplicationJournalEffect effect) journal,
+    required TResult Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)
+        journal,
   }) {
-    return request(effect);
+    return request(parent, effect);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationRequestEffect<Event, State, View> effect)?
+    TResult? Function(
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)?
         request,
-    TResult? Function(ApplicationJournalEffect effect)? journal,
+    TResult? Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)?
+        journal,
   }) {
-    return request?.call(effect);
+    return request?.call(parent, effect);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ApplicationRequestEffect<Event, State, View> effect)?
+    TResult Function(
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)?
         request,
-    TResult Function(ApplicationJournalEffect effect)? journal,
+    TResult Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)?
+        journal,
     required TResult orElse(),
   }) {
     if (request != null) {
-      return request(effect);
+      return request(parent, effect);
     }
     return orElse();
   }
@@ -260,11 +321,15 @@ abstract class ApplicationEffectRequest<
     State extends CoreState,
     View extends CoreView> implements ApplicationEffect<Event, State, View> {
   factory ApplicationEffectRequest(
-          final ApplicationRequestEffect<Event, State, View> effect) =
+          {required final Ref parent,
+          required final ApplicationRequestEffect<Event, State, View> effect}) =
       _$ApplicationEffectRequest<Event, State, View>;
 
   @override
+  Ref get parent;
+  @override
   ApplicationRequestEffect<Event, State, View> get effect;
+  @override
   @JsonKey(ignore: true)
   _$$ApplicationEffectRequestCopyWith<Event, State, View,
           _$ApplicationEffectRequest<Event, State, View>>
@@ -272,16 +337,22 @@ abstract class ApplicationEffectRequest<
 }
 
 /// @nodoc
-abstract class _$$ApplicationEffectJournalCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$ApplicationEffectJournalCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $ApplicationEffectCopyWith<Event, State, View, $Res> {
   factory _$$ApplicationEffectJournalCopyWith(
           _$ApplicationEffectJournal<Event, State, View> value,
           $Res Function(_$ApplicationEffectJournal<Event, State, View>) then) =
       __$$ApplicationEffectJournalCopyWithImpl<Event, State, View, $Res>;
+  @override
   @useResult
-  $Res call({ApplicationJournalEffect effect});
+  $Res call({Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect});
 
-  $ApplicationJournalEffectCopyWith<$Res> get effect;
+  @override
+  $RefCopyWith<$Res> get parent;
+  $ApplicationJournalEffectCopyWith<CoreState, CoreView, $Res> get effect;
 }
 
 /// @nodoc
@@ -298,20 +369,26 @@ class __$$ApplicationEffectJournalCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? parent = null,
     Object? effect = null,
   }) {
     return _then(_$ApplicationEffectJournal<Event, State, View>(
+      parent: null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Ref,
       effect: null == effect
           ? _value.effect
           : effect // ignore: cast_nullable_to_non_nullable
-              as ApplicationJournalEffect,
+              as ApplicationJournalEffect<CoreState, CoreView>,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ApplicationJournalEffectCopyWith<$Res> get effect {
-    return $ApplicationJournalEffectCopyWith<$Res>(_value.effect, (value) {
+  $ApplicationJournalEffectCopyWith<CoreState, CoreView, $Res> get effect {
+    return $ApplicationJournalEffectCopyWith<CoreState, CoreView, $Res>(
+        _value.effect, (value) {
       return _then(_value.copyWith(effect: value));
     });
   }
@@ -322,14 +399,16 @@ class __$$ApplicationEffectJournalCopyWithImpl<Event extends CoreEvent,
 class _$ApplicationEffectJournal<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationEffectJournal<Event, State, View> {
-  _$ApplicationEffectJournal({required this.effect});
+  _$ApplicationEffectJournal({required this.parent, required this.effect});
 
   @override
-  final ApplicationJournalEffect effect;
+  final Ref parent;
+  @override
+  final ApplicationJournalEffect<CoreState, CoreView> effect;
 
   @override
   String toString() {
-    return 'ApplicationEffect<$Event, $State, $View>.journal(effect: $effect)';
+    return 'ApplicationEffect<$Event, $State, $View>.journal(parent: $parent, effect: $effect)';
   }
 
   @override
@@ -337,11 +416,12 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationEffectJournal<Event, State, View> &&
+            (identical(other.parent, parent) || other.parent == parent) &&
             (identical(other.effect, effect) || other.effect == effect));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, effect);
+  int get hashCode => Object.hash(runtimeType, parent, effect);
 
   @JsonKey(ignore: true)
   @override
@@ -358,33 +438,41 @@ class _$ApplicationEffectJournal<Event extends CoreEvent,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            ApplicationRequestEffect<Event, State, View> effect)
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)
         request,
-    required TResult Function(ApplicationJournalEffect effect) journal,
+    required TResult Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)
+        journal,
   }) {
-    return journal(effect);
+    return journal(parent, effect);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationRequestEffect<Event, State, View> effect)?
+    TResult? Function(
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)?
         request,
-    TResult? Function(ApplicationJournalEffect effect)? journal,
+    TResult? Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)?
+        journal,
   }) {
-    return journal?.call(effect);
+    return journal?.call(parent, effect);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ApplicationRequestEffect<Event, State, View> effect)?
+    TResult Function(
+            Ref parent, ApplicationRequestEffect<Event, State, View> effect)?
         request,
-    TResult Function(ApplicationJournalEffect effect)? journal,
+    TResult Function(
+            Ref parent, ApplicationJournalEffect<CoreState, CoreView> effect)?
+        journal,
     required TResult orElse(),
   }) {
     if (journal != null) {
-      return journal(effect);
+      return journal(parent, effect);
     }
     return orElse();
   }
@@ -434,11 +522,15 @@ abstract class ApplicationEffectJournal<
     State extends CoreState,
     View extends CoreView> implements ApplicationEffect<Event, State, View> {
   factory ApplicationEffectJournal(
-          {required final ApplicationJournalEffect effect}) =
-      _$ApplicationEffectJournal<Event, State, View>;
+      {required final Ref parent,
+      required final ApplicationJournalEffect<CoreState, CoreView>
+          effect}) = _$ApplicationEffectJournal<Event, State, View>;
 
   @override
-  ApplicationJournalEffect get effect;
+  Ref get parent;
+  @override
+  ApplicationJournalEffect<CoreState, CoreView> get effect;
+  @override
   @JsonKey(ignore: true)
   _$$ApplicationEffectJournalCopyWith<Event, State, View,
           _$ApplicationEffectJournal<Event, State, View>>
@@ -448,29 +540,25 @@ abstract class ApplicationEffectJournal<
 /// @nodoc
 mixin _$ApplicationRequestEffect<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
-  Ref get ref => throw _privateConstructorUsedError;
-  Ref get parent => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref, Ref parent, Event event, DateTime createdAt)
+    required TResult Function(Event event, ({State state, View view}) stateView)
         persist,
-    required TResult Function(Ref ref, Ref parent, DateTime createdAt) none,
+    required TResult Function() none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Ref parent, Event event, DateTime createdAt)?
+    TResult? Function(Event event, ({State state, View view}) stateView)?
         persist,
-    TResult? Function(Ref ref, Ref parent, DateTime createdAt)? none,
+    TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Ref parent, Event event, DateTime createdAt)?
+    TResult Function(Event event, ({State state, View view}) stateView)?
         persist,
-    TResult Function(Ref ref, Ref parent, DateTime createdAt)? none,
+    TResult Function()? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -502,11 +590,6 @@ mixin _$ApplicationRequestEffect<Event extends CoreEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ApplicationRequestEffectCopyWith<Event, State, View,
-          ApplicationRequestEffect<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -517,11 +600,6 @@ abstract class $ApplicationRequestEffectCopyWith<Event extends CoreEvent,
           $Res Function(ApplicationRequestEffect<Event, State, View>) then) =
       _$ApplicationRequestEffectCopyWithImpl<Event, State, View, $Res,
           ApplicationRequestEffect<Event, State, View>>;
-  @useResult
-  $Res call({Ref ref, Ref parent, DateTime createdAt});
-
-  $RefCopyWith<$Res> get ref;
-  $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
@@ -538,67 +616,21 @@ class _$ApplicationRequestEffectCopyWithImpl<
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? parent = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get parent {
-    return $RefCopyWith<$Res>(_value.parent, (value) {
-      return _then(_value.copyWith(parent: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
 abstract class _$$ApplicationRequestEffectPersistCopyWith<
-        Event extends CoreEvent,
-        State extends CoreState,
-        View extends CoreView,
-        $Res>
-    implements $ApplicationRequestEffectCopyWith<Event, State, View, $Res> {
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> {
   factory _$$ApplicationRequestEffectPersistCopyWith(
           _$ApplicationRequestEffectPersist<Event, State, View> value,
           $Res Function(_$ApplicationRequestEffectPersist<Event, State, View>)
               then) =
       __$$ApplicationRequestEffectPersistCopyWithImpl<Event, State, View, $Res>;
-  @override
   @useResult
-  $Res call({Ref ref, Ref parent, Event event, DateTime createdAt});
-
-  @override
-  $RefCopyWith<$Res> get ref;
-  @override
-  $RefCopyWith<$Res> get parent;
+  $Res call({Event event, ({State state, View view}) stateView});
 }
 
 /// @nodoc
@@ -617,28 +649,18 @@ class __$$ApplicationRequestEffectPersistCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? parent = null,
     Object? event = null,
-    Object? createdAt = null,
+    Object? stateView = null,
   }) {
     return _then(_$ApplicationRequestEffectPersist<Event, State, View>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as Ref,
       event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Event,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
     ));
   }
 }
@@ -649,23 +671,16 @@ class _$ApplicationRequestEffectPersist<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationRequestEffectPersist<Event, State, View> {
   _$ApplicationRequestEffectPersist(
-      {required this.ref,
-      required this.parent,
-      required this.event,
-      required this.createdAt});
+      {required this.event, required this.stateView});
 
-  @override
-  final Ref ref;
-  @override
-  final Ref parent;
   @override
   final Event event;
   @override
-  final DateTime createdAt;
+  final ({State state, View view}) stateView;
 
   @override
   String toString() {
-    return 'ApplicationRequestEffect<$Event, $State, $View>.persist(ref: $ref, parent: $parent, event: $event, createdAt: $createdAt)';
+    return 'ApplicationRequestEffect<$Event, $State, $View>.persist(event: $event, stateView: $stateView)';
   }
 
   @override
@@ -673,16 +688,14 @@ class _$ApplicationRequestEffectPersist<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationRequestEffectPersist<Event, State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.parent, parent) || other.parent == parent) &&
             const DeepCollectionEquality().equals(other.event, event) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, parent,
-      const DeepCollectionEquality().hash(event), createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(event), stateView);
 
   @JsonKey(ignore: true)
   @override
@@ -699,34 +712,33 @@ class _$ApplicationRequestEffectPersist<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref, Ref parent, Event event, DateTime createdAt)
+    required TResult Function(Event event, ({State state, View view}) stateView)
         persist,
-    required TResult Function(Ref ref, Ref parent, DateTime createdAt) none,
+    required TResult Function() none,
   }) {
-    return persist(ref, parent, event, createdAt);
+    return persist(event, stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Ref parent, Event event, DateTime createdAt)?
+    TResult? Function(Event event, ({State state, View view}) stateView)?
         persist,
-    TResult? Function(Ref ref, Ref parent, DateTime createdAt)? none,
+    TResult? Function()? none,
   }) {
-    return persist?.call(ref, parent, event, createdAt);
+    return persist?.call(event, stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Ref parent, Event event, DateTime createdAt)?
+    TResult Function(Event event, ({State state, View view}) stateView)?
         persist,
-    TResult Function(Ref ref, Ref parent, DateTime createdAt)? none,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (persist != null) {
-      return persist(ref, parent, event, createdAt);
+      return persist(event, stateView);
     }
     return orElse();
   }
@@ -776,20 +788,12 @@ abstract class ApplicationRequestEffectPersist<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationRequestEffect<Event, State, View> {
   factory ApplicationRequestEffectPersist(
-          {required final Ref ref,
-          required final Ref parent,
-          required final Event event,
-          required final DateTime createdAt}) =
+          {required final Event event,
+          required final ({State state, View view}) stateView}) =
       _$ApplicationRequestEffectPersist<Event, State, View>;
 
-  @override
-  Ref get ref;
-  @override
-  Ref get parent;
   Event get event;
-  @override
-  DateTime get createdAt;
-  @override
+  ({State state, View view}) get stateView;
   @JsonKey(ignore: true)
   _$$ApplicationRequestEffectPersistCopyWith<Event, State, View,
           _$ApplicationRequestEffectPersist<Event, State, View>>
@@ -798,21 +802,12 @@ abstract class ApplicationRequestEffectPersist<Event extends CoreEvent,
 
 /// @nodoc
 abstract class _$$ApplicationRequestEffectNoneCopyWith<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    implements $ApplicationRequestEffectCopyWith<Event, State, View, $Res> {
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$ApplicationRequestEffectNoneCopyWith(
           _$ApplicationRequestEffectNone<Event, State, View> value,
           $Res Function(_$ApplicationRequestEffectNone<Event, State, View>)
               then) =
       __$$ApplicationRequestEffectNoneCopyWithImpl<Event, State, View, $Res>;
-  @override
-  @useResult
-  $Res call({Ref ref, Ref parent, DateTime createdAt});
-
-  @override
-  $RefCopyWith<$Res> get ref;
-  @override
-  $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
@@ -826,29 +821,6 @@ class __$$ApplicationRequestEffectNoneCopyWithImpl<Event extends CoreEvent,
       _$ApplicationRequestEffectNone<Event, State, View> _value,
       $Res Function(_$ApplicationRequestEffectNone<Event, State, View>) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? parent = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_$ApplicationRequestEffectNone<Event, State, View>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
 }
 
 /// @nodoc
@@ -856,77 +828,53 @@ class __$$ApplicationRequestEffectNoneCopyWithImpl<Event extends CoreEvent,
 class _$ApplicationRequestEffectNone<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationRequestEffectNone<Event, State, View> {
-  _$ApplicationRequestEffectNone(
-      {required this.ref, required this.parent, required this.createdAt});
-
-  @override
-  final Ref ref;
-  @override
-  final Ref parent;
-  @override
-  final DateTime createdAt;
+  _$ApplicationRequestEffectNone();
 
   @override
   String toString() {
-    return 'ApplicationRequestEffect<$Event, $State, $View>.none(ref: $ref, parent: $parent, createdAt: $createdAt)';
+    return 'ApplicationRequestEffect<$Event, $State, $View>.none()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationRequestEffectNone<Event, State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.parent, parent) || other.parent == parent) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            other is _$ApplicationRequestEffectNone<Event, State, View>);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, parent, createdAt);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplicationRequestEffectNoneCopyWith<Event, State, View,
-          _$ApplicationRequestEffectNone<Event, State, View>>
-      get copyWith => __$$ApplicationRequestEffectNoneCopyWithImpl<
-          Event,
-          State,
-          View,
-          _$ApplicationRequestEffectNone<Event, State, View>>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref, Ref parent, Event event, DateTime createdAt)
+    required TResult Function(Event event, ({State state, View view}) stateView)
         persist,
-    required TResult Function(Ref ref, Ref parent, DateTime createdAt) none,
+    required TResult Function() none,
   }) {
-    return none(ref, parent, createdAt);
+    return none();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Ref parent, Event event, DateTime createdAt)?
+    TResult? Function(Event event, ({State state, View view}) stateView)?
         persist,
-    TResult? Function(Ref ref, Ref parent, DateTime createdAt)? none,
+    TResult? Function()? none,
   }) {
-    return none?.call(ref, parent, createdAt);
+    return none?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Ref parent, Event event, DateTime createdAt)?
+    TResult Function(Event event, ({State state, View view}) stateView)?
         persist,
-    TResult Function(Ref ref, Ref parent, DateTime createdAt)? none,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (none != null) {
-      return none(ref, parent, createdAt);
+      return none();
     }
     return orElse();
   }
@@ -975,91 +923,92 @@ class _$ApplicationRequestEffectNone<Event extends CoreEvent,
 abstract class ApplicationRequestEffectNone<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationRequestEffect<Event, State, View> {
-  factory ApplicationRequestEffectNone(
-          {required final Ref ref,
-          required final Ref parent,
-          required final DateTime createdAt}) =
+  factory ApplicationRequestEffectNone() =
       _$ApplicationRequestEffectNone<Event, State, View>;
-
-  @override
-  Ref get ref;
-  @override
-  Ref get parent;
-  @override
-  DateTime get createdAt;
-  @override
-  @JsonKey(ignore: true)
-  _$$ApplicationRequestEffectNoneCopyWith<Event, State, View,
-          _$ApplicationRequestEffectNone<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ApplicationJournalEffect {
+mixin _$ApplicationJournalEffect<State extends CoreState,
+    View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref) forward,
-    required TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)
-        merge,
+    required TResult Function(({State state, View view}) stateView) forward,
+    required TResult Function(({State state, View view}) stateView) merge,
     required TResult Function() none,
-    required TResult Function(Ref ref) publish,
+    required TResult Function() publish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref)? forward,
-    TResult? Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult? Function(({State state, View view}) stateView)? forward,
+    TResult? Function(({State state, View view}) stateView)? merge,
     TResult? Function()? none,
-    TResult? Function(Ref ref)? publish,
+    TResult? Function()? publish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref)? forward,
-    TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult Function(({State state, View view}) stateView)? forward,
+    TResult Function(({State state, View view}) stateView)? merge,
     TResult Function()? none,
-    TResult Function(Ref ref)? publish,
+    TResult Function()? publish,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationJournalEffectForward value) forward,
-    required TResult Function(ApplicationJournalEffectMerge value) merge,
-    required TResult Function(ApplicationJournalEffectNone value) none,
-    required TResult Function(ApplicationJournalEffectPublish value) publish,
+    required TResult Function(
+            ApplicationJournalEffectForward<State, View> value)
+        forward,
+    required TResult Function(ApplicationJournalEffectMerge<State, View> value)
+        merge,
+    required TResult Function(ApplicationJournalEffectNone<State, View> value)
+        none,
+    required TResult Function(
+            ApplicationJournalEffectPublish<State, View> value)
+        publish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationJournalEffectForward value)? forward,
-    TResult? Function(ApplicationJournalEffectMerge value)? merge,
-    TResult? Function(ApplicationJournalEffectNone value)? none,
-    TResult? Function(ApplicationJournalEffectPublish value)? publish,
+    TResult? Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult? Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult? Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult? Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationJournalEffectForward value)? forward,
-    TResult Function(ApplicationJournalEffectMerge value)? merge,
-    TResult Function(ApplicationJournalEffectNone value)? none,
-    TResult Function(ApplicationJournalEffectPublish value)? publish,
+    TResult Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApplicationJournalEffectCopyWith<$Res> {
-  factory $ApplicationJournalEffectCopyWith(ApplicationJournalEffect value,
-          $Res Function(ApplicationJournalEffect) then) =
-      _$ApplicationJournalEffectCopyWithImpl<$Res, ApplicationJournalEffect>;
+abstract class $ApplicationJournalEffectCopyWith<State extends CoreState,
+    View extends CoreView, $Res> {
+  factory $ApplicationJournalEffectCopyWith(
+          ApplicationJournalEffect<State, View> value,
+          $Res Function(ApplicationJournalEffect<State, View>) then) =
+      _$ApplicationJournalEffectCopyWithImpl<State, View, $Res,
+          ApplicationJournalEffect<State, View>>;
 }
 
 /// @nodoc
-class _$ApplicationJournalEffectCopyWithImpl<$Res,
-        $Val extends ApplicationJournalEffect>
-    implements $ApplicationJournalEffectCopyWith<$Res> {
+class _$ApplicationJournalEffectCopyWithImpl<
+        State extends CoreState,
+        View extends CoreView,
+        $Res,
+        $Val extends ApplicationJournalEffect<State, View>>
+    implements $ApplicationJournalEffectCopyWith<State, View, $Res> {
   _$ApplicationJournalEffectCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1069,115 +1018,111 @@ class _$ApplicationJournalEffectCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ApplicationJournalEffectForwardCopyWith<$Res> {
+abstract class _$$ApplicationJournalEffectForwardCopyWith<
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$ApplicationJournalEffectForwardCopyWith(
-          _$ApplicationJournalEffectForward value,
-          $Res Function(_$ApplicationJournalEffectForward) then) =
-      __$$ApplicationJournalEffectForwardCopyWithImpl<$Res>;
+          _$ApplicationJournalEffectForward<State, View> value,
+          $Res Function(_$ApplicationJournalEffectForward<State, View>) then) =
+      __$$ApplicationJournalEffectForwardCopyWithImpl<State, View, $Res>;
   @useResult
-  $Res call({Ref ref});
-
-  $RefCopyWith<$Res> get ref;
+  $Res call({({State state, View view}) stateView});
 }
 
 /// @nodoc
-class __$$ApplicationJournalEffectForwardCopyWithImpl<$Res>
-    extends _$ApplicationJournalEffectCopyWithImpl<$Res,
-        _$ApplicationJournalEffectForward>
-    implements _$$ApplicationJournalEffectForwardCopyWith<$Res> {
+class __$$ApplicationJournalEffectForwardCopyWithImpl<State extends CoreState,
+        View extends CoreView, $Res>
+    extends _$ApplicationJournalEffectCopyWithImpl<State, View, $Res,
+        _$ApplicationJournalEffectForward<State, View>>
+    implements _$$ApplicationJournalEffectForwardCopyWith<State, View, $Res> {
   __$$ApplicationJournalEffectForwardCopyWithImpl(
-      _$ApplicationJournalEffectForward _value,
-      $Res Function(_$ApplicationJournalEffectForward) _then)
+      _$ApplicationJournalEffectForward<State, View> _value,
+      $Res Function(_$ApplicationJournalEffectForward<State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
+    Object? stateView = null,
   }) {
-    return _then(_$ApplicationJournalEffectForward(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
+    return _then(_$ApplicationJournalEffectForward<State, View>(
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$ApplicationJournalEffectForward
-    implements ApplicationJournalEffectForward {
-  _$ApplicationJournalEffectForward({required this.ref});
+class _$ApplicationJournalEffectForward<State extends CoreState,
+        View extends CoreView>
+    implements ApplicationJournalEffectForward<State, View> {
+  _$ApplicationJournalEffectForward({required this.stateView});
 
   @override
-  final Ref ref;
+  final ({State state, View view}) stateView;
 
   @override
   String toString() {
-    return 'ApplicationJournalEffect.forward(ref: $ref)';
+    return 'ApplicationJournalEffect<$State, $View>.forward(stateView: $stateView)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationJournalEffectForward &&
-            (identical(other.ref, ref) || other.ref == ref));
+            other is _$ApplicationJournalEffectForward<State, View> &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref);
+  int get hashCode => Object.hash(runtimeType, stateView);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationJournalEffectForwardCopyWith<_$ApplicationJournalEffectForward>
+  _$$ApplicationJournalEffectForwardCopyWith<State, View,
+          _$ApplicationJournalEffectForward<State, View>>
       get copyWith => __$$ApplicationJournalEffectForwardCopyWithImpl<
-          _$ApplicationJournalEffectForward>(this, _$identity);
+          State,
+          View,
+          _$ApplicationJournalEffectForward<State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref) forward,
-    required TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)
-        merge,
+    required TResult Function(({State state, View view}) stateView) forward,
+    required TResult Function(({State state, View view}) stateView) merge,
     required TResult Function() none,
-    required TResult Function(Ref ref) publish,
+    required TResult Function() publish,
   }) {
-    return forward(ref);
+    return forward(stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref)? forward,
-    TResult? Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult? Function(({State state, View view}) stateView)? forward,
+    TResult? Function(({State state, View view}) stateView)? merge,
     TResult? Function()? none,
-    TResult? Function(Ref ref)? publish,
+    TResult? Function()? publish,
   }) {
-    return forward?.call(ref);
+    return forward?.call(stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref)? forward,
-    TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult Function(({State state, View view}) stateView)? forward,
+    TResult Function(({State state, View view}) stateView)? merge,
     TResult Function()? none,
-    TResult Function(Ref ref)? publish,
+    TResult Function()? publish,
     required TResult orElse(),
   }) {
     if (forward != null) {
-      return forward(ref);
+      return forward(stateView);
     }
     return orElse();
   }
@@ -1185,10 +1130,16 @@ class _$ApplicationJournalEffectForward
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationJournalEffectForward value) forward,
-    required TResult Function(ApplicationJournalEffectMerge value) merge,
-    required TResult Function(ApplicationJournalEffectNone value) none,
-    required TResult Function(ApplicationJournalEffectPublish value) publish,
+    required TResult Function(
+            ApplicationJournalEffectForward<State, View> value)
+        forward,
+    required TResult Function(ApplicationJournalEffectMerge<State, View> value)
+        merge,
+    required TResult Function(ApplicationJournalEffectNone<State, View> value)
+        none,
+    required TResult Function(
+            ApplicationJournalEffectPublish<State, View> value)
+        publish,
   }) {
     return forward(this);
   }
@@ -1196,10 +1147,12 @@ class _$ApplicationJournalEffectForward
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationJournalEffectForward value)? forward,
-    TResult? Function(ApplicationJournalEffectMerge value)? merge,
-    TResult? Function(ApplicationJournalEffectNone value)? none,
-    TResult? Function(ApplicationJournalEffectPublish value)? publish,
+    TResult? Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult? Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult? Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult? Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
   }) {
     return forward?.call(this);
   }
@@ -1207,10 +1160,12 @@ class _$ApplicationJournalEffectForward
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationJournalEffectForward value)? forward,
-    TResult Function(ApplicationJournalEffectMerge value)? merge,
-    TResult Function(ApplicationJournalEffectNone value)? none,
-    TResult Function(ApplicationJournalEffectPublish value)? publish,
+    TResult Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -1220,173 +1175,123 @@ class _$ApplicationJournalEffectForward
   }
 }
 
-abstract class ApplicationJournalEffectForward
-    implements ApplicationJournalEffect {
-  factory ApplicationJournalEffectForward({required final Ref ref}) =
-      _$ApplicationJournalEffectForward;
+abstract class ApplicationJournalEffectForward<State extends CoreState,
+    View extends CoreView> implements ApplicationJournalEffect<State, View> {
+  factory ApplicationJournalEffectForward(
+          {required final ({State state, View view}) stateView}) =
+      _$ApplicationJournalEffectForward<State, View>;
 
-  Ref get ref;
+  ({State state, View view}) get stateView;
   @JsonKey(ignore: true)
-  _$$ApplicationJournalEffectForwardCopyWith<_$ApplicationJournalEffectForward>
+  _$$ApplicationJournalEffectForwardCopyWith<State, View,
+          _$ApplicationJournalEffectForward<State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApplicationJournalEffectMergeCopyWith<$Res> {
+abstract class _$$ApplicationJournalEffectMergeCopyWith<State extends CoreState,
+    View extends CoreView, $Res> {
   factory _$$ApplicationJournalEffectMergeCopyWith(
-          _$ApplicationJournalEffectMerge value,
-          $Res Function(_$ApplicationJournalEffectMerge) then) =
-      __$$ApplicationJournalEffectMergeCopyWithImpl<$Res>;
+          _$ApplicationJournalEffectMerge<State, View> value,
+          $Res Function(_$ApplicationJournalEffectMerge<State, View>) then) =
+      __$$ApplicationJournalEffectMergeCopyWithImpl<State, View, $Res>;
   @useResult
-  $Res call({Ref ref, Ref parent, Ref main, DateTime createdAt});
-
-  $RefCopyWith<$Res> get ref;
-  $RefCopyWith<$Res> get parent;
-  $RefCopyWith<$Res> get main;
+  $Res call({({State state, View view}) stateView});
 }
 
 /// @nodoc
-class __$$ApplicationJournalEffectMergeCopyWithImpl<$Res>
-    extends _$ApplicationJournalEffectCopyWithImpl<$Res,
-        _$ApplicationJournalEffectMerge>
-    implements _$$ApplicationJournalEffectMergeCopyWith<$Res> {
+class __$$ApplicationJournalEffectMergeCopyWithImpl<State extends CoreState,
+        View extends CoreView, $Res>
+    extends _$ApplicationJournalEffectCopyWithImpl<State, View, $Res,
+        _$ApplicationJournalEffectMerge<State, View>>
+    implements _$$ApplicationJournalEffectMergeCopyWith<State, View, $Res> {
   __$$ApplicationJournalEffectMergeCopyWithImpl(
-      _$ApplicationJournalEffectMerge _value,
-      $Res Function(_$ApplicationJournalEffectMerge) _then)
+      _$ApplicationJournalEffectMerge<State, View> _value,
+      $Res Function(_$ApplicationJournalEffectMerge<State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? parent = null,
-    Object? main = null,
-    Object? createdAt = null,
+    Object? stateView = null,
   }) {
-    return _then(_$ApplicationJournalEffectMerge(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      main: null == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+    return _then(_$ApplicationJournalEffectMerge<State, View>(
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get parent {
-    return $RefCopyWith<$Res>(_value.parent, (value) {
-      return _then(_value.copyWith(parent: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get main {
-    return $RefCopyWith<$Res>(_value.main, (value) {
-      return _then(_value.copyWith(main: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$ApplicationJournalEffectMerge implements ApplicationJournalEffectMerge {
-  _$ApplicationJournalEffectMerge(
-      {required this.ref,
-      required this.parent,
-      required this.main,
-      required this.createdAt});
+class _$ApplicationJournalEffectMerge<State extends CoreState,
+        View extends CoreView>
+    implements ApplicationJournalEffectMerge<State, View> {
+  _$ApplicationJournalEffectMerge({required this.stateView});
 
   @override
-  final Ref ref;
-  @override
-  final Ref parent;
-  @override
-  final Ref main;
-  @override
-  final DateTime createdAt;
+  final ({State state, View view}) stateView;
 
   @override
   String toString() {
-    return 'ApplicationJournalEffect.merge(ref: $ref, parent: $parent, main: $main, createdAt: $createdAt)';
+    return 'ApplicationJournalEffect<$State, $View>.merge(stateView: $stateView)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationJournalEffectMerge &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.parent, parent) || other.parent == parent) &&
-            (identical(other.main, main) || other.main == main) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            other is _$ApplicationJournalEffectMerge<State, View> &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, parent, main, createdAt);
+  int get hashCode => Object.hash(runtimeType, stateView);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationJournalEffectMergeCopyWith<_$ApplicationJournalEffectMerge>
-      get copyWith => __$$ApplicationJournalEffectMergeCopyWithImpl<
-          _$ApplicationJournalEffectMerge>(this, _$identity);
+  _$$ApplicationJournalEffectMergeCopyWith<State, View,
+          _$ApplicationJournalEffectMerge<State, View>>
+      get copyWith => __$$ApplicationJournalEffectMergeCopyWithImpl<State, View,
+          _$ApplicationJournalEffectMerge<State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref) forward,
-    required TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)
-        merge,
+    required TResult Function(({State state, View view}) stateView) forward,
+    required TResult Function(({State state, View view}) stateView) merge,
     required TResult Function() none,
-    required TResult Function(Ref ref) publish,
+    required TResult Function() publish,
   }) {
-    return merge(ref, parent, main, createdAt);
+    return merge(stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref)? forward,
-    TResult? Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult? Function(({State state, View view}) stateView)? forward,
+    TResult? Function(({State state, View view}) stateView)? merge,
     TResult? Function()? none,
-    TResult? Function(Ref ref)? publish,
+    TResult? Function()? publish,
   }) {
-    return merge?.call(ref, parent, main, createdAt);
+    return merge?.call(stateView);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref)? forward,
-    TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult Function(({State state, View view}) stateView)? forward,
+    TResult Function(({State state, View view}) stateView)? merge,
     TResult Function()? none,
-    TResult Function(Ref ref)? publish,
+    TResult Function()? publish,
     required TResult orElse(),
   }) {
     if (merge != null) {
-      return merge(ref, parent, main, createdAt);
+      return merge(stateView);
     }
     return orElse();
   }
@@ -1394,10 +1299,16 @@ class _$ApplicationJournalEffectMerge implements ApplicationJournalEffectMerge {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationJournalEffectForward value) forward,
-    required TResult Function(ApplicationJournalEffectMerge value) merge,
-    required TResult Function(ApplicationJournalEffectNone value) none,
-    required TResult Function(ApplicationJournalEffectPublish value) publish,
+    required TResult Function(
+            ApplicationJournalEffectForward<State, View> value)
+        forward,
+    required TResult Function(ApplicationJournalEffectMerge<State, View> value)
+        merge,
+    required TResult Function(ApplicationJournalEffectNone<State, View> value)
+        none,
+    required TResult Function(
+            ApplicationJournalEffectPublish<State, View> value)
+        publish,
   }) {
     return merge(this);
   }
@@ -1405,10 +1316,12 @@ class _$ApplicationJournalEffectMerge implements ApplicationJournalEffectMerge {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationJournalEffectForward value)? forward,
-    TResult? Function(ApplicationJournalEffectMerge value)? merge,
-    TResult? Function(ApplicationJournalEffectNone value)? none,
-    TResult? Function(ApplicationJournalEffectPublish value)? publish,
+    TResult? Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult? Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult? Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult? Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
   }) {
     return merge?.call(this);
   }
@@ -1416,10 +1329,12 @@ class _$ApplicationJournalEffectMerge implements ApplicationJournalEffectMerge {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationJournalEffectForward value)? forward,
-    TResult Function(ApplicationJournalEffectMerge value)? merge,
-    TResult Function(ApplicationJournalEffectNone value)? none,
-    TResult Function(ApplicationJournalEffectPublish value)? publish,
+    TResult Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
     required TResult orElse(),
   }) {
     if (merge != null) {
@@ -1429,57 +1344,57 @@ class _$ApplicationJournalEffectMerge implements ApplicationJournalEffectMerge {
   }
 }
 
-abstract class ApplicationJournalEffectMerge
-    implements ApplicationJournalEffect {
+abstract class ApplicationJournalEffectMerge<State extends CoreState,
+    View extends CoreView> implements ApplicationJournalEffect<State, View> {
   factory ApplicationJournalEffectMerge(
-      {required final Ref ref,
-      required final Ref parent,
-      required final Ref main,
-      required final DateTime createdAt}) = _$ApplicationJournalEffectMerge;
+          {required final ({State state, View view}) stateView}) =
+      _$ApplicationJournalEffectMerge<State, View>;
 
-  Ref get ref;
-  Ref get parent;
-  Ref get main;
-  DateTime get createdAt;
+  ({State state, View view}) get stateView;
   @JsonKey(ignore: true)
-  _$$ApplicationJournalEffectMergeCopyWith<_$ApplicationJournalEffectMerge>
+  _$$ApplicationJournalEffectMergeCopyWith<State, View,
+          _$ApplicationJournalEffectMerge<State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApplicationJournalEffectNoneCopyWith<$Res> {
+abstract class _$$ApplicationJournalEffectNoneCopyWith<State extends CoreState,
+    View extends CoreView, $Res> {
   factory _$$ApplicationJournalEffectNoneCopyWith(
-          _$ApplicationJournalEffectNone value,
-          $Res Function(_$ApplicationJournalEffectNone) then) =
-      __$$ApplicationJournalEffectNoneCopyWithImpl<$Res>;
+          _$ApplicationJournalEffectNone<State, View> value,
+          $Res Function(_$ApplicationJournalEffectNone<State, View>) then) =
+      __$$ApplicationJournalEffectNoneCopyWithImpl<State, View, $Res>;
 }
 
 /// @nodoc
-class __$$ApplicationJournalEffectNoneCopyWithImpl<$Res>
-    extends _$ApplicationJournalEffectCopyWithImpl<$Res,
-        _$ApplicationJournalEffectNone>
-    implements _$$ApplicationJournalEffectNoneCopyWith<$Res> {
+class __$$ApplicationJournalEffectNoneCopyWithImpl<State extends CoreState,
+        View extends CoreView, $Res>
+    extends _$ApplicationJournalEffectCopyWithImpl<State, View, $Res,
+        _$ApplicationJournalEffectNone<State, View>>
+    implements _$$ApplicationJournalEffectNoneCopyWith<State, View, $Res> {
   __$$ApplicationJournalEffectNoneCopyWithImpl(
-      _$ApplicationJournalEffectNone _value,
-      $Res Function(_$ApplicationJournalEffectNone) _then)
+      _$ApplicationJournalEffectNone<State, View> _value,
+      $Res Function(_$ApplicationJournalEffectNone<State, View>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
+class _$ApplicationJournalEffectNone<State extends CoreState,
+        View extends CoreView>
+    implements ApplicationJournalEffectNone<State, View> {
   _$ApplicationJournalEffectNone();
 
   @override
   String toString() {
-    return 'ApplicationJournalEffect.none()';
+    return 'ApplicationJournalEffect<$State, $View>.none()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationJournalEffectNone);
+            other is _$ApplicationJournalEffectNone<State, View>);
   }
 
   @override
@@ -1488,11 +1403,10 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref) forward,
-    required TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)
-        merge,
+    required TResult Function(({State state, View view}) stateView) forward,
+    required TResult Function(({State state, View view}) stateView) merge,
     required TResult Function() none,
-    required TResult Function(Ref ref) publish,
+    required TResult Function() publish,
   }) {
     return none();
   }
@@ -1500,10 +1414,10 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref)? forward,
-    TResult? Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult? Function(({State state, View view}) stateView)? forward,
+    TResult? Function(({State state, View view}) stateView)? merge,
     TResult? Function()? none,
-    TResult? Function(Ref ref)? publish,
+    TResult? Function()? publish,
   }) {
     return none?.call();
   }
@@ -1511,10 +1425,10 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref)? forward,
-    TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult Function(({State state, View view}) stateView)? forward,
+    TResult Function(({State state, View view}) stateView)? merge,
     TResult Function()? none,
-    TResult Function(Ref ref)? publish,
+    TResult Function()? publish,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -1526,10 +1440,16 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationJournalEffectForward value) forward,
-    required TResult Function(ApplicationJournalEffectMerge value) merge,
-    required TResult Function(ApplicationJournalEffectNone value) none,
-    required TResult Function(ApplicationJournalEffectPublish value) publish,
+    required TResult Function(
+            ApplicationJournalEffectForward<State, View> value)
+        forward,
+    required TResult Function(ApplicationJournalEffectMerge<State, View> value)
+        merge,
+    required TResult Function(ApplicationJournalEffectNone<State, View> value)
+        none,
+    required TResult Function(
+            ApplicationJournalEffectPublish<State, View> value)
+        publish,
   }) {
     return none(this);
   }
@@ -1537,10 +1457,12 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationJournalEffectForward value)? forward,
-    TResult? Function(ApplicationJournalEffectMerge value)? merge,
-    TResult? Function(ApplicationJournalEffectNone value)? none,
-    TResult? Function(ApplicationJournalEffectPublish value)? publish,
+    TResult? Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult? Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult? Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult? Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
   }) {
     return none?.call(this);
   }
@@ -1548,10 +1470,12 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationJournalEffectForward value)? forward,
-    TResult Function(ApplicationJournalEffectMerge value)? merge,
-    TResult Function(ApplicationJournalEffectNone value)? none,
-    TResult Function(ApplicationJournalEffectPublish value)? publish,
+    TResult Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -1561,121 +1485,88 @@ class _$ApplicationJournalEffectNone implements ApplicationJournalEffectNone {
   }
 }
 
-abstract class ApplicationJournalEffectNone
-    implements ApplicationJournalEffect {
-  factory ApplicationJournalEffectNone() = _$ApplicationJournalEffectNone;
+abstract class ApplicationJournalEffectNone<State extends CoreState,
+    View extends CoreView> implements ApplicationJournalEffect<State, View> {
+  factory ApplicationJournalEffectNone() =
+      _$ApplicationJournalEffectNone<State, View>;
 }
 
 /// @nodoc
-abstract class _$$ApplicationJournalEffectPublishCopyWith<$Res> {
+abstract class _$$ApplicationJournalEffectPublishCopyWith<
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$ApplicationJournalEffectPublishCopyWith(
-          _$ApplicationJournalEffectPublish value,
-          $Res Function(_$ApplicationJournalEffectPublish) then) =
-      __$$ApplicationJournalEffectPublishCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Ref ref});
-
-  $RefCopyWith<$Res> get ref;
+          _$ApplicationJournalEffectPublish<State, View> value,
+          $Res Function(_$ApplicationJournalEffectPublish<State, View>) then) =
+      __$$ApplicationJournalEffectPublishCopyWithImpl<State, View, $Res>;
 }
 
 /// @nodoc
-class __$$ApplicationJournalEffectPublishCopyWithImpl<$Res>
-    extends _$ApplicationJournalEffectCopyWithImpl<$Res,
-        _$ApplicationJournalEffectPublish>
-    implements _$$ApplicationJournalEffectPublishCopyWith<$Res> {
+class __$$ApplicationJournalEffectPublishCopyWithImpl<State extends CoreState,
+        View extends CoreView, $Res>
+    extends _$ApplicationJournalEffectCopyWithImpl<State, View, $Res,
+        _$ApplicationJournalEffectPublish<State, View>>
+    implements _$$ApplicationJournalEffectPublishCopyWith<State, View, $Res> {
   __$$ApplicationJournalEffectPublishCopyWithImpl(
-      _$ApplicationJournalEffectPublish _value,
-      $Res Function(_$ApplicationJournalEffectPublish) _then)
+      _$ApplicationJournalEffectPublish<State, View> _value,
+      $Res Function(_$ApplicationJournalEffectPublish<State, View>) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-  }) {
-    return _then(_$ApplicationJournalEffectPublish(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$ApplicationJournalEffectPublish
-    implements ApplicationJournalEffectPublish {
-  _$ApplicationJournalEffectPublish({required this.ref});
-
-  @override
-  final Ref ref;
+class _$ApplicationJournalEffectPublish<State extends CoreState,
+        View extends CoreView>
+    implements ApplicationJournalEffectPublish<State, View> {
+  _$ApplicationJournalEffectPublish();
 
   @override
   String toString() {
-    return 'ApplicationJournalEffect.publish(ref: $ref)';
+    return 'ApplicationJournalEffect<$State, $View>.publish()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationJournalEffectPublish &&
-            (identical(other.ref, ref) || other.ref == ref));
+            other is _$ApplicationJournalEffectPublish<State, View>);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplicationJournalEffectPublishCopyWith<_$ApplicationJournalEffectPublish>
-      get copyWith => __$$ApplicationJournalEffectPublishCopyWithImpl<
-          _$ApplicationJournalEffectPublish>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref) forward,
-    required TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)
-        merge,
+    required TResult Function(({State state, View view}) stateView) forward,
+    required TResult Function(({State state, View view}) stateView) merge,
     required TResult Function() none,
-    required TResult Function(Ref ref) publish,
+    required TResult Function() publish,
   }) {
-    return publish(ref);
+    return publish();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref)? forward,
-    TResult? Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult? Function(({State state, View view}) stateView)? forward,
+    TResult? Function(({State state, View view}) stateView)? merge,
     TResult? Function()? none,
-    TResult? Function(Ref ref)? publish,
+    TResult? Function()? publish,
   }) {
-    return publish?.call(ref);
+    return publish?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref)? forward,
-    TResult Function(Ref ref, Ref parent, Ref main, DateTime createdAt)? merge,
+    TResult Function(({State state, View view}) stateView)? forward,
+    TResult Function(({State state, View view}) stateView)? merge,
     TResult Function()? none,
-    TResult Function(Ref ref)? publish,
+    TResult Function()? publish,
     required TResult orElse(),
   }) {
     if (publish != null) {
-      return publish(ref);
+      return publish();
     }
     return orElse();
   }
@@ -1683,10 +1574,16 @@ class _$ApplicationJournalEffectPublish
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationJournalEffectForward value) forward,
-    required TResult Function(ApplicationJournalEffectMerge value) merge,
-    required TResult Function(ApplicationJournalEffectNone value) none,
-    required TResult Function(ApplicationJournalEffectPublish value) publish,
+    required TResult Function(
+            ApplicationJournalEffectForward<State, View> value)
+        forward,
+    required TResult Function(ApplicationJournalEffectMerge<State, View> value)
+        merge,
+    required TResult Function(ApplicationJournalEffectNone<State, View> value)
+        none,
+    required TResult Function(
+            ApplicationJournalEffectPublish<State, View> value)
+        publish,
   }) {
     return publish(this);
   }
@@ -1694,10 +1591,12 @@ class _$ApplicationJournalEffectPublish
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationJournalEffectForward value)? forward,
-    TResult? Function(ApplicationJournalEffectMerge value)? merge,
-    TResult? Function(ApplicationJournalEffectNone value)? none,
-    TResult? Function(ApplicationJournalEffectPublish value)? publish,
+    TResult? Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult? Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult? Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult? Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
   }) {
     return publish?.call(this);
   }
@@ -1705,10 +1604,12 @@ class _$ApplicationJournalEffectPublish
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationJournalEffectForward value)? forward,
-    TResult Function(ApplicationJournalEffectMerge value)? merge,
-    TResult Function(ApplicationJournalEffectNone value)? none,
-    TResult Function(ApplicationJournalEffectPublish value)? publish,
+    TResult Function(ApplicationJournalEffectForward<State, View> value)?
+        forward,
+    TResult Function(ApplicationJournalEffectMerge<State, View> value)? merge,
+    TResult Function(ApplicationJournalEffectNone<State, View> value)? none,
+    TResult Function(ApplicationJournalEffectPublish<State, View> value)?
+        publish,
     required TResult orElse(),
   }) {
     if (publish != null) {
@@ -1718,13 +1619,8 @@ class _$ApplicationJournalEffectPublish
   }
 }
 
-abstract class ApplicationJournalEffectPublish
-    implements ApplicationJournalEffect {
-  factory ApplicationJournalEffectPublish({required final Ref ref}) =
-      _$ApplicationJournalEffectPublish;
-
-  Ref get ref;
-  @JsonKey(ignore: true)
-  _$$ApplicationJournalEffectPublishCopyWith<_$ApplicationJournalEffectPublish>
-      get copyWith => throw _privateConstructorUsedError;
+abstract class ApplicationJournalEffectPublish<State extends CoreState,
+    View extends CoreView> implements ApplicationJournalEffect<State, View> {
+  factory ApplicationJournalEffectPublish() =
+      _$ApplicationJournalEffectPublish<State, View>;
 }
