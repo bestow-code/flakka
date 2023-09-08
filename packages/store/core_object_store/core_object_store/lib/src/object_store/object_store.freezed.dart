@@ -16,43 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectStoreState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreStateInitial value) initial,
-    required TResult Function(ObjectStoreStateReady value) ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreStateInitial value)? initial,
-    TResult? Function(ObjectStoreStateReady value)? ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreStateInitial value)? initial,
-    TResult Function(ObjectStoreStateReady value)? ready,
-    required TResult orElse(),
-  }) =>
+  int get sequenceNumber => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ObjectStoreStateCopyWith<ObjectStoreState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +28,8 @@ abstract class $ObjectStoreStateCopyWith<$Res> {
   factory $ObjectStoreStateCopyWith(
           ObjectStoreState value, $Res Function(ObjectStoreState) then) =
       _$ObjectStoreStateCopyWithImpl<$Res, ObjectStoreState>;
+  @useResult
+  $Res call({int sequenceNumber});
 }
 
 /// @nodoc
@@ -72,209 +41,94 @@ class _$ObjectStoreStateCopyWithImpl<$Res, $Val extends ObjectStoreState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$ObjectStoreStateInitialCopyWith<$Res> {
-  factory _$$ObjectStoreStateInitialCopyWith(_$ObjectStoreStateInitial value,
-          $Res Function(_$ObjectStoreStateInitial) then) =
-      __$$ObjectStoreStateInitialCopyWithImpl<$Res>;
+abstract class _$$_ObjectStoreStateCopyWith<$Res>
+    implements $ObjectStoreStateCopyWith<$Res> {
+  factory _$$_ObjectStoreStateCopyWith(
+          _$_ObjectStoreState value, $Res Function(_$_ObjectStoreState) then) =
+      __$$_ObjectStoreStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int sequenceNumber});
 }
 
 /// @nodoc
-class __$$ObjectStoreStateInitialCopyWithImpl<$Res>
-    extends _$ObjectStoreStateCopyWithImpl<$Res, _$ObjectStoreStateInitial>
-    implements _$$ObjectStoreStateInitialCopyWith<$Res> {
-  __$$ObjectStoreStateInitialCopyWithImpl(_$ObjectStoreStateInitial _value,
-      $Res Function(_$ObjectStoreStateInitial) _then)
+class __$$_ObjectStoreStateCopyWithImpl<$Res>
+    extends _$ObjectStoreStateCopyWithImpl<$Res, _$_ObjectStoreState>
+    implements _$$_ObjectStoreStateCopyWith<$Res> {
+  __$$_ObjectStoreStateCopyWithImpl(
+      _$_ObjectStoreState _value, $Res Function(_$_ObjectStoreState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$_ObjectStoreState(
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ObjectStoreStateInitial implements ObjectStoreStateInitial {
-  _$ObjectStoreStateInitial();
+class _$_ObjectStoreState implements _ObjectStoreState {
+  _$_ObjectStoreState({required this.sequenceNumber});
+
+  @override
+  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'ObjectStoreState.initial()';
+    return 'ObjectStoreState(sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectStoreStateInitial);
+            other is _$_ObjectStoreState &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, sequenceNumber);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() ready,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? ready,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreStateInitial value) initial,
-    required TResult Function(ObjectStoreStateReady value) ready,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreStateInitial value)? initial,
-    TResult? Function(ObjectStoreStateReady value)? ready,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreStateInitial value)? initial,
-    TResult Function(ObjectStoreStateReady value)? ready,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$_ObjectStoreStateCopyWith<_$_ObjectStoreState> get copyWith =>
+      __$$_ObjectStoreStateCopyWithImpl<_$_ObjectStoreState>(this, _$identity);
 }
 
-abstract class ObjectStoreStateInitial implements ObjectStoreState {
-  factory ObjectStoreStateInitial() = _$ObjectStoreStateInitial;
-}
-
-/// @nodoc
-abstract class _$$ObjectStoreStateReadyCopyWith<$Res> {
-  factory _$$ObjectStoreStateReadyCopyWith(_$ObjectStoreStateReady value,
-          $Res Function(_$ObjectStoreStateReady) then) =
-      __$$ObjectStoreStateReadyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ObjectStoreStateReadyCopyWithImpl<$Res>
-    extends _$ObjectStoreStateCopyWithImpl<$Res, _$ObjectStoreStateReady>
-    implements _$$ObjectStoreStateReadyCopyWith<$Res> {
-  __$$ObjectStoreStateReadyCopyWithImpl(_$ObjectStoreStateReady _value,
-      $Res Function(_$ObjectStoreStateReady) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ObjectStoreStateReady implements ObjectStoreStateReady {
-  _$ObjectStoreStateReady();
+abstract class _ObjectStoreState implements ObjectStoreState {
+  factory _ObjectStoreState({required final int sequenceNumber}) =
+      _$_ObjectStoreState;
 
   @override
-  String toString() {
-    return 'ObjectStoreState.ready()';
-  }
-
+  int get sequenceNumber;
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ObjectStoreStateReady);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() ready,
-  }) {
-    return ready();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? ready,
-  }) {
-    return ready?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) {
-    if (ready != null) {
-      return ready();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreStateInitial value) initial,
-    required TResult Function(ObjectStoreStateReady value) ready,
-  }) {
-    return ready(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreStateInitial value)? initial,
-    TResult? Function(ObjectStoreStateReady value)? ready,
-  }) {
-    return ready?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreStateInitial value)? initial,
-    TResult Function(ObjectStoreStateReady value)? ready,
-    required TResult orElse(),
-  }) {
-    if (ready != null) {
-      return ready(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectStoreStateReady implements ObjectStoreState {
-  factory ObjectStoreStateReady() = _$ObjectStoreStateReady;
+  @JsonKey(ignore: true)
+  _$$_ObjectStoreStateCopyWith<_$_ObjectStoreState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

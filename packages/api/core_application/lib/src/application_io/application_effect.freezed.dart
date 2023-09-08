@@ -542,21 +542,24 @@ mixin _$ApplicationRequestEffect<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, ({State state, View view}) stateView)
+    required TResult Function(Ref ref, Event event,
+            ({State state, View view}) stateView, DateTime createdAt)
         persist,
     required TResult Function() none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, ({State state, View view}) stateView)?
+    TResult? Function(Ref ref, Event event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         persist,
     TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, ({State state, View view}) stateView)?
+    TResult Function(Ref ref, Event event, ({State state, View view}) stateView,
+            DateTime createdAt)?
         persist,
     TResult Function()? none,
     required TResult orElse(),
@@ -630,7 +633,13 @@ abstract class _$$ApplicationRequestEffectPersistCopyWith<
               then) =
       __$$ApplicationRequestEffectPersistCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({Event event, ({State state, View view}) stateView});
+  $Res call(
+      {Ref ref,
+      Event event,
+      ({State state, View view}) stateView,
+      DateTime createdAt});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -649,10 +658,16 @@ class __$$ApplicationRequestEffectPersistCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ref = null,
     Object? event = null,
     Object? stateView = null,
+    Object? createdAt = null,
   }) {
     return _then(_$ApplicationRequestEffectPersist<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
       event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -661,7 +676,19 @@ class __$$ApplicationRequestEffectPersistCopyWithImpl<Event extends CoreEvent,
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
               as ({State state, View view}),
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 }
 
@@ -671,16 +698,23 @@ class _$ApplicationRequestEffectPersist<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationRequestEffectPersist<Event, State, View> {
   _$ApplicationRequestEffectPersist(
-      {required this.event, required this.stateView});
+      {required this.ref,
+      required this.event,
+      required this.stateView,
+      required this.createdAt});
 
+  @override
+  final Ref ref;
   @override
   final Event event;
   @override
   final ({State state, View view}) stateView;
+  @override
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'ApplicationRequestEffect<$Event, $State, $View>.persist(event: $event, stateView: $stateView)';
+    return 'ApplicationRequestEffect<$Event, $State, $View>.persist(ref: $ref, event: $event, stateView: $stateView, createdAt: $createdAt)';
   }
 
   @override
@@ -688,14 +722,17 @@ class _$ApplicationRequestEffectPersist<Event extends CoreEvent,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationRequestEffectPersist<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.event, event) &&
             (identical(other.stateView, stateView) ||
-                other.stateView == stateView));
+                other.stateView == stateView) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(event), stateView);
+  int get hashCode => Object.hash(runtimeType, ref,
+      const DeepCollectionEquality().hash(event), stateView, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -712,33 +749,36 @@ class _$ApplicationRequestEffectPersist<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, ({State state, View view}) stateView)
+    required TResult Function(Ref ref, Event event,
+            ({State state, View view}) stateView, DateTime createdAt)
         persist,
     required TResult Function() none,
   }) {
-    return persist(event, stateView);
+    return persist(ref, event, stateView, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, ({State state, View view}) stateView)?
+    TResult? Function(Ref ref, Event event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         persist,
     TResult? Function()? none,
   }) {
-    return persist?.call(event, stateView);
+    return persist?.call(ref, event, stateView, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, ({State state, View view}) stateView)?
+    TResult Function(Ref ref, Event event, ({State state, View view}) stateView,
+            DateTime createdAt)?
         persist,
     TResult Function()? none,
     required TResult orElse(),
   }) {
     if (persist != null) {
-      return persist(event, stateView);
+      return persist(ref, event, stateView, createdAt);
     }
     return orElse();
   }
@@ -788,12 +828,16 @@ abstract class ApplicationRequestEffectPersist<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationRequestEffect<Event, State, View> {
   factory ApplicationRequestEffectPersist(
-          {required final Event event,
-          required final ({State state, View view}) stateView}) =
+          {required final Ref ref,
+          required final Event event,
+          required final ({State state, View view}) stateView,
+          required final DateTime createdAt}) =
       _$ApplicationRequestEffectPersist<Event, State, View>;
 
+  Ref get ref;
   Event get event;
   ({State state, View view}) get stateView;
+  DateTime get createdAt;
   @JsonKey(ignore: true)
   _$$ApplicationRequestEffectPersistCopyWith<Event, State, View,
           _$ApplicationRequestEffectPersist<Event, State, View>>
@@ -848,7 +892,8 @@ class _$ApplicationRequestEffectNone<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, ({State state, View view}) stateView)
+    required TResult Function(Ref ref, Event event,
+            ({State state, View view}) stateView, DateTime createdAt)
         persist,
     required TResult Function() none,
   }) {
@@ -858,7 +903,8 @@ class _$ApplicationRequestEffectNone<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, ({State state, View view}) stateView)?
+    TResult? Function(Ref ref, Event event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         persist,
     TResult? Function()? none,
   }) {
@@ -868,7 +914,8 @@ class _$ApplicationRequestEffectNone<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, ({State state, View view}) stateView)?
+    TResult Function(Ref ref, Event event, ({State state, View view}) stateView,
+            DateTime createdAt)?
         persist,
     TResult Function()? none,
     required TResult orElse(),

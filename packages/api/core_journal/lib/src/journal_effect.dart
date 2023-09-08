@@ -6,10 +6,8 @@ part 'journal_effect.freezed.dart';
 @freezed
 class JournalEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalEffect<Event, State, View> {
-
   factory JournalEffect.event({
     required Ref ref,
-    required int sequenceNumber,
     required Ref parent,
     required Event event,
     required StateView<State, View> stateView,
@@ -18,13 +16,11 @@ class JournalEffect<Event extends CoreEvent, State extends CoreState,
 
   factory JournalEffect.forward({
     required Ref ref,
-    required int sequenceNumber,
     required StateView<State, View> stateView,
   }) = JournalEffectForward;
 
   factory JournalEffect.merge({
     required Ref ref,
-    required int sequenceNumber,
     required Ref parent,
     required Ref mergeParent,
     required DateTime createdAt,

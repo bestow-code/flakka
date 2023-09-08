@@ -88,6 +88,8 @@ scripts:
     exec:
       concurrency: 45
     packageFilters:
+      dependsOn:
+        - build_runner
       scope:
 
   watch:

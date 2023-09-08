@@ -45,7 +45,11 @@ class Application<Event extends CoreEvent, State extends CoreState,
             final next = _eventHandler.apply(persist.event, state.stateView);
             _requestEffect.add(
               ApplicationRequestEffect.persist(
-                  event: persist.event, stateView: next),
+                ref: request.ref,
+                event: persist.event,
+                stateView: next,
+                createdAt: request.createdAt,
+              ),
             );
             emit(
               ApplicationState(

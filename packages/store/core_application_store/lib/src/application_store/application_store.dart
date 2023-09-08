@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:core_application/core_application.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_journal/core_journal.dart';
@@ -7,13 +8,16 @@ import 'package:core_journal/core_journal.dart';
 import '../../core_application_store.dart';
 
 class ApplicationStore<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements CoreApplicationStore<Event, State, View> {
-  ApplicationStore({
+        View extends CoreView> extends Cubit<ApplicationStoreState>
+    implements CoreApplicationStore<Event, State, View> {
+  ApplicationStore(
+    super.initialState, {
     required StreamSink<JournalEffect<Event, State, View>> journalEffect,
     required Stream<JournalUpdate<Event, State, View>> journalUpdate,
   }) : _journalEffect = journalEffect {
     journalUpdate.listen(_onJournalUpdate);
-    _journalEffect.add(JournalEffectNone<Event,State,View>());
+    _applicationRequestEffect.stream.listen(_onApplicationRequestEffect);
+    _applicationJournalEffect.stream.listen(_onApplicationJournalEffect);
   }
 
   final _applicationJournalEffect =
@@ -41,11 +45,35 @@ class ApplicationStore<Event extends CoreEvent, State extends CoreState,
 
   @override
   Future<InitialApplicationInstanceData<CoreState, CoreView>> initialize(
-      InitialApplicationProps Function() ifEmpty) {
+    InitialApplicationProps Function() ifEmpty,
+  ) {
     throw UnimplementedError();
   }
 
-  void _onJournalUpdate(JournalUpdate<Event, State, View> event) {
+  void _onJournalUpdate(JournalUpdate<Event, State, View> event) {}
 
+  void _onApplicationRequestEffect(
+    ApplicationRequestEffect<Event, State, View> requestEffect,
+  ) {
+    requestEffect.map(
+      persist: (persist) {
+        final nextRef = persist.ref;
+        _journalEffect.add(
+          JournalEffect<Event, State, View>.event(
+            ref: nextRef,
+            parent: state.ref,
+            event: persist.event,
+            stateView: persist.stateView,
+            createdAt: persist.createdAt,
+          ),
+        );
+        emit(ApplicationStoreState(ref: nextRef));
+      },
+      none: (none) {},
+    );
   }
+
+  void _onApplicationJournalEffect(
+    ApplicationJournalEffect<State, View> event,
+  ) {}
 }

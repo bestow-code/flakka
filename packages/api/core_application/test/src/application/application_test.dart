@@ -17,8 +17,8 @@ void main() {
         requestEffect;
     late ReplaySubject<ApplicationJournalEffect<TestState, TestView>>
         journalEffect;
-    late StreamController<ApplicationJournalUpdate<TestEvent, TestState, TestView>>
-        update;
+    late StreamController<
+        ApplicationJournalUpdate<TestEvent, TestState, TestView>> update;
     final eventHandler = StateViewEventHandler<TestEvent, TestState, TestView>(
       state: (state, event) => TestState(state.value + event.value),
       view: (view, event) => TestView(view.value * event.value),
@@ -64,8 +64,10 @@ void main() {
             expect(
               requestEffect.values.singleOrNull,
               ApplicationRequestEffect<TestEvent, TestState, TestView>.persist(
+                ref: ref1,
                 event: TestEvent(2),
                 stateView: (state: TestState(2), view: TestView(2)),
+                createdAt: t1,
               ),
             );
           },

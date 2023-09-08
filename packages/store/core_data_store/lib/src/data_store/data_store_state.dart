@@ -6,17 +6,6 @@ part 'data_store_state.freezed.dart';
 @freezed
 class DataStoreState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DataStoreState<Event, State, View> {
-  factory DataStoreState.initial() => DataStoreState(eventGraph: (
-        edges: {},
-        createdAt: {},
-        event: {},
-        pending: {},
-      ), loading: (
-        entry: {},
-        event: {},
-        pending: {},
-      ));
-
   factory DataStoreState({
     required ({
       Map<Ref, Set<Ref>> edges,
@@ -30,4 +19,15 @@ class DataStoreState<Event extends CoreEvent, State extends CoreState,
       Set<Ref> pending,
     }) loading,
   }) = _DataStoreState<Event, State, View>;
+
+  factory DataStoreState.initial() => DataStoreState(eventGraph: (
+        edges: {},
+        createdAt: {},
+        event: {},
+        pending: {},
+      ), loading: (
+        entry: {},
+        event: {},
+        pending: {},
+      ));
 }
