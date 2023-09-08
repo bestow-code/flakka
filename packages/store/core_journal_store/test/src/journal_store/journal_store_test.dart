@@ -1,17 +1,21 @@
 import 'dart:async';
 
+import 'package:bloc_test/bloc_test.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data_test/core_data_test.dart';
+import 'package:core_journal/core_journal.dart';
 import 'package:core_journal_store/core_journal_store.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:test/test.dart';
 
+typedef TestJournalStore = JournalStore<TestEvent, TestState, TestView>;
+
 void main() {
   group('JournalStore', () {
-    late JournalStore<TestEvent, TestState, TestView> journalStore;
     late ReplaySubject<DataEffect<TestEvent, TestState, TestView>> dataEffect;
     late StreamController<DataUpdate<TestEvent, TestState, TestView>>
         dataUpdate;
+
     setUp(() {
       dataEffect = ReplaySubject();
       dataUpdate = StreamController();
@@ -21,19 +25,34 @@ void main() {
 
     final t1 = DateTime.fromMillisecondsSinceEpoch(1);
     group('JournalEffect', () {
-      group('Append', () {
-        test('emits DataEffectAppend', () async {
-          expect(
-              dataEffect.values.singleOrNull,
-              DataEffect<TestEvent, TestState, TestView>.append(
-                ref: ref1,
-                sequenceNumber: 1,
-                parent: [ref0],
-                event: TestEvent(2),
-                stateView: (state: TestState(2), view: TestView(2)),
-                createdAt: t1,
-              ));
-        });
+      group('Event', () {
+        blocTest<TestJournalStore, JournalStoreState>(
+          'emits DataEffectAppend',
+          build: () => TestJournalStore(
+            JournalStoreState(),
+            dataEffect: dataEffect,
+            dataUpdate: dataUpdate.stream,
+          ),
+          act: (journalStore) => journalStore.effect.add(
+            JournalEffect.event(
+              ref: ref1,
+              parent: ref0,
+              event: TestEvent(2),
+              stateView: (state: TestState(2), view: TestView(2)),
+              createdAt: t1,
+            ),
+          ),
+          verify: (journalStore) => expect(
+            dataEffect.values.singleOrNull,
+            DataEffect<TestEvent, TestState, TestView>.append(
+              ref: ref1,
+              parent: [ref0],
+              event: TestEvent(2),
+              stateView: (state: TestState(2), view: TestView(2)),
+              createdAt: t1,
+            ),
+          ),
+        );
       });
     });
   });

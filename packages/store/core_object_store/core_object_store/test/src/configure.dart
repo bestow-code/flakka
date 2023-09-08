@@ -19,7 +19,7 @@ Future<void> configureDependencies() async => getIt.init();
 @module
 abstract class Module {
   Future<ObjectStore> get objectStore async => ObjectStore(
-        ObjectStoreState.initial(),
+        ObjectStoreState(sequenceNumber: 0),
         local: await getIt.getAsync(),
         remote: await getIt.getAsync(),
       );

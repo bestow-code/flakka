@@ -19,16 +19,11 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
+    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)
         append,
-    required TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)
+    required TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
     required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
@@ -36,16 +31,11 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult? Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
@@ -53,16 +43,11 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
@@ -137,8 +122,7 @@ abstract class _$$DataEffectAppendCopyWith<Event extends CoreEvent,
       Iterable<Ref> parent,
       Event? event,
       ({State state, View view}) stateView,
-      DateTime createdAt,
-      int sequenceNumber});
+      DateTime createdAt});
 
   $RefCopyWith<$Res> get ref;
 }
@@ -162,7 +146,6 @@ class __$$DataEffectAppendCopyWithImpl<Event extends CoreEvent,
     Object? event = null,
     Object? stateView = null,
     Object? createdAt = null,
-    Object? sequenceNumber = null,
   }) {
     return _then(_$DataEffectAppend<Event, State, View>(
       ref: null == ref
@@ -185,10 +168,6 @@ class __$$DataEffectAppendCopyWithImpl<Event extends CoreEvent,
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 
@@ -210,8 +189,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
       required this.parent,
       required this.event,
       required this.stateView,
-      required this.createdAt,
-      required this.sequenceNumber});
+      required this.createdAt});
 
   @override
   final Ref ref;
@@ -223,12 +201,10 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   final ({State state, View view}) stateView;
   @override
   final DateTime createdAt;
-  @override
-  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'DataEffect<$Event, $State, $View>.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DataEffect<$Event, $State, $View>.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt)';
   }
 
   @override
@@ -242,9 +218,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
+                other.createdAt == createdAt));
   }
 
   @override
@@ -254,8 +228,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
       const DeepCollectionEquality().hash(parent),
       const DeepCollectionEquality().hash(event),
       stateView,
-      createdAt,
-      sequenceNumber);
+      createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -268,64 +241,48 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
+    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)
         append,
-    required TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)
+    required TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
     required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
   }) {
-    return append(ref, parent, event, stateView, createdAt, sequenceNumber);
+    return append(ref, parent, event, stateView, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult? Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
   }) {
-    return append?.call(
-        ref, parent, event, stateView, createdAt, sequenceNumber);
+    return append?.call(ref, parent, event, stateView, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
     if (append != null) {
-      return append(ref, parent, event, stateView, createdAt, sequenceNumber);
+      return append(ref, parent, event, stateView, createdAt);
     }
     return orElse();
   }
@@ -380,8 +337,7 @@ abstract class DataEffectAppend<
           required final Iterable<Ref> parent,
           required final Event? event,
           required final ({State state, View view}) stateView,
-          required final DateTime createdAt,
-          required final int sequenceNumber}) =
+          required final DateTime createdAt}) =
       _$DataEffectAppend<Event, State, View>;
 
   Ref get ref;
@@ -389,7 +345,6 @@ abstract class DataEffectAppend<
   Event? get event;
   ({State state, View view}) get stateView;
   DateTime get createdAt;
-  int get sequenceNumber;
   @JsonKey(ignore: true)
   _$$DataEffectAppendCopyWith<Event, State, View,
           _$DataEffectAppend<Event, State, View>>
@@ -405,10 +360,7 @@ abstract class _$$DataEffectForwardCopyWith<Event extends CoreEvent,
       __$$DataEffectForwardCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call(
-      {Ref ref,
-      ({State state, View view}) stateView,
-      DateTime createdAt,
-      int sequenceNumber});
+      {Ref ref, ({State state, View view}) stateView, DateTime createdAt});
 
   $RefCopyWith<$Res> get ref;
 }
@@ -430,7 +382,6 @@ class __$$DataEffectForwardCopyWithImpl<Event extends CoreEvent,
     Object? ref = null,
     Object? stateView = null,
     Object? createdAt = null,
-    Object? sequenceNumber = null,
   }) {
     return _then(_$DataEffectForward<Event, State, View>(
       ref: null == ref
@@ -445,10 +396,6 @@ class __$$DataEffectForwardCopyWithImpl<Event extends CoreEvent,
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 
@@ -466,10 +413,7 @@ class __$$DataEffectForwardCopyWithImpl<Event extends CoreEvent,
 class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataEffectForward<Event, State, View> {
   _$DataEffectForward(
-      {required this.ref,
-      required this.stateView,
-      required this.createdAt,
-      required this.sequenceNumber});
+      {required this.ref, required this.stateView, required this.createdAt});
 
   @override
   final Ref ref;
@@ -477,12 +421,10 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   final ({State state, View view}) stateView;
   @override
   final DateTime createdAt;
-  @override
-  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'DataEffect<$Event, $State, $View>.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DataEffect<$Event, $State, $View>.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt)';
   }
 
   @override
@@ -494,14 +436,11 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, ref, stateView, createdAt, sequenceNumber);
+  int get hashCode => Object.hash(runtimeType, ref, stateView, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -514,63 +453,48 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
+    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)
         append,
-    required TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)
+    required TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
     required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
   }) {
-    return forward(ref, stateView, createdAt, sequenceNumber);
+    return forward(ref, stateView, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult? Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
   }) {
-    return forward?.call(ref, stateView, createdAt, sequenceNumber);
+    return forward?.call(ref, stateView, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
     if (forward != null) {
-      return forward(ref, stateView, createdAt, sequenceNumber);
+      return forward(ref, stateView, createdAt);
     }
     return orElse();
   }
@@ -623,14 +547,12 @@ abstract class DataEffectForward<
   factory DataEffectForward(
           {required final Ref ref,
           required final ({State state, View view}) stateView,
-          required final DateTime createdAt,
-          required final int sequenceNumber}) =
+          required final DateTime createdAt}) =
       _$DataEffectForward<Event, State, View>;
 
   Ref get ref;
   ({State state, View view}) get stateView;
   DateTime get createdAt;
-  int get sequenceNumber;
   @JsonKey(ignore: true)
   _$$DataEffectForwardCopyWith<Event, State, View,
           _$DataEffectForward<Event, State, View>>
@@ -735,16 +657,11 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
+    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)
         append,
-    required TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)
+    required TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
     required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
@@ -755,16 +672,11 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult? Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
@@ -775,16 +687,11 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
@@ -896,16 +803,11 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
+    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)
         append,
-    required TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)
+    required TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
     required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
@@ -916,16 +818,11 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult? Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
@@ -936,16 +833,11 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Iterable<Ref> parent,
-            Event? event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
+    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+            ({State state, View view}) stateView, DateTime createdAt)?
         append,
-    TResult Function(Ref ref, ({State state, View view}) stateView,
-            DateTime createdAt, int sequenceNumber)?
+    TResult Function(
+            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
     TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,

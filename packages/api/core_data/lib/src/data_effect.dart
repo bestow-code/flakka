@@ -12,14 +12,12 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
     required Event? event,
     required StateView<State, View> stateView,
     required DateTime createdAt,
-    required int sequenceNumber,
   }) = DataEffectAppend;
 
   factory DataEffect.forward({
     required Ref ref,
     required StateView<State, View> stateView,
     required DateTime createdAt,
-    required int sequenceNumber,
   }) = DataEffectForward<Event, State, View>;
 
   factory DataEffect.publish({

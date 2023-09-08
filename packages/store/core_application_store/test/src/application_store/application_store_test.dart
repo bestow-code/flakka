@@ -13,7 +13,6 @@ typedef TestApplicationStore = ApplicationStore<TestEvent, TestState, TestView>;
 
 void main() {
   group('ApplicationStore', () {
-    late ApplicationStore<TestEvent, TestState, TestView> applicationStore;
 
     late ReplaySubject<JournalEffect<TestEvent, TestState, TestView>>
         journalEffect;
@@ -34,7 +33,7 @@ void main() {
       group('Persist', () {
         blocTest<TestApplicationStore, ApplicationStoreState>(
           'emits JournalEffectPersist',
-          build: () => applicationStore = ApplicationStore(
+          build: () => ApplicationStore(
             state0,
             journalEffect: journalEffect,
             journalUpdate: journalUpdate.stream,

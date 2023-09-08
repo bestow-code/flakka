@@ -9,6 +9,7 @@ export 'src/application_behavior/event_handler.dart';
 export 'src/application_behavior/request.dart';
 export 'src/application_behavior/request_effect.dart';
 export 'src/application_behavior/request_handler.dart';
+export 'src/application_behavior/state_view_event_handler.dart';
 export 'src/application_io/application_effect.dart';
 export 'src/application_io/application_io.dart';
 export 'src/application_io/application_journal.dart';

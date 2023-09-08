@@ -30,7 +30,6 @@ void main() {
               objectEffect.values.singleOrNull,
               DataEffect.append(
                 ref: ref1,
-                sequenceNumber: 1,
                 parent: [ref0],
                 event: TestEvent(2),
                 stateView: (state: TestState(2), view: TestView(2)),

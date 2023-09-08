@@ -21,6 +21,7 @@ dependencies:
 dev_dependencies:
   bloc_test:
   build_runner:
+  core_data_test:
   core_journal_store_test:
   core_journal_test:
   freezed: ^2.3.5
