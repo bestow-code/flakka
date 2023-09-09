@@ -10,7 +10,7 @@ class PersistenceProvider implements CorePersistenceProvider {
   });
 
   @override
-  final CorePersistenceLocalFactoryProvider local;
+  final CorePersistenceLocalAdapterFactoryProvider local;
   @override
   final CorePersistenceRemoteFactoryProvider remote;
 }
