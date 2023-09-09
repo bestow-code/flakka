@@ -52,7 +52,7 @@ class ObjectEffect with _$ObjectEffect {
 class ObjectEffectLocal with _$ObjectEffectLocal {
   factory ObjectEffectLocal.append({
     required String ref,
-    required Iterable<String> parent,
+    required List<String> parent,
     required JsonMap? event,
     required StateViewObject? stateView,
     required int createdAt,

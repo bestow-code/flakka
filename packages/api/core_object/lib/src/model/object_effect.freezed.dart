@@ -915,7 +915,7 @@ mixin _$ObjectEffectLocal {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -941,7 +941,7 @@ mixin _$ObjectEffectLocal {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -967,7 +967,7 @@ mixin _$ObjectEffectLocal {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1043,7 +1043,7 @@ abstract class _$$ObjectEffectLocalAppendCopyWith<$Res> {
   @useResult
   $Res call(
       {String ref,
-      Iterable<String> parent,
+      List<String> parent,
       Map<String, dynamic>? event,
       StateViewObject? stateView,
       int createdAt,
@@ -1076,9 +1076,9 @@ class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
       parent: null == parent
-          ? _value.parent
+          ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       event: freezed == event
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
@@ -1116,17 +1116,24 @@ class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
 class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   _$ObjectEffectLocalAppend(
       {required this.ref,
-      required this.parent,
+      required final List<String> parent,
       required final Map<String, dynamic>? event,
       required this.stateView,
       required this.createdAt,
       required this.sequenceNumber})
-      : _event = event;
+      : _parent = parent,
+        _event = event;
 
   @override
   final String ref;
+  final List<String> _parent;
   @override
-  final Iterable<String> parent;
+  List<String> get parent {
+    if (_parent is EqualUnmodifiableListView) return _parent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parent);
+  }
+
   final Map<String, dynamic>? _event;
   @override
   Map<String, dynamic>? get event {
@@ -1155,7 +1162,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
         (other.runtimeType == runtimeType &&
             other is _$ObjectEffectLocalAppend &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.parent, parent) &&
+            const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
@@ -1169,7 +1176,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   int get hashCode => Object.hash(
       runtimeType,
       ref,
-      const DeepCollectionEquality().hash(parent),
+      const DeepCollectionEquality().hash(_parent),
       const DeepCollectionEquality().hash(_event),
       stateView,
       createdAt,
@@ -1187,7 +1194,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1216,7 +1223,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1246,7 +1253,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1315,14 +1322,14 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
 abstract class ObjectEffectLocalAppend implements ObjectEffectLocal {
   factory ObjectEffectLocalAppend(
       {required final String ref,
-      required final Iterable<String> parent,
+      required final List<String> parent,
       required final Map<String, dynamic>? event,
       required final StateViewObject? stateView,
       required final int createdAt,
       required final int sequenceNumber}) = _$ObjectEffectLocalAppend;
 
   String get ref;
-  Iterable<String> get parent;
+  List<String> get parent;
   Map<String, dynamic>? get event;
   StateViewObject? get stateView;
   int get createdAt;
@@ -1450,7 +1457,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1479,7 +1486,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1508,7 +1515,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1698,7 +1705,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1727,7 +1734,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1756,7 +1763,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1885,7 +1892,7 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1914,7 +1921,7 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -1943,7 +1950,7 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,

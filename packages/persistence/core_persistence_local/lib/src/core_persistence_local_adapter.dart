@@ -7,20 +7,23 @@ abstract interface class CorePersistenceLocalAdapter {
 
   Future<void> initialize({required InitialObjectInstanceData data});
 
-  // Future<void> add({
-  //   Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
-  //   Map<String, JsonMap>? event,
-  //   Map<String, StateViewObject>? stateView,
-  // });
+  Future<void> append({
+    required String ref,
+    required List<String> parent,
+    required JsonMap? event,
+    required StateViewObject? stateView,
+    required int createdAt,
+    required int sequenceNumber,
+  });
+
+// Future<void> add({
+//   Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
+//   Map<String, JsonMap>? event,
+//   Map<String, StateViewObject>? stateView,
+// });
 }
 
 //
-// Future<void> append({
-//   required JsonMap entry,
-//   required JsonMap? event,
-//   required StateViewData? stateView,
-//   required int sequenceNumber,
-// });
 //
 // Future<void> forward({
 //   required Ref ref,

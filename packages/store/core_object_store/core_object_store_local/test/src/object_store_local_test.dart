@@ -3,6 +3,7 @@ library;
 
 import 'dart:async';
 
+import 'package:bloc_test/bloc_test.dart';
 import 'package:core_object/core_object.dart';
 import 'package:core_object_store_local/core_object_store_local.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -14,28 +15,81 @@ class MockPersistenceLocalAdapter extends Mock
 
 void main() {
   group('ObjectStoreLocal', () {
-    late ObjectStoreLocal objectStoreLocal;
-
     late MockPersistenceLocalAdapter localAdapter;
 
-    setUp(() {
-      localAdapter = MockPersistenceLocalAdapter();
-    });
-    Future<void> Function() storeInitializer(
-      String path,
-      String persistenceId,
-    ) =>
-        () async {
-          // store = await factory.getInstance(path);
-        };
     const ref0 = 'ref0';
     const ref1 = 'ref1';
 
     final t1 = DateTime.fromMillisecondsSinceEpoch(1);
+    group('ObjectEffectLocal', () {
+      group('Append', () {
+        setUp(() {
+          localAdapter = MockPersistenceLocalAdapter();
+          when(
+            () => localAdapter.append(
+              ref: ref1,
+              parent: [ref0],
+              event: {'value': 2},
+              stateView:
+                  StateViewObject(state: {'value': 2}, view: {'value': 2}),
+              createdAt: t1.millisecondsSinceEpoch,
+              sequenceNumber: 1,
+            ),
+          ).thenAnswer((invocation) async {});
+          // localAdapter.
+        });
+        blocTest<ObjectStoreLocal, ObjectStoreLocalState>(
+          'calls adapter',
+          build: () => ObjectStoreLocal(
+            ObjectStoreLocalState(),
+            adapter: localAdapter,
+          ),
+          act: (objectStoreLocal) {
+            objectStoreLocal.effect.add(
+              ObjectEffectLocal.append(
+                ref: ref1,
+                parent: [ref0],
+                event: {'value': 2},
+                stateView:
+                    StateViewObject(state: {'value': 2}, view: {'value': 2}),
+                createdAt: t1.millisecondsSinceEpoch,
+                sequenceNumber: 1,
+              ),
+            );
+          },
+          verify: (objectStoreLocal) {
+            verify(
+              () => localAdapter.append(
+                ref: ref1,
+                parent: [ref0],
+                event: {'value': 2},
+                stateView:
+                    StateViewObject(state: {'value': 2}, view: {'value': 2}),
+                createdAt: t1.millisecondsSinceEpoch,
+                sequenceNumber: 1,
+              ),
+            );
+            // objectStoreLocal.
+          },
+        );
+      });
+    });
+    setUp(() {
+      localAdapter = MockPersistenceLocalAdapter();
+    });
+    // Future<void> Function() storeInitializer(
+    //   String path,
+    //   String persistenceId,
+    // ) =>
+    //     () async {
+    //       // store = await factory.getInstance(path);
+    //     };
     group('DataEffect', () {
       group('Append', () {
-        test('emits ObjectEffectLocalAppend and ObjectEffectRemoteAppend',
-            () async {});
+        test(
+          'emits ObjectEffectLocalAppend and ObjectEffectRemoteAppend',
+          () async {},
+        );
       });
     });
   });
@@ -50,10 +104,10 @@ void main() {
     setUp(storeInitializer('1', '1'));
     group('New object', () {
       test('success', () async {
-        InitialObjectProps ifEmpty() => (
-              ref: '0',
-              createdAt: 1,
-            );
+        // InitialObjectProps ifEmpty() => (
+        //       ref: '0',
+        //       createdAt: 1,
+        //     );
         // unawaited(
         //   expectLater(
         //     store.update,

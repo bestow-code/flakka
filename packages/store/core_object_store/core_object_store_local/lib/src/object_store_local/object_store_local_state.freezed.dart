@@ -15,46 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectStoreLocalState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateReady value) ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateReady value)? ready,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateReady value)? ready,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
+mixin _$ObjectStoreLocalState {}
 
 /// @nodoc
 abstract class $ObjectStoreLocalStateCopyWith<$Res> {
@@ -76,213 +37,41 @@ class _$ObjectStoreLocalStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ObjectStoreLocalStateInitialCopyWith<$Res> {
-  factory _$$ObjectStoreLocalStateInitialCopyWith(
-          _$ObjectStoreLocalStateInitial value,
-          $Res Function(_$ObjectStoreLocalStateInitial) then) =
-      __$$ObjectStoreLocalStateInitialCopyWithImpl<$Res>;
+abstract class _$$_ObjectStoreLocalStateCopyWith<$Res> {
+  factory _$$_ObjectStoreLocalStateCopyWith(_$_ObjectStoreLocalState value,
+          $Res Function(_$_ObjectStoreLocalState) then) =
+      __$$_ObjectStoreLocalStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ObjectStoreLocalStateInitialCopyWithImpl<$Res>
-    extends _$ObjectStoreLocalStateCopyWithImpl<$Res,
-        _$ObjectStoreLocalStateInitial>
-    implements _$$ObjectStoreLocalStateInitialCopyWith<$Res> {
-  __$$ObjectStoreLocalStateInitialCopyWithImpl(
-      _$ObjectStoreLocalStateInitial _value,
-      $Res Function(_$ObjectStoreLocalStateInitial) _then)
+class __$$_ObjectStoreLocalStateCopyWithImpl<$Res>
+    extends _$ObjectStoreLocalStateCopyWithImpl<$Res, _$_ObjectStoreLocalState>
+    implements _$$_ObjectStoreLocalStateCopyWith<$Res> {
+  __$$_ObjectStoreLocalStateCopyWithImpl(_$_ObjectStoreLocalState _value,
+      $Res Function(_$_ObjectStoreLocalState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ObjectStoreLocalStateInitial implements ObjectStoreLocalStateInitial {
-  _$ObjectStoreLocalStateInitial();
+class _$_ObjectStoreLocalState implements _ObjectStoreLocalState {
+  _$_ObjectStoreLocalState();
 
   @override
   String toString() {
-    return 'ObjectStoreLocalState.initial()';
+    return 'ObjectStoreLocalState()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectStoreLocalStateInitial);
+        (other.runtimeType == runtimeType && other is _$_ObjectStoreLocalState);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() ready,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? ready,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateReady value) ready,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateReady value)? ready,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateReady value)? ready,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class ObjectStoreLocalStateInitial implements ObjectStoreLocalState {
-  factory ObjectStoreLocalStateInitial() = _$ObjectStoreLocalStateInitial;
-}
-
-/// @nodoc
-abstract class _$$ObjectStoreLocalStateReadyCopyWith<$Res> {
-  factory _$$ObjectStoreLocalStateReadyCopyWith(
-          _$ObjectStoreLocalStateReady value,
-          $Res Function(_$ObjectStoreLocalStateReady) then) =
-      __$$ObjectStoreLocalStateReadyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ObjectStoreLocalStateReadyCopyWithImpl<$Res>
-    extends _$ObjectStoreLocalStateCopyWithImpl<$Res,
-        _$ObjectStoreLocalStateReady>
-    implements _$$ObjectStoreLocalStateReadyCopyWith<$Res> {
-  __$$ObjectStoreLocalStateReadyCopyWithImpl(
-      _$ObjectStoreLocalStateReady _value,
-      $Res Function(_$ObjectStoreLocalStateReady) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ObjectStoreLocalStateReady implements ObjectStoreLocalStateReady {
-  _$ObjectStoreLocalStateReady();
-
-  @override
-  String toString() {
-    return 'ObjectStoreLocalState.ready()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectStoreLocalStateReady);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() ready,
-  }) {
-    return ready();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? ready,
-  }) {
-    return ready?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? ready,
-    required TResult orElse(),
-  }) {
-    if (ready != null) {
-      return ready();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectStoreLocalStateInitial value) initial,
-    required TResult Function(ObjectStoreLocalStateReady value) ready,
-  }) {
-    return ready(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult? Function(ObjectStoreLocalStateReady value)? ready,
-  }) {
-    return ready?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectStoreLocalStateInitial value)? initial,
-    TResult Function(ObjectStoreLocalStateReady value)? ready,
-    required TResult orElse(),
-  }) {
-    if (ready != null) {
-      return ready(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectStoreLocalStateReady implements ObjectStoreLocalState {
-  factory ObjectStoreLocalStateReady() = _$ObjectStoreLocalStateReady;
+abstract class _ObjectStoreLocalState implements ObjectStoreLocalState {
+  factory _ObjectStoreLocalState() = _$_ObjectStoreLocalState;
 }

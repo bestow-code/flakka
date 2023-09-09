@@ -12,12 +12,13 @@ class ObjectStoreLocal extends Cubit<ObjectStoreLocalState>
     super.initialState, {
     required CorePersistenceLocalAdapter adapter,
   }) : _adapter = adapter {
-    _effect.stream.listen((event) async {});
+    _effect.stream.listen(_onObjectEffectLocal);
   }
 
-  final CorePersistenceLocalAdapter _adapter;
-  final _effect = StreamController<ObjectEffectLocal>.broadcast();
   final _update = StreamController<ObjectUpdateLocal>();
+  final _effect = StreamController<ObjectEffectLocal>();
+
+  final CorePersistenceLocalAdapter _adapter;
 
   @override
   StreamSink<ObjectEffectLocal> get effect => _effect.sink;
@@ -35,6 +36,24 @@ class ObjectStoreLocal extends Cubit<ObjectStoreLocalState>
     await _adapter.initialize(
       data: data,
     );
-    emit(ObjectStoreLocalState.ready());
+    emit(ObjectStoreLocalState());
+  }
+
+  Future<void> _onObjectEffectLocal(ObjectEffectLocal event) async {
+    await event.map(
+      append: (append) async {
+        await _adapter.append(
+          ref: append.ref,
+          parent: append.parent,
+          event: append.event,
+          stateView: append.stateView,
+          createdAt: append.createdAt,
+          sequenceNumber: append.sequenceNumber,
+        );
+      },
+      forward: (forward) {},
+      add: (add) {},
+      none: (none) {},
+    );
   }
 }
