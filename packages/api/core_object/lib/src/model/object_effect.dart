@@ -27,18 +27,16 @@ typedef InitialObjectInstanceData = ({
 class ObjectEffect with _$ObjectEffect {
   factory ObjectEffect.append({
     required String ref,
-    required Iterable<String> parent,
+    required List<String> parent,
     required JsonMap? event,
     required StateViewObject? stateView,
     required int createdAt,
-    required int sequenceNumber,
   }) = ObjectEffectAppend;
 
   factory ObjectEffect.forward({
     required String ref,
     required StateViewObject? stateView,
     required int createdAt,
-    required int sequenceNumber,
   }) = ObjectEffectForward;
 
   factory ObjectEffect.publish({

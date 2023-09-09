@@ -19,7 +19,7 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    required TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)
         append,
     required TResult Function(
@@ -31,7 +31,7 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult? Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult? Function(
@@ -43,7 +43,7 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult Function(
@@ -119,7 +119,7 @@ abstract class _$$DataEffectAppendCopyWith<Event extends CoreEvent,
   @useResult
   $Res call(
       {Ref ref,
-      Iterable<Ref> parent,
+      List<Ref> parent,
       Event? event,
       ({State state, View view}) stateView,
       DateTime createdAt});
@@ -153,9 +153,9 @@ class __$$DataEffectAppendCopyWithImpl<Event extends CoreEvent,
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
       parent: null == parent
-          ? _value.parent
+          ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as Iterable<Ref>,
+              as List<Ref>,
       event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -186,15 +186,22 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataEffectAppend<Event, State, View> {
   _$DataEffectAppend(
       {required this.ref,
-      required this.parent,
+      required final List<Ref> parent,
       required this.event,
       required this.stateView,
-      required this.createdAt});
+      required this.createdAt})
+      : _parent = parent;
 
   @override
   final Ref ref;
+  final List<Ref> _parent;
   @override
-  final Iterable<Ref> parent;
+  List<Ref> get parent {
+    if (_parent is EqualUnmodifiableListView) return _parent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parent);
+  }
+
   @override
   final Event? event;
   @override
@@ -213,7 +220,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
         (other.runtimeType == runtimeType &&
             other is _$DataEffectAppend<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.parent, parent) &&
+            const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other.event, event) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
@@ -225,7 +232,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   int get hashCode => Object.hash(
       runtimeType,
       ref,
-      const DeepCollectionEquality().hash(parent),
+      const DeepCollectionEquality().hash(_parent),
       const DeepCollectionEquality().hash(event),
       stateView,
       createdAt);
@@ -241,7 +248,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    required TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)
         append,
     required TResult Function(
@@ -256,7 +263,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult? Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult? Function(
@@ -271,7 +278,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult Function(
@@ -334,14 +341,14 @@ abstract class DataEffectAppend<
     View extends CoreView> implements DataEffect<Event, State, View> {
   factory DataEffectAppend(
           {required final Ref ref,
-          required final Iterable<Ref> parent,
+          required final List<Ref> parent,
           required final Event? event,
           required final ({State state, View view}) stateView,
           required final DateTime createdAt}) =
       _$DataEffectAppend<Event, State, View>;
 
   Ref get ref;
-  Iterable<Ref> get parent;
+  List<Ref> get parent;
   Event? get event;
   ({State state, View view}) get stateView;
   DateTime get createdAt;
@@ -453,7 +460,7 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    required TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)
         append,
     required TResult Function(
@@ -468,7 +475,7 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult? Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult? Function(
@@ -483,7 +490,7 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult Function(
@@ -657,7 +664,7 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    required TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)
         append,
     required TResult Function(
@@ -672,7 +679,7 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult? Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult? Function(
@@ -687,7 +694,7 @@ class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult Function(
@@ -803,7 +810,7 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    required TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)
         append,
     required TResult Function(
@@ -818,7 +825,7 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult? Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult? Function(
@@ -833,7 +840,7 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, Iterable<Ref> parent, Event? event,
+    TResult Function(Ref ref, List<Ref> parent, Event? event,
             ({State state, View view}) stateView, DateTime createdAt)?
         append,
     TResult Function(

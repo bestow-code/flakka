@@ -12,27 +12,60 @@ class DataStore<Event extends CoreEvent, State extends CoreState,
     implements CoreDataStore<Event, State, View> {
   DataStore(
     super.initialState, {
+    required this.dataConverter,
     required StreamSink<ObjectEffect> objectEffect,
     required Stream<ObjectUpdate> objectUpdate,
-  })  : _dataEffect = objectEffect,
-        _dataUpdate = objectUpdate {
-    // _effect
+  }) : _objectEffect = objectEffect {
+    objectUpdate.listen(_onObjectUpdate);
+    _dataEffect.listen(_onDataEffect);
   }
 
-  final StreamSink<ObjectEffect> _dataEffect;
-  final Stream<ObjectUpdate> _dataUpdate;
-  final _effect = PublishSubject<DataEffect<Event, State, View>>();
-  final _update = PublishSubject<DataUpdate<Event, State, View>>();
+  final StreamSink<ObjectEffect> _objectEffect;
+  final _dataEffect = PublishSubject<DataEffect<Event, State, View>>();
+  final _dataUpdate = PublishSubject<DataUpdate<Event, State, View>>();
+
+  final DataConverter<Event, State, View> dataConverter;
 
   @override
-  StreamSink<DataEffect<Event, State, View>> get effect => _effect;
+  StreamSink<DataEffect<Event, State, View>> get effect => _dataEffect;
 
   @override
-  Stream<DataUpdate<Event, State, View>> get update => _update;
+  Stream<DataUpdate<Event, State, View>> get update => _dataUpdate;
 
   @override
   Future<InitialDataInstanceData> initialize(
-      InitialDataProps Function() ifEmpty) {
+    InitialDataProps Function() ifEmpty,
+  ) {
     throw UnimplementedError();
+  }
+
+  void _onObjectUpdate(ObjectUpdate event) {}
+
+  void _onDataEffect(DataEffect<Event, State, View> effect) {
+    effect.map(
+      append: (append) {
+        _objectEffect.add(
+          ObjectEffect.append(
+            ref: append.ref.value,
+            parent: append.parent.map((e) => e.value).toList(),
+            event: append.event != null
+                ? dataConverter.eventConverter.toJson(append.event!)
+                : null,
+            stateView: append.event != null
+                ? StateViewObject(
+                    state: dataConverter.stateConverter
+                        .toJson(append.stateView.state),
+                    view: dataConverter.viewConverter
+                        .toJson(append.stateView.view),
+                  )
+                : null,
+            createdAt: append.createdAt.millisecondsSinceEpoch,
+          ),
+        );
+      },
+      forward: (forward) {},
+      publish: (publish) {},
+      none: (none) {},
+    );
   }
 }

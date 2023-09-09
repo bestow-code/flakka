@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:core_object/core_object.dart';
 
-abstract interface class CoreObjectStoreRemote implements ObjectRemoteIO {
+abstract interface class ObjectRemoteIO {
   Future<InitialObjectInstanceData> initialize({
     required IfEmptyCallback ifEmpty,
   });

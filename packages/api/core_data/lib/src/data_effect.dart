@@ -8,7 +8,7 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DataEffect<Event, State, View> {
   factory DataEffect.append({
     required Ref ref,
-    required Iterable<Ref> parent,
+    required List<Ref> parent,
     required Event? event,
     required StateView<State, View> stateView,
     required DateTime createdAt,

@@ -8,3 +8,5 @@ export 'src/json_map.dart';
 export 'src/model/object_effect.dart';
 export 'src/model/object_update.dart';
 export 'src/state_view.dart';
+export 'src/tmp/object_local_io.dart';
+export 'src/tmp/object_remote_io.dart';

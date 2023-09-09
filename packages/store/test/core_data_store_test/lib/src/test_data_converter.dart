@@ -4,16 +4,21 @@ import 'package:core_object/core_object.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class TestDataConverter
-    extends DataConverter<TestEvent, TestState, TestView> {
+class TestDataConverter extends DataConverter<TestEvent, TestState, TestView> {
   TestDataConverter({
     required super.eventConverter,
     required super.stateConverter,
     required super.viewConverter,
   });
+
+  factory TestDataConverter.main() => TestDataConverter(
+        eventConverter: TestEventConverter(),
+        stateConverter: TestStateConverter(),
+        viewConverter: TestViewConverter(),
+      );
 }
 
-@Singleton(as: ObjectConverter<TestView>)
+@LazySingleton(as: ObjectConverter<TestView>)
 class TestViewConverter extends ObjectConverter<TestView> {
   @override
   TestView fromJson(JsonMap json) => TestView.fromJson(json);
@@ -22,7 +27,7 @@ class TestViewConverter extends ObjectConverter<TestView> {
   JsonMap toJson(TestView data) => data.toJson();
 }
 
-@Singleton(as: ObjectConverter<TestState>)
+@LazySingleton(as: ObjectConverter<TestState>)
 class TestStateConverter extends ObjectConverter<TestState> {
   @override
   TestState fromJson(JsonMap json) => TestState.fromJson(json);
@@ -31,7 +36,7 @@ class TestStateConverter extends ObjectConverter<TestState> {
   JsonMap toJson(TestState data) => data.toJson();
 }
 
-@Singleton(as: ObjectConverter<TestEvent>)
+@LazySingleton(as: ObjectConverter<TestEvent>)
 class TestEventConverter extends ObjectConverter<TestEvent> {
   @override
   TestEvent fromJson(JsonMap json) => TestEvent.fromJson(json);

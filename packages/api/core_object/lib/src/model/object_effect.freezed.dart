@@ -20,23 +20,13 @@ mixin _$ObjectEffect {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            StateViewObject? stateView,
+            int createdAt)
         append,
     required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            String ref, StateViewObject? stateView, int createdAt)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -47,23 +37,12 @@ mixin _$ObjectEffect {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
         publish,
@@ -74,23 +53,12 @@ mixin _$ObjectEffect {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
     TResult Function()? none,
@@ -150,11 +118,12 @@ abstract class _$$ObjectEffectAppendCopyWith<$Res> {
   @useResult
   $Res call(
       {String ref,
-      Iterable<String> parent,
+      List<String> parent,
       Map<String, dynamic>? event,
-      ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView,
-      int createdAt,
-      int sequenceNumber});
+      StateViewObject? stateView,
+      int createdAt});
+
+  $StateViewObjectCopyWith<$Res>? get stateView;
 }
 
 /// @nodoc
@@ -173,7 +142,6 @@ class __$$ObjectEffectAppendCopyWithImpl<$Res>
     Object? event = freezed,
     Object? stateView = freezed,
     Object? createdAt = null,
-    Object? sequenceNumber = null,
   }) {
     return _then(_$ObjectEffectAppend(
       ref: null == ref
@@ -181,9 +149,9 @@ class __$$ObjectEffectAppendCopyWithImpl<$Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
       parent: null == parent
-          ? _value.parent
+          ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       event: freezed == event
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
@@ -191,16 +159,24 @@ class __$$ObjectEffectAppendCopyWithImpl<$Res>
       stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({Map<String, dynamic> state, Map<String, dynamic> view})?,
+              as StateViewObject?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as int,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewObjectCopyWith<$Res>? get stateView {
+    if (_value.stateView == null) {
+      return null;
+    }
+
+    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
   }
 }
 
@@ -209,17 +185,23 @@ class __$$ObjectEffectAppendCopyWithImpl<$Res>
 class _$ObjectEffectAppend implements ObjectEffectAppend {
   _$ObjectEffectAppend(
       {required this.ref,
-      required this.parent,
+      required final List<String> parent,
       required final Map<String, dynamic>? event,
       required this.stateView,
-      required this.createdAt,
-      required this.sequenceNumber})
-      : _event = event;
+      required this.createdAt})
+      : _parent = parent,
+        _event = event;
 
   @override
   final String ref;
+  final List<String> _parent;
   @override
-  final Iterable<String> parent;
+  List<String> get parent {
+    if (_parent is EqualUnmodifiableListView) return _parent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parent);
+  }
+
   final Map<String, dynamic>? _event;
   @override
   Map<String, dynamic>? get event {
@@ -231,15 +213,13 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   }
 
   @override
-  final ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView;
+  final StateViewObject? stateView;
   @override
   final int createdAt;
-  @override
-  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'ObjectEffect.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'ObjectEffect.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt)';
   }
 
   @override
@@ -248,25 +228,22 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
         (other.runtimeType == runtimeType &&
             other is _$ObjectEffectAppend &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.parent, parent) &&
+            const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
+                other.createdAt == createdAt));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       ref,
-      const DeepCollectionEquality().hash(parent),
+      const DeepCollectionEquality().hash(_parent),
       const DeepCollectionEquality().hash(_event),
       stateView,
-      createdAt,
-      sequenceNumber);
+      createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -280,29 +257,19 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            StateViewObject? stateView,
+            int createdAt)
         append,
     required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            String ref, StateViewObject? stateView, int createdAt)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
-    return append(ref, parent, event, stateView, createdAt, sequenceNumber);
+    return append(ref, parent, event, stateView, createdAt);
   }
 
   @override
@@ -310,30 +277,18 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
         publish,
     TResult? Function()? none,
   }) {
-    return append?.call(
-        ref, parent, event, stateView, createdAt, sequenceNumber);
+    return append?.call(ref, parent, event, stateView, createdAt);
   }
 
   @override
@@ -341,30 +296,19 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
     if (append != null) {
-      return append(ref, parent, event, stateView, createdAt, sequenceNumber);
+      return append(ref, parent, event, stateView, createdAt);
     }
     return orElse();
   }
@@ -410,21 +354,16 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
 abstract class ObjectEffectAppend implements ObjectEffect {
   factory ObjectEffectAppend(
       {required final String ref,
-      required final Iterable<String> parent,
+      required final List<String> parent,
       required final Map<String, dynamic>? event,
-      required final ({
-        Map<String, dynamic> state,
-        Map<String, dynamic> view
-      })? stateView,
-      required final int createdAt,
-      required final int sequenceNumber}) = _$ObjectEffectAppend;
+      required final StateViewObject? stateView,
+      required final int createdAt}) = _$ObjectEffectAppend;
 
   String get ref;
-  Iterable<String> get parent;
+  List<String> get parent;
   Map<String, dynamic>? get event;
-  ({Map<String, dynamic> state, Map<String, dynamic> view})? get stateView;
+  StateViewObject? get stateView;
   int get createdAt;
-  int get sequenceNumber;
   @JsonKey(ignore: true)
   _$$ObjectEffectAppendCopyWith<_$ObjectEffectAppend> get copyWith =>
       throw _privateConstructorUsedError;
@@ -436,11 +375,9 @@ abstract class _$$ObjectEffectForwardCopyWith<$Res> {
           $Res Function(_$ObjectEffectForward) then) =
       __$$ObjectEffectForwardCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String ref,
-      ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView,
-      int createdAt,
-      int sequenceNumber});
+  $Res call({String ref, StateViewObject? stateView, int createdAt});
+
+  $StateViewObjectCopyWith<$Res>? get stateView;
 }
 
 /// @nodoc
@@ -457,7 +394,6 @@ class __$$ObjectEffectForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? stateView = freezed,
     Object? createdAt = null,
-    Object? sequenceNumber = null,
   }) {
     return _then(_$ObjectEffectForward(
       ref: null == ref
@@ -467,16 +403,24 @@ class __$$ObjectEffectForwardCopyWithImpl<$Res>
       stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({Map<String, dynamic> state, Map<String, dynamic> view})?,
+              as StateViewObject?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as int,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewObjectCopyWith<$Res>? get stateView {
+    if (_value.stateView == null) {
+      return null;
+    }
+
+    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
   }
 }
 
@@ -484,23 +428,18 @@ class __$$ObjectEffectForwardCopyWithImpl<$Res>
 
 class _$ObjectEffectForward implements ObjectEffectForward {
   _$ObjectEffectForward(
-      {required this.ref,
-      required this.stateView,
-      required this.createdAt,
-      required this.sequenceNumber});
+      {required this.ref, required this.stateView, required this.createdAt});
 
   @override
   final String ref;
   @override
-  final ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView;
+  final StateViewObject? stateView;
   @override
   final int createdAt;
-  @override
-  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'ObjectEffect.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'ObjectEffect.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt)';
   }
 
   @override
@@ -512,14 +451,11 @@ class _$ObjectEffectForward implements ObjectEffectForward {
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, ref, stateView, createdAt, sequenceNumber);
+  int get hashCode => Object.hash(runtimeType, ref, stateView, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -533,29 +469,19 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            StateViewObject? stateView,
+            int createdAt)
         append,
     required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            String ref, StateViewObject? stateView, int createdAt)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
-    return forward(ref, stateView, createdAt, sequenceNumber);
+    return forward(ref, stateView, createdAt);
   }
 
   @override
@@ -563,29 +489,18 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
         publish,
     TResult? Function()? none,
   }) {
-    return forward?.call(ref, stateView, createdAt, sequenceNumber);
+    return forward?.call(ref, stateView, createdAt);
   }
 
   @override
@@ -593,30 +508,19 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
     if (forward != null) {
-      return forward(ref, stateView, createdAt, sequenceNumber);
+      return forward(ref, stateView, createdAt);
     }
     return orElse();
   }
@@ -662,17 +566,12 @@ class _$ObjectEffectForward implements ObjectEffectForward {
 abstract class ObjectEffectForward implements ObjectEffect {
   factory ObjectEffectForward(
       {required final String ref,
-      required final ({
-        Map<String, dynamic> state,
-        Map<String, dynamic> view
-      })? stateView,
-      required final int createdAt,
-      required final int sequenceNumber}) = _$ObjectEffectForward;
+      required final StateViewObject? stateView,
+      required final int createdAt}) = _$ObjectEffectForward;
 
   String get ref;
-  ({Map<String, dynamic> state, Map<String, dynamic> view})? get stateView;
+  StateViewObject? get stateView;
   int get createdAt;
-  int get sequenceNumber;
   @JsonKey(ignore: true)
   _$$ObjectEffectForwardCopyWith<_$ObjectEffectForward> get copyWith =>
       throw _privateConstructorUsedError;
@@ -764,23 +663,13 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            StateViewObject? stateView,
+            int createdAt)
         append,
     required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            String ref, StateViewObject? stateView, int createdAt)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -794,23 +683,12 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
         publish,
@@ -824,23 +702,12 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
     TResult Function()? none,
@@ -944,23 +811,13 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            StateViewObject? stateView,
+            int createdAt)
         append,
     required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+            String ref, StateViewObject? stateView, int createdAt)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -974,23 +831,12 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
         publish,
@@ -1004,23 +850,12 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+            StateViewObject? stateView,
+            int createdAt)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)?
+    TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
     TResult Function()? none,
@@ -1082,21 +917,12 @@ mixin _$ObjectEffectLocal {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(
             Map<
@@ -1104,10 +930,7 @@ mixin _$ObjectEffectLocal {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)
         add,
@@ -1120,20 +943,11 @@ mixin _$ObjectEffectLocal {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(
@@ -1142,10 +956,7 @@ mixin _$ObjectEffectLocal {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -1158,20 +969,11 @@ mixin _$ObjectEffectLocal {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(
@@ -1180,10 +982,7 @@ mixin _$ObjectEffectLocal {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -1246,9 +1045,11 @@ abstract class _$$ObjectEffectLocalAppendCopyWith<$Res> {
       {String ref,
       Iterable<String> parent,
       Map<String, dynamic>? event,
-      ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView,
+      StateViewObject? stateView,
       int createdAt,
       int sequenceNumber});
+
+  $StateViewObjectCopyWith<$Res>? get stateView;
 }
 
 /// @nodoc
@@ -1285,7 +1086,7 @@ class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
       stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({Map<String, dynamic> state, Map<String, dynamic> view})?,
+              as StateViewObject?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -1295,6 +1096,18 @@ class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewObjectCopyWith<$Res>? get stateView {
+    if (_value.stateView == null) {
+      return null;
+    }
+
+    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
   }
 }
 
@@ -1325,7 +1138,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   }
 
   @override
-  final ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView;
+  final StateViewObject? stateView;
   @override
   final int createdAt;
   @override
@@ -1376,21 +1189,12 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(
             Map<
@@ -1398,10 +1202,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)
         add,
@@ -1417,20 +1218,11 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(
@@ -1439,10 +1231,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -1459,20 +1248,11 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(
@@ -1481,10 +1261,7 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -1540,17 +1317,14 @@ abstract class ObjectEffectLocalAppend implements ObjectEffectLocal {
       {required final String ref,
       required final Iterable<String> parent,
       required final Map<String, dynamic>? event,
-      required final ({
-        Map<String, dynamic> state,
-        Map<String, dynamic> view
-      })? stateView,
+      required final StateViewObject? stateView,
       required final int createdAt,
       required final int sequenceNumber}) = _$ObjectEffectLocalAppend;
 
   String get ref;
   Iterable<String> get parent;
   Map<String, dynamic>? get event;
-  ({Map<String, dynamic> state, Map<String, dynamic> view})? get stateView;
+  StateViewObject? get stateView;
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
@@ -1566,9 +1340,11 @@ abstract class _$$ObjectEffectLocalForwardCopyWith<$Res> {
   @useResult
   $Res call(
       {String ref,
-      ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView,
+      StateViewObject? stateView,
       int createdAt,
       int sequenceNumber});
+
+  $StateViewObjectCopyWith<$Res>? get stateView;
 }
 
 /// @nodoc
@@ -1595,7 +1371,7 @@ class __$$ObjectEffectLocalForwardCopyWithImpl<$Res>
       stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({Map<String, dynamic> state, Map<String, dynamic> view})?,
+              as StateViewObject?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -1605,6 +1381,18 @@ class __$$ObjectEffectLocalForwardCopyWithImpl<$Res>
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewObjectCopyWith<$Res>? get stateView {
+    if (_value.stateView == null) {
+      return null;
+    }
+
+    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
   }
 }
 
@@ -1620,7 +1408,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   final String ref;
   @override
-  final ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView;
+  final StateViewObject? stateView;
   @override
   final int createdAt;
   @override
@@ -1664,21 +1452,12 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(
             Map<
@@ -1686,10 +1465,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)
         add,
@@ -1705,20 +1481,11 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(
@@ -1727,10 +1494,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -1746,20 +1510,11 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(
@@ -1768,10 +1523,7 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -1825,15 +1577,12 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
 abstract class ObjectEffectLocalForward implements ObjectEffectLocal {
   factory ObjectEffectLocalForward(
       {required final String ref,
-      required final ({
-        Map<String, dynamic> state,
-        Map<String, dynamic> view
-      })? stateView,
+      required final StateViewObject? stateView,
       required final int createdAt,
       required final int sequenceNumber}) = _$ObjectEffectLocalForward;
 
   String get ref;
-  ({Map<String, dynamic> state, Map<String, dynamic> view})? get stateView;
+  StateViewObject? get stateView;
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
@@ -1853,10 +1602,7 @@ abstract class _$$ObjectEffectLocalAddCopyWith<$Res> {
               ({
                 ({int createdAt, String ref, Set<String> refs})? entry,
                 Map<String, dynamic>? event,
-                ({
-                  Map<String, dynamic> state,
-                  Map<String, dynamic> view
-                })? stateView
+                StateViewObject? stateView
               })>
           data});
 }
@@ -1883,10 +1629,7 @@ class __$$ObjectEffectLocalAddCopyWithImpl<$Res>
                   ({
                     ({int createdAt, String ref, Set<String> refs})? entry,
                     Map<String, dynamic>? event,
-                    ({
-                      Map<String, dynamic> state,
-                      Map<String, dynamic> view
-                    })? stateView
+                    StateViewObject? stateView
                   })>,
     ));
   }
@@ -1901,10 +1644,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
               ({
                 ({int createdAt, String ref, Set<String> refs})? entry,
                 Map<String, dynamic>? event,
-                ({
-                  Map<String, dynamic> state,
-                  Map<String, dynamic> view
-                })? stateView
+                StateViewObject? stateView
               })>
           data})
       : _data = data;
@@ -1914,7 +1654,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
       ({
         ({int createdAt, String ref, Set<String> refs})? entry,
         Map<String, dynamic>? event,
-        ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView
+        StateViewObject? stateView
       })> _data;
   @override
   Map<
@@ -1922,7 +1662,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
       ({
         ({int createdAt, String ref, Set<String> refs})? entry,
         Map<String, dynamic>? event,
-        ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView
+        StateViewObject? stateView
       })> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
@@ -1960,21 +1700,12 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(
             Map<
@@ -1982,10 +1713,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)
         add,
@@ -2001,20 +1729,11 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(
@@ -2023,10 +1742,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -2042,20 +1758,11 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(
@@ -2064,10 +1771,7 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -2125,10 +1829,7 @@ abstract class ObjectEffectLocalAdd implements ObjectEffectLocal {
               ({
                 ({int createdAt, String ref, Set<String> refs})? entry,
                 Map<String, dynamic>? event,
-                ({
-                  Map<String, dynamic> state,
-                  Map<String, dynamic> view
-                })? stateView
+                StateViewObject? stateView
               })>
           data}) = _$ObjectEffectLocalAdd;
 
@@ -2137,7 +1838,7 @@ abstract class ObjectEffectLocalAdd implements ObjectEffectLocal {
       ({
         ({int createdAt, String ref, Set<String> refs})? entry,
         Map<String, dynamic>? event,
-        ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView
+        StateViewObject? stateView
       })> get data;
   @JsonKey(ignore: true)
   _$$ObjectEffectLocalAddCopyWith<_$ObjectEffectLocalAdd> get copyWith =>
@@ -2186,21 +1887,12 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(
             Map<
@@ -2208,10 +1900,7 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)
         add,
@@ -2227,20 +1916,11 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(
@@ -2249,10 +1929,7 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -2268,20 +1945,11 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(
@@ -2290,10 +1958,7 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
                     ({
                       ({int createdAt, String ref, Set<String> refs})? entry,
                       Map<String, dynamic>? event,
-                      ({
-                        Map<String, dynamic> state,
-                        Map<String, dynamic> view
-                      })? stateView
+                      StateViewObject? stateView
                     })>
                 data)?
         add,
@@ -2356,21 +2021,12 @@ mixin _$ObjectEffectRemote {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -2383,20 +2039,11 @@ mixin _$ObjectEffectRemote {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
@@ -2410,20 +2057,11 @@ mixin _$ObjectEffectRemote {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
@@ -2486,9 +2124,11 @@ abstract class _$$ObjectEffectRemoteAppendCopyWith<$Res> {
       {String ref,
       Iterable<String> parent,
       Map<String, dynamic>? event,
-      ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView,
+      StateViewObject? stateView,
       int createdAt,
       int sequenceNumber});
+
+  $StateViewObjectCopyWith<$Res>? get stateView;
 }
 
 /// @nodoc
@@ -2525,7 +2165,7 @@ class __$$ObjectEffectRemoteAppendCopyWithImpl<$Res>
       stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({Map<String, dynamic> state, Map<String, dynamic> view})?,
+              as StateViewObject?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -2535,6 +2175,18 @@ class __$$ObjectEffectRemoteAppendCopyWithImpl<$Res>
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewObjectCopyWith<$Res>? get stateView {
+    if (_value.stateView == null) {
+      return null;
+    }
+
+    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
   }
 }
 
@@ -2565,7 +2217,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   }
 
   @override
-  final ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView;
+  final StateViewObject? stateView;
   @override
   final int createdAt;
   @override
@@ -2617,21 +2269,12 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -2647,20 +2290,11 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
@@ -2678,20 +2312,11 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
@@ -2747,17 +2372,14 @@ abstract class ObjectEffectRemoteAppend implements ObjectEffectRemote {
       {required final String ref,
       required final Iterable<String> parent,
       required final Map<String, dynamic>? event,
-      required final ({
-        Map<String, dynamic> state,
-        Map<String, dynamic> view
-      })? stateView,
+      required final StateViewObject? stateView,
       required final int createdAt,
       required final int sequenceNumber}) = _$ObjectEffectRemoteAppend;
 
   String get ref;
   Iterable<String> get parent;
   Map<String, dynamic>? get event;
-  ({Map<String, dynamic> state, Map<String, dynamic> view})? get stateView;
+  StateViewObject? get stateView;
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
@@ -2774,9 +2396,11 @@ abstract class _$$ObjectEffectRemoteForwardCopyWith<$Res> {
   @useResult
   $Res call(
       {String ref,
-      ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView,
+      StateViewObject? stateView,
       int createdAt,
       int sequenceNumber});
+
+  $StateViewObjectCopyWith<$Res>? get stateView;
 }
 
 /// @nodoc
@@ -2803,7 +2427,7 @@ class __$$ObjectEffectRemoteForwardCopyWithImpl<$Res>
       stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({Map<String, dynamic> state, Map<String, dynamic> view})?,
+              as StateViewObject?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -2813,6 +2437,18 @@ class __$$ObjectEffectRemoteForwardCopyWithImpl<$Res>
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewObjectCopyWith<$Res>? get stateView {
+    if (_value.stateView == null) {
+      return null;
+    }
+
+    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
   }
 }
 
@@ -2828,7 +2464,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   @override
   final String ref;
   @override
-  final ({Map<String, dynamic> state, Map<String, dynamic> view})? stateView;
+  final StateViewObject? stateView;
   @override
   final int createdAt;
   @override
@@ -2871,21 +2507,12 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -2901,20 +2528,11 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
@@ -2931,20 +2549,11 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
@@ -2998,15 +2607,12 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
 abstract class ObjectEffectRemoteForward implements ObjectEffectRemote {
   factory ObjectEffectRemoteForward(
       {required final String ref,
-      required final ({
-        Map<String, dynamic> state,
-        Map<String, dynamic> view
-      })? stateView,
+      required final StateViewObject? stateView,
       required final int createdAt,
       required final int sequenceNumber}) = _$ObjectEffectRemoteForward;
 
   String get ref;
-  ({Map<String, dynamic> state, Map<String, dynamic> view})? get stateView;
+  StateViewObject? get stateView;
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
@@ -3103,21 +2709,12 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -3133,20 +2730,11 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
@@ -3163,20 +2751,11 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
@@ -3283,21 +2862,12 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)
         append,
-    required TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
-            int sequenceNumber)
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
         forward,
     required TResult Function(String ref, Iterable<String> from, int createdAt)
         publish,
@@ -3313,20 +2883,11 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult? Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult? Function(String ref, Iterable<String> from, int createdAt)?
@@ -3343,20 +2904,11 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
             String ref,
             Iterable<String> parent,
             Map<String, dynamic>? event,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
+            StateViewObject? stateView,
             int createdAt,
             int sequenceNumber)?
         append,
-    TResult Function(
-            String ref,
-            ({
-              Map<String, dynamic> state,
-              Map<String, dynamic> view
-            })? stateView,
-            int createdAt,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
     TResult Function(String ref, Iterable<String> from, int createdAt)? publish,

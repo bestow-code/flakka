@@ -736,14 +736,7 @@ mixin _$ObjectUpdateLocal {
     required TResult Function(Map<String, JsonMap> data) event,
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
-    required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)
+    required TResult Function(({String ref, StateViewObject stateView}) data)
         stateView,
   }) =>
       throw _privateConstructorUsedError;
@@ -756,14 +749,7 @@ mixin _$ObjectUpdateLocal {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateView}) data)?
         stateView,
   }) =>
       throw _privateConstructorUsedError;
@@ -776,15 +762,7 @@ mixin _$ObjectUpdateLocal {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
-        stateView,
+    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -882,14 +860,7 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
     required TResult Function(Map<String, JsonMap> data) event,
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
-    required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)
+    required TResult Function(({String ref, StateViewObject stateView}) data)
         stateView,
   }) {
     return pending();
@@ -905,14 +876,7 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateView}) data)?
         stateView,
   }) {
     return pending?.call();
@@ -928,15 +892,7 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
-        stateView,
+    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (pending != null) {
@@ -1071,14 +1027,7 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
     required TResult Function(Map<String, JsonMap> data) event,
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
-    required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)
+    required TResult Function(({String ref, StateViewObject stateView}) data)
         stateView,
   }) {
     return entry(data);
@@ -1094,14 +1043,7 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateView}) data)?
         stateView,
   }) {
     return entry?.call(data);
@@ -1117,15 +1059,7 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
-        stateView,
+    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -1265,14 +1199,7 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
     required TResult Function(Map<String, JsonMap> data) event,
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
-    required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)
+    required TResult Function(({String ref, StateViewObject stateView}) data)
         stateView,
   }) {
     return event(data);
@@ -1288,14 +1215,7 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateView}) data)?
         stateView,
   }) {
     return event?.call(data);
@@ -1311,15 +1231,7 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
-        stateView,
+    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -1455,14 +1367,7 @@ class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
     required TResult Function(Map<String, JsonMap> data) event,
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
-    required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)
+    required TResult Function(({String ref, StateViewObject stateView}) data)
         stateView,
   }) {
     return stateViewRef(data);
@@ -1478,14 +1383,7 @@ class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateView}) data)?
         stateView,
   }) {
     return stateViewRef?.call(data);
@@ -1501,15 +1399,7 @@ class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
-        stateView,
+    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (stateViewRef != null) {
@@ -1577,11 +1467,7 @@ abstract class _$$ObjectUpdateLocalStateViewCopyWith<$Res> {
           $Res Function(_$ObjectUpdateLocalStateView) then) =
       __$$ObjectUpdateLocalStateViewCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {({
-        String ref,
-        ({Map<String, dynamic> state, Map<String, dynamic> view}) stateView
-      }) data});
+  $Res call({({String ref, StateViewObject stateView}) data});
 }
 
 /// @nodoc
@@ -1602,13 +1488,7 @@ class __$$ObjectUpdateLocalStateViewCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }),
+              as ({String ref, StateViewObject stateView}),
     ));
   }
 }
@@ -1619,10 +1499,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
   _$ObjectUpdateLocalStateView({required this.data});
 
   @override
-  final ({
-    String ref,
-    ({Map<String, dynamic> state, Map<String, dynamic> view}) stateView
-  }) data;
+  final ({String ref, StateViewObject stateView}) data;
 
   @override
   String toString() {
@@ -1657,14 +1534,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
     required TResult Function(Map<String, JsonMap> data) event,
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
-    required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)
+    required TResult Function(({String ref, StateViewObject stateView}) data)
         stateView,
   }) {
     return stateView(data);
@@ -1680,14 +1550,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateView}) data)?
         stateView,
   }) {
     return stateView?.call(data);
@@ -1703,15 +1566,7 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateView
-            }) data)?
-        stateView,
+    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (stateView != null) {
@@ -1763,15 +1618,10 @@ class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
 
 abstract class ObjectUpdateLocalStateView implements ObjectUpdateLocal {
   factory ObjectUpdateLocalStateView(
-      {required final ({
-        String ref,
-        ({Map<String, dynamic> state, Map<String, dynamic> view}) stateView
-      }) data}) = _$ObjectUpdateLocalStateView;
+          {required final ({String ref, StateViewObject stateView}) data}) =
+      _$ObjectUpdateLocalStateView;
 
-  ({
-    String ref,
-    ({Map<String, dynamic> state, Map<String, dynamic> view}) stateView
-  }) get data;
+  ({String ref, StateViewObject stateView}) get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateLocalStateViewCopyWith<_$ObjectUpdateLocalStateView>
       get copyWith => throw _privateConstructorUsedError;
@@ -1789,13 +1639,7 @@ mixin _$ObjectUpdateRemote {
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
     required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)
+            ({String ref, StateViewObject stateViewObject}) data)
         stateView,
   }) =>
       throw _privateConstructorUsedError;
@@ -1807,14 +1651,7 @@ mixin _$ObjectUpdateRemote {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
   }) =>
       throw _privateConstructorUsedError;
@@ -1826,14 +1663,7 @@ mixin _$ObjectUpdateRemote {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
     required TResult orElse(),
   }) =>
@@ -1965,13 +1795,7 @@ class _$ObjectUpdateRemoteEntry implements ObjectUpdateRemoteEntry {
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
     required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)
+            ({String ref, StateViewObject stateViewObject}) data)
         stateView,
   }) {
     return entry(data);
@@ -1986,14 +1810,7 @@ class _$ObjectUpdateRemoteEntry implements ObjectUpdateRemoteEntry {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
   }) {
     return entry?.call(data);
@@ -2008,14 +1825,7 @@ class _$ObjectUpdateRemoteEntry implements ObjectUpdateRemoteEntry {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
     required TResult orElse(),
   }) {
@@ -2155,13 +1965,7 @@ class _$ObjectUpdateRemoteEvent implements ObjectUpdateRemoteEvent {
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
     required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)
+            ({String ref, StateViewObject stateViewObject}) data)
         stateView,
   }) {
     return event(data);
@@ -2176,14 +1980,7 @@ class _$ObjectUpdateRemoteEvent implements ObjectUpdateRemoteEvent {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
   }) {
     return event?.call(data);
@@ -2198,14 +1995,7 @@ class _$ObjectUpdateRemoteEvent implements ObjectUpdateRemoteEvent {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
     required TResult orElse(),
   }) {
@@ -2342,13 +2132,7 @@ class _$ObjectUpdateRemoteStateViewRef
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
     required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)
+            ({String ref, StateViewObject stateViewObject}) data)
         stateView,
   }) {
     return stateViewRef(data);
@@ -2363,14 +2147,7 @@ class _$ObjectUpdateRemoteStateViewRef
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
   }) {
     return stateViewRef?.call(data);
@@ -2385,14 +2162,7 @@ class _$ObjectUpdateRemoteStateViewRef
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
     required TResult orElse(),
   }) {
@@ -2460,14 +2230,7 @@ abstract class _$$ObjectUpdateRemoteStateViewCopyWith<$Res> {
           $Res Function(_$ObjectUpdateRemoteStateView) then) =
       __$$ObjectUpdateRemoteStateViewCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {({
-        String ref,
-        ({
-          Map<String, dynamic> state,
-          Map<String, dynamic> view
-        }) stateViewObject
-      }) data});
+  $Res call({({String ref, StateViewObject stateViewObject}) data});
 }
 
 /// @nodoc
@@ -2489,13 +2252,7 @@ class __$$ObjectUpdateRemoteStateViewCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }),
+              as ({String ref, StateViewObject stateViewObject}),
     ));
   }
 }
@@ -2506,10 +2263,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
   _$ObjectUpdateRemoteStateView({required this.data});
 
   @override
-  final ({
-    String ref,
-    ({Map<String, dynamic> state, Map<String, dynamic> view}) stateViewObject
-  }) data;
+  final ({String ref, StateViewObject stateViewObject}) data;
 
   @override
   String toString() {
@@ -2544,13 +2298,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
     required TResult Function(Iterable<({int createdAt, String ref})> data)
         stateViewRef,
     required TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)
+            ({String ref, StateViewObject stateViewObject}) data)
         stateView,
   }) {
     return stateView(data);
@@ -2565,14 +2313,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
     TResult? Function(Map<String, JsonMap> data)? event,
     TResult? Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult? Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult? Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
   }) {
     return stateView?.call(data);
@@ -2587,14 +2328,7 @@ class _$ObjectUpdateRemoteStateView implements ObjectUpdateRemoteStateView {
     TResult Function(Map<String, JsonMap> data)? event,
     TResult Function(Iterable<({int createdAt, String ref})> data)?
         stateViewRef,
-    TResult Function(
-            ({
-              String ref,
-              ({
-                Map<String, dynamic> state,
-                Map<String, dynamic> view
-              }) stateViewObject
-            }) data)?
+    TResult Function(({String ref, StateViewObject stateViewObject}) data)?
         stateView,
     required TResult orElse(),
   }) {
@@ -2647,17 +2381,11 @@ abstract class ObjectUpdateRemoteStateView implements ObjectUpdateRemote {
   factory ObjectUpdateRemoteStateView(
       {required final ({
         String ref,
-        ({
-          Map<String, dynamic> state,
-          Map<String, dynamic> view
-        }) stateViewObject
+        StateViewObject stateViewObject
       }) data}) = _$ObjectUpdateRemoteStateView;
 
   @override
-  ({
-    String ref,
-    ({Map<String, dynamic> state, Map<String, dynamic> view}) stateViewObject
-  }) get data;
+  ({String ref, StateViewObject stateViewObject}) get data;
   @JsonKey(ignore: true)
   _$$ObjectUpdateRemoteStateViewCopyWith<_$ObjectUpdateRemoteStateView>
       get copyWith => throw _privateConstructorUsedError;

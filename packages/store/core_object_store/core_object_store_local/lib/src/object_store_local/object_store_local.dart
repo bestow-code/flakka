@@ -7,7 +7,7 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import '../../core_object_store_local.dart';
 
 class ObjectStoreLocal extends Cubit<ObjectStoreLocalState>
-    implements CoreObjectStoreLocal {
+    implements ObjectLocalIO {
   ObjectStoreLocal(
     super.initialState, {
     required CorePersistenceLocalAdapter adapter,
