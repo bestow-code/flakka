@@ -28,7 +28,7 @@ mixin _$ObjectEffect {
     required TResult Function(
             String ref, StateViewObject? stateView, int createdAt)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) =>
@@ -44,8 +44,7 @@ mixin _$ObjectEffect {
         append,
     TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +59,7 @@ mixin _$ObjectEffect {
         append,
     TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) =>
@@ -265,7 +264,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
     required TResult Function(
             String ref, StateViewObject? stateView, int createdAt)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -284,8 +283,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
         append,
     TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return append?.call(ref, parent, event, stateView, createdAt);
@@ -303,7 +301,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
         append,
     TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -477,7 +475,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
     required TResult Function(
             String ref, StateViewObject? stateView, int createdAt)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -496,8 +494,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
         append,
     TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return forward?.call(ref, stateView, createdAt);
@@ -515,7 +512,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
         append,
     TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -583,7 +580,7 @@ abstract class _$$ObjectEffectPublishCopyWith<$Res> {
           $Res Function(_$ObjectEffectPublish) then) =
       __$$ObjectEffectPublishCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref, Iterable<String> from, int createdAt});
+  $Res call({String ref, List<String> from, int createdAt});
 }
 
 /// @nodoc
@@ -607,9 +604,9 @@ class __$$ObjectEffectPublishCopyWithImpl<$Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
       from: null == from
-          ? _value.from
+          ? _value._from
           : from // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -622,12 +619,21 @@ class __$$ObjectEffectPublishCopyWithImpl<$Res>
 
 class _$ObjectEffectPublish implements ObjectEffectPublish {
   _$ObjectEffectPublish(
-      {required this.ref, required this.from, required this.createdAt});
+      {required this.ref,
+      required final List<String> from,
+      required this.createdAt})
+      : _from = from;
 
   @override
   final String ref;
+  final List<String> _from;
   @override
-  final Iterable<String> from;
+  List<String> get from {
+    if (_from is EqualUnmodifiableListView) return _from;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_from);
+  }
+
   @override
   final int createdAt;
 
@@ -642,14 +648,14 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
         (other.runtimeType == runtimeType &&
             other is _$ObjectEffectPublish &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other._from, _from) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, ref, const DeepCollectionEquality().hash(from), createdAt);
+      runtimeType, ref, const DeepCollectionEquality().hash(_from), createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -671,7 +677,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
     required TResult Function(
             String ref, StateViewObject? stateView, int createdAt)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -690,8 +696,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
         append,
     TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return publish?.call(ref, from, createdAt);
@@ -709,7 +714,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
         append,
     TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -760,11 +765,11 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
 abstract class ObjectEffectPublish implements ObjectEffect {
   factory ObjectEffectPublish(
       {required final String ref,
-      required final Iterable<String> from,
+      required final List<String> from,
       required final int createdAt}) = _$ObjectEffectPublish;
 
   String get ref;
-  Iterable<String> get from;
+  List<String> get from;
   int get createdAt;
   @JsonKey(ignore: true)
   _$$ObjectEffectPublishCopyWith<_$ObjectEffectPublish> get copyWith =>
@@ -819,7 +824,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
     required TResult Function(
             String ref, StateViewObject? stateView, int createdAt)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -838,8 +843,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
         append,
     TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return none?.call();
@@ -857,7 +861,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
         append,
     TResult Function(String ref, StateViewObject? stateView, int createdAt)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -2026,7 +2030,7 @@ mixin _$ObjectEffectRemote {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2035,7 +2039,7 @@ mixin _$ObjectEffectRemote {
     required TResult Function(String ref, StateViewObject? stateView,
             int createdAt, int sequenceNumber)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) =>
@@ -2044,7 +2048,7 @@ mixin _$ObjectEffectRemote {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2053,8 +2057,7 @@ mixin _$ObjectEffectRemote {
     TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
@@ -2062,7 +2065,7 @@ mixin _$ObjectEffectRemote {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2071,7 +2074,7 @@ mixin _$ObjectEffectRemote {
     TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) =>
@@ -2129,7 +2132,7 @@ abstract class _$$ObjectEffectRemoteAppendCopyWith<$Res> {
   @useResult
   $Res call(
       {String ref,
-      Iterable<String> parent,
+      List<String> parent,
       Map<String, dynamic>? event,
       StateViewObject? stateView,
       int createdAt,
@@ -2162,9 +2165,9 @@ class __$$ObjectEffectRemoteAppendCopyWithImpl<$Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
       parent: null == parent
-          ? _value.parent
+          ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       event: freezed == event
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
@@ -2202,17 +2205,24 @@ class __$$ObjectEffectRemoteAppendCopyWithImpl<$Res>
 class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   _$ObjectEffectRemoteAppend(
       {required this.ref,
-      required this.parent,
+      required final List<String> parent,
       required final Map<String, dynamic>? event,
       required this.stateView,
       required this.createdAt,
       required this.sequenceNumber})
-      : _event = event;
+      : _parent = parent,
+        _event = event;
 
   @override
   final String ref;
+  final List<String> _parent;
   @override
-  final Iterable<String> parent;
+  List<String> get parent {
+    if (_parent is EqualUnmodifiableListView) return _parent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parent);
+  }
+
   final Map<String, dynamic>? _event;
   @override
   Map<String, dynamic>? get event {
@@ -2241,7 +2251,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
         (other.runtimeType == runtimeType &&
             other is _$ObjectEffectRemoteAppend &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.parent, parent) &&
+            const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
@@ -2255,7 +2265,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   int get hashCode => Object.hash(
       runtimeType,
       ref,
-      const DeepCollectionEquality().hash(parent),
+      const DeepCollectionEquality().hash(_parent),
       const DeepCollectionEquality().hash(_event),
       stateView,
       createdAt,
@@ -2274,7 +2284,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2283,7 +2293,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
     required TResult Function(String ref, StateViewObject? stateView,
             int createdAt, int sequenceNumber)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -2295,7 +2305,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2304,8 +2314,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
     TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return append?.call(
@@ -2317,7 +2326,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2326,7 +2335,7 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
     TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -2377,14 +2386,14 @@ class _$ObjectEffectRemoteAppend implements ObjectEffectRemoteAppend {
 abstract class ObjectEffectRemoteAppend implements ObjectEffectRemote {
   factory ObjectEffectRemoteAppend(
       {required final String ref,
-      required final Iterable<String> parent,
+      required final List<String> parent,
       required final Map<String, dynamic>? event,
       required final StateViewObject? stateView,
       required final int createdAt,
       required final int sequenceNumber}) = _$ObjectEffectRemoteAppend;
 
   String get ref;
-  Iterable<String> get parent;
+  List<String> get parent;
   Map<String, dynamic>? get event;
   StateViewObject? get stateView;
   int get createdAt;
@@ -2512,7 +2521,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2521,7 +2530,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
     required TResult Function(String ref, StateViewObject? stateView,
             int createdAt, int sequenceNumber)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -2533,7 +2542,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2542,8 +2551,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
     TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return forward?.call(ref, stateView, createdAt, sequenceNumber);
@@ -2554,7 +2562,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2563,7 +2571,7 @@ class _$ObjectEffectRemoteForward implements ObjectEffectRemoteForward {
     TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -2634,7 +2642,7 @@ abstract class _$$ObjectEffectRemotePublishCopyWith<$Res> {
           $Res Function(_$ObjectEffectRemotePublish) then) =
       __$$ObjectEffectRemotePublishCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref, Iterable<String> from, int createdAt});
+  $Res call({String ref, List<String> from, int createdAt});
 }
 
 /// @nodoc
@@ -2658,9 +2666,9 @@ class __$$ObjectEffectRemotePublishCopyWithImpl<$Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
       from: null == from
-          ? _value.from
+          ? _value._from
           : from // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -2673,12 +2681,21 @@ class __$$ObjectEffectRemotePublishCopyWithImpl<$Res>
 
 class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   _$ObjectEffectRemotePublish(
-      {required this.ref, required this.from, required this.createdAt});
+      {required this.ref,
+      required final List<String> from,
+      required this.createdAt})
+      : _from = from;
 
   @override
   final String ref;
+  final List<String> _from;
   @override
-  final Iterable<String> from;
+  List<String> get from {
+    if (_from is EqualUnmodifiableListView) return _from;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_from);
+  }
+
   @override
   final int createdAt;
 
@@ -2693,14 +2710,14 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
         (other.runtimeType == runtimeType &&
             other is _$ObjectEffectRemotePublish &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other._from, _from) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, ref, const DeepCollectionEquality().hash(from), createdAt);
+      runtimeType, ref, const DeepCollectionEquality().hash(_from), createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -2714,7 +2731,7 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2723,7 +2740,7 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
     required TResult Function(String ref, StateViewObject? stateView,
             int createdAt, int sequenceNumber)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -2735,7 +2752,7 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2744,8 +2761,7 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
     TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return publish?.call(ref, from, createdAt);
@@ -2756,7 +2772,7 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2765,7 +2781,7 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
     TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -2816,11 +2832,11 @@ class _$ObjectEffectRemotePublish implements ObjectEffectRemotePublish {
 abstract class ObjectEffectRemotePublish implements ObjectEffectRemote {
   factory ObjectEffectRemotePublish(
       {required final String ref,
-      required final Iterable<String> from,
+      required final List<String> from,
       required final int createdAt}) = _$ObjectEffectRemotePublish;
 
   String get ref;
-  Iterable<String> get from;
+  List<String> get from;
   int get createdAt;
   @JsonKey(ignore: true)
   _$$ObjectEffectRemotePublishCopyWith<_$ObjectEffectRemotePublish>
@@ -2867,7 +2883,7 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2876,7 +2892,7 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
     required TResult Function(String ref, StateViewObject? stateView,
             int createdAt, int sequenceNumber)
         forward,
-    required TResult Function(String ref, Iterable<String> from, int createdAt)
+    required TResult Function(String ref, List<String> from, int createdAt)
         publish,
     required TResult Function() none,
   }) {
@@ -2888,7 +2904,7 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2897,8 +2913,7 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
     TResult? Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult? Function(String ref, Iterable<String> from, int createdAt)?
-        publish,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
     TResult? Function()? none,
   }) {
     return none?.call();
@@ -2909,7 +2924,7 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String ref,
-            Iterable<String> parent,
+            List<String> parent,
             Map<String, dynamic>? event,
             StateViewObject? stateView,
             int createdAt,
@@ -2918,7 +2933,7 @@ class _$ObjectEffectRemoteNone implements ObjectEffectRemoteNone {
     TResult Function(String ref, StateViewObject? stateView, int createdAt,
             int sequenceNumber)?
         forward,
-    TResult Function(String ref, Iterable<String> from, int createdAt)? publish,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {

@@ -7,6 +7,14 @@ abstract class CorePersistenceRemoteAdapter {
   Future<ObjectInstanceHead> initialize({
     required IfEmptyCallback ifEmpty,
   });
+  Future<void> append({
+    required String ref,
+    required List<String> parent,
+    required JsonMap? event,
+    required StateViewObject? stateView,
+    required int createdAt,
+    required int sequenceNumber,
+  });
 
   // Future<void> start();
   //

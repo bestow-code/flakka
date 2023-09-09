@@ -41,7 +41,7 @@ class ObjectEffect with _$ObjectEffect {
 
   factory ObjectEffect.publish({
     required String ref,
-    required Iterable<String> from,
+    required List<String> from,
     required int createdAt,
   }) = ObjectEffectPublish;
 
@@ -84,7 +84,7 @@ class ObjectEffectLocal with _$ObjectEffectLocal {
 class ObjectEffectRemote with _$ObjectEffectRemote {
   factory ObjectEffectRemote.append({
     required String ref,
-    required Iterable<String> parent,
+    required List<String> parent,
     required JsonMap? event,
     required StateViewObject? stateView,
     required int createdAt,
@@ -100,7 +100,7 @@ class ObjectEffectRemote with _$ObjectEffectRemote {
 
   factory ObjectEffectRemote.publish({
     required String ref,
-    required Iterable<String> from,
+    required List<String> from,
     required int createdAt,
   }) = ObjectEffectRemotePublish;
 

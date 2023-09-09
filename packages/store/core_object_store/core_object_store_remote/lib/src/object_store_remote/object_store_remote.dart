@@ -12,12 +12,12 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
     super.initialState, {
     required CorePersistenceRemoteAdapter adapter,
   }) : _adapter = adapter {
-    _effect.stream.listen(_handleEffect);
+    _effect.stream.listen(_onObjectEffectRemote);
   }
 
   final CorePersistenceRemoteAdapter _adapter;
 
-  final _effect = StreamController<ObjectEffectRemote>.broadcast();
+  final _effect = StreamController<ObjectEffectRemote>();
 
   final _update = StreamController<ObjectUpdateRemote>();
 
@@ -29,7 +29,7 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
 
   @override
   Future<void> start() async {
-    emit(ObjectStoreRemoteState.ready());
+    emit(ObjectStoreRemoteState());
   }
 
   @override
@@ -39,9 +39,25 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
     final result = await _adapter.initialize(
       ifEmpty: ifEmpty,
     );
-    emit(ObjectStoreRemoteState.ready());
+    emit(ObjectStoreRemoteState());
     return result;
   }
 
-  void _handleEffect(ObjectEffectRemote event) {}
+  Future<void> _onObjectEffectRemote(ObjectEffectRemote event) async {
+    await event.map(
+      append: (append) async {
+        await _adapter.append(
+          ref: append.ref,
+          parent: append.parent,
+          event: append.event,
+          stateView: append.stateView,
+          createdAt: append.createdAt,
+          sequenceNumber: append.sequenceNumber,
+        );
+      },
+      forward: (forward) {},
+      none: (none) {},
+      publish: (ObjectEffectRemotePublish value) {},
+    );
+  }
 }
