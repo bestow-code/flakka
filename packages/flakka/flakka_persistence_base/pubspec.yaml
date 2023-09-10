@@ -11,6 +11,7 @@ dependencies:
   core_common: ^0.1.0+2
   core_persistence_base:
   freezed_annotation: ^2.2.0
+  get_it: ^7.6.4
   meta: ^1.9.1
   rxdart: ^0.27.7
 

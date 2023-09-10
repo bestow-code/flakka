@@ -18,6 +18,6 @@ class ObjectStoreLocalFactoryProvider implements CoreObjectStoreLocalFactoryProv
   ObjectStoreLocalFactory getFactory(String persistenceId) =>
       ObjectStoreLocalFactory(
         adapterFactory:
-            persistenceProviderLocal.getAdapterFactory(persistenceId),
+            persistenceProviderLocal.getFactory(persistenceId),
       );
 }

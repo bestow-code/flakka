@@ -18,7 +18,7 @@ dependencies:
   core_object_store:
 
 #  core_aggregate:
-  get_it:
+  get_it: ^7.6.4
 
 dev_dependencies:
   lints: ^2.0.0

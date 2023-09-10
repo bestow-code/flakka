@@ -3,4 +3,4 @@
 /// Common libraries for core_platform
 library flakka_persistence_base;
 
-export 'src/local_persistence_registry.dart';
+export 'src/persistence_base_registry.dart';

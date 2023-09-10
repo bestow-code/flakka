@@ -12,7 +12,7 @@ class ObjectStoreRemoteFactory implements CoreObjectStoreRemoteFactory {
 
   @override
   Future<ObjectStoreRemote> getInstance(String path) async => ObjectStoreRemote(
-        ObjectStoreRemoteState.initial(),
+        ObjectStoreRemoteState(),
         adapter: await adapterFactory.getAdapter(path),
       );
 }
