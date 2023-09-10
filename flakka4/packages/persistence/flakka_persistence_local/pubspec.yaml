@@ -1,0 +1,35 @@
+name: flakka_persistence_local
+description: A sample command-line application.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.1.0
+
+dependencies:
+  bloc: ^8.1.2
+  core_common: ^0.1.0+2
+  core_persistence_local:
+  freezed_annotation: ^2.2.0
+  get_it: ^7.6.4
+  meta: ^1.9.1
+  rxdart: ^0.27.7
+
+dev_dependencies:
+  build_runner:
+  core_persistence_local_sembast:
+#  core_persistence_local_test:
+  core_persistence_local_tests:
+  freezed: ^2.3.5
+  json_serializable: ^6.7.0
+  test: ^1.21.0
+  very_good_analysis: 5.0.0+1
+
+index_generator:
+  exclude:
+    - '**.*.dart'
+  indexes:
+    - path: lib
+      include:
+        - src
+      docs: Common libraries for core_platform

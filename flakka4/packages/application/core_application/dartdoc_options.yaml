@@ -1,0 +1,9 @@
+dartdoc:
+  categories:
+    "First Category":
+#      markdown: doc/First.md
+      name: Model
+    "Second Category":
+#      markdown: doc/Second.md
+      name: Great
+  categoryOrder: ["First Category", "Second Category"]

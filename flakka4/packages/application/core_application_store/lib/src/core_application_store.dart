@@ -1,0 +1,19 @@
+import 'dart:async';
+
+import 'package:core_application/core_application.dart';
+import 'package:core_data/core_data.dart';
+
+abstract interface class CoreApplicationStore<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements ApplicationIO<Event, State, View> {
+  Future<InitialApplicationInstanceData> initialize(
+    InitialApplicationProps Function() ifEmpty,
+  );
+
+}
+
+typedef InitialApplicationProps = ({Ref ref, DateTime createdAt});
+typedef InitialApplicationInstanceData<State extends CoreState,
+        View extends CoreView>
+    = ({Ref ref, StateView<State, View> stateView});
