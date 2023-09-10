@@ -1,5 +1,4 @@
-
-import 'package:flakka_object/flakka_object.dart';
+import 'package:core_object/core_object.dart';
 
 import '../../flakka_data.dart';
 

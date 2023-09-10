@@ -2,13 +2,15 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:core_object/core_object.dart';
-import 'package:core_object_store/core_object_store.dart';
+import 'package:core_object_local/core_object_local.dart';
+import 'package:core_object_remote/core_object_remote.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'object_store.freezed.dart';
 
-class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
+class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectIO {
   ObjectStore(
     super.initialState, {
     required StreamSink<ObjectEffectLocal> objectEffectLocal,
@@ -92,7 +94,8 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectStore {
   @override
   Future<InitialObjectInstanceData> initialize({
     required IfEmptyCallback ifEmpty,
-  }) async {throw UnimplementedError();
+  }) async {
+    throw UnimplementedError();
     // final initialObjectInstanceData = await _objectLocalIO.inspect();
     // if (initialObjectInstanceData != null) {
     //   await _objectRemoteIO.start();

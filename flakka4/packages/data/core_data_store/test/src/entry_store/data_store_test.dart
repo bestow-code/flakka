@@ -4,6 +4,7 @@ library;
 import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
+import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data_store/core_data_store.dart';
 import 'package:core_data_test/core_data_test.dart';
@@ -53,9 +54,7 @@ void main() {
               parent: [ref0.value],
               event: TestEvent(2).toJson(),
               stateView: StateViewObject(
-                state: TestState(2).toJson(),
-                view: TestView(2).toJson()
-              ),
+                  state: TestState(2).toJson(), view: TestView(2).toJson()),
               createdAt: t1.millisecondsSinceEpoch,
             )),
           ),

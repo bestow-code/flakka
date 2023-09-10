@@ -1,0 +1,9 @@
+@startuml
+interface CoreData {
+  StreamSink<DataEffect> effectSink
+  ValueStream<CoreDataState> state
+}
+abstract class CoreDataBase implements CoreData
+
+
+@enduml

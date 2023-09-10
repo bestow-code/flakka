@@ -4,9 +4,8 @@
 library core_object;
 
 export 'src/core_object.dart';
-export 'src/json_map.dart';
+export 'src/core_object_io.dart';
+export 'src/core_object_io_factory.dart';
+export 'src/core_object_store_factory_provider.dart';
 export 'src/model/object_effect.dart';
 export 'src/model/object_update.dart';
-export 'src/state_view.dart';
-export 'src/tmp/object_local_io.dart';
-export 'src/tmp/object_remote_io.dart';

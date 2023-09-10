@@ -4,7 +4,10 @@ library;
 import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
+import 'package:core_common/core_common.dart';
 import 'package:core_object/core_object.dart';
+import 'package:core_object_local/core_object_local.dart';
+import 'package:core_object_remote/core_object_remote.dart';
 import 'package:core_object_store/src/object_store/object_store.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:test/test.dart';
