@@ -8,4 +8,5 @@ export 'src/entry_props.dart';
 export 'src/object_instance_head.dart';
 export 'src/object_instance_path.dart';
 export 'src/object_path.dart';
+export 'src/persistence_id.dart';
 export 'src/snapshot.dart';

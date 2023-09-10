@@ -10,6 +10,7 @@ dependencies:
   bloc:
   core_common:
   core_object:
+  core_persistence_base:
   core_persistence_local:
   core_persistence_remote:
   freezed_annotation: ^2.2.0

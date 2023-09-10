@@ -6,7 +6,7 @@ void main() async {
   group(
     'Sembast',
     persistenceAdapterRemoteTests(
-      PersistenceProviderRemoteSembast.inMemory,
+      PersistenceRemoteAdapterFactoryProviderSembast.inMemory,
     ),
   );
 }

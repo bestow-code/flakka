@@ -58,18 +58,30 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
         return (ref: createWith.ref, sequenceNumber: 0);
       });
 
-  // @override
-  // Future<void> start() {
-  //   // TODO: implement start
-  //   throw UnimplementedError();
-  // }
-  //
-  // @override
-  // Future<void> add({
-  //   Map<String, ({int createdAt, Iterable<String> parent, String ref})>? entry,
-  //   Map<String, JsonMap>? event,
-  //   Map<String, StateViewObject>? stateView,
-  // }) {
-  //   throw UnimplementedError();
-  // }
+  @override
+  Future<void> append(
+      {required String ref,
+      required List<String> parent,
+      required JsonMap? event,
+      required StateViewObject? stateView,
+      required int createdAt,
+      required int sequenceNumber}) {
+    // TODO: implement append
+    throw UnimplementedError();
+  }
+
+// @override
+// Future<void> start() {
+//   // TODO: implement start
+//   throw UnimplementedError();
+// }
+//
+// @override
+// Future<void> add({
+//   Map<String, ({int createdAt, Iterable<String> parent, String ref})>? entry,
+//   Map<String, JsonMap>? event,
+//   Map<String, StateViewObject>? stateView,
+// }) {
+//   throw UnimplementedError();
+// }
 }

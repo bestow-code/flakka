@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class DefaultTestModule {
   @injectable
-  CorePersistenceRemoteProvider getPersistenceProvider() =>
-      PersistenceProviderRemoteSembast.inMemory();
+   CorePersistenceRemoteAdapterFactoryProvider getPersistenceProvider() {throw UnimplementedError();
+    // return PersistenceProviderRemoteSembast.inMemory();
+  }
 }

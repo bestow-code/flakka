@@ -5,6 +5,6 @@ import 'package:test/test.dart';
 void main() async {
   group(
     'Sembast',
-    persistenceAdapterLocalTests(PersistenceProviderLocalSembast.inMemory),
+    persistenceAdapterLocalTests(PersistenceLocalAdapterFactoryProviderSembast.inMemory),
   );
 }

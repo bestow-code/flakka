@@ -3,19 +3,22 @@ import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:test/test.dart';
 
 void Function() persistenceAdapterRemoteTests(
-  CorePersistenceRemoteProvider Function() persistenceProviderRemoteFactory,
+  CorePersistenceRemoteAdapterFactoryProvider Function()
+      persistenceProviderRemoteFactory,
 ) {
   return () {
-    late CorePersistenceRemoteProvider persistenceProviderRemote;
+    late CorePersistenceRemoteAdapterFactoryProvider
+        persistenceRemoteAdapterFactoryProvider;
     late CorePersistenceRemoteAdapterFactory adapterRemoteFactory;
     late String persistenceId;
     late String persistenceId2;
     setUp(() {
       persistenceId = 'persistence-1';
       persistenceId2 = 'persistence-2';
-      persistenceProviderRemote = persistenceProviderRemoteFactory();
+      persistenceRemoteAdapterFactoryProvider =
+          persistenceProviderRemoteFactory();
       adapterRemoteFactory =
-          persistenceProviderRemote.getAdapterFactory(persistenceId);
+          persistenceRemoteAdapterFactoryProvider.getFactory(persistenceId);
     });
     late CorePersistenceRemoteAdapter adapter;
     const path = '/1';
@@ -43,8 +46,8 @@ void Function() persistenceAdapterRemoteTests(
         group('Existing object, new instance', () {
           setUp(() async {
             await adapter.initialize(ifEmpty: ifEmpty);
-            adapterRemoteFactory =
-                persistenceProviderRemote.getAdapterFactory(persistenceId2);
+            adapterRemoteFactory = persistenceRemoteAdapterFactoryProvider
+                .getFactory(persistenceId2);
             adapter = await adapterRemoteFactory.getAdapter(path);
           });
           test('success', () async {

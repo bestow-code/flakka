@@ -2,8 +2,8 @@ import 'package:core_object/core_object.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:sembast/sembast.dart';
 
-class PersistenceAdapterLocalSembast implements PersistenceLocalAdapterBase {
-  PersistenceAdapterLocalSembast({
+class PersistenceLocalAdapterSembast implements CorePersistenceLocalAdapter {
+  PersistenceLocalAdapterSembast({
     required String persistenceId,
     required Database database,
   })  : _persistenceId = persistenceId,

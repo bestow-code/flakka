@@ -2,17 +2,17 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:test/test.dart';
 
 void Function() persistenceAdapterLocalTests(
-  CorePersistenceLocalFactoryProvider Function() persistenceProviderLocalFactory,
+  CorePersistenceLocalAdapterFactoryProvider Function() persistenceProviderLocalFactory,
 ) {
   return () {
-    late CorePersistenceLocalFactoryProvider persistenceProviderLocal;
+    late CorePersistenceLocalAdapterFactoryProvider persistenceProviderLocal;
     late CorePersistenceLocalAdapterFactory adapterLocalFactory;
     late String persistenceId;
     setUp(() {
       persistenceId = 'persistence-1';
       persistenceProviderLocal = persistenceProviderLocalFactory();
       adapterLocalFactory =
-          persistenceProviderLocal.getAdapterFactory(persistenceId);
+          persistenceProviderLocal.getFactory(persistenceId);
     });
     late CorePersistenceLocalAdapter adapter;
     const path = '/1';
