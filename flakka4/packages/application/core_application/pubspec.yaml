@@ -25,11 +25,11 @@ dependencies:
 dev_dependencies:
   bloc_test:
   build_runner:
-#  core_application_store_test:
+#  core_application_impl_test:
   core_application_test:
   core_data_test:
-#  core_journal_store_test:
-#  core_object_store_test:
+#  core_journal_impl_test:
+#  core_object_impl_test:
   freezed:
   get_it:
   injectable:

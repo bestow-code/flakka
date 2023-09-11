@@ -9,7 +9,7 @@ environment:
 dependencies:
   bloc: ^8.1.2
   core_application:
-  core_application_store:
+  core_application_impl:
   core_common: ^0.1.0+2
   core_data:
   core_object:

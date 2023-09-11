@@ -11,7 +11,7 @@ dependencies:
   core_common: ^0.1.0+2
   core_object:
   core_data:
-  core_data_store:
+  core_data_impl:
   flakka_object:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
