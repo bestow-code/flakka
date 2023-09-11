@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:core_object/core_object.dart';
+import 'package:core_object_impl/core_object_impl.dart';
 import 'package:core_object_local/core_object_local.dart';
 import 'package:core_object_remote/core_object_remote.dart';
-import 'package:core_object_impl/core_object_impl.dart';
 
-class ObjectStoreFactory implements CoreObjectIOFactory {
-  ObjectStoreFactory({
+class ObjectIOFactory implements CoreObjectIOFactory {
+  ObjectIOFactory({
     required this.localFactory,
     required this.remoteFactory,
   });
@@ -24,10 +24,12 @@ class ObjectStoreFactory implements CoreObjectIOFactory {
         remoteFactory.getInstance(path).then((value) => remote = value),
       ],
     );
-    return ObjectStore(ObjectStoreState(sequenceNumber: 0),
-        objectEffectLocal: local.effect,
-        objectEffectRemote: remote.effect,
-        objectUpdateLocal: local.update,
-        objectUpdateRemote: remote.update);
+    return ObjectStore(
+      ObjectStoreState(sequenceNumber: 0),
+      objectEffectLocal: local.effect,
+      objectEffectRemote: remote.effect,
+      objectUpdateLocal: local.update,
+      objectUpdateRemote: remote.update,
+    );
   }
 }

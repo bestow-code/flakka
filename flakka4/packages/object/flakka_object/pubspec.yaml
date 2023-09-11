@@ -13,6 +13,7 @@ dependencies:
   core_object_impl:
   core_data:
   core_persistence:
+  core_persistence_base:
   flakka_object_local:
   flakka_object_remote:
   flakka_persistence:

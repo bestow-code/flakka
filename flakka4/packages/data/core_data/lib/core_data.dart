@@ -3,6 +3,9 @@
 /// Common libraries for core_platform
 library core_data;
 
+export 'src/core_data_io.dart';
+export 'src/core_data_io_factory.dart';
+export 'src/core_data_io_factory_provider.dart';
 export 'src/core_event.dart';
 export 'src/core_state.dart';
 export 'src/core_view.dart';

@@ -9,7 +9,7 @@ import '../../core_journal_impl.dart';
 
 class JournalStore<Event extends CoreEvent, State extends CoreState,
         View extends CoreView> extends Cubit<JournalStoreState>
-    implements CoreJournalStore<Event, State, View> {
+    implements CoreJournalIO<Event, State, View> {
   JournalStore(
     super.initialState, {
     required StreamSink<DataEffect<Event, State, View>> dataEffect,

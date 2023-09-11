@@ -4,10 +4,11 @@ import 'package:flakka_persistence_local/src/local_persistence_registry.dart';
 import 'package:test/test.dart';
 
 void main() async {
-  registerPersistenceLocalAdapterFactoryProvider(
-      PersistenceLocalAdapterFactoryProviderSembast.inMemory);
+  FlakkaPersistenceLocal.instance
+      .registerPersistenceLocalAdapterFactoryProvider(
+          PersistenceLocalAdapterFactoryProviderSembast.inMemory);
   group(
     'Default',
-    persistenceAdapterLocalTests(getPersistenceLocalAdapterFactoryProvider),
+    persistenceAdapterLocalTests(FlakkaPersistenceLocal.instance.getAdapterFactoryProvider),
   );
 }

@@ -10,7 +10,7 @@ import '../../core_data_impl.dart';
 
 class DataStore<Event extends CoreEvent, State extends CoreState,
         View extends CoreView> extends Cubit<DataStoreState<Event, State, View>>
-    implements CoreDataStore<Event, State, View> {
+    implements CoreDataIO<Event, State, View> {
   DataStore(
     super.initialState, {
     required this.dataConverter,

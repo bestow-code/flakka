@@ -1,4 +1,4 @@
-typedef ServiceLocator = ({ServiceLocatorSync sync, ServiceLocatorAsync async});
+typedef ServiceLocator = ({ServiceLocatorSync get, ServiceLocatorAsync getAsync});
 
 typedef ServiceLocatorSync = T Function<T extends Object>({
   String? instanceName,

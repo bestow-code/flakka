@@ -4,6 +4,6 @@
 library core_object_impl;
 
 export 'src/entry_props.dart';
+export 'src/object_io_factory.dart';
+export 'src/object_io_factory_provider.dart';
 export 'src/object_store/object_store.dart';
-export 'src/object_store_factory.dart';
-export 'src/object_store_factory_provider.dart';

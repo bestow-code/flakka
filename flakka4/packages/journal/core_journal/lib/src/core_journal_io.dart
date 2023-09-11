@@ -1,9 +1,10 @@
+
 import 'dart:async';
 
 import 'package:core_data/core_data.dart';
 import 'package:core_journal/core_journal.dart';
 
-abstract interface class CoreJournalStore<Event extends CoreEvent,
+abstract interface class CoreJournalIO<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
   Future<InitialJournalInstanceData> initialize(
     InitialJournalProps Function() ifEmpty,
