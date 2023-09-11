@@ -28,21 +28,16 @@ scripts:
     exec:
       concurrency: 1
     packageFilters:
-      scope:
-        - core_persistence_remote_sembast
-#        - core_persistence_local_sembast
-      dirExists:
-        - 'test'
+      dirExists: test
   coverage:format:
-    run: dart pub global run coverage:format_coverage --in=coverage --out=coverage/lcov.info --lcov --report-on=lib  --packages=.dart_tool/package_config.json -b "$MELOS_ROOT_PATH"
+    run: dart pub global run coverage:format_coverage  --in="./coverage/test" --out="./coverage/lcov.info"  --lcov --report-on="./lib" --packages=.dart_tool/package_config.json
     exec:
       concurrency: 1
     packageFilters:
-      dirExists: coverage/test
+      dirExists: coverage
   coverage:combine:
     run: dart pub global run combine_coverage --repo-path="$MELOS_ROOT_PATH"
-  coverage:report:
-    run: genhtml -o ./coverage/report ./coverage/lcov.info
+
   coverage:open:
     run: open ./coverage/report/index.html
   doc:
