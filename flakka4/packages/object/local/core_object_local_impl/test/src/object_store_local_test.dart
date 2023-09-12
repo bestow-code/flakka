@@ -31,8 +31,8 @@ void main() {
               ref: ref1,
               parent: [ref0],
               event: {'value': 2},
-              stateView:
-                  StateViewObject(state: {'value': 2}, view: {'value': 2}),
+              // stateView:
+              //     StateViewObject(state: {'value': 2}, view: {'value': 2}),
               createdAt: t1.millisecondsSinceEpoch,
               sequenceNumber: 1,
             ),
@@ -64,8 +64,8 @@ void main() {
                 ref: ref1,
                 parent: [ref0],
                 event: {'value': 2},
-                stateView:
-                    StateViewObject(state: {'value': 2}, view: {'value': 2}),
+                // stateView:
+                //     StateViewObject(state: {'value': 2}, view: {'value': 2}),
                 createdAt: t1.millisecondsSinceEpoch,
                 sequenceNumber: 1,
               ),

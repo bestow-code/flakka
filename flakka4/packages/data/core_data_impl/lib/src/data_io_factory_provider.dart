@@ -12,7 +12,8 @@ class DataIOFactoryProvider implements CoreDataIOFactoryProvider {
 
   @override
   CoreDataIOFactory getFactory(String persistenceId) => DataIOFactory(
-      objectIOFactory: objectIOFactoryProvider.getFactory(persistenceId),);
+        objectIOFactory: objectIOFactoryProvider.getFactory(persistenceId),
+      );
 }
 
 class DataConverterFactoryProvider implements CoreDataConverterFactoryProvider {

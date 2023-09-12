@@ -14,7 +14,10 @@ class PersistenceLocalAdapterSembast implements CorePersistenceLocalAdapter {
   final Database _database;
 
   late final store = (
-    head: StoreRef<int, String>('head/$_persistenceId'),
+    head: (
+      instance: StoreRef<int, String>('remote/head/$_persistenceId'),
+      main: StoreRef<int, String>('remote/head/main')
+    ),
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event')
   );
@@ -22,7 +25,7 @@ class PersistenceLocalAdapterSembast implements CorePersistenceLocalAdapter {
   @override
   Future<InitialObjectInstanceData?> inspect() =>
       _database.transaction((transaction) async {
-        final headRef = await store.head
+        final headRef = await store.head.instance
             .query(
               finder:
                   Finder(limit: 1, sortOrders: [SortOrder(Field.key, false)]),
@@ -38,10 +41,10 @@ class PersistenceLocalAdapterSembast implements CorePersistenceLocalAdapter {
       _database.transaction(
         (transaction) async {
           assert(
-            await store.head.count(transaction) == 0,
+            await store.head.instance.count(transaction) == 0,
             'initialize called on existing instance',
           );
-          await store.head
+          await store.head.instance
               .record(data.sequenceNumber)
               .put(transaction, data.ref);
         },
@@ -52,13 +55,35 @@ class PersistenceLocalAdapterSembast implements CorePersistenceLocalAdapter {
     required String ref,
     required List<String> parent,
     required JsonMap? event,
-    required StateViewObject? stateView,
+    // required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
-  }) {
-    // TODO: implement append
-    throw UnimplementedError();
+  }) async {
+    await _database.transaction((transaction) async {
+      await store.entry.record(ref).put(
+            transaction,
+            EntryProps(parent: parent, createdAt: createdAt).toJson(),
+          );
+      if (event != null) {
+        await store.event.record(ref).put(transaction, event);
+      }
+      await store.head.instance.record(sequenceNumber).put(transaction, ref);
+    });
   }
+
+  @override
+  Stream<Map<String, JsonMap>> get entryAll =>
+      store.entry.query().onSnapshots(_database).map(
+            (event) =>
+                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
+          );
+
+  @override
+  Stream<Map<String, JsonMap>> get eventAll =>
+      store.event.query().onSnapshots(_database).map(
+            (event) =>
+                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
+          );
 
 // @override
 // Future<void> add(

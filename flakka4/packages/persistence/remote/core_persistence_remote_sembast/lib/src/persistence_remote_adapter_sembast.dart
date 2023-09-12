@@ -15,11 +15,11 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
 
   late final store = (
     head: (
-      instance: StoreRef<int, String>('head/$_persistenceId'),
-      main: StoreRef<int, String>('head/main')
+      instance: StoreRef<int, String>('remote/head/$_persistenceId'),
+      main: StoreRef<int, String>('remote/head/main')
     ),
-    entry: StoreRef<String, JsonMap>('entry'),
-    event: StoreRef<String, JsonMap>('event')
+    entry: StoreRef<String, JsonMap>('remote/entry'),
+    event: StoreRef<String, JsonMap>('remote/event')
   );
 
   @override
@@ -59,16 +59,35 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
       });
 
   @override
-  Future<void> append(
-      {required String ref,
-      required List<String> parent,
-      required JsonMap? event,
-      required StateViewObject? stateView,
-      required int createdAt,
-      required int sequenceNumber}) {
-    // TODO: implement append
-    throw UnimplementedError();
+  Future<void> append({
+    required String ref,
+    required List<String> parent,
+    required JsonMap? event,
+    // required StateViewObject? stateView,
+    required int createdAt,
+    required int sequenceNumber,
+  }) async {
+    await _database.transaction((transaction) async {
+      await store.entry.record(ref).put(
+            transaction,
+            EntryProps(parent: parent, createdAt: createdAt).toJson(),
+          );
+      if (event != null) {
+        await store.event.record(ref).put(transaction, event);
+      }
+      await store.head.instance.record(sequenceNumber).put(transaction, ref);
+    });
   }
+
+  @override
+  Stream<Iterable<JsonMap>> get entryAll => throw UnimplementedError();
+
+  @override
+  Stream<Map<String, JsonMap>> get eventAll =>
+      store.event.query().onSnapshots(_database).map(
+            (event) =>
+                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
+          );
 
 // @override
 // Future<void> start() {

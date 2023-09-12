@@ -12,7 +12,7 @@ abstract interface class CorePersistenceLocalAdapter {
     required String ref,
     required List<String> parent,
     required JsonMap? event,
-    required StateViewObject? stateView,
+    // required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
   });
@@ -22,7 +22,6 @@ abstract interface class CorePersistenceLocalAdapter {
 //   Map<String, JsonMap>? event,
 //   Map<String, StateViewObject>? stateView,
 // });
-}
 
 //
 //
@@ -32,8 +31,10 @@ abstract interface class CorePersistenceLocalAdapter {
 //   required int sequenceNumber,
 // });
 //
-// Stream<Iterable<JsonMap>> get entryAll;
+  Stream<Map<String, JsonMap>> get entryAll;
+
 //
-// Stream<Map<Ref, JsonMap>> get eventAll;
+  Stream<Map<String, JsonMap>> get eventAll;
 //
 // Stream<Map<Ref, StateViewData>> get stateViewAll;
+}

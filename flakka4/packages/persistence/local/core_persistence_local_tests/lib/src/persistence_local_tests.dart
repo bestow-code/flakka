@@ -65,6 +65,25 @@ void Function() persistenceAdapterLocalTests(
           });
         });
       });
+      group('Append',(){
+        const ref0 = 'ref0';
+        const ref1 = 'ref1';
+        final event = {'value': 2};
+        const createdAt = 42;
+        const sequenceNumber = 1;
+        test('Event', () async {
+          await adapter.append(
+            ref: ref1,
+            parent: [ref0],
+            event: event,
+            createdAt: createdAt,
+            sequenceNumber: sequenceNumber,
+          );
+          final eventAll = await adapter.eventAll.first;
+          expect(eventAll.values.length, 1);
+        });
+
+      });
     });
   };
 }

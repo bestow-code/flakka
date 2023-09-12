@@ -51,7 +51,7 @@ class ObjectStoreRemote extends Cubit<ObjectStoreRemoteState>
           ref: append.ref,
           parent: append.parent,
           event: append.event,
-          stateView: append.stateView,
+          // stateView: append.stateView,
           createdAt: append.createdAt,
           sequenceNumber: append.sequenceNumber,
         );

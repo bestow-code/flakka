@@ -12,7 +12,7 @@ abstract class CorePersistenceRemoteAdapter {
     required String ref,
     required List<String> parent,
     required JsonMap? event,
-    required StateViewObject? stateView,
+    // required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
   });
@@ -38,9 +38,10 @@ abstract class CorePersistenceRemoteAdapter {
 //   required int sequenceNumber,
 // });
 //
-// Stream<Iterable<JsonMap>> get entryAll;
+  Stream<Iterable<JsonMap>> get entryAll;
+
 //
-// Stream<Map<Ref, JsonMap>> get eventAll;
+  Stream<Map<String, JsonMap>> get eventAll;
 //
 // Stream<Map<Ref, StateViewData>> get stateViewAll;
 }

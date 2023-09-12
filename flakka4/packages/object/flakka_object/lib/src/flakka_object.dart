@@ -1,24 +1,24 @@
 import 'package:core_object/core_object.dart';
+import 'package:core_object_impl/core_object_impl.dart';
+import 'package:core_object_local_impl/core_object_local_impl.dart';
+import 'package:core_object_remote_impl/core_object_remote_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:flakka_persistence/flakka_persistence.dart';
 import 'package:get_it/get_it.dart';
 
-class FlakkaObject {
-  final GetIt locator;
+class FlakkaObject extends FlakkaPersistence {
+  FlakkaObject(GetIt getIt) : super(getIt);
 
-  FlakkaObject({required this.locator});
+  CoreObjectIOFactoryProvider getObjectIOFactoryProvider() =>
+      ObjectIOFactoryProvider(
+        adaptersFactoryProvider: getPersistenceAdapterFactoryProvider(),
+        localIOFactoryProvider: ObjectStoreLocalFactoryProvider(),
+        remoteIOFactoryProvider: ObjectStoreRemoteFactoryProvider(),
+      );
 
-  static FlakkaObject get instance {
-    return FlakkaObject(locator: GetIt.instance);
-  }
-
-  static FlakkaObject asNewInstance() {
-    return FlakkaObject(locator: GetIt.asNewInstance());
-  }
-
-  Future<CoreObjectIO> get(String path) {
-    final factoryProvider = locator.get<CoreObjectIOFactoryProvider>();
-    final persistenceId = locator.get<PersistenceId>();
-    final factory = factoryProvider.getFactory(persistenceId.value);
-    return factory.getInstance(path);
-  }
+  Future<CoreObjectIO> get(String path) async => getObjectIOFactoryProvider()
+      .getFactory(
+        locator.get<PersistenceId>().value,
+      )
+      .getInstance(path);
 }
