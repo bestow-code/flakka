@@ -8,9 +8,9 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
+  core_common: ^0.1.0+2
   core_data:
   core_data_impl:
-  core_common: ^0.1.0+2
   core_journal:
   core_object:
   directed_graph: ^0.3.9

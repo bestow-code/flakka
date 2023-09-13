@@ -14,6 +14,10 @@ class FlakkaData extends FlakkaObject {
           .getFactory(persistenceId.value)
           .getInstance(path, dataConverter: locator.get());
 
+  DataConverter<Event, State, View> getDataConverter<Event extends CoreEvent,
+          State extends CoreState, View extends CoreView>() =>
+      locator.get();
+
   void registerDataConverter<Event extends CoreEvent, State extends CoreState,
           View extends CoreView>(
     DataConverter<Event, State, View> Function() converterFactory,
