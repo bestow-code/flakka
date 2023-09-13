@@ -62,7 +62,7 @@ class ObjectStore extends Cubit<ObjectStoreState> implements CoreObjectIO {
   void _handleObjectEffect(ObjectEffect effect) {
     final next = state.copyWith(sequenceNumber: state.sequenceNumber + 1);
     effect.map(
-      append: (append) {
+      append: (append) async {
         _objectEffectLocal.add(
           ObjectEffectLocal.append(
             ref: append.ref,

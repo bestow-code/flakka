@@ -1,0 +1,1 @@
+genhtml coverage/filtered.lcov.info -o coverage/html --dark-mode

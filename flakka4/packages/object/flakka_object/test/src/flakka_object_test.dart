@@ -1,5 +1,6 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_object/core_object.dart';
+import 'package:core_object_impl/core_object_impl.dart';
 import 'package:core_persistence_base/src/persistence_id.dart';
 import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 import 'package:core_persistence_remote_sembast/core_persistence_remote_sembast.dart';
@@ -29,7 +30,7 @@ void main() {
       flakkaObject.registerPersistenceRemoteAdapterFactoryProvider(
           PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
       const path = '/o/1';
-      final object = await flakkaObject.get(path);
+      final object = await flakkaObject.getObjectIO(path);
       object.effect.add(ObjectEffect.append(
         ref: ref,
         parent: parent,
@@ -38,18 +39,17 @@ void main() {
         createdAt: createdAt,
       ));
       await Future.delayed(Duration(milliseconds: 100));
-      final adapters= await flakkaObject.getPersistenceAdapterFactoryProvider().get(persistenceId.value).get(path);
+      final adapters = await flakkaObject
+          .getPersistenceAdapterFactoryProvider()
+          .get(persistenceId.value)
+          .get(path);
 
-      // final result = await object.update.first;
       final result = await adapters.local.entryAll.first;
-      expect(result.length, 1);
-      // final result =
-      // result.maybeMap(
-      //   event: (resultEvent) {
-      //     expect(resultEvent.data, event);
-      //   },
-      //   orElse: () => fail('Invalid state: $result'),
-      // );
+      expect(
+          result[ref],
+          equals(
+            EntryProps(parent: parent, createdAt: createdAt).toJson(),
+          ));
     });
   });
 }

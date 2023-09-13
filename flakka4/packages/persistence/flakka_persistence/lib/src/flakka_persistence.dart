@@ -25,6 +25,8 @@ class FlakkaPersistence extends FlakkaLocator {
 
   void registerPersistenceId(PersistenceId persistenceId) =>
       locator.registerSingleton<PersistenceId>(persistenceId);
+
+  PersistenceId get persistenceId => locator.get();
 }
 
 abstract class FlakkaLocator {

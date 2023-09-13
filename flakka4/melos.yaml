@@ -17,6 +17,21 @@ ignore:
   - "**/bricks/*"
   - "**/bricks/**/*"
 scripts:
+  unit_test:
+    run: melos exec --dir-exists="test" -- flutter test --no-pub --coverage
+    description: Run all Flutter tests in this project.
+  unit_test_and_coverage:
+    description: Merge all packages coverage tracefiles ignoring data related to generated files.
+    run: |
+      melos exec rm -rf coverage
+      melos run unit_test
+      melos exec -c 1 --file-exists=coverage/lcov.info -- coverde filter --input ./coverage/lcov.info --output $MELOS_ROOT_PATH/coverage/filtered.lcov.info --filters \.g\.dart
+      coverde value -i coverage/filtered.lcov.info > $MELOS_ROOT_PATH/coverage/result.txt
+  merge-trace-files:
+    description: Merge all packages coverage trace files ignoring data related to generated files.
+    run: >
+      coverde rm $MELOS_ROOT_PATH/coverage/filtered.lcov.info &&
+      melos exec --file-exists=coverage/lcov.info -- "coverde filter -m a --input ./coverage/lcov.info --output $MELOS_ROOT_PATH/coverage/filtered.lcov.info --paths-parent \$MELOS_PACKAGE_PATH --filters '\.g\.dart'"
   coverage:clean:
     run: rm -rf coverage
     exec:
