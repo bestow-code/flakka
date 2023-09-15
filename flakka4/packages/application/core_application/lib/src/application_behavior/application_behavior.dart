@@ -1,11 +1,9 @@
 import 'dart:async';
 
 import 'package:core_data/core_data.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../core_application.dart';
 
-part 'application_behavior.freezed.dart';
 
 abstract interface class EventSourcedBehavior<
     Adapter extends CoreAdapter,
@@ -45,26 +43,27 @@ typedef AdapterFactory<Adapter extends CoreAdapter, Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     = Adapter Function(StreamSink<Request<State, Event>>);
 
-@freezed
 class StateViewEventHandler<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> with _$StateViewEventHandler<Event, State, View> {
-  factory StateViewEventHandler({
-    required EventHandler<Event, State> state,
-    required EventHandler<Event, View> view,
-  }) = _StateViewEventHandler;
+    View extends CoreView> {
+  StateViewEventHandler({
+    required State Function(State, Event) state,
+    required View Function(View, Event) view,
+  })  : _view = view,
+        _state = state;
 
-  const StateViewEventHandler._();
+  final EventHandler<Event, State> _state;
+  final EventHandler<Event, View> _view;
 
   StateView<State, View> apply(
     StateView<State, View> stateView,
-      Event event,
+    Event event,
   ) =>
       (
-        state: state(
+        state: _state(
           stateView.state,
           event,
         ),
-        view: view(
+        view: _view(
           stateView.view,
           event,
         )

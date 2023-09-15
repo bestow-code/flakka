@@ -73,7 +73,7 @@ void main() {
               .request((state) => RequestEffect.persist(event: testEvent0)),
           expect: () => [
             (
-              ref: refDateTimeFactory.factoryProduct.first.ref,
+              ref: refDateTimeFactory.productions.first.ref,
               stateView: testStateView1
             ),
           ],
@@ -81,10 +81,10 @@ void main() {
             expect(
               journalEffect.values.single,
               JournalEffect<TestEvent, TestState, TestView>.event(
-                ref: refDateTimeFactory.factoryProduct.single.ref,
+                ref: refDateTimeFactory.productions.single.ref,
                 event: testEvent0,
                 stateView: testStateView1,
-                createdAt: refDateTimeFactory.factoryProduct.single.createdAt,
+                createdAt: refDateTimeFactory.productions.single.createdAt,
               ),
             );
           },
@@ -105,7 +105,7 @@ void main() {
             expect(
               journalEffect.values.single,
               JournalEffect<TestEvent, TestState, TestView>.none(
-                ref: refDateTimeFactory.factoryProduct.single.ref,
+                ref: refDateTimeFactory.productions.single.ref,
               ),
             );
           },
@@ -130,6 +130,16 @@ void main() {
           build: build,
           act: (_) => journalUpdateStreamController.add(journalUpdate),
           expect: () => [(ref: ref1, stateView: testStateView1)],
+          verify: (_) {
+            print(journalEffect.values);
+            // expect(
+            //   journalEffect.values.single,
+            //   JournalEffect.forward(
+            //     ref: refDateTimeFactory.productions.single.ref,
+            //     stateView: testStateView1,
+            //   ),
+            // );
+          },
         );
       });
       group('-> [Reset]', () {});

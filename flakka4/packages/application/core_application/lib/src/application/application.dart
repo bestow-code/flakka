@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart' hide EventHandler;
 import 'package:core_application/core_application.dart';
-import 'package:core_application/src/application/state_view_processor.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_journal/core_journal.dart';
@@ -54,48 +53,47 @@ class Application<Event extends CoreEvent, State extends CoreState,
 
   void _onApplicationUpdate(ApplicationUpdate<Event, State, View> update) {
     update.map(
-      journal: (journal) {
-        print(state.ref);
-        journal.journalUpdate.journal.reconcile(state.ref).map(
-              forward: (forward){
-                final nextStateView=_stateViewProcessor.apply(forward.events, state.stateView);
-                // _journalEffect.add(J)
-                emit((ref:journal.refDateTime.ref, stateView: nextStateView));
-              },
-              reset: (reset){},
-              merge: (merge){},
-              publish: (publish){},
-              unknown: (unknown){},
-            );
-      },
-      request: (request) {
-        request.request.handle(state.stateView.state).map(
-          persist: (persist) {
-            final nextStateView =
-                _stateViewProcessor.apply([persist.event], state.stateView);
-            _journalEffect.add(
-              JournalEffect<Event, State, View>.event(
-                ref: request.refDateTime.ref,
-                event: persist.event,
-                stateView: nextStateView,
-                createdAt: request.refDateTime.createdAt,
-              ),
-            );
-            emit(
-              (
-                ref: request.refDateTime.ref,
-                stateView: nextStateView,
-              ),
-            );
-          },
-          none: (none) {
-            _journalEffect.add(
+      journal: (journal) => journal.journalUpdate.journal
+          .reconcile(state.ref)
+          .map(
+            forward: (forward) {
+              final nextStateView =
+                  _stateViewProcessor.apply(forward.events, state.stateView);
+              _journalEffect.add(
+                JournalEffect.forward(
+                  ref: journal.refDateTime.ref,
+                  stateView: nextStateView,
+                ),
+              );
+              emit((ref: journal.refDateTime.ref, stateView: nextStateView));
+            },
+            reset: (reset) {},
+            merge: (merge) {},
+            publish: (publish) {},
+            unknown: (unknown) {},
+          ),
+      request: (request) => request.request.handle(state.stateView.state).map(
+            persist: (persist) {
+              final nextStateView =
+                  _stateViewProcessor.apply([persist.event], state.stateView);
+              _journalEffect.add(
+                JournalEffect<Event, State, View>.event(
+                  ref: request.refDateTime.ref,
+                  event: persist.event,
+                  stateView: nextStateView,
+                  createdAt: request.refDateTime.createdAt,
+                ),
+              );
+              emit(
+                (ref: request.refDateTime.ref, stateView: nextStateView),
+              );
+            },
+            none: (none) => _journalEffect.add(
               JournalEffect<Event, State, View>.none(
-                  ref: request.refDateTime.ref),
-            );
-          },
-        );
-      },
+                ref: request.refDateTime.ref,
+              ),
+            ),
+          ),
     );
   }
 }
@@ -197,7 +195,7 @@ class TestRefDateTimeFactory extends RefDateTimeFactory {
       ({
         DateTime createdAt,
         Ref ref,
-      })> get factoryProduct => _factoryProduct;
+      })> get productions => _factoryProduct;
   final _factoryProduct = <({
     DateTime createdAt,
     Ref ref,
