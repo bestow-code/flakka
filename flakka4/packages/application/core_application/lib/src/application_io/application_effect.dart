@@ -21,10 +21,10 @@ class ApplicationEffect<Event extends CoreEvent, State extends CoreState,
 class ApplicationRequestEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$ApplicationRequestEffect<Event, State, View> {
   factory ApplicationRequestEffect.persist({
-    required Ref ref,
+    // required Ref ref,
     required Event event,
     required StateView<State, View> stateView,
-    required DateTime createdAt,
+    // required DateTime createdAt,
 
   }) = ApplicationRequestEffectPersist<Event, State, View>;
 

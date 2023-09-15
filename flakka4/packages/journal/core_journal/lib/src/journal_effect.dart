@@ -8,28 +8,24 @@ class JournalEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalEffect<Event, State, View> {
   factory JournalEffect.event({
     required Ref ref,
-    required Ref parent,
     required Event event,
     required StateView<State, View> stateView,
     required DateTime createdAt,
-  }) = JournalEffectEvent;
+  }) = JournalEffectEvent<Event, State, View>;
 
   factory JournalEffect.forward({
     required Ref ref,
     required StateView<State, View> stateView,
-  }) = JournalEffectForward;
+  }) = JournalEffectForward<Event, State, View>;
 
   factory JournalEffect.merge({
     required Ref ref,
-    required Ref parent,
     required Ref mergeParent,
     required DateTime createdAt,
-  }) = JournalEffectMerge;
+  }) = JournalEffectMerge<Event, State, View>;
 
-  factory JournalEffect.publish({
-    required Ref ref,
-    required Set<Ref> ancestors,
-  }) = JournalEffectPublish;
+  factory JournalEffect.publish() = JournalEffectPublish<Event, State, View>;
 
-  factory JournalEffect.none() = JournalEffectNone;
+  factory JournalEffect.none({required Ref ref}) =
+      JournalEffectNone<Event, State, View>;
 }

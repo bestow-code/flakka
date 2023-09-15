@@ -56,8 +56,8 @@ class StateViewEventHandler<Event extends CoreEvent, State extends CoreState,
   const StateViewEventHandler._();
 
   StateView<State, View> apply(
-    Event event,
     StateView<State, View> stateView,
+      Event event,
   ) =>
       (
         state: state(

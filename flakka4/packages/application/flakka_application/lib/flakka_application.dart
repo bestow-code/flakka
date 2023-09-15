@@ -3,4 +3,4 @@
 /// Common libraries for core_platform
 library flakka_application;
 
-export 'src/application_behavior_registry.dart';
+export 'src/flakka_application.dart';

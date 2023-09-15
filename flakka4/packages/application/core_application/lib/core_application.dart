@@ -6,6 +6,7 @@ export 'src/application/application.dart';
 export 'src/application/application_factory.dart';
 export 'src/application/application_factory_provider.dart';
 export 'src/application/application_state.dart';
+export 'src/application/state_view_processor.dart';
 export 'src/application_behavior/application_behavior.dart';
 export 'src/application_behavior/event_handler.dart';
 export 'src/application_behavior/request.dart';

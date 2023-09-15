@@ -36,7 +36,7 @@ void main() {
           act: (journalStore) => journalStore.effect.add(
             JournalEffect.event(
               ref: ref1,
-              parent: ref0,
+              // parent: ref0,
               event: TestEvent(2),
               stateView: (state: TestState(2), view: TestView(2)),
               createdAt: t1,

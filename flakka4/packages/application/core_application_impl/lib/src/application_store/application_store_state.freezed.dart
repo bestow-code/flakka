@@ -25,8 +25,8 @@ mixin _$ApplicationIOState {
 
 /// @nodoc
 abstract class $ApplicationIOStateCopyWith<$Res> {
-  factory $ApplicationIOStateCopyWith(ApplicationIOState value,
-          $Res Function(ApplicationIOState) then) =
+  factory $ApplicationIOStateCopyWith(
+          ApplicationIOState value, $Res Function(ApplicationIOState) then) =
       _$ApplicationIOStateCopyWithImpl<$Res, ApplicationIOState>;
   @useResult
   $Res call({Ref ref});
@@ -35,8 +35,7 @@ abstract class $ApplicationIOStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplicationIOStateCopyWithImpl<$Res,
-        $Val extends ApplicationIOState>
+class _$ApplicationIOStateCopyWithImpl<$Res, $Val extends ApplicationIOState>
     implements $ApplicationIOStateCopyWith<$Res> {
   _$ApplicationIOStateCopyWithImpl(this._value, this._then);
 
@@ -85,8 +84,8 @@ abstract class _$$_ApplicationIOStateCopyWith<$Res>
 class __$$_ApplicationIOStateCopyWithImpl<$Res>
     extends _$ApplicationIOStateCopyWithImpl<$Res, _$_ApplicationIOState>
     implements _$$_ApplicationIOStateCopyWith<$Res> {
-  __$$_ApplicationIOStateCopyWithImpl(_$_ApplicationIOState _value,
-      $Res Function(_$_ApplicationIOState) _then)
+  __$$_ApplicationIOStateCopyWithImpl(
+      _$_ApplicationIOState _value, $Res Function(_$_ApplicationIOState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,8 +135,7 @@ class _$_ApplicationIOState implements _ApplicationIOState {
 }
 
 abstract class _ApplicationIOState implements ApplicationIOState {
-  factory _ApplicationIOState({required final Ref ref}) =
-      _$_ApplicationIOState;
+  factory _ApplicationIOState({required final Ref ref}) = _$_ApplicationIOState;
 
   @override
   Ref get ref;

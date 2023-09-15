@@ -1,16 +1,12 @@
 import 'package:core_data/core_data.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../core_application.dart';
 
-part 'request.freezed.dart';
+class Request<State extends CoreState, Event extends CoreEvent> {
+  Request(
+    RequestHandler<State, Event> handler,
+  ) : _handler = handler;
+  late final RequestHandler<State, Event> _handler;
 
-@freezed
-class Request<State extends CoreState, Event extends CoreEvent>
-    with _$Request<State, Event> {
-  factory Request(
-    RequestHandler<State, Event> handler, {
-    required Ref ref,
-    required DateTime createdAt,
-  }) = _Request<State, Event>;
+  RequestEffect<Event> handle(State state) => _handler(state);
 }

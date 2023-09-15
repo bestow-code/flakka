@@ -6,12 +6,20 @@ import '../core_application.dart';
 
 abstract interface class CoreApplicationIO<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
-  StreamSink<ApplicationJournalEffect<State, View>>
-      get applicationJournalEffect;
+  Stream<ApplicationUpdate<Event, State, View>> get update;
+
+  StreamSink<ApplicationEffect<Event, State, View>> get effect;
 
   StreamSink<ApplicationRequestEffect<Event, State, View>>
       get applicationRequestEffect;
 
-  Stream<ApplicationJournalUpdate<Event, State, View>>
-      get applicationJournalUpdate;
+  StreamSink<RequestHandler> get request;
+}
+
+class ApplicationProcessor<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> {
+  StateView<State, View> apply(
+      StateView<State, View> stateView, Iterable<Event> events) {
+    throw UnimplementedError();
+  }
 }

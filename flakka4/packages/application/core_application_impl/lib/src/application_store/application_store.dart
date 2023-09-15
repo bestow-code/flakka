@@ -35,13 +35,13 @@ class ApplicationIO<Event extends CoreEvent, State extends CoreState,
   StreamSink<ApplicationRequestEffect<Event, State, View>>
       get applicationRequestEffect => _applicationRequestEffect.sink;
 
-  @override
-  StreamSink<ApplicationJournalEffect<State, View>>
-      get applicationJournalEffect => _applicationJournalEffect.sink;
-
-  @override
-  Stream<ApplicationJournalUpdate<Event, State, View>>
-      get applicationJournalUpdate => _applicationJournalUpdate.stream;
+  // @override
+  // StreamSink<ApplicationJournalEffect<State, View>>
+  //     get effect => _applicationJournalEffect.sink;
+  //
+  // @override
+  // Stream<ApplicationJournalUpdate<Event, State, View>>
+  //     get update => _applicationJournalUpdate.stream;
 
   @override
   Future<InitialApplicationInstanceData<CoreState, CoreView>> initialize(
@@ -57,17 +57,18 @@ class ApplicationIO<Event extends CoreEvent, State extends CoreState,
   ) {
     requestEffect.map(
       persist: (persist) {
-        final nextRef = persist.ref;
-        _journalEffect.add(
-          JournalEffect<Event, State, View>.event(
-            ref: nextRef,
-            parent: state.ref,
-            event: persist.event,
-            stateView: persist.stateView,
-            createdAt: persist.createdAt,
-          ),
-        );
-        emit(ApplicationIOState(ref: nextRef));
+        throw UnimplementedError();
+        // final nextRef = persist.ref;
+        // _journalEffect.add(
+        //   JournalEffect<Event, State, View>.event(
+        //     ref: nextRef,
+        //     parent: state.ref,
+        //     event: persist.event,
+        //     stateView: persist.stateView,
+        //     createdAt: persist.createdAt,
+        //   ),
+        // );
+        // emit(ApplicationIOState(ref: nextRef));
       },
       none: (none) {},
     );
@@ -76,4 +77,17 @@ class ApplicationIO<Event extends CoreEvent, State extends CoreState,
   void _onApplicationJournalEffect(
     ApplicationJournalEffect<State, View> event,
   ) {}
+
+  @override
+  // TODO: implement request
+  StreamSink<RequestHandler<CoreState, CoreEvent>> get request =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement effect
+  StreamSink<ApplicationEffect<Event, State, View>> get effect => throw UnimplementedError();
+
+  @override
+  // TODO: implement update
+  Stream<ApplicationUpdate<Event, State, View>> get update => throw UnimplementedError();
 }

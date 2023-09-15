@@ -41,10 +41,10 @@ void main() {
           act: (applicationStore) =>
               applicationStore.applicationRequestEffect.add(
             ApplicationRequestEffect<TestEvent, TestState, TestView>.persist(
-              ref: ref1,
+              // ref: ref1,
               event: TestEvent(2),
               stateView: (state: TestState(2), view: TestView(2)),
-              createdAt: t1,
+              // createdAt: t1,
             ),
           ),
           expect: () => [ApplicationIOState(ref: ref1)],
@@ -52,7 +52,7 @@ void main() {
             journalEffect.values.singleOrNull,
             JournalEffect<TestEvent, TestState, TestView>.event(
               ref: ref1,
-              parent: ref0,
+              // parent: ref0,
               event: TestEvent(2),
               stateView: (state: TestState(2), view: TestView(2)),
               createdAt: t1,

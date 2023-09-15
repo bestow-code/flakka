@@ -2,81 +2,217 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart' hide EventHandler;
 import 'package:core_application/core_application.dart';
+import 'package:core_application/src/application/state_view_processor.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_journal/core_journal.dart';
+import 'package:rxdart/rxdart.dart';
 
 class Application<Event extends CoreEvent, State extends CoreState,
         View extends CoreView> extends Cubit<ApplicationState<State, View>>
     implements CoreApplication<Event, State, View> {
-  //
   Application(
     super.initialState, {
-    required StateViewEventHandler<Event, State, View> eventHandler,
-    required StreamSink<ApplicationJournalEffect<State, View>> journalEffect,
-    required StreamSink<ApplicationRequestEffect<Event, State, View>>
-        requestEffect,
-    required Stream<ApplicationJournalUpdate<Event, State, View>> journalUpdate,
-  })  : _journalEffect = journalEffect,
-        _eventHandler = eventHandler,
-        _requestEffect = requestEffect,
-        _journalUpdate = journalUpdate {
-    _journalUpdate.listen(_onUpdate);
-    _request.stream.listen(_handleRequest);
+    required StateViewProcessor<Event, State, View> stateViewProcessor,
+    required Stream<JournalUpdate<Event, State, View>> journalUpdate,
+    required StreamSink<JournalEffect<Event, State, View>> journalEffect,
+    required RefDateTimeFactory refDateTimeFactory,
+  })  : _stateViewProcessor = stateViewProcessor,
+        _refDateTimeFactory = refDateTimeFactory,
+        _journalEffect = journalEffect {
+    _applicationUpdate.stream.listen(_onApplicationUpdate);
+    Rx.merge([
+      journalUpdate.map(
+        (update) => ApplicationUpdate.journal(
+          journalUpdate: update,
+          refDateTime: _refDateTimeFactory.create(),
+        ),
+      ),
+      _request.stream.map(
+        (request) => ApplicationUpdate<Event, State, View>.request(
+          request: request,
+          refDateTime: _refDateTimeFactory.create(),
+        ),
+      ),
+    ]).pipe(_applicationUpdate);
   }
 
-  final StateViewEventHandler<Event, State, View> _eventHandler;
+  final StateViewProcessor<Event, State, View> _stateViewProcessor;
+  final _applicationUpdate =
+      StreamController<ApplicationUpdate<Event, State, View>>();
 
-  @override
-  StreamSink<Request<State, Event>> get request => _request.sink;
+  final StreamSink<JournalEffect<Event, State, View>> _journalEffect;
+  final RefDateTimeFactory _refDateTimeFactory;
   final _request = StreamController<Request<State, Event>>();
 
   @override
-  StateStreamable<View> get view => throw UnimplementedError();
+  void request(RequestHandler<State, Event> handler) =>
+      _request.add(Request(handler));
 
-  final StreamSink<ApplicationRequestEffect<Event, State, View>> _requestEffect;
-  final StreamSink<ApplicationJournalEffect<State, View>> _journalEffect;
-  final Stream<ApplicationJournalUpdate<Event, State, View>> _journalUpdate;
+  @override
+  StateStreamableSource<View> get view => throw UnimplementedError();
 
-  void _onUpdate(ApplicationJournalUpdate<Event, State, View> update) {}
-
-  void _handleRequest(Request<State, Event> request) {
-    request.handler(state.stateView.state).map(
+  void _onApplicationUpdate(ApplicationUpdate<Event, State, View> update) {
+    update.map(
+      journal: (journal) {
+        print(state.ref);
+        journal.journalUpdate.journal.reconcile(state.ref).map(
+              forward: (forward){
+                final nextStateView=_stateViewProcessor.apply(forward.events, state.stateView);
+                // _journalEffect.add(J)
+                emit((ref:journal.refDateTime.ref, stateView: nextStateView));
+              },
+              reset: (reset){},
+              merge: (merge){},
+              publish: (publish){},
+              unknown: (unknown){},
+            );
+      },
+      request: (request) {
+        request.request.handle(state.stateView.state).map(
           persist: (persist) {
-            final next = _eventHandler.apply(persist.event, state.stateView);
-            _requestEffect.add(
-              ApplicationRequestEffect.persist(
-                ref: request.ref,
+            final nextStateView =
+                _stateViewProcessor.apply([persist.event], state.stateView);
+            _journalEffect.add(
+              JournalEffect<Event, State, View>.event(
+                ref: request.refDateTime.ref,
                 event: persist.event,
-                stateView: next,
-                createdAt: request.createdAt,
+                stateView: nextStateView,
+                createdAt: request.refDateTime.createdAt,
               ),
             );
             emit(
-              ApplicationState(
-                stateView: next,
+              (
+                ref: request.refDateTime.ref,
+                stateView: nextStateView,
               ),
             );
           },
-          none: (none) {},
+          none: (none) {
+            _journalEffect.add(
+              JournalEffect<Event, State, View>.none(
+                  ref: request.refDateTime.ref),
+            );
+          },
         );
+      },
+    );
   }
 }
 
-typedef DateTimeRefFactory = ({
-  DateTime createdAt,
-  Ref ref,
-})
-    Function();
+// class Application2<Event extends CoreEvent, State extends CoreState,
+//         View extends CoreView> extends Cubit<ApplicationState<State, View>>
+//     implements CoreApplication<Event, State, View> {
+//   //
+//   Application2(
+//     super.initialState, {
+//     required StateViewEventHandler<Event, State, View> eventHandler,
+//     required StreamSink<ApplicationJournalEffect<State, View>> journalEffect,
+//     required StreamSink<ApplicationRequestEffect<Event, State, View>>
+//         requestEffect,
+//     required Stream<ApplicationJournalUpdate<Event, State, View>> journalUpdate,
+//     // stateViewProcessor
+//     // RefDateTimeFactory
+//   })  : _journalEffect = journalEffect,
+//         _eventHandler = eventHandler,
+//         _requestEffect = requestEffect,
+//         _journalUpdate = journalUpdate {
+//     _journalUpdate.listen(_onUpdate);
+//     _request.stream.listen(_handleRequest);
+//   }
+//
+//   final StateViewEventHandler<Event, State, View> _eventHandler;
+//
+//   @override
+//   StreamSink<Request<State, Event>> get request => _request.sink;
+//   final _request = StreamController<Request<State, Event>>();
+//
+//   @override
+//   StateStreamable<View> get view => throw UnimplementedError();
+//
+//   final StreamSink<ApplicationRequestEffect<Event, State, View>> _requestEffect;
+//   final StreamSink<ApplicationJournalEffect<State, View>> _journalEffect;
+//   final Stream<ApplicationJournalUpdate<Event, State, View>> _journalUpdate;
+//
+//   void _onUpdate(ApplicationJournalUpdate<Event, State, View> update) {}
+//
+//   void _handleRequest(Request<State, Event> request) {
+//     request.handler(state.stateView.state).map(
+//           persist: (persist) {
+//             final next = _eventHandler.apply(persist.event, state.stateView);
+//             _requestEffect.add(
+//               ApplicationRequestEffect.persist(
+//                 ref: request.ref,
+//                 event: persist.event,
+//                 stateView: next,
+//                 createdAt: request.createdAt,
+//               ),
+//             );
+//             emit(
+//               ApplicationState(
+//                 stateView: next,
+//               ),
+//             );
+//           },
+//           none: (none) {},
+//         );
+//   }
+// }
 
-final basicRefFactory = RefFactory.basic();
-final basicDateTimeFactory = DateTimeFactory.now();
+class RefDateTimeFactory {
+  RefDateTimeFactory({
+    required RefFactory refFactory,
+    required DateTimeFactory dateTimeFactory,
+  })  : _dateTimeFactory = dateTimeFactory,
+        _refFactory = refFactory;
 
-({
-  DateTime createdAt,
-  Ref ref,
-}) defaultCreatedAtRefFactory() =>
-    (createdAt: basicDateTimeFactory.create(), ref: basicRefFactory.create());
+  factory RefDateTimeFactory.from(
+    RefFactory Function() ref,
+    DateTimeFactory Function() dateTime,
+  ) =>
+      RefDateTimeFactory(refFactory: ref(), dateTimeFactory: dateTime());
 
+  ({
+    DateTime createdAt,
+    Ref ref,
+  }) create() => (
+        ref: _refFactory.create(),
+        createdAt: _dateTimeFactory.create(),
+      );
+
+  final RefFactory _refFactory;
+  final DateTimeFactory _dateTimeFactory;
+}
+
+class TestRefDateTimeFactory extends RefDateTimeFactory {
+  TestRefDateTimeFactory({
+    RefFactory? refFactory,
+    DateTimeFactory? dateTimeFactory,
+  }) : super(
+          refFactory: refFactory ?? RefFactory.increment(),
+          dateTimeFactory: dateTimeFactory ?? DateTimeFactory.increment(),
+        );
+
+  Iterable<
+      ({
+        DateTime createdAt,
+        Ref ref,
+      })> get factoryProduct => _factoryProduct;
+  final _factoryProduct = <({
+    DateTime createdAt,
+    Ref ref,
+  })>[];
+
+  @override
+  ({
+    DateTime createdAt,
+    Ref ref,
+  }) create() {
+    final result = super.create();
+    _factoryProduct.add(result);
+    return result;
+  }
+}
 // abstract
 // class ApplicationBase<Event extends CoreEvent, State extends CoreState,
 //         View extends CoreView>

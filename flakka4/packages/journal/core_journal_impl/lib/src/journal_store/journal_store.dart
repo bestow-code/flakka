@@ -42,15 +42,16 @@ class JournalStore<Event extends CoreEvent, State extends CoreState,
   void _onJournalEffect(JournalEffect<Event, State, View> effect) {
     effect.map(
       event: (event) {
-        _dataEffect.add(
-          DataEffect<Event, State, View>.append(
-            ref: event.ref,
-            parent: [event.parent],
-            event: event.event,
-            stateView: event.stateView,
-            createdAt: event.createdAt,
-          ),
-        );
+        throw UnimplementedError();
+        // _dataEffect.add(
+        //   DataEffect<Event, State, View>.append(
+        //     ref: event.ref,
+        //     parent: [event.parent],
+        //     event: event.event,
+        //     stateView: event.stateView,
+        //     createdAt: event.createdAt,
+        //   ),
+        // );
       },
       forward: (forward) {},
       merge: (merge) {},

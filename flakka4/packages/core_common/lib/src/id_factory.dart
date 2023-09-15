@@ -7,10 +7,10 @@ class IdFactory {
 
   factory IdFactory.random() => IdFactory(AutoIdGenerator.autoId);
 
-  factory IdFactory.increment(int? start) {
+  factory IdFactory.increment([int? start, String? prefix]) {
     var count = start ?? 0;
     return IdFactory(() {
-      final id = count.toString();
+      final id = '${prefix ?? ""}$count';
       count = count + 1;
       return id;
     });
