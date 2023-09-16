@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:core_application/core_application.dart';
+import 'package:core_journal/core_journal.dart';
 
 
 class ApplicationFactory implements CoreApplicationFactory {
   ApplicationFactory({
-    required CoreApplicationIOFactory applicationIOFactory,
-  }) : _applicationIOFactory = applicationIOFactory;
+    required CoreJournalIOFactory journalIOFactory,
+  }) : _journalIOFactory = journalIOFactory;
 
-  final CoreApplicationIOFactory _applicationIOFactory;
+  final CoreJournalIOFactory _journalIOFactory;
 
   @override
   Future<CoreApplication> getInstance(String path) async {

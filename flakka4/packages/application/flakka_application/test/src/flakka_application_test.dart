@@ -32,14 +32,14 @@ void main() {
           PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
       flakkaApplication.registerDataConverter(TestDataConverter.main);
       const path = '/o/1';
-      final applicationIO = await flakkaApplication
-          .getApplicationIO<TestEvent, TestState, TestView>(path);
-      applicationIO.applicationRequestEffect.add(ApplicationRequestEffect.persist(
-        // ref: ref1,
-        event: event,
-        stateView: stateView,
-        // createdAt: createdAt,
-      ));
+      // final applicationIO = await flakkaApplication
+      //     .getApplicationIO<TestEvent, TestState, TestView>(path);
+      // applicationIO.applicationRequestEffect.add(ApplicationRequestEffect.persist(
+      //   // ref: ref1,
+      //   event: event,
+      //   stateView: stateView,
+      //   // createdAt: createdAt,
+      // ));
       await Future.delayed(Duration(milliseconds: 200));
       final adapters = await flakkaApplication
           .getPersistenceAdapterFactoryProvider()

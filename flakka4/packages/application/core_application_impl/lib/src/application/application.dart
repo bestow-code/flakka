@@ -7,6 +7,8 @@ import 'package:core_data/core_data.dart';
 import 'package:core_journal/core_journal.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../../core_application_impl.dart';
+
 class Application<Event extends CoreEvent, State extends CoreState,
         View extends CoreView> extends Cubit<ApplicationState<State, View>>
     implements CoreApplication<Event, State, View> {

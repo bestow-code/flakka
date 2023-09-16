@@ -5,6 +5,7 @@ import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core_application/core_application.dart';
+import 'package:core_application_impl/core_application_impl.dart';
 import 'package:core_application_test/core_application_test.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
@@ -47,7 +48,7 @@ void main() {
   final testStateView0 = (state: TestState(0), view: TestView(1));
   final testStateView1 = (state: TestState(2), view: TestView(2));
   final testStateView1a = (state: TestState(2), view: TestView(2));
-  final testStateView1b = (state: TestState(3), view: TestView(3));
+  // final testStateView1b = (state: TestState(3), view: TestView(3));
   final testStateView2 = (state: TestState(5), view: TestView(6));
 
   TestApplicationState initialState(
@@ -221,7 +222,7 @@ void main() {
         );
       });
       group('-> [Publish]', () {
-        setUp(()=>initialize(2));
+        setUp(() => initialize(2));
         setUp(() {
           journal = MockJournal();
           journalUpdate = JournalUpdate(journal: journal);
@@ -236,7 +237,7 @@ void main() {
           '* Emits effect and updates state',
           build: () => build(ref1, testStateView1),
           act: (_) => journalUpdateStreamController.add(journalUpdate),
-          expect: () => [],
+          expect: () => <dynamic>[],
           verify: (_) {
             expect(
               journalEffect.values.single,
@@ -248,7 +249,31 @@ void main() {
           },
         );
       });
-      group('-> [None]', () {});
+      group('-> [None]', () {
+        setUp(initialize);
+        setUp(() {
+          journal = MockJournal();
+          journalUpdate = JournalUpdate(journal: journal);
+          when(() => journal.reconcile(ref1)).thenReturn(
+            Reconciliation.unknown(),
+          );
+        });
+        blocTest<TestApplication, TestApplicationState>(
+          '* Emits effect and updates state',
+          build: () => build(ref1, testStateView1),
+          act: (_) => journalUpdateStreamController.add(journalUpdate),
+          expect: () => <dynamic>[],
+          verify: (_) {
+            expect(
+              journalEffect.values.single,
+              JournalEffect<TestEvent, TestState, TestView>.publish(
+                ref: ref1,
+                allowFrom: [ref0],
+              ),
+            );
+          },
+        );
+      });
     });
   });
 }

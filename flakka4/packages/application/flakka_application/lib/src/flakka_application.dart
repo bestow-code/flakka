@@ -5,16 +5,16 @@ import 'package:flakka_journal/flakka_journal.dart';
 
 class FlakkaApplication extends FlakkaJournal {
   FlakkaApplication(super.getIt);
-
-  CoreApplicationIOFactoryProvider get applicationIOFactoryProvider =>
-      ApplicationIOFactoryProvider(
-          journalIOFactoryProvider: journalIOFactoryProvider);
-
-  Future<CoreApplicationIO<Event, State, View>> getApplicationIO<
-          Event extends CoreEvent,
-          State extends CoreState,
-          View extends CoreView>(String path) async =>
-      applicationIOFactoryProvider
-          .getFactory(persistenceId.value)
-          .getInstance(path, dataConverter: getDataConverter());
+  //
+  // CoreApplicationFactoryProvider get applicationFactoryProvider =>
+  //     ApplicationFactoryProvider(
+  //         journalFactoryProvider: journalFactoryProvider);
+  //
+  // Future<CoreApplication<Event, State, View>> getApplication<
+  //         Event extends CoreEvent,
+  //         State extends CoreState,
+  //         View extends CoreView>(String path) async =>
+  //     applicationFactoryProvider
+  //         .getFactory(persistenceId.value)
+  //         .getInstance(path, dataConverter: getDataConverter());
 }

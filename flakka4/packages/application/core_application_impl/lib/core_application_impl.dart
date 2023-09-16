@@ -3,8 +3,8 @@
 /// Common libraries for core_platform
 library core_application_impl;
 
-export 'src/_core_application_store.dart';
-export 'src/application_io_factory.dart';
-export 'src/application_io_factory_provider.dart';
-export 'src/application_store/application_store.dart';
-export 'src/application_store/application_store_state.dart';
+export 'src/application/application.dart';
+export 'src/application/application_factory.dart';
+export 'src/application/application_factory_provider.dart';
+export 'src/application/application_update.dart';
+export 'src/application/state_view_processor.dart';
