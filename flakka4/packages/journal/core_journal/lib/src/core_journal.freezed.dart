@@ -19,36 +19,40 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events) forward,
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         reset,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
-    required TResult Function(Iterable<Ref> allowFrom) publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events)? forward,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult? Function(Iterable<Ref> allowFrom)? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function()? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events)? forward,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult Function(Iterable<Ref> allowFrom)? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function()? unknown,
     required TResult orElse(),
   }) =>
@@ -121,7 +125,9 @@ abstract class _$$ReconciliationForwardCopyWith<Event extends CoreEvent,
           $Res Function(_$ReconciliationForward<Event, State, View>) then) =
       __$$ReconciliationForwardCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({Iterable<Event> events});
+  $Res call({Ref ref, Iterable<Event> events});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -138,14 +144,27 @@ class __$$ReconciliationForwardCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ref = null,
     Object? events = null,
   }) {
     return _then(_$ReconciliationForward<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as Iterable<Event>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 }
 
@@ -154,14 +173,16 @@ class __$$ReconciliationForwardCopyWithImpl<Event extends CoreEvent,
 class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
     implements ReconciliationForward<Event, State, View> {
-  _$ReconciliationForward({required this.events});
+  _$ReconciliationForward({required this.ref, required this.events});
 
+  @override
+  final Ref ref;
   @override
   final Iterable<Event> events;
 
   @override
   String toString() {
-    return 'Reconciliation<$Event, $State, $View>.forward(events: $events)';
+    return 'Reconciliation<$Event, $State, $View>.forward(ref: $ref, events: $events)';
   }
 
   @override
@@ -169,12 +190,13 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReconciliationForward<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(events));
+  int get hashCode => Object.hash(
+      runtimeType, ref, const DeepCollectionEquality().hash(events));
 
   @JsonKey(ignore: true)
   @override
@@ -187,47 +209,51 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events) forward,
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         reset,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
-    required TResult Function(Iterable<Ref> allowFrom) publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function() unknown,
   }) {
-    return forward(events);
+    return forward(ref, events);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events)? forward,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult? Function(Iterable<Ref> allowFrom)? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function()? unknown,
   }) {
-    return forward?.call(events);
+    return forward?.call(ref, events);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events)? forward,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult Function(Iterable<Ref> allowFrom)? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (forward != null) {
-      return forward(events);
+      return forward(ref, events);
     }
     return orElse();
   }
@@ -282,9 +308,11 @@ abstract class ReconciliationForward<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
-  factory ReconciliationForward({required final Iterable<Event> events}) =
+  factory ReconciliationForward(
+          {required final Ref ref, required final Iterable<Event> events}) =
       _$ReconciliationForward<Event, State, View>;
 
+  Ref get ref;
   Iterable<Event> get events;
   @JsonKey(ignore: true)
   _$$ReconciliationForwardCopyWith<Event, State, View,
@@ -300,7 +328,9 @@ abstract class _$$ReconciliationResetCopyWith<Event extends CoreEvent,
           $Res Function(_$ReconciliationReset<Event, State, View>) then) =
       __$$ReconciliationResetCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({({State state, View view}) base, Iterable<Event> events});
+  $Res call({Ref ref, ({State state, View view}) base, Iterable<Event> events});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -317,10 +347,15 @@ class __$$ReconciliationResetCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ref = null,
     Object? base = null,
     Object? events = null,
   }) {
     return _then(_$ReconciliationReset<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
       base: null == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
@@ -331,14 +366,25 @@ class __$$ReconciliationResetCopyWithImpl<Event extends CoreEvent,
               as Iterable<Event>,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements ReconciliationReset<Event, State, View> {
-  _$ReconciliationReset({required this.base, required this.events});
+  _$ReconciliationReset(
+      {required this.ref, required this.base, required this.events});
 
+  @override
+  final Ref ref;
   @override
   final ({State state, View view}) base;
   @override
@@ -346,7 +392,7 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'Reconciliation<$Event, $State, $View>.reset(base: $base, events: $events)';
+    return 'Reconciliation<$Event, $State, $View>.reset(ref: $ref, base: $base, events: $events)';
   }
 
   @override
@@ -354,13 +400,14 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReconciliationReset<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.base, base) || other.base == base) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, base, const DeepCollectionEquality().hash(events));
+      runtimeType, ref, base, const DeepCollectionEquality().hash(events));
 
   @JsonKey(ignore: true)
   @override
@@ -373,47 +420,51 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events) forward,
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         reset,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
-    required TResult Function(Iterable<Ref> allowFrom) publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function() unknown,
   }) {
-    return reset(base, events);
+    return reset(ref, base, events);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events)? forward,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult? Function(Iterable<Ref> allowFrom)? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function()? unknown,
   }) {
-    return reset?.call(base, events);
+    return reset?.call(ref, base, events);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events)? forward,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult Function(Iterable<Ref> allowFrom)? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (reset != null) {
-      return reset(base, events);
+      return reset(ref, base, events);
     }
     return orElse();
   }
@@ -469,10 +520,12 @@ abstract class ReconciliationReset<
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
   factory ReconciliationReset(
-          {required final ({State state, View view}) base,
+          {required final Ref ref,
+          required final ({State state, View view}) base,
           required final Iterable<Event> events}) =
       _$ReconciliationReset<Event, State, View>;
 
+  Ref get ref;
   ({State state, View view}) get base;
   Iterable<Event> get events;
   @JsonKey(ignore: true)
@@ -489,7 +542,9 @@ abstract class _$$ReconciliationMergeCopyWith<Event extends CoreEvent,
           $Res Function(_$ReconciliationMerge<Event, State, View>) then) =
       __$$ReconciliationMergeCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({({State state, View view}) base, Iterable<Event> events});
+  $Res call({Ref ref, ({State state, View view}) base, Iterable<Event> events});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -506,10 +561,15 @@ class __$$ReconciliationMergeCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ref = null,
     Object? base = null,
     Object? events = null,
   }) {
     return _then(_$ReconciliationMerge<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
       base: null == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
@@ -520,14 +580,25 @@ class __$$ReconciliationMergeCopyWithImpl<Event extends CoreEvent,
               as Iterable<Event>,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements ReconciliationMerge<Event, State, View> {
-  _$ReconciliationMerge({required this.base, required this.events});
+  _$ReconciliationMerge(
+      {required this.ref, required this.base, required this.events});
 
+  @override
+  final Ref ref;
   @override
   final ({State state, View view}) base;
   @override
@@ -535,7 +606,7 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'Reconciliation<$Event, $State, $View>.merge(base: $base, events: $events)';
+    return 'Reconciliation<$Event, $State, $View>.merge(ref: $ref, base: $base, events: $events)';
   }
 
   @override
@@ -543,13 +614,14 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReconciliationMerge<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.base, base) || other.base == base) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, base, const DeepCollectionEquality().hash(events));
+      runtimeType, ref, base, const DeepCollectionEquality().hash(events));
 
   @JsonKey(ignore: true)
   @override
@@ -562,47 +634,51 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events) forward,
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         reset,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
-    required TResult Function(Iterable<Ref> allowFrom) publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function() unknown,
   }) {
-    return merge(base, events);
+    return merge(ref, base, events);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events)? forward,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult? Function(Iterable<Ref> allowFrom)? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function()? unknown,
   }) {
-    return merge?.call(base, events);
+    return merge?.call(ref, base, events);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events)? forward,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult Function(Iterable<Ref> allowFrom)? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (merge != null) {
-      return merge(base, events);
+      return merge(ref, base, events);
     }
     return orElse();
   }
@@ -658,10 +734,12 @@ abstract class ReconciliationMerge<
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
   factory ReconciliationMerge(
-          {required final ({State state, View view}) base,
+          {required final Ref ref,
+          required final ({State state, View view}) base,
           required final Iterable<Event> events}) =
       _$ReconciliationMerge<Event, State, View>;
 
+  Ref get ref;
   ({State state, View view}) get base;
   Iterable<Event> get events;
   @JsonKey(ignore: true)
@@ -678,7 +756,9 @@ abstract class _$$ReconciliationPublishCopyWith<Event extends CoreEvent,
           $Res Function(_$ReconciliationPublish<Event, State, View>) then) =
       __$$ReconciliationPublishCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({Iterable<Ref> allowFrom});
+  $Res call({Ref ref, Iterable<Ref> allowFrom});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -695,14 +775,27 @@ class __$$ReconciliationPublishCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? ref = null,
     Object? allowFrom = null,
   }) {
     return _then(_$ReconciliationPublish<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
       allowFrom: null == allowFrom
           ? _value.allowFrom
           : allowFrom // ignore: cast_nullable_to_non_nullable
               as Iterable<Ref>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 }
 
@@ -711,14 +804,16 @@ class __$$ReconciliationPublishCopyWithImpl<Event extends CoreEvent,
 class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
     implements ReconciliationPublish<Event, State, View> {
-  _$ReconciliationPublish({required this.allowFrom});
+  _$ReconciliationPublish({required this.ref, required this.allowFrom});
 
+  @override
+  final Ref ref;
   @override
   final Iterable<Ref> allowFrom;
 
   @override
   String toString() {
-    return 'Reconciliation<$Event, $State, $View>.publish(allowFrom: $allowFrom)';
+    return 'Reconciliation<$Event, $State, $View>.publish(ref: $ref, allowFrom: $allowFrom)';
   }
 
   @override
@@ -726,12 +821,13 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReconciliationPublish<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.allowFrom, allowFrom));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(allowFrom));
+  int get hashCode => Object.hash(
+      runtimeType, ref, const DeepCollectionEquality().hash(allowFrom));
 
   @JsonKey(ignore: true)
   @override
@@ -744,47 +840,51 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events) forward,
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         reset,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
-    required TResult Function(Iterable<Ref> allowFrom) publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function() unknown,
   }) {
-    return publish(allowFrom);
+    return publish(ref, allowFrom);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events)? forward,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult? Function(Iterable<Ref> allowFrom)? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function()? unknown,
   }) {
-    return publish?.call(allowFrom);
+    return publish?.call(ref, allowFrom);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events)? forward,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult Function(Iterable<Ref> allowFrom)? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (publish != null) {
-      return publish(allowFrom);
+      return publish(ref, allowFrom);
     }
     return orElse();
   }
@@ -839,9 +939,11 @@ abstract class ReconciliationPublish<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
-  factory ReconciliationPublish({required final Iterable<Ref> allowFrom}) =
+  factory ReconciliationPublish(
+          {required final Ref ref, required final Iterable<Ref> allowFrom}) =
       _$ReconciliationPublish<Event, State, View>;
 
+  Ref get ref;
   Iterable<Ref> get allowFrom;
   @JsonKey(ignore: true)
   _$$ReconciliationPublishCopyWith<Event, State, View,
@@ -895,14 +997,14 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Iterable<Event> events) forward,
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         reset,
     required TResult Function(
-            ({State state, View view}) base, Iterable<Event> events)
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
-    required TResult Function(Iterable<Ref> allowFrom) publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function() unknown,
   }) {
     return unknown();
@@ -911,12 +1013,14 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Iterable<Event> events)? forward,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult? Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult? Function(Iterable<Ref> allowFrom)? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function()? unknown,
   }) {
     return unknown?.call();
@@ -925,12 +1029,14 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Iterable<Event> events)? forward,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         reset,
-    TResult Function(({State state, View view}) base, Iterable<Event> events)?
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
-    TResult Function(Iterable<Ref> allowFrom)? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {

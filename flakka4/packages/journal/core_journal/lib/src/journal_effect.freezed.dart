@@ -24,7 +24,8 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
         event,
     required TResult Function(Ref ref, ({State state, View view}) stateView)
         forward,
-    required TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)
+    required TResult Function(Ref ref, Ref merge,
+            ({State state, View view}) stateView, DateTime createdAt)
         merge,
     required TResult Function() publish,
     required TResult Function(Ref ref) none,
@@ -36,7 +37,9 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
             ({State state, View view}) stateView, DateTime createdAt)?
         event,
     TResult? Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult? Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult? Function()? publish,
     TResult? Function(Ref ref)? none,
   }) =>
@@ -47,7 +50,9 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
             DateTime createdAt)?
         event,
     TResult Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult Function()? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
@@ -234,7 +239,8 @@ class _$JournalEffectEvent<Event extends CoreEvent, State extends CoreState,
         event,
     required TResult Function(Ref ref, ({State state, View view}) stateView)
         forward,
-    required TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)
+    required TResult Function(Ref ref, Ref merge,
+            ({State state, View view}) stateView, DateTime createdAt)
         merge,
     required TResult Function() publish,
     required TResult Function(Ref ref) none,
@@ -249,7 +255,9 @@ class _$JournalEffectEvent<Event extends CoreEvent, State extends CoreState,
             ({State state, View view}) stateView, DateTime createdAt)?
         event,
     TResult? Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult? Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult? Function()? publish,
     TResult? Function(Ref ref)? none,
   }) {
@@ -263,7 +271,9 @@ class _$JournalEffectEvent<Event extends CoreEvent, State extends CoreState,
             DateTime createdAt)?
         event,
     TResult Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult Function()? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
@@ -436,7 +446,8 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
         event,
     required TResult Function(Ref ref, ({State state, View view}) stateView)
         forward,
-    required TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)
+    required TResult Function(Ref ref, Ref merge,
+            ({State state, View view}) stateView, DateTime createdAt)
         merge,
     required TResult Function() publish,
     required TResult Function(Ref ref) none,
@@ -451,7 +462,9 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
             ({State state, View view}) stateView, DateTime createdAt)?
         event,
     TResult? Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult? Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult? Function()? publish,
     TResult? Function(Ref ref)? none,
   }) {
@@ -465,7 +478,9 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
             DateTime createdAt)?
         event,
     TResult Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult Function()? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
@@ -546,10 +561,14 @@ abstract class _$$JournalEffectMergeCopyWith<Event extends CoreEvent,
           $Res Function(_$JournalEffectMerge<Event, State, View>) then) =
       __$$JournalEffectMergeCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({Ref ref, Ref mergeParent, DateTime createdAt});
+  $Res call(
+      {Ref ref,
+      Ref merge,
+      ({State state, View view}) stateView,
+      DateTime createdAt});
 
   $RefCopyWith<$Res> get ref;
-  $RefCopyWith<$Res> get mergeParent;
+  $RefCopyWith<$Res> get merge;
 }
 
 /// @nodoc
@@ -567,7 +586,8 @@ class __$$JournalEffectMergeCopyWithImpl<Event extends CoreEvent,
   @override
   $Res call({
     Object? ref = null,
-    Object? mergeParent = null,
+    Object? merge = null,
+    Object? stateView = null,
     Object? createdAt = null,
   }) {
     return _then(_$JournalEffectMerge<Event, State, View>(
@@ -575,10 +595,14 @@ class __$$JournalEffectMergeCopyWithImpl<Event extends CoreEvent,
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
-      mergeParent: null == mergeParent
-          ? _value.mergeParent
-          : mergeParent // ignore: cast_nullable_to_non_nullable
+      merge: null == merge
+          ? _value.merge
+          : merge // ignore: cast_nullable_to_non_nullable
               as Ref,
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as ({State state, View view}),
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -596,9 +620,9 @@ class __$$JournalEffectMergeCopyWithImpl<Event extends CoreEvent,
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get mergeParent {
-    return $RefCopyWith<$Res>(_value.mergeParent, (value) {
-      return _then(_value.copyWith(mergeParent: value));
+  $RefCopyWith<$Res> get merge {
+    return $RefCopyWith<$Res>(_value.merge, (value) {
+      return _then(_value.copyWith(merge: value));
     });
   }
 }
@@ -608,18 +632,23 @@ class __$$JournalEffectMergeCopyWithImpl<Event extends CoreEvent,
 class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements JournalEffectMerge<Event, State, View> {
   _$JournalEffectMerge(
-      {required this.ref, required this.mergeParent, required this.createdAt});
+      {required this.ref,
+      required this.merge,
+      required this.stateView,
+      required this.createdAt});
 
   @override
   final Ref ref;
   @override
-  final Ref mergeParent;
+  final Ref merge;
+  @override
+  final ({State state, View view}) stateView;
   @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'JournalEffect<$Event, $State, $View>.merge(ref: $ref, mergeParent: $mergeParent, createdAt: $createdAt)';
+    return 'JournalEffect<$Event, $State, $View>.merge(ref: $ref, merge: $merge, stateView: $stateView, createdAt: $createdAt)';
   }
 
   @override
@@ -628,14 +657,16 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
         (other.runtimeType == runtimeType &&
             other is _$JournalEffectMerge<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.mergeParent, mergeParent) ||
-                other.mergeParent == mergeParent) &&
+            (identical(other.merge, merge) || other.merge == merge) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, mergeParent, createdAt);
+  int get hashCode =>
+      Object.hash(runtimeType, ref, merge, stateView, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -653,12 +684,13 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
         event,
     required TResult Function(Ref ref, ({State state, View view}) stateView)
         forward,
-    required TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)
+    required TResult Function(Ref ref, Ref merge,
+            ({State state, View view}) stateView, DateTime createdAt)
         merge,
     required TResult Function() publish,
     required TResult Function(Ref ref) none,
   }) {
-    return merge(ref, mergeParent, createdAt);
+    return merge(ref, this.merge, stateView, createdAt);
   }
 
   @override
@@ -668,11 +700,13 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
             ({State state, View view}) stateView, DateTime createdAt)?
         event,
     TResult? Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult? Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult? Function()? publish,
     TResult? Function(Ref ref)? none,
   }) {
-    return merge?.call(ref, mergeParent, createdAt);
+    return merge?.call(ref, this.merge, stateView, createdAt);
   }
 
   @override
@@ -682,13 +716,15 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
             DateTime createdAt)?
         event,
     TResult Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult Function()? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) {
     if (merge != null) {
-      return merge(ref, mergeParent, createdAt);
+      return merge(ref, this.merge, stateView, createdAt);
     }
     return orElse();
   }
@@ -744,12 +780,14 @@ abstract class JournalEffectMerge<
     View extends CoreView> implements JournalEffect<Event, State, View> {
   factory JournalEffectMerge(
           {required final Ref ref,
-          required final Ref mergeParent,
+          required final Ref merge,
+          required final ({State state, View view}) stateView,
           required final DateTime createdAt}) =
       _$JournalEffectMerge<Event, State, View>;
 
   Ref get ref;
-  Ref get mergeParent;
+  Ref get merge;
+  ({State state, View view}) get stateView;
   DateTime get createdAt;
   @JsonKey(ignore: true)
   _$$JournalEffectMergeCopyWith<Event, State, View,
@@ -807,7 +845,8 @@ class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
         event,
     required TResult Function(Ref ref, ({State state, View view}) stateView)
         forward,
-    required TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)
+    required TResult Function(Ref ref, Ref merge,
+            ({State state, View view}) stateView, DateTime createdAt)
         merge,
     required TResult Function() publish,
     required TResult Function(Ref ref) none,
@@ -822,7 +861,9 @@ class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
             ({State state, View view}) stateView, DateTime createdAt)?
         event,
     TResult? Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult? Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult? Function()? publish,
     TResult? Function(Ref ref)? none,
   }) {
@@ -836,7 +877,9 @@ class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
             DateTime createdAt)?
         event,
     TResult Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult Function()? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
@@ -986,7 +1029,8 @@ class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
         event,
     required TResult Function(Ref ref, ({State state, View view}) stateView)
         forward,
-    required TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)
+    required TResult Function(Ref ref, Ref merge,
+            ({State state, View view}) stateView, DateTime createdAt)
         merge,
     required TResult Function() publish,
     required TResult Function(Ref ref) none,
@@ -1001,7 +1045,9 @@ class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
             ({State state, View view}) stateView, DateTime createdAt)?
         event,
     TResult? Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult? Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult? Function()? publish,
     TResult? Function(Ref ref)? none,
   }) {
@@ -1015,7 +1061,9 @@ class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
             DateTime createdAt)?
         event,
     TResult Function(Ref ref, ({State state, View view}) stateView)? forward,
-    TResult Function(Ref ref, Ref mergeParent, DateTime createdAt)? merge,
+    TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
+            DateTime createdAt)?
+        merge,
     TResult Function()? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),

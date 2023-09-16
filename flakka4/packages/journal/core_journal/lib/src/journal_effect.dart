@@ -20,7 +20,8 @@ class JournalEffect<Event extends CoreEvent, State extends CoreState,
 
   factory JournalEffect.merge({
     required Ref ref,
-    required Ref mergeParent,
+    required Ref merge,
+    required StateView<State, View> stateView,
     required DateTime createdAt,
   }) = JournalEffectMerge<Event, State, View>;
 

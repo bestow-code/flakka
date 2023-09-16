@@ -17,22 +17,37 @@ enum CompareResult { ahead, behind, diverged, equal, unknown }
 class Reconciliation<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$Reconciliation<Event, State, View> {
   factory Reconciliation.forward({
+    required Ref ref,
     required Iterable<Event> events,
-  }) = ReconciliationForward;
+  }) = ReconciliationForward<Event, State, View>;
 
   factory Reconciliation.reset({
+    required Ref ref,
     required StateView<State, View> base,
     required Iterable<Event> events,
-  }) = ReconciliationReset;
+  }) = ReconciliationReset<Event, State, View>;
 
   factory Reconciliation.merge({
+    required Ref ref,
     required StateView<State, View> base,
     required Iterable<Event> events,
-  }) = ReconciliationMerge;
+  }) = ReconciliationMerge<Event, State, View>;
 
   factory Reconciliation.publish({
+    required Ref ref,
     required Iterable<Ref> allowFrom,
-  }) = ReconciliationPublish;
+  }) = ReconciliationPublish<Event, State, View>;
 
-  factory Reconciliation.unknown() = ReconciliationUnknown;
+  factory Reconciliation.unknown() = ReconciliationUnknown<Event, State, View>;
 }
+
+// class User {
+//   final String name;
+//   final int age;
+// }
+//
+// extension AnyUser on Any {
+//   Generator<User> get user => combine2(any.string, any.int, (name, age) {
+//     return User(name, age);
+//   });
+// }
