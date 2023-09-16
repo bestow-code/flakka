@@ -91,7 +91,14 @@ class Application<Event extends CoreEvent, State extends CoreState,
               );
               emit((ref: update.refDateTime.ref, stateView: nextStateView));
             },
-            publish: (publish) {},
+            publish: (publish) {
+              _journalEffect.add(
+                JournalEffect.publish(
+                  ref: publish.ref,
+                  allowFrom: publish.allowFrom,
+                ),
+              );
+            },
             unknown: (unknown) {},
           ),
       request: (request) => request.request.handle(state.stateView.state).map(

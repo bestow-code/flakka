@@ -220,7 +220,34 @@ void main() {
           },
         );
       });
-      group('-> [Publish]', () {});
+      group('-> [Publish]', () {
+        setUp(()=>initialize(2));
+        setUp(() {
+          journal = MockJournal();
+          journalUpdate = JournalUpdate(journal: journal);
+          when(() => journal.reconcile(ref1)).thenReturn(
+            Reconciliation.publish(
+              ref: ref1,
+              allowFrom: [ref0],
+            ),
+          );
+        });
+        blocTest<TestApplication, TestApplicationState>(
+          '* Emits effect and updates state',
+          build: () => build(ref1, testStateView1),
+          act: (_) => journalUpdateStreamController.add(journalUpdate),
+          expect: () => [],
+          verify: (_) {
+            expect(
+              journalEffect.values.single,
+              JournalEffect<TestEvent, TestState, TestView>.publish(
+                ref: ref1,
+                allowFrom: [ref0],
+              ),
+            );
+          },
+        );
+      });
       group('-> [None]', () {});
     });
   });

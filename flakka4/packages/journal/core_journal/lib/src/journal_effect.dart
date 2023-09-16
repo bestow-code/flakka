@@ -25,7 +25,10 @@ class JournalEffect<Event extends CoreEvent, State extends CoreState,
     required DateTime createdAt,
   }) = JournalEffectMerge<Event, State, View>;
 
-  factory JournalEffect.publish() = JournalEffectPublish<Event, State, View>;
+  factory JournalEffect.publish({
+    required Ref ref,
+    required Iterable<Ref> allowFrom,
+  }) = JournalEffectPublish<Event, State, View>;
 
   factory JournalEffect.none({required Ref ref}) =
       JournalEffectNone<Event, State, View>;

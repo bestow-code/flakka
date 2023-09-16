@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
+  Ref get ref => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Ref ref, Event event,
@@ -27,7 +28,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, Ref merge,
             ({State state, View view}) stateView, DateTime createdAt)
         merge,
-    required TResult Function() publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function(Ref ref) none,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,7 +41,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult? Function()? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function(Ref ref)? none,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +54,7 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult Function()? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) =>
@@ -90,6 +91,10 @@ mixin _$JournalEffect<Event extends CoreEvent, State extends CoreState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $JournalEffectCopyWith<Event, State, View, JournalEffect<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -99,6 +104,10 @@ abstract class $JournalEffectCopyWith<Event extends CoreEvent,
           $Res Function(JournalEffect<Event, State, View>) then) =
       _$JournalEffectCopyWithImpl<Event, State, View, $Res,
           JournalEffect<Event, State, View>>;
+  @useResult
+  $Res call({Ref ref});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -115,15 +124,40 @@ class _$JournalEffectCopyWithImpl<
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+  }) {
+    return _then(_value.copyWith(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$JournalEffectEventCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$JournalEffectEventCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
   factory _$$JournalEffectEventCopyWith(
           _$JournalEffectEvent<Event, State, View> value,
           $Res Function(_$JournalEffectEvent<Event, State, View>) then) =
       __$$JournalEffectEventCopyWithImpl<Event, State, View, $Res>;
+  @override
   @useResult
   $Res call(
       {Ref ref,
@@ -131,6 +165,7 @@ abstract class _$$JournalEffectEventCopyWith<Event extends CoreEvent,
       ({State state, View view}) stateView,
       DateTime createdAt});
 
+  @override
   $RefCopyWith<$Res> get ref;
 }
 
@@ -171,14 +206,6 @@ class __$$JournalEffectEventCopyWithImpl<Event extends CoreEvent,
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
   }
 }
 
@@ -242,7 +269,7 @@ class _$JournalEffectEvent<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, Ref merge,
             ({State state, View view}) stateView, DateTime createdAt)
         merge,
-    required TResult Function() publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function(Ref ref) none,
   }) {
     return event(ref, this.event, stateView, createdAt);
@@ -258,7 +285,7 @@ class _$JournalEffectEvent<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult? Function()? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function(Ref ref)? none,
   }) {
     return event?.call(ref, this.event, stateView, createdAt);
@@ -274,7 +301,7 @@ class _$JournalEffectEvent<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult Function()? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) {
@@ -340,10 +367,12 @@ abstract class JournalEffectEvent<
           required final DateTime createdAt}) =
       _$JournalEffectEvent<Event, State, View>;
 
+  @override
   Ref get ref;
   Event get event;
   ({State state, View view}) get stateView;
   DateTime get createdAt;
+  @override
   @JsonKey(ignore: true)
   _$$JournalEffectEventCopyWith<Event, State, View,
           _$JournalEffectEvent<Event, State, View>>
@@ -351,15 +380,20 @@ abstract class JournalEffectEvent<
 }
 
 /// @nodoc
-abstract class _$$JournalEffectForwardCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$JournalEffectForwardCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
   factory _$$JournalEffectForwardCopyWith(
           _$JournalEffectForward<Event, State, View> value,
           $Res Function(_$JournalEffectForward<Event, State, View>) then) =
       __$$JournalEffectForwardCopyWithImpl<Event, State, View, $Res>;
+  @override
   @useResult
   $Res call({Ref ref, ({State state, View view}) stateView});
 
+  @override
   $RefCopyWith<$Res> get ref;
 }
 
@@ -390,14 +424,6 @@ class __$$JournalEffectForwardCopyWithImpl<Event extends CoreEvent,
           : stateView // ignore: cast_nullable_to_non_nullable
               as ({State state, View view}),
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
   }
 }
 
@@ -449,7 +475,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, Ref merge,
             ({State state, View view}) stateView, DateTime createdAt)
         merge,
-    required TResult Function() publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function(Ref ref) none,
   }) {
     return forward(ref, stateView);
@@ -465,7 +491,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult? Function()? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function(Ref ref)? none,
   }) {
     return forward?.call(ref, stateView);
@@ -481,7 +507,7 @@ class _$JournalEffectForward<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult Function()? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) {
@@ -545,8 +571,10 @@ abstract class JournalEffectForward<
           required final ({State state, View view}) stateView}) =
       _$JournalEffectForward<Event, State, View>;
 
+  @override
   Ref get ref;
   ({State state, View view}) get stateView;
+  @override
   @JsonKey(ignore: true)
   _$$JournalEffectForwardCopyWith<Event, State, View,
           _$JournalEffectForward<Event, State, View>>
@@ -554,12 +582,16 @@ abstract class JournalEffectForward<
 }
 
 /// @nodoc
-abstract class _$$JournalEffectMergeCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$JournalEffectMergeCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
   factory _$$JournalEffectMergeCopyWith(
           _$JournalEffectMerge<Event, State, View> value,
           $Res Function(_$JournalEffectMerge<Event, State, View>) then) =
       __$$JournalEffectMergeCopyWithImpl<Event, State, View, $Res>;
+  @override
   @useResult
   $Res call(
       {Ref ref,
@@ -567,6 +599,7 @@ abstract class _$$JournalEffectMergeCopyWith<Event extends CoreEvent,
       ({State state, View view}) stateView,
       DateTime createdAt});
 
+  @override
   $RefCopyWith<$Res> get ref;
   $RefCopyWith<$Res> get merge;
 }
@@ -608,14 +641,6 @@ class __$$JournalEffectMergeCopyWithImpl<Event extends CoreEvent,
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
   }
 
   @override
@@ -687,7 +712,7 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, Ref merge,
             ({State state, View view}) stateView, DateTime createdAt)
         merge,
-    required TResult Function() publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function(Ref ref) none,
   }) {
     return merge(ref, this.merge, stateView, createdAt);
@@ -703,7 +728,7 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult? Function()? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function(Ref ref)? none,
   }) {
     return merge?.call(ref, this.merge, stateView, createdAt);
@@ -719,7 +744,7 @@ class _$JournalEffectMerge<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult Function()? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) {
@@ -785,10 +810,12 @@ abstract class JournalEffectMerge<
           required final DateTime createdAt}) =
       _$JournalEffectMerge<Event, State, View>;
 
+  @override
   Ref get ref;
   Ref get merge;
   ({State state, View view}) get stateView;
   DateTime get createdAt;
+  @override
   @JsonKey(ignore: true)
   _$$JournalEffectMergeCopyWith<Event, State, View,
           _$JournalEffectMerge<Event, State, View>>
@@ -796,12 +823,21 @@ abstract class JournalEffectMerge<
 }
 
 /// @nodoc
-abstract class _$$JournalEffectPublishCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$JournalEffectPublishCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
   factory _$$JournalEffectPublishCopyWith(
           _$JournalEffectPublish<Event, State, View> value,
           $Res Function(_$JournalEffectPublish<Event, State, View>) then) =
       __$$JournalEffectPublishCopyWithImpl<Event, State, View, $Res>;
+  @override
+  @useResult
+  $Res call({Ref ref, Iterable<Ref> allowFrom});
+
+  @override
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -814,28 +850,62 @@ class __$$JournalEffectPublishCopyWithImpl<Event extends CoreEvent,
       _$JournalEffectPublish<Event, State, View> _value,
       $Res Function(_$JournalEffectPublish<Event, State, View>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? allowFrom = null,
+  }) {
+    return _then(_$JournalEffectPublish<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      allowFrom: null == allowFrom
+          ? _value.allowFrom
+          : allowFrom // ignore: cast_nullable_to_non_nullable
+              as Iterable<Ref>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements JournalEffectPublish<Event, State, View> {
-  _$JournalEffectPublish();
+  _$JournalEffectPublish({required this.ref, required this.allowFrom});
+
+  @override
+  final Ref ref;
+  @override
+  final Iterable<Ref> allowFrom;
 
   @override
   String toString() {
-    return 'JournalEffect<$Event, $State, $View>.publish()';
+    return 'JournalEffect<$Event, $State, $View>.publish(ref: $ref, allowFrom: $allowFrom)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JournalEffectPublish<Event, State, View>);
+            other is _$JournalEffectPublish<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            const DeepCollectionEquality().equals(other.allowFrom, allowFrom));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, ref, const DeepCollectionEquality().hash(allowFrom));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JournalEffectPublishCopyWith<Event, State, View,
+          _$JournalEffectPublish<Event, State, View>>
+      get copyWith => __$$JournalEffectPublishCopyWithImpl<Event, State, View,
+          _$JournalEffectPublish<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -848,10 +918,10 @@ class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, Ref merge,
             ({State state, View view}) stateView, DateTime createdAt)
         merge,
-    required TResult Function() publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function(Ref ref) none,
   }) {
-    return publish();
+    return publish(ref, allowFrom);
   }
 
   @override
@@ -864,10 +934,10 @@ class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult? Function()? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function(Ref ref)? none,
   }) {
-    return publish?.call();
+    return publish?.call(ref, allowFrom);
   }
 
   @override
@@ -880,12 +950,12 @@ class _$JournalEffectPublish<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult Function()? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) {
     if (publish != null) {
-      return publish();
+      return publish(ref, allowFrom);
     }
     return orElse();
   }
@@ -939,19 +1009,35 @@ abstract class JournalEffectPublish<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements JournalEffect<Event, State, View> {
-  factory JournalEffectPublish() = _$JournalEffectPublish<Event, State, View>;
+  factory JournalEffectPublish(
+          {required final Ref ref, required final Iterable<Ref> allowFrom}) =
+      _$JournalEffectPublish<Event, State, View>;
+
+  @override
+  Ref get ref;
+  Iterable<Ref> get allowFrom;
+  @override
+  @JsonKey(ignore: true)
+  _$$JournalEffectPublishCopyWith<Event, State, View,
+          _$JournalEffectPublish<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$JournalEffectNoneCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
+abstract class _$$JournalEffectNoneCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $JournalEffectCopyWith<Event, State, View, $Res> {
   factory _$$JournalEffectNoneCopyWith(
           _$JournalEffectNone<Event, State, View> value,
           $Res Function(_$JournalEffectNone<Event, State, View>) then) =
       __$$JournalEffectNoneCopyWithImpl<Event, State, View, $Res>;
+  @override
   @useResult
   $Res call({Ref ref});
 
+  @override
   $RefCopyWith<$Res> get ref;
 }
 
@@ -977,14 +1063,6 @@ class __$$JournalEffectNoneCopyWithImpl<Event extends CoreEvent,
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
   }
 }
 
@@ -1032,7 +1110,7 @@ class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
     required TResult Function(Ref ref, Ref merge,
             ({State state, View view}) stateView, DateTime createdAt)
         merge,
-    required TResult Function() publish,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
     required TResult Function(Ref ref) none,
   }) {
     return none(ref);
@@ -1048,7 +1126,7 @@ class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
     TResult? Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult? Function()? publish,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult? Function(Ref ref)? none,
   }) {
     return none?.call(ref);
@@ -1064,7 +1142,7 @@ class _$JournalEffectNone<Event extends CoreEvent, State extends CoreState,
     TResult Function(Ref ref, Ref merge, ({State state, View view}) stateView,
             DateTime createdAt)?
         merge,
-    TResult Function()? publish,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
     TResult Function(Ref ref)? none,
     required TResult orElse(),
   }) {
@@ -1126,7 +1204,9 @@ abstract class JournalEffectNone<
   factory JournalEffectNone({required final Ref ref}) =
       _$JournalEffectNone<Event, State, View>;
 
+  @override
   Ref get ref;
+  @override
   @JsonKey(ignore: true)
   _$$JournalEffectNoneCopyWith<Event, State, View,
           _$JournalEffectNone<Event, State, View>>
