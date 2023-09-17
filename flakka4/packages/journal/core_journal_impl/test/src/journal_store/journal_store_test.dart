@@ -11,25 +11,28 @@ import 'package:test/test.dart';
 typedef TestJournalStore = JournalStore<TestEvent, TestState, TestView>;
 
 void main() {
-  group('JournalStore', () {
-    late ReplaySubject<DataEffect<TestEvent, TestState, TestView>> dataEffect;
-    late StreamController<DataUpdate<TestEvent, TestState, TestView>>
-        dataUpdate;
+  // # Dependencies
+  late ReplaySubject<DataEffect<TestEvent, TestState, TestView>> dataEffect;
+  late StreamController<DataUpdate<TestEvent, TestState, TestView>> dataUpdate;
 
-    setUp(() {
-      dataEffect = ReplaySubject();
-      dataUpdate = StreamController();
-    });
-    final ref0 = Ref('ref0');
-    final ref1 = Ref('ref1');
+  setUp(() {
+    dataEffect = ReplaySubject();
+    dataUpdate = StreamController();
+  });
+  final ref0 = Ref('ref0');
+  final ref1 = Ref('ref1');
 
-    final t1 = DateTime.fromMillisecondsSinceEpoch(1);
-    group('JournalEffect', () {
-      group('Event', () {
-        blocTest<TestJournalStore, JournalStoreState>(
-          'emits DataEffectAppend',
+  final t1 = DateTime.fromMillisecondsSinceEpoch(1);
+  group('[JournalStore]', () {
+    group('-> [JournalEffect]', () {
+      group('-> [.event]', () {
+        blocTest<TestJournalStore,
+            JournalState<TestEvent, TestState, TestView>>(
+          'emits [DataEffect.append]',
           build: () => TestJournalStore(
-            JournalStoreState(),
+            throw UnimplementedError()
+            // JournalState<TestEvent, TestState, TestView>()
+            ,
             dataEffect: dataEffect,
             dataUpdate: dataUpdate.stream,
           ),

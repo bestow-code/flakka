@@ -27,7 +27,8 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
     required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
-    required TResult Function() unknown,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +41,8 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult? Function()? unknown,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,7 +55,8 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult Function()? unknown,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,8 +70,11 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
         merge,
     required TResult Function(ReconciliationPublish<Event, State, View> value)
         publish,
-    required TResult Function(ReconciliationUnknown<Event, State, View> value)
-        unknown,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,7 +83,9 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult? Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,7 +94,9 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -217,7 +227,8 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
     required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
-    required TResult Function() unknown,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
   }) {
     return forward(ref, events);
   }
@@ -233,7 +244,8 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult? Function()? unknown,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
   }) {
     return forward?.call(ref, events);
   }
@@ -249,7 +261,8 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult Function()? unknown,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -269,8 +282,11 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
         merge,
     required TResult Function(ReconciliationPublish<Event, State, View> value)
         publish,
-    required TResult Function(ReconciliationUnknown<Event, State, View> value)
-        unknown,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
   }) {
     return forward(this);
   }
@@ -282,7 +298,9 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult? Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
   }) {
     return forward?.call(this);
   }
@@ -294,7 +312,9 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -428,7 +448,8 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
     required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
-    required TResult Function() unknown,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
   }) {
     return reset(ref, base, events);
   }
@@ -444,7 +465,8 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult? Function()? unknown,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
   }) {
     return reset?.call(ref, base, events);
   }
@@ -460,7 +482,8 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult Function()? unknown,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
     required TResult orElse(),
   }) {
     if (reset != null) {
@@ -480,8 +503,11 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
         merge,
     required TResult Function(ReconciliationPublish<Event, State, View> value)
         publish,
-    required TResult Function(ReconciliationUnknown<Event, State, View> value)
-        unknown,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
   }) {
     return reset(this);
   }
@@ -493,7 +519,9 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult? Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
   }) {
     return reset?.call(this);
   }
@@ -505,7 +533,9 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
     required TResult orElse(),
   }) {
     if (reset != null) {
@@ -642,7 +672,8 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
     required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
-    required TResult Function() unknown,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
   }) {
     return merge(ref, base, events);
   }
@@ -658,7 +689,8 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult? Function()? unknown,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
   }) {
     return merge?.call(ref, base, events);
   }
@@ -674,7 +706,8 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult Function()? unknown,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
     required TResult orElse(),
   }) {
     if (merge != null) {
@@ -694,8 +727,11 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
         merge,
     required TResult Function(ReconciliationPublish<Event, State, View> value)
         publish,
-    required TResult Function(ReconciliationUnknown<Event, State, View> value)
-        unknown,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
   }) {
     return merge(this);
   }
@@ -707,7 +743,9 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult? Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
   }) {
     return merge?.call(this);
   }
@@ -719,7 +757,9 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
     required TResult orElse(),
   }) {
     if (merge != null) {
@@ -848,7 +888,8 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
     required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
-    required TResult Function() unknown,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
   }) {
     return publish(ref, allowFrom);
   }
@@ -864,7 +905,8 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult? Function()? unknown,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
   }) {
     return publish?.call(ref, allowFrom);
   }
@@ -880,7 +922,8 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult Function()? unknown,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
     required TResult orElse(),
   }) {
     if (publish != null) {
@@ -900,8 +943,11 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
         merge,
     required TResult Function(ReconciliationPublish<Event, State, View> value)
         publish,
-    required TResult Function(ReconciliationUnknown<Event, State, View> value)
-        unknown,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
   }) {
     return publish(this);
   }
@@ -913,7 +959,9 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult? Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
   }) {
     return publish?.call(this);
   }
@@ -925,7 +973,9 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
     required TResult orElse(),
   }) {
     if (publish != null) {
@@ -952,43 +1002,43 @@ abstract class ReconciliationPublish<
 }
 
 /// @nodoc
-abstract class _$$ReconciliationUnknownCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationPendingCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationUnknownCopyWith(
-          _$ReconciliationUnknown<Event, State, View> value,
-          $Res Function(_$ReconciliationUnknown<Event, State, View>) then) =
-      __$$ReconciliationUnknownCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationPendingCopyWith(
+          _$ReconciliationPending<Event, State, View> value,
+          $Res Function(_$ReconciliationPending<Event, State, View>) then) =
+      __$$ReconciliationPendingCopyWithImpl<Event, State, View, $Res>;
 }
 
 /// @nodoc
-class __$$ReconciliationUnknownCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationPendingCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationUnknown<Event, State, View>>
-    implements _$$ReconciliationUnknownCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationUnknownCopyWithImpl(
-      _$ReconciliationUnknown<Event, State, View> _value,
-      $Res Function(_$ReconciliationUnknown<Event, State, View>) _then)
+        _$ReconciliationPending<Event, State, View>>
+    implements _$$ReconciliationPendingCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationPendingCopyWithImpl(
+      _$ReconciliationPending<Event, State, View> _value,
+      $Res Function(_$ReconciliationPending<Event, State, View>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
+class _$ReconciliationPending<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
-    implements ReconciliationUnknown<Event, State, View> {
-  _$ReconciliationUnknown();
+    implements ReconciliationPending<Event, State, View> {
+  _$ReconciliationPending();
 
   @override
   String toString() {
-    return 'Reconciliation<$Event, $State, $View>.unknown()';
+    return 'Reconciliation<$Event, $State, $View>.pending()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationUnknown<Event, State, View>);
+            other is _$ReconciliationPending<Event, State, View>);
   }
 
   @override
@@ -1005,9 +1055,10 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)
         merge,
     required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
-    required TResult Function() unknown,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
   }) {
-    return unknown();
+    return pending();
   }
 
   @override
@@ -1021,9 +1072,10 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult? Function()? unknown,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
   }) {
-    return unknown?.call();
+    return pending?.call();
   }
 
   @override
@@ -1037,11 +1089,12 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
             Ref ref, ({State state, View view}) base, Iterable<Event> events)?
         merge,
     TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
-    TResult Function()? unknown,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
     required TResult orElse(),
   }) {
-    if (unknown != null) {
-      return unknown();
+    if (pending != null) {
+      return pending();
     }
     return orElse();
   }
@@ -1057,10 +1110,13 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
         merge,
     required TResult Function(ReconciliationPublish<Event, State, View> value)
         publish,
-    required TResult Function(ReconciliationUnknown<Event, State, View> value)
-        unknown,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
   }) {
-    return unknown(this);
+    return pending(this);
   }
 
   @override
@@ -1070,9 +1126,11 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult? Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
   }) {
-    return unknown?.call(this);
+    return pending?.call(this);
   }
 
   @override
@@ -1082,19 +1140,182 @@ class _$ReconciliationUnknown<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
-    TResult Function(ReconciliationUnknown<Event, State, View> value)? unknown,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
     required TResult orElse(),
   }) {
-    if (unknown != null) {
-      return unknown(this);
+    if (pending != null) {
+      return pending(this);
     }
     return orElse();
   }
 }
 
-abstract class ReconciliationUnknown<
+abstract class ReconciliationPending<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
-  factory ReconciliationUnknown() = _$ReconciliationUnknown<Event, State, View>;
+  factory ReconciliationPending() = _$ReconciliationPending<Event, State, View>;
+}
+
+/// @nodoc
+abstract class _$$ReconciliationUnreconcilableCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory _$$ReconciliationUnreconcilableCopyWith(
+          _$ReconciliationUnreconcilable<Event, State, View> value,
+          $Res Function(_$ReconciliationUnreconcilable<Event, State, View>)
+              then) =
+      __$$ReconciliationUnreconcilableCopyWithImpl<Event, State, View, $Res>;
+}
+
+/// @nodoc
+class __$$ReconciliationUnreconcilableCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
+        _$ReconciliationUnreconcilable<Event, State, View>>
+    implements
+        _$$ReconciliationUnreconcilableCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationUnreconcilableCopyWithImpl(
+      _$ReconciliationUnreconcilable<Event, State, View> _value,
+      $Res Function(_$ReconciliationUnreconcilable<Event, State, View>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ReconciliationUnreconcilable<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
+    implements ReconciliationUnreconcilable<Event, State, View> {
+  _$ReconciliationUnreconcilable();
+
+  @override
+  String toString() {
+    return 'Reconciliation<$Event, $State, $View>.unreconcilable()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReconciliationUnreconcilable<Event, State, View>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref, Iterable<Event> events) forward,
+    required TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
+        reset,
+    required TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)
+        merge,
+    required TResult Function(Ref ref, Iterable<Ref> allowFrom) publish,
+    required TResult Function() pending,
+    required TResult Function() unreconcilable,
+  }) {
+    return unreconcilable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Ref ref, Iterable<Event> events)? forward,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
+        reset,
+    TResult? Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
+        merge,
+    TResult? Function(Ref ref, Iterable<Ref> allowFrom)? publish,
+    TResult? Function()? pending,
+    TResult? Function()? unreconcilable,
+  }) {
+    return unreconcilable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Ref ref, Iterable<Event> events)? forward,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
+        reset,
+    TResult Function(
+            Ref ref, ({State state, View view}) base, Iterable<Event> events)?
+        merge,
+    TResult Function(Ref ref, Iterable<Ref> allowFrom)? publish,
+    TResult Function()? pending,
+    TResult Function()? unreconcilable,
+    required TResult orElse(),
+  }) {
+    if (unreconcilable != null) {
+      return unreconcilable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
+    required TResult Function(ReconciliationReset<Event, State, View> value)
+        reset,
+    required TResult Function(ReconciliationMerge<Event, State, View> value)
+        merge,
+    required TResult Function(ReconciliationPublish<Event, State, View> value)
+        publish,
+    required TResult Function(ReconciliationPending<Event, State, View> value)
+        pending,
+    required TResult Function(
+            ReconciliationUnreconcilable<Event, State, View> value)
+        unreconcilable,
+  }) {
+    return unreconcilable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
+    TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
+    TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
+    TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
+    TResult? Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult? Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
+  }) {
+    return unreconcilable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
+    TResult Function(ReconciliationReset<Event, State, View> value)? reset,
+    TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
+    TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
+    TResult Function(ReconciliationPending<Event, State, View> value)? pending,
+    TResult Function(ReconciliationUnreconcilable<Event, State, View> value)?
+        unreconcilable,
+    required TResult orElse(),
+  }) {
+    if (unreconcilable != null) {
+      return unreconcilable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReconciliationUnreconcilable<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements Reconciliation<Event, State, View> {
+  factory ReconciliationUnreconcilable() =
+      _$ReconciliationUnreconcilable<Event, State, View>;
 }

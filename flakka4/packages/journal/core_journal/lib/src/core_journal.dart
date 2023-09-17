@@ -11,8 +11,6 @@ abstract interface class CoreJournal<Event extends CoreEvent,
   JournalSegment<Event, State, View> query(Ref ref);
 }
 
-enum CompareResult { ahead, behind, diverged, equal, unknown }
-
 @freezed
 class Reconciliation<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$Reconciliation<Event, State, View> {
@@ -38,7 +36,10 @@ class Reconciliation<Event extends CoreEvent, State extends CoreState,
     required Iterable<Ref> allowFrom,
   }) = ReconciliationPublish<Event, State, View>;
 
-  factory Reconciliation.unknown() = ReconciliationUnknown<Event, State, View>;
+  factory Reconciliation.pending() = ReconciliationPending;
+
+  factory Reconciliation.unreconcilable() = ReconciliationUnreconcilable;
+
 }
 
 // class User {

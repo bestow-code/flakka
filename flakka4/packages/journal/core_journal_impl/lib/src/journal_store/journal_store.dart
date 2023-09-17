@@ -8,7 +8,7 @@ import 'package:rxdart/rxdart.dart';
 import '../../core_journal_impl.dart';
 
 class JournalStore<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView> extends Cubit<JournalStoreState>
+        View extends CoreView> extends Cubit<JournalState<Event,State,View>>
     implements CoreJournalIO<Event, State, View> {
   JournalStore(
     super.initialState, {
@@ -42,16 +42,16 @@ class JournalStore<Event extends CoreEvent, State extends CoreState,
   void _onJournalEffect(JournalEffect<Event, State, View> effect) {
     effect.map(
       event: (event) {
-        throw UnimplementedError();
-        // _dataEffect.add(
-        //   DataEffect<Event, State, View>.append(
-        //     ref: event.ref,
-        //     parent: [event.parent],
-        //     event: event.event,
-        //     stateView: event.stateView,
-        //     createdAt: event.createdAt,
-        //   ),
-        // );
+        _dataEffect.add(
+          DataEffect<Event, State, View>.append(
+            ref: event.ref,
+            // fix this
+            parent: [event.ref],
+            event: event.event,
+            stateView: event.stateView,
+            createdAt: event.createdAt,
+          ),
+        );
       },
       forward: (forward) {},
       merge: (merge) {},

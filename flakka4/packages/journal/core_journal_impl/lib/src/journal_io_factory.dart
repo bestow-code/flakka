@@ -21,7 +21,8 @@ class JournalIOFactory implements CoreJournalIOFactory {
     final dataIO = await dataIOFactory.getInstance<Event, State, View>(path,
         dataConverter: dataConverter);
     return JournalStore<Event, State, View>(
-      JournalStoreState(),
+      // JournalStoreState()
+      throw UnimplementedError(),
       dataEffect: dataIO.effect,
       dataUpdate: dataIO.update,
     );
