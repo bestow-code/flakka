@@ -35,7 +35,6 @@ void main() {
     ref1a: {ref0},
     ref1b: {ref0},
     ref2: {ref1a, ref1b},
-
   };
 
   final createdAt = {
@@ -59,14 +58,14 @@ void main() {
   };
   final stateView = {ref0: testStateView0, ref1a: testStateView1a};
   late Set<Ref> pending;
-  void initialize(Ref ref) {
-    pending={};
+  void initialize(Ref main, Ref instance) {
+    pending = {};
     factory = JournalState(
       edges: edges,
       base: base,
       createdAt: createdAt,
       event: testEvents,
-      main: ref,
+      main: main,
       stateView: stateView,
       pending: pending,
       lastPublish: null,
@@ -81,7 +80,7 @@ void main() {
     late JournalReconciliationFactory reconciliationFactory;
 
     test('[Forward]', () {
-      initialize(ref1a);
+      initialize(ref1a, ref0);
       expect(
         create(ref0),
         equals(Reconciliation<TestEvent, TestState, TestView>.forward(
@@ -91,7 +90,7 @@ void main() {
     });
     test('[Reset]', () {
       // 1a, 2
-      initialize(ref2);
+      initialize(ref2, ref1a);
       expect(
         create(ref1a),
         equals(
@@ -101,7 +100,7 @@ void main() {
       );
     });
     test('[Merge]', () {
-      initialize(ref1b);
+      initialize(ref1b, ref1a);
       expect(
         create(ref1a),
         equals(
@@ -113,7 +112,7 @@ void main() {
       );
     });
     test('[Publish]', () {
-      initialize(ref0);
+      initialize(ref0, ref1a);
       expect(
         create(ref1a),
         equals(
@@ -123,7 +122,7 @@ void main() {
       );
     });
     test('[Pending]', () {
-      initialize(ref0);
+      initialize(ref0, ref1a);
       pending.add(ref1a);
       expect(
         create(ref1a),
@@ -133,7 +132,7 @@ void main() {
       );
     });
     test('[Unreconcilable]', () {
-      initialize(ref0);
+      initialize(ref0, refNotWritten);
       pending.add(ref1a);
       expect(
         create(refNotWritten),

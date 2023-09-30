@@ -1,6 +1,22 @@
 import 'package:core_data/core_data.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-typedef ApplicationState<State extends CoreState, View extends CoreView> = ({
-  Ref ref,
-  StateView<State, View> stateView
-});
+part 'application_state.freezed.dart';
+
+@freezed
+class ApplicationState<State extends CoreState, View extends CoreView>
+    with _$ApplicationState<State, View> {
+  factory ApplicationState({
+    required Ref ref,
+    required StateView<State, View> stateView,
+  }) = _ApplicationState<State, View>;
+
+  factory ApplicationState.initializing({
+    required Ref ref,
+    required String lockKey,
+  }) = ApplicationStateInitializing;
+
+  factory ApplicationState.fetching({
+    required Ref ref,
+  }) = ApplicationStateFetching;
+}

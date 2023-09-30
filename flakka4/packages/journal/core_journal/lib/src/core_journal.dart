@@ -6,9 +6,11 @@ part 'core_journal.freezed.dart';
 
 abstract interface class CoreJournal<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
+  // initialize(String lockKey);
   Reconciliation<Event, State, View> reconcile(Ref instance);
 
   JournalSegment<Event, State, View> query(Ref ref);
+
 }
 
 @freezed

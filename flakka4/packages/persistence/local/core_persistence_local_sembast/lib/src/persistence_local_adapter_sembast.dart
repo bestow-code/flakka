@@ -1,22 +1,27 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:sembast/sembast.dart';
 
-class PersistenceLocalAdapterSembast implements CorePersistenceLocalAdapter {
+class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
+    implements CorePersistenceLocalAdapter {
   PersistenceLocalAdapterSembast({
-    required String persistenceId,
+    required super.persistenceId,
     required Database database,
-  })  : _persistenceId = persistenceId,
-        _database = database;
+    required super.rootPath,
+    required super.storePath,
+    required super.objectPath,
+    required super.versionId,
+    required super.revisionId,
+  }) : _database = database;
 
-  final String _persistenceId;
   final Database _database;
 
   late final store = (
     head: (
-      instance: StoreRef<int, String>('remote/head/$_persistenceId'),
-      main: StoreRef<int, String>('remote/head/main')
+      instance: StoreRef<int, String>('remote/head/$persistenceId'),
+      head2: StoreRef<int, String>('remote/head/main')
     ),
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event')

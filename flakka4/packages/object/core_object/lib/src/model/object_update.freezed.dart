@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectUpdate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(ObjectHead value) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -28,6 +29,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHead value)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -38,6 +40,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ObjectHead value)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -49,6 +52,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectUpdateHead value) head,
     required TResult Function(ObjectUpdateEntry value) entry,
     required TResult Function(ObjectUpdateEvent value) event,
     required TResult Function(ObjectUpdateStateView value) stateView,
@@ -57,6 +61,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectUpdateHead value)? head,
     TResult? Function(ObjectUpdateEntry value)? entry,
     TResult? Function(ObjectUpdateEvent value)? event,
     TResult? Function(ObjectUpdateStateView value)? stateView,
@@ -65,6 +70,7 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectUpdateHead value)? head,
     TResult Function(ObjectUpdateEntry value)? entry,
     TResult Function(ObjectUpdateEvent value)? event,
     TResult Function(ObjectUpdateStateView value)? stateView,
@@ -90,6 +96,174 @@ class _$ObjectUpdateCopyWithImpl<$Res, $Val extends ObjectUpdate>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ObjectUpdateHeadCopyWith<$Res> {
+  factory _$$ObjectUpdateHeadCopyWith(
+          _$ObjectUpdateHead value, $Res Function(_$ObjectUpdateHead) then) =
+      __$$ObjectUpdateHeadCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ObjectHead value});
+
+  $ObjectHeadCopyWith<$Res> get value;
+}
+
+/// @nodoc
+class __$$ObjectUpdateHeadCopyWithImpl<$Res>
+    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateHead>
+    implements _$$ObjectUpdateHeadCopyWith<$Res> {
+  __$$ObjectUpdateHeadCopyWithImpl(
+      _$ObjectUpdateHead _value, $Res Function(_$ObjectUpdateHead) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ObjectUpdateHead(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as ObjectHead,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ObjectHeadCopyWith<$Res> get value {
+    return $ObjectHeadCopyWith<$Res>(_value.value, (value) {
+      return _then(_value.copyWith(value: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ObjectUpdateHead implements ObjectUpdateHead {
+  _$ObjectUpdateHead({required this.value});
+
+  @override
+  final ObjectHead value;
+
+  @override
+  String toString() {
+    return 'ObjectUpdate.head(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectUpdateHead &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectUpdateHeadCopyWith<_$ObjectUpdateHead> get copyWith =>
+      __$$ObjectUpdateHeadCopyWithImpl<_$ObjectUpdateHead>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ObjectHead value) head,
+    required TResult Function(
+            Map<String, ({int createdAt, Iterable<String> refs})> data)
+        entry,
+    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(Map<String, StateViewObject> data) stateView,
+    required TResult Function(String ref) main,
+  }) {
+    return head(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHead value)? head,
+    TResult? Function(
+            Map<String, ({int createdAt, Iterable<String> refs})> data)?
+        entry,
+    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(Map<String, StateViewObject> data)? stateView,
+    TResult? Function(String ref)? main,
+  }) {
+    return head?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ObjectHead value)? head,
+    TResult Function(
+            Map<String, ({int createdAt, Iterable<String> refs})> data)?
+        entry,
+    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(Map<String, StateViewObject> data)? stateView,
+    TResult Function(String ref)? main,
+    required TResult orElse(),
+  }) {
+    if (head != null) {
+      return head(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectUpdateHead value) head,
+    required TResult Function(ObjectUpdateEntry value) entry,
+    required TResult Function(ObjectUpdateEvent value) event,
+    required TResult Function(ObjectUpdateStateView value) stateView,
+    required TResult Function(ObjectUpdateMain value) main,
+  }) {
+    return head(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectUpdateHead value)? head,
+    TResult? Function(ObjectUpdateEntry value)? entry,
+    TResult? Function(ObjectUpdateEvent value)? event,
+    TResult? Function(ObjectUpdateStateView value)? stateView,
+    TResult? Function(ObjectUpdateMain value)? main,
+  }) {
+    return head?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectUpdateHead value)? head,
+    TResult Function(ObjectUpdateEntry value)? entry,
+    TResult Function(ObjectUpdateEvent value)? event,
+    TResult Function(ObjectUpdateStateView value)? stateView,
+    TResult Function(ObjectUpdateMain value)? main,
+    required TResult orElse(),
+  }) {
+    if (head != null) {
+      return head(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectUpdateHead implements ObjectUpdate {
+  factory ObjectUpdateHead({required final ObjectHead value}) =
+      _$ObjectUpdateHead;
+
+  ObjectHead get value;
+  @JsonKey(ignore: true)
+  _$$ObjectUpdateHeadCopyWith<_$ObjectUpdateHead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -165,6 +339,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(ObjectHead value) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -178,6 +353,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHead value)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -191,6 +367,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ObjectHead value)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -208,6 +385,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectUpdateHead value) head,
     required TResult Function(ObjectUpdateEntry value) entry,
     required TResult Function(ObjectUpdateEvent value) event,
     required TResult Function(ObjectUpdateStateView value) stateView,
@@ -219,6 +397,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectUpdateHead value)? head,
     TResult? Function(ObjectUpdateEntry value)? entry,
     TResult? Function(ObjectUpdateEvent value)? event,
     TResult? Function(ObjectUpdateStateView value)? stateView,
@@ -230,6 +409,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectUpdateHead value)? head,
     TResult Function(ObjectUpdateEntry value)? entry,
     TResult Function(ObjectUpdateEvent value)? event,
     TResult Function(ObjectUpdateStateView value)? stateView,
@@ -325,6 +505,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(ObjectHead value) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -338,6 +519,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHead value)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -351,6 +533,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ObjectHead value)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -368,6 +551,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectUpdateHead value) head,
     required TResult Function(ObjectUpdateEntry value) entry,
     required TResult Function(ObjectUpdateEvent value) event,
     required TResult Function(ObjectUpdateStateView value) stateView,
@@ -379,6 +563,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectUpdateHead value)? head,
     TResult? Function(ObjectUpdateEntry value)? entry,
     TResult? Function(ObjectUpdateEvent value)? event,
     TResult? Function(ObjectUpdateStateView value)? stateView,
@@ -390,6 +575,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectUpdateHead value)? head,
     TResult Function(ObjectUpdateEntry value)? entry,
     TResult Function(ObjectUpdateEvent value)? event,
     TResult Function(ObjectUpdateStateView value)? stateView,
@@ -485,6 +671,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(ObjectHead value) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -498,6 +685,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHead value)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -511,6 +699,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ObjectHead value)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -528,6 +717,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectUpdateHead value) head,
     required TResult Function(ObjectUpdateEntry value) entry,
     required TResult Function(ObjectUpdateEvent value) event,
     required TResult Function(ObjectUpdateStateView value) stateView,
@@ -539,6 +729,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectUpdateHead value)? head,
     TResult? Function(ObjectUpdateEntry value)? entry,
     TResult? Function(ObjectUpdateEvent value)? event,
     TResult? Function(ObjectUpdateStateView value)? stateView,
@@ -550,6 +741,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectUpdateHead value)? head,
     TResult Function(ObjectUpdateEntry value)? entry,
     TResult Function(ObjectUpdateEvent value)? event,
     TResult Function(ObjectUpdateStateView value)? stateView,
@@ -638,6 +830,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(ObjectHead value) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
@@ -651,6 +844,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHead value)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -664,6 +858,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ObjectHead value)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
@@ -681,6 +876,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectUpdateHead value) head,
     required TResult Function(ObjectUpdateEntry value) entry,
     required TResult Function(ObjectUpdateEvent value) event,
     required TResult Function(ObjectUpdateStateView value) stateView,
@@ -692,6 +888,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectUpdateHead value)? head,
     TResult? Function(ObjectUpdateEntry value)? entry,
     TResult? Function(ObjectUpdateEvent value)? event,
     TResult? Function(ObjectUpdateStateView value)? stateView,
@@ -703,6 +900,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectUpdateHead value)? head,
     TResult Function(ObjectUpdateEntry value)? entry,
     TResult Function(ObjectUpdateEvent value)? event,
     TResult Function(ObjectUpdateStateView value)? stateView,
@@ -722,5 +920,686 @@ abstract class ObjectUpdateMain implements ObjectUpdate {
   String get ref;
   @JsonKey(ignore: true)
   _$$ObjectUpdateMainCopyWith<_$ObjectUpdateMain> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ObjectHead {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey) acquiring,
+    required TResult Function(int createdAt) locked,
+    required TResult Function(String ref, int sequenceNumber) importing,
+    required TResult Function(String ref, int sequenceNumber) ready,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey)? acquiring,
+    TResult? Function(int createdAt)? locked,
+    TResult? Function(String ref, int sequenceNumber)? importing,
+    TResult? Function(String ref, int sequenceNumber)? ready,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey)? acquiring,
+    TResult Function(int createdAt)? locked,
+    TResult Function(String ref, int sequenceNumber)? importing,
+    TResult Function(String ref, int sequenceNumber)? ready,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectHeadAcquiring value) acquiring,
+    required TResult Function(ObjectHeadLocked value) locked,
+    required TResult Function(ObjectHeadImporting value) importing,
+    required TResult Function(ObjectHeadReady value) ready,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHeadAcquiring value)? acquiring,
+    TResult? Function(ObjectHeadLocked value)? locked,
+    TResult? Function(ObjectHeadImporting value)? importing,
+    TResult? Function(ObjectHeadReady value)? ready,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectHeadAcquiring value)? acquiring,
+    TResult Function(ObjectHeadLocked value)? locked,
+    TResult Function(ObjectHeadImporting value)? importing,
+    TResult Function(ObjectHeadReady value)? ready,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ObjectHeadCopyWith<$Res> {
+  factory $ObjectHeadCopyWith(
+          ObjectHead value, $Res Function(ObjectHead) then) =
+      _$ObjectHeadCopyWithImpl<$Res, ObjectHead>;
+}
+
+/// @nodoc
+class _$ObjectHeadCopyWithImpl<$Res, $Val extends ObjectHead>
+    implements $ObjectHeadCopyWith<$Res> {
+  _$ObjectHeadCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ObjectHeadAcquiringCopyWith<$Res> {
+  factory _$$ObjectHeadAcquiringCopyWith(_$ObjectHeadAcquiring value,
+          $Res Function(_$ObjectHeadAcquiring) then) =
+      __$$ObjectHeadAcquiringCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String claimKey});
+}
+
+/// @nodoc
+class __$$ObjectHeadAcquiringCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadAcquiring>
+    implements _$$ObjectHeadAcquiringCopyWith<$Res> {
+  __$$ObjectHeadAcquiringCopyWithImpl(
+      _$ObjectHeadAcquiring _value, $Res Function(_$ObjectHeadAcquiring) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? claimKey = null,
+  }) {
+    return _then(_$ObjectHeadAcquiring(
+      claimKey: null == claimKey
+          ? _value.claimKey
+          : claimKey // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectHeadAcquiring implements ObjectHeadAcquiring {
+  _$ObjectHeadAcquiring({required this.claimKey});
+
+  @override
+  final String claimKey;
+
+  @override
+  String toString() {
+    return 'ObjectHead.acquiring(claimKey: $claimKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectHeadAcquiring &&
+            (identical(other.claimKey, claimKey) ||
+                other.claimKey == claimKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, claimKey);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectHeadAcquiringCopyWith<_$ObjectHeadAcquiring> get copyWith =>
+      __$$ObjectHeadAcquiringCopyWithImpl<_$ObjectHeadAcquiring>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey) acquiring,
+    required TResult Function(int createdAt) locked,
+    required TResult Function(String ref, int sequenceNumber) importing,
+    required TResult Function(String ref, int sequenceNumber) ready,
+  }) {
+    return acquiring(claimKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey)? acquiring,
+    TResult? Function(int createdAt)? locked,
+    TResult? Function(String ref, int sequenceNumber)? importing,
+    TResult? Function(String ref, int sequenceNumber)? ready,
+  }) {
+    return acquiring?.call(claimKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey)? acquiring,
+    TResult Function(int createdAt)? locked,
+    TResult Function(String ref, int sequenceNumber)? importing,
+    TResult Function(String ref, int sequenceNumber)? ready,
+    required TResult orElse(),
+  }) {
+    if (acquiring != null) {
+      return acquiring(claimKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectHeadAcquiring value) acquiring,
+    required TResult Function(ObjectHeadLocked value) locked,
+    required TResult Function(ObjectHeadImporting value) importing,
+    required TResult Function(ObjectHeadReady value) ready,
+  }) {
+    return acquiring(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHeadAcquiring value)? acquiring,
+    TResult? Function(ObjectHeadLocked value)? locked,
+    TResult? Function(ObjectHeadImporting value)? importing,
+    TResult? Function(ObjectHeadReady value)? ready,
+  }) {
+    return acquiring?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectHeadAcquiring value)? acquiring,
+    TResult Function(ObjectHeadLocked value)? locked,
+    TResult Function(ObjectHeadImporting value)? importing,
+    TResult Function(ObjectHeadReady value)? ready,
+    required TResult orElse(),
+  }) {
+    if (acquiring != null) {
+      return acquiring(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectHeadAcquiring implements ObjectHead {
+  factory ObjectHeadAcquiring({required final String claimKey}) =
+      _$ObjectHeadAcquiring;
+
+  String get claimKey;
+  @JsonKey(ignore: true)
+  _$$ObjectHeadAcquiringCopyWith<_$ObjectHeadAcquiring> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ObjectHeadLockedCopyWith<$Res> {
+  factory _$$ObjectHeadLockedCopyWith(
+          _$ObjectHeadLocked value, $Res Function(_$ObjectHeadLocked) then) =
+      __$$ObjectHeadLockedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int createdAt});
+}
+
+/// @nodoc
+class __$$ObjectHeadLockedCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadLocked>
+    implements _$$ObjectHeadLockedCopyWith<$Res> {
+  __$$ObjectHeadLockedCopyWithImpl(
+      _$ObjectHeadLocked _value, $Res Function(_$ObjectHeadLocked) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? createdAt = null,
+  }) {
+    return _then(_$ObjectHeadLocked(
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectHeadLocked implements ObjectHeadLocked {
+  _$ObjectHeadLocked({required this.createdAt});
+
+  @override
+  final int createdAt;
+
+  @override
+  String toString() {
+    return 'ObjectHead.locked(createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectHeadLocked &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectHeadLockedCopyWith<_$ObjectHeadLocked> get copyWith =>
+      __$$ObjectHeadLockedCopyWithImpl<_$ObjectHeadLocked>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey) acquiring,
+    required TResult Function(int createdAt) locked,
+    required TResult Function(String ref, int sequenceNumber) importing,
+    required TResult Function(String ref, int sequenceNumber) ready,
+  }) {
+    return locked(createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey)? acquiring,
+    TResult? Function(int createdAt)? locked,
+    TResult? Function(String ref, int sequenceNumber)? importing,
+    TResult? Function(String ref, int sequenceNumber)? ready,
+  }) {
+    return locked?.call(createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey)? acquiring,
+    TResult Function(int createdAt)? locked,
+    TResult Function(String ref, int sequenceNumber)? importing,
+    TResult Function(String ref, int sequenceNumber)? ready,
+    required TResult orElse(),
+  }) {
+    if (locked != null) {
+      return locked(createdAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectHeadAcquiring value) acquiring,
+    required TResult Function(ObjectHeadLocked value) locked,
+    required TResult Function(ObjectHeadImporting value) importing,
+    required TResult Function(ObjectHeadReady value) ready,
+  }) {
+    return locked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHeadAcquiring value)? acquiring,
+    TResult? Function(ObjectHeadLocked value)? locked,
+    TResult? Function(ObjectHeadImporting value)? importing,
+    TResult? Function(ObjectHeadReady value)? ready,
+  }) {
+    return locked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectHeadAcquiring value)? acquiring,
+    TResult Function(ObjectHeadLocked value)? locked,
+    TResult Function(ObjectHeadImporting value)? importing,
+    TResult Function(ObjectHeadReady value)? ready,
+    required TResult orElse(),
+  }) {
+    if (locked != null) {
+      return locked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectHeadLocked implements ObjectHead {
+  factory ObjectHeadLocked({required final int createdAt}) = _$ObjectHeadLocked;
+
+  int get createdAt;
+  @JsonKey(ignore: true)
+  _$$ObjectHeadLockedCopyWith<_$ObjectHeadLocked> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ObjectHeadImportingCopyWith<$Res> {
+  factory _$$ObjectHeadImportingCopyWith(_$ObjectHeadImporting value,
+          $Res Function(_$ObjectHeadImporting) then) =
+      __$$ObjectHeadImportingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int sequenceNumber});
+}
+
+/// @nodoc
+class __$$ObjectHeadImportingCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadImporting>
+    implements _$$ObjectHeadImportingCopyWith<$Res> {
+  __$$ObjectHeadImportingCopyWithImpl(
+      _$ObjectHeadImporting _value, $Res Function(_$ObjectHeadImporting) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$ObjectHeadImporting(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectHeadImporting implements ObjectHeadImporting {
+  _$ObjectHeadImporting({required this.ref, required this.sequenceNumber});
+
+  @override
+  final String ref;
+  @override
+  final int sequenceNumber;
+
+  @override
+  String toString() {
+    return 'ObjectHead.importing(ref: $ref, sequenceNumber: $sequenceNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectHeadImporting &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectHeadImportingCopyWith<_$ObjectHeadImporting> get copyWith =>
+      __$$ObjectHeadImportingCopyWithImpl<_$ObjectHeadImporting>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey) acquiring,
+    required TResult Function(int createdAt) locked,
+    required TResult Function(String ref, int sequenceNumber) importing,
+    required TResult Function(String ref, int sequenceNumber) ready,
+  }) {
+    return importing(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey)? acquiring,
+    TResult? Function(int createdAt)? locked,
+    TResult? Function(String ref, int sequenceNumber)? importing,
+    TResult? Function(String ref, int sequenceNumber)? ready,
+  }) {
+    return importing?.call(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey)? acquiring,
+    TResult Function(int createdAt)? locked,
+    TResult Function(String ref, int sequenceNumber)? importing,
+    TResult Function(String ref, int sequenceNumber)? ready,
+    required TResult orElse(),
+  }) {
+    if (importing != null) {
+      return importing(ref, sequenceNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectHeadAcquiring value) acquiring,
+    required TResult Function(ObjectHeadLocked value) locked,
+    required TResult Function(ObjectHeadImporting value) importing,
+    required TResult Function(ObjectHeadReady value) ready,
+  }) {
+    return importing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHeadAcquiring value)? acquiring,
+    TResult? Function(ObjectHeadLocked value)? locked,
+    TResult? Function(ObjectHeadImporting value)? importing,
+    TResult? Function(ObjectHeadReady value)? ready,
+  }) {
+    return importing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectHeadAcquiring value)? acquiring,
+    TResult Function(ObjectHeadLocked value)? locked,
+    TResult Function(ObjectHeadImporting value)? importing,
+    TResult Function(ObjectHeadReady value)? ready,
+    required TResult orElse(),
+  }) {
+    if (importing != null) {
+      return importing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectHeadImporting implements ObjectHead {
+  factory ObjectHeadImporting(
+      {required final String ref,
+      required final int sequenceNumber}) = _$ObjectHeadImporting;
+
+  String get ref;
+  int get sequenceNumber;
+  @JsonKey(ignore: true)
+  _$$ObjectHeadImportingCopyWith<_$ObjectHeadImporting> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ObjectHeadReadyCopyWith<$Res> {
+  factory _$$ObjectHeadReadyCopyWith(
+          _$ObjectHeadReady value, $Res Function(_$ObjectHeadReady) then) =
+      __$$ObjectHeadReadyCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int sequenceNumber});
+}
+
+/// @nodoc
+class __$$ObjectHeadReadyCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadReady>
+    implements _$$ObjectHeadReadyCopyWith<$Res> {
+  __$$ObjectHeadReadyCopyWithImpl(
+      _$ObjectHeadReady _value, $Res Function(_$ObjectHeadReady) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$ObjectHeadReady(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectHeadReady implements ObjectHeadReady {
+  _$ObjectHeadReady({required this.ref, required this.sequenceNumber});
+
+  @override
+  final String ref;
+  @override
+  final int sequenceNumber;
+
+  @override
+  String toString() {
+    return 'ObjectHead.ready(ref: $ref, sequenceNumber: $sequenceNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectHeadReady &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectHeadReadyCopyWith<_$ObjectHeadReady> get copyWith =>
+      __$$ObjectHeadReadyCopyWithImpl<_$ObjectHeadReady>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey) acquiring,
+    required TResult Function(int createdAt) locked,
+    required TResult Function(String ref, int sequenceNumber) importing,
+    required TResult Function(String ref, int sequenceNumber) ready,
+  }) {
+    return ready(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey)? acquiring,
+    TResult? Function(int createdAt)? locked,
+    TResult? Function(String ref, int sequenceNumber)? importing,
+    TResult? Function(String ref, int sequenceNumber)? ready,
+  }) {
+    return ready?.call(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey)? acquiring,
+    TResult Function(int createdAt)? locked,
+    TResult Function(String ref, int sequenceNumber)? importing,
+    TResult Function(String ref, int sequenceNumber)? ready,
+    required TResult orElse(),
+  }) {
+    if (ready != null) {
+      return ready(ref, sequenceNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectHeadAcquiring value) acquiring,
+    required TResult Function(ObjectHeadLocked value) locked,
+    required TResult Function(ObjectHeadImporting value) importing,
+    required TResult Function(ObjectHeadReady value) ready,
+  }) {
+    return ready(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectHeadAcquiring value)? acquiring,
+    TResult? Function(ObjectHeadLocked value)? locked,
+    TResult? Function(ObjectHeadImporting value)? importing,
+    TResult? Function(ObjectHeadReady value)? ready,
+  }) {
+    return ready?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectHeadAcquiring value)? acquiring,
+    TResult Function(ObjectHeadLocked value)? locked,
+    TResult Function(ObjectHeadImporting value)? importing,
+    TResult Function(ObjectHeadReady value)? ready,
+    required TResult orElse(),
+  }) {
+    if (ready != null) {
+      return ready(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectHeadReady implements ObjectHead {
+  factory ObjectHeadReady(
+      {required final String ref,
+      required final int sequenceNumber}) = _$ObjectHeadReady;
+
+  String get ref;
+  int get sequenceNumber;
+  @JsonKey(ignore: true)
+  _$$ObjectHeadReadyCopyWith<_$ObjectHeadReady> get copyWith =>
       throw _privateConstructorUsedError;
 }

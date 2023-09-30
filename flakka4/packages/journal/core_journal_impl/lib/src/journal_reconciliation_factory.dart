@@ -28,10 +28,10 @@ abstract mixin class JournalReconciliationFactory<Event extends CoreEvent,
         throw UnimplementedError();
       },
       ahead: (ahead) {
-        if (ahead.path.every((element) => !pending.contains(element))) {
+        if (ahead._objectPath.every((element) => !pending.contains(element))) {
           return Reconciliation.publish(
             ref: ref,
-            allowFrom: ahead.path.take(ahead.path.length - 1),
+            allowFrom: ahead._objectPath.take(ahead._objectPath.length - 1),
           );
         } else {
           return Reconciliation.pending();
@@ -40,14 +40,14 @@ abstract mixin class JournalReconciliationFactory<Event extends CoreEvent,
       behind: (behind) {
         return Reconciliation.forward(
           ref: behind.main,
-          events: behind.path.map((ref) => event[ref]).whereNotNull(),
+          events: behind._objectPath.map((ref) => event[ref]).whereNotNull(),
         );
       },
       diverged: (diverged) {
         return Reconciliation.merge(
           ref: diverged.main,
           base: stateView[base]!,
-          events: diverged.path.map((ref) => event[ref]).whereNotNull(),
+          events: diverged._objectPath.map((ref) => event[ref]).whereNotNull(),
         );
       },
       unknown: (EntryComparisonUnknown value) {

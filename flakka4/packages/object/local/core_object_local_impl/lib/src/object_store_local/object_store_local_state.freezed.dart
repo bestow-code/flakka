@@ -15,20 +15,20 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectStoreLocalState {}
+mixin _$ObjectLocalStoreState {}
 
 /// @nodoc
-abstract class $ObjectStoreLocalStateCopyWith<$Res> {
-  factory $ObjectStoreLocalStateCopyWith(ObjectStoreLocalState value,
-          $Res Function(ObjectStoreLocalState) then) =
-      _$ObjectStoreLocalStateCopyWithImpl<$Res, ObjectStoreLocalState>;
+abstract class $ObjectLocalStoreStateCopyWith<$Res> {
+  factory $ObjectLocalStoreStateCopyWith(ObjectLocalStoreState value,
+          $Res Function(ObjectLocalStoreState) then) =
+      _$ObjectLocalStoreStateCopyWithImpl<$Res, ObjectLocalStoreState>;
 }
 
 /// @nodoc
-class _$ObjectStoreLocalStateCopyWithImpl<$Res,
-        $Val extends ObjectStoreLocalState>
-    implements $ObjectStoreLocalStateCopyWith<$Res> {
-  _$ObjectStoreLocalStateCopyWithImpl(this._value, this._then);
+class _$ObjectLocalStoreStateCopyWithImpl<$Res,
+        $Val extends ObjectLocalStoreState>
+    implements $ObjectLocalStoreStateCopyWith<$Res> {
+  _$ObjectLocalStoreStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -37,41 +37,41 @@ class _$ObjectStoreLocalStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ObjectStoreLocalStateCopyWith<$Res> {
-  factory _$$_ObjectStoreLocalStateCopyWith(_$_ObjectStoreLocalState value,
-          $Res Function(_$_ObjectStoreLocalState) then) =
-      __$$_ObjectStoreLocalStateCopyWithImpl<$Res>;
+abstract class _$$_ObjectLocalStoreStateCopyWith<$Res> {
+  factory _$$_ObjectLocalStoreStateCopyWith(_$_ObjectLocalStoreState value,
+          $Res Function(_$_ObjectLocalStoreState) then) =
+      __$$_ObjectLocalStoreStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ObjectStoreLocalStateCopyWithImpl<$Res>
-    extends _$ObjectStoreLocalStateCopyWithImpl<$Res, _$_ObjectStoreLocalState>
-    implements _$$_ObjectStoreLocalStateCopyWith<$Res> {
-  __$$_ObjectStoreLocalStateCopyWithImpl(_$_ObjectStoreLocalState _value,
-      $Res Function(_$_ObjectStoreLocalState) _then)
+class __$$_ObjectLocalStoreStateCopyWithImpl<$Res>
+    extends _$ObjectLocalStoreStateCopyWithImpl<$Res, _$_ObjectLocalStoreState>
+    implements _$$_ObjectLocalStoreStateCopyWith<$Res> {
+  __$$_ObjectLocalStoreStateCopyWithImpl(_$_ObjectLocalStoreState _value,
+      $Res Function(_$_ObjectLocalStoreState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ObjectStoreLocalState implements _ObjectStoreLocalState {
-  _$_ObjectStoreLocalState();
+class _$_ObjectLocalStoreState implements _ObjectLocalStoreState {
+  _$_ObjectLocalStoreState();
 
   @override
   String toString() {
-    return 'ObjectStoreLocalState()';
+    return 'ObjectLocalStoreState()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectStoreLocalState);
+        (other.runtimeType == runtimeType && other is _$_ObjectLocalStoreState);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 }
 
-abstract class _ObjectStoreLocalState implements ObjectStoreLocalState {
-  factory _ObjectStoreLocalState() = _$_ObjectStoreLocalState;
+abstract class _ObjectLocalStoreState implements ObjectLocalStoreState {
+  factory _ObjectLocalStoreState() = _$_ObjectLocalStoreState;
 }

@@ -31,6 +31,7 @@ void main() {
           PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
       const path = '/o/1';
       final object = await flakkaObject.getObjectIO(path);
+      // object.
       object.effect.add(ObjectEffect.append(
         ref: ref,
         parent: parent,

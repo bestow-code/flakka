@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey, String ref, int createdAt)
+        initialize,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -35,6 +37,7 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey, String ref, int createdAt)? initialize,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -50,6 +53,7 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey, String ref, int createdAt)? initialize,
     TResult Function(
             String ref,
             List<String> parent,
@@ -66,6 +70,7 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -74,6 +79,7 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -82,6 +88,7 @@ mixin _$ObjectEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -107,6 +114,206 @@ class _$ObjectEffectCopyWithImpl<$Res, $Val extends ObjectEffect>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ObjectEffectInitializeCopyWith<$Res> {
+  factory _$$ObjectEffectInitializeCopyWith(_$ObjectEffectInitialize value,
+          $Res Function(_$ObjectEffectInitialize) then) =
+      __$$ObjectEffectInitializeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String claimKey, String ref, int createdAt});
+}
+
+/// @nodoc
+class __$$ObjectEffectInitializeCopyWithImpl<$Res>
+    extends _$ObjectEffectCopyWithImpl<$Res, _$ObjectEffectInitialize>
+    implements _$$ObjectEffectInitializeCopyWith<$Res> {
+  __$$ObjectEffectInitializeCopyWithImpl(_$ObjectEffectInitialize _value,
+      $Res Function(_$ObjectEffectInitialize) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? claimKey = null,
+    Object? ref = null,
+    Object? createdAt = null,
+  }) {
+    return _then(_$ObjectEffectInitialize(
+      claimKey: null == claimKey
+          ? _value.claimKey
+          : claimKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectEffectInitialize implements ObjectEffectInitialize {
+  _$ObjectEffectInitialize(
+      {required this.claimKey, required this.ref, required this.createdAt});
+
+  @override
+  final String claimKey;
+  @override
+  final String ref;
+  @override
+  final int createdAt;
+
+  @override
+  String toString() {
+    return 'ObjectEffect.initialize(claimKey: $claimKey, ref: $ref, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectEffectInitialize &&
+            (identical(other.claimKey, claimKey) ||
+                other.claimKey == claimKey) &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, claimKey, ref, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectEffectInitializeCopyWith<_$ObjectEffectInitialize> get copyWith =>
+      __$$ObjectEffectInitializeCopyWithImpl<_$ObjectEffectInitialize>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey, String ref, int createdAt)
+        initialize,
+    required TResult Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt)
+        append,
+    required TResult Function(
+            String ref, StateViewObject? stateView, int createdAt)
+        forward,
+    required TResult Function(String ref, List<String> from, int createdAt)
+        publish,
+    required TResult Function() none,
+  }) {
+    return initialize(claimKey, ref, createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey, String ref, int createdAt)? initialize,
+    TResult? Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt)?
+        append,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt)?
+        forward,
+    TResult? Function(String ref, List<String> from, int createdAt)? publish,
+    TResult? Function()? none,
+  }) {
+    return initialize?.call(claimKey, ref, createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey, String ref, int createdAt)? initialize,
+    TResult Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt)?
+        append,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt)?
+        forward,
+    TResult Function(String ref, List<String> from, int createdAt)? publish,
+    TResult Function()? none,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(claimKey, ref, createdAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectEffectInitialize value) initialize,
+    required TResult Function(ObjectEffectAppend value) append,
+    required TResult Function(ObjectEffectForward value) forward,
+    required TResult Function(ObjectEffectPublish value) publish,
+    required TResult Function(ObjectEffectNone value) none,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectEffectInitialize value)? initialize,
+    TResult? Function(ObjectEffectAppend value)? append,
+    TResult? Function(ObjectEffectForward value)? forward,
+    TResult? Function(ObjectEffectPublish value)? publish,
+    TResult? Function(ObjectEffectNone value)? none,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectEffectInitialize value)? initialize,
+    TResult Function(ObjectEffectAppend value)? append,
+    TResult Function(ObjectEffectForward value)? forward,
+    TResult Function(ObjectEffectPublish value)? publish,
+    TResult Function(ObjectEffectNone value)? none,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectEffectInitialize implements ObjectEffect {
+  factory ObjectEffectInitialize(
+      {required final String claimKey,
+      required final String ref,
+      required final int createdAt}) = _$ObjectEffectInitialize;
+
+  String get claimKey;
+  String get ref;
+  int get createdAt;
+  @JsonKey(ignore: true)
+  _$$ObjectEffectInitializeCopyWith<_$ObjectEffectInitialize> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -254,6 +461,8 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey, String ref, int createdAt)
+        initialize,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -274,6 +483,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey, String ref, int createdAt)? initialize,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -292,6 +502,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey, String ref, int createdAt)? initialize,
     TResult Function(
             String ref,
             List<String> parent,
@@ -314,6 +525,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -325,6 +537,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -336,6 +549,7 @@ class _$ObjectEffectAppend implements ObjectEffectAppend {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -465,6 +679,8 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey, String ref, int createdAt)
+        initialize,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -485,6 +701,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey, String ref, int createdAt)? initialize,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -503,6 +720,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey, String ref, int createdAt)? initialize,
     TResult Function(
             String ref,
             List<String> parent,
@@ -525,6 +743,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -536,6 +755,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -547,6 +767,7 @@ class _$ObjectEffectForward implements ObjectEffectForward {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -667,6 +888,8 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey, String ref, int createdAt)
+        initialize,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -687,6 +910,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey, String ref, int createdAt)? initialize,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -705,6 +929,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey, String ref, int createdAt)? initialize,
     TResult Function(
             String ref,
             List<String> parent,
@@ -727,6 +952,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -738,6 +964,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -749,6 +976,7 @@ class _$ObjectEffectPublish implements ObjectEffectPublish {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,
@@ -814,6 +1042,8 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String claimKey, String ref, int createdAt)
+        initialize,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -834,6 +1064,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String claimKey, String ref, int createdAt)? initialize,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -852,6 +1083,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String claimKey, String ref, int createdAt)? initialize,
     TResult Function(
             String ref,
             List<String> parent,
@@ -874,6 +1106,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ObjectEffectInitialize value) initialize,
     required TResult Function(ObjectEffectAppend value) append,
     required TResult Function(ObjectEffectForward value) forward,
     required TResult Function(ObjectEffectPublish value) publish,
@@ -885,6 +1118,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectEffectInitialize value)? initialize,
     TResult? Function(ObjectEffectAppend value)? append,
     TResult? Function(ObjectEffectForward value)? forward,
     TResult? Function(ObjectEffectPublish value)? publish,
@@ -896,6 +1130,7 @@ class _$ObjectEffectNone implements ObjectEffectNone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectEffectInitialize value)? initialize,
     TResult Function(ObjectEffectAppend value)? append,
     TResult Function(ObjectEffectForward value)? forward,
     TResult Function(ObjectEffectPublish value)? publish,

@@ -1,27 +1,17 @@
 @startuml
-'Ref
-'Event
-'State
-'View
-'Entity
-'Collection
-'Scope
-'Root
+package "core_persistence_local" {
+object PersistenceLocalIO
+object PersistenceLocalAdapter
+PersistenceLocalIO --> PersistenceLocalAdapter
+}
 
-'object TestPersistence
-'object TestApp
+package "object_local" {
+class CoreObjectLocalIO {}
+}
+package "object_local_ipml" {
+'class ObjectLocalStore extends CoreObjectLocalIO {}
+object ObjectLocalStore
+ObjectLocalStore <- CoreObjectLocalIO
+}
 
-'class TestAggregateRoot extends CoreAggregateRoot {}
-abstract class CoreAggregateRoot extends Application {}
-abstract class Application {}
-class Journal {}
-Application --> Journal
-
-class DataStore {}
-
-Journal --> DataStore
-
-DataStore --> DataStoreLocal
-DataStoreLocal --> DataStoreRemote
-DataStore --> DataStoreRemote
 @enduml

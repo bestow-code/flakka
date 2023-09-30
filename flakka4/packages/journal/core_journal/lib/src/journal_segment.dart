@@ -7,7 +7,7 @@ part 'journal_segment.freezed.dart';
 class JournalSegment<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$JournalSegment<Event, State, View> {
   factory JournalSegment({
-    required State initial,
+    required StateView<State,View> initial,
     required Iterable<Event> events,
   }) = _JournalSegment<Event, State, View>;
 

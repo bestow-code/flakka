@@ -20,11 +20,11 @@
 //         remote: await getIt.getAsync(),
 //       );
 
-// Future<ObjectStoreLocal> get objectStoreLocal async {
+// Future<ObjectLocalStore> get objectStoreLocal async {
 //   final persistenceProviderLocal = getIt<PersistenceProviderLocal>();
 //   const path = '1';
 //
-//   return ObjectStoreLocal(
+//   return ObjectLocalStore(
 //     ObjectStoreState.initial,
 //     adapter: await persistenceProviderLocal
 //         .getLocalAdapterFactory(persistenceId)

@@ -18,6 +18,7 @@ class DataStoreState<Event extends CoreEvent, State extends CoreState,
       Map<Ref, Event> event,
       Set<Ref> pending,
     }) loading,
+    required Map<String, Ref> ref,
   }) = _DataStoreState<Event, State, View>;
 
   factory DataStoreState.initial() => DataStoreState(eventGraph: (
@@ -30,4 +31,13 @@ class DataStoreState<Event extends CoreEvent, State extends CoreState,
         event: {},
         pending: {},
       ));
+
+  factory DataStoreState.acquired({
+    required String lockKey,
+  }) = DataStoreStateAcquired;
+
+  factory DataStoreState.initializing({
+    required Ref ref,
+    required String lockKey,
+  }) = DataStoreStateInitializing;
 }

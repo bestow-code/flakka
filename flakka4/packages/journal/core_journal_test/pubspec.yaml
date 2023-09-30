@@ -15,6 +15,7 @@ dependencies:
   core_journal:
   freezed_annotation: ^2.2.0
   get_it:
+  glados:
   injectable:
   json_annotation: ^4.8.1
   logging: ^1.2.0
@@ -27,7 +28,7 @@ dev_dependencies:
   injectable_generator:
   json_serializable:
   matcher:
-  mocktail: ^0.3.0
+  mocktail: ^1.0.0
   very_good_analysis:
 
 index_generator:

@@ -9,7 +9,7 @@ class RequestEffect<Event extends CoreEvent> with _$RequestEffect<Event> {
     required Event event,
 }) = RequestEffectPersist<Event>;
 
-  factory RequestEffect.none() = RequestEffectNone;
+  factory RequestEffect.none() = RequestEffectNone<Event>;
 
   // factory RequestEffect.done() = RequestEffectDone<Event>;
 

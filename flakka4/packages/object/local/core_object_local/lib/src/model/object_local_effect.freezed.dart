@@ -15,9 +15,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectEffectLocal {
+mixin _$ObjectLocalEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -44,6 +46,8 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -70,6 +74,8 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
     TResult Function(
             String ref,
             List<String> parent,
@@ -97,42 +103,48 @@ mixin _$ObjectEffectLocal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalAppend value) append,
-    required TResult Function(ObjectEffectLocalForward value) forward,
-    required TResult Function(ObjectEffectLocalAdd value) add,
-    required TResult Function(ObjectEffectLocalNone value) none,
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalAppend value)? append,
-    TResult? Function(ObjectEffectLocalForward value)? forward,
-    TResult? Function(ObjectEffectLocalAdd value)? add,
-    TResult? Function(ObjectEffectLocalNone value)? none,
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalAppend value)? append,
-    TResult Function(ObjectEffectLocalForward value)? forward,
-    TResult Function(ObjectEffectLocalAdd value)? add,
-    TResult Function(ObjectEffectLocalNone value)? none,
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectEffectLocalCopyWith<$Res> {
-  factory $ObjectEffectLocalCopyWith(
-          ObjectEffectLocal value, $Res Function(ObjectEffectLocal) then) =
-      _$ObjectEffectLocalCopyWithImpl<$Res, ObjectEffectLocal>;
+abstract class $ObjectLocalEffectCopyWith<$Res> {
+  factory $ObjectLocalEffectCopyWith(
+          ObjectLocalEffect value, $Res Function(ObjectLocalEffect) then) =
+      _$ObjectLocalEffectCopyWithImpl<$Res, ObjectLocalEffect>;
 }
 
 /// @nodoc
-class _$ObjectEffectLocalCopyWithImpl<$Res, $Val extends ObjectEffectLocal>
-    implements $ObjectEffectLocalCopyWith<$Res> {
-  _$ObjectEffectLocalCopyWithImpl(this._value, this._then);
+class _$ObjectLocalEffectCopyWithImpl<$Res, $Val extends ObjectLocalEffect>
+    implements $ObjectLocalEffectCopyWith<$Res> {
+  _$ObjectLocalEffectCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -141,10 +153,460 @@ class _$ObjectEffectLocalCopyWithImpl<$Res, $Val extends ObjectEffectLocal>
 }
 
 /// @nodoc
-abstract class _$$ObjectEffectLocalAppendCopyWith<$Res> {
-  factory _$$ObjectEffectLocalAppendCopyWith(_$ObjectEffectLocalAppend value,
-          $Res Function(_$ObjectEffectLocalAppend) then) =
-      __$$ObjectEffectLocalAppendCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectInitializeCopyWith<$Res> {
+  factory _$$ObjectLocalEffectInitializeCopyWith(
+          _$ObjectLocalEffectInitialize value,
+          $Res Function(_$ObjectLocalEffectInitialize) then) =
+      __$$ObjectLocalEffectInitializeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int createdAt});
+}
+
+/// @nodoc
+class __$$ObjectLocalEffectInitializeCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectInitialize>
+    implements _$$ObjectLocalEffectInitializeCopyWith<$Res> {
+  __$$ObjectLocalEffectInitializeCopyWithImpl(
+      _$ObjectLocalEffectInitialize _value,
+      $Res Function(_$ObjectLocalEffectInitialize) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? createdAt = null,
+  }) {
+    return _then(_$ObjectLocalEffectInitialize(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectLocalEffectInitialize implements ObjectLocalEffectInitialize {
+  _$ObjectLocalEffectInitialize({required this.ref, required this.createdAt});
+
+  @override
+  final String ref;
+  @override
+  final int createdAt;
+
+  @override
+  String toString() {
+    return 'ObjectLocalEffect.initialize(ref: $ref, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectLocalEffectInitialize &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectLocalEffectInitializeCopyWith<_$ObjectLocalEffectInitialize>
+      get copyWith => __$$ObjectLocalEffectInitializeCopyWithImpl<
+          _$ObjectLocalEffectInitialize>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
+    required TResult Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt,
+            int sequenceNumber)
+        append,
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(
+            Map<
+                    String,
+                    ({
+                      ({int createdAt, String ref, Set<String> refs})? entry,
+                      Map<String, dynamic>? event,
+                      StateViewObject? stateView
+                    })>
+                data)
+        add,
+    required TResult Function() none,
+  }) {
+    return initialize(ref, createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
+    TResult? Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt,
+            int sequenceNumber)?
+        append,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
+            int sequenceNumber)?
+        forward,
+    TResult? Function(
+            Map<
+                    String,
+                    ({
+                      ({int createdAt, String ref, Set<String> refs})? entry,
+                      Map<String, dynamic>? event,
+                      StateViewObject? stateView
+                    })>
+                data)?
+        add,
+    TResult? Function()? none,
+  }) {
+    return initialize?.call(ref, createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
+    TResult Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt,
+            int sequenceNumber)?
+        append,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
+            int sequenceNumber)?
+        forward,
+    TResult Function(
+            Map<
+                    String,
+                    ({
+                      ({int createdAt, String ref, Set<String> refs})? entry,
+                      Map<String, dynamic>? event,
+                      StateViewObject? stateView
+                    })>
+                data)?
+        add,
+    TResult Function()? none,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(ref, createdAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectLocalEffectInitialize implements ObjectLocalEffect {
+  factory ObjectLocalEffectInitialize(
+      {required final String ref,
+      required final int createdAt}) = _$ObjectLocalEffectInitialize;
+
+  String get ref;
+  int get createdAt;
+  @JsonKey(ignore: true)
+  _$$ObjectLocalEffectInitializeCopyWith<_$ObjectLocalEffectInitialize>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ObjectLocalEffectResumeCopyWith<$Res> {
+  factory _$$ObjectLocalEffectResumeCopyWith(_$ObjectLocalEffectResume value,
+          $Res Function(_$ObjectLocalEffectResume) then) =
+      __$$ObjectLocalEffectResumeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int sequenceNumber});
+}
+
+/// @nodoc
+class __$$ObjectLocalEffectResumeCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectResume>
+    implements _$$ObjectLocalEffectResumeCopyWith<$Res> {
+  __$$ObjectLocalEffectResumeCopyWithImpl(_$ObjectLocalEffectResume _value,
+      $Res Function(_$ObjectLocalEffectResume) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$ObjectLocalEffectResume(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectLocalEffectResume implements ObjectLocalEffectResume {
+  _$ObjectLocalEffectResume({required this.ref, required this.sequenceNumber});
+
+  @override
+  final String ref;
+  @override
+  final int sequenceNumber;
+
+  @override
+  String toString() {
+    return 'ObjectLocalEffect.resume(ref: $ref, sequenceNumber: $sequenceNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectLocalEffectResume &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectLocalEffectResumeCopyWith<_$ObjectLocalEffectResume> get copyWith =>
+      __$$ObjectLocalEffectResumeCopyWithImpl<_$ObjectLocalEffectResume>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
+    required TResult Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt,
+            int sequenceNumber)
+        append,
+    required TResult Function(String ref, StateViewObject? stateView,
+            int createdAt, int sequenceNumber)
+        forward,
+    required TResult Function(
+            Map<
+                    String,
+                    ({
+                      ({int createdAt, String ref, Set<String> refs})? entry,
+                      Map<String, dynamic>? event,
+                      StateViewObject? stateView
+                    })>
+                data)
+        add,
+    required TResult Function() none,
+  }) {
+    return resume(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
+    TResult? Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt,
+            int sequenceNumber)?
+        append,
+    TResult? Function(String ref, StateViewObject? stateView, int createdAt,
+            int sequenceNumber)?
+        forward,
+    TResult? Function(
+            Map<
+                    String,
+                    ({
+                      ({int createdAt, String ref, Set<String> refs})? entry,
+                      Map<String, dynamic>? event,
+                      StateViewObject? stateView
+                    })>
+                data)?
+        add,
+    TResult? Function()? none,
+  }) {
+    return resume?.call(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
+    TResult Function(
+            String ref,
+            List<String> parent,
+            Map<String, dynamic>? event,
+            StateViewObject? stateView,
+            int createdAt,
+            int sequenceNumber)?
+        append,
+    TResult Function(String ref, StateViewObject? stateView, int createdAt,
+            int sequenceNumber)?
+        forward,
+    TResult Function(
+            Map<
+                    String,
+                    ({
+                      ({int createdAt, String ref, Set<String> refs})? entry,
+                      Map<String, dynamic>? event,
+                      StateViewObject? stateView
+                    })>
+                data)?
+        add,
+    TResult Function()? none,
+    required TResult orElse(),
+  }) {
+    if (resume != null) {
+      return resume(ref, sequenceNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
+  }) {
+    return resume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
+  }) {
+    return resume?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
+    required TResult orElse(),
+  }) {
+    if (resume != null) {
+      return resume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectLocalEffectResume implements ObjectLocalEffect {
+  factory ObjectLocalEffectResume(
+      {required final String ref,
+      required final int sequenceNumber}) = _$ObjectLocalEffectResume;
+
+  String get ref;
+  int get sequenceNumber;
+  @JsonKey(ignore: true)
+  _$$ObjectLocalEffectResumeCopyWith<_$ObjectLocalEffectResume> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ObjectLocalEffectAppendCopyWith<$Res> {
+  factory _$$ObjectLocalEffectAppendCopyWith(_$ObjectLocalEffectAppend value,
+          $Res Function(_$ObjectLocalEffectAppend) then) =
+      __$$ObjectLocalEffectAppendCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -158,11 +620,11 @@ abstract class _$$ObjectEffectLocalAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
-    extends _$ObjectEffectLocalCopyWithImpl<$Res, _$ObjectEffectLocalAppend>
-    implements _$$ObjectEffectLocalAppendCopyWith<$Res> {
-  __$$ObjectEffectLocalAppendCopyWithImpl(_$ObjectEffectLocalAppend _value,
-      $Res Function(_$ObjectEffectLocalAppend) _then)
+class __$$ObjectLocalEffectAppendCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectAppend>
+    implements _$$ObjectLocalEffectAppendCopyWith<$Res> {
+  __$$ObjectLocalEffectAppendCopyWithImpl(_$ObjectLocalEffectAppend _value,
+      $Res Function(_$ObjectLocalEffectAppend) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -175,7 +637,7 @@ class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$ObjectEffectLocalAppend(
+    return _then(_$ObjectLocalEffectAppend(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -218,8 +680,8 @@ class __$$ObjectEffectLocalAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
-  _$ObjectEffectLocalAppend(
+class _$ObjectLocalEffectAppend implements ObjectLocalEffectAppend {
+  _$ObjectLocalEffectAppend(
       {required this.ref,
       required final List<String> parent,
       required final Map<String, dynamic>? event,
@@ -258,14 +720,14 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
 
   @override
   String toString() {
-    return 'ObjectEffectLocal.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'ObjectLocalEffect.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectLocalAppend &&
+            other is _$ObjectLocalEffectAppend &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -290,13 +752,15 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectEffectLocalAppendCopyWith<_$ObjectEffectLocalAppend> get copyWith =>
-      __$$ObjectEffectLocalAppendCopyWithImpl<_$ObjectEffectLocalAppend>(
+  _$$ObjectLocalEffectAppendCopyWith<_$ObjectLocalEffectAppend> get copyWith =>
+      __$$ObjectLocalEffectAppendCopyWithImpl<_$ObjectLocalEffectAppend>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -326,6 +790,8 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -356,6 +822,8 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
     TResult Function(
             String ref,
             List<String> parent,
@@ -389,10 +857,12 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalAppend value) append,
-    required TResult Function(ObjectEffectLocalForward value) forward,
-    required TResult Function(ObjectEffectLocalAdd value) add,
-    required TResult Function(ObjectEffectLocalNone value) none,
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
   }) {
     return append(this);
   }
@@ -400,10 +870,12 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalAppend value)? append,
-    TResult? Function(ObjectEffectLocalForward value)? forward,
-    TResult? Function(ObjectEffectLocalAdd value)? add,
-    TResult? Function(ObjectEffectLocalNone value)? none,
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
   }) {
     return append?.call(this);
   }
@@ -411,10 +883,12 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalAppend value)? append,
-    TResult Function(ObjectEffectLocalForward value)? forward,
-    TResult Function(ObjectEffectLocalAdd value)? add,
-    TResult Function(ObjectEffectLocalNone value)? none,
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
     required TResult orElse(),
   }) {
     if (append != null) {
@@ -424,14 +898,14 @@ class _$ObjectEffectLocalAppend implements ObjectEffectLocalAppend {
   }
 }
 
-abstract class ObjectEffectLocalAppend implements ObjectEffectLocal {
-  factory ObjectEffectLocalAppend(
+abstract class ObjectLocalEffectAppend implements ObjectLocalEffect {
+  factory ObjectLocalEffectAppend(
       {required final String ref,
       required final List<String> parent,
       required final Map<String, dynamic>? event,
       required final StateViewObject? stateView,
       required final int createdAt,
-      required final int sequenceNumber}) = _$ObjectEffectLocalAppend;
+      required final int sequenceNumber}) = _$ObjectLocalEffectAppend;
 
   String get ref;
   List<String> get parent;
@@ -440,15 +914,15 @@ abstract class ObjectEffectLocalAppend implements ObjectEffectLocal {
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$ObjectEffectLocalAppendCopyWith<_$ObjectEffectLocalAppend> get copyWith =>
+  _$$ObjectLocalEffectAppendCopyWith<_$ObjectLocalEffectAppend> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectEffectLocalForwardCopyWith<$Res> {
-  factory _$$ObjectEffectLocalForwardCopyWith(_$ObjectEffectLocalForward value,
-          $Res Function(_$ObjectEffectLocalForward) then) =
-      __$$ObjectEffectLocalForwardCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectForwardCopyWith<$Res> {
+  factory _$$ObjectLocalEffectForwardCopyWith(_$ObjectLocalEffectForward value,
+          $Res Function(_$ObjectLocalEffectForward) then) =
+      __$$ObjectLocalEffectForwardCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -460,11 +934,11 @@ abstract class _$$ObjectEffectLocalForwardCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectEffectLocalForwardCopyWithImpl<$Res>
-    extends _$ObjectEffectLocalCopyWithImpl<$Res, _$ObjectEffectLocalForward>
-    implements _$$ObjectEffectLocalForwardCopyWith<$Res> {
-  __$$ObjectEffectLocalForwardCopyWithImpl(_$ObjectEffectLocalForward _value,
-      $Res Function(_$ObjectEffectLocalForward) _then)
+class __$$ObjectLocalEffectForwardCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectForward>
+    implements _$$ObjectLocalEffectForwardCopyWith<$Res> {
+  __$$ObjectLocalEffectForwardCopyWithImpl(_$ObjectLocalEffectForward _value,
+      $Res Function(_$ObjectLocalEffectForward) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -475,7 +949,7 @@ class __$$ObjectEffectLocalForwardCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$ObjectEffectLocalForward(
+    return _then(_$ObjectLocalEffectForward(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -510,8 +984,8 @@ class __$$ObjectEffectLocalForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
-  _$ObjectEffectLocalForward(
+class _$ObjectLocalEffectForward implements ObjectLocalEffectForward {
+  _$ObjectLocalEffectForward(
       {required this.ref,
       required this.stateView,
       required this.createdAt,
@@ -528,14 +1002,14 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
 
   @override
   String toString() {
-    return 'ObjectEffectLocal.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'ObjectLocalEffect.forward(ref: $ref, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectLocalForward &&
+            other is _$ObjectLocalEffectForward &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
@@ -552,14 +1026,16 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectEffectLocalForwardCopyWith<_$ObjectEffectLocalForward>
+  _$$ObjectLocalEffectForwardCopyWith<_$ObjectLocalEffectForward>
       get copyWith =>
-          __$$ObjectEffectLocalForwardCopyWithImpl<_$ObjectEffectLocalForward>(
+          __$$ObjectLocalEffectForwardCopyWithImpl<_$ObjectLocalEffectForward>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -589,6 +1065,8 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -618,6 +1096,8 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
     TResult Function(
             String ref,
             List<String> parent,
@@ -651,10 +1131,12 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalAppend value) append,
-    required TResult Function(ObjectEffectLocalForward value) forward,
-    required TResult Function(ObjectEffectLocalAdd value) add,
-    required TResult Function(ObjectEffectLocalNone value) none,
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
   }) {
     return forward(this);
   }
@@ -662,10 +1144,12 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalAppend value)? append,
-    TResult? Function(ObjectEffectLocalForward value)? forward,
-    TResult? Function(ObjectEffectLocalAdd value)? add,
-    TResult? Function(ObjectEffectLocalNone value)? none,
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
   }) {
     return forward?.call(this);
   }
@@ -673,10 +1157,12 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalAppend value)? append,
-    TResult Function(ObjectEffectLocalForward value)? forward,
-    TResult Function(ObjectEffectLocalAdd value)? add,
-    TResult Function(ObjectEffectLocalNone value)? none,
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -686,27 +1172,27 @@ class _$ObjectEffectLocalForward implements ObjectEffectLocalForward {
   }
 }
 
-abstract class ObjectEffectLocalForward implements ObjectEffectLocal {
-  factory ObjectEffectLocalForward(
+abstract class ObjectLocalEffectForward implements ObjectLocalEffect {
+  factory ObjectLocalEffectForward(
       {required final String ref,
       required final StateViewObject? stateView,
       required final int createdAt,
-      required final int sequenceNumber}) = _$ObjectEffectLocalForward;
+      required final int sequenceNumber}) = _$ObjectLocalEffectForward;
 
   String get ref;
   StateViewObject? get stateView;
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$ObjectEffectLocalForwardCopyWith<_$ObjectEffectLocalForward>
+  _$$ObjectLocalEffectForwardCopyWith<_$ObjectLocalEffectForward>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectEffectLocalAddCopyWith<$Res> {
-  factory _$$ObjectEffectLocalAddCopyWith(_$ObjectEffectLocalAdd value,
-          $Res Function(_$ObjectEffectLocalAdd) then) =
-      __$$ObjectEffectLocalAddCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectAddCopyWith<$Res> {
+  factory _$$ObjectLocalEffectAddCopyWith(_$ObjectLocalEffectAdd value,
+          $Res Function(_$ObjectLocalEffectAdd) then) =
+      __$$ObjectLocalEffectAddCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<
@@ -720,11 +1206,11 @@ abstract class _$$ObjectEffectLocalAddCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectEffectLocalAddCopyWithImpl<$Res>
-    extends _$ObjectEffectLocalCopyWithImpl<$Res, _$ObjectEffectLocalAdd>
-    implements _$$ObjectEffectLocalAddCopyWith<$Res> {
-  __$$ObjectEffectLocalAddCopyWithImpl(_$ObjectEffectLocalAdd _value,
-      $Res Function(_$ObjectEffectLocalAdd) _then)
+class __$$ObjectLocalEffectAddCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectAdd>
+    implements _$$ObjectLocalEffectAddCopyWith<$Res> {
+  __$$ObjectLocalEffectAddCopyWithImpl(_$ObjectLocalEffectAdd _value,
+      $Res Function(_$ObjectLocalEffectAdd) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -732,7 +1218,7 @@ class __$$ObjectEffectLocalAddCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectEffectLocalAdd(
+    return _then(_$ObjectLocalEffectAdd(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -749,8 +1235,8 @@ class __$$ObjectEffectLocalAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
-  _$ObjectEffectLocalAdd(
+class _$ObjectLocalEffectAdd implements ObjectLocalEffectAdd {
+  _$ObjectLocalEffectAdd(
       {required final Map<
               String,
               ({
@@ -783,14 +1269,14 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
 
   @override
   String toString() {
-    return 'ObjectEffectLocal.add(data: $data)';
+    return 'ObjectLocalEffect.add(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectLocalAdd &&
+            other is _$ObjectLocalEffectAdd &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -801,13 +1287,15 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectEffectLocalAddCopyWith<_$ObjectEffectLocalAdd> get copyWith =>
-      __$$ObjectEffectLocalAddCopyWithImpl<_$ObjectEffectLocalAdd>(
+  _$$ObjectLocalEffectAddCopyWith<_$ObjectLocalEffectAdd> get copyWith =>
+      __$$ObjectLocalEffectAddCopyWithImpl<_$ObjectLocalEffectAdd>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -837,6 +1325,8 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -866,6 +1356,8 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
     TResult Function(
             String ref,
             List<String> parent,
@@ -899,10 +1391,12 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalAppend value) append,
-    required TResult Function(ObjectEffectLocalForward value) forward,
-    required TResult Function(ObjectEffectLocalAdd value) add,
-    required TResult Function(ObjectEffectLocalNone value) none,
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
   }) {
     return add(this);
   }
@@ -910,10 +1404,12 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalAppend value)? append,
-    TResult? Function(ObjectEffectLocalForward value)? forward,
-    TResult? Function(ObjectEffectLocalAdd value)? add,
-    TResult? Function(ObjectEffectLocalNone value)? none,
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
   }) {
     return add?.call(this);
   }
@@ -921,10 +1417,12 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalAppend value)? append,
-    TResult Function(ObjectEffectLocalForward value)? forward,
-    TResult Function(ObjectEffectLocalAdd value)? add,
-    TResult Function(ObjectEffectLocalNone value)? none,
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -934,8 +1432,8 @@ class _$ObjectEffectLocalAdd implements ObjectEffectLocalAdd {
   }
 }
 
-abstract class ObjectEffectLocalAdd implements ObjectEffectLocal {
-  factory ObjectEffectLocalAdd(
+abstract class ObjectLocalEffectAdd implements ObjectLocalEffect {
+  factory ObjectLocalEffectAdd(
       {required final Map<
               String,
               ({
@@ -943,7 +1441,7 @@ abstract class ObjectEffectLocalAdd implements ObjectEffectLocal {
                 Map<String, dynamic>? event,
                 StateViewObject? stateView
               })>
-          data}) = _$ObjectEffectLocalAdd;
+          data}) = _$ObjectLocalEffectAdd;
 
   Map<
       String,
@@ -953,40 +1451,40 @@ abstract class ObjectEffectLocalAdd implements ObjectEffectLocal {
         StateViewObject? stateView
       })> get data;
   @JsonKey(ignore: true)
-  _$$ObjectEffectLocalAddCopyWith<_$ObjectEffectLocalAdd> get copyWith =>
+  _$$ObjectLocalEffectAddCopyWith<_$ObjectLocalEffectAdd> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectEffectLocalNoneCopyWith<$Res> {
-  factory _$$ObjectEffectLocalNoneCopyWith(_$ObjectEffectLocalNone value,
-          $Res Function(_$ObjectEffectLocalNone) then) =
-      __$$ObjectEffectLocalNoneCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectNoneCopyWith<$Res> {
+  factory _$$ObjectLocalEffectNoneCopyWith(_$ObjectLocalEffectNone value,
+          $Res Function(_$ObjectLocalEffectNone) then) =
+      __$$ObjectLocalEffectNoneCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ObjectEffectLocalNoneCopyWithImpl<$Res>
-    extends _$ObjectEffectLocalCopyWithImpl<$Res, _$ObjectEffectLocalNone>
-    implements _$$ObjectEffectLocalNoneCopyWith<$Res> {
-  __$$ObjectEffectLocalNoneCopyWithImpl(_$ObjectEffectLocalNone _value,
-      $Res Function(_$ObjectEffectLocalNone) _then)
+class __$$ObjectLocalEffectNoneCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectNone>
+    implements _$$ObjectLocalEffectNoneCopyWith<$Res> {
+  __$$ObjectLocalEffectNoneCopyWithImpl(_$ObjectLocalEffectNone _value,
+      $Res Function(_$ObjectLocalEffectNone) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
-  _$ObjectEffectLocalNone();
+class _$ObjectLocalEffectNone implements ObjectLocalEffectNone {
+  _$ObjectLocalEffectNone();
 
   @override
   String toString() {
-    return 'ObjectEffectLocal.none()';
+    return 'ObjectLocalEffect.none()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ObjectEffectLocalNone);
+        (other.runtimeType == runtimeType && other is _$ObjectLocalEffectNone);
   }
 
   @override
@@ -995,6 +1493,8 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
     required TResult Function(
             String ref,
             List<String> parent,
@@ -1024,6 +1524,8 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
     TResult? Function(
             String ref,
             List<String> parent,
@@ -1053,6 +1555,8 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
     TResult Function(
             String ref,
             List<String> parent,
@@ -1086,10 +1590,12 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectLocalAppend value) append,
-    required TResult Function(ObjectEffectLocalForward value) forward,
-    required TResult Function(ObjectEffectLocalAdd value) add,
-    required TResult Function(ObjectEffectLocalNone value) none,
+    required TResult Function(ObjectLocalEffectInitialize value) initialize,
+    required TResult Function(ObjectLocalEffectResume value) resume,
+    required TResult Function(ObjectLocalEffectAppend value) append,
+    required TResult Function(ObjectLocalEffectForward value) forward,
+    required TResult Function(ObjectLocalEffectAdd value) add,
+    required TResult Function(ObjectLocalEffectNone value) none,
   }) {
     return none(this);
   }
@@ -1097,10 +1603,12 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectLocalAppend value)? append,
-    TResult? Function(ObjectEffectLocalForward value)? forward,
-    TResult? Function(ObjectEffectLocalAdd value)? add,
-    TResult? Function(ObjectEffectLocalNone value)? none,
+    TResult? Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult? Function(ObjectLocalEffectResume value)? resume,
+    TResult? Function(ObjectLocalEffectAppend value)? append,
+    TResult? Function(ObjectLocalEffectForward value)? forward,
+    TResult? Function(ObjectLocalEffectAdd value)? add,
+    TResult? Function(ObjectLocalEffectNone value)? none,
   }) {
     return none?.call(this);
   }
@@ -1108,10 +1616,12 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectLocalAppend value)? append,
-    TResult Function(ObjectEffectLocalForward value)? forward,
-    TResult Function(ObjectEffectLocalAdd value)? add,
-    TResult Function(ObjectEffectLocalNone value)? none,
+    TResult Function(ObjectLocalEffectInitialize value)? initialize,
+    TResult Function(ObjectLocalEffectResume value)? resume,
+    TResult Function(ObjectLocalEffectAppend value)? append,
+    TResult Function(ObjectLocalEffectForward value)? forward,
+    TResult Function(ObjectLocalEffectAdd value)? add,
+    TResult Function(ObjectLocalEffectNone value)? none,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -1121,6 +1631,6 @@ class _$ObjectEffectLocalNone implements ObjectEffectLocalNone {
   }
 }
 
-abstract class ObjectEffectLocalNone implements ObjectEffectLocal {
-  factory ObjectEffectLocalNone() = _$ObjectEffectLocalNone;
+abstract class ObjectLocalEffectNone implements ObjectLocalEffect {
+  factory ObjectLocalEffectNone() = _$ObjectLocalEffectNone;
 }

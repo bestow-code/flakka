@@ -20,19 +20,24 @@ mixin _$JournalSegment<Event extends CoreEvent, State extends CoreState,
   Iterable<Event> get events => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(State initial, Iterable<Event> events) $default, {
+    TResult Function(({State state, View view}) initial, Iterable<Event> events)
+        $default, {
     required TResult Function(Iterable<Event> events) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State initial, Iterable<Event> events)? $default, {
+    TResult? Function(
+            ({State state, View view}) initial, Iterable<Event> events)?
+        $default, {
     TResult? Function(Iterable<Event> events)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State initial, Iterable<Event> events)? $default, {
+    TResult Function(
+            ({State state, View view}) initial, Iterable<Event> events)?
+        $default, {
     TResult Function(Iterable<Event> events)? initial,
     required TResult orElse(),
   }) =>
@@ -116,7 +121,7 @@ abstract class _$$_JournalSegmentCopyWith<
       __$$_JournalSegmentCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call({State initial, Iterable<Event> events});
+  $Res call({({State state, View view}) initial, Iterable<Event> events});
 }
 
 /// @nodoc
@@ -139,7 +144,7 @@ class __$$_JournalSegmentCopyWithImpl<Event extends CoreEvent,
       initial: null == initial
           ? _value.initial
           : initial // ignore: cast_nullable_to_non_nullable
-              as State,
+              as ({State state, View view}),
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -155,7 +160,7 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
   _$_JournalSegment({required this.initial, required this.events});
 
   @override
-  final State initial;
+  final ({State state, View view}) initial;
   @override
   final Iterable<Event> events;
 
@@ -169,15 +174,13 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_JournalSegment<Event, State, View> &&
-            const DeepCollectionEquality().equals(other.initial, initial) &&
+            (identical(other.initial, initial) || other.initial == initial) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(initial),
-      const DeepCollectionEquality().hash(events));
+      runtimeType, initial, const DeepCollectionEquality().hash(events));
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +193,8 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(State initial, Iterable<Event> events) $default, {
+    TResult Function(({State state, View view}) initial, Iterable<Event> events)
+        $default, {
     required TResult Function(Iterable<Event> events) initial,
   }) {
     return $default(this.initial, events);
@@ -199,7 +203,9 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State initial, Iterable<Event> events)? $default, {
+    TResult? Function(
+            ({State state, View view}) initial, Iterable<Event> events)?
+        $default, {
     TResult? Function(Iterable<Event> events)? initial,
   }) {
     return $default?.call(this.initial, events);
@@ -208,7 +214,9 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State initial, Iterable<Event> events)? $default, {
+    TResult Function(
+            ({State state, View view}) initial, Iterable<Event> events)?
+        $default, {
     TResult Function(Iterable<Event> events)? initial,
     required TResult orElse(),
   }) {
@@ -254,11 +262,11 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
 abstract class _JournalSegment<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements JournalSegment<Event, State, View> {
   factory _JournalSegment(
-          {required final State initial,
+          {required final ({State state, View view}) initial,
           required final Iterable<Event> events}) =
       _$_JournalSegment<Event, State, View>;
 
-  State get initial;
+  ({State state, View view}) get initial;
   @override
   Iterable<Event> get events;
   @override
@@ -346,7 +354,8 @@ class _$JournalSegmentInitial<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(State initial, Iterable<Event> events) $default, {
+    TResult Function(({State state, View view}) initial, Iterable<Event> events)
+        $default, {
     required TResult Function(Iterable<Event> events) initial,
   }) {
     return initial(events);
@@ -355,7 +364,9 @@ class _$JournalSegmentInitial<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State initial, Iterable<Event> events)? $default, {
+    TResult? Function(
+            ({State state, View view}) initial, Iterable<Event> events)?
+        $default, {
     TResult? Function(Iterable<Event> events)? initial,
   }) {
     return initial?.call(events);
@@ -364,7 +375,9 @@ class _$JournalSegmentInitial<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State initial, Iterable<Event> events)? $default, {
+    TResult Function(
+            ({State state, View view}) initial, Iterable<Event> events)?
+        $default, {
     TResult Function(Iterable<Event> events)? initial,
     required TResult orElse(),
   }) {

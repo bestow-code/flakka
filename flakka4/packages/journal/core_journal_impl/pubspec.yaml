@@ -26,6 +26,7 @@ dev_dependencies:
 #  core_journal_impl_test:
   core_journal_test:
   freezed: ^2.3.5
+  glados:
   json_serializable: ^6.7.0
   test: ^1.21.0
   very_good_analysis: 5.0.0+1

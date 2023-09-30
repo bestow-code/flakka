@@ -12,8 +12,8 @@ class JournalState<Event extends CoreEvent, State extends CoreState,
         _$JournalState<Event, State, View>,
         JournalReconciliationFactory<Event, State, View> {
   const factory JournalState({
-    required Ref base,
     required Ref main,
+    required Ref base,
     required Set<Ref> pending,
     required Ref? lastPublish,
     required Map<Ref, Set<Ref>> edges,

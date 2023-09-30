@@ -9,7 +9,7 @@ final getIt = GetIt.instance;
 //   generateForDir: ['test'],
 //   preferRelativeImports: true,
 //   externalPackageModulesBefore: [
-//     // ExternalModule(CoreObjectStoreLocalTestPackageModule),
+//     // ExternalModule(CoreObjectLocalStoreTestPackageModule),
 //   ],
 // )
 // Future<void> configureDependencies() async => getIt.init();

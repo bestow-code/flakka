@@ -15,87 +15,71 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectUpdateLocal {
+mixin _$ObjectLocalUpdate {
+  Object? get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() pending,
+    required TResult Function(({String ref, int sequenceNumber})? data) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
     required TResult Function(Map<String, JsonMap> data) event,
-    required TResult Function(Iterable<({int createdAt, String ref})> data)
-        stateViewRef,
-    required TResult Function(({String ref, StateViewObject stateView}) data)
-        stateView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? pending,
+    TResult? Function(({String ref, int sequenceNumber})? data)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult? Function(Map<String, JsonMap> data)? event,
-    TResult? Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult? Function(({String ref, StateViewObject stateView}) data)?
-        stateView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? pending,
+    TResult Function(({String ref, int sequenceNumber})? data)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult Function(Map<String, JsonMap> data)? event,
-    TResult Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateLocalPending value) pending,
-    required TResult Function(ObjectUpdateLocalEntry value) entry,
-    required TResult Function(ObjectUpdateLocalEvent value) event,
-    required TResult Function(ObjectUpdateLocalStateViewRef value) stateViewRef,
-    required TResult Function(ObjectUpdateLocalStateView value) stateView,
+    required TResult Function(ObjectLocalUpdateHead value) head,
+    required TResult Function(ObjectLocalUpdateEntry value) entry,
+    required TResult Function(ObjectLocalUpdateEvent value) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateLocalPending value)? pending,
-    TResult? Function(ObjectUpdateLocalEntry value)? entry,
-    TResult? Function(ObjectUpdateLocalEvent value)? event,
-    TResult? Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult? Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult? Function(ObjectLocalUpdateHead value)? head,
+    TResult? Function(ObjectLocalUpdateEntry value)? entry,
+    TResult? Function(ObjectLocalUpdateEvent value)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateLocalPending value)? pending,
-    TResult Function(ObjectUpdateLocalEntry value)? entry,
-    TResult Function(ObjectUpdateLocalEvent value)? event,
-    TResult Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult Function(ObjectLocalUpdateHead value)? head,
+    TResult Function(ObjectLocalUpdateEntry value)? entry,
+    TResult Function(ObjectLocalUpdateEvent value)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectUpdateLocalCopyWith<$Res> {
-  factory $ObjectUpdateLocalCopyWith(
-          ObjectUpdateLocal value, $Res Function(ObjectUpdateLocal) then) =
-      _$ObjectUpdateLocalCopyWithImpl<$Res, ObjectUpdateLocal>;
+abstract class $ObjectLocalUpdateCopyWith<$Res> {
+  factory $ObjectLocalUpdateCopyWith(
+          ObjectLocalUpdate value, $Res Function(ObjectLocalUpdate) then) =
+      _$ObjectLocalUpdateCopyWithImpl<$Res, ObjectLocalUpdate>;
 }
 
 /// @nodoc
-class _$ObjectUpdateLocalCopyWithImpl<$Res, $Val extends ObjectUpdateLocal>
-    implements $ObjectUpdateLocalCopyWith<$Res> {
-  _$ObjectUpdateLocalCopyWithImpl(this._value, this._then);
+class _$ObjectLocalUpdateCopyWithImpl<$Res, $Val extends ObjectLocalUpdate>
+    implements $ObjectLocalUpdateCopyWith<$Res> {
+  _$ObjectLocalUpdateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -104,88 +88,103 @@ class _$ObjectUpdateLocalCopyWithImpl<$Res, $Val extends ObjectUpdateLocal>
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateLocalPendingCopyWith<$Res> {
-  factory _$$ObjectUpdateLocalPendingCopyWith(_$ObjectUpdateLocalPending value,
-          $Res Function(_$ObjectUpdateLocalPending) then) =
-      __$$ObjectUpdateLocalPendingCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalUpdateHeadCopyWith<$Res> {
+  factory _$$ObjectLocalUpdateHeadCopyWith(_$ObjectLocalUpdateHead value,
+          $Res Function(_$ObjectLocalUpdateHead) then) =
+      __$$ObjectLocalUpdateHeadCopyWithImpl<$Res>;
+  @useResult
+  $Res call({({String ref, int sequenceNumber})? data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateLocalPendingCopyWithImpl<$Res>
-    extends _$ObjectUpdateLocalCopyWithImpl<$Res, _$ObjectUpdateLocalPending>
-    implements _$$ObjectUpdateLocalPendingCopyWith<$Res> {
-  __$$ObjectUpdateLocalPendingCopyWithImpl(_$ObjectUpdateLocalPending _value,
-      $Res Function(_$ObjectUpdateLocalPending) _then)
+class __$$ObjectLocalUpdateHeadCopyWithImpl<$Res>
+    extends _$ObjectLocalUpdateCopyWithImpl<$Res, _$ObjectLocalUpdateHead>
+    implements _$$ObjectLocalUpdateHeadCopyWith<$Res> {
+  __$$ObjectLocalUpdateHeadCopyWithImpl(_$ObjectLocalUpdateHead _value,
+      $Res Function(_$ObjectLocalUpdateHead) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$ObjectLocalUpdateHead(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as ({String ref, int sequenceNumber})?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
-  _$ObjectUpdateLocalPending();
+class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
+  _$ObjectLocalUpdateHead({required this.data});
+
+  @override
+  final ({String ref, int sequenceNumber})? data;
 
   @override
   String toString() {
-    return 'ObjectUpdateLocal.pending()';
+    return 'ObjectLocalUpdate.head(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateLocalPending);
+            other is _$ObjectLocalUpdateHead &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectLocalUpdateHeadCopyWith<_$ObjectLocalUpdateHead> get copyWith =>
+      __$$ObjectLocalUpdateHeadCopyWithImpl<_$ObjectLocalUpdateHead>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() pending,
+    required TResult Function(({String ref, int sequenceNumber})? data) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
     required TResult Function(Map<String, JsonMap> data) event,
-    required TResult Function(Iterable<({int createdAt, String ref})> data)
-        stateViewRef,
-    required TResult Function(({String ref, StateViewObject stateView}) data)
-        stateView,
   }) {
-    return pending();
+    return head(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? pending,
+    TResult? Function(({String ref, int sequenceNumber})? data)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult? Function(Map<String, JsonMap> data)? event,
-    TResult? Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult? Function(({String ref, StateViewObject stateView}) data)?
-        stateView,
   }) {
-    return pending?.call();
+    return head?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? pending,
+    TResult Function(({String ref, int sequenceNumber})? data)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult Function(Map<String, JsonMap> data)? event,
-    TResult Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
-    if (pending != null) {
-      return pending();
+    if (head != null) {
+      return head(data);
     }
     return orElse();
   }
@@ -193,63 +192,65 @@ class _$ObjectUpdateLocalPending implements ObjectUpdateLocalPending {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateLocalPending value) pending,
-    required TResult Function(ObjectUpdateLocalEntry value) entry,
-    required TResult Function(ObjectUpdateLocalEvent value) event,
-    required TResult Function(ObjectUpdateLocalStateViewRef value) stateViewRef,
-    required TResult Function(ObjectUpdateLocalStateView value) stateView,
+    required TResult Function(ObjectLocalUpdateHead value) head,
+    required TResult Function(ObjectLocalUpdateEntry value) entry,
+    required TResult Function(ObjectLocalUpdateEvent value) event,
   }) {
-    return pending(this);
+    return head(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateLocalPending value)? pending,
-    TResult? Function(ObjectUpdateLocalEntry value)? entry,
-    TResult? Function(ObjectUpdateLocalEvent value)? event,
-    TResult? Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult? Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult? Function(ObjectLocalUpdateHead value)? head,
+    TResult? Function(ObjectLocalUpdateEntry value)? entry,
+    TResult? Function(ObjectLocalUpdateEvent value)? event,
   }) {
-    return pending?.call(this);
+    return head?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateLocalPending value)? pending,
-    TResult Function(ObjectUpdateLocalEntry value)? entry,
-    TResult Function(ObjectUpdateLocalEvent value)? event,
-    TResult Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult Function(ObjectLocalUpdateHead value)? head,
+    TResult Function(ObjectLocalUpdateEntry value)? entry,
+    TResult Function(ObjectLocalUpdateEvent value)? event,
     required TResult orElse(),
   }) {
-    if (pending != null) {
-      return pending(this);
+    if (head != null) {
+      return head(this);
     }
     return orElse();
   }
 }
 
-abstract class ObjectUpdateLocalPending implements ObjectUpdateLocal {
-  factory ObjectUpdateLocalPending() = _$ObjectUpdateLocalPending;
+abstract class ObjectLocalUpdateHead implements ObjectLocalUpdate {
+  factory ObjectLocalUpdateHead(
+          {required final ({String ref, int sequenceNumber})? data}) =
+      _$ObjectLocalUpdateHead;
+
+  @override
+  ({String ref, int sequenceNumber})? get data;
+  @JsonKey(ignore: true)
+  _$$ObjectLocalUpdateHeadCopyWith<_$ObjectLocalUpdateHead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateLocalEntryCopyWith<$Res> {
-  factory _$$ObjectUpdateLocalEntryCopyWith(_$ObjectUpdateLocalEntry value,
-          $Res Function(_$ObjectUpdateLocalEntry) then) =
-      __$$ObjectUpdateLocalEntryCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalUpdateEntryCopyWith<$Res> {
+  factory _$$ObjectLocalUpdateEntryCopyWith(_$ObjectLocalUpdateEntry value,
+          $Res Function(_$ObjectLocalUpdateEntry) then) =
+      __$$ObjectLocalUpdateEntryCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, ({int createdAt, Iterable<String> refs})> data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateLocalEntryCopyWithImpl<$Res>
-    extends _$ObjectUpdateLocalCopyWithImpl<$Res, _$ObjectUpdateLocalEntry>
-    implements _$$ObjectUpdateLocalEntryCopyWith<$Res> {
-  __$$ObjectUpdateLocalEntryCopyWithImpl(_$ObjectUpdateLocalEntry _value,
-      $Res Function(_$ObjectUpdateLocalEntry) _then)
+class __$$ObjectLocalUpdateEntryCopyWithImpl<$Res>
+    extends _$ObjectLocalUpdateCopyWithImpl<$Res, _$ObjectLocalUpdateEntry>
+    implements _$$ObjectLocalUpdateEntryCopyWith<$Res> {
+  __$$ObjectLocalUpdateEntryCopyWithImpl(_$ObjectLocalUpdateEntry _value,
+      $Res Function(_$ObjectLocalUpdateEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -257,7 +258,7 @@ class __$$ObjectUpdateLocalEntryCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectUpdateLocalEntry(
+    return _then(_$ObjectLocalUpdateEntry(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -268,8 +269,8 @@ class __$$ObjectUpdateLocalEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
-  _$ObjectUpdateLocalEntry(
+class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
+  _$ObjectLocalUpdateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
           data})
       : _data = data;
@@ -284,14 +285,14 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
 
   @override
   String toString() {
-    return 'ObjectUpdateLocal.entry(data: $data)';
+    return 'ObjectLocalUpdate.entry(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateLocalEntry &&
+            other is _$ObjectLocalUpdateEntry &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -302,22 +303,18 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateLocalEntryCopyWith<_$ObjectUpdateLocalEntry> get copyWith =>
-      __$$ObjectUpdateLocalEntryCopyWithImpl<_$ObjectUpdateLocalEntry>(
+  _$$ObjectLocalUpdateEntryCopyWith<_$ObjectLocalUpdateEntry> get copyWith =>
+      __$$ObjectLocalUpdateEntryCopyWithImpl<_$ObjectLocalUpdateEntry>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() pending,
+    required TResult Function(({String ref, int sequenceNumber})? data) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
     required TResult Function(Map<String, JsonMap> data) event,
-    required TResult Function(Iterable<({int createdAt, String ref})> data)
-        stateViewRef,
-    required TResult Function(({String ref, StateViewObject stateView}) data)
-        stateView,
   }) {
     return entry(data);
   }
@@ -325,15 +322,11 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? pending,
+    TResult? Function(({String ref, int sequenceNumber})? data)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult? Function(Map<String, JsonMap> data)? event,
-    TResult? Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult? Function(({String ref, StateViewObject stateView}) data)?
-        stateView,
   }) {
     return entry?.call(data);
   }
@@ -341,14 +334,11 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? pending,
+    TResult Function(({String ref, int sequenceNumber})? data)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult Function(Map<String, JsonMap> data)? event,
-    TResult Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -360,11 +350,9 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateLocalPending value) pending,
-    required TResult Function(ObjectUpdateLocalEntry value) entry,
-    required TResult Function(ObjectUpdateLocalEvent value) event,
-    required TResult Function(ObjectUpdateLocalStateViewRef value) stateViewRef,
-    required TResult Function(ObjectUpdateLocalStateView value) stateView,
+    required TResult Function(ObjectLocalUpdateHead value) head,
+    required TResult Function(ObjectLocalUpdateEntry value) entry,
+    required TResult Function(ObjectLocalUpdateEvent value) event,
   }) {
     return entry(this);
   }
@@ -372,11 +360,9 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateLocalPending value)? pending,
-    TResult? Function(ObjectUpdateLocalEntry value)? entry,
-    TResult? Function(ObjectUpdateLocalEvent value)? event,
-    TResult? Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult? Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult? Function(ObjectLocalUpdateHead value)? head,
+    TResult? Function(ObjectLocalUpdateEntry value)? entry,
+    TResult? Function(ObjectLocalUpdateEvent value)? event,
   }) {
     return entry?.call(this);
   }
@@ -384,11 +370,9 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateLocalPending value)? pending,
-    TResult Function(ObjectUpdateLocalEntry value)? entry,
-    TResult Function(ObjectUpdateLocalEvent value)? event,
-    TResult Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult Function(ObjectLocalUpdateHead value)? head,
+    TResult Function(ObjectLocalUpdateEntry value)? entry,
+    TResult Function(ObjectLocalUpdateEvent value)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -398,32 +382,33 @@ class _$ObjectUpdateLocalEntry implements ObjectUpdateLocalEntry {
   }
 }
 
-abstract class ObjectUpdateLocalEntry implements ObjectUpdateLocal {
-  factory ObjectUpdateLocalEntry(
+abstract class ObjectLocalUpdateEntry implements ObjectLocalUpdate {
+  factory ObjectLocalUpdateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data}) = _$ObjectUpdateLocalEntry;
+          data}) = _$ObjectLocalUpdateEntry;
 
+  @override
   Map<String, ({int createdAt, Iterable<String> refs})> get data;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateLocalEntryCopyWith<_$ObjectUpdateLocalEntry> get copyWith =>
+  _$$ObjectLocalUpdateEntryCopyWith<_$ObjectLocalUpdateEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateLocalEventCopyWith<$Res> {
-  factory _$$ObjectUpdateLocalEventCopyWith(_$ObjectUpdateLocalEvent value,
-          $Res Function(_$ObjectUpdateLocalEvent) then) =
-      __$$ObjectUpdateLocalEventCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalUpdateEventCopyWith<$Res> {
+  factory _$$ObjectLocalUpdateEventCopyWith(_$ObjectLocalUpdateEvent value,
+          $Res Function(_$ObjectLocalUpdateEvent) then) =
+      __$$ObjectLocalUpdateEventCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, JsonMap> data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateLocalEventCopyWithImpl<$Res>
-    extends _$ObjectUpdateLocalCopyWithImpl<$Res, _$ObjectUpdateLocalEvent>
-    implements _$$ObjectUpdateLocalEventCopyWith<$Res> {
-  __$$ObjectUpdateLocalEventCopyWithImpl(_$ObjectUpdateLocalEvent _value,
-      $Res Function(_$ObjectUpdateLocalEvent) _then)
+class __$$ObjectLocalUpdateEventCopyWithImpl<$Res>
+    extends _$ObjectLocalUpdateCopyWithImpl<$Res, _$ObjectLocalUpdateEvent>
+    implements _$$ObjectLocalUpdateEventCopyWith<$Res> {
+  __$$ObjectLocalUpdateEventCopyWithImpl(_$ObjectLocalUpdateEvent _value,
+      $Res Function(_$ObjectLocalUpdateEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +416,7 @@ class __$$ObjectUpdateLocalEventCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectUpdateLocalEvent(
+    return _then(_$ObjectLocalUpdateEvent(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -442,8 +427,8 @@ class __$$ObjectUpdateLocalEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
-  _$ObjectUpdateLocalEvent({required final Map<String, JsonMap> data})
+class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
+  _$ObjectLocalUpdateEvent({required final Map<String, JsonMap> data})
       : _data = data;
 
   final Map<String, JsonMap> _data;
@@ -456,14 +441,14 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
 
   @override
   String toString() {
-    return 'ObjectUpdateLocal.event(data: $data)';
+    return 'ObjectLocalUpdate.event(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateLocalEvent &&
+            other is _$ObjectLocalUpdateEvent &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -474,22 +459,18 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateLocalEventCopyWith<_$ObjectUpdateLocalEvent> get copyWith =>
-      __$$ObjectUpdateLocalEventCopyWithImpl<_$ObjectUpdateLocalEvent>(
+  _$$ObjectLocalUpdateEventCopyWith<_$ObjectLocalUpdateEvent> get copyWith =>
+      __$$ObjectLocalUpdateEventCopyWithImpl<_$ObjectLocalUpdateEvent>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() pending,
+    required TResult Function(({String ref, int sequenceNumber})? data) head,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)
         entry,
     required TResult Function(Map<String, JsonMap> data) event,
-    required TResult Function(Iterable<({int createdAt, String ref})> data)
-        stateViewRef,
-    required TResult Function(({String ref, StateViewObject stateView}) data)
-        stateView,
   }) {
     return event(data);
   }
@@ -497,15 +478,11 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? pending,
+    TResult? Function(({String ref, int sequenceNumber})? data)? head,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult? Function(Map<String, JsonMap> data)? event,
-    TResult? Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult? Function(({String ref, StateViewObject stateView}) data)?
-        stateView,
   }) {
     return event?.call(data);
   }
@@ -513,14 +490,11 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? pending,
+    TResult Function(({String ref, int sequenceNumber})? data)? head,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> refs})> data)?
         entry,
     TResult Function(Map<String, JsonMap> data)? event,
-    TResult Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -532,11 +506,9 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateLocalPending value) pending,
-    required TResult Function(ObjectUpdateLocalEntry value) entry,
-    required TResult Function(ObjectUpdateLocalEvent value) event,
-    required TResult Function(ObjectUpdateLocalStateViewRef value) stateViewRef,
-    required TResult Function(ObjectUpdateLocalStateView value) stateView,
+    required TResult Function(ObjectLocalUpdateHead value) head,
+    required TResult Function(ObjectLocalUpdateEntry value) entry,
+    required TResult Function(ObjectLocalUpdateEvent value) event,
   }) {
     return event(this);
   }
@@ -544,11 +516,9 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateLocalPending value)? pending,
-    TResult? Function(ObjectUpdateLocalEntry value)? entry,
-    TResult? Function(ObjectUpdateLocalEvent value)? event,
-    TResult? Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult? Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult? Function(ObjectLocalUpdateHead value)? head,
+    TResult? Function(ObjectLocalUpdateEntry value)? entry,
+    TResult? Function(ObjectLocalUpdateEvent value)? event,
   }) {
     return event?.call(this);
   }
@@ -556,11 +526,9 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateLocalPending value)? pending,
-    TResult Function(ObjectUpdateLocalEntry value)? entry,
-    TResult Function(ObjectUpdateLocalEvent value)? event,
-    TResult Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult Function(ObjectUpdateLocalStateView value)? stateView,
+    TResult Function(ObjectLocalUpdateHead value)? head,
+    TResult Function(ObjectLocalUpdateEntry value)? entry,
+    TResult Function(ObjectLocalUpdateEvent value)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -570,348 +538,13 @@ class _$ObjectUpdateLocalEvent implements ObjectUpdateLocalEvent {
   }
 }
 
-abstract class ObjectUpdateLocalEvent implements ObjectUpdateLocal {
-  factory ObjectUpdateLocalEvent({required final Map<String, JsonMap> data}) =
-      _$ObjectUpdateLocalEvent;
+abstract class ObjectLocalUpdateEvent implements ObjectLocalUpdate {
+  factory ObjectLocalUpdateEvent({required final Map<String, JsonMap> data}) =
+      _$ObjectLocalUpdateEvent;
 
+  @override
   Map<String, JsonMap> get data;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateLocalEventCopyWith<_$ObjectUpdateLocalEvent> get copyWith =>
+  _$$ObjectLocalUpdateEventCopyWith<_$ObjectLocalUpdateEvent> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ObjectUpdateLocalStateViewRefCopyWith<$Res> {
-  factory _$$ObjectUpdateLocalStateViewRefCopyWith(
-          _$ObjectUpdateLocalStateViewRef value,
-          $Res Function(_$ObjectUpdateLocalStateViewRef) then) =
-      __$$ObjectUpdateLocalStateViewRefCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Iterable<({int createdAt, String ref})> data});
-}
-
-/// @nodoc
-class __$$ObjectUpdateLocalStateViewRefCopyWithImpl<$Res>
-    extends _$ObjectUpdateLocalCopyWithImpl<$Res,
-        _$ObjectUpdateLocalStateViewRef>
-    implements _$$ObjectUpdateLocalStateViewRefCopyWith<$Res> {
-  __$$ObjectUpdateLocalStateViewRefCopyWithImpl(
-      _$ObjectUpdateLocalStateViewRef _value,
-      $Res Function(_$ObjectUpdateLocalStateViewRef) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$ObjectUpdateLocalStateViewRef(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Iterable<({int createdAt, String ref})>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectUpdateLocalStateViewRef implements ObjectUpdateLocalStateViewRef {
-  _$ObjectUpdateLocalStateViewRef({required this.data});
-
-  @override
-  final Iterable<({int createdAt, String ref})> data;
-
-  @override
-  String toString() {
-    return 'ObjectUpdateLocal.stateViewRef(data: $data)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateLocalStateViewRef &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectUpdateLocalStateViewRefCopyWith<_$ObjectUpdateLocalStateViewRef>
-      get copyWith => __$$ObjectUpdateLocalStateViewRefCopyWithImpl<
-          _$ObjectUpdateLocalStateViewRef>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() pending,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
-    required TResult Function(Iterable<({int createdAt, String ref})> data)
-        stateViewRef,
-    required TResult Function(({String ref, StateViewObject stateView}) data)
-        stateView,
-  }) {
-    return stateViewRef(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? pending,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
-    TResult? Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult? Function(({String ref, StateViewObject stateView}) data)?
-        stateView,
-  }) {
-    return stateViewRef?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? pending,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
-    TResult Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
-    required TResult orElse(),
-  }) {
-    if (stateViewRef != null) {
-      return stateViewRef(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateLocalPending value) pending,
-    required TResult Function(ObjectUpdateLocalEntry value) entry,
-    required TResult Function(ObjectUpdateLocalEvent value) event,
-    required TResult Function(ObjectUpdateLocalStateViewRef value) stateViewRef,
-    required TResult Function(ObjectUpdateLocalStateView value) stateView,
-  }) {
-    return stateViewRef(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateLocalPending value)? pending,
-    TResult? Function(ObjectUpdateLocalEntry value)? entry,
-    TResult? Function(ObjectUpdateLocalEvent value)? event,
-    TResult? Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult? Function(ObjectUpdateLocalStateView value)? stateView,
-  }) {
-    return stateViewRef?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateLocalPending value)? pending,
-    TResult Function(ObjectUpdateLocalEntry value)? entry,
-    TResult Function(ObjectUpdateLocalEvent value)? event,
-    TResult Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult Function(ObjectUpdateLocalStateView value)? stateView,
-    required TResult orElse(),
-  }) {
-    if (stateViewRef != null) {
-      return stateViewRef(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectUpdateLocalStateViewRef implements ObjectUpdateLocal {
-  factory ObjectUpdateLocalStateViewRef(
-          {required final Iterable<({int createdAt, String ref})> data}) =
-      _$ObjectUpdateLocalStateViewRef;
-
-  Iterable<({int createdAt, String ref})> get data;
-  @JsonKey(ignore: true)
-  _$$ObjectUpdateLocalStateViewRefCopyWith<_$ObjectUpdateLocalStateViewRef>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ObjectUpdateLocalStateViewCopyWith<$Res> {
-  factory _$$ObjectUpdateLocalStateViewCopyWith(
-          _$ObjectUpdateLocalStateView value,
-          $Res Function(_$ObjectUpdateLocalStateView) then) =
-      __$$ObjectUpdateLocalStateViewCopyWithImpl<$Res>;
-  @useResult
-  $Res call({({String ref, StateViewObject stateView}) data});
-}
-
-/// @nodoc
-class __$$ObjectUpdateLocalStateViewCopyWithImpl<$Res>
-    extends _$ObjectUpdateLocalCopyWithImpl<$Res, _$ObjectUpdateLocalStateView>
-    implements _$$ObjectUpdateLocalStateViewCopyWith<$Res> {
-  __$$ObjectUpdateLocalStateViewCopyWithImpl(
-      _$ObjectUpdateLocalStateView _value,
-      $Res Function(_$ObjectUpdateLocalStateView) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$ObjectUpdateLocalStateView(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as ({String ref, StateViewObject stateView}),
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectUpdateLocalStateView implements ObjectUpdateLocalStateView {
-  _$ObjectUpdateLocalStateView({required this.data});
-
-  @override
-  final ({String ref, StateViewObject stateView}) data;
-
-  @override
-  String toString() {
-    return 'ObjectUpdateLocal.stateView(data: $data)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateLocalStateView &&
-            (identical(other.data, data) || other.data == data));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectUpdateLocalStateViewCopyWith<_$ObjectUpdateLocalStateView>
-      get copyWith => __$$ObjectUpdateLocalStateViewCopyWithImpl<
-          _$ObjectUpdateLocalStateView>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() pending,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
-    required TResult Function(Iterable<({int createdAt, String ref})> data)
-        stateViewRef,
-    required TResult Function(({String ref, StateViewObject stateView}) data)
-        stateView,
-  }) {
-    return stateView(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? pending,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
-    TResult? Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult? Function(({String ref, StateViewObject stateView}) data)?
-        stateView,
-  }) {
-    return stateView?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? pending,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
-    TResult Function(Iterable<({int createdAt, String ref})> data)?
-        stateViewRef,
-    TResult Function(({String ref, StateViewObject stateView}) data)? stateView,
-    required TResult orElse(),
-  }) {
-    if (stateView != null) {
-      return stateView(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateLocalPending value) pending,
-    required TResult Function(ObjectUpdateLocalEntry value) entry,
-    required TResult Function(ObjectUpdateLocalEvent value) event,
-    required TResult Function(ObjectUpdateLocalStateViewRef value) stateViewRef,
-    required TResult Function(ObjectUpdateLocalStateView value) stateView,
-  }) {
-    return stateView(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateLocalPending value)? pending,
-    TResult? Function(ObjectUpdateLocalEntry value)? entry,
-    TResult? Function(ObjectUpdateLocalEvent value)? event,
-    TResult? Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult? Function(ObjectUpdateLocalStateView value)? stateView,
-  }) {
-    return stateView?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateLocalPending value)? pending,
-    TResult Function(ObjectUpdateLocalEntry value)? entry,
-    TResult Function(ObjectUpdateLocalEvent value)? event,
-    TResult Function(ObjectUpdateLocalStateViewRef value)? stateViewRef,
-    TResult Function(ObjectUpdateLocalStateView value)? stateView,
-    required TResult orElse(),
-  }) {
-    if (stateView != null) {
-      return stateView(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectUpdateLocalStateView implements ObjectUpdateLocal {
-  factory ObjectUpdateLocalStateView(
-          {required final ({String ref, StateViewObject stateView}) data}) =
-      _$ObjectUpdateLocalStateView;
-
-  ({String ref, StateViewObject stateView}) get data;
-  @JsonKey(ignore: true)
-  _$$ObjectUpdateLocalStateViewCopyWith<_$ObjectUpdateLocalStateView>
-      get copyWith => throw _privateConstructorUsedError;
 }

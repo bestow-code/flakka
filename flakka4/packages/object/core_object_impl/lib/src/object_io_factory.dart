@@ -32,12 +32,13 @@ class ObjectIOFactory implements CoreObjectIOFactory {
             .then((value) => remote = value),
       ],
     );
-    return ObjectStore(
-      ObjectStoreState(sequenceNumber: 0),
-      objectEffectLocal: local.effect,
-      objectEffectRemote: remote.effect,
-      objectUpdateLocal: local.update,
-      objectUpdateRemote: remote.update,
-    );
+    throw UnimplementedError();
+    // return ObjectStore(
+    //   // ObjectStoreState(sequenceNumber: 0),
+    //   objectEffectLocal: local.effect,
+    //   objectEffectRemote: remote.effect,
+    //   objectUpdateLocal: local.update,
+    //   objectUpdateRemote: remote.update,
+    // );
   }
 }

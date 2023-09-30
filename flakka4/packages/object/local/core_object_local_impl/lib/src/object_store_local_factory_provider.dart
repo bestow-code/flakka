@@ -1,9 +1,9 @@
 import 'package:core_object_local/core_object_local.dart';
 import 'package:core_object_local_impl/core_object_local_impl.dart';
 
-class ObjectStoreLocalFactoryProvider
+class ObjectLocalStoreFactoryProvider
     implements CoreObjectLocalIOFactoryProvider {
   @override
-  ObjectStoreLocalFactory getFactory() =>
-      ObjectStoreLocalFactory();
+  ObjectLocalStoreFactory getFactory() =>
+      ObjectLocalStoreFactory();
 }

@@ -5,6 +5,12 @@ part 'object_effect.freezed.dart';
 
 @freezed
 class ObjectEffect with _$ObjectEffect {
+  factory ObjectEffect.initialize({
+    required String claimKey,
+    required String ref,
+    required int createdAt,
+  }) = ObjectEffectInitialize;
+
   factory ObjectEffect.append({
     required String ref,
     required List<String> parent,

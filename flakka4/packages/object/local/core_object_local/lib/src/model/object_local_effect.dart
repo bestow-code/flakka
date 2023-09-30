@@ -4,25 +4,34 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'object_local_effect.freezed.dart';
 
 @freezed
-@Deprecated('rename ObjectLocalEffect')
-class ObjectEffectLocal with _$ObjectEffectLocal {
-  factory ObjectEffectLocal.append({
+class ObjectLocalEffect with _$ObjectLocalEffect {
+  factory ObjectLocalEffect.initialize({
+    required String ref,
+    required int createdAt,
+  }) = ObjectLocalEffectInitialize;
+
+  factory ObjectLocalEffect.resume({
+    required String ref,
+    required int sequenceNumber,
+  }) = ObjectLocalEffectResume;
+
+  factory ObjectLocalEffect.append({
     required String ref,
     required List<String> parent,
     required JsonMap? event,
     required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
-  }) = ObjectEffectLocalAppend;
+  }) = ObjectLocalEffectAppend;
 
-  factory ObjectEffectLocal.forward({
+  factory ObjectLocalEffect.forward({
     required String ref,
     required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
-  }) = ObjectEffectLocalForward;
+  }) = ObjectLocalEffectForward;
 
-  factory ObjectEffectLocal.add({
+  factory ObjectLocalEffect.add({
     required Map<
             String,
             ({
@@ -31,7 +40,7 @@ class ObjectEffectLocal with _$ObjectEffectLocal {
               StateViewObject? stateView,
             })>
         data,
-  }) = ObjectEffectLocalAdd;
+  }) = ObjectLocalEffectAdd;
 
-  factory ObjectEffectLocal.none() = ObjectEffectLocalNone;
+  factory ObjectLocalEffect.none() = ObjectLocalEffectNone;
 }

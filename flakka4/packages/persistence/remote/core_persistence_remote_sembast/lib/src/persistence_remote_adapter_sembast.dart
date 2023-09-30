@@ -16,7 +16,7 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
   late final store = (
     head: (
       instance: StoreRef<int, String>('remote/head/$_persistenceId'),
-      main: StoreRef<int, String>('remote/head/main')
+      head2: StoreRef<int, String>('remote/head/main')
     ),
     entry: StoreRef<String, JsonMap>('remote/entry'),
     event: StoreRef<String, JsonMap>('remote/event')
@@ -37,7 +37,7 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
             sequenceNumber: instanceHeadRef.key
           );
         }
-        final mainHeadRef = await store.head.main
+        final mainHeadRef = await store.head.head2
             .query(
               finder:
                   Finder(limit: 1, sortOrders: [SortOrder(Field.key, false)]),
@@ -47,7 +47,7 @@ class PersistenceRemoteAdapterSembast implements CorePersistenceRemoteAdapter {
           return (ref: mainHeadRef.value, sequenceNumber: 0);
         }
         final createWith = ifEmpty();
-        await store.head.main.record(0).put(transaction, createWith.ref);
+        await store.head.head2.record(0).put(transaction, createWith.ref);
         await store.head.instance.record(0).put(transaction, createWith.ref);
         final entryProps =
             EntryProps(parent: [], createdAt: createWith.createdAt);
