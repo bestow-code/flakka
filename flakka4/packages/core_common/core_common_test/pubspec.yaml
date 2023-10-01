@@ -17,6 +17,7 @@ dependencies:
 dev_dependencies:
   build_runner:
   freezed:
+  glados:
   json_serializable:
   mocktail:
   test: ^1.21.0

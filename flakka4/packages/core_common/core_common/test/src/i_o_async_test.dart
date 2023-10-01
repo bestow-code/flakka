@@ -1,7 +1,7 @@
 import 'package:core_common/core_common.dart';
 import 'package:test/test.dart';
 
-class Echo extends AsyncIO<int, int> {
+class Echo extends AsyncIOBase<int, int> {
   @override
   Future<void> onInput(int valueIn) async {
     outputSubject.add(valueIn);

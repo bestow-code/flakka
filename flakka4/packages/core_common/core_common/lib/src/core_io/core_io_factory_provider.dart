@@ -1,6 +1,7 @@
 import '../../core_common.dart';
 
-abstract class CoreIOFactoryProvider<In, Out> implements CoreLogicComponentFactoryProvider<In,Out>{
+abstract class CoreIOFactoryProvider<IO extends CoreIO<In, Out>, In, Out>
+    implements CoreLogicComponentFactoryProvider<IO, In, Out> {
   @override
-  CoreIOFactory<In, Out> build(FactoryProviderContext context);
+  CoreIOFactory<IO, In, Out> build(FactoryContext context);
 }

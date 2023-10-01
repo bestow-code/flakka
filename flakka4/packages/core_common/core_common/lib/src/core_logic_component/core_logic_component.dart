@@ -1,8 +1,9 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:rxdart/rxdart.dart';
 
-abstract interface class CoreLogicComponent<In, Out> {
+abstract interface class CoreLogicComponent<In, Out> implements CoreBuildable {
   CompositeSubscription connect();
 
   bool get isClosed;

@@ -1,1 +1,1 @@
-Function() stateNodeBehavior() {}
+class StateNodeSpec {}
