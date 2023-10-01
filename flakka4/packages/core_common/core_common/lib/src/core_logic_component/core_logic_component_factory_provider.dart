@@ -5,7 +5,3 @@ abstract class CoreLogicComponentFactoryProvider<
   CoreLogicComponentFactory<LogicComponent, In, Out> build(
       FactoryContext context);
 }
-
-abstract class CoreFactoryProvider<Buildable extends CoreBuildable> {
-  CoreFactory<Buildable> build(FactoryContext context);
-}

@@ -5,10 +5,20 @@ import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 class PersistenceLocalIOFactoryProvider extends IOFactoryProviderBase<
         PersistenceLocalIO, PersistenceLocalEffect, PersistenceLocalUpdate>
     implements CorePersistenceLocalIOFactoryProvider<PersistenceLocalIO> {
+  PersistenceLocalIOFactoryProvider({
+    required this.adapterFactoryProvider,
+  });
+
+  final PersistenceLocalAdapterFactoryProviderBase adapterFactoryProvider;
+
   @override
   PersistenceLocalIOFactory build(
-    FactoryContext context,
+    covariant PersistenceLocalFactoryContext context,
   ) {
-    throw UnimplementedError();
+    final adapterFactory = adapterFactoryProvider.getFactory(context);
+    return PersistenceLocalIOFactory(
+      context: context,
+      adapterFactory: adapterFactory,
+    );
   }
 }

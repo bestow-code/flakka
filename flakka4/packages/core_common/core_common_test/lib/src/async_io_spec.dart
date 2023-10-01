@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:core_common/core_common.dart';
+import 'package:core_common_impl/core_common_impl.dart';
 import 'package:glados/glados.dart';
 
 typedef Tester<T> = FutureOr<void> Function(T input);

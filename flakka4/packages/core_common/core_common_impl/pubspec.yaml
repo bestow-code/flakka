@@ -1,4 +1,4 @@
-name: core_common_test
+name: core_common_impl
 version: 0.1.0+2
 description: Common libraries for flakka core platform
 repository: https://github.com/bestow-code/flakka
@@ -9,7 +9,6 @@ environment:
 dependencies:
   bloc:
   core_common:
-  core_common_impl:
   freezed_annotation: ^2.2.0
   json_annotation:
   meta: ^1.9.1
@@ -17,10 +16,9 @@ dependencies:
 
 dev_dependencies:
   build_runner:
+  core_common_test:
   freezed:
-  glados:
   json_serializable:
-  mocktail:
   test: ^1.21.0
   very_good_analysis: 5.0.0+1
 

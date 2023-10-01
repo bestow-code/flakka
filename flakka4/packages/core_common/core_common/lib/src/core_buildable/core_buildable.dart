@@ -1,1 +1,1 @@
-abstract interface class CoreBuildable {}
+abstract interface class CoreProducible {}

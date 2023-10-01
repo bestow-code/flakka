@@ -5,5 +5,5 @@ abstract class CoreLogicComponentFactory<
     In,
     Out> implements CoreFactory<LogicComponent> {
   @override
-  LogicComponent build(FactoryParam param);
+  LogicComponent create(FactoryParam param);
 }

@@ -12,3 +12,4 @@ export 'src/io/core_persistence_local_io_factory_provider.dart';
 export 'src/model/persistence_local_effect.dart';
 export 'src/model/persistence_local_update.dart';
 export 'src/persistence_local_factory_context.dart';
+export 'src/persistence_local_factory_param.dart';

@@ -1,14 +1,17 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
-import 'package:meta/meta.dart';
+import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
-abstract class PersistenceLocalAdapterFactoryBase
-    implements CorePersistenceLocalAdapterFactory {
-  PersistenceLocalAdapterFactoryBase({
-    required String persistenceId,
-  }) : _persistenceId = persistenceId;
-
-  final String _persistenceId;
-
-  @protected
-  String get persistenceId => _persistenceId;
+abstract
+class PersistenceLocalAdapterFactoryBase
+    extends FactoryBase<PersistenceLocalAdapterBase>
+    implements CorePersistenceLocalAdapterFactory<PersistenceLocalAdapterBase> {
+  @override
+  PersistenceLocalAdapterBase create(
+      covariant PersistenceLocalFactoryParam param) ;
+// @override
+// PersistenceLocalAdapterBase create(covariant FactoryParam param) {
+//   // TODO: implement create
+//   throw UnimplementedError();
+// }
 }

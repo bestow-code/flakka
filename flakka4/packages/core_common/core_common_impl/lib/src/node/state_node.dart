@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../../core_common.dart';
+import '../../core_common_impl.dart';
+
 
 abstract class StateNode<State, Effect, Update, In, Out>
     extends StateNodeBase<State, Effect, Update, In, Out> {
@@ -20,7 +22,7 @@ abstract class StateNode2<State, Effect1, Update1, Effect2, Update2, In, Out>
 abstract class StateNode2Base<State, Effect1, Update1, Effect2, Update2, In,
     Out> extends IOBase<In, Out> {
   StateNode2Base(
-      {required (CoreIO<Effect1, Update1>, CoreIO<Effect2, Update2>) child})
+      {required (CoreIO<Effect1, Update1>, CoreIO<Effect2, Update2>) child,})
       : _child = child;
 
   final (CoreIO<Effect1, Update1>, CoreIO<Effect2, Update2>) _child;

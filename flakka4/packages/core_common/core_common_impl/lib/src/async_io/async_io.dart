@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../../core_common.dart';
 
 abstract class IOBase<In, Out> implements CoreIO<In, Out> {
   @protected

@@ -1,4 +1,6 @@
-import '../../../core_common.dart';
+import 'package:core_common/core_common.dart';
+
+import '../../core_common_impl.dart';
 
 abstract class IOFactoryBase<IO extends CoreIO<In, Out>, In, Out>
     extends LogicComponentFactoryBase<IO, In, Out>

@@ -1,9 +1,14 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
 abstract class PersistenceLocalAdapterFactoryProviderBase
-    implements CorePersistenceLocalAdapterFactoryProvider {
+    extends FactoryProviderBase<PersistenceLocalAdapterBase>
+    implements
+        CorePersistenceLocalAdapterFactoryProvider<
+            PersistenceLocalAdapterBase> {
   @override
-  CorePersistenceLocalAdapterFactory getFactory(String persistenceId) {
-    throw UnimplementedError();
-  }
+  PersistenceLocalAdapterFactoryBase getFactory(
+    covariant PersistenceLocalFactoryContext context,
+  );
 }

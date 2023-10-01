@@ -1,5 +1,5 @@
 import '../../core_common.dart';
 
-abstract class CoreFactory<Buildable extends CoreBuildable> {
-  Buildable build(FactoryParam param);
+abstract class CoreFactory<Producible extends CoreProducible> {
+  Producible create(covariant FactoryParam param);
 }

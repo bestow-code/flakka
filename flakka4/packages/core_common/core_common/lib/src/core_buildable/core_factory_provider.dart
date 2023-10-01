@@ -1,5 +1,5 @@
 import '../../core_common.dart';
 
-abstract class CoreFactoryProvider<Buildable extends CoreBuildable> {
-  CoreFactory<Buildable> getFactory(FactoryContext context);
+abstract class CoreFactoryProvider<Producible extends CoreProducible> {
+  CoreFactory<Producible> getFactory(covariant FactoryContext context);
 }

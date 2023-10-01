@@ -1,4 +1,4 @@
-import '../../../core_common.dart';
+import 'package:core_common/core_common.dart';
 
 abstract class LogicComponentFactoryBase<
     LogicComponent extends CoreLogicComponent<In, Out>,

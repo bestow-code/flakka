@@ -1,4 +1,4 @@
-import 'package:core_common/core_common.dart';
+import 'package:core_common_impl/core_common_impl.dart';
 import 'package:test/test.dart';
 
 class Echo extends AsyncIOBase<int, int> {
