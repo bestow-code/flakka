@@ -10,6 +10,7 @@ dependencies:
   bloc:
   core_common:
   freezed_annotation: ^2.2.0
+  get_it:
   json_annotation:
   meta: ^1.9.1
   rxdart:
