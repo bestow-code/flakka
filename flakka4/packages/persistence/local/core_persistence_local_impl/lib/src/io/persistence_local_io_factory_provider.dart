@@ -1,4 +1,5 @@
-import 'package:core_common/core_common.dart';
+import 'package:core_common_impl/core_common_impl.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
@@ -13,7 +14,7 @@ class PersistenceLocalIOFactoryProvider extends IOFactoryProviderBase<
 
   @override
   PersistenceLocalIOFactory build(
-    covariant PersistenceLocalFactoryContext context,
+    covariant PersistenceBaseFactoryContext context,
   ) {
     final adapterFactory = adapterFactoryProvider.getFactory(context);
     return PersistenceLocalIOFactory(

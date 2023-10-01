@@ -1,4 +1,4 @@
-import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 import 'package:sembast/sembast.dart';
@@ -21,7 +21,7 @@ class PersistenceLocalAdapterFactoryProviderSembast
 
   @override
   PersistenceLocalAdapterFactoryBase getFactory(
-          covariant PersistenceLocalFactoryContext context) =>
+          covariant PersistenceBaseFactoryContext context) =>
       PersistenceLocalAdapterFactorySembast(
         persistenceId: context.persistenceId.value,
         databaseFactory: databaseFactory,
@@ -29,7 +29,7 @@ class PersistenceLocalAdapterFactoryProviderSembast
 
 // @override
 // PersistenceLocalAdapterFactorySembast getFactory(
-//     covariant PersistenceLocalFactoryContext context) {
+//     covariant PersistenceBaseFactoryContext context) {
 //   return PersistenceLocalAdapterFactorySembast(
 //     persistenceId: context.persistenceId.value,
 //     databaseFactory: databaseFactory,
@@ -39,7 +39,7 @@ class PersistenceLocalAdapterFactoryProviderSembast
 
 // @override
 // CoreFactory<CorePersistenceLocalAdapter> getFactory(
-//     covariant PersistenceLocalFactoryContext context) {
+//     covariant PersistenceBaseFactoryContext context) {
 //   return PersistenceLocalAdapterFactorySembast(
 //     persistenceId: context.persistenceId.value,
 //     databaseFactory: databaseFactory,

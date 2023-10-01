@@ -1,7 +1,8 @@
-import '../../core_persistence_base.dart';
+import 'package:core_common_impl/core_common_impl.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 
-class PersistenceBaseFactoryContextImpl implements PersistenceBaseFactoryContext {
-
+class PersistenceBaseFactoryContextImpl extends FactoryContextImpl
+    implements PersistenceBaseFactoryContext {
   @override
   // TODO: implement basePath
   StorePath get basePath => throw UnimplementedError();
@@ -13,5 +14,4 @@ class PersistenceBaseFactoryContextImpl implements PersistenceBaseFactoryContext
   @override
   // TODO: implement rootPath
   RootPath get rootPath => throw UnimplementedError();
-
 }

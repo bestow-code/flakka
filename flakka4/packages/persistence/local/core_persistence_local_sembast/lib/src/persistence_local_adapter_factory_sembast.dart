@@ -1,4 +1,4 @@
-import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:sembast/sembast.dart';
 
@@ -18,7 +18,7 @@ class PersistenceLocalAdapterFactorySembast
 
   @override
   PersistenceLocalAdapterSembast create(
-      covariant PersistenceLocalFactoryParam param) {
+      covariant PersistenceBaseFactoryParam param) {
     throw UnimplementedError();
     // return PersistenceLocalAdapterSembast(
     // persistenceId: persistenceId,
@@ -28,7 +28,7 @@ class PersistenceLocalAdapterFactorySembast
 
 // @override
 // PersistenceLocalAdapterSembast create(
-//     covariant PersistenceLocalFactoryParam param) {
+//     covariant PersistenceBaseFactoryParam param) {
 //   throw UnimplementedError();
 //   // return PersistenceLocalAdapterSembast(
 //   //     // persistenceId: persistenceId,
