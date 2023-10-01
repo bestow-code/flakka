@@ -16,8 +16,10 @@ class PersistenceLocalIO
   }
 
   @override
-  Future<PersistenceLocalUpdate?> buildInitialValueOut() {
-    throw UnimplementedError();
+  Future<PersistenceLocalUpdate?> buildInitialValueOut() async{
+    return null;
+
+    // throw UnimplementedError();
   }
 
   @override

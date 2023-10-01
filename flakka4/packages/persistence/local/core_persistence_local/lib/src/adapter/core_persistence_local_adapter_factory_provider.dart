@@ -8,5 +8,5 @@ abstract interface class CorePersistenceLocalAdapterFactoryProvider<
     implements CoreFactoryProvider<PersistenceLocalAdapter> {
   @override
   CoreFactory<PersistenceLocalAdapter> getFactory(
-      covariant PersistenceBaseFactoryContext context);
+      covariant PersistenceFactoryContext context);
 }

@@ -4,7 +4,7 @@
 library core_persistence_base;
 
 export 'src/base_path.dart';
-export 'src/core_persistence_adapter_base.dart';
+export 'src/core_persistence_adapter.dart';
 export 'src/core_persistence_adapter_factory.dart';
 export 'src/core_persistence_adapter_factory_provider.dart';
 export 'src/entry_props.dart';

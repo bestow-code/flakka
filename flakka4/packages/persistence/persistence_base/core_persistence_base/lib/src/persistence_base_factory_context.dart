@@ -1,11 +1,11 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract interface class PersistenceBaseFactoryContext
+abstract interface class PersistenceFactoryContext
     implements FactoryContext {
   RootPath get rootPath; // user/$uid - $uid/d
 
-  StorePath get basePath; // store/$storeId eg store/0,
+  StorePath get storePath; // store/$storeId eg store/main
 
 
   PersistenceId get persistenceId;

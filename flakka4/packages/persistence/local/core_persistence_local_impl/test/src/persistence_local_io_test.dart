@@ -3,8 +3,10 @@ import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart' hide any;
 import 'package:test/test.dart';
+import 'package:version/version.dart';
 
 class MockPersistenceLocalAdapter extends Mock
     implements CorePersistenceLocalAdapter {}
@@ -15,11 +17,22 @@ void main() {
       adapterFactoryProvider:
           PersistenceLocalAdapterFactoryProviderSembast.inMemory(),
     );
-    final PersistenceBaseFactoryContext context =
-        PersistenceBaseFactoryContextImpl();
-    final PersistenceBaseFactoryParam param = PersistenceBaseFactoryParamImpl();
+    final locator = GetIt.asNewInstance();
+    final PersistenceFactoryContext context =
+        PersistenceFactoryContextImpl(locator);
+
+    final PersistenceFactoryParam param = PersistenceBaseFactoryParamImpl(locator);
+    locator
+      ..registerSingleton(PersistenceId('instance-1'))
+      ..registerSingleton(
+        ObjectPath(
+          'o/1',
+          base: StorePath('data/main', base: RootPath('users/1')),
+        ),
+      )..registerSingleton(Version.parse('0.0.0-pre'));
     final factory = factoryProvider.build(context);
-    final localIO = factory.create(param)..connect();
+    final localIO = await factory.create(param);
+    localIO.connect();
     await Future<void>.value();
     await localIO.close();
   });

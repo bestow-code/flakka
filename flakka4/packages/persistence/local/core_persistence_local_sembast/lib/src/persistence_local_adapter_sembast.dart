@@ -9,11 +9,8 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   PersistenceLocalAdapterSembast({
     required super.persistenceId,
     required Database database,
-    required super.rootPath,
-    required super.storePath,
     required super.objectPath,
-    required super.versionId,
-    required super.revisionId,
+    required super.version,
   }) : _database = database;
 
   final Database _database;

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../../core_common.dart';
 
 abstract class CoreLogicComponentFactory<
@@ -5,5 +7,5 @@ abstract class CoreLogicComponentFactory<
     In,
     Out> implements CoreFactory<LogicComponent> {
   @override
-  LogicComponent create(FactoryParam param);
+  FutureOr<LogicComponent> create(FactoryParam param);
 }

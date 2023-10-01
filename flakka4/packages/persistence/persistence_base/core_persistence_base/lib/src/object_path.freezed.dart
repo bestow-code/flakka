@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectPath {
-  String get value => throw _privateConstructorUsedError;
+  String get relative => throw _privateConstructorUsedError;
+  StorePath get base => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ObjectPathCopyWith<ObjectPath> get copyWith =>
@@ -29,7 +30,9 @@ abstract class $ObjectPathCopyWith<$Res> {
           ObjectPath value, $Res Function(ObjectPath) then) =
       _$ObjectPathCopyWithImpl<$Res, ObjectPath>;
   @useResult
-  $Res call({String value});
+  $Res call({String relative, StorePath base});
+
+  $StorePathCopyWith<$Res> get base;
 }
 
 /// @nodoc
@@ -45,14 +48,27 @@ class _$ObjectPathCopyWithImpl<$Res, $Val extends ObjectPath>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? relative = null,
+    Object? base = null,
   }) {
     return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+      relative: null == relative
+          ? _value.relative
+          : relative // ignore: cast_nullable_to_non_nullable
               as String,
+      base: null == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as StorePath,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StorePathCopyWith<$Res> get base {
+    return $StorePathCopyWith<$Res>(_value.base, (value) {
+      return _then(_value.copyWith(base: value) as $Val);
+    });
   }
 }
 
@@ -64,7 +80,10 @@ abstract class _$$_ObjectPathCopyWith<$Res>
       __$$_ObjectPathCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String value});
+  $Res call({String relative, StorePath base});
+
+  @override
+  $StorePathCopyWith<$Res> get base;
 }
 
 /// @nodoc
@@ -78,28 +97,35 @@ class __$$_ObjectPathCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? relative = null,
+    Object? base = null,
   }) {
     return _then(_$_ObjectPath(
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+      null == relative
+          ? _value.relative
+          : relative // ignore: cast_nullable_to_non_nullable
               as String,
+      base: null == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as StorePath,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ObjectPath implements _ObjectPath {
-  _$_ObjectPath(this.value);
+class _$_ObjectPath extends _ObjectPath {
+  _$_ObjectPath(this.relative, {required this.base}) : super._();
 
   @override
-  final String value;
+  final String relative;
+  @override
+  final StorePath base;
 
   @override
   String toString() {
-    return 'ObjectPath(value: $value)';
+    return 'ObjectPath(relative: $relative, base: $base)';
   }
 
   @override
@@ -107,11 +133,13 @@ class _$_ObjectPath implements _ObjectPath {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectPath &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.relative, relative) ||
+                other.relative == relative) &&
+            (identical(other.base, base) || other.base == base));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, relative, base);
 
   @JsonKey(ignore: true)
   @override
@@ -120,11 +148,15 @@ class _$_ObjectPath implements _ObjectPath {
       __$$_ObjectPathCopyWithImpl<_$_ObjectPath>(this, _$identity);
 }
 
-abstract class _ObjectPath implements ObjectPath {
-  factory _ObjectPath(final String value) = _$_ObjectPath;
+abstract class _ObjectPath extends ObjectPath {
+  factory _ObjectPath(final String relative, {required final StorePath base}) =
+      _$_ObjectPath;
+  _ObjectPath._() : super._();
 
   @override
-  String get value;
+  String get relative;
+  @override
+  StorePath get base;
   @override
   @JsonKey(ignore: true)
   _$$_ObjectPathCopyWith<_$_ObjectPath> get copyWith =>

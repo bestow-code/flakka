@@ -10,6 +10,6 @@ abstract class PersistenceLocalAdapterFactoryProviderBase
             PersistenceLocalAdapterBase> {
   @override
   PersistenceLocalAdapterFactoryBase getFactory(
-    covariant PersistenceBaseFactoryContext context,
+    covariant PersistenceFactoryContext context,
   );
 }

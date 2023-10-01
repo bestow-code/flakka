@@ -15,15 +15,18 @@ class PersistenceLocalAdapterFactoryProviderSembast
 
   factory PersistenceLocalAdapterFactoryProviderSembast.inMemory() =>
       PersistenceLocalAdapterFactoryProviderSembast(
-          databaseFactory: databaseFactoryMemoryFs);
+        databaseFactory: databaseFactoryMemoryFs,
+      );
 
   final DatabaseFactory databaseFactory;
 
   @override
   PersistenceLocalAdapterFactoryBase getFactory(
-          covariant PersistenceBaseFactoryContext context) =>
+    covariant PersistenceFactoryContext context,
+  ) =>
       PersistenceLocalAdapterFactorySembast(
-        persistenceId: context.persistenceId.value,
+        context: context,
+        persistenceId: context.persistenceId,
         databaseFactory: databaseFactory,
       );
 

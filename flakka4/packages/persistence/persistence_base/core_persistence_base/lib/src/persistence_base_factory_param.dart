@@ -1,11 +1,9 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:version/version.dart';
 
-abstract interface class PersistenceBaseFactoryParam
-    implements FactoryParam {
+abstract interface class PersistenceFactoryParam implements FactoryParam {
+  ObjectPath get objectPath;
 
-ObjectPath get objectPath;
-  // VersionId get versionId;
-  //
-  // RevisionId get revisionId;
+  Version get version;
 }

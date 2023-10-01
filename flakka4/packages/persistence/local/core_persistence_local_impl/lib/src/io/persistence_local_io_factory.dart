@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -11,12 +13,12 @@ class PersistenceLocalIOFactory extends IOFactoryBase<PersistenceLocalIO,
     required this.adapterFactory,
   });
 
-  final PersistenceBaseFactoryContext context;
+  final PersistenceFactoryContext context;
   final PersistenceLocalAdapterFactoryBase adapterFactory;
 
   @override
-  PersistenceLocalIO create(PersistenceBaseFactoryParam param) {
-    final localAdapter = adapterFactory.create(param);
+  FutureOr<PersistenceLocalIO> create(PersistenceFactoryParam param) async {
+    final localAdapter = await adapterFactory.create(param);
     return PersistenceLocalIO(localAdapter: localAdapter);
   }
 }

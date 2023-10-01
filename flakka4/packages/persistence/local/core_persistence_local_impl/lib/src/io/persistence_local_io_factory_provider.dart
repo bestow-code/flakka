@@ -14,7 +14,7 @@ class PersistenceLocalIOFactoryProvider extends IOFactoryProviderBase<
 
   @override
   PersistenceLocalIOFactory build(
-    covariant PersistenceBaseFactoryContext context,
+    covariant PersistenceFactoryContext context,
   ) {
     final adapterFactory = adapterFactoryProvider.getFactory(context);
     return PersistenceLocalIOFactory(
