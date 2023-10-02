@@ -9,8 +9,18 @@ class PersistenceFactoryContextImpl extends FactoryContextImpl
   StorePath get storePath => locator.get();
 
   @override
+  set storePath(StorePath storePath) => locator.registerSingleton<StorePath>(storePath);
+
+  @override
   PersistenceId get persistenceId => locator.get();
 
   @override
+  set persistenceId(PersistenceId persistenceId) =>
+      locator.registerSingleton<PersistenceId>(persistenceId);
+
+  @override
   RootPath get rootPath => locator.get();
+
+  @override
+  set rootPath(RootPath rootPath) => locator.registerSingleton<RootPath>(rootPath);
 }

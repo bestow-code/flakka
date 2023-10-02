@@ -7,5 +7,5 @@ abstract class CoreLogicComponentFactory<
     In,
     Out> implements CoreFactory<LogicComponent> {
   @override
-  FutureOr<LogicComponent> create(FactoryParam param);
+  FutureOr<LogicComponent> create(CoreFactoryParam param);
 }

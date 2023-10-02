@@ -1,1 +1,1 @@
-class FactoryParam{}
+class CoreFactoryParam{}

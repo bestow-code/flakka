@@ -1,1 +1,1 @@
-class FactoryContext {}
+abstract class FactoryContext {}
