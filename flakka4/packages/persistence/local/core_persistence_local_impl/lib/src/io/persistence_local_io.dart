@@ -1,5 +1,6 @@
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PersistenceLocalIO
@@ -7,6 +8,9 @@ class PersistenceLocalIO
     implements CorePersistenceLocalIO {
   PersistenceLocalIO({required CorePersistenceLocalAdapter localAdapter})
       : _localAdapter = localAdapter;
+
+  @visibleForTesting
+  CorePersistenceLocalAdapter get localAdapter =>_localAdapter;
 
   final CorePersistenceLocalAdapter _localAdapter;
 

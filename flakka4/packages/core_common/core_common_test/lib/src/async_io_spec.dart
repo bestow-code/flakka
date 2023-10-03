@@ -35,7 +35,7 @@ class AsyncIOSpec<
 
   void Function(
     void Function(
-      CoreIO<In, Out>,
+      IO,
       List<In>,
     ),
   ) inputTest(
@@ -50,7 +50,7 @@ class AsyncIOSpec<
   }) {
     return (
       void Function(
-        CoreIO<In, Out>,
+        IO,
         List<In>,
       ) body,
     ) {
@@ -90,7 +90,7 @@ void Function() Function(
     provider,
     context: context,
     param: param,
-    // effectConfig: (generator: any.persistenceLocalEffect, explore: ExploreConfig()),
+    setUp: setUp,
   );
 
   return (body) {

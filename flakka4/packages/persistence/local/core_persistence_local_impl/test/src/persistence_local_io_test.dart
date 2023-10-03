@@ -30,18 +30,18 @@ void main() {
       ),
       context: PersistenceFactoryContextImpl.new,
       param: PersistenceFactoryParamImpl.new,
+      setUp: (context, param) {
+        context.persistenceId = persistenceId;
+        param
+          ..version = Version.parse('0.0.1-pre')
+          ..objectPath = ObjectPath(
+            'o/1',
+            base: StorePath('data/main', base: RootPath('users/user1')),
+          );
+      },
     )((spec) {
       spec.inputTest(
-        't1',
-        setUp: (context, param) {
-          context.persistenceId = persistenceId;
-          param
-            ..version = Version.parse('0.0.1-pre')
-            ..objectPath = ObjectPath(
-              'o/1',
-              base: StorePath('data/main', base: RootPath('users/user1')),
-            );
-        },
+        'any input stream element invokes an adapter call',
       )((io, inputs) {
         print(inputs);
         return;
