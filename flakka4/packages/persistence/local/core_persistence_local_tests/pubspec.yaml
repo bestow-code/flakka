@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   async: ^2.11.0
+  collection:
   core_common: ^0.1.0+2
   core_object:
   core_persistence:
@@ -23,6 +24,7 @@ dependencies:
   json_annotation: ^4.8.1
   logging: ^1.2.0
   meta: ^1.9.1
+  rxdart:
   test:
 
 dev_dependencies:

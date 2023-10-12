@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:async/async.dart';
+import 'package:collection/collection.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -62,6 +64,12 @@ void Function() persistenceAdapterLocalTests(
           );
         }
       }
+      // adapter
+      await Future.wait([
+        adapter.headSnapshot.firstOrNull,
+        adapter.entrySnapshot.firstOrNull,
+        adapter.eventSnapshot.firstOrNull,
+      ].whereNotNull());
     });
   };
 }

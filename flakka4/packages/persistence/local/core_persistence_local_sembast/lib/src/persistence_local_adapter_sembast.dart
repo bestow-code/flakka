@@ -26,10 +26,10 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   @override
   Stream<({String ref, int sequenceNumber})?> get headSnapshot =>
       store.head.query().onSnapshots(_database).map(
-            (event) => (
+            (event) => event.singleOrNull != null ?  (
               ref: event.single['ref']! as String,
               sequenceNumber: event.single['sequenceNumber']! as int
-            ),
+            ) : null,
           );
 
   @override
