@@ -20,38 +20,18 @@ class PersistenceLocalAdapterFactorySembast
   @override
   FutureOr<PersistenceLocalAdapterBase> create(
     covariant PersistenceFactoryParam param,
-  ) async =>
-      PersistenceLocalAdapterSembast(
-        persistenceId: persistenceId,
-        database: await databaseFactory.openDatabase(param.objectPath.full),
-        objectPath: param.objectPath,
-        version: param.version,
-      );
+  ) async {
+    return PersistenceLocalAdapterSembast(
+      persistenceId: persistenceId,
+      database: await databaseFactory.openDatabase(param.objectPath.full),
+      objectPath: param.objectPath,
+      version: param.version,
+    );
+  }
 
-// @override
-// FutureOr<PersistenceLocalAdapterSembast> create(
-//     covariant PersistenceBaseFactoryParam param) async {
-// }
-
-// @override
-// PersistenceLocalAdapterSembast create(
-//     covariant PersistenceBaseFactoryParam param) {
-//   throw UnimplementedError();
-//   // return PersistenceLocalAdapterSembast(
-//   //     // persistenceId: persistenceId,
-//   //     // database: await databaseFactory.openDatabase(path),
-//   //     );
-//   throw UnimplementedError();
-// }
-
-// @override
-// Future<CorePersistenceLocalAdapter> getAdapter(String path) async =>
-//     PersistenceLocalAdapterSembast(
-//       persistenceId: persistenceId,
-//       database: await databaseFactory.openDatabase(path),
-//     );
-//
-// @override
-// Future<void> delete(String path) => databaseFactory.deleteDatabase(path);
-//
+  @override
+  Future<void> delete(
+    covariant PersistenceFactoryParam param,
+  ) =>
+      databaseFactory.deleteDatabase(param.objectPath.full);
 }

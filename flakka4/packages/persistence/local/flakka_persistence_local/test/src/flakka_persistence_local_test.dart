@@ -2,18 +2,18 @@ import 'package:test/test.dart';
 
 void main() async {
 
-  group('[FlakkaPersistenceLocal]', asyncIOSpec((spec) {
-    group("[PersistenceLocalEffect.initialize]",spec.explore(PersistenceLocalEffect.initialize, (io, effect){
-
-    }));
-    group("[PersistenceLocalEffect.resume]",(){});
-    group("[PersistenceLocalEffect.append]",(){});
-    group("[PersistenceLocalEffect.forward]",(){});
-    group("[PersistenceLocalEffect.import]",(){});
-  });
+  // group('[FlakkaPersistenceLocal]', asyncIOSpec((spec) {
+  //   group("[PersistenceLocalEffect.initialize]",spec.explore(PersistenceLocalEffect.initialize, (io, effect){
+  //
+  //   }));
+  //   group("[PersistenceLocalEffect.resume]",(){});
+  //   group("[PersistenceLocalEffect.append]",(){});
+  //   group("[PersistenceLocalEffect.forward]",(){});
+  //   group("[PersistenceLocalEffect.import]",(){});
+  // });
 }
 
-void logicComponentGroup<In,Out>()
+// void logicComponentGroup<In,Out>()
 
 
 //   factory PersistenceLocalEffect.initialize({

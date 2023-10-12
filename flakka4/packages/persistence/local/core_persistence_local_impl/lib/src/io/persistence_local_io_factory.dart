@@ -21,4 +21,9 @@ class PersistenceLocalIOFactory extends IOFactoryBase<PersistenceLocalIO,
     final localAdapter = await adapterFactory.create(param);
     return PersistenceLocalIO(localAdapter: localAdapter);
   }
+
+  @override
+  FutureOr<void> delete(covariant PersistenceFactoryParam param) async {
+    await adapterFactory.delete(param);
+  }
 }

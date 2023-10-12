@@ -9,11 +9,13 @@ class FlakkaPersistence extends FlakkaLocator {
   FlakkaPersistence(GetIt getIt) : super(getIt);
 
   CorePersistenceAdaptersFactoryProvider
-      getPersistenceAdapterFactoryProvider() =>
-          PersistenceAdaptersFactoryProvider(
-            localAdapterFactoryProvider: locator.get(),
-            remoteAdapterFactoryProvider: locator.get(),
-          );
+      getPersistenceAdapterFactoryProvider() {
+    throw UnimplementedError();
+    // return PersistenceAdaptersFactoryProvider(
+    //         localAdapterFactoryProvider: locator.get(),
+    //         remoteAdapterFactoryProvider: locator.get(),
+    //       );
+  }
 
   void registerPersistenceLocalAdapterFactoryProvider(
           CorePersistenceLocalAdapterFactoryProvider Function() factory) =>

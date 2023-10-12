@@ -126,7 +126,7 @@ void main() {
         test('* Emits effect and updates state', () async {
           application = build()..connect();
           await application.state.first;
-          application.input.add(
+          application.input.append(
             ApplicationUpdateRequest(
               request:
                   Request((state) => RequestEffect.persist(event: testEvent1)),

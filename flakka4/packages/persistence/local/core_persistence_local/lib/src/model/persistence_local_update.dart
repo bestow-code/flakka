@@ -10,12 +10,10 @@ class PersistenceLocalUpdate with _$PersistenceLocalUpdate {
   }) = PersistenceLocalUpdateRef;
 
   factory PersistenceLocalUpdate.event({
-    required Map<String, JsonMap> data,
-    required Set<String> pendingWrite,
+    required Map<String, JsonMap> snapshot,
   }) = PersistenceLocalUpdateEvent;
 
   factory PersistenceLocalUpdate.entry({
-    required Map<String, ({Iterable<String> parent, int createdAt})> data,
-    required Set<String> pendingWrite,
+    required Map<String, ({Iterable<String> parent, int createdAt})> snapshot,
   }) = PersistenceLocalUpdateEntry;
 }

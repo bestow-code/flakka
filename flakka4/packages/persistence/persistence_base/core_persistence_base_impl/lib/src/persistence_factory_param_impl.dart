@@ -21,4 +21,8 @@ class PersistenceFactoryParamImpl extends FactoryParamImpl
   set version(Version version) {
     locator.registerSingleton<Version>(version);
   }
+
+  void parseVersion(String value) {
+    locator.registerSingleton<Version>(Version.parse(value));
+  }
 }

@@ -44,3 +44,18 @@ class ObjectLocalEffect with _$ObjectLocalEffect {
 
   factory ObjectLocalEffect.none() = ObjectLocalEffectNone;
 }
+
+@freezed
+class ObjectLocalProvisionRequest with _$ObjectLocalProvisionRequest {
+  factory ObjectLocalProvisionRequest() = _ObjectLocalProvisionRequest;
+
+  factory ObjectLocalProvisionRequest.initialize({
+    required String ref,
+    required int createdAt,
+  }) = ObjectLocalProvisionRequestInitialize;
+
+  factory ObjectLocalProvisionRequest.resume({
+    required String ref,
+    required int sequenceNumber,
+  }) = ObjectLocalProvisionRequestResume;
+}

@@ -3,39 +3,43 @@ import 'dart:async';
 import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
+import '../../core_persistence_local.dart';
+
 abstract interface class CorePersistenceLocalAdapter
     implements CorePersistenceAdapter {
-  Future<InitialObjectInstanceData?> inspect();
-
-  Future<void> initialize({required InitialObjectInstanceData data});
+  // Write
+  Future<void> provision({
+    required PersistenceLocalProvisionRequest request,
+  });
 
   Future<void> append({
     required String ref,
     required List<String> parent,
     required JsonMap? event,
-    // required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
   });
 
-// Future<void> add({
-//   Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
-//   Map<String, JsonMap>? event,
-//   Map<String, StateViewObject>? stateView,
-// });
+  Future<void> add({
+    required String ref,
+    required StateViewObject stateView,
+  });
 
-//
-//
-// Future<void> forward({
-//   required Ref ref,
-//   required StateViewData? stateView,
-//   required int sequenceNumber,
-// });
-//
-  Stream<Map<String, JsonMap>> get entryAll;
+  Future<void> forward({
+    required String ref,
+    required int sequenceNumber,
+  });
 
-//
-  Stream<Map<String, JsonMap>> get eventAll;
-//
-// Stream<Map<Ref, StateViewData>> get stateViewAll;
+  Future<void> import({
+    Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
+    Map<String, JsonMap>? event,
+    Map<String, StateViewObject>? stateView,
+  });
+
+  // Read
+  Stream<({String ref, int sequenceNumber})?> get headSnapshot;
+
+  Stream<Map<String, JsonMap>> get entrySnapshot;
+
+  Stream<Map<String, JsonMap>> get eventSnapshot;
 }

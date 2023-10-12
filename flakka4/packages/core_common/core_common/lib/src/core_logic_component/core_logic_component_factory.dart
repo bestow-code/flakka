@@ -3,7 +3,9 @@ import 'dart:async';
 import '../../core_common.dart';
 
 abstract class CoreLogicComponentFactory<
-    LogicComponent extends CoreLogicComponent<In, Out>,
+    LogicComponent extends CoreResource<  In, Out>,
+    
+    
     In,
     Out> implements CoreFactory<LogicComponent> {
   @override

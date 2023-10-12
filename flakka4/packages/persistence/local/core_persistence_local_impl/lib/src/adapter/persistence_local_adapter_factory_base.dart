@@ -13,9 +13,7 @@ abstract class PersistenceLocalAdapterFactoryBase
   @override
   FutureOr<PersistenceLocalAdapterBase> create(
       covariant PersistenceFactoryParam param);
-// @override
-// PersistenceLocalAdapterBase create(covariant FactoryParam param) {
-//   // TODO: implement create
-//   throw UnimplementedError();
-// }
+
+  @override
+  Future<void> delete(covariant PersistenceFactoryParam param);
 }

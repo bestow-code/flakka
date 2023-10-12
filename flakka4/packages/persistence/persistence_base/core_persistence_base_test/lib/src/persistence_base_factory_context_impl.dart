@@ -14,4 +14,19 @@ class PersistenceBaseFactoryContextImpl extends FactoryContextImpl
   @override
   // TODO: implement rootPath
   RootPath get rootPath => throw UnimplementedError();
+
+  @override
+  set persistenceId(PersistenceId persistenceId) {
+    // TODO: implement persistenceId
+  }
+
+  @override
+  set rootPath(RootPath rootPath) {
+    // TODO: implement rootPath
+  }
+
+  @override
+  set storePath(StorePath storePath) {
+    // TODO: implement storePath
+  }
 }

@@ -8,6 +8,25 @@ import 'package:glados/glados.dart';
 typedef Tester<IO, T> = FutureOr<void> Function(IO, List<T>);
 typedef TesterConfig<T> = ({Generator<T>? generator, ExploreConfig? explore});
 
+abstract class IOBaseSpec<
+    IO extends AsyncIOBase<In, Out>,
+    In,
+    Out,
+    ProvisionRequest,
+    ProvisionState,
+    FactoryContext extends FactoryContextImpl,
+    FactoryParam extends FactoryParamImpl> {
+  IOBaseSpec({
+    required this.factoryProvider,
+    required this.setUp,
+    required this.onProvision,
+  });
+
+  final CoreIOFactoryProvider<IO, In, Out> Function() factoryProvider;
+  final void Function(FactoryContext, FactoryParam)? setUp;
+  final ProvisionRequest Function(ProvisionState state) onProvision;
+}
+
 class AsyncIOSpec<
     IO extends AsyncIOBase<In, Out>,
     In,
@@ -19,15 +38,18 @@ class AsyncIOSpec<
     required FactoryContext Function() context,
     required FactoryParam Function() param,
     void Function(FactoryContext, FactoryParam)? setUp,
-    TesterConfig<List<In>>? effectConfig,
+    // TesterConfig<List<In>>? effectConfig,
+    TesterConfig<List<int>>? effectConfig,
     TesterConfig<Out>? updateConfig,
   })  : _context = context,
         _param = param,
         _setUp = setUp,
-        _effectTester = Glados(effectConfig?.generator, effectConfig?.explore),
+        // _effectTester = Glados(effectConfig?.generator, effectConfig?.explore),
+        _effectTester = Glados2(),
         _updateTester = Glados(updateConfig?.generator, updateConfig?.explore);
   final CoreIOFactoryProvider<IO, In, Out> Function() _provider;
-  final Glados<List<In>> _effectTester;
+  // final Glados<List<In>> _effectTester;
+  final Glados2<In, List<int>> _effectTester;
   final Glados<Out> _updateTester;
   final FactoryContext Function() _context;
   final FactoryParam Function() _param;
@@ -49,19 +71,20 @@ class AsyncIOSpec<
     int? retry,
   }) {
     return (
-      void Function(
+      FutureOr<void> Function(
         IO,
         List<In>,
       ) body,
     ) {
-      _effectTester.test(description, (input) async {
+      _effectTester.test(description, (a, input) async {
         final context = this._context();
         final param = this._param();
         _setUp?.call(context, param);
         setUp?.call(context, param);
         final factory = _provider().build(context);
         final io = await factory.create(param);
-        body(io, input);
+        print(input);
+        // await body(io, input);
       });
     };
   }

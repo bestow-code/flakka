@@ -13,4 +13,10 @@ class PersistenceLocalAdapterMockFactory
     // TODO: implement create
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> delete(covariant PersistenceFactoryParam param) {
+    // TODO: implement delete
+    throw UnimplementedError();
+  }
 }

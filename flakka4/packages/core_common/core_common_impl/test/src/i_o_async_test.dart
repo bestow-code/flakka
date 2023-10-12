@@ -4,14 +4,20 @@ import 'package:test/test.dart';
 class Echo extends AsyncIOBase<int, int> {
   @override
   Future<void> onInput(int valueIn) async {
-    outputSubject.add(valueIn);
+    // outputSubject.append(valueIn);
   }
 
   @override
   Future<int?> buildInitialValueOut() async => 0;
 
   @override
-  Stream<int> buildOutputSource() => outputSubject.stream;
+  Stream<int> buildOutputSource() {
+    // TODO: implement buildOutputSource
+    throw UnimplementedError();
+  }
+
+  // @override
+  // Stream<int> buildOutputSource() => outputSubject.stream;
 }
 
 class DoubleCounter extends StateNode<int, int, int, int, int> {

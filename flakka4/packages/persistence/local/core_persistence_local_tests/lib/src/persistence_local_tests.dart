@@ -1,89 +1,96 @@
+import 'dart:async';
+
+import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
-import 'package:test/test.dart';
+import 'package:core_persistence_local_test/core_persistence_local_test.dart';
+import 'package:glados/glados.dart';
 
 void Function() persistenceAdapterLocalTests(
-  CorePersistenceLocalAdapterFactoryProvider Function() persistenceProviderLocalFactory,
+  CorePersistenceLocalAdapterFactoryProvider Function()
+      persistenceProviderLocalFactory,
 ) {
   return () {
-    late CorePersistenceLocalAdapterFactoryProvider persistenceProviderLocal;
-    late CorePersistenceLocalAdapterFactory adapterLocalFactory;
-    late String persistenceId;
-    setUp(() {
-      persistenceId = 'persistence-1';
-      persistenceProviderLocal = persistenceProviderLocalFactory();
-      adapterLocalFactory =
-          persistenceProviderLocal.getFactory(persistenceId);
-    });
-    late CorePersistenceLocalAdapter adapter;
-    const path = '/1';
-    const ref0 = 'ref0';
-    const ref1 = 'ref1';
-    const sequenceNumber0 = 42;
-    const sequenceNumber1 = 43;
-    const createdAt = 1;
-    const stateViewData =
-        (state: <String, dynamic>{}, view: <String, dynamic>{});
-    ({
-      int createdAt,
-      String ref,
-      int sequenceNumber,
-    }) ifEmpty() => (
-          ref: ref0,
-          sequenceNumber: sequenceNumber0,
-          createdAt: createdAt,
-        );
-    setUp(() async {
-      adapter = await adapterLocalFactory.getAdapter(path);
-    });
-
-    group('Persistence adapter - local', () {
-      group('Initialize', () {
-        group('New instance', () {
-          test('success', () async {
-            expect(
-              await adapter.inspect(),
-              null,
-            );
-          });
-        });
-        group('Existing instance', () {
-          setUp(() async {
-            await adapterLocalFactory.delete(path);
-            adapter = await adapterLocalFactory.getAdapter(path);
-            await adapter
-                .initialize(data: (ref: ref0, sequenceNumber: sequenceNumber0));
-          });
-          test('inspect', () async {
-            expect(await adapter.inspect(),
-                (ref: ref0, sequenceNumber: sequenceNumber0));
-          });
-          test('2nd call to initialize throws', () async {
+    Glados2(
+      any.refValue,
+      any.nonEmptyList(any.persistenceLocalAdapterCallData),
+      ExploreConfig(numRuns: 1, initialSize: 1),
+    ).test('produce expected output for valid call sequence',
+        (refValue, calls) async {
+      final adapter =
+          await getAdapter(refValue, persistenceProviderLocalFactory);
+      final provisionCalls =
+          calls.whereType<PersistenceLocalAdapterCallProvision>();
+      final provisionCall = provisionCalls.singleOrNull;
+      if (provisionCall != null) {
+        final firstHeadUpdate = calls
+            .whereType<PersistenceLocalAdapterCallHeadUpdate>()
+            .firstOrNull;
+        if (firstHeadUpdate != null) {
+          final firstProvisionIndex = calls.indexOf(provisionCall);
+          final firstHeadUpdateIndex = calls.indexOf(firstHeadUpdate);
+          if (firstProvisionIndex < firstHeadUpdateIndex) {
             await expectLater(
-                adapter.initialize(
-                    data: (ref: ref1, sequenceNumber: sequenceNumber1)),
-                throwsA(isA<AssertionError>()));
-          });
-        });
-      });
-      group('Append',(){
-        const ref0 = 'ref0';
-        const ref1 = 'ref1';
-        final event = {'value': 2};
-        const createdAt = 42;
-        const sequenceNumber = 1;
-        test('Event', () async {
-          await adapter.append(
-            ref: ref1,
-            parent: [ref0],
-            event: event,
-            createdAt: createdAt,
-            sequenceNumber: sequenceNumber,
+              () => PersistenceLocalAdapterCall.apply(adapter, calls),
+              returnsNormally,
+            );
+          } else {
+            await expectLater(
+              () => PersistenceLocalAdapterCall.apply(adapter, calls),
+              throwsException,
+            );
+          }
+        } else {
+          await expectLater(
+            () => PersistenceLocalAdapterCall.apply(adapter, calls),
+            returnsNormally,
           );
-          final eventAll = await adapter.eventAll.first;
-          expect(eventAll.values.length, 1);
-        });
-
-      });
+        }
+      } else {
+        if (provisionCalls.length > 1 ||
+            calls
+                .whereType<PersistenceLocalAdapterCallHeadUpdate>()
+                .isNotEmpty) {
+          await expectLater(
+            () => PersistenceLocalAdapterCall.apply(adapter, calls),
+            throwsException,
+          );
+        } else {
+          await expectLater(
+            () => PersistenceLocalAdapterCall.apply(adapter, calls),
+            returnsNormally,
+          );
+        }
+      }
     });
   };
+}
+
+Future<CorePersistenceLocalAdapter> getAdapter(
+  String objectId,
+  CorePersistenceLocalAdapterFactoryProvider<CorePersistenceLocalAdapter>
+          Function()
+      persistenceProviderLocalFactory,
+) async {
+  final provider = persistenceProviderLocalFactory();
+  PersistenceFactoryContext context;
+  context = PersistenceFactoryContextImpl()
+    ..persistenceId = PersistenceId('instance-1');
+  final factory = provider.getFactory(context);
+  PersistenceFactoryParamImpl param;
+  param = PersistenceFactoryParamImpl()
+    ..parseVersion('0')
+    ..objectPath = ObjectPath(
+      'o/$objectId',
+      base: StorePath('data/test', base: RootPath('users/1')),
+    );
+  await factory.delete(param);
+  final adapter = await factory.create(param);
+  // await adapter.provision(
+  //   request: PersistenceLocalProvisionRequest.initialize(
+  //     ref: objectId,
+  //     createdAt: 0,
+  //   ),
+  // );
+  return adapter;
 }

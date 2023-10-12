@@ -19,34 +19,27 @@ mixin _$PersistenceLocalUpdate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? value) ref,
+    required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
-            Map<String, JsonMap> data, Set<String> pendingWrite)
-        event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
         entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? value)? ref,
-    TResult? Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? value)? ref,
-    TResult Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
     required TResult orElse(),
   }) =>
@@ -162,12 +155,9 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? value) ref,
+    required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
-            Map<String, JsonMap> data, Set<String> pendingWrite)
-        event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
         entry,
   }) {
     return ref(value);
@@ -177,11 +167,9 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? value)? ref,
-    TResult? Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
   }) {
     return ref?.call(value);
@@ -191,11 +179,9 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? value)? ref,
-    TResult Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
     required TResult orElse(),
   }) {
@@ -257,7 +243,7 @@ abstract class _$$PersistenceLocalUpdateEventCopyWith<$Res> {
           $Res Function(_$PersistenceLocalUpdateEvent) then) =
       __$$PersistenceLocalUpdateEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, JsonMap> data, Set<String> pendingWrite});
+  $Res call({Map<String, JsonMap> snapshot});
 }
 
 /// @nodoc
@@ -273,18 +259,13 @@ class __$$PersistenceLocalUpdateEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
-    Object? pendingWrite = null,
+    Object? snapshot = null,
   }) {
     return _then(_$PersistenceLocalUpdateEvent(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
+      snapshot: null == snapshot
+          ? _value._snapshot
+          : snapshot // ignore: cast_nullable_to_non_nullable
               as Map<String, JsonMap>,
-      pendingWrite: null == pendingWrite
-          ? _value._pendingWrite
-          : pendingWrite // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
     ));
   }
 }
@@ -292,31 +273,20 @@ class __$$PersistenceLocalUpdateEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
-  _$PersistenceLocalUpdateEvent(
-      {required final Map<String, JsonMap> data,
-      required final Set<String> pendingWrite})
-      : _data = data,
-        _pendingWrite = pendingWrite;
+  _$PersistenceLocalUpdateEvent({required final Map<String, JsonMap> snapshot})
+      : _snapshot = snapshot;
 
-  final Map<String, JsonMap> _data;
+  final Map<String, JsonMap> _snapshot;
   @override
-  Map<String, JsonMap> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
+  Map<String, JsonMap> get snapshot {
+    if (_snapshot is EqualUnmodifiableMapView) return _snapshot;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
-  }
-
-  final Set<String> _pendingWrite;
-  @override
-  Set<String> get pendingWrite {
-    if (_pendingWrite is EqualUnmodifiableSetView) return _pendingWrite;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_pendingWrite);
+    return EqualUnmodifiableMapView(_snapshot);
   }
 
   @override
   String toString() {
-    return 'PersistenceLocalUpdate.event(data: $data, pendingWrite: $pendingWrite)';
+    return 'PersistenceLocalUpdate.event(snapshot: $snapshot)';
   }
 
   @override
@@ -324,16 +294,12 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PersistenceLocalUpdateEvent &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
-            const DeepCollectionEquality()
-                .equals(other._pendingWrite, _pendingWrite));
+            const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_data),
-      const DeepCollectionEquality().hash(_pendingWrite));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_snapshot));
 
   @JsonKey(ignore: true)
   @override
@@ -346,45 +312,38 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? value) ref,
+    required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
-            Map<String, JsonMap> data, Set<String> pendingWrite)
-        event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
         entry,
   }) {
-    return event(data, pendingWrite);
+    return event(snapshot);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? value)? ref,
-    TResult? Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
   }) {
-    return event?.call(data, pendingWrite);
+    return event?.call(snapshot);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? value)? ref,
-    TResult Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
     required TResult orElse(),
   }) {
     if (event != null) {
-      return event(data, pendingWrite);
+      return event(snapshot);
     }
     return orElse();
   }
@@ -426,11 +385,10 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
 
 abstract class PersistenceLocalUpdateEvent implements PersistenceLocalUpdate {
   factory PersistenceLocalUpdateEvent(
-      {required final Map<String, JsonMap> data,
-      required final Set<String> pendingWrite}) = _$PersistenceLocalUpdateEvent;
+          {required final Map<String, JsonMap> snapshot}) =
+      _$PersistenceLocalUpdateEvent;
 
-  Map<String, JsonMap> get data;
-  Set<String> get pendingWrite;
+  Map<String, JsonMap> get snapshot;
   @JsonKey(ignore: true)
   _$$PersistenceLocalUpdateEventCopyWith<_$PersistenceLocalUpdateEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -443,9 +401,7 @@ abstract class _$$PersistenceLocalUpdateEntryCopyWith<$Res> {
           $Res Function(_$PersistenceLocalUpdateEntry) then) =
       __$$PersistenceLocalUpdateEntryCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {Map<String, ({int createdAt, Iterable<String> parent})> data,
-      Set<String> pendingWrite});
+  $Res call({Map<String, ({int createdAt, Iterable<String> parent})> snapshot});
 }
 
 /// @nodoc
@@ -461,18 +417,13 @@ class __$$PersistenceLocalUpdateEntryCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
-    Object? pendingWrite = null,
+    Object? snapshot = null,
   }) {
     return _then(_$PersistenceLocalUpdateEntry(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
+      snapshot: null == snapshot
+          ? _value._snapshot
+          : snapshot // ignore: cast_nullable_to_non_nullable
               as Map<String, ({int createdAt, Iterable<String> parent})>,
-      pendingWrite: null == pendingWrite
-          ? _value._pendingWrite
-          : pendingWrite // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
     ));
   }
 }
@@ -482,30 +433,20 @@ class __$$PersistenceLocalUpdateEntryCopyWithImpl<$Res>
 class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   _$PersistenceLocalUpdateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          data,
-      required final Set<String> pendingWrite})
-      : _data = data,
-        _pendingWrite = pendingWrite;
+          snapshot})
+      : _snapshot = snapshot;
 
-  final Map<String, ({int createdAt, Iterable<String> parent})> _data;
+  final Map<String, ({int createdAt, Iterable<String> parent})> _snapshot;
   @override
-  Map<String, ({int createdAt, Iterable<String> parent})> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
+  Map<String, ({int createdAt, Iterable<String> parent})> get snapshot {
+    if (_snapshot is EqualUnmodifiableMapView) return _snapshot;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
-  }
-
-  final Set<String> _pendingWrite;
-  @override
-  Set<String> get pendingWrite {
-    if (_pendingWrite is EqualUnmodifiableSetView) return _pendingWrite;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_pendingWrite);
+    return EqualUnmodifiableMapView(_snapshot);
   }
 
   @override
   String toString() {
-    return 'PersistenceLocalUpdate.entry(data: $data, pendingWrite: $pendingWrite)';
+    return 'PersistenceLocalUpdate.entry(snapshot: $snapshot)';
   }
 
   @override
@@ -513,16 +454,12 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PersistenceLocalUpdateEntry &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
-            const DeepCollectionEquality()
-                .equals(other._pendingWrite, _pendingWrite));
+            const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_data),
-      const DeepCollectionEquality().hash(_pendingWrite));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_snapshot));
 
   @JsonKey(ignore: true)
   @override
@@ -535,45 +472,38 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? value) ref,
+    required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
-            Map<String, JsonMap> data, Set<String> pendingWrite)
-        event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
         entry,
   }) {
-    return entry(data, pendingWrite);
+    return entry(snapshot);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? value)? ref,
-    TResult? Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
   }) {
-    return entry?.call(data, pendingWrite);
+    return entry?.call(snapshot);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? value)? ref,
-    TResult Function(Map<String, JsonMap> data, Set<String> pendingWrite)?
-        event,
+    TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> data,
-            Set<String> pendingWrite)?
+            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
         entry,
     required TResult orElse(),
   }) {
     if (entry != null) {
-      return entry(data, pendingWrite);
+      return entry(snapshot);
     }
     return orElse();
   }
@@ -616,11 +546,9 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
 abstract class PersistenceLocalUpdateEntry implements PersistenceLocalUpdate {
   factory PersistenceLocalUpdateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          data,
-      required final Set<String> pendingWrite}) = _$PersistenceLocalUpdateEntry;
+          snapshot}) = _$PersistenceLocalUpdateEntry;
 
-  Map<String, ({int createdAt, Iterable<String> parent})> get data;
-  Set<String> get pendingWrite;
+  Map<String, ({int createdAt, Iterable<String> parent})> get snapshot;
   @JsonKey(ignore: true)
   _$$PersistenceLocalUpdateEntryCopyWith<_$PersistenceLocalUpdateEntry>
       get copyWith => throw _privateConstructorUsedError;

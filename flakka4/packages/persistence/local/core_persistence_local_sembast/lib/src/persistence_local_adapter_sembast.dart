@@ -16,76 +16,151 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   final Database _database;
 
   late final store = (
-    head: (
-      instance: StoreRef<int, String>('remote/head/$persistenceId'),
-      head2: StoreRef<int, String>('remote/head/main')
-    ),
+    head: StoreRef<String, JsonMap>('head'),
     entry: StoreRef<String, JsonMap>('entry'),
-    event: StoreRef<String, JsonMap>('event')
+    event: StoreRef<String, JsonMap>('event'),
+    stateRef: StoreRef<int, String>('stateRef'),
+    state: StoreRef<String, JsonMap>('state'),
   );
 
   @override
-  Future<InitialObjectInstanceData?> inspect() =>
-      _database.transaction((transaction) async {
-        final headRef = await store.head.instance
-            .query(
-              finder:
-                  Finder(limit: 1, sortOrders: [SortOrder(Field.key, false)]),
-            )
-            .getSnapshot(transaction);
-        return headRef != null
-            ? (ref: headRef.value, sequenceNumber: headRef.key)
-            : null;
-      });
+  Stream<({String ref, int sequenceNumber})?> get headSnapshot =>
+      store.head.query().onSnapshots(_database).map(
+            (event) => (
+              ref: event.single['ref']! as String,
+              sequenceNumber: event.single['sequenceNumber']! as int
+            ),
+          );
 
   @override
-  Future<void> initialize({required InitialObjectInstanceData data}) =>
-      _database.transaction(
-        (transaction) async {
-          assert(
-            await store.head.instance.count(transaction) == 0,
-            'initialize called on existing instance',
+  Stream<Map<String, JsonMap>> get entrySnapshot =>
+      store.entry.query().onSnapshots(_database).map((event) =>
+          Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))));
+
+  @override
+  Stream<Map<String, JsonMap>> get eventSnapshot =>
+      store.event.query().onSnapshots(_database).map(
+            (event) =>
+                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
           );
-          await store.head.instance
-              .record(data.sequenceNumber)
-              .put(transaction, data.ref);
-        },
-      );
 
   @override
   Future<void> append({
     required String ref,
     required List<String> parent,
     required JsonMap? event,
-    // required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
-  }) async {
-    await _database.transaction((transaction) async {
-      await store.entry.record(ref).put(
+  }) async =>
+      _database.transaction((transaction) async {
+        final headJson =
+            await store.head.record(persistenceId.value).get(transaction);
+
+        if (headJson == null) {
+          throw Exception('instance not initialized');
+        }
+        final head = HeadRef.fromJson(headJson);
+        if (sequenceNumber != head.sequenceNumber + 1) {
+          throw Exception(
+              'invalid sequenceNumber: $sequenceNumber [current: ${head.sequenceNumber}]');
+        }
+        await store.entry.record(ref).update(
+              transaction,
+              EntryProps(parent: parent, createdAt: createdAt).toJson(),
+            );
+        if (event != null) {
+          await store.event.record(ref).put(transaction, event);
+        }
+        await store.head.record(persistenceId.value).update(
             transaction,
-            EntryProps(parent: parent, createdAt: createdAt).toJson(),
-          );
-      if (event != null) {
-        await store.event.record(ref).put(transaction, event);
-      }
-      await store.head.instance.record(sequenceNumber).put(transaction, ref);
+            HeadRef(
+              ref: ref,
+              sequenceNumber: sequenceNumber,
+            ).toJson());
+      });
+
+  @override
+  Future<void> add(
+      {required String ref, required StateViewObject stateView}) async {
+    return _database.transaction((transaction) async {
+      await store.stateRef.add(transaction, ref);
+      await store.state.record(ref).add(transaction, stateView.toJson());
     });
   }
 
   @override
-  Stream<Map<String, JsonMap>> get entryAll =>
-      store.entry.query().onSnapshots(_database).map(
-            (event) =>
-                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
-          );
+  Future<void> import(
+          {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+              entry,
+          Map<String, JsonMap>? event,
+          Map<String, StateViewObject>? stateView}) async =>
+      _database.transaction((transaction) async {
+        if (entry != null) {
+          entry.forEach((ref, value) async {
+            await store.entry.record(ref).add(
+                transaction,
+                EntryProps(parent: value.parent, createdAt: value.createdAt)
+                    .toJson());
+          });
+        }
+        if (event != null) {
+          event.forEach((ref, value) async {
+            await store.event.record(ref).add(transaction, value);
+          });
+        }
+        if (stateView != null) {
+          stateView.forEach((ref, value) async {
+            await store.stateRef.add(transaction, ref);
+            await store.state.record(ref).add(transaction, value.toJson());
+          });
+        }
+      });
 
   @override
-  Stream<Map<String, JsonMap>> get eventAll =>
-      store.event.query().onSnapshots(_database).map(
-            (event) =>
-                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
+  Future<void> forward(
+          {required String ref, required int sequenceNumber}) async =>
+      _database.transaction((transaction) async {
+        final head =
+            await store.head.record(persistenceId.value).get(transaction);
+        if (head != null) {
+          final headRef = HeadRef.fromJson(head);
+          if (headRef.sequenceNumber + 1 != sequenceNumber) {
+            throw Exception('invalid sequenceNumber');
+          } else {
+            final result = await store.head.record(persistenceId.value).update(
+                transaction,
+                HeadRef(ref: ref, sequenceNumber: sequenceNumber).toJson());
+            assert(result != null, 'Head ref write failed');
+          }
+        } else {
+          throw Exception(
+            'instance not initialized',
           );
+        }
+      });
+
+  @override
+  Future<void> provision(
+          {required PersistenceLocalProvisionRequest request}) async =>
+      _database.transaction((transaction) async {
+        if (await store.head.record(persistenceId.value).exists(transaction)) {
+          throw Exception(
+            'initialize called on existing instance',
+          );
+        }
+        await request.map(
+          initialize: (initialize) async =>
+               store.head.record(persistenceId.value).put(transaction, {
+            'ref': request.ref,
+            'sequenceNumber': 0,
+          }),
+          resume: (resume) async =>
+               store.head.record(persistenceId.value).put(transaction, {
+            'ref': request.ref,
+            'sequenceNumber': resume.sequenceNumber,
+          }),
+        );
+      });
 
 // @override
 // Future<void> add(

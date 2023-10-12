@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bloc:
+  either_dart:
   freezed_annotation: ^2.2.0
   json_annotation:
   meta: ^1.9.1
@@ -28,3 +29,5 @@ index_generator:
       include:
         - src
       docs: Common libraries for core_platform
+      exports:
+        - package: package:either_dart/either.dart

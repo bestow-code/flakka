@@ -548,3 +548,69 @@ abstract class ObjectLocalUpdateEvent implements ObjectLocalUpdate {
   _$$ObjectLocalUpdateEventCopyWith<_$ObjectLocalUpdateEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$ObjectLocalProvisionState {}
+
+/// @nodoc
+abstract class $ObjectLocalProvisionStateCopyWith<$Res> {
+  factory $ObjectLocalProvisionStateCopyWith(ObjectLocalProvisionState value,
+          $Res Function(ObjectLocalProvisionState) then) =
+      _$ObjectLocalProvisionStateCopyWithImpl<$Res, ObjectLocalProvisionState>;
+}
+
+/// @nodoc
+class _$ObjectLocalProvisionStateCopyWithImpl<$Res,
+        $Val extends ObjectLocalProvisionState>
+    implements $ObjectLocalProvisionStateCopyWith<$Res> {
+  _$ObjectLocalProvisionStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_ObjectLocalProvisionStateCopyWith<$Res> {
+  factory _$$_ObjectLocalProvisionStateCopyWith(
+          _$_ObjectLocalProvisionState value,
+          $Res Function(_$_ObjectLocalProvisionState) then) =
+      __$$_ObjectLocalProvisionStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ObjectLocalProvisionStateCopyWithImpl<$Res>
+    extends _$ObjectLocalProvisionStateCopyWithImpl<$Res,
+        _$_ObjectLocalProvisionState>
+    implements _$$_ObjectLocalProvisionStateCopyWith<$Res> {
+  __$$_ObjectLocalProvisionStateCopyWithImpl(
+      _$_ObjectLocalProvisionState _value,
+      $Res Function(_$_ObjectLocalProvisionState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ObjectLocalProvisionState implements _ObjectLocalProvisionState {
+  _$_ObjectLocalProvisionState();
+
+  @override
+  String toString() {
+    return 'ObjectLocalProvisionState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectLocalProvisionState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _ObjectLocalProvisionState implements ObjectLocalProvisionState {
+  factory _ObjectLocalProvisionState() = _$_ObjectLocalProvisionState;
+}

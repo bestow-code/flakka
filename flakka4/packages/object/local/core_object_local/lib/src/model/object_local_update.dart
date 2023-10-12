@@ -20,3 +20,8 @@ class ObjectLocalUpdate with _$ObjectLocalUpdate {
     required Map<String, JsonMap> data,
   }) = ObjectLocalUpdateEvent;
 }
+
+@freezed
+class ObjectLocalProvisionState with _$ObjectLocalProvisionState {
+  factory ObjectLocalProvisionState() = _ObjectLocalProvisionState;
+}

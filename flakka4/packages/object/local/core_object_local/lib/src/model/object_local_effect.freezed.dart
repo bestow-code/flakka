@@ -1634,3 +1634,509 @@ class _$ObjectLocalEffectNone implements ObjectLocalEffectNone {
 abstract class ObjectLocalEffectNone implements ObjectLocalEffect {
   factory ObjectLocalEffectNone() = _$ObjectLocalEffectNone;
 }
+
+/// @nodoc
+mixin _$ObjectLocalProvisionRequest {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value) $default, {
+    required TResult Function(ObjectLocalProvisionRequestInitialize value)
+        initialize,
+    required TResult Function(ObjectLocalProvisionRequestResume value) resume,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult? Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult? Function(ObjectLocalProvisionRequestResume value)? resume,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult Function(ObjectLocalProvisionRequestResume value)? resume,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ObjectLocalProvisionRequestCopyWith<$Res> {
+  factory $ObjectLocalProvisionRequestCopyWith(
+          ObjectLocalProvisionRequest value,
+          $Res Function(ObjectLocalProvisionRequest) then) =
+      _$ObjectLocalProvisionRequestCopyWithImpl<$Res,
+          ObjectLocalProvisionRequest>;
+}
+
+/// @nodoc
+class _$ObjectLocalProvisionRequestCopyWithImpl<$Res,
+        $Val extends ObjectLocalProvisionRequest>
+    implements $ObjectLocalProvisionRequestCopyWith<$Res> {
+  _$ObjectLocalProvisionRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_ObjectLocalProvisionRequestCopyWith<$Res> {
+  factory _$$_ObjectLocalProvisionRequestCopyWith(
+          _$_ObjectLocalProvisionRequest value,
+          $Res Function(_$_ObjectLocalProvisionRequest) then) =
+      __$$_ObjectLocalProvisionRequestCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ObjectLocalProvisionRequestCopyWithImpl<$Res>
+    extends _$ObjectLocalProvisionRequestCopyWithImpl<$Res,
+        _$_ObjectLocalProvisionRequest>
+    implements _$$_ObjectLocalProvisionRequestCopyWith<$Res> {
+  __$$_ObjectLocalProvisionRequestCopyWithImpl(
+      _$_ObjectLocalProvisionRequest _value,
+      $Res Function(_$_ObjectLocalProvisionRequest) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ObjectLocalProvisionRequest implements _ObjectLocalProvisionRequest {
+  _$_ObjectLocalProvisionRequest();
+
+  @override
+  String toString() {
+    return 'ObjectLocalProvisionRequest()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectLocalProvisionRequest);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value) $default, {
+    required TResult Function(ObjectLocalProvisionRequestInitialize value)
+        initialize,
+    required TResult Function(ObjectLocalProvisionRequestResume value) resume,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult? Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult? Function(ObjectLocalProvisionRequestResume value)? resume,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult Function(ObjectLocalProvisionRequestResume value)? resume,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ObjectLocalProvisionRequest
+    implements ObjectLocalProvisionRequest {
+  factory _ObjectLocalProvisionRequest() = _$_ObjectLocalProvisionRequest;
+}
+
+/// @nodoc
+abstract class _$$ObjectLocalProvisionRequestInitializeCopyWith<$Res> {
+  factory _$$ObjectLocalProvisionRequestInitializeCopyWith(
+          _$ObjectLocalProvisionRequestInitialize value,
+          $Res Function(_$ObjectLocalProvisionRequestInitialize) then) =
+      __$$ObjectLocalProvisionRequestInitializeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int createdAt});
+}
+
+/// @nodoc
+class __$$ObjectLocalProvisionRequestInitializeCopyWithImpl<$Res>
+    extends _$ObjectLocalProvisionRequestCopyWithImpl<$Res,
+        _$ObjectLocalProvisionRequestInitialize>
+    implements _$$ObjectLocalProvisionRequestInitializeCopyWith<$Res> {
+  __$$ObjectLocalProvisionRequestInitializeCopyWithImpl(
+      _$ObjectLocalProvisionRequestInitialize _value,
+      $Res Function(_$ObjectLocalProvisionRequestInitialize) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? createdAt = null,
+  }) {
+    return _then(_$ObjectLocalProvisionRequestInitialize(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectLocalProvisionRequestInitialize
+    implements ObjectLocalProvisionRequestInitialize {
+  _$ObjectLocalProvisionRequestInitialize(
+      {required this.ref, required this.createdAt});
+
+  @override
+  final String ref;
+  @override
+  final int createdAt;
+
+  @override
+  String toString() {
+    return 'ObjectLocalProvisionRequest.initialize(ref: $ref, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectLocalProvisionRequestInitialize &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectLocalProvisionRequestInitializeCopyWith<
+          _$ObjectLocalProvisionRequestInitialize>
+      get copyWith => __$$ObjectLocalProvisionRequestInitializeCopyWithImpl<
+          _$ObjectLocalProvisionRequestInitialize>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
+  }) {
+    return initialize(ref, createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
+  }) {
+    return initialize?.call(ref, createdAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(ref, createdAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value) $default, {
+    required TResult Function(ObjectLocalProvisionRequestInitialize value)
+        initialize,
+    required TResult Function(ObjectLocalProvisionRequestResume value) resume,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult? Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult? Function(ObjectLocalProvisionRequestResume value)? resume,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult Function(ObjectLocalProvisionRequestResume value)? resume,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectLocalProvisionRequestInitialize
+    implements ObjectLocalProvisionRequest {
+  factory ObjectLocalProvisionRequestInitialize(
+      {required final String ref,
+      required final int createdAt}) = _$ObjectLocalProvisionRequestInitialize;
+
+  String get ref;
+  int get createdAt;
+  @JsonKey(ignore: true)
+  _$$ObjectLocalProvisionRequestInitializeCopyWith<
+          _$ObjectLocalProvisionRequestInitialize>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ObjectLocalProvisionRequestResumeCopyWith<$Res> {
+  factory _$$ObjectLocalProvisionRequestResumeCopyWith(
+          _$ObjectLocalProvisionRequestResume value,
+          $Res Function(_$ObjectLocalProvisionRequestResume) then) =
+      __$$ObjectLocalProvisionRequestResumeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int sequenceNumber});
+}
+
+/// @nodoc
+class __$$ObjectLocalProvisionRequestResumeCopyWithImpl<$Res>
+    extends _$ObjectLocalProvisionRequestCopyWithImpl<$Res,
+        _$ObjectLocalProvisionRequestResume>
+    implements _$$ObjectLocalProvisionRequestResumeCopyWith<$Res> {
+  __$$ObjectLocalProvisionRequestResumeCopyWithImpl(
+      _$ObjectLocalProvisionRequestResume _value,
+      $Res Function(_$ObjectLocalProvisionRequestResume) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$ObjectLocalProvisionRequestResume(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectLocalProvisionRequestResume
+    implements ObjectLocalProvisionRequestResume {
+  _$ObjectLocalProvisionRequestResume(
+      {required this.ref, required this.sequenceNumber});
+
+  @override
+  final String ref;
+  @override
+  final int sequenceNumber;
+
+  @override
+  String toString() {
+    return 'ObjectLocalProvisionRequest.resume(ref: $ref, sequenceNumber: $sequenceNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectLocalProvisionRequestResume &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectLocalProvisionRequestResumeCopyWith<
+          _$ObjectLocalProvisionRequestResume>
+      get copyWith => __$$ObjectLocalProvisionRequestResumeCopyWithImpl<
+          _$ObjectLocalProvisionRequestResume>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(String ref, int createdAt) initialize,
+    required TResult Function(String ref, int sequenceNumber) resume,
+  }) {
+    return resume(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(String ref, int createdAt)? initialize,
+    TResult? Function(String ref, int sequenceNumber)? resume,
+  }) {
+    return resume?.call(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(String ref, int createdAt)? initialize,
+    TResult Function(String ref, int sequenceNumber)? resume,
+    required TResult orElse(),
+  }) {
+    if (resume != null) {
+      return resume(ref, sequenceNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value) $default, {
+    required TResult Function(ObjectLocalProvisionRequestInitialize value)
+        initialize,
+    required TResult Function(ObjectLocalProvisionRequestResume value) resume,
+  }) {
+    return resume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult? Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult? Function(ObjectLocalProvisionRequestResume value)? resume,
+  }) {
+    return resume?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ObjectLocalProvisionRequest value)? $default, {
+    TResult Function(ObjectLocalProvisionRequestInitialize value)? initialize,
+    TResult Function(ObjectLocalProvisionRequestResume value)? resume,
+    required TResult orElse(),
+  }) {
+    if (resume != null) {
+      return resume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectLocalProvisionRequestResume
+    implements ObjectLocalProvisionRequest {
+  factory ObjectLocalProvisionRequestResume(
+      {required final String ref,
+      required final int sequenceNumber}) = _$ObjectLocalProvisionRequestResume;
+
+  String get ref;
+  int get sequenceNumber;
+  @JsonKey(ignore: true)
+  _$$ObjectLocalProvisionRequestResumeCopyWith<
+          _$ObjectLocalProvisionRequestResume>
+      get copyWith => throw _privateConstructorUsedError;
+}

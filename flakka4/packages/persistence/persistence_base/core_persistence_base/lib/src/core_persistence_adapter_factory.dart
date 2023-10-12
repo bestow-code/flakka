@@ -12,6 +12,11 @@ abstract interface class CorePersistenceAdapterFactory<
     covariant PersistenceFactoryParam param,
   );
 
+  @override
+  FutureOr<void> delete(
+    covariant PersistenceFactoryParam param,
+  );
+
 // Future<CorePersistenceLocalAdapter> getAdapter(String path);
 //
 // Future<void> delete(String path);

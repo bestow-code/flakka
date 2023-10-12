@@ -4,22 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'persistence_local_effect.freezed.dart';
 
 @freezed
-class PersistenceLocalEffect with _$PersistenceLocalEffect {
-  factory PersistenceLocalEffect.provision(PersistenceLocalProvision value) =
-      PersistenceLocalEffectProvision;
-
-  factory PersistenceLocalEffect.append({
-    required String ref,
-    required Iterable<String> parent,
-    required JsonMap? event,
-    required int createdAt,
-    required int sequenceNumber,
-  }) = PersistenceLocalEffectAppend;
-
-  factory PersistenceLocalEffect.forward({
-    required String ref,
-    required int sequenceNumber,
-  }) = PersistenceLocalEffectForward;
+sealed class PersistenceLocalEffect with _$PersistenceLocalEffect {
+  factory PersistenceLocalEffect.head({required LocalHeadEffect data}) =
+      PersistenceLocalEffectHead;
 
   factory PersistenceLocalEffect.import({
     required Map<String,
@@ -30,14 +17,17 @@ class PersistenceLocalEffect with _$PersistenceLocalEffect {
 }
 
 @freezed
-class PersistenceLocalProvision with _$PersistenceLocalProvision {
-  factory PersistenceLocalProvision.initial({
+class LocalHeadEffect with _$LocalHeadEffect {
+  factory LocalHeadEffect.append({
     required String ref,
+    required Iterable<String> parent,
+    required JsonMap? event,
     required int createdAt,
-  }) = PersistenceLocalProvisionInitial;
+    required int sequenceNumber,
+  }) = LocalHeadEffectAppend;
 
-  factory PersistenceLocalProvision.resume({
+  factory LocalHeadEffect.forward({
     required String ref,
     required int sequenceNumber,
-  }) = PersistenceLocalProvisionResume;
+  }) = LocalHeadEffectForward;
 }

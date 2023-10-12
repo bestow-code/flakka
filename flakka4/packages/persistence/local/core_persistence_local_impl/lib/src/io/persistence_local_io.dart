@@ -10,20 +10,22 @@ class PersistenceLocalIO
       : _localAdapter = localAdapter;
 
   @visibleForTesting
-  CorePersistenceLocalAdapter get localAdapter =>_localAdapter;
+  CorePersistenceLocalAdapter get localAdapter => _localAdapter;
 
   final CorePersistenceLocalAdapter _localAdapter;
 
   @override
-  Future<void> onInput(PersistenceLocalEffect valueIn) {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<PersistenceLocalUpdate?> buildInitialValueOut() async {
-    return null;
+    return PersistenceLocalUpdate.ref(value: 'a');
   }
 
   @override
   Stream<PersistenceLocalUpdate> buildOutputSource() => Rx.merge([]);
+
+  @override
+  Future<void> onInput(PersistenceLocalEffect valueIn) {
+    // TODO: implement onInput
+    throw UnimplementedError();
+  }
+
 }
