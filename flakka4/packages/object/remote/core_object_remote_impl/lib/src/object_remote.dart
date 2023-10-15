@@ -1,23 +1,23 @@
 import 'package:core_common_impl/core_common_impl.dart';
-import 'package:core_object_local/core_object_local.dart';
-import 'package:core_object_local_impl/core_object_local_impl.dart';
-import 'package:core_persistence_local/core_persistence_local.dart';
-import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
+import 'package:core_object_remote/core_object_remote.dart';
+import 'package:core_object_remote_impl/core_object_remote_impl.dart';
+import 'package:core_persistence_remote/core_persistence_remote.dart';
+import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 import 'package:rxdart/src/utils/composite_subscription.dart';
 
-class ObjectLocal extends NodeBase<
-    ObjectLocalState,
-    PersistenceLocalEffect,
-    PersistenceLocalUpdate,
-    ObjectLocalEffect,
-    ObjectLocalUpdate> implements CoreObjectLocal {
-  ObjectLocal({required PersistenceLocal child})
+class ObjectRemote extends NodeBase<
+    ObjectRemoteState,
+    PersistenceRemoteEffect,
+    PersistenceRemoteUpdate,
+    ObjectRemoteEffect,
+    ObjectRemoteUpdate> implements CoreObjectRemote {
+  ObjectRemote({required PersistenceRemote child})
       : _child = child,
         super(child: child);
 
   @override
-  PersistenceLocal get child => _child;
-  final PersistenceLocal _child;
+  PersistenceRemote get child => _child;
+  final PersistenceRemote _child;
 
   @override
   Future<void> provision(PersistenceProvisioning provisioning) async {

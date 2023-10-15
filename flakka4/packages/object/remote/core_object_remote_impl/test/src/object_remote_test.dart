@@ -1,18 +1,18 @@
-import 'package:core_object_local/core_object_local.dart';
-import 'package:core_object_local_impl/core_object_local_impl.dart';
-import 'package:core_object_local_test/core_object_local_test.dart';
+import 'package:core_object_remote/core_object_remote.dart';
+import 'package:core_object_remote_impl/core_object_remote_impl.dart';
+import 'package:core_object_remote_test/core_object_remote_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
-import 'package:core_persistence_local/core_persistence_local.dart';
-import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
-import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
+import 'package:core_persistence_remote/core_persistence_remote.dart';
+import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
+import 'package:core_persistence_remote_sembast/core_persistence_remote_sembast.dart';
 import 'package:glados/glados.dart';
 
-Future<ObjectLocal> getSubject(
+Future<ObjectRemote> getSubject(
   String objectId,
-  ObjectLocalFactoryProvider Function() persistenceProviderLocalFactory,
+  ObjectRemoteFactoryProvider Function() persistenceProviderRemoteFactory,
 ) async {
-  final provider = persistenceProviderLocalFactory();
+  final provider = persistenceProviderRemoteFactory();
   PersistenceFactoryContextImpl context;
   context = PersistenceFactoryContextImpl()
     ..persistenceId = PersistenceId('instance-1');
@@ -26,24 +26,24 @@ Future<ObjectLocal> getSubject(
     );
   await factory.delete(param);
 
-  final persistenceLocal = await factory.create(param);
-  return persistenceLocal;
+  final persistenceRemote = await factory.create(param);
+  return persistenceRemote;
 }
 
 void main() {
   Glados(
     any.refValue,
-    // any.persistenceLocalEffectList,
+    // any.persistenceRemoteEffectList,
   ).test('produce expected output for valid call sequence', (
     refValue,
     // calls,
   ) async {
     final subject = await getSubject(
         refValue,
-        () => ObjectLocalFactoryProvider(
-              childFactoryProvider: PersistenceLocalFactoryProvider(
+        () => ObjectRemoteFactoryProvider(
+              childFactoryProvider: PersistenceRemoteFactoryProvider(
                 adapterFactoryProvider:
-                    PersistenceLocalAdapterFactoryProviderSembast.inMemory(),
+                    PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
               ),
             ));
     await subject.provision(
@@ -64,8 +64,8 @@ void main() {
 }
 
 Future<void> apply(
-  CoreObjectLocal subject,
-  Iterable<ObjectLocalEffect> calls,
+  CoreObjectRemote subject,
+  Iterable<ObjectRemoteEffect> calls,
 // int startSequenceNumber,
 ) async {
   const startSequenceNumber = 0;

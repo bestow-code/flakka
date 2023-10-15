@@ -1,4 +1,4 @@
-name: core_object_local_test
+name: core_object_remote_test
 version: 0.1.2
 description: A store for core platform's Entry
 repository: https://github.com/bestow-code/flakka
@@ -11,13 +11,13 @@ dependencies:
   core_common:
   core_common_impl:
   core_object_base:
-  core_object_local:
+  core_object_remote:
   core_persistence_base:
   core_persistence_base_impl:
   core_persistence_base_test:
-  core_persistence_local:
-  core_persistence_local_impl:
-  core_persistence_local_test:
+  core_persistence_remote:
+  core_persistence_remote_impl:
+  core_persistence_remote_test:
   freezed_annotation: ^2.2.0
   get_it:
   injectable:
@@ -44,4 +44,4 @@ index_generator:
         - src
       docs: Foundation for Core Entry Store
       exports:
-        - package: package:core_persistence_local_test/core_persistence_local_test.dart
+        - package: package:core_persistence_remote_test/core_persistence_remote_test.dart
