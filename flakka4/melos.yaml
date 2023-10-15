@@ -87,9 +87,11 @@ scripts:
     exec:
       concurrency: 20
   index_generator:
-    run: |
-      melos exec --diff=HEAD -c 43 -- \
-        flutter pub global run index_generator
+    run: flutter pub global run index_generator
+    exec:
+      concurrency: 10
+    packageFilters:
+      scope:
   index_generator:all:
     run: |
       melos exec -c 30 -- \

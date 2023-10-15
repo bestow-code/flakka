@@ -9,8 +9,6 @@ export 'src/adapter/core_persistence_local_adapter_factory_provider.dart';
 export 'src/io/core_persistence_local.dart';
 export 'src/io/core_persistence_local_factory.dart';
 export 'src/io/core_persistence_local_factory_provider.dart';
-export 'src/model/head_ref.dart';
 export 'src/model/persistence_local_effect.dart';
-export 'src/model/persistence_local_provision_request.dart';
 export 'src/model/persistence_local_provision_state.dart';
 export 'src/model/persistence_local_update.dart';

@@ -1,12 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'persistence_local_provision_request.freezed.dart';
+part 'persistence_provisioning.freezed.dart';
 
 @freezed
 class PersistenceProvisioning with _$PersistenceProvisioning {
   factory PersistenceProvisioning.initialize({
-    required String ref,
-    required int createdAt,
+    required ({String ref, int createdAt}) ifNew,
   }) = PersistenceProvisioningInitialize;
 
   factory PersistenceProvisioning.resume({
