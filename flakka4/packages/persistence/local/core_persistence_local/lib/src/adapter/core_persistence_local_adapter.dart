@@ -9,7 +9,7 @@ abstract interface class CorePersistenceLocalAdapter
     implements CorePersistenceAdapter {
   // Write
   Future<void> provision({
-    required PersistenceLocalProvisionRequest request,
+    required PersistenceProvisioning request,
   });
 
   Future<void> append({
@@ -37,9 +37,16 @@ abstract interface class CorePersistenceLocalAdapter
   });
 
   // Read
-  Stream<({String ref, int sequenceNumber})?> get headSnapshot;
+  Stream<({String ref, int sequenceNumber})> get headSnapshot;
 
-  Stream<Map<String, JsonMap>> get entrySnapshot;
+  Stream<Map<String, ({Iterable<String> parent, int createdAt})>>
+      get entrySnapshot;
 
   Stream<Map<String, JsonMap>> get eventSnapshot;
+
+  Future<
+      ({
+        String ref,
+        int sequenceNumber,
+      })?> inspect();
 }

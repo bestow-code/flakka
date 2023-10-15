@@ -23,9 +23,9 @@ void main() {
     when(
       () => remoteAdapter.initialize(ifEmpty: newObjectPropsFactory),
     ).thenAnswer((invocation) async => initialData);
-    when(() => localAdapter.initialize(data: initialData)).thenAnswer(
-      (invocation) async {},
-    );
+    // when(() => localAdapter.initialize(data: initialData)).thenAnswer(
+    //   (invocation) async {},
+    // );
     expect(
       await initializeObjectInstance(
         newObjectPropsFactory,

@@ -2,7 +2,7 @@ import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:version/version.dart';
 
-abstract interface class PersistenceFactoryParam implements CoreFactoryParam {
+abstract interface class PersistenceFactoryParam implements FactoryParam {
   ObjectPath get objectPath;
 
   set objectPath(ObjectPath objectPath);

@@ -11,4 +11,5 @@ abstract interface class CoreObjectRemoteIO {
   StreamSink<ObjectEffectRemote> get effect;
 
   Stream<ObjectUpdateRemote> get update;
+  Future<void> provision(PersistenceProvisioningInitialize privisioning);
 }

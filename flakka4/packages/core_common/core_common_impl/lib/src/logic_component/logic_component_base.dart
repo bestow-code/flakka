@@ -6,65 +6,41 @@ import 'package:rxdart/rxdart.dart';
 
 abstract class ResourceBase<In, Out> implements CoreResource<In, Out> {
   @override
-  PublishSubject<In> get input => _input;
-
-  final _input = PublishSubject<In>();
+  StreamConsumer<In> get input => _inputSubject;
 
   @override
-  BehaviorSubject<Either<({String? token, dynamic data}), Out>>
-      get materialized => _materialized;
+  ValueStream<Out> get output => _outputSubject;
 
-  final _materialized =
-      BehaviorSubject<Either<({String? token, dynamic data}), Out>>();
+  PublishSubject<In> get inputSubject => _inputSubject;
 
-  @override
-  ValueStream<Out> get output => _output;
+  BehaviorSubject<Out> get outputSubject => _outputSubject;
 
-  late final _output = ValueConnectableStream<Out>(
-    materialized
-        .map((event) => event.fold((left) => null, (right) => right))
-        .whereType(),
-  );
+  final _inputSubject = PublishSubject<In>();
+  final _outputSubject = BehaviorSubject<Out>();
 
   @override
-  ValueStream<({String? token, dynamic data})> get provisioning =>
-      _provisioning;
-
-  late final _provisioning =
-      ValueConnectableStream<({String? token, dynamic data})>(
-    materialized
-        .map((event) => event.fold((left) => left, (right) => null))
-        .whereNotNull()
-        .map((data) => (token: '', data: data)),
-  );
-
-  @override
+  @mustCallSuper
   CompositeSubscription connect() {
-    return _subscription = CompositeSubscription()
-      ..add(_output.connect())
-      ..add(_provisioning.connect());
+    return _subscription = CompositeSubscription();
+    // ..add(_output.connect())
+    // ..add(_provisioning.connect());
   }
 
   late final CompositeSubscription _subscription;
 
   @override
   @mustCallSuper
-  Future<void> close() {
-    return Future.wait<void>([
+  Future<void> close() async {
+    await Future.wait<void>([
       _subscription.cancel(),
-      _input.close(),
-      _materialized.close(),
+      _inputSubject.close(),
+      _outputSubject.close(),
     ]);
   }
 
   @override
-  Future<dynamic> get done => _materialized.done;
+  Future<dynamic> get done => _outputSubject.done;
 
   @override
-  bool get isClosed => _input.isClosed;
-
-  @override
-  Future<void> provision(dynamic request, {required String token}) {
-    throw UnimplementedError();
-  }
+  bool get isClosed => _inputSubject.isClosed;
 }

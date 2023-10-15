@@ -6,7 +6,7 @@ part 'persistence_local_update.freezed.dart';
 @freezed
 class PersistenceLocalUpdate with _$PersistenceLocalUpdate {
   factory PersistenceLocalUpdate.ref({
-    required String? value,
+    required String value,
   }) = PersistenceLocalUpdateRef;
 
   factory PersistenceLocalUpdate.event({

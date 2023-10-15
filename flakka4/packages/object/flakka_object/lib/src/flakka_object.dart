@@ -11,7 +11,7 @@ class FlakkaObject extends FlakkaPersistence {
   CoreObjectIOFactoryProvider get objectIOFactoryProvider =>
       ObjectIOFactoryProvider(
         adaptersFactoryProvider: getPersistenceAdapterFactoryProvider(),
-        localIOFactoryProvider: ObjectLocalStoreFactoryProvider(),
+        localIOFactoryProvider: ObjectLocalFactoryProvider(),
         remoteIOFactoryProvider: ObjectStoreRemoteFactoryProvider(),
       );
 

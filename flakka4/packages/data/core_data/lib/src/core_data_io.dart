@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:core_data/core_data.dart';
 
-abstract interface class CoreDataIO<Event extends CoreEvent,
+abstract interface class CoreData<Event extends CoreEvent,
     State extends CoreState, View extends CoreView> {
   Future<InitialDataInstanceData> initialize(
     InitialDataProps Function() ifEmpty,

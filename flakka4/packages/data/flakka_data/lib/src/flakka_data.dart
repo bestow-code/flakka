@@ -8,7 +8,7 @@ class FlakkaData extends FlakkaObject {
   CoreDataIOFactoryProvider get dataIOFactoryProvider =>
       DataIOFactoryProvider(objectIOFactoryProvider: objectIOFactoryProvider);
 
-  Future<CoreDataIO<Event, State, View>> getDataIO<Event extends CoreEvent,
+  Future<CoreData<Event, State, View>> getDataIO<Event extends CoreEvent,
           State extends CoreState, View extends CoreView>(String path) async =>
       dataIOFactoryProvider
           .getFactory(persistenceId.value)

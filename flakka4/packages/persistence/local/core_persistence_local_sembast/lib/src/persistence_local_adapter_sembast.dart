@@ -2,6 +2,7 @@ import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:sembast/sembast.dart';
 
 class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
@@ -24,18 +25,28 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   );
 
   @override
-  Stream<({String ref, int sequenceNumber})?> get headSnapshot =>
-      store.head.query().onSnapshots(_database).map(
-            (event) => event.singleOrNull != null ?  (
-              ref: event.single['ref']! as String,
-              sequenceNumber: event.single['sequenceNumber']! as int
-            ) : null,
-          );
+  Stream<({String ref, int sequenceNumber})> get headSnapshot => store.head
+      .query()
+      .onSnapshots(_database)
+      .map(
+        (event) => event.singleOrNull != null
+            ? (
+                ref: event.single['ref']! as String,
+                sequenceNumber: event.single['sequenceNumber']! as int
+              )
+            : null,
+      )
+      .whereNotNull();
 
   @override
-  Stream<Map<String, JsonMap>> get entrySnapshot =>
-      store.entry.query().onSnapshots(_database).map((event) =>
-          Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))));
+  Stream<Map<String, ({Iterable<String> parent, int createdAt})>>
+      get entrySnapshot => store.entry.query().onSnapshots(_database).map(
+            (event) => Map.fromEntries(
+              event.map(
+                (e) => MapEntry(e.key, EntryProps.fromJson(e.value).toRecord()),
+              ),
+            ),
+          );
 
   @override
   Stream<Map<String, JsonMap>> get eventSnapshot =>
@@ -62,7 +73,8 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
         final head = HeadRef.fromJson(headJson);
         if (sequenceNumber != head.sequenceNumber + 1) {
           throw Exception(
-              'invalid sequenceNumber: $sequenceNumber [current: ${head.sequenceNumber}]');
+            'invalid sequenceNumber: $sequenceNumber [current: ${head.sequenceNumber}]',
+          );
         }
         await store.entry.record(ref).update(
               transaction,
@@ -72,16 +84,19 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
           await store.event.record(ref).put(transaction, event);
         }
         await store.head.record(persistenceId.value).update(
-            transaction,
-            HeadRef(
-              ref: ref,
-              sequenceNumber: sequenceNumber,
-            ).toJson());
+              transaction,
+              HeadRef(
+                ref: ref,
+                sequenceNumber: sequenceNumber,
+              ).toJson(),
+            );
       });
 
   @override
-  Future<void> add(
-      {required String ref, required StateViewObject stateView}) async {
+  Future<void> add({
+    required String ref,
+    required StateViewObject stateView,
+  }) async {
     return _database.transaction((transaction) async {
       await store.stateRef.add(transaction, ref);
       await store.state.record(ref).add(transaction, stateView.toJson());
@@ -89,18 +104,19 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   }
 
   @override
-  Future<void> import(
-          {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
-              entry,
-          Map<String, JsonMap>? event,
-          Map<String, StateViewObject>? stateView}) async =>
+  Future<void> import({
+    Map<String, ({int createdAt, Iterable<String> parent, String ref})>? entry,
+    Map<String, JsonMap>? event,
+    Map<String, StateViewObject>? stateView,
+  }) async =>
       _database.transaction((transaction) async {
         if (entry != null) {
           entry.forEach((ref, value) async {
             await store.entry.record(ref).add(
-                transaction,
-                EntryProps(parent: value.parent, createdAt: value.createdAt)
-                    .toJson());
+                  transaction,
+                  EntryProps(parent: value.parent, createdAt: value.createdAt)
+                      .toJson(),
+                );
           });
         }
         if (event != null) {
@@ -117,19 +133,22 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
       });
 
   @override
-  Future<void> forward(
-          {required String ref, required int sequenceNumber}) async =>
+  Future<void> forward({
+    required String ref,
+    required int sequenceNumber,
+  }) async =>
       _database.transaction((transaction) async {
         final head =
             await store.head.record(persistenceId.value).get(transaction);
         if (head != null) {
           final headRef = HeadRef.fromJson(head);
           if (headRef.sequenceNumber + 1 != sequenceNumber) {
-            throw Exception('invalid sequenceNumber');
+            throw Exception('invalid sequenceNumber: $sequenceNumber, expected: ${headRef.sequenceNumber}');
           } else {
             final result = await store.head.record(persistenceId.value).update(
-                transaction,
-                HeadRef(ref: ref, sequenceNumber: sequenceNumber).toJson());
+                  transaction,
+                  HeadRef(ref: ref, sequenceNumber: sequenceNumber).toJson(),
+                );
             assert(result != null, 'Head ref write failed');
           }
         } else {
@@ -140,8 +159,7 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
       });
 
   @override
-  Future<void> provision(
-          {required PersistenceLocalProvisionRequest request}) async =>
+  Future<void> provision({required PersistenceProvisioning request}) async =>
       _database.transaction((transaction) async {
         if (await store.head.record(persistenceId.value).exists(transaction)) {
           throw Exception(
@@ -150,17 +168,22 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
         }
         await request.map(
           initialize: (initialize) async =>
-               store.head.record(persistenceId.value).put(transaction, {
+              store.head.record(persistenceId.value).put(transaction, {
             'ref': request.ref,
             'sequenceNumber': 0,
           }),
           resume: (resume) async =>
-               store.head.record(persistenceId.value).put(transaction, {
+              store.head.record(persistenceId.value).put(transaction, {
             'ref': request.ref,
             'sequenceNumber': resume.sequenceNumber,
           }),
         );
       });
+
+  @override
+  Future<({String ref, int sequenceNumber})?> inspect() {
+    return throw UnimplementedError();
+  }
 
 // @override
 // Future<void> add(

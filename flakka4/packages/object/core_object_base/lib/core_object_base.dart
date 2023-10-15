@@ -3,4 +3,4 @@
 /// Common libraries for core_platform
 library core_object_base;
 
-export 'src/core_object.dart';
+export 'src/core_object_base.dart';

@@ -12,14 +12,14 @@ abstract class AsyncIOBase<In, Out> extends IOBase<In, Out> {
   @override
   @mustCallSuper
   CompositeSubscription connect() {
-    return super.connect()
+    return super.connect();
       // ..add(
       //   inputStream.asyncMap(onInput).listen(null),
       // )
-      ..add(
-        Rx.concat([Rx.fromCallable(buildInitialValueOut), buildOutputSource()])
-            .listen(null),
-      );
+      // ..add(
+      //   Rx.concat([Rx.fromCallable(buildInitialValueOut), buildOutputSource()])
+      //       .listen(null),
+      // );
   }
 
   @protected

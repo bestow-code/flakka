@@ -107,8 +107,8 @@ class __$$_EntryPropsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EntryProps implements _EntryProps {
-  _$_EntryProps({required this.parent, required this.createdAt});
+class _$_EntryProps extends _EntryProps {
+  _$_EntryProps({required this.parent, required this.createdAt}) : super._();
 
   factory _$_EntryProps.fromJson(Map<String, dynamic> json) =>
       _$$_EntryPropsFromJson(json);
@@ -152,10 +152,11 @@ class _$_EntryProps implements _EntryProps {
   }
 }
 
-abstract class _EntryProps implements EntryProps {
+abstract class _EntryProps extends EntryProps {
   factory _EntryProps(
       {required final Iterable<String> parent,
       required final int createdAt}) = _$_EntryProps;
+  _EntryProps._() : super._();
 
   factory _EntryProps.fromJson(Map<String, dynamic> json) =
       _$_EntryProps.fromJson;

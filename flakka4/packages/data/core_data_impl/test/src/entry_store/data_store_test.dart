@@ -31,10 +31,10 @@ void main() {
     final dataConverter = TestDataConverter.main();
     group('DataEffect', () {
       group('Append', () {
-        blocTest<TestDataStore, DataStoreState<TestEvent, TestState, TestView>>(
+        blocTest<TestDataStore, DataState<TestEvent, TestState, TestView>>(
           'emits ObjectEffectAppend',
           build: () => TestDataStore(
-            DataStoreState<TestEvent, TestState, TestView>.initial(),
+            DataState<TestEvent, TestState, TestView>.initial(),
             objectEffect: objectEffect,
             objectUpdate: objectUpdate.stream,
             dataConverter: dataConverter,

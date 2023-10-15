@@ -13,20 +13,21 @@ class ObjectIOFactory implements CoreObjectIOFactory {
     required this.remoteIOFactory,
   });
 
-  final CoreObjectLocalIOFactory localIOFactory;
+  final CoreObjectLocalFactory localIOFactory;
   final CoreObjectRemoteIOFactory remoteIOFactory;
   final CorePersistenceAdaptersFactory adaptersFactory;
 
   @override
   Future<CoreObjectIO> getInstance(String path) async {
     final adapters = await adaptersFactory.get(path);
-    late final CoreObjectLocalIO local;
+    late final CoreObjectLocal local;
     late final CoreObjectRemoteIO remote;
+
     await Future.wait(
-      [
-        localIOFactory
-            .getInstance(adapters.local)
-            .then((value) => local = value),
+      [throw UnimplementedError(),
+        // localIOFactory
+        //     .getInstance(adapters.local)
+        //     .then((value) => local = value),
         remoteIOFactory
             .getInstance(adapters.remote)
             .then((value) => remote = value),

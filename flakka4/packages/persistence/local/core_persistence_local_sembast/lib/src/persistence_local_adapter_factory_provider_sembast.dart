@@ -26,4 +26,14 @@ class PersistenceLocalAdapterFactoryProviderSembast
         persistenceId: context.persistenceId,
         databaseFactory: databaseFactory,
       );
+
+  @override
+  PersistenceLocalAdapterFactoryBase build(
+    covariant PersistenceFactoryContext context,
+  ) =>
+      PersistenceLocalAdapterFactorySembast(
+        context: context,
+        persistenceId: context.persistenceId,
+        databaseFactory: databaseFactory,
+      );
 }

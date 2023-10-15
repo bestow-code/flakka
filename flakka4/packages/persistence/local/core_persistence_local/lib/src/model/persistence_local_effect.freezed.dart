@@ -18,7 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PersistenceLocalEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LocalHeadEffect data) head,
+    required TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)
+        append,
+    required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -28,7 +31,10 @@ mixin _$PersistenceLocalEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LocalHeadEffect data)? head,
+    TResult? Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -38,7 +44,10 @@ mixin _$PersistenceLocalEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LocalHeadEffect data)? head,
+    TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -49,19 +58,22 @@ mixin _$PersistenceLocalEffect {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalEffectHead value) head,
+    required TResult Function(PersistenceLocalEffectAppend value) append,
+    required TResult Function(PersistenceLocalEffectForward value) forward,
     required TResult Function(PersistenceLocalEffectImport value) import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalEffectHead value)? head,
+    TResult? Function(PersistenceLocalEffectAppend value)? append,
+    TResult? Function(PersistenceLocalEffectForward value)? forward,
     TResult? Function(PersistenceLocalEffectImport value)? import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalEffectHead value)? head,
+    TResult Function(PersistenceLocalEffectAppend value)? append,
+    TResult Function(PersistenceLocalEffectForward value)? forward,
     TResult Function(PersistenceLocalEffectImport value)? import,
     required TResult orElse(),
   }) =>
@@ -88,110 +100,168 @@ class _$PersistenceLocalEffectCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalEffectHeadCopyWith<$Res> {
-  factory _$$PersistenceLocalEffectHeadCopyWith(
-          _$PersistenceLocalEffectHead value,
-          $Res Function(_$PersistenceLocalEffectHead) then) =
-      __$$PersistenceLocalEffectHeadCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalEffectAppendCopyWith<$Res> {
+  factory _$$PersistenceLocalEffectAppendCopyWith(
+          _$PersistenceLocalEffectAppend value,
+          $Res Function(_$PersistenceLocalEffectAppend) then) =
+      __$$PersistenceLocalEffectAppendCopyWithImpl<$Res>;
   @useResult
-  $Res call({LocalHeadEffect data});
-
-  $LocalHeadEffectCopyWith<$Res> get data;
+  $Res call(
+      {String ref,
+      Iterable<String> parent,
+      Map<String, dynamic>? event,
+      int createdAt,
+      int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceLocalEffectHeadCopyWithImpl<$Res>
+class __$$PersistenceLocalEffectAppendCopyWithImpl<$Res>
     extends _$PersistenceLocalEffectCopyWithImpl<$Res,
-        _$PersistenceLocalEffectHead>
-    implements _$$PersistenceLocalEffectHeadCopyWith<$Res> {
-  __$$PersistenceLocalEffectHeadCopyWithImpl(
-      _$PersistenceLocalEffectHead _value,
-      $Res Function(_$PersistenceLocalEffectHead) _then)
+        _$PersistenceLocalEffectAppend>
+    implements _$$PersistenceLocalEffectAppendCopyWith<$Res> {
+  __$$PersistenceLocalEffectAppendCopyWithImpl(
+      _$PersistenceLocalEffectAppend _value,
+      $Res Function(_$PersistenceLocalEffectAppend) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? ref = null,
+    Object? parent = null,
+    Object? event = freezed,
+    Object? createdAt = null,
+    Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalEffectHead(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as LocalHeadEffect,
+    return _then(_$PersistenceLocalEffectAppend(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      parent: null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Iterable<String>,
+      event: freezed == event
+          ? _value._event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LocalHeadEffectCopyWith<$Res> get data {
-    return $LocalHeadEffectCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$PersistenceLocalEffectHead implements PersistenceLocalEffectHead {
-  _$PersistenceLocalEffectHead({required this.data});
+class _$PersistenceLocalEffectAppend implements PersistenceLocalEffectAppend {
+  _$PersistenceLocalEffectAppend(
+      {required this.ref,
+      required this.parent,
+      required final Map<String, dynamic>? event,
+      required this.createdAt,
+      required this.sequenceNumber})
+      : _event = event;
 
   @override
-  final LocalHeadEffect data;
+  final String ref;
+  @override
+  final Iterable<String> parent;
+  final Map<String, dynamic>? _event;
+  @override
+  Map<String, dynamic>? get event {
+    final value = _event;
+    if (value == null) return null;
+    if (_event is EqualUnmodifiableMapView) return _event;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @override
+  final int createdAt;
+  @override
+  final int sequenceNumber;
 
   @override
   String toString() {
-    return 'PersistenceLocalEffect.head(data: $data)';
+    return 'PersistenceLocalEffect.append(ref: $ref, parent: $parent, event: $event, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalEffectHead &&
-            (identical(other.data, data) || other.data == data));
+            other is _$PersistenceLocalEffectAppend &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            const DeepCollectionEquality().equals(other.parent, parent) &&
+            const DeepCollectionEquality().equals(other._event, _event) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(
+      runtimeType,
+      ref,
+      const DeepCollectionEquality().hash(parent),
+      const DeepCollectionEquality().hash(_event),
+      createdAt,
+      sequenceNumber);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalEffectHeadCopyWith<_$PersistenceLocalEffectHead>
-      get copyWith => __$$PersistenceLocalEffectHeadCopyWithImpl<
-          _$PersistenceLocalEffectHead>(this, _$identity);
+  _$$PersistenceLocalEffectAppendCopyWith<_$PersistenceLocalEffectAppend>
+      get copyWith => __$$PersistenceLocalEffectAppendCopyWithImpl<
+          _$PersistenceLocalEffectAppend>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LocalHeadEffect data) head,
+    required TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)
+        append,
+    required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event)
         import,
   }) {
-    return head(data);
+    return append(ref, parent, event, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LocalHeadEffect data)? head,
+    TResult? Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event)?
         import,
   }) {
-    return head?.call(data);
+    return append?.call(ref, parent, event, createdAt, sequenceNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LocalHeadEffect data)? head,
+    TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -199,8 +269,8 @@ class _$PersistenceLocalEffectHead implements PersistenceLocalEffectHead {
         import,
     required TResult orElse(),
   }) {
-    if (head != null) {
-      return head(data);
+    if (append != null) {
+      return append(ref, parent, event, createdAt, sequenceNumber);
     }
     return orElse();
   }
@@ -208,42 +278,228 @@ class _$PersistenceLocalEffectHead implements PersistenceLocalEffectHead {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalEffectHead value) head,
+    required TResult Function(PersistenceLocalEffectAppend value) append,
+    required TResult Function(PersistenceLocalEffectForward value) forward,
     required TResult Function(PersistenceLocalEffectImport value) import,
   }) {
-    return head(this);
+    return append(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalEffectHead value)? head,
+    TResult? Function(PersistenceLocalEffectAppend value)? append,
+    TResult? Function(PersistenceLocalEffectForward value)? forward,
     TResult? Function(PersistenceLocalEffectImport value)? import,
   }) {
-    return head?.call(this);
+    return append?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalEffectHead value)? head,
+    TResult Function(PersistenceLocalEffectAppend value)? append,
+    TResult Function(PersistenceLocalEffectForward value)? forward,
     TResult Function(PersistenceLocalEffectImport value)? import,
     required TResult orElse(),
   }) {
-    if (head != null) {
-      return head(this);
+    if (append != null) {
+      return append(this);
     }
     return orElse();
   }
 }
 
-abstract class PersistenceLocalEffectHead implements PersistenceLocalEffect {
-  factory PersistenceLocalEffectHead({required final LocalHeadEffect data}) =
-      _$PersistenceLocalEffectHead;
+abstract class PersistenceLocalEffectAppend
+    implements PersistenceLocalEffect, PersistenceLocalEffectHeadUpdate {
+  factory PersistenceLocalEffectAppend(
+      {required final String ref,
+      required final Iterable<String> parent,
+      required final Map<String, dynamic>? event,
+      required final int createdAt,
+      required final int sequenceNumber}) = _$PersistenceLocalEffectAppend;
 
-  LocalHeadEffect get data;
+  String get ref;
+  Iterable<String> get parent;
+  Map<String, dynamic>? get event;
+  int get createdAt;
+  int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalEffectHeadCopyWith<_$PersistenceLocalEffectHead>
+  _$$PersistenceLocalEffectAppendCopyWith<_$PersistenceLocalEffectAppend>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PersistenceLocalEffectForwardCopyWith<$Res> {
+  factory _$$PersistenceLocalEffectForwardCopyWith(
+          _$PersistenceLocalEffectForward value,
+          $Res Function(_$PersistenceLocalEffectForward) then) =
+      __$$PersistenceLocalEffectForwardCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, int sequenceNumber});
+}
+
+/// @nodoc
+class __$$PersistenceLocalEffectForwardCopyWithImpl<$Res>
+    extends _$PersistenceLocalEffectCopyWithImpl<$Res,
+        _$PersistenceLocalEffectForward>
+    implements _$$PersistenceLocalEffectForwardCopyWith<$Res> {
+  __$$PersistenceLocalEffectForwardCopyWithImpl(
+      _$PersistenceLocalEffectForward _value,
+      $Res Function(_$PersistenceLocalEffectForward) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$PersistenceLocalEffectForward(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PersistenceLocalEffectForward implements PersistenceLocalEffectForward {
+  _$PersistenceLocalEffectForward(
+      {required this.ref, required this.sequenceNumber});
+
+  @override
+  final String ref;
+  @override
+  final int sequenceNumber;
+
+  @override
+  String toString() {
+    return 'PersistenceLocalEffect.forward(ref: $ref, sequenceNumber: $sequenceNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersistenceLocalEffectForward &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, sequenceNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersistenceLocalEffectForwardCopyWith<_$PersistenceLocalEffectForward>
+      get copyWith => __$$PersistenceLocalEffectForwardCopyWithImpl<
+          _$PersistenceLocalEffectForward>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)
+        append,
+    required TResult Function(String ref, int sequenceNumber) forward,
+    required TResult Function(
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+                entry,
+            Map<String, JsonMap>? event)
+        import,
+  }) {
+    return forward(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult? Function(String ref, int sequenceNumber)? forward,
+    TResult? Function(
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+                entry,
+            Map<String, JsonMap>? event)?
+        import,
+  }) {
+    return forward?.call(ref, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult Function(String ref, int sequenceNumber)? forward,
+    TResult Function(
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+                entry,
+            Map<String, JsonMap>? event)?
+        import,
+    required TResult orElse(),
+  }) {
+    if (forward != null) {
+      return forward(ref, sequenceNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PersistenceLocalEffectAppend value) append,
+    required TResult Function(PersistenceLocalEffectForward value) forward,
+    required TResult Function(PersistenceLocalEffectImport value) import,
+  }) {
+    return forward(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceLocalEffectAppend value)? append,
+    TResult? Function(PersistenceLocalEffectForward value)? forward,
+    TResult? Function(PersistenceLocalEffectImport value)? import,
+  }) {
+    return forward?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PersistenceLocalEffectAppend value)? append,
+    TResult Function(PersistenceLocalEffectForward value)? forward,
+    TResult Function(PersistenceLocalEffectImport value)? import,
+    required TResult orElse(),
+  }) {
+    if (forward != null) {
+      return forward(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PersistenceLocalEffectForward implements PersistenceLocalEffect {
+  factory PersistenceLocalEffectForward(
+      {required final String ref,
+      required final int sequenceNumber}) = _$PersistenceLocalEffectForward;
+
+  String get ref;
+  int get sequenceNumber;
+  @JsonKey(ignore: true)
+  _$$PersistenceLocalEffectForwardCopyWith<_$PersistenceLocalEffectForward>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -353,7 +609,10 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LocalHeadEffect data) head,
+    required TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)
+        append,
+    required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -366,7 +625,10 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LocalHeadEffect data)? head,
+    TResult? Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -379,7 +641,10 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LocalHeadEffect data)? head,
+    TResult Function(String ref, Iterable<String> parent,
+            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
+        append,
+    TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
@@ -396,7 +661,8 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalEffectHead value) head,
+    required TResult Function(PersistenceLocalEffectAppend value) append,
+    required TResult Function(PersistenceLocalEffectForward value) forward,
     required TResult Function(PersistenceLocalEffectImport value) import,
   }) {
     return import(this);
@@ -405,7 +671,8 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalEffectHead value)? head,
+    TResult? Function(PersistenceLocalEffectAppend value)? append,
+    TResult? Function(PersistenceLocalEffectForward value)? forward,
     TResult? Function(PersistenceLocalEffectImport value)? import,
   }) {
     return import?.call(this);
@@ -414,7 +681,8 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalEffectHead value)? head,
+    TResult Function(PersistenceLocalEffectAppend value)? append,
+    TResult Function(PersistenceLocalEffectForward value)? forward,
     TResult Function(PersistenceLocalEffectImport value)? import,
     required TResult orElse(),
   }) {

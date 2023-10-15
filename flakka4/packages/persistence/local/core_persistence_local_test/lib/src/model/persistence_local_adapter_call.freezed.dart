@@ -18,8 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PersistenceLocalAdapterCall {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequest request)
-        provision,
     required TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)
         append,
@@ -35,7 +33,6 @@ mixin _$PersistenceLocalAdapterCall {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequest request)? provision,
     TResult? Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -51,7 +48,6 @@ mixin _$PersistenceLocalAdapterCall {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequest request)? provision,
     TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -68,8 +64,6 @@ mixin _$PersistenceLocalAdapterCall {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallProvision value)
-        provision,
     required TResult Function(PersistenceLocalAdapterCallAppend value) append,
     required TResult Function(PersistenceLocalAdapterCallAdd value) add,
     required TResult Function(PersistenceLocalAdapterCallForward value) forward,
@@ -78,7 +72,6 @@ mixin _$PersistenceLocalAdapterCall {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -87,7 +80,6 @@ mixin _$PersistenceLocalAdapterCall {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -116,201 +108,6 @@ class _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$PersistenceLocalAdapterCallProvisionCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallProvisionCopyWith(
-          _$PersistenceLocalAdapterCallProvision value,
-          $Res Function(_$PersistenceLocalAdapterCallProvision) then) =
-      __$$PersistenceLocalAdapterCallProvisionCopyWithImpl<$Res>;
-  @useResult
-  $Res call({PersistenceLocalProvisionRequest request});
-
-  $PersistenceLocalProvisionRequestCopyWith<$Res> get request;
-}
-
-/// @nodoc
-class __$$PersistenceLocalAdapterCallProvisionCopyWithImpl<$Res>
-    extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallProvision>
-    implements _$$PersistenceLocalAdapterCallProvisionCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallProvisionCopyWithImpl(
-      _$PersistenceLocalAdapterCallProvision _value,
-      $Res Function(_$PersistenceLocalAdapterCallProvision) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? request = null,
-  }) {
-    return _then(_$PersistenceLocalAdapterCallProvision(
-      request: null == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as PersistenceLocalProvisionRequest,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PersistenceLocalProvisionRequestCopyWith<$Res> get request {
-    return $PersistenceLocalProvisionRequestCopyWith<$Res>(_value.request,
-        (value) {
-      return _then(_value.copyWith(request: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$PersistenceLocalAdapterCallProvision
-    implements PersistenceLocalAdapterCallProvision {
-  _$PersistenceLocalAdapterCallProvision({required this.request});
-
-  @override
-  final PersistenceLocalProvisionRequest request;
-
-  @override
-  String toString() {
-    return 'PersistenceLocalAdapterCall.provision(request: $request)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallProvision &&
-            (identical(other.request, request) || other.request == request));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, request);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallProvisionCopyWith<
-          _$PersistenceLocalAdapterCallProvision>
-      get copyWith => __$$PersistenceLocalAdapterCallProvisionCopyWithImpl<
-          _$PersistenceLocalAdapterCallProvision>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequest request)
-        provision,
-    required TResult Function(String ref, List<String> parent,
-            Map<String, dynamic>? event, int createdAt, int sequenceNumber)
-        append,
-    required TResult Function(String ref, StateViewObject stateView) add,
-    required TResult Function(String ref, int sequenceNumber) forward,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
-                entry,
-            Map<String, JsonMap>? event,
-            Map<String, StateViewObject>? stateView)
-        import,
-  }) {
-    return provision(request);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequest request)? provision,
-    TResult? Function(String ref, List<String> parent,
-            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
-        append,
-    TResult? Function(String ref, StateViewObject stateView)? add,
-    TResult? Function(String ref, int sequenceNumber)? forward,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
-                entry,
-            Map<String, JsonMap>? event,
-            Map<String, StateViewObject>? stateView)?
-        import,
-  }) {
-    return provision?.call(request);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequest request)? provision,
-    TResult Function(String ref, List<String> parent,
-            Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
-        append,
-    TResult Function(String ref, StateViewObject stateView)? add,
-    TResult Function(String ref, int sequenceNumber)? forward,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
-                entry,
-            Map<String, JsonMap>? event,
-            Map<String, StateViewObject>? stateView)?
-        import,
-    required TResult orElse(),
-  }) {
-    if (provision != null) {
-      return provision(request);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallProvision value)
-        provision,
-    required TResult Function(PersistenceLocalAdapterCallAppend value) append,
-    required TResult Function(PersistenceLocalAdapterCallAdd value) add,
-    required TResult Function(PersistenceLocalAdapterCallForward value) forward,
-    required TResult Function(PersistenceLocalAdapterCallImport value) import,
-  }) {
-    return provision(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallProvision value)? provision,
-    TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult? Function(PersistenceLocalAdapterCallImport value)? import,
-  }) {
-    return provision?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallProvision value)? provision,
-    TResult Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult Function(PersistenceLocalAdapterCallImport value)? import,
-    required TResult orElse(),
-  }) {
-    if (provision != null) {
-      return provision(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PersistenceLocalAdapterCallProvision
-    implements PersistenceLocalAdapterCall {
-  factory PersistenceLocalAdapterCallProvision(
-          {required final PersistenceLocalProvisionRequest request}) =
-      _$PersistenceLocalAdapterCallProvision;
-
-  PersistenceLocalProvisionRequest get request;
-  @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallProvisionCopyWith<
-          _$PersistenceLocalAdapterCallProvision>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -449,8 +246,6 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequest request)
-        provision,
     required TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)
         append,
@@ -469,7 +264,6 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequest request)? provision,
     TResult? Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -488,7 +282,6 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequest request)? provision,
     TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -511,8 +304,6 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallProvision value)
-        provision,
     required TResult Function(PersistenceLocalAdapterCallAppend value) append,
     required TResult Function(PersistenceLocalAdapterCallAdd value) add,
     required TResult Function(PersistenceLocalAdapterCallForward value) forward,
@@ -524,7 +315,6 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -536,7 +326,6 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -661,8 +450,6 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequest request)
-        provision,
     required TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)
         append,
@@ -681,7 +468,6 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequest request)? provision,
     TResult? Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -700,7 +486,6 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequest request)? provision,
     TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -723,8 +508,6 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallProvision value)
-        provision,
     required TResult Function(PersistenceLocalAdapterCallAppend value) append,
     required TResult Function(PersistenceLocalAdapterCallAdd value) add,
     required TResult Function(PersistenceLocalAdapterCallForward value) forward,
@@ -736,7 +519,6 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -748,7 +530,6 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -856,8 +637,6 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequest request)
-        provision,
     required TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)
         append,
@@ -876,7 +655,6 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequest request)? provision,
     TResult? Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -895,7 +673,6 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequest request)? provision,
     TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -918,8 +695,6 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallProvision value)
-        provision,
     required TResult Function(PersistenceLocalAdapterCallAppend value) append,
     required TResult Function(PersistenceLocalAdapterCallAdd value) add,
     required TResult Function(PersistenceLocalAdapterCallForward value) forward,
@@ -931,7 +706,6 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -943,7 +717,6 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -1102,8 +875,6 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequest request)
-        provision,
     required TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)
         append,
@@ -1122,7 +893,6 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequest request)? provision,
     TResult? Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -1141,7 +911,6 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequest request)? provision,
     TResult Function(String ref, List<String> parent,
             Map<String, dynamic>? event, int createdAt, int sequenceNumber)?
         append,
@@ -1164,8 +933,6 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallProvision value)
-        provision,
     required TResult Function(PersistenceLocalAdapterCallAppend value) append,
     required TResult Function(PersistenceLocalAdapterCallAdd value) add,
     required TResult Function(PersistenceLocalAdapterCallForward value) forward,
@@ -1177,7 +944,6 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
@@ -1189,7 +955,6 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallProvision value)? provision,
     TResult Function(PersistenceLocalAdapterCallAppend value)? append,
     TResult Function(PersistenceLocalAdapterCallAdd value)? add,
     TResult Function(PersistenceLocalAdapterCallForward value)? forward,

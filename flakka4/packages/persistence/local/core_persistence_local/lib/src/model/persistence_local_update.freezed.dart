@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PersistenceLocalUpdate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? value) ref,
+    required TResult Function(String value) ref,
     required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
@@ -27,7 +27,7 @@ mixin _$PersistenceLocalUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? ref,
+    TResult? Function(String value)? ref,
     TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -36,7 +36,7 @@ mixin _$PersistenceLocalUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? ref,
+    TResult Function(String value)? ref,
     TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -94,7 +94,7 @@ abstract class _$$PersistenceLocalUpdateRefCopyWith<$Res> {
           $Res Function(_$PersistenceLocalUpdateRef) then) =
       __$$PersistenceLocalUpdateRefCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? value});
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -109,13 +109,13 @@ class __$$PersistenceLocalUpdateRefCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? value = null,
   }) {
     return _then(_$PersistenceLocalUpdateRef(
-      value: freezed == value
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -126,7 +126,7 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   _$PersistenceLocalUpdateRef({required this.value});
 
   @override
-  final String? value;
+  final String value;
 
   @override
   String toString() {
@@ -154,7 +154,7 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? value) ref,
+    required TResult Function(String value) ref,
     required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
@@ -166,7 +166,7 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? ref,
+    TResult? Function(String value)? ref,
     TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -178,7 +178,7 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? ref,
+    TResult Function(String value)? ref,
     TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -227,10 +227,10 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
 }
 
 abstract class PersistenceLocalUpdateRef implements PersistenceLocalUpdate {
-  factory PersistenceLocalUpdateRef({required final String? value}) =
+  factory PersistenceLocalUpdateRef({required final String value}) =
       _$PersistenceLocalUpdateRef;
 
-  String? get value;
+  String get value;
   @JsonKey(ignore: true)
   _$$PersistenceLocalUpdateRefCopyWith<_$PersistenceLocalUpdateRef>
       get copyWith => throw _privateConstructorUsedError;
@@ -311,7 +311,7 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? value) ref,
+    required TResult Function(String value) ref,
     required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
@@ -323,7 +323,7 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? ref,
+    TResult? Function(String value)? ref,
     TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -335,7 +335,7 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? ref,
+    TResult Function(String value)? ref,
     TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -471,7 +471,7 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? value) ref,
+    required TResult Function(String value) ref,
     required TResult Function(Map<String, JsonMap> snapshot) event,
     required TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
@@ -483,7 +483,7 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? ref,
+    TResult? Function(String value)? ref,
     TResult? Function(Map<String, JsonMap> snapshot)? event,
     TResult? Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
@@ -495,7 +495,7 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? ref,
+    TResult Function(String value)? ref,
     TResult Function(Map<String, JsonMap> snapshot)? event,
     TResult Function(
             Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?

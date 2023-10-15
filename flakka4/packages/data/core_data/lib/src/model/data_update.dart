@@ -6,22 +6,17 @@ part 'data_update.freezed.dart';
 @freezed
 class DataUpdate<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DataUpdate<Event, State, View> {
-  factory DataUpdate.head({
-    required DataHead value,
-}) = DataUpdateHead;
-  factory DataUpdate.initial({
+  factory DataUpdate.headInitial({
     required Ref ref,
     required int sequenceNumber,
-  }) = DataUpdateInitial;
+  }) = DataUpdateHeadInitial;
 
   factory DataUpdate.entry({
-    required Map<Ref, ({Set<Ref> edges, DateTime createdAt})> Function() data,
+    required Map<Ref, ({Set<Ref> edges, Event? event, DateTime createdAt})>
+            Function()
+        data,
     required Set<Ref> pending,
   }) = DataUpdateEntry;
-
-  factory DataUpdate.event({
-    required Map<Ref, Event Function()> data,
-  }) = DataUpdateEvent;
 
   // factory DataUpdate.stateView({
   //   required Ref ref,
@@ -31,26 +26,4 @@ class DataUpdate<Event extends CoreEvent, State extends CoreState,
   factory DataUpdate.main({
     required Ref ref,
   }) = DataUpdateMain<Event, State, View>;
-}
-
-
-@freezed
-class DataHead with _$DataHead {
-  factory DataHead.acquiring({
-    required String claimKey,
-  }) = DataHeadAcquiring;
-
-  factory DataHead.locked({
-    required int createdAt,
-  }) = DataHeadLocked;
-
-  factory DataHead.importing({
-    required Ref ref,
-    required int sequenceNumber,
-  }) = DataHeadImporting;
-
-  factory DataHead.ready({
-    required Ref ref,
-    required int sequenceNumber,
-  }) = DataHeadReady;
 }

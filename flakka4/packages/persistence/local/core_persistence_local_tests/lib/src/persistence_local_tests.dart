@@ -21,55 +21,23 @@ void Function() persistenceAdapterLocalTests(
         (refValue, calls) async {
       final adapter =
           await getAdapter(refValue, persistenceProviderLocalFactory);
-      final provisionCalls =
-          calls.whereType<PersistenceLocalAdapterCallProvision>();
-      final provisionCall = provisionCalls.singleOrNull;
-      if (provisionCall != null) {
-        final firstHeadUpdate = calls
-            .whereType<PersistenceLocalAdapterCallHeadUpdate>()
-            .firstOrNull;
-        if (firstHeadUpdate != null) {
-          final firstProvisionIndex = calls.indexOf(provisionCall);
-          final firstHeadUpdateIndex = calls.indexOf(firstHeadUpdate);
-          if (firstProvisionIndex < firstHeadUpdateIndex) {
-            await expectLater(
-              () => PersistenceLocalAdapterCall.apply(adapter, calls),
-              returnsNormally,
-            );
-          } else {
-            await expectLater(
-              () => PersistenceLocalAdapterCall.apply(adapter, calls),
-              throwsException,
-            );
-          }
-        } else {
-          await expectLater(
-            () => PersistenceLocalAdapterCall.apply(adapter, calls),
-            returnsNormally,
-          );
-        }
-      } else {
-        if (provisionCalls.length > 1 ||
-            calls
-                .whereType<PersistenceLocalAdapterCallHeadUpdate>()
-                .isNotEmpty) {
-          await expectLater(
-            () => PersistenceLocalAdapterCall.apply(adapter, calls),
-            throwsException,
-          );
-        } else {
-          await expectLater(
-            () => PersistenceLocalAdapterCall.apply(adapter, calls),
-            returnsNormally,
-          );
-        }
-      }
-      // adapter
-      await Future.wait([
-        adapter.headSnapshot.firstOrNull,
-        adapter.entrySnapshot.firstOrNull,
-        adapter.eventSnapshot.firstOrNull,
-      ].whereNotNull());
+      await adapter.provision(
+        request: PersistenceProvisioning.resume(
+          ref: refValue,
+          sequenceNumber: 0,
+        ),
+      );
+      await expectLater(
+        () => PersistenceLocalAdapterCall.apply(adapter, calls),
+        returnsNormally,
+      );
+      await Future.wait(
+        [
+          adapter.headSnapshot.firstOrNull,
+          adapter.entrySnapshot.firstOrNull,
+          adapter.eventSnapshot.firstOrNull,
+        ].whereNotNull(),
+      );
     });
   };
 }
@@ -94,11 +62,5 @@ Future<CorePersistenceLocalAdapter> getAdapter(
     );
   await factory.delete(param);
   final adapter = await factory.create(param);
-  // await adapter.provision(
-  //   request: PersistenceLocalProvisionRequest.initialize(
-  //     ref: objectId,
-  //     createdAt: 0,
-  //   ),
-  // );
   return adapter;
 }

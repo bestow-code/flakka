@@ -7,14 +7,12 @@ import 'package:glados/glados.dart';
 part 'persistence_local_adapter_call.freezed.dart';
 
 abstract interface class PersistenceLocalAdapterCallHeadUpdate
-    implements PersistenceLocalAdapterCall {}
+    implements PersistenceLocalAdapterCall {
+  int get sequenceNumber;
+}
 
 @freezed
 class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
-  factory PersistenceLocalAdapterCall.provision({
-    required PersistenceLocalProvisionRequest request,
-  }) = PersistenceLocalAdapterCallProvision;
-
   @Implements<PersistenceLocalAdapterCallHeadUpdate>()
   factory PersistenceLocalAdapterCall.append({
     required String ref,
@@ -46,23 +44,11 @@ class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
     Iterable<PersistenceLocalAdapterCall> calls,
     // int startSequenceNumber,
   ) async {
-    final startSequenceNumber = calls
-        .whereType<PersistenceLocalAdapterCallProvision>()
-        .firstOrNull
-        ?.request
-        .map(initialize: (_) => 0, resume: (resume) => resume.sequenceNumber);
-    var sequenceNumber = startSequenceNumber ?? -1;
+    const startSequenceNumber = 0;
+    var sequenceNumber = startSequenceNumber;
     final sequencedCalls = calls
         .map(
           (e) => e.map(
-            provision: (provision) => provision.copyWith(
-              request: provision.request.map(
-                initialize: (initialize) => initialize,
-                resume: (resume) => resume.copyWith(
-                  sequenceNumber: sequenceNumber = sequenceNumber + 1,
-                ),
-              ),
-            ),
             append: (append) => append.copyWith(
               sequenceNumber: sequenceNumber = sequenceNumber + 1,
             ),
@@ -76,15 +62,6 @@ class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
         .toList();
     for (final e in sequencedCalls) {
       await e.map(
-        provision: (provision) => adapter.provision(
-          request: provision.request.map(
-            initialize: (initialize) => initialize,
-            resume: (resume) => PersistenceLocalProvisionRequest.resume(
-              ref: resume.ref,
-              sequenceNumber: resume.sequenceNumber,
-            ),
-          ),
-        ),
         append: (append) => adapter.append(
           ref: append.ref,
           parent: append.parent,
@@ -93,8 +70,8 @@ class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
           sequenceNumber: append.sequenceNumber,
         ),
         add: (add) => adapter.add(ref: add.ref, stateView: add.stateView),
-        forward: (forward) =>
-            adapter.forward(ref: forward.ref, sequenceNumber: sequenceNumber),
+        forward: (forward) => adapter.forward(
+            ref: forward.ref, sequenceNumber: forward.sequenceNumber),
         import: (import) => adapter.import(
           entry: import.entry,
           event: import.event,
@@ -106,22 +83,13 @@ class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
 }
 
 extension PersistenceLocalAdapterCallExtension on Any {
-  Generator<PersistenceLocalAdapterCallProvision>
-      get persistenceLocalAdapterCallProvision => combine2(
-            any.nonEmptyLetterOrDigits,
-            any.persistenceLocalProvisionRequest,
-            (token, request) => PersistenceLocalAdapterCallProvision(
-              request: request,
-            ),
-          );
+  Generator<PersistenceProvisioning> get persistenceLocalProvisionRequest =>
+      oneOf([
+        persistenceLocalProvisionRequestInitialize,
+        persistenceLocalProvisionRequestResume,
+      ]);
 
-  Generator<PersistenceLocalProvisionRequest>
-      get persistenceLocalProvisionRequest => oneOf([
-            persistenceLocalProvisionRequestInitialize,
-            persistenceLocalProvisionRequestResume,
-          ]);
-
-  Generator<PersistenceLocalProvisionRequestInitialize>
+  Generator<PersistenceProvisioningInitialize>
       get persistenceLocalProvisionRequestInitialize => combine2(
             any.nonEmptyLetterOrDigits,
             any.millisSinceEpoch,
@@ -129,20 +97,18 @@ extension PersistenceLocalAdapterCallExtension on Any {
               ref,
               createdAt,
             ) =>
-                PersistenceLocalProvisionRequestInitialize(
-              // claimKey: claimKey,
+                PersistenceProvisioningInitialize(
               ref: ref,
               createdAt: createdAt,
             ),
           );
 
-  Generator<PersistenceLocalProvisionRequestResume>
+  Generator<PersistenceProvisioningResume>
       get persistenceLocalProvisionRequestResume => combine3(
             any.nonEmptyLetterOrDigits,
             any.nonEmptyLetterOrDigits,
             any.positiveInt,
-            (claimKey, ref, sequenceNumber) =>
-                PersistenceLocalProvisionRequestResume(
+            (claimKey, ref, sequenceNumber) => PersistenceProvisioningResume(
               // claimKey: claimKey,
               ref: ref,
               sequenceNumber: sequenceNumber,
@@ -153,7 +119,7 @@ extension PersistenceLocalAdapterCallExtension on Any {
 
   Generator<PersistenceLocalAdapterCall> get persistenceLocalAdapterCallData =>
       oneOf([
-        persistenceLocalAdapterCallProvision,
+        // persistenceLocalAdapterCallProvision,
         persistenceLocalAdapterCallAppend,
         persistenceLocalAdapterCallAdd,
         persistenceLocalAdapterCallForward,

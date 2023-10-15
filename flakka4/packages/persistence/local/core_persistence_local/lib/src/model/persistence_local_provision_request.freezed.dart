@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PersistenceLocalProvisionRequest {
+mixin _$PersistenceProvisioning {
   String get ref => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -38,49 +38,44 @@ mixin _$PersistenceLocalProvisionRequest {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequestInitialize value)
+    required TResult Function(PersistenceProvisioningInitialize value)
         initialize,
-    required TResult Function(PersistenceLocalProvisionRequestResume value)
-        resume,
+    required TResult Function(PersistenceProvisioningResume value) resume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequestInitialize value)?
-        initialize,
-    TResult? Function(PersistenceLocalProvisionRequestResume value)? resume,
+    TResult? Function(PersistenceProvisioningInitialize value)? initialize,
+    TResult? Function(PersistenceProvisioningResume value)? resume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequestInitialize value)?
-        initialize,
-    TResult Function(PersistenceLocalProvisionRequestResume value)? resume,
+    TResult Function(PersistenceProvisioningInitialize value)? initialize,
+    TResult Function(PersistenceProvisioningResume value)? resume,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PersistenceLocalProvisionRequestCopyWith<PersistenceLocalProvisionRequest>
-      get copyWith => throw _privateConstructorUsedError;
+  $PersistenceProvisioningCopyWith<PersistenceProvisioning> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PersistenceLocalProvisionRequestCopyWith<$Res> {
-  factory $PersistenceLocalProvisionRequestCopyWith(
-          PersistenceLocalProvisionRequest value,
-          $Res Function(PersistenceLocalProvisionRequest) then) =
-      _$PersistenceLocalProvisionRequestCopyWithImpl<$Res,
-          PersistenceLocalProvisionRequest>;
+abstract class $PersistenceProvisioningCopyWith<$Res> {
+  factory $PersistenceProvisioningCopyWith(PersistenceProvisioning value,
+          $Res Function(PersistenceProvisioning) then) =
+      _$PersistenceProvisioningCopyWithImpl<$Res, PersistenceProvisioning>;
   @useResult
   $Res call({String ref});
 }
 
 /// @nodoc
-class _$PersistenceLocalProvisionRequestCopyWithImpl<$Res,
-        $Val extends PersistenceLocalProvisionRequest>
-    implements $PersistenceLocalProvisionRequestCopyWith<$Res> {
-  _$PersistenceLocalProvisionRequestCopyWithImpl(this._value, this._then);
+class _$PersistenceProvisioningCopyWithImpl<$Res,
+        $Val extends PersistenceProvisioning>
+    implements $PersistenceProvisioningCopyWith<$Res> {
+  _$PersistenceProvisioningCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -102,25 +97,25 @@ class _$PersistenceLocalProvisionRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalProvisionRequestInitializeCopyWith<$Res>
-    implements $PersistenceLocalProvisionRequestCopyWith<$Res> {
-  factory _$$PersistenceLocalProvisionRequestInitializeCopyWith(
-          _$PersistenceLocalProvisionRequestInitialize value,
-          $Res Function(_$PersistenceLocalProvisionRequestInitialize) then) =
-      __$$PersistenceLocalProvisionRequestInitializeCopyWithImpl<$Res>;
+abstract class _$$PersistenceProvisioningInitializeCopyWith<$Res>
+    implements $PersistenceProvisioningCopyWith<$Res> {
+  factory _$$PersistenceProvisioningInitializeCopyWith(
+          _$PersistenceProvisioningInitialize value,
+          $Res Function(_$PersistenceProvisioningInitialize) then) =
+      __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, int createdAt});
 }
 
 /// @nodoc
-class __$$PersistenceLocalProvisionRequestInitializeCopyWithImpl<$Res>
-    extends _$PersistenceLocalProvisionRequestCopyWithImpl<$Res,
-        _$PersistenceLocalProvisionRequestInitialize>
-    implements _$$PersistenceLocalProvisionRequestInitializeCopyWith<$Res> {
-  __$$PersistenceLocalProvisionRequestInitializeCopyWithImpl(
-      _$PersistenceLocalProvisionRequestInitialize _value,
-      $Res Function(_$PersistenceLocalProvisionRequestInitialize) _then)
+class __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>
+    extends _$PersistenceProvisioningCopyWithImpl<$Res,
+        _$PersistenceProvisioningInitialize>
+    implements _$$PersistenceProvisioningInitializeCopyWith<$Res> {
+  __$$PersistenceProvisioningInitializeCopyWithImpl(
+      _$PersistenceProvisioningInitialize _value,
+      $Res Function(_$PersistenceProvisioningInitialize) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -129,7 +124,7 @@ class __$$PersistenceLocalProvisionRequestInitializeCopyWithImpl<$Res>
     Object? ref = null,
     Object? createdAt = null,
   }) {
-    return _then(_$PersistenceLocalProvisionRequestInitialize(
+    return _then(_$PersistenceProvisioningInitialize(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -144,9 +139,9 @@ class __$$PersistenceLocalProvisionRequestInitializeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalProvisionRequestInitialize
-    implements PersistenceLocalProvisionRequestInitialize {
-  _$PersistenceLocalProvisionRequestInitialize(
+class _$PersistenceProvisioningInitialize
+    implements PersistenceProvisioningInitialize {
+  _$PersistenceProvisioningInitialize(
       {required this.ref, required this.createdAt});
 
   @override
@@ -156,14 +151,14 @@ class _$PersistenceLocalProvisionRequestInitialize
 
   @override
   String toString() {
-    return 'PersistenceLocalProvisionRequest.initialize(ref: $ref, createdAt: $createdAt)';
+    return 'PersistenceProvisioning.initialize(ref: $ref, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalProvisionRequestInitialize &&
+            other is _$PersistenceProvisioningInitialize &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -175,11 +170,10 @@ class _$PersistenceLocalProvisionRequestInitialize
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalProvisionRequestInitializeCopyWith<
-          _$PersistenceLocalProvisionRequestInitialize>
-      get copyWith =>
-          __$$PersistenceLocalProvisionRequestInitializeCopyWithImpl<
-              _$PersistenceLocalProvisionRequestInitialize>(this, _$identity);
+  _$$PersistenceProvisioningInitializeCopyWith<
+          _$PersistenceProvisioningInitialize>
+      get copyWith => __$$PersistenceProvisioningInitializeCopyWithImpl<
+          _$PersistenceProvisioningInitialize>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -215,10 +209,9 @@ class _$PersistenceLocalProvisionRequestInitialize
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequestInitialize value)
+    required TResult Function(PersistenceProvisioningInitialize value)
         initialize,
-    required TResult Function(PersistenceLocalProvisionRequestResume value)
-        resume,
+    required TResult Function(PersistenceProvisioningResume value) resume,
   }) {
     return initialize(this);
   }
@@ -226,9 +219,8 @@ class _$PersistenceLocalProvisionRequestInitialize
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequestInitialize value)?
-        initialize,
-    TResult? Function(PersistenceLocalProvisionRequestResume value)? resume,
+    TResult? Function(PersistenceProvisioningInitialize value)? initialize,
+    TResult? Function(PersistenceProvisioningResume value)? resume,
   }) {
     return initialize?.call(this);
   }
@@ -236,9 +228,8 @@ class _$PersistenceLocalProvisionRequestInitialize
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequestInitialize value)?
-        initialize,
-    TResult Function(PersistenceLocalProvisionRequestResume value)? resume,
+    TResult Function(PersistenceProvisioningInitialize value)? initialize,
+    TResult Function(PersistenceProvisioningResume value)? resume,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -248,42 +239,42 @@ class _$PersistenceLocalProvisionRequestInitialize
   }
 }
 
-abstract class PersistenceLocalProvisionRequestInitialize
-    implements PersistenceLocalProvisionRequest {
-  factory PersistenceLocalProvisionRequestInitialize(
-          {required final String ref, required final int createdAt}) =
-      _$PersistenceLocalProvisionRequestInitialize;
+abstract class PersistenceProvisioningInitialize
+    implements PersistenceProvisioning {
+  factory PersistenceProvisioningInitialize(
+      {required final String ref,
+      required final int createdAt}) = _$PersistenceProvisioningInitialize;
 
   @override
   String get ref;
   int get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$PersistenceLocalProvisionRequestInitializeCopyWith<
-          _$PersistenceLocalProvisionRequestInitialize>
+  _$$PersistenceProvisioningInitializeCopyWith<
+          _$PersistenceProvisioningInitialize>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalProvisionRequestResumeCopyWith<$Res>
-    implements $PersistenceLocalProvisionRequestCopyWith<$Res> {
-  factory _$$PersistenceLocalProvisionRequestResumeCopyWith(
-          _$PersistenceLocalProvisionRequestResume value,
-          $Res Function(_$PersistenceLocalProvisionRequestResume) then) =
-      __$$PersistenceLocalProvisionRequestResumeCopyWithImpl<$Res>;
+abstract class _$$PersistenceProvisioningResumeCopyWith<$Res>
+    implements $PersistenceProvisioningCopyWith<$Res> {
+  factory _$$PersistenceProvisioningResumeCopyWith(
+          _$PersistenceProvisioningResume value,
+          $Res Function(_$PersistenceProvisioningResume) then) =
+      __$$PersistenceProvisioningResumeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceLocalProvisionRequestResumeCopyWithImpl<$Res>
-    extends _$PersistenceLocalProvisionRequestCopyWithImpl<$Res,
-        _$PersistenceLocalProvisionRequestResume>
-    implements _$$PersistenceLocalProvisionRequestResumeCopyWith<$Res> {
-  __$$PersistenceLocalProvisionRequestResumeCopyWithImpl(
-      _$PersistenceLocalProvisionRequestResume _value,
-      $Res Function(_$PersistenceLocalProvisionRequestResume) _then)
+class __$$PersistenceProvisioningResumeCopyWithImpl<$Res>
+    extends _$PersistenceProvisioningCopyWithImpl<$Res,
+        _$PersistenceProvisioningResume>
+    implements _$$PersistenceProvisioningResumeCopyWith<$Res> {
+  __$$PersistenceProvisioningResumeCopyWithImpl(
+      _$PersistenceProvisioningResume _value,
+      $Res Function(_$PersistenceProvisioningResume) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -292,7 +283,7 @@ class __$$PersistenceLocalProvisionRequestResumeCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalProvisionRequestResume(
+    return _then(_$PersistenceProvisioningResume(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -307,9 +298,8 @@ class __$$PersistenceLocalProvisionRequestResumeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalProvisionRequestResume
-    implements PersistenceLocalProvisionRequestResume {
-  _$PersistenceLocalProvisionRequestResume(
+class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
+  _$PersistenceProvisioningResume(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -319,14 +309,14 @@ class _$PersistenceLocalProvisionRequestResume
 
   @override
   String toString() {
-    return 'PersistenceLocalProvisionRequest.resume(ref: $ref, sequenceNumber: $sequenceNumber)';
+    return 'PersistenceProvisioning.resume(ref: $ref, sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalProvisionRequestResume &&
+            other is _$PersistenceProvisioningResume &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -338,10 +328,9 @@ class _$PersistenceLocalProvisionRequestResume
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalProvisionRequestResumeCopyWith<
-          _$PersistenceLocalProvisionRequestResume>
-      get copyWith => __$$PersistenceLocalProvisionRequestResumeCopyWithImpl<
-          _$PersistenceLocalProvisionRequestResume>(this, _$identity);
+  _$$PersistenceProvisioningResumeCopyWith<_$PersistenceProvisioningResume>
+      get copyWith => __$$PersistenceProvisioningResumeCopyWithImpl<
+          _$PersistenceProvisioningResume>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -377,10 +366,9 @@ class _$PersistenceLocalProvisionRequestResume
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalProvisionRequestInitialize value)
+    required TResult Function(PersistenceProvisioningInitialize value)
         initialize,
-    required TResult Function(PersistenceLocalProvisionRequestResume value)
-        resume,
+    required TResult Function(PersistenceProvisioningResume value) resume,
   }) {
     return resume(this);
   }
@@ -388,9 +376,8 @@ class _$PersistenceLocalProvisionRequestResume
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalProvisionRequestInitialize value)?
-        initialize,
-    TResult? Function(PersistenceLocalProvisionRequestResume value)? resume,
+    TResult? Function(PersistenceProvisioningInitialize value)? initialize,
+    TResult? Function(PersistenceProvisioningResume value)? resume,
   }) {
     return resume?.call(this);
   }
@@ -398,9 +385,8 @@ class _$PersistenceLocalProvisionRequestResume
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalProvisionRequestInitialize value)?
-        initialize,
-    TResult Function(PersistenceLocalProvisionRequestResume value)? resume,
+    TResult Function(PersistenceProvisioningInitialize value)? initialize,
+    TResult Function(PersistenceProvisioningResume value)? resume,
     required TResult orElse(),
   }) {
     if (resume != null) {
@@ -410,18 +396,17 @@ class _$PersistenceLocalProvisionRequestResume
   }
 }
 
-abstract class PersistenceLocalProvisionRequestResume
-    implements PersistenceLocalProvisionRequest {
-  factory PersistenceLocalProvisionRequestResume(
-          {required final String ref, required final int sequenceNumber}) =
-      _$PersistenceLocalProvisionRequestResume;
+abstract class PersistenceProvisioningResume
+    implements PersistenceProvisioning {
+  factory PersistenceProvisioningResume(
+      {required final String ref,
+      required final int sequenceNumber}) = _$PersistenceProvisioningResume;
 
   @override
   String get ref;
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$PersistenceLocalProvisionRequestResumeCopyWith<
-          _$PersistenceLocalProvisionRequestResume>
+  _$$PersistenceProvisioningResumeCopyWith<_$PersistenceProvisioningResume>
       get copyWith => throw _privateConstructorUsedError;
 }

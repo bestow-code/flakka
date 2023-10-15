@@ -19,75 +19,58 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String claimKey, Ref ref, DateTime createdAt)
-        initialize,
     required TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)
+            ({State state, View view})? stateView, DateTime createdAt)
         append,
     required TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
-    required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult? Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult? Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataEffectInitialize<Event, State, View> value)
-        initialize,
     required TResult Function(DataEffectAppend<Event, State, View> value)
         append,
     required TResult Function(DataEffectForward<Event, State, View> value)
         forward,
-    required TResult Function(DataEffectPublish<Event, State, View> value)
-        publish,
     required TResult Function(DataEffectNone<Event, State, View> value) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult? Function(DataEffectAppend<Event, State, View> value)? append,
     TResult? Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult? Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult? Function(DataEffectNone<Event, State, View> value)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult Function(DataEffectAppend<Event, State, View> value)? append,
     TResult Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult Function(DataEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) =>
@@ -120,224 +103,6 @@ class _$DataEffectCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$DataEffectInitializeCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataEffectInitializeCopyWith(
-          _$DataEffectInitialize<Event, State, View> value,
-          $Res Function(_$DataEffectInitialize<Event, State, View>) then) =
-      __$$DataEffectInitializeCopyWithImpl<Event, State, View, $Res>;
-  @useResult
-  $Res call({String claimKey, Ref ref, DateTime createdAt});
-
-  $RefCopyWith<$Res> get ref;
-}
-
-/// @nodoc
-class __$$DataEffectInitializeCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$DataEffectCopyWithImpl<Event, State, View, $Res,
-        _$DataEffectInitialize<Event, State, View>>
-    implements _$$DataEffectInitializeCopyWith<Event, State, View, $Res> {
-  __$$DataEffectInitializeCopyWithImpl(
-      _$DataEffectInitialize<Event, State, View> _value,
-      $Res Function(_$DataEffectInitialize<Event, State, View>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? claimKey = null,
-    Object? ref = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_$DataEffectInitialize<Event, State, View>(
-      claimKey: null == claimKey
-          ? _value.claimKey
-          : claimKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$DataEffectInitialize<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements DataEffectInitialize<Event, State, View> {
-  _$DataEffectInitialize(
-      {required this.claimKey, required this.ref, required this.createdAt});
-
-  @override
-  final String claimKey;
-  @override
-  final Ref ref;
-// required StateView<State, View> stateView,
-  @override
-  final DateTime createdAt;
-
-  @override
-  String toString() {
-    return 'DataEffect<$Event, $State, $View>.initialize(claimKey: $claimKey, ref: $ref, createdAt: $createdAt)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataEffectInitialize<Event, State, View> &&
-            (identical(other.claimKey, claimKey) ||
-                other.claimKey == claimKey) &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, claimKey, ref, createdAt);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataEffectInitializeCopyWith<Event, State, View,
-          _$DataEffectInitialize<Event, State, View>>
-      get copyWith => __$$DataEffectInitializeCopyWithImpl<Event, State, View,
-          _$DataEffectInitialize<Event, State, View>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String claimKey, Ref ref, DateTime createdAt)
-        initialize,
-    required TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)
-        append,
-    required TResult Function(
-            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
-        forward,
-    required TResult Function(Ref ref, Set<Ref> ancestors) publish,
-    required TResult Function() none,
-  }) {
-    return initialize(claimKey, ref, createdAt);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
-    TResult? Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
-        append,
-    TResult? Function(
-            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
-        forward,
-    TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
-    TResult? Function()? none,
-  }) {
-    return initialize?.call(claimKey, ref, createdAt);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
-    TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
-        append,
-    TResult Function(
-            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
-        forward,
-    TResult Function(Ref ref, Set<Ref> ancestors)? publish,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(claimKey, ref, createdAt);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DataEffectInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataEffectAppend<Event, State, View> value)
-        append,
-    required TResult Function(DataEffectForward<Event, State, View> value)
-        forward,
-    required TResult Function(DataEffectPublish<Event, State, View> value)
-        publish,
-    required TResult Function(DataEffectNone<Event, State, View> value) none,
-  }) {
-    return initialize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataEffectAppend<Event, State, View> value)? append,
-    TResult? Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult? Function(DataEffectPublish<Event, State, View> value)? publish,
-    TResult? Function(DataEffectNone<Event, State, View> value)? none,
-  }) {
-    return initialize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataEffectAppend<Event, State, View> value)? append,
-    TResult Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult Function(DataEffectPublish<Event, State, View> value)? publish,
-    TResult Function(DataEffectNone<Event, State, View> value)? none,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DataEffectInitialize<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> implements DataEffect<Event, State, View> {
-  factory DataEffectInitialize(
-          {required final String claimKey,
-          required final Ref ref,
-          required final DateTime createdAt}) =
-      _$DataEffectInitialize<Event, State, View>;
-
-  String get claimKey;
-  Ref get ref; // required StateView<State, View> stateView,
-  DateTime get createdAt;
-  @JsonKey(ignore: true)
-  _$$DataEffectInitializeCopyWith<Event, State, View,
-          _$DataEffectInitialize<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$DataEffectAppendCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
   factory _$$DataEffectAppendCopyWith(
@@ -349,7 +114,7 @@ abstract class _$$DataEffectAppendCopyWith<Event extends CoreEvent,
       {Ref ref,
       List<Ref> parent,
       Event? event,
-      ({State state, View view}) stateView,
+      ({State state, View view})? stateView,
       DateTime createdAt});
 
   $RefCopyWith<$Res> get ref;
@@ -372,7 +137,7 @@ class __$$DataEffectAppendCopyWithImpl<Event extends CoreEvent,
     Object? ref = null,
     Object? parent = null,
     Object? event = null,
-    Object? stateView = null,
+    Object? stateView = freezed,
     Object? createdAt = null,
   }) {
     return _then(_$DataEffectAppend<Event, State, View>(
@@ -388,10 +153,10 @@ class __$$DataEffectAppendCopyWithImpl<Event extends CoreEvent,
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Event?,
-      stateView: null == stateView
+      stateView: freezed == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as ({State state, View view})?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -433,7 +198,7 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   final Event? event;
   @override
-  final ({State state, View view}) stateView;
+  final ({State state, View view})? stateView;
   @override
   final DateTime createdAt;
 
@@ -476,15 +241,12 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String claimKey, Ref ref, DateTime createdAt)
-        initialize,
     required TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)
+            ({State state, View view})? stateView, DateTime createdAt)
         append,
     required TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
-    required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
   }) {
     return append(ref, parent, event, stateView, createdAt);
@@ -493,14 +255,12 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult? Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult? Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
   }) {
     return append?.call(ref, parent, event, stateView, createdAt);
@@ -509,14 +269,12 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -529,14 +287,10 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataEffectInitialize<Event, State, View> value)
-        initialize,
     required TResult Function(DataEffectAppend<Event, State, View> value)
         append,
     required TResult Function(DataEffectForward<Event, State, View> value)
         forward,
-    required TResult Function(DataEffectPublish<Event, State, View> value)
-        publish,
     required TResult Function(DataEffectNone<Event, State, View> value) none,
   }) {
     return append(this);
@@ -545,11 +299,8 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult? Function(DataEffectAppend<Event, State, View> value)? append,
     TResult? Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult? Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult? Function(DataEffectNone<Event, State, View> value)? none,
   }) {
     return append?.call(this);
@@ -558,11 +309,8 @@ class _$DataEffectAppend<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult Function(DataEffectAppend<Event, State, View> value)? append,
     TResult Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult Function(DataEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) {
@@ -581,14 +329,14 @@ abstract class DataEffectAppend<
           {required final Ref ref,
           required final List<Ref> parent,
           required final Event? event,
-          required final ({State state, View view}) stateView,
+          required final ({State state, View view})? stateView,
           required final DateTime createdAt}) =
       _$DataEffectAppend<Event, State, View>;
 
   Ref get ref;
   List<Ref> get parent;
   Event? get event;
-  ({State state, View view}) get stateView;
+  ({State state, View view})? get stateView;
   DateTime get createdAt;
   @JsonKey(ignore: true)
   _$$DataEffectAppendCopyWith<Event, State, View,
@@ -698,15 +446,12 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String claimKey, Ref ref, DateTime createdAt)
-        initialize,
     required TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)
+            ({State state, View view})? stateView, DateTime createdAt)
         append,
     required TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
-    required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
   }) {
     return forward(ref, stateView, createdAt);
@@ -715,14 +460,12 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult? Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult? Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
   }) {
     return forward?.call(ref, stateView, createdAt);
@@ -731,14 +474,12 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -751,14 +492,10 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataEffectInitialize<Event, State, View> value)
-        initialize,
     required TResult Function(DataEffectAppend<Event, State, View> value)
         append,
     required TResult Function(DataEffectForward<Event, State, View> value)
         forward,
-    required TResult Function(DataEffectPublish<Event, State, View> value)
-        publish,
     required TResult Function(DataEffectNone<Event, State, View> value) none,
   }) {
     return forward(this);
@@ -767,11 +504,8 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult? Function(DataEffectAppend<Event, State, View> value)? append,
     TResult? Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult? Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult? Function(DataEffectNone<Event, State, View> value)? none,
   }) {
     return forward?.call(this);
@@ -780,11 +514,8 @@ class _$DataEffectForward<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult Function(DataEffectAppend<Event, State, View> value)? append,
     TResult Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult Function(DataEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) {
@@ -811,217 +542,6 @@ abstract class DataEffectForward<
   @JsonKey(ignore: true)
   _$$DataEffectForwardCopyWith<Event, State, View,
           _$DataEffectForward<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DataEffectPublishCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataEffectPublishCopyWith(
-          _$DataEffectPublish<Event, State, View> value,
-          $Res Function(_$DataEffectPublish<Event, State, View>) then) =
-      __$$DataEffectPublishCopyWithImpl<Event, State, View, $Res>;
-  @useResult
-  $Res call({Ref ref, Set<Ref> ancestors});
-
-  $RefCopyWith<$Res> get ref;
-}
-
-/// @nodoc
-class __$$DataEffectPublishCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$DataEffectCopyWithImpl<Event, State, View, $Res,
-        _$DataEffectPublish<Event, State, View>>
-    implements _$$DataEffectPublishCopyWith<Event, State, View, $Res> {
-  __$$DataEffectPublishCopyWithImpl(
-      _$DataEffectPublish<Event, State, View> _value,
-      $Res Function(_$DataEffectPublish<Event, State, View>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? ancestors = null,
-  }) {
-    return _then(_$DataEffectPublish<Event, State, View>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      ancestors: null == ancestors
-          ? _value._ancestors
-          : ancestors // ignore: cast_nullable_to_non_nullable
-              as Set<Ref>,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$DataEffectPublish<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements DataEffectPublish<Event, State, View> {
-  _$DataEffectPublish({required this.ref, required final Set<Ref> ancestors})
-      : _ancestors = ancestors;
-
-  @override
-  final Ref ref;
-  final Set<Ref> _ancestors;
-  @override
-  Set<Ref> get ancestors {
-    if (_ancestors is EqualUnmodifiableSetView) return _ancestors;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_ancestors);
-  }
-
-  @override
-  String toString() {
-    return 'DataEffect<$Event, $State, $View>.publish(ref: $ref, ancestors: $ancestors)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataEffectPublish<Event, State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality()
-                .equals(other._ancestors, _ancestors));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, ref, const DeepCollectionEquality().hash(_ancestors));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataEffectPublishCopyWith<Event, State, View,
-          _$DataEffectPublish<Event, State, View>>
-      get copyWith => __$$DataEffectPublishCopyWithImpl<Event, State, View,
-          _$DataEffectPublish<Event, State, View>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String claimKey, Ref ref, DateTime createdAt)
-        initialize,
-    required TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)
-        append,
-    required TResult Function(
-            Ref ref, ({State state, View view}) stateView, DateTime createdAt)
-        forward,
-    required TResult Function(Ref ref, Set<Ref> ancestors) publish,
-    required TResult Function() none,
-  }) {
-    return publish(ref, ancestors);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
-    TResult? Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
-        append,
-    TResult? Function(
-            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
-        forward,
-    TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
-    TResult? Function()? none,
-  }) {
-    return publish?.call(ref, ancestors);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
-    TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
-        append,
-    TResult Function(
-            Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
-        forward,
-    TResult Function(Ref ref, Set<Ref> ancestors)? publish,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (publish != null) {
-      return publish(ref, ancestors);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DataEffectInitialize<Event, State, View> value)
-        initialize,
-    required TResult Function(DataEffectAppend<Event, State, View> value)
-        append,
-    required TResult Function(DataEffectForward<Event, State, View> value)
-        forward,
-    required TResult Function(DataEffectPublish<Event, State, View> value)
-        publish,
-    required TResult Function(DataEffectNone<Event, State, View> value) none,
-  }) {
-    return publish(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
-    TResult? Function(DataEffectAppend<Event, State, View> value)? append,
-    TResult? Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult? Function(DataEffectPublish<Event, State, View> value)? publish,
-    TResult? Function(DataEffectNone<Event, State, View> value)? none,
-  }) {
-    return publish?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
-    TResult Function(DataEffectAppend<Event, State, View> value)? append,
-    TResult Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult Function(DataEffectPublish<Event, State, View> value)? publish,
-    TResult Function(DataEffectNone<Event, State, View> value)? none,
-    required TResult orElse(),
-  }) {
-    if (publish != null) {
-      return publish(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DataEffectPublish<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> implements DataEffect<Event, State, View> {
-  factory DataEffectPublish(
-          {required final Ref ref, required final Set<Ref> ancestors}) =
-      _$DataEffectPublish<Event, State, View>;
-
-  Ref get ref;
-  Set<Ref> get ancestors;
-  @JsonKey(ignore: true)
-  _$$DataEffectPublishCopyWith<Event, State, View,
-          _$DataEffectPublish<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1068,15 +588,12 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String claimKey, Ref ref, DateTime createdAt)
-        initialize,
     required TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)
+            ({State state, View view})? stateView, DateTime createdAt)
         append,
     required TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)
         forward,
-    required TResult Function(Ref ref, Set<Ref> ancestors) publish,
     required TResult Function() none,
   }) {
     return none();
@@ -1085,14 +602,12 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult? Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult? Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult? Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult? Function()? none,
   }) {
     return none?.call();
@@ -1101,14 +616,12 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String claimKey, Ref ref, DateTime createdAt)? initialize,
     TResult Function(Ref ref, List<Ref> parent, Event? event,
-            ({State state, View view}) stateView, DateTime createdAt)?
+            ({State state, View view})? stateView, DateTime createdAt)?
         append,
     TResult Function(
             Ref ref, ({State state, View view}) stateView, DateTime createdAt)?
         forward,
-    TResult Function(Ref ref, Set<Ref> ancestors)? publish,
     TResult Function()? none,
     required TResult orElse(),
   }) {
@@ -1121,14 +634,10 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DataEffectInitialize<Event, State, View> value)
-        initialize,
     required TResult Function(DataEffectAppend<Event, State, View> value)
         append,
     required TResult Function(DataEffectForward<Event, State, View> value)
         forward,
-    required TResult Function(DataEffectPublish<Event, State, View> value)
-        publish,
     required TResult Function(DataEffectNone<Event, State, View> value) none,
   }) {
     return none(this);
@@ -1137,11 +646,8 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult? Function(DataEffectAppend<Event, State, View> value)? append,
     TResult? Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult? Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult? Function(DataEffectNone<Event, State, View> value)? none,
   }) {
     return none?.call(this);
@@ -1150,11 +656,8 @@ class _$DataEffectNone<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DataEffectInitialize<Event, State, View> value)?
-        initialize,
     TResult Function(DataEffectAppend<Event, State, View> value)? append,
     TResult Function(DataEffectForward<Event, State, View> value)? forward,
-    TResult Function(DataEffectPublish<Event, State, View> value)? publish,
     TResult Function(DataEffectNone<Event, State, View> value)? none,
     required TResult orElse(),
   }) {

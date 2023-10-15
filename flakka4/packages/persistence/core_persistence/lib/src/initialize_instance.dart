@@ -14,7 +14,7 @@ Future<InitialInstanceData> initializeObjectInstance(
     final initialObjectInstanceData = await remoteAdapter.initialize(
       ifEmpty: newObjectProps,
     );
-    await localAdapter.initialize(data: initialObjectInstanceData);
+    // await localAdapter.initialize(data: initialObjectInstanceData);
     return initialObjectInstanceData;
   }
 }

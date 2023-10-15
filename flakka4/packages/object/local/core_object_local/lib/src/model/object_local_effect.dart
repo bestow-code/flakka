@@ -5,15 +5,7 @@ part 'object_local_effect.freezed.dart';
 
 @freezed
 class ObjectLocalEffect with _$ObjectLocalEffect {
-  factory ObjectLocalEffect.initialize({
-    required String ref,
-    required int createdAt,
-  }) = ObjectLocalEffectInitialize;
 
-  factory ObjectLocalEffect.resume({
-    required String ref,
-    required int sequenceNumber,
-  }) = ObjectLocalEffectResume;
 
   factory ObjectLocalEffect.append({
     required String ref,
@@ -27,7 +19,6 @@ class ObjectLocalEffect with _$ObjectLocalEffect {
   factory ObjectLocalEffect.forward({
     required String ref,
     required StateViewObject? stateView,
-    required int createdAt,
     required int sequenceNumber,
   }) = ObjectLocalEffectForward;
 
@@ -43,19 +34,4 @@ class ObjectLocalEffect with _$ObjectLocalEffect {
   }) = ObjectLocalEffectAdd;
 
   factory ObjectLocalEffect.none() = ObjectLocalEffectNone;
-}
-
-@freezed
-class ObjectLocalProvisionRequest with _$ObjectLocalProvisionRequest {
-  factory ObjectLocalProvisionRequest() = _ObjectLocalProvisionRequest;
-
-  factory ObjectLocalProvisionRequest.initialize({
-    required String ref,
-    required int createdAt,
-  }) = ObjectLocalProvisionRequestInitialize;
-
-  factory ObjectLocalProvisionRequest.resume({
-    required String ref,
-    required int sequenceNumber,
-  }) = ObjectLocalProvisionRequestResume;
 }

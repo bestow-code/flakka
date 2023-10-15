@@ -1,74 +1,18 @@
-import 'package:core_common/core_common.dart';
-import 'package:core_common_impl/src/logic_component/logic_component_base.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../../core_common_impl.dart';
 
 abstract class StateNode<State, Effect, Update, In, Out>
     extends NodeBase<State, Effect, Update, In, Out> {
   StateNode({
     required super.child,
   });
-}
-
-abstract class NodeBase<State, Effect, Update, In, Out>
-    extends ResourceBase<In, Out> implements CoreNode<Effect, Update, In, Out> {
-  NodeBase({
-    required CoreResource<Effect, Update> child,
-  }) : _child = child;
-
-  CoreResource<Effect, Update> get child => _child;
-
-  final CoreResource<Effect, Update> _child;
-
-  BehaviorSubject<State> get state => _state;
-
-  final _state = BehaviorSubject<State>();
 
   @override
-  CompositeSubscription connect() {
-    return super.connect()
-      // ..add(
-      //   inputStream.listen((valueIn) {
-      //     throw UnimplementedError();
-      //     // final result = onInput(_state.value, valueIn);
-      //     // final (nextState, effect) = (result.state, result.effect);
-      //     // if (nextState != null) {
-      //     //   _state.value = nextState;
-      //     // }
-      //     // if (effect != null) {
-      //     //   _child.input.add(effect);
-      //     // }
-      //   }),
-      // )
-      // ..add(
-      //   _child.output.listen((update) {
-      //     throw UnimplementedError();
-      //     // final state2 =
-      //     //     _state.hasValue ? _state.value : buildInitialState(update.right);
-      //     // final result = onUpdate(state2, update.right);
-      //     // final (nextState, valueOut) = (result.state, result.value);
-      //     // if (nextState != null) {
-      //     //   _state.value = nextState;
-      //     // }
-      //     // if (valueOut != null) {
-      //     //   throw UnimplementedError();
-      //     //   // _output.value = valueOut;
-      //     // }
-      //   }),
-      // )
-      ..add(_child.connect());
-  }
-
-// ({State? state, Effect? effect}) onInput(
-//   State state,
-//   In valueIn,
-// );
-//
-// ({State? state, Out? value}) onUpdate(
-//   State state,
-//   Update update,
-// );
-//
-// State buildInitialState(Update update);
+  @mustBeOverridden
+  @mustCallSuper
+  CompositeSubscription connect() => super.connect();
 }
 
 //
