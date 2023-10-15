@@ -1,0 +1,41 @@
+name: core_persistence_local_sembast
+version: 0.1.0-alpha.3
+description: A store for core platform's Entry
+repository: https://github.com/bestow-code/flakka
+
+environment:
+  sdk: '^3.0.5'
+
+dependencies:
+  async: ^2.11.0
+  collection: ^1.17.1
+  core_common:
+  core_object:
+  core_persistence_base:
+  core_persistence_local:
+  core_persistence_local_impl:
+  meta: ^1.9.1
+  path:
+  rxdart: ^0.27.7
+  sembast:
+
+dev_dependencies:
+  build_runner:
+  core_persistence_local_tests:
+  glados:
+  get_it:
+  injectable:
+  injectable_generator: ^2.3.0
+  mocktail: ^1.0.0
+  test: ^1.24.4
+  spec: ^0.2.3
+  very_good_analysis: ^5.0.0+1
+
+index_generator:
+  exclude:
+    - '**.*.dart'
+  indexes:
+    - path: lib
+      include:
+        - src
+      docs: Fake for Core Entry Store
