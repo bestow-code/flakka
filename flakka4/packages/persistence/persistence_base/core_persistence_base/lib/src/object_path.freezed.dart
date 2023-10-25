@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectPath {
-  String get relative => throw _privateConstructorUsedError;
-  StorePath get base => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ObjectPathCopyWith<ObjectPath> get copyWith =>
@@ -30,9 +29,7 @@ abstract class $ObjectPathCopyWith<$Res> {
           ObjectPath value, $Res Function(ObjectPath) then) =
       _$ObjectPathCopyWithImpl<$Res, ObjectPath>;
   @useResult
-  $Res call({String relative, StorePath base});
-
-  $StorePathCopyWith<$Res> get base;
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -48,27 +45,14 @@ class _$ObjectPathCopyWithImpl<$Res, $Val extends ObjectPath>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? relative = null,
-    Object? base = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      relative: null == relative
-          ? _value.relative
-          : relative // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as StorePath,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StorePathCopyWith<$Res> get base {
-    return $StorePathCopyWith<$Res>(_value.base, (value) {
-      return _then(_value.copyWith(base: value) as $Val);
-    });
   }
 }
 
@@ -80,10 +64,7 @@ abstract class _$$_ObjectPathCopyWith<$Res>
       __$$_ObjectPathCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String relative, StorePath base});
-
-  @override
-  $StorePathCopyWith<$Res> get base;
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -97,35 +78,28 @@ class __$$_ObjectPathCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? relative = null,
-    Object? base = null,
+    Object? value = null,
   }) {
     return _then(_$_ObjectPath(
-      null == relative
-          ? _value.relative
-          : relative // ignore: cast_nullable_to_non_nullable
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as StorePath,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ObjectPath extends _ObjectPath {
-  _$_ObjectPath(this.relative, {required this.base}) : super._();
+class _$_ObjectPath implements _ObjectPath {
+  _$_ObjectPath(this.value);
 
   @override
-  final String relative;
-  @override
-  final StorePath base;
+  final String value;
 
   @override
   String toString() {
-    return 'ObjectPath(relative: $relative, base: $base)';
+    return 'ObjectPath(value: $value)';
   }
 
   @override
@@ -133,13 +107,11 @@ class _$_ObjectPath extends _ObjectPath {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectPath &&
-            (identical(other.relative, relative) ||
-                other.relative == relative) &&
-            (identical(other.base, base) || other.base == base));
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, relative, base);
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -148,17 +120,146 @@ class _$_ObjectPath extends _ObjectPath {
       __$$_ObjectPathCopyWithImpl<_$_ObjectPath>(this, _$identity);
 }
 
-abstract class _ObjectPath extends ObjectPath {
-  factory _ObjectPath(final String relative, {required final StorePath base}) =
-      _$_ObjectPath;
-  _ObjectPath._() : super._();
+abstract class _ObjectPath implements ObjectPath {
+  factory _ObjectPath(final String value) = _$_ObjectPath;
 
   @override
-  String get relative;
-  @override
-  StorePath get base;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$_ObjectPathCopyWith<_$_ObjectPath> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ObjectVersion {
+  int get major => throw _privateConstructorUsedError;
+  int get minor => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ObjectVersionCopyWith<ObjectVersion> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ObjectVersionCopyWith<$Res> {
+  factory $ObjectVersionCopyWith(
+          ObjectVersion value, $Res Function(ObjectVersion) then) =
+      _$ObjectVersionCopyWithImpl<$Res, ObjectVersion>;
+  @useResult
+  $Res call({int major, int minor});
+}
+
+/// @nodoc
+class _$ObjectVersionCopyWithImpl<$Res, $Val extends ObjectVersion>
+    implements $ObjectVersionCopyWith<$Res> {
+  _$ObjectVersionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? major = null,
+    Object? minor = null,
+  }) {
+    return _then(_value.copyWith(
+      major: null == major
+          ? _value.major
+          : major // ignore: cast_nullable_to_non_nullable
+              as int,
+      minor: null == minor
+          ? _value.minor
+          : minor // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ObjectVersionCopyWith<$Res>
+    implements $ObjectVersionCopyWith<$Res> {
+  factory _$$_ObjectVersionCopyWith(
+          _$_ObjectVersion value, $Res Function(_$_ObjectVersion) then) =
+      __$$_ObjectVersionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int major, int minor});
+}
+
+/// @nodoc
+class __$$_ObjectVersionCopyWithImpl<$Res>
+    extends _$ObjectVersionCopyWithImpl<$Res, _$_ObjectVersion>
+    implements _$$_ObjectVersionCopyWith<$Res> {
+  __$$_ObjectVersionCopyWithImpl(
+      _$_ObjectVersion _value, $Res Function(_$_ObjectVersion) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? major = null,
+    Object? minor = null,
+  }) {
+    return _then(_$_ObjectVersion(
+      null == major
+          ? _value.major
+          : major // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == minor
+          ? _value.minor
+          : minor // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ObjectVersion implements _ObjectVersion {
+  _$_ObjectVersion(this.major, this.minor);
+
+  @override
+  final int major;
+  @override
+  final int minor;
+
+  @override
+  String toString() {
+    return 'ObjectVersion(major: $major, minor: $minor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectVersion &&
+            (identical(other.major, major) || other.major == major) &&
+            (identical(other.minor, minor) || other.minor == minor));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, major, minor);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ObjectVersionCopyWith<_$_ObjectVersion> get copyWith =>
+      __$$_ObjectVersionCopyWithImpl<_$_ObjectVersion>(this, _$identity);
+}
+
+abstract class _ObjectVersion implements ObjectVersion {
+  factory _ObjectVersion(final int major, final int minor) = _$_ObjectVersion;
+
+  @override
+  int get major;
+  @override
+  int get minor;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ObjectVersionCopyWith<_$_ObjectVersion> get copyWith =>
       throw _privateConstructorUsedError;
 }

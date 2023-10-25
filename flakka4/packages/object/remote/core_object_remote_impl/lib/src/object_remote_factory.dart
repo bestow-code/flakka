@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:core_common_impl/core_common_impl.dart';
+import 'package:core_object_base/core_object_base.dart';
 import 'package:core_object_remote/core_object_remote.dart';
-import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 
@@ -25,12 +25,12 @@ class ObjectRemoteFactory extends NodeFactoryBase<
   final PersistenceRemoteFactory _childFactory;
 
   @override
-  FutureOr<ObjectRemote> create(
-    covariant PersistenceFactoryParamImpl param,
+  Future<ObjectRemote> create(
+    covariant dynamic param,
   ) async =>
-      ObjectRemote(child: await _childFactory.create(param));
+      ObjectRemote(child: await childFactory.create(param, param2));
 
   @override
-  FutureOr<void> delete(covariant PersistenceFactoryParamImpl param) =>
+  Future<void> delete(covariant PersistenceAdapterFactoryParam param) =>
       _childFactory.delete(param);
 }

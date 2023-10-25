@@ -12,6 +12,7 @@ dependencies:
   core_common:
   core_object:
   core_persistence_base:
+  core_persistence_base_impl:
   core_persistence_local:
   core_persistence_local_impl:
   meta: ^1.9.1

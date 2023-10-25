@@ -3,30 +3,29 @@ import 'package:core_object_local_impl/core_object_local_impl.dart';
 import 'package:core_object_local_test/core_object_local_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
-import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 import 'package:glados/glados.dart';
 
 Future<ObjectLocal> getSubject(
   String objectId,
-  ObjectLocalFactoryProvider Function() persistenceProviderLocalFactory,
+  ObjectLocalProvider Function() persistenceProviderLocalFactory,
 ) async {
   final provider = persistenceProviderLocalFactory();
   PersistenceFactoryContextImpl context;
   context = PersistenceFactoryContextImpl()
     ..persistenceId = PersistenceId('instance-1');
-  final factory = provider.build(context);
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
     ..objectPath = ObjectPath(
       'o/$objectId',
-      base: StorePath('data/test', base: RootPath('users/1')),
+      base: StorePath('loco_data/test', base: RootPath('users/1')),
     );
-  await factory.delete(param);
 
-  final persistenceLocal = await factory.create(param);
+  await provider.delete(param);
+
+  final persistenceLocal = provider.get(param, null);
   return persistenceLocal;
 }
 
@@ -38,12 +37,14 @@ void main() {
     refValue,
     // calls,
   ) async {
+    final context=PersistenceFactoryContextImpl()
+      ..persistenceId = PersistenceId('instance-1');
     final subject = await getSubject(
         refValue,
-        () => ObjectLocalFactoryProvider(
-              childFactoryProvider: PersistenceLocalFactoryProvider(
-                adapterFactoryProvider:
-                    PersistenceLocalAdapterFactoryProviderSembast.inMemory(),
+        () => ObjectLocalProvider(
+              childFactoryProvider: PersistenceLocalProvider(context: context,
+                adapterProvider:
+                    PersistenceLocalAdapterProviderSembast.inMemory(),
               ),
             ));
     await subject.provision(

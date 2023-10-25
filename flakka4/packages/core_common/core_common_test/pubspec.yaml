@@ -10,6 +10,7 @@ dependencies:
   bloc:
   core_common:
   core_common_impl:
+  core_loco_test:
   freezed_annotation: ^2.2.0
   get_it:
   json_annotation:
@@ -34,3 +35,5 @@ index_generator:
       include:
         - src
       docs: Common libraries for core_platform
+      exports:
+        - package: package:core_loco_test/core_loco_test.dart

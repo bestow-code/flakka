@@ -93,7 +93,7 @@ extension PersistenceLocalAdapterCallExtension on Any {
   Generator<PersistenceProvisioningInitialize>
       get persistenceLocalProvisionRequestInitialize => combine2(
             any.nonEmptyLetterOrDigits,
-            any.millisSinceEpoch,
+            any.createdAtMillis,
             (
               ref,
               createdAt,
@@ -150,7 +150,7 @@ extension PersistenceLocalAdapterCallExtension on Any {
             any.refValue,
             any.listWithLengthInRange(0, 2, any.refValue),
             any.eventObject.nullable,
-            any.millisSinceEpoch,
+            any.createdAtMillis,
             any.sequenceNumber,
             (refValue, parent, event, createdAt, sequenceNumber) =>
                 PersistenceLocalAdapterCallAppend(

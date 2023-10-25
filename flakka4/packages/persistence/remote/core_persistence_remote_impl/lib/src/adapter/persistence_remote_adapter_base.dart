@@ -6,6 +6,6 @@ abstract class PersistenceRemoteAdapterBase extends PersistenceAdapterBase
   PersistenceRemoteAdapterBase({
     required super.persistenceId,
     required super.objectPath,
-    required super.version,
+    // required super.version,
   });
 }

@@ -3,16 +3,15 @@
 /// Common libraries for core_platform
 library core_data;
 
-export 'src/core_data_io.dart';
-export 'src/core_data_io_factory.dart';
-export 'src/core_data_io_factory_provider.dart';
-export 'src/core_event.dart';
-export 'src/core_state.dart';
-export 'src/core_view.dart';
+export 'package:core_data_api/core_data_api.dart';
+
+export 'src/data/core_data.dart';
+export 'src/data/core_data_factory.dart';
+export 'src/data/core_data_provider.dart';
 export 'src/data_converter/data_converter.dart';
 export 'src/data_converter/object_converter.dart';
+export 'src/data_node/core_data_node.dart';
+export 'src/data_node/core_data_node_factory.dart';
+export 'src/data_node/core_data_node_provider.dart';
 export 'src/model/data_effect.dart';
 export 'src/model/data_update.dart';
-export 'src/ref.dart';
-export 'src/ref_factory.dart';
-export 'src/state_view.dart';

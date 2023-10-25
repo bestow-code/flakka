@@ -50,7 +50,7 @@ extension MaterializeValueNoteExtension<NoteT, T> on ValueNoteStream<NoteT, T> {
 //   ///
 //   /// The [Notification] object contains the [Kind] of event (OnData, onDone, or
 //   /// OnError), and the item or error that was emitted. In the case of onDone,
-//   /// no data is emitted as part of the [Notification].
+//   /// no loco_data is emitted as part of the [Notification].
 //   ///
 //   /// Example:
 //   ///     Stream<int>.fromIterable([1])

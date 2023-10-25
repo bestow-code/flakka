@@ -27,7 +27,7 @@ void main() {
       final persistenceId = PersistenceId('persistence-1');
       flakkaJournal.registerPersistenceId(persistenceId);
       flakkaJournal.registerPersistenceLocalAdapterFactoryProvider(
-          PersistenceLocalAdapterFactoryProviderSembast.inMemory);
+          PersistenceLocalAdapterProviderSembast.inMemory);
       flakkaJournal.registerPersistenceRemoteAdapterFactoryProvider(
           PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
       flakkaJournal.registerDataConverter(TestDataConverter.main);

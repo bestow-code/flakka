@@ -3,30 +3,29 @@ import 'package:core_object_remote_impl/core_object_remote_impl.dart';
 import 'package:core_object_remote_test/core_object_remote_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
-import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 import 'package:core_persistence_remote_sembast/core_persistence_remote_sembast.dart';
 import 'package:glados/glados.dart';
 
 Future<ObjectRemote> getSubject(
   String objectId,
-  ObjectRemoteFactoryProvider Function() persistenceProviderRemoteFactory,
+  ObjectRemoteProvider Function() persistenceProviderRemoteFactory,
 ) async {
   final provider = persistenceProviderRemoteFactory();
   PersistenceFactoryContextImpl context;
   context = PersistenceFactoryContextImpl()
     ..persistenceId = PersistenceId('instance-1');
-  final factory = provider.build(context);
+  // final factory = provider.build(context);
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
     ..objectPath = ObjectPath(
       'o/$objectId',
-      base: StorePath('data/test', base: RootPath('users/1')),
+      base: StorePath('loco_data/test', base: RootPath('users/1')),
     );
-  await factory.delete(param);
+  await provider.delete(param);
 
-  final persistenceRemote = await factory.create(param);
+  final persistenceRemote = await provider.get(param, null);
   return persistenceRemote;
 }
 
@@ -40,8 +39,8 @@ void main() {
   ) async {
     final subject = await getSubject(
         refValue,
-        () => ObjectRemoteFactoryProvider(
-              childFactoryProvider: PersistenceRemoteFactoryProvider(
+        () => ObjectRemoteProvider(
+              childFactoryProvider: PersistenceRemoteProvider(
                 adapterFactoryProvider:
                     PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
               ),

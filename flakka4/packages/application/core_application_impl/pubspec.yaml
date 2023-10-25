@@ -8,8 +8,10 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
-  core_common: ^0.1.0+2
+  core_common:
+  core_common_impl:
   core_data:
+  core_data_impl:
   core_object:
   core_journal:
   core_journal_impl:

@@ -8,6 +8,12 @@
       <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/core_persistence/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/core_persistence/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/core_persistence/build" />
+      <excludeFolder url="file://$MODULE_DIR$/core_persistence_test/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/core_persistence_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/core_persistence_test/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

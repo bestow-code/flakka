@@ -11,7 +11,7 @@ class PersistenceRemoteAdapterSembast extends PersistenceRemoteAdapterBase
     required super.persistenceId,
     required Database database,
     required super.objectPath,
-    required super.version,
+    // required super.version,
   }) : _database = database;
 
   final Database _database;

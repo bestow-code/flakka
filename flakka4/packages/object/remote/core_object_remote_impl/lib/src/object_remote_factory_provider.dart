@@ -1,35 +1,53 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object_remote/core_object_remote.dart';
-import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 
 import '../core_object_remote_impl.dart';
 
-class ObjectRemoteFactoryProvider extends NodeFactoryProviderBase<
+class ObjectRemoteProvider extends NodeProviderBase<
     ObjectRemote,
     PersistenceRemoteEffect,
     PersistenceRemoteUpdate,
     ObjectRemoteEffect,
-    ObjectRemoteUpdate> implements CoreObjectRemoteFactoryProvider<ObjectRemote> {
-  ObjectRemoteFactoryProvider(
-      {required PersistenceRemoteFactoryProvider childFactoryProvider})
+    ObjectRemoteUpdate> implements CoreObjectRemoteProvider<ObjectRemote> {
+  ObjectRemoteProvider(
+      {required PersistenceRemoteProvider childFactoryProvider})
       : _childFactoryProvider = childFactoryProvider,
-        super(childFactoryProvider: childFactoryProvider);
+        super(childProvider: childFactoryProvider);
+
+  // @override
+  // ObjectRemoteFactory build(covariant PersistenceFactoryContext context) =>
+  //     ObjectRemoteFactory(
+  //       context: context,
+  //       childFactory: childFactoryProvider.build(
+  //         context,
+  //       ),
+  //     );
 
   @override
-  ObjectRemoteFactory build(covariant PersistenceFactoryContextImpl context) =>
-      ObjectRemoteFactory(
-        context: context,
-        childFactory: childFactoryProvider.build(
-          context,
-        ),
-      );
+  PersistenceRemoteProvider get childProvider => _childFactoryProvider;
+  final PersistenceRemoteProvider _childFactoryProvider;
 
   @override
-  PersistenceRemoteFactoryProvider get childFactoryProvider =>
-      _childFactoryProvider;
-  final PersistenceRemoteFactoryProvider _childFactoryProvider;
+  // TODO: implement context
+  ProviderContext get context => throw UnimplementedError();
+
+  @override
+  Future<ObjectRemote> get(
+    covariant FactoryParam param,
+    covariant dynamic param2,
+  ) {
+    // TODO: implement get
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> delete(covariant FactoryParam param) {
+    // TODO: implement delete
+    throw UnimplementedError();
+  }
 }
 
 // abstract interface class ObjectRemoteFactoryProviderBase<

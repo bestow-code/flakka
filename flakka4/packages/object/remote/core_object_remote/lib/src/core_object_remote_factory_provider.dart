@@ -3,8 +3,8 @@ import 'package:core_persistence_remote/core_persistence_remote.dart';
 
 import '../core_object_remote.dart';
 
-abstract interface class CoreObjectRemoteFactoryProvider<
+abstract interface class CoreObjectRemoteProvider<
         ObjectRemote extends CoreObjectRemote>
     implements
-        CoreNodeFactoryProvider<ObjectRemote, PersistenceRemoteEffect,
+        CoreNodeProvider<ObjectRemote, PersistenceRemoteEffect,
             PersistenceRemoteUpdate, ObjectRemoteEffect, ObjectRemoteUpdate> {}

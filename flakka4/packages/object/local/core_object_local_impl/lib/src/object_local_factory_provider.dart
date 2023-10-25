@@ -1,35 +1,52 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object_local/core_object_local.dart';
-import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
 import '../core_object_local_impl.dart';
 
-class ObjectLocalFactoryProvider extends NodeFactoryProviderBase<
+class ObjectLocalProvider extends NodeProviderBase<
     ObjectLocal,
     PersistenceLocalEffect,
     PersistenceLocalUpdate,
     ObjectLocalEffect,
-    ObjectLocalUpdate> implements CoreObjectLocalFactoryProvider<ObjectLocal> {
-  ObjectLocalFactoryProvider(
-      {required PersistenceLocalFactoryProvider childFactoryProvider})
+    ObjectLocalUpdate> implements CoreObjectLocalProvider<ObjectLocal> {
+  ObjectLocalProvider({required PersistenceLocalProvider childFactoryProvider})
       : _childFactoryProvider = childFactoryProvider,
-        super(childFactoryProvider: childFactoryProvider);
+        super(childProvider: childFactoryProvider);
+
+  // @override
+  // ObjectLocalFactory build(covariant PersistenceFactoryContext context) =>
+  //     ObjectLocalFactory(
+  //       context: context,
+  //       childFactory: childFactoryProvider.build(
+  //         context,
+  //       ),
+  //     );
 
   @override
-  ObjectLocalFactory build(covariant PersistenceFactoryContextImpl context) =>
-      ObjectLocalFactory(
-        context: context,
-        childFactory: childFactoryProvider.build(
-          context,
-        ),
-      );
+  PersistenceLocalProvider get childProvider => _childFactoryProvider;
+  final PersistenceLocalProvider _childFactoryProvider;
 
   @override
-  PersistenceLocalFactoryProvider get childFactoryProvider =>
-      _childFactoryProvider;
-  final PersistenceLocalFactoryProvider _childFactoryProvider;
+  // TODO: implement context
+  ProviderContext get context => throw UnimplementedError();
+
+  @override
+  Future<ObjectLocal> get(
+    covariant FactoryParam param,
+    covariant dynamic param2,
+  ) {
+    // TODO: implement get
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> delete(covariant FactoryParam param) {
+    // TODO: implement delete
+    throw UnimplementedError();
+  }
 }
 
 // abstract interface class ObjectLocalFactoryProviderBase<

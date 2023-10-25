@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() async {
   FlakkaPersistenceLocal.instance
       .registerPersistenceLocalAdapterFactoryProvider(
-          PersistenceLocalAdapterFactoryProviderSembast.inMemory);
+          PersistenceLocalAdapterProviderSembast.inMemory);
   group(
     'Default',
     persistenceAdapterLocalTests(

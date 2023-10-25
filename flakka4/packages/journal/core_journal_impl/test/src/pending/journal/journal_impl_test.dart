@@ -111,7 +111,7 @@ void main(){}
 //             ),
 //           ),
 //         );
-//         journal.dataStoreUpdateSink.add(DataUpdate.entry(data: [entry2]));
+//         journal.dataStoreUpdateSink.add(DataUpdate.entry(loco_data: [entry2]));
 //       });
 //       test('events-pending', () async {
 //         initialStateView = {base: (state: testState0, view: testView0)};
@@ -130,7 +130,7 @@ void main(){}
 //             ),
 //           ),
 //         );
-//         journal.dataStoreUpdateSink.add(DataUpdate.entry(data: [entry1a]));
+//         journal.dataStoreUpdateSink.add(DataUpdate.entry(loco_data: [entry1a]));
 //       });
 //       test('events-ready', () {
 //         initialStateView = {base: (state: testState0, view: testView0)};
@@ -155,7 +155,7 @@ void main(){}
 //             ),
 //           ),
 //         );
-//         journal.dataStoreUpdateSink.add(DataUpdate.entry(data: [entry1a]));
+//         journal.dataStoreUpdateSink.add(DataUpdate.entry(loco_data: [entry1a]));
 //       });
 //     });
 //     group('events', () {
@@ -180,7 +180,7 @@ void main(){}
 //         );
 //         journal.dataStoreUpdateSink.add(
 //           DataUpdate.event(
-//             data: {ref1a: testEvent0},
+//             loco_data: {ref1a: testEvent0},
 //           ),
 //         );
 //       });
@@ -210,7 +210,7 @@ void main(){}
 //         );
 //         journal.dataStoreUpdateSink.add(
 //           DataUpdate.event(
-//             data: {ref1a: testEvent0},
+//             loco_data: {ref1a: testEvent0},
 //           ),
 //         );
 //       });

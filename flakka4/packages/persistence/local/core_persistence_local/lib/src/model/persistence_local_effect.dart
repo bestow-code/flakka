@@ -11,7 +11,7 @@ abstract interface class PersistenceLocalEffectHeadUpdate implements Persistence
 
 @freezed
 sealed class PersistenceLocalEffect with _$PersistenceLocalEffect {
-  // factory PersistenceLocalEffect.head({required LocalHeadEffect data}) =
+  // factory PersistenceLocalEffect.head({required LocalHeadEffect loco_data}) =
   //     PersistenceLocalEffectHead;
   @Implements<PersistenceLocalEffectHeadUpdate>()
   factory PersistenceLocalEffect.append({

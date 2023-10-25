@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() async {
   FlakkaPersistenceRemote.instance
       .registerPersistenceRemoteAdapterFactoryProvider(
-          PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
+          PersistenceRemoteAdapterProviderSembast.inMemory);
   group(
     'Default',
     persistenceAdapterRemoteTests(

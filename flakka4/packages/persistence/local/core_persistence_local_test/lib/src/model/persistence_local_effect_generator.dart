@@ -35,7 +35,7 @@ extension AnyPersistenceLocalEffect on Any {
         any.refValue,
         any.listWithLengthInRange(0, 2, any.refValue),
         any.eventObject.nullable,
-        any.millisSinceEpoch,
+        any.createdAtMillis,
         (ref, parent, event, createdAt) => PersistenceLocalEffect.append(
           ref: ref,
           parent: parent,
@@ -56,12 +56,4 @@ extension AnyPersistenceLocalEffect on Any {
       );
 }
 
-extension AnyRef on Any {
-  Generator<String> get refValue =>
-      any.nonEmptyLowercaseLetters.map((value) => 'entry-$value');
-
-  Generator<int> get sequenceNumber => any.positiveIntOrZero;
-
-  Generator<int> get millisSinceEpoch => any.positiveIntOrZero;
-}
 // Any.setDefault<PersistenceLocalEffect>(yourGenerator);

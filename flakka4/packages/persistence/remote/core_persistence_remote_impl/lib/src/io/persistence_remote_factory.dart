@@ -16,13 +16,15 @@ class PersistenceRemoteFactory extends IOFactoryBase<PersistenceRemote,
   final PersistenceRemoteAdapterFactoryBase adapterFactory;
 
   @override
-  FutureOr<PersistenceRemote> create(PersistenceFactoryParam param) async {
-    final remoteAdapter = await adapterFactory.create(param);
+  Future<PersistenceRemote> create(
+    String key
+  ) async {
+    final remoteAdapter = await adapterFactory.create(key);
     return PersistenceRemote(remoteAdapter: remoteAdapter);
   }
 
   @override
-  FutureOr<void> delete(covariant PersistenceFactoryParam param) async {
-    await adapterFactory.delete(param);
+  Future<void> delete(String key) async {
+    await adapterFactory.delete(key);
   }
 }

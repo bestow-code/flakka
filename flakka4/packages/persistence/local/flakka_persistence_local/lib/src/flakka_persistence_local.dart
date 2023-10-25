@@ -13,12 +13,12 @@ class FlakkaPersistenceLocal {
 
   FlakkaPersistenceLocal._(this.flakkaPersistenceBase);
 
-  CorePersistenceLocalAdapterFactoryProvider getAdapterFactoryProvider() =>
+  CorePersistenceLocalAdapterProvider getAdapterFactoryProvider() =>
       serviceLocator.get();
 
   GetIt get serviceLocator => flakkaPersistenceBase.serviceLocator;
 
   void registerPersistenceLocalAdapterFactoryProvider(
-          CorePersistenceLocalAdapterFactoryProvider Function() factory) =>
+          CorePersistenceLocalAdapterProvider Function() factory) =>
       GetIt.instance.registerFactory(factory);
 }

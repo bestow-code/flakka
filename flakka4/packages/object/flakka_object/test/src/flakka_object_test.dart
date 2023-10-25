@@ -26,7 +26,7 @@ void main() {
       final persistenceId = PersistenceId('persistence-1');
       flakkaObject.registerPersistenceId(persistenceId);
       flakkaObject.registerPersistenceLocalAdapterFactoryProvider(
-          PersistenceLocalAdapterFactoryProviderSembast.inMemory);
+          PersistenceLocalAdapterProviderSembast.inMemory);
       flakkaObject.registerPersistenceRemoteAdapterFactoryProvider(
           PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
       const path = '/o/1';
@@ -45,12 +45,13 @@ void main() {
           .get(persistenceId.value)
           .get(path);
 
-      final result = await adapters.local.entryAll.first;
-      expect(
-          result[ref],
-          equals(
-            EntryProps(parent: parent, createdAt: createdAt).toJson(),
-          ));
+      throw UnimplementedError();
+      // final result = await adapters.local.entryAll.first;
+      // expect(
+      //     result[ref],
+      //     equals(
+      //       EntryProps(parent: parent, createdAt: createdAt).toJson(),
+      //     ));
     });
   });
 }

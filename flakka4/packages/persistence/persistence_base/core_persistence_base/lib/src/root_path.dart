@@ -4,5 +4,5 @@ part 'root_path.freezed.dart';
 
 @freezed
 class RootPath with _$RootPath {
-  factory RootPath(String full) = _RootPath;
+  factory RootPath(String value) = _RootPath;
 }

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RootPath {
-  String get full => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RootPathCopyWith<RootPath> get copyWith =>
@@ -28,7 +28,7 @@ abstract class $RootPathCopyWith<$Res> {
   factory $RootPathCopyWith(RootPath value, $Res Function(RootPath) then) =
       _$RootPathCopyWithImpl<$Res, RootPath>;
   @useResult
-  $Res call({String full});
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -44,12 +44,12 @@ class _$RootPathCopyWithImpl<$Res, $Val extends RootPath>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? full = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      full: null == full
-          ? _value.full
-          : full // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -62,7 +62,7 @@ abstract class _$$_RootPathCopyWith<$Res> implements $RootPathCopyWith<$Res> {
       __$$_RootPathCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String full});
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -76,12 +76,12 @@ class __$$_RootPathCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? full = null,
+    Object? value = null,
   }) {
     return _then(_$_RootPath(
-      null == full
-          ? _value.full
-          : full // ignore: cast_nullable_to_non_nullable
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -90,14 +90,14 @@ class __$$_RootPathCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RootPath implements _RootPath {
-  _$_RootPath(this.full);
+  _$_RootPath(this.value);
 
   @override
-  final String full;
+  final String value;
 
   @override
   String toString() {
-    return 'RootPath(full: $full)';
+    return 'RootPath(value: $value)';
   }
 
   @override
@@ -105,11 +105,11 @@ class _$_RootPath implements _RootPath {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RootPath &&
-            (identical(other.full, full) || other.full == full));
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, full);
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -119,10 +119,10 @@ class _$_RootPath implements _RootPath {
 }
 
 abstract class _RootPath implements RootPath {
-  factory _RootPath(final String full) = _$_RootPath;
+  factory _RootPath(final String value) = _$_RootPath;
 
   @override
-  String get full;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$_RootPathCopyWith<_$_RootPath> get copyWith =>

@@ -11,7 +11,7 @@ abstract interface class PersistenceRemoteEffectHeadUpdate implements Persistenc
 
 @freezed
 sealed class PersistenceRemoteEffect with _$PersistenceRemoteEffect {
-  // factory PersistenceRemoteEffect.head({required RemoteHeadEffect data}) =
+  // factory PersistenceRemoteEffect.head({required RemoteHeadEffect loco_data}) =
   //     PersistenceRemoteEffectHead;
   @Implements<PersistenceRemoteEffectHeadUpdate>()
   factory PersistenceRemoteEffect.append({

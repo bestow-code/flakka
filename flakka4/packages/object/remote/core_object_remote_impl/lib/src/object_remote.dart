@@ -1,6 +1,7 @@
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object_remote/core_object_remote.dart';
 import 'package:core_object_remote_impl/core_object_remote_impl.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 import 'package:rxdart/src/utils/composite_subscription.dart';
@@ -21,9 +22,12 @@ class ObjectRemote extends NodeBase<
 
   @override
   Future<void> provision(PersistenceProvisioning provisioning) async {
-    await child.provision(provisioning);
+    await super.provision(provisioning);
   }
 
   @override
   CompositeSubscription connect() => super.connect();
+
+  @override
+  Future<({String ref, int sequenceNumber})?> inspect() => _child.inspect();
 }

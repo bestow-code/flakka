@@ -5,14 +5,6 @@ import 'package:flakka_object/flakka_object.dart';
 class FlakkaData extends FlakkaObject {
   FlakkaData(super.getIt);
 
-  CoreDataIOFactoryProvider get dataIOFactoryProvider =>
-      DataIOFactoryProvider(objectIOFactoryProvider: objectIOFactoryProvider);
-
-  Future<CoreData<Event, State, View>> getDataIO<Event extends CoreEvent,
-          State extends CoreState, View extends CoreView>(String path) async =>
-      dataIOFactoryProvider
-          .getFactory(persistenceId.value)
-          .getInstance(path, dataConverter: locator.get());
 
   DataConverter<Event, State, View> getDataConverter<Event extends CoreEvent,
           State extends CoreState, View extends CoreView>() =>

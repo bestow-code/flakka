@@ -9,7 +9,7 @@ import 'package:core_persistence_remote_test/core_persistence_remote_test.dart';
 import 'package:glados/glados.dart';
 
 void Function() persistenceAdapterRemoteTests(
-  CorePersistenceRemoteAdapterFactoryProvider Function()
+  CorePersistenceRemoteAdapterProvider Function()
       persistenceProviderRemoteFactory,
 ) {
   return () {
@@ -44,23 +44,22 @@ void Function() persistenceAdapterRemoteTests(
 
 Future<CorePersistenceRemoteAdapter> getAdapter(
   String objectId,
-  CorePersistenceRemoteAdapterFactoryProvider<CorePersistenceRemoteAdapter>
-          Function()
+  CorePersistenceRemoteAdapterProvider<CorePersistenceRemoteAdapter> Function()
       persistenceProviderRemoteFactory,
 ) async {
   final provider = persistenceProviderRemoteFactory();
-  PersistenceFactoryContext context;
+  PersistenceAdapterFactoryContext context;
   context = PersistenceFactoryContextImpl()
     ..persistenceId = PersistenceId('instance-1');
-  final factory = provider.getFactory(context);
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
     ..objectPath = ObjectPath(
       'o/$objectId',
-      base: StorePath('data/test', base: RootPath('users/1')),
+      base: StorePath('loco_data/test', base: RootPath('users/1')),
     );
-  await factory.delete(param);
-  final adapter = await factory.create(param);
+  await provider.delete(param);
+  final adapter = provider.get(param, null);
+
   return adapter;
 }

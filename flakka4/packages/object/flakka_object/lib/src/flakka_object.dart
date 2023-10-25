@@ -8,12 +8,14 @@ import 'package:get_it/get_it.dart';
 class FlakkaObject extends FlakkaPersistence {
   FlakkaObject(GetIt getIt) : super(getIt);
 
-  CoreObjectIOFactoryProvider get objectIOFactoryProvider =>
-      ObjectIOFactoryProvider(
-        adaptersFactoryProvider: getPersistenceAdapterFactoryProvider(),
-        localIOFactoryProvider: ObjectLocalFactoryProvider(),
-        remoteIOFactoryProvider: ObjectStoreRemoteFactoryProvider(),
-      );
+  CoreObjectIOFactoryProvider get objectIOFactoryProvider {
+    throw UnimplementedError();
+    // return ObjectIOFactoryProvider(
+    //     adaptersFactoryProvider: getPersistenceAdapterFactoryProvider(),
+    //     localIOFactoryProvider: ObjectLocalFactoryProvider(),
+    //     remoteIOFactoryProvider: ObjectStoreRemoteFactoryProvider(),
+    //   );
+  }
 
   Future<CoreObjectIO> getObjectIO(String path) async => objectIOFactoryProvider
       .getFactory(

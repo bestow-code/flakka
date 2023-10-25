@@ -1,72 +1,37 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
-import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_data_impl/core_data_impl.dart';
 import 'package:core_object/core_object.dart';
-import 'package:rxdart/rxdart.dart';
-
-import '../../core_data_impl.dart';
+import 'package:core_object_impl/core_object_impl.dart';
 
 class Data<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView> extends Cubit<DataState<Event, State, View>>
+        View extends CoreView>
+    extends DataNodeBase<
+        DataState<Event, State, View>,
+        Event,
+        State,
+        View,
+        ObjectEffect,
+        ObjectUpdate,
+        DataEffect<Event, State, View>,
+        DataUpdate<Event, State, View>>
     implements CoreData<Event, State, View> {
-  Data(
-    super.initialState, {
-    required this.dataConverter,
-    required StreamSink<ObjectEffect> objectEffect,
-    required Stream<ObjectUpdate> objectUpdate,
-  }) : _objectEffect = objectEffect {
-    objectUpdate.listen(_onObjectUpdate);
-    _dataEffect.listen(_onDataEffect);
-  }
+  Data({
+    required Object child,
+    required DataConverter<Event, State, View> Function() dataConverterFactory,
+  })  : _child = child,
+        _dataConverterFactory = dataConverterFactory,
+        super(child: child);
 
-  final StreamSink<ObjectEffect> _objectEffect;
-  final _dataEffect = PublishSubject<DataEffect<Event, State, View>>();
-  final _dataUpdate = PublishSubject<DataUpdate<Event, State, View>>();
-
-  final DataConverter<Event, State, View> dataConverter;
+  DataConverter<Event, State, View> Function() get dataConverterFactory =>
+      _dataConverterFactory;
+  final DataConverter<Event, State, View> Function() _dataConverterFactory;
 
   @override
-  StreamSink<DataEffect<Event, State, View>> get effect => _dataEffect;
+  Object get child => _child;
+  final Object _child;
 
   @override
-  Stream<DataUpdate<Event, State, View>> get update => _dataUpdate;
-
-  @override
-  Future<InitialDataInstanceData> initialize(
-    InitialDataProps Function() ifEmpty,
-  ) {
-    throw UnimplementedError();
-  }
-
-  void _onObjectUpdate(ObjectUpdate event) {}
-
-  void _onDataEffect(DataEffect<Event, State, View> effect) {
-    effect.map(
-      append: (append) {
-        _objectEffect.add(
-          ObjectEffect.append(
-            ref: append.ref.value,
-            parent: append.parent.map((e) => e.value).toList(),
-            event: append.event != null
-                ? dataConverter.eventConverter.toJson(append.event!)
-                : null,
-            stateView: append.event != null
-                ? StateViewObject(
-                    state: dataConverter.stateConverter
-                        .toJson(append.stateView.state),
-                    view: dataConverter.viewConverter
-                        .toJson(append.stateView.view),
-                  )
-                : null,
-            createdAt: append.createdAt.millisecondsSinceEpoch,
-          ),
-        );
-      },
-      forward: (forward) {},
-      publish: (publish) {},
-      none: (none) {},
-    );
+  Future<void> provision(PersistenceProvisioning provisioning) async {
+    await super.provision(provisioning);
   }
 }

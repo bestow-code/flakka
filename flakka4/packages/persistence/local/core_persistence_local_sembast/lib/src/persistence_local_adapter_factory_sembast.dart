@@ -9,29 +9,50 @@ import '../core_persistence_local_sembast.dart';
 class PersistenceLocalAdapterFactorySembast
     extends PersistenceLocalAdapterFactoryBase {
   PersistenceLocalAdapterFactorySembast({
-    required this.persistenceId,
+    required super.rootPath,
+    required super.storePath,
+    required super.persistenceId,
     required this.databaseFactory,
-    required super.context,
   });
 
-  final PersistenceId persistenceId;
   final DatabaseFactory databaseFactory;
 
   @override
-  FutureOr<PersistenceLocalAdapterBase> create(
-    covariant PersistenceFactoryParam param,
+  Future<PersistenceLocalAdapterBase> create(
+    ({ObjectPath objectPath, ObjectVersion objectVersion}) param,
   ) async {
+    final path = '${param.objectPath}';
+    final objectPath = ObjectPath(path);
     return PersistenceLocalAdapterSembast(
       persistenceId: persistenceId,
-      database: await databaseFactory.openDatabase(param.objectPath.full),
-      objectPath: param.objectPath,
-      version: param.version,
+      database: await databaseFactory.openDatabase(path),
+      objectPath: objectPath,
+      version: param.objectVersion,
     );
   }
 
   @override
-  Future<void> delete(
-    covariant PersistenceFactoryParam param,
-  ) =>
-      databaseFactory.deleteDatabase(param.objectPath.full);
+  Future<void> delete(covariant ObjectPath objectPath) {
+    // TODO: implement delete
+    throw UnimplementedError();
+  }
+
+// @override
+// Future<PersistenceLocalAdapterBase> create(
+//   covariant PersistenceAdapterFactoryParam param,
+//   covariant dynamic param2,
+// ) async {
+//   return PersistenceLocalAdapterSembast(
+//     persistenceId: persistenceId,
+//     database: await databaseFactory.openDatabase(param.objectPath.full),
+//     objectPath: param.objectPath,
+//     version: param.version,
+//   );
+// }
+
+// @override
+// Future<void> delete(
+//   covariant PersistenceAdapterFactoryParam param,
+// ) =>
+//     databaseFactory.deleteDatabase(param.objectPath.full);
 }

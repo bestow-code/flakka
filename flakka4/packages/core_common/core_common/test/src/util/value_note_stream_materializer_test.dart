@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 //
 //     stream.materialize().listen(notifications.add, onDone: expectAsync0(() {
 //       expect(notifications,
-//           [StreamNotification.data(1), StreamNotification<int>.done()]);
+//           [StreamNotification.loco_data(1), StreamNotification<int>.done()]);
 //     }));
 //   });
 // }

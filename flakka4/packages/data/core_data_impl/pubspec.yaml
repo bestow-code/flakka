@@ -12,6 +12,19 @@ dependencies:
   core_data:
   core_object:
   core_object_impl:
+  core_object_local:
+  core_object_local_impl:
+  core_object_remote:
+  core_object_remote_impl:
+  core_persistence:
+  core_persistence_base:
+  core_persistence_base_impl:
+  core_persistence_local:
+  core_persistence_local_impl:
+  core_persistence_local_sembast:
+  core_persistence_remote:
+  core_persistence_remote_impl:
+  core_persistence_remote_sembast:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
   rxdart: ^0.27.7

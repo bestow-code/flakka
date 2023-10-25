@@ -18,11 +18,11 @@ class FlakkaPersistence extends FlakkaLocator {
   }
 
   void registerPersistenceLocalAdapterFactoryProvider(
-          CorePersistenceLocalAdapterFactoryProvider Function() factory) =>
+          CorePersistenceLocalAdapterProvider Function() factory) =>
       locator.registerFactory(factory);
 
   void registerPersistenceRemoteAdapterFactoryProvider(
-          CorePersistenceRemoteAdapterFactoryProvider Function() factory) =>
+          CorePersistenceRemoteAdapterProvider Function() factory) =>
       locator.registerFactory(factory);
 
   void registerPersistenceId(PersistenceId persistenceId) =>

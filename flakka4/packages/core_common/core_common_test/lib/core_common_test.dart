@@ -3,5 +3,4 @@
 /// Common libraries for core_platform
 library core_common_test;
 
-export 'src/async_io_spec.dart';
-export 'src/state_node_spec.dart';
+export 'package:core_loco_test/core_loco_test.dart';

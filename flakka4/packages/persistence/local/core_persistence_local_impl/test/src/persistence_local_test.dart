@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -10,25 +11,25 @@ import 'package:glados/glados.dart';
 
 Future<CorePersistenceLocal> getSubject(
   String objectId,
-  CorePersistenceLocalFactoryProvider<CorePersistenceLocal> Function()
+  CorePersistenceLocalProvider<CorePersistenceLocal> Function()
       persistenceProviderLocalFactory,
 ) async {
   final provider = persistenceProviderLocalFactory();
-  PersistenceFactoryContext context;
+  ProviderContext context;
   context = PersistenceFactoryContextImpl()
     ..persistenceId = PersistenceId('instance-1');
-  final factory = provider.build(context);
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
     ..objectPath = ObjectPath(
       'o/$objectId',
-      base: StorePath('data/test', base: RootPath('users/1')),
     );
-  await factory.delete(param);
-
-  final persistenceLocal = await factory.create(param);
-  return persistenceLocal;
+  // StorePath('loco_data/test', base: RootPath('users/1'))
+  // await provider.delete(param);
+  //
+  // final persistenceLocal = await provider.get(param, null);
+  // return persistenceLocal;
+  throw UnimplementedError();
 }
 
 void main() {
@@ -37,11 +38,15 @@ void main() {
     any.persistenceLocalEffectList,
   ).test('produce expected output for valid call sequence',
       (refValue, calls) async {
+    final context = PersistenceFactoryContextImpl()
+      ..persistenceId = PersistenceId('instance-1');
     final subject = await getSubject(
       refValue,
-      () => PersistenceLocalFactoryProvider(
-        adapterFactoryProvider:
-            PersistenceLocalAdapterFactoryProviderSembast.inMemory(),
+      () => PersistenceLocalProvider(
+        context: context,
+        adapterProvider: PersistenceLocalAdapterProviderSembast.inMemory(
+          context,
+        ),
       ),
     );
     await subject.provision(
@@ -55,7 +60,7 @@ void main() {
       () => apply(subject, calls),
       returnsNormally,
     );
-    await subject.close();
+    // await subject.close();
     // await Future.wait(
     //   [
     //     subject.done,
@@ -114,7 +119,7 @@ Future<void> apply(
 //         ..version = Version.parse('0.0.1-pre')
 //         ..objectPath = ObjectPath(
 //           'o/1',
-//           base: StorePath('data/test', base: RootPath('users/user1')),
+//           base: StorePath('loco_data/test', base: RootPath('users/user1')),
 //         );
 //     },
 //   )((spec) {

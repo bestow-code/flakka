@@ -27,7 +27,7 @@ void main() {
       final persistenceId = PersistenceId('persistence-1');
       flakkaApplication.registerPersistenceId(persistenceId);
       flakkaApplication.registerPersistenceLocalAdapterFactoryProvider(
-          PersistenceLocalAdapterFactoryProviderSembast.inMemory);
+          PersistenceLocalAdapterProviderSembast.inMemory);
       flakkaApplication.registerPersistenceRemoteAdapterFactoryProvider(
           PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
       flakkaApplication.registerDataConverter(TestDataConverter.main);

@@ -10,25 +10,27 @@ import 'package:glados/glados.dart';
 
 Future<CorePersistenceRemote> getSubject(
   String objectId,
-  CorePersistenceRemoteFactoryProvider<CorePersistenceRemote> Function()
+  CorePersistenceRemoteProvider<CorePersistenceRemote> Function()
       persistenceProviderRemoteFactory,
 ) async {
   final provider = persistenceProviderRemoteFactory();
-  PersistenceFactoryContext context;
+  PersistenceAdapterFactoryContext context;
   context = PersistenceFactoryContextImpl()
     ..persistenceId = PersistenceId('instance-1');
-  final factory = provider.build(context);
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
     ..objectPath = ObjectPath(
       'o/$objectId',
-      base: StorePath('data/test', base: RootPath('users/1')),
+      base: StorePath('loco_data/test', base: RootPath('users/1')),
     );
-  await factory.delete(param);
+  await provider.delete(param);
+  final persistence = await provider.get(
+    param,
+    null,
+  );
 
-  final persistenceRemote = await factory.create(param);
-  return persistenceRemote;
+  return persistence;
 }
 
 void main() {
@@ -39,9 +41,9 @@ void main() {
       (refValue, calls) async {
     final subject = await getSubject(
       refValue,
-      () => PersistenceRemoteFactoryProvider(
+      () => PersistenceRemoteProvider(
         adapterFactoryProvider:
-            PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
+            PersistenceRemoteAdapterProviderSembast.inMemory(),
       ),
     );
     await subject.provision(
@@ -114,7 +116,7 @@ Future<void> apply(
 //         ..version = Version.parse('0.0.1-pre')
 //         ..objectPath = ObjectPath(
 //           'o/1',
-//           base: StorePath('data/test', base: RootPath('users/user1')),
+//           base: StorePath('loco_data/test', base: RootPath('users/user1')),
 //         );
 //     },
 //   )((spec) {

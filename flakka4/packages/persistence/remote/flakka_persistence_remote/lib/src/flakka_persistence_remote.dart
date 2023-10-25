@@ -13,12 +13,12 @@ class FlakkaPersistenceRemote {
 
   FlakkaPersistenceRemote._(this.flakkaPersistenceBase);
 
-  CorePersistenceRemoteAdapterFactoryProvider getAdapterFactoryProvider() =>
+  CorePersistenceRemoteAdapterProvider getAdapterFactoryProvider() =>
       serviceLocator.get();
 
   GetIt get serviceLocator => flakkaPersistenceBase.serviceLocator;
 
   void registerPersistenceRemoteAdapterFactoryProvider(
-          CorePersistenceRemoteAdapterFactoryProvider Function() factory) =>
+          CorePersistenceRemoteAdapterProvider Function() factory) =>
       GetIt.instance.registerFactory(factory);
 }
