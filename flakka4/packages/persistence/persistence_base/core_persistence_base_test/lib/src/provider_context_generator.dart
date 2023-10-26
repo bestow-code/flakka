@@ -9,7 +9,7 @@ extension AnyProviderContextBaseExtension on Any {
       .nonEmptyLetterOrDigits
       .map((value) => ProviderContext()..persistenceId = PersistenceId(value));
 
-  Generator<ProviderContext2> get persistentProviderContexts => combine2(
+  Generator<ProviderContext2> get persistentProviderContext2 => combine2(
         persistentProviderContext,
         persistentProviderContext,
         (a, b) => (a, b),

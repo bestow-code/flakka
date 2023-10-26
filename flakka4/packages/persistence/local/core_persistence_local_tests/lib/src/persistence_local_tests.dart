@@ -10,7 +10,7 @@ void Function() persistenceAdapterLocalTests(
 ) {
   return () {
     Glados3<ProviderContext2, ObjectParam, PersistenceProvisioningInitialize>(
-            any.persistentProviderContexts,
+            any.persistentProviderContext2,
             any.objectParam,
             any.persistenceProvisioningInitialize)
         .test('objectPath should be unique for given store path, root path',
