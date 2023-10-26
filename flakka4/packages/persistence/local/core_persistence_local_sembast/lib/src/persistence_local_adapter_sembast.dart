@@ -166,8 +166,9 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   Future<void> provision({required PersistenceProvisioning request}) async =>
       _database.transaction((transaction) async {
         if (await store.head.record(persistenceId.value).exists(transaction)) {
+          final value = await store.head.record(persistenceId.value).get(transaction);
           throw Exception(
-            'initialize called on existing instance',
+            'initialize called on existing instance: $value',
           );
         }
         await request.map(

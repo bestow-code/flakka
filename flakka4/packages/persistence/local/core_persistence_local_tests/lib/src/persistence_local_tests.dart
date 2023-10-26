@@ -27,18 +27,21 @@ void Function() persistenceAdapterLocalTests(
         objectVersion: objectVersion,
       );
       final provider1 = persistenceProviderLocalFactory(context.$1);
-      await provider1.delete(param.objectPath);
-      final adapter1 = await provider1.get(param);
+      await provider1.delete(objectPath);
 
       final provider2 = persistenceProviderLocalFactory(context.$2);
-      await provider2.delete(param.objectPath);
+      await provider2.delete(objectPath);
+
+      final adapter1 = await provider1.get(param);
       final adapter2 = await provider2.get(param);
 
       if (context.$1.rootPathLocal == context.$2.rootPathLocal &&
           context.$1.storePathLocal == context.$2.storePathLocal) {
-        //
         await adapter1.provision(request: persistenceProvisioningInitialize.$1);
-        // final await adapter2.inspect();
+        expect(
+            () async => await adapter2.provision(
+                request: persistenceProvisioningInitialize.$2),
+            throwsException);
         final (state1, state2) =
             (await adapter1.inspect(), await adapter2.inspect());
         expect(state1, equals(state2));
