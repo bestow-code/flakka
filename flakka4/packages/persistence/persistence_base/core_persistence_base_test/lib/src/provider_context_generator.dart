@@ -2,14 +2,18 @@ import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:glados/glados.dart';
 
+typedef ProviderContext2 = (ProviderContext, ProviderContext);
+
 extension AnyProviderContextBaseExtension on Any {
   Generator<ProviderContext> get persistentProviderContextBase => any
       .nonEmptyLetterOrDigits
       .map((value) => ProviderContext()..persistenceId = PersistenceId(value));
 
-  Generator<(ProviderContext, ProviderContext)>
-      get persistentProviderContexts => combine2(persistentProviderContext,
-          persistentProviderContext, (a, b) => (a, b));
+  Generator<ProviderContext2> get persistentProviderContexts => combine2(
+        persistentProviderContext,
+        persistentProviderContext,
+        (a, b) => (a, b),
+      );
 
   Generator<ProviderContext> get persistentProviderContext => combine5(
         persistentProviderContextBase,
@@ -40,6 +44,18 @@ extension AnyProviderContextBaseExtension on Any {
   Generator<(ObjectPath, ObjectPath)> get objectPath2 =>
       combine2(objectPath, objectPath, (a, b) => (a, b));
 
+  Generator<ObjectVersion> get objectVersion =>
+      combine2(any.uint8, any.uint8, ObjectVersion.new);
+
+  // any.nonEmptyLetterOrDigits.map((value) => ObjectPath('object/$value'));
+
   Generator<ObjectPath> get objectPath =>
       any.nonEmptyLetterOrDigits.map((value) => ObjectPath('object/$value'));
+
+  Generator<ObjectParam> get objectParam => combine2(
+        any.objectPath,
+        any.objectVersion,
+        (objectPath, objectVersion) =>
+            (objectPath: objectPath, objectVersion: objectVersion),
+      );
 }

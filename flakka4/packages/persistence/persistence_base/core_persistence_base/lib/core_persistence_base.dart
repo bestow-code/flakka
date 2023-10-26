@@ -16,6 +16,7 @@ export 'src/io/core_persistence_io_factory.dart';
 export 'src/io/core_persistence_io_provider.dart';
 export 'src/object_instance_head.dart';
 export 'src/object_instance_path.dart';
+export 'src/object_param.dart';
 export 'src/object_path.dart';
 export 'src/persistence_config.dart';
 export 'src/persistence_id.dart';
