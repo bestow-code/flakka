@@ -10,7 +10,7 @@ class PersistenceLocalUpdate with _$PersistenceLocalUpdate {
   }) = PersistenceLocalUpdateRef;
 
   factory PersistenceLocalUpdate.event({
-    required Map<String, JsonMap> snapshot,
+    required Map<String, JsonMap?> snapshot,
   }) = PersistenceLocalUpdateEvent;
 
   factory PersistenceLocalUpdate.entry({

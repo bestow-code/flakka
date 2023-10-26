@@ -51,10 +51,11 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
           );
 
   @override
-  Stream<Map<String, JsonMap>> get eventSnapshot =>
+  Stream<Map<String, JsonMap?>> get eventSnapshot =>
       store.event.query().onSnapshots(_database).map(
-            (event) =>
-                Map.fromEntries(event.map((e) => MapEntry(e.key, e.value))),
+            (events) => Map.fromEntries(
+              events.map((e) => MapEntry(e.key, e.value['data'] as JsonMap?)),
+            ),
           );
 
   @override
@@ -166,14 +167,23 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
   Future<void> provision({required PersistenceProvisioning request}) async =>
       _database.transaction((transaction) async {
         if (await store.head.record(persistenceId.value).exists(transaction)) {
-          final value = await store.head.record(persistenceId.value).get(transaction);
+          final value =
+              await store.head.record(persistenceId.value).get(transaction);
           throw Exception(
             'initialize called on existing instance: $value',
           );
         }
         await request.map(
           initialize: (initialize) async {
-            // TODO add creation of entry
+            await store.entry.record(initialize.ifNew.ref).put(
+                  transaction,
+                  EntryProps(parent: [], createdAt: initialize.ifNew.createdAt)
+                      .toJson(),
+                );
+            await store.event.record(initialize.ifNew.ref).put(
+              transaction,
+              {'data': null},
+            );
             return store.head.record(persistenceId.value).put(transaction, {
               'ref': initialize.ifNew.ref,
               'sequenceNumber': 0,

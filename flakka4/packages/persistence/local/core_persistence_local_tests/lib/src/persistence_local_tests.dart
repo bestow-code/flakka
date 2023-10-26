@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -10,11 +11,11 @@ void Function() persistenceAdapterLocalTests(
 ) {
   return () {
     Glados3<ProviderContext2, ObjectParam, PersistenceProvisioningInitialize>(
-            any.persistentProviderContext2,
-            any.objectParam,
-            any.persistenceProvisioningInitialize)
-        .test('objectPath should be unique for given store path, root path',
-            (contexts, objectParam, persistenceProvisioningInitialize) async {
+      any.persistentProviderContext2,
+      any.objectParam,
+      any.persistenceProvisioningInitialize,
+    ).test('an object should be unique for a given initialization context',
+        (contexts, objectParam, persistenceProvisioningInitialize) async {
       final provider1 = persistenceProviderLocalFactory(contexts.$1);
       await provider1.delete(objectParam.objectPath);
 
@@ -28,9 +29,9 @@ void Function() persistenceAdapterLocalTests(
           contexts.$1.storePathLocal == contexts.$2.storePathLocal) {
         await adapter1.provision(request: persistenceProvisioningInitialize);
         expect(
-            () async => await adapter2.provision(
-                request: persistenceProvisioningInitialize),
-            throwsException);
+          () => adapter2.provision(request: persistenceProvisioningInitialize),
+          throwsException,
+        );
         final (state1, state2) =
             (await adapter1.inspect(), await adapter2.inspect());
         expect(state1, equals(state2));
@@ -42,32 +43,41 @@ void Function() persistenceAdapterLocalTests(
         expect(state1, equals(state2));
       }
     });
-    // Glados2(
-    //   any.refValue,
-    //   any.nonEmptyList(any.persistenceLocalAdapterCallData),
-    //   ExploreConfig(numRuns: 1, initialSize: 1),
-    // ).test('produce expected output for valid call sequence',
-    //     (refValue, calls) async {
-    //   final adapter =
-    //       await getAdapter(refValue, persistenceProviderLocalFactory);
-    //   await adapter.provision(
-    //     request: PersistenceProvisioning.resume(
-    //       ref: refValue,
-    //       sequenceNumber: 0,
-    //     ),
-    //   );
-    //   await expectLater(
-    //     () => PersistenceLocalAdapterCall.apply(adapter, calls),
-    //     returnsNormally,
-    //   );
-    //   await Future.wait(
-    //     [
-    //       adapter.headSnapshot.firstOrNull,
-    //       adapter.entrySnapshot.firstOrNull,
-    //       adapter.eventSnapshot.firstOrNull,
-    //     ].whereNotNull(),
-    //   );
-    // });
+    Glados2(
+      any.combine3(
+        any.persistentProviderContext,
+        any.objectParam,
+        any.persistenceProvisioningInitialize,
+        (providerContext, objectParam, persistenceProvisioningInitialize) => (
+          providerContext: providerContext,
+          objectParam: objectParam,
+          persistenceProvisioningInitialize: persistenceProvisioningInitialize
+        ),
+      ),
+      any.nonEmptyList(any.persistenceLocalAdapterCallData),
+      ExploreConfig(numRuns: 1, initialSize: 1),
+    ).test('produce expected output for valid call sequence',
+        (context, calls) async {
+      final provider1 =
+          persistenceProviderLocalFactory(context.providerContext);
+      await provider1.delete(context.objectParam.objectPath);
+
+      final adapter = await provider1.get(context.objectParam);
+      await adapter.provision(
+        request: context.persistenceProvisioningInitialize,
+      );
+      await expectLater(
+        () => PersistenceLocalAdapterCall.apply(adapter, calls),
+        returnsNormally,
+      );
+      await Future.wait(
+        [
+          adapter.headSnapshot.first,
+          adapter.entrySnapshot.where((snapshot) => snapshot.isNotEmpty).first,
+          adapter.eventSnapshot.where((snapshot) => snapshot.isNotEmpty).first,
+        ].whereNotNull(),
+      );
+    });
   };
 }
 

@@ -42,7 +42,7 @@ abstract interface class CorePersistenceLocalAdapter
   Stream<Map<String, ({Iterable<String> parent, int createdAt})>>
       get entrySnapshot;
 
-  Stream<Map<String, JsonMap>> get eventSnapshot;
+  Stream<Map<String, JsonMap?>> get eventSnapshot;
 
   Future<
       ({
