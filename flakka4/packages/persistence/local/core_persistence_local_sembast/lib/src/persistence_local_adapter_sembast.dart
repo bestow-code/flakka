@@ -187,7 +187,12 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
       });
 
   @override
-  Future<({String ref, int sequenceNumber})?> inspect() {
-    return throw UnimplementedError();
+  Future<({String ref, int sequenceNumber})?> inspect() async {
+    final head = await store.head.record(persistenceId.value).get(_database);
+    if (head != null) {
+      return HeadRef.fromJson(head).toRecord();
+    } else {
+      return null;
+    }
   }
 }

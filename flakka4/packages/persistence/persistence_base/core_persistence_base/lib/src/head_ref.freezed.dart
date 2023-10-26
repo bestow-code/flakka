@@ -103,8 +103,8 @@ class __$$_HeadRefCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_HeadRef implements _HeadRef {
-  _$_HeadRef({required this.ref, required this.sequenceNumber});
+class _$_HeadRef extends _HeadRef {
+  _$_HeadRef({required this.ref, required this.sequenceNumber}) : super._();
 
   factory _$_HeadRef.fromJson(Map<String, dynamic> json) =>
       _$$_HeadRefFromJson(json);
@@ -147,10 +147,11 @@ class _$_HeadRef implements _HeadRef {
   }
 }
 
-abstract class _HeadRef implements HeadRef {
+abstract class _HeadRef extends HeadRef {
   factory _HeadRef(
       {required final String ref,
       required final int sequenceNumber}) = _$_HeadRef;
+  _HeadRef._() : super._();
 
   factory _HeadRef.fromJson(Map<String, dynamic> json) = _$_HeadRef.fromJson;
 
