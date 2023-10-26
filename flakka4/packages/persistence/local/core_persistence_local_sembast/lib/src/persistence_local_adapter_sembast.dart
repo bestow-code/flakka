@@ -8,10 +8,12 @@ import 'package:sembast/sembast.dart';
 class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase
     implements CorePersistenceLocalAdapter {
   PersistenceLocalAdapterSembast({
-    required super.persistenceId,
-    required Database database,
+    required super.rootPath,
+    required super.storePath,
     required super.objectPath,
     required super.version,
+    required super.persistenceId,
+    required Database database,
   }) : _database = database;
 
   final Database _database;

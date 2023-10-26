@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
+import 'package:meta/meta.dart';
 import 'package:sembast/sembast.dart';
 
 import '../core_persistence_local_sembast.dart';
@@ -17,17 +18,21 @@ class PersistenceLocalAdapterFactorySembast
 
   final DatabaseFactory databaseFactory;
 
+  @protected
+  Future<Database> openDatabase(ObjectPath objectPath) =>
+      databaseFactory.openDatabase(getDatabasePath(objectPath));
+
   @override
   Future<PersistenceLocalAdapterBase> create(
     ({ObjectPath objectPath, ObjectVersion objectVersion}) param,
   ) async {
-    final path = '${param.objectPath}';
-    final objectPath = ObjectPath(path);
     return PersistenceLocalAdapterSembast(
-      persistenceId: persistenceId,
-      database: await databaseFactory.openDatabase(path),
-      objectPath: objectPath,
+      rootPath: rootPath,
+      storePath: storePath,
+      objectPath: param.objectPath,
       version: param.objectVersion,
+      persistenceId: persistenceId,
+      database: await openDatabase(param.objectPath),
     );
   }
 
@@ -35,6 +40,11 @@ class PersistenceLocalAdapterFactorySembast
   Future<void> delete(covariant ObjectPath objectPath) {
     // TODO: implement delete
     throw UnimplementedError();
+  }
+
+  @protected
+  String getDatabasePath(ObjectPath objectPath) {
+    return '$basePath/${objectPath.value}';
   }
 
 // @override

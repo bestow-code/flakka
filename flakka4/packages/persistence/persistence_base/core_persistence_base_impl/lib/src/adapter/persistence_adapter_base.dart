@@ -1,28 +1,22 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:version/version.dart';
 
 abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
   PersistenceAdapterBase({
-    required PersistenceId persistenceId,
-    required ObjectPath objectPath,
-    required ObjectVersion version,
-  })  :
-        _version = version,
-        _persistenceId = persistenceId,
-        _objectPath = objectPath;
+    required this.rootPath,
+    required this.storePath,
+    required this.objectPath,
+    required this.version,
+    required this.persistenceId,
+  });
 
   @override
-  PersistenceId get persistenceId => _persistenceId;
-
+  final RootPath rootPath;
   @override
-  ObjectPath get objectPath => _objectPath;
-
+  final StorePath storePath;
   @override
-  ObjectVersion get version => _version;
-
-  final PersistenceId _persistenceId;
-
-  final ObjectPath _objectPath;
-
-  final ObjectVersion _version;
+  final ObjectPath objectPath;
+  @override
+  final ObjectVersion version;
+  @override
+  final PersistenceId persistenceId;
 }

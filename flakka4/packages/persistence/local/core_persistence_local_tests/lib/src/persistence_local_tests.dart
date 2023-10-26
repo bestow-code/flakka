@@ -35,7 +35,7 @@ void Function() persistenceAdapterLocalTests(
           context.$1.storePathLocal == context.$2.storePathLocal) {
         //
         await adapter1.provision(request: persistenceProvisioningInitialize.$1);
-        await adapter2.provision(request: persistenceProvisioningInitialize.$2);
+        // final await adapter2.inspect();
         final (state1, state2) =
             (await adapter1.inspect(), await adapter2.inspect());
         expect(state1, equals(state2));
