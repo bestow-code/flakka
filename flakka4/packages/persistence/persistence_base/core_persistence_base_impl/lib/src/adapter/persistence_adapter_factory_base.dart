@@ -12,7 +12,7 @@ abstract class PersistenceAdapterFactoryBase<
   });
 
   @override
-  String get basePath => throw UnimplementedError();
+  String get basePath => '${rootPath.value}/${storePath.value}';
 
   @override
   final RootPath rootPath;

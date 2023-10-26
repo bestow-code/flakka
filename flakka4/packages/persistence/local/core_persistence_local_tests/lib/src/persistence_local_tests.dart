@@ -22,13 +22,16 @@ void Function() persistenceAdapterLocalTests(
             any.persistenceProvisioningInitialize2)
         .test('objectPath should be unique for given store path, root path',
             (context, objectPath, persistenceProvisioningInitialize) async {
-      final provider1 = persistenceProviderLocalFactory(context.$1);
       final param = (
         objectPath: objectPath,
         objectVersion: objectVersion,
       );
+      final provider1 = persistenceProviderLocalFactory(context.$1);
+      await provider1.delete(param.objectPath);
       final adapter1 = await provider1.get(param);
+
       final provider2 = persistenceProviderLocalFactory(context.$2);
+      await provider2.delete(param.objectPath);
       final adapter2 = await provider2.get(param);
 
       if (context.$1.rootPathLocal == context.$2.rootPathLocal &&

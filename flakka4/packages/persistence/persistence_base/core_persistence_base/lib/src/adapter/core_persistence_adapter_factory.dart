@@ -4,11 +4,12 @@ import 'package:core_common/core_common.dart';
 
 import '../../core_persistence_base.dart';
 
-abstract interface class CorePersistenceAdapterFactory<
+abstract interface
+class CorePersistenceAdapterFactory<
         PersistenceAdapter extends CorePersistenceAdapter>
     implements CoreFactory<PersistenceAdapter> {
 
-  String get basePath => '${rootPath.value}/${storePath.value}';
+  String get basePath ;
 
   RootPath get rootPath;
 

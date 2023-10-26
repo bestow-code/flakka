@@ -30,8 +30,7 @@ class PersistenceLocalAdapterProviderSembast
 
   @override
   Future<void> delete(ObjectPath objectPath) {
-    // TODO: implement delete
-    throw UnimplementedError();
+   return factory.delete(objectPath);
   }
 
   @override

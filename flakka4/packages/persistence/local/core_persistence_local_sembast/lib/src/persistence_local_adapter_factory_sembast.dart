@@ -38,8 +38,7 @@ class PersistenceLocalAdapterFactorySembast
 
   @override
   Future<void> delete(covariant ObjectPath objectPath) {
-    // TODO: implement delete
-    throw UnimplementedError();
+    return databaseFactory.deleteDatabase(getDatabasePath(objectPath));
   }
 
   @protected
