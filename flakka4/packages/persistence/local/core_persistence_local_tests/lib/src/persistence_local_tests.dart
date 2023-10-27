@@ -10,31 +10,31 @@ void Function() persistenceAdapterLocalTests(
       persistenceProviderLocalFactory,
 ) {
   return () {
-    Glados3<ProviderContext2, ObjectParam, PersistenceProvisioningInitialize>(
+    Glados3<ProviderContext2, ObjectKey, PersistenceProvisioningInitialize>(
       any.persistentProviderContext2,
-      any.objectParam,
+      any.objectKey,
       any.persistenceProvisioningInitialize,
     ).test('an object should be unique for a given initialization context',
-        (contexts, objectParam, persistenceProvisioningInitialize) async {
+        (contexts, objectKey, persistenceProvisioningInitialize) async {
       final provider1 = persistenceProviderLocalFactory(contexts.$1);
       await provider1.delete(
-        key: objectParam.objectPath,
         context: contexts.$1,
+        key: objectKey,
       );
 
       final provider2 = persistenceProviderLocalFactory(contexts.$2);
       await provider2.delete(
-        key: objectParam.objectPath,
         context: contexts.$2,
+        key: objectKey,
       );
 
       final adapter1 = await provider1.get(
-        key: objectParam.objectPath,
         context: contexts.$1,
+        key: objectKey,
       );
       final adapter2 = await provider2.get(
-        key: objectParam.objectPath,
         context: contexts.$2,
+        key: objectKey,
       );
 
       if (contexts.$1.rootPathLocal == contexts.$2.rootPathLocal &&
@@ -70,17 +70,17 @@ void Function() persistenceAdapterLocalTests(
       ExploreConfig(numRuns: 1, initialSize: 1),
     ).test('produce expected output for valid call sequence',
         (context, calls) async {
-          final provider1 = persistenceProviderLocalFactory(context.providerContext);
-          await provider1.delete(
-            key: context.objectParam.objectPath,
-            context: context.providerContext,
-          );
+      final provider1 =
+          persistenceProviderLocalFactory(context.providerContext);
+      await provider1.delete(
+        key: context.objectParam.objectPath,
+        context: context.providerContext,
+      );
 
-
-          final adapter =  await provider1.get(
-            key: context.objectParam.objectPath,
-            context: context.providerContext,
-          );
+      final adapter = await provider1.get(
+        key: context.objectParam.objectPath,
+        context: context.providerContext,
+      );
       await adapter.provision(
         request: context.persistenceProvisioningInitialize,
       );

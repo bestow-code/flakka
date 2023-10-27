@@ -42,18 +42,18 @@ extension AnyProviderContextBaseExtension on Any {
       any.nonEmptyLetterOrDigits.map((value) => StorePath('store/$value'));
 
   Generator<(ObjectKey, ObjectKey)> get objectPath2 =>
-      combine2(objectPath, objectPath, (a, b) => (a, b));
+      combine2(objectKey, objectKey, (a, b) => (a, b));
 
   Generator<ObjectVersion> get objectVersion =>
       combine2(any.uint8, any.uint8, ObjectVersion.new);
 
   // any.nonEmptyLetterOrDigits.map((value) => ObjectPath('object/$value'));
 
-  Generator<ObjectKey> get objectPath =>
+  Generator<ObjectKey> get objectKey =>
       any.nonEmptyLetterOrDigits.map((value) => ObjectKey('object/$value'));
 
   Generator<ObjectParam> get objectParam => combine2(
-        any.objectPath,
+        any.objectKey,
         any.objectVersion,
         (objectPath, objectVersion) =>
             (objectPath: objectPath, objectVersion: objectVersion),
