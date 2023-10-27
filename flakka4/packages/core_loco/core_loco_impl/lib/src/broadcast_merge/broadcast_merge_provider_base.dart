@@ -17,7 +17,6 @@ abstract class BroadcastMergeProviderBase<
   BroadcastMergeProviderBase({
     required CoreResourceProvider<dynamic, Effect1, Update1> child1Provider,
     required CoreResourceProvider<dynamic, Effect2, Update2> child2Provider,
-    required super.context,
   })  : _child1Provider = child1Provider,
         _child2Provider = child2Provider;
 

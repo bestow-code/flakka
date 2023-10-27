@@ -6,5 +6,4 @@ abstract class IOProviderBase<
         IO extends CoreIO<  In, Out>,   In, Out>
     extends ResourceProviderBase<IO,   In, Out>
     implements CoreIOProvider<IO,   In, Out> {
-  IOProviderBase({required super.context});
 }

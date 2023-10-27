@@ -3,8 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'object_path.freezed.dart';
 
 @freezed
-class ObjectPath with _$ObjectPath {
-  factory ObjectPath(String value) = _ObjectPath;
+class ObjectKey with _$ObjectKey {
+  factory ObjectKey(String value) = _ObjectKey;
 }
 
 @freezed

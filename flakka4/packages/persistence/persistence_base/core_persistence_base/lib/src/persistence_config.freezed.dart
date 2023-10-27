@@ -19,7 +19,7 @@ mixin _$PersistenceConfig {
   PersistenceId get persistenceId => throw _privateConstructorUsedError;
   RootPath get rootPath => throw _privateConstructorUsedError;
   StorePath get basePath => throw _privateConstructorUsedError;
-  ObjectPath get objectPath => throw _privateConstructorUsedError;
+  ObjectKey get objectPath => throw _privateConstructorUsedError;
   VersionId get versionId => throw _privateConstructorUsedError;
   RevisionId get revisionId => throw _privateConstructorUsedError;
 
@@ -38,14 +38,14 @@ abstract class $PersistenceConfigCopyWith<$Res> {
       {PersistenceId persistenceId,
       RootPath rootPath,
       StorePath basePath,
-      ObjectPath objectPath,
+      ObjectKey objectPath,
       VersionId versionId,
       RevisionId revisionId});
 
   $PersistenceIdCopyWith<$Res> get persistenceId;
   $RootPathCopyWith<$Res> get rootPath;
   $StorePathCopyWith<$Res> get basePath;
-  $ObjectPathCopyWith<$Res> get objectPath;
+  $ObjectKeyCopyWith<$Res> get objectPath;
   $VersionIdCopyWith<$Res> get versionId;
   $RevisionIdCopyWith<$Res> get revisionId;
 }
@@ -86,7 +86,7 @@ class _$PersistenceConfigCopyWithImpl<$Res, $Val extends PersistenceConfig>
       objectPath: null == objectPath
           ? _value.objectPath
           : objectPath // ignore: cast_nullable_to_non_nullable
-              as ObjectPath,
+              as ObjectKey,
       versionId: null == versionId
           ? _value.versionId
           : versionId // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class _$PersistenceConfigCopyWithImpl<$Res, $Val extends PersistenceConfig>
 
   @override
   @pragma('vm:prefer-inline')
-  $ObjectPathCopyWith<$Res> get objectPath {
-    return $ObjectPathCopyWith<$Res>(_value.objectPath, (value) {
+  $ObjectKeyCopyWith<$Res> get objectPath {
+    return $ObjectKeyCopyWith<$Res>(_value.objectPath, (value) {
       return _then(_value.copyWith(objectPath: value) as $Val);
     });
   }
@@ -159,7 +159,7 @@ abstract class _$$_PersistenceConfigCopyWith<$Res>
       {PersistenceId persistenceId,
       RootPath rootPath,
       StorePath basePath,
-      ObjectPath objectPath,
+      ObjectKey objectPath,
       VersionId versionId,
       RevisionId revisionId});
 
@@ -170,7 +170,7 @@ abstract class _$$_PersistenceConfigCopyWith<$Res>
   @override
   $StorePathCopyWith<$Res> get basePath;
   @override
-  $ObjectPathCopyWith<$Res> get objectPath;
+  $ObjectKeyCopyWith<$Res> get objectPath;
   @override
   $VersionIdCopyWith<$Res> get versionId;
   @override
@@ -211,7 +211,7 @@ class __$$_PersistenceConfigCopyWithImpl<$Res>
       objectPath: null == objectPath
           ? _value.objectPath
           : objectPath // ignore: cast_nullable_to_non_nullable
-              as ObjectPath,
+              as ObjectKey,
       versionId: null == versionId
           ? _value.versionId
           : versionId // ignore: cast_nullable_to_non_nullable
@@ -242,7 +242,7 @@ class _$_PersistenceConfig implements _PersistenceConfig {
   @override
   final StorePath basePath;
   @override
-  final ObjectPath objectPath;
+  final ObjectKey objectPath;
   @override
   final VersionId versionId;
   @override
@@ -289,7 +289,7 @@ abstract class _PersistenceConfig implements PersistenceConfig {
       {required final PersistenceId persistenceId,
       required final RootPath rootPath,
       required final StorePath basePath,
-      required final ObjectPath objectPath,
+      required final ObjectKey objectPath,
       required final VersionId versionId,
       required final RevisionId revisionId}) = _$_PersistenceConfig;
 
@@ -300,7 +300,7 @@ abstract class _PersistenceConfig implements PersistenceConfig {
   @override
   StorePath get basePath;
   @override
-  ObjectPath get objectPath;
+  ObjectKey get objectPath;
   @override
   VersionId get versionId;
   @override

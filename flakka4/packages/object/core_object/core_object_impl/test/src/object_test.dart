@@ -23,7 +23,7 @@ Future<Object> getSubject(
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
-    ..objectPath = ObjectPath(
+    ..objectPath = ObjectKey(
       'o/$objectId',
       base: StorePath('loco_data/test', base: RootPath('users/1')),
     );

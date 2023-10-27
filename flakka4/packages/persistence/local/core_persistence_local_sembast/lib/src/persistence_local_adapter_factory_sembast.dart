@@ -10,58 +10,52 @@ import '../core_persistence_local_sembast.dart';
 class PersistenceLocalAdapterFactorySembast
     extends PersistenceLocalAdapterFactoryBase {
   PersistenceLocalAdapterFactorySembast({
-    required super.rootPath,
-    required super.storePath,
-    required super.persistenceId,
     required this.databaseFactory,
   });
 
   final DatabaseFactory databaseFactory;
 
   @protected
-  Future<Database> openDatabase(ObjectPath objectPath) =>
-      databaseFactory.openDatabase(getDatabasePath(objectPath));
+  Future<Database> openDatabase(
+    RootPath rootPath,
+    StorePath storePath,
+    ObjectKey key,
+  ) =>
+      databaseFactory.openDatabase(getDatabasePath(rootPath, storePath, key));
 
   @override
-  Future<PersistenceLocalAdapterBase> create(
-    ({ObjectPath objectPath, ObjectVersion objectVersion}) param,
-  ) async {
+  Future<PersistenceLocalAdapterBase> create({
+    required ObjectKey key,
+    required ({
+      RootPath rootPath,
+      StorePath storePath,
+      PersistenceId persistenceId,
+    }) param,
+  }) async {
     return PersistenceLocalAdapterSembast(
-      rootPath: rootPath,
-      storePath: storePath,
-      objectPath: param.objectPath,
-      version: param.objectVersion,
-      persistenceId: persistenceId,
-      database: await openDatabase(param.objectPath),
+      rootPath: param.rootPath,
+      storePath: param.storePath,
+      objectPath: key,
+      persistenceId: param.persistenceId,
+      database: await openDatabase(param.rootPath, param.storePath, key),
     );
   }
 
-  @override
-  Future<void> delete(covariant ObjectPath objectPath) {
-    return databaseFactory.deleteDatabase(getDatabasePath(objectPath));
-  }
-
   @protected
-  String getDatabasePath(ObjectPath objectPath) {
-    return '$basePath/${objectPath.value}';
+  String getDatabasePath(
+    RootPath rootPath,
+    StorePath storePath,
+    ObjectKey key,
+  ) {
+    return '${getBasePath(rootPath: rootPath, storePath: storePath)}/${key.value}';
   }
 
-// @override
-// Future<PersistenceLocalAdapterBase> create(
-//   covariant PersistenceAdapterFactoryParam param,
-//   covariant dynamic param2,
-// ) async {
-//   return PersistenceLocalAdapterSembast(
-//     persistenceId: persistenceId,
-//     database: await databaseFactory.openDatabase(param.objectPath.full),
-//     objectPath: param.objectPath,
-//     version: param.version,
-//   );
-// }
-
-// @override
-// Future<void> delete(
-//   covariant PersistenceAdapterFactoryParam param,
-// ) =>
-//     databaseFactory.deleteDatabase(param.objectPath.full);
+  @override
+  Future<void> delete({
+    required covariant ObjectKey key,
+    required covariant ({RootPath rootPath, StorePath storePath}) param,
+  }) {
+    return databaseFactory
+        .deleteDatabase(getDatabasePath(param.rootPath, param.storePath, key));
+  }
 }

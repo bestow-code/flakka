@@ -32,7 +32,7 @@ class PersistenceRemoteAdapterFactorySembast
     return PersistenceRemoteAdapterSembast(
       persistenceId: persistenceId,
       database: await databaseFactory.openDatabase(getPath(key)),
-      objectPath: ObjectPath(key),
+      objectPath: ObjectKey(key),
       // version: versionId,
     );
   }

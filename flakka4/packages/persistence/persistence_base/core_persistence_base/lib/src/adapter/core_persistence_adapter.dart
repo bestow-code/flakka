@@ -7,7 +7,6 @@ abstract interface class CorePersistenceAdapter {
 
   StorePath get storePath;
 
-  ObjectPath get objectPath;
+  ObjectKey get objectPath;
 
-  ObjectVersion get version;
 }

@@ -17,13 +17,25 @@ void Function() persistenceAdapterLocalTests(
     ).test('an object should be unique for a given initialization context',
         (contexts, objectParam, persistenceProvisioningInitialize) async {
       final provider1 = persistenceProviderLocalFactory(contexts.$1);
-      await provider1.delete(objectParam.objectPath);
+      await provider1.delete(
+        key: objectParam.objectPath,
+        context: contexts.$1,
+      );
 
       final provider2 = persistenceProviderLocalFactory(contexts.$2);
-      await provider2.delete(objectParam.objectPath);
+      await provider2.delete(
+        key: objectParam.objectPath,
+        context: contexts.$2,
+      );
 
-      final adapter1 = await provider1.get(objectParam);
-      final adapter2 = await provider2.get(objectParam);
+      final adapter1 = await provider1.get(
+        key: objectParam.objectPath,
+        context: contexts.$1,
+      );
+      final adapter2 = await provider2.get(
+        key: objectParam.objectPath,
+        context: contexts.$2,
+      );
 
       if (contexts.$1.rootPathLocal == contexts.$2.rootPathLocal &&
           contexts.$1.storePathLocal == contexts.$2.storePathLocal) {
@@ -58,11 +70,17 @@ void Function() persistenceAdapterLocalTests(
       ExploreConfig(numRuns: 1, initialSize: 1),
     ).test('produce expected output for valid call sequence',
         (context, calls) async {
-      final provider1 =
-          persistenceProviderLocalFactory(context.providerContext);
-      await provider1.delete(context.objectParam.objectPath);
+          final provider1 = persistenceProviderLocalFactory(context.providerContext);
+          await provider1.delete(
+            key: context.objectParam.objectPath,
+            context: context.providerContext,
+          );
 
-      final adapter = await provider1.get(context.objectParam);
+
+          final adapter =  await provider1.get(
+            key: context.objectParam.objectPath,
+            context: context.providerContext,
+          );
       await adapter.provision(
         request: context.persistenceProvisioningInitialize,
       );

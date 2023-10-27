@@ -5,5 +5,4 @@ abstract class PersistenceAdapterProviderBase<
         PersistenceAdapter extends CorePersistenceAdapter>
     extends ProviderBase<PersistenceAdapter>
     implements CorePersistenceAdapterProvider<PersistenceAdapter> {
-  PersistenceAdapterProviderBase({required super.context});
 }

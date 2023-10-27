@@ -96,7 +96,7 @@ class DataFactoryParamImpl<Event extends CoreEvent, State extends CoreState,
   final DataConverter<Event, State, View> Function() _dataConverterFactory;
 
   @override
-  ObjectPath objectPath;
+  ObjectKey objectPath;
 
   @override
   Version version;

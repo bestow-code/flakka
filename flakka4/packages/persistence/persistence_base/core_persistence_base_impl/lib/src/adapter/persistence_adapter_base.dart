@@ -5,7 +5,6 @@ abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
     required this.rootPath,
     required this.storePath,
     required this.objectPath,
-    required this.version,
     required this.persistenceId,
   });
 
@@ -14,9 +13,7 @@ abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
   @override
   final StorePath storePath;
   @override
-  final ObjectPath objectPath;
-  @override
-  final ObjectVersion version;
+  final ObjectKey objectPath;
   @override
   final PersistenceId persistenceId;
 }

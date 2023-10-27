@@ -13,7 +13,7 @@ class PersistenceConfig with _$PersistenceConfig {
 
     required StorePath  basePath,
 
-    required ObjectPath  objectPath,
+    required ObjectKey  objectPath,
 
     required VersionId  versionId,
 

@@ -4,25 +4,29 @@ import 'package:core_common/core_common.dart';
 
 import '../../core_persistence_base.dart';
 
-abstract interface
-class CorePersistenceAdapterFactory<
+abstract interface class CorePersistenceAdapterFactory<
         PersistenceAdapter extends CorePersistenceAdapter>
     implements CoreFactory<PersistenceAdapter> {
-
-  String get basePath ;
-
-  RootPath get rootPath;
-
-  StorePath get storePath;
-
-  PersistenceId get persistenceId;
+  String getBasePath({
+    required RootPath rootPath,
+    required StorePath storePath,
+  });
 
   @override
-  Future<PersistenceAdapter> create(
-    covariant ({ObjectPath objectPath, ObjectVersion objectVersion}) param,
-  );
+  Future<PersistenceAdapter> create({
+    required covariant ObjectKey key,
+    required covariant ({
+      RootPath rootPath,
+      StorePath storePath,
+      PersistenceId persistenceId,
+    }) param,
+  });
 
-  Future<void> delete(
-    covariant ObjectPath objectPath,
-  );
+  Future<void> delete({
+    required covariant ObjectKey key,
+    required covariant ({
+      RootPath rootPath,
+      StorePath storePath,
+    }) param,
+  });
 }

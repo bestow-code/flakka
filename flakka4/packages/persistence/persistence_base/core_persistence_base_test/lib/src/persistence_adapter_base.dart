@@ -5,7 +5,7 @@ abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
     required PersistenceId persistenceId,
     required RootPath rootPath,
     required StorePath storePath,
-    required ObjectPath objectPath,
+    required ObjectKey objectPath,
     required VersionId versionId,
     required RevisionId revisionId,
   })  : _versionId = versionId,
@@ -25,7 +25,7 @@ abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
   StorePath get storePath => _storePath;
 
   @override
-  ObjectPath get objectPath => _objectPath;
+  ObjectKey get objectPath => _objectPath;
 
   @override
   VersionId get versionId => _versionId;
@@ -39,7 +39,7 @@ abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
 
   final StorePath _storePath;
 
-  final ObjectPath _objectPath;
+  final ObjectKey _objectPath;
 
   final VersionId _versionId;
 

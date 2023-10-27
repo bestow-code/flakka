@@ -7,7 +7,6 @@ abstract class PersistenceLocalAdapterBase extends PersistenceAdapterBase
     required super.rootPath,
     required super.storePath,
     required super.objectPath,
-    required super.version,
     required super.persistenceId,
   });
 }

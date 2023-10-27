@@ -15,27 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectPath {
+mixin _$ObjectKey {
   String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ObjectPathCopyWith<ObjectPath> get copyWith =>
+  $ObjectKeyCopyWith<ObjectKey> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectPathCopyWith<$Res> {
-  factory $ObjectPathCopyWith(
-          ObjectPath value, $Res Function(ObjectPath) then) =
-      _$ObjectPathCopyWithImpl<$Res, ObjectPath>;
+abstract class $ObjectKeyCopyWith<$Res> {
+  factory $ObjectKeyCopyWith(ObjectKey value, $Res Function(ObjectKey) then) =
+      _$ObjectKeyCopyWithImpl<$Res, ObjectKey>;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class _$ObjectPathCopyWithImpl<$Res, $Val extends ObjectPath>
-    implements $ObjectPathCopyWith<$Res> {
-  _$ObjectPathCopyWithImpl(this._value, this._then);
+class _$ObjectKeyCopyWithImpl<$Res, $Val extends ObjectKey>
+    implements $ObjectKeyCopyWith<$Res> {
+  _$ObjectKeyCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,22 +56,21 @@ class _$ObjectPathCopyWithImpl<$Res, $Val extends ObjectPath>
 }
 
 /// @nodoc
-abstract class _$$_ObjectPathCopyWith<$Res>
-    implements $ObjectPathCopyWith<$Res> {
-  factory _$$_ObjectPathCopyWith(
-          _$_ObjectPath value, $Res Function(_$_ObjectPath) then) =
-      __$$_ObjectPathCopyWithImpl<$Res>;
+abstract class _$$_ObjectKeyCopyWith<$Res> implements $ObjectKeyCopyWith<$Res> {
+  factory _$$_ObjectKeyCopyWith(
+          _$_ObjectKey value, $Res Function(_$_ObjectKey) then) =
+      __$$_ObjectKeyCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_ObjectPathCopyWithImpl<$Res>
-    extends _$ObjectPathCopyWithImpl<$Res, _$_ObjectPath>
-    implements _$$_ObjectPathCopyWith<$Res> {
-  __$$_ObjectPathCopyWithImpl(
-      _$_ObjectPath _value, $Res Function(_$_ObjectPath) _then)
+class __$$_ObjectKeyCopyWithImpl<$Res>
+    extends _$ObjectKeyCopyWithImpl<$Res, _$_ObjectKey>
+    implements _$$_ObjectKeyCopyWith<$Res> {
+  __$$_ObjectKeyCopyWithImpl(
+      _$_ObjectKey _value, $Res Function(_$_ObjectKey) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +78,7 @@ class __$$_ObjectPathCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_ObjectPath(
+    return _then(_$_ObjectKey(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -91,22 +89,22 @@ class __$$_ObjectPathCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ObjectPath implements _ObjectPath {
-  _$_ObjectPath(this.value);
+class _$_ObjectKey implements _ObjectKey {
+  _$_ObjectKey(this.value);
 
   @override
   final String value;
 
   @override
   String toString() {
-    return 'ObjectPath(value: $value)';
+    return 'ObjectKey(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ObjectPath &&
+            other is _$_ObjectKey &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -116,18 +114,18 @@ class _$_ObjectPath implements _ObjectPath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ObjectPathCopyWith<_$_ObjectPath> get copyWith =>
-      __$$_ObjectPathCopyWithImpl<_$_ObjectPath>(this, _$identity);
+  _$$_ObjectKeyCopyWith<_$_ObjectKey> get copyWith =>
+      __$$_ObjectKeyCopyWithImpl<_$_ObjectKey>(this, _$identity);
 }
 
-abstract class _ObjectPath implements ObjectPath {
-  factory _ObjectPath(final String value) = _$_ObjectPath;
+abstract class _ObjectKey implements ObjectKey {
+  factory _ObjectKey(final String value) = _$_ObjectKey;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_ObjectPathCopyWith<_$_ObjectPath> get copyWith =>
+  _$$_ObjectKeyCopyWith<_$_ObjectKey> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

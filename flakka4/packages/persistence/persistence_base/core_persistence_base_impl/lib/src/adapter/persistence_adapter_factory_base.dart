@@ -5,21 +5,10 @@ abstract class PersistenceAdapterFactoryBase<
         PersistenceAdapter extends CorePersistenceAdapter>
     extends FactoryBase<PersistenceAdapter>
     implements CorePersistenceAdapterFactory<PersistenceAdapter> {
-  PersistenceAdapterFactoryBase({
-    required this.rootPath,
-    required this.storePath,
-    required this.persistenceId,
-  });
-
   @override
-  String get basePath => '${rootPath.value}/${storePath.value}';
-
-  @override
-  final RootPath rootPath;
-
-  @override
-  final StorePath storePath;
-
-  @override
-  final PersistenceId persistenceId;
+  String getBasePath({
+    required RootPath rootPath,
+    required StorePath storePath,
+  }) =>
+      '${rootPath.value}/${storePath.value}';
 }
