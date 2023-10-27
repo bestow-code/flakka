@@ -31,12 +31,12 @@ abstract class PersistenceLocalAdapterProviderBase
     required ProviderContext context,
     required ObjectKey key,
   }) =>
-      getFactory(context).create(
+      getFactory(context).delete(
         key: key,
         param: (
           rootPath: context.rootPathLocal!,
           storePath: context.storePathLocal!,
-          persistenceId: context.persistenceId!
+          persistenceId: null
         ),
       );
 

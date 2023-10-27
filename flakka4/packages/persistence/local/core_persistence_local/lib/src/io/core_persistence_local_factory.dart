@@ -1,8 +1,16 @@
 import 'package:core_common/core_common.dart';
-import 'package:core_persistence_local/src/model/persistence_local_effect.dart';
-import 'package:core_persistence_local/src/model/persistence_local_update.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:core_persistence_local/core_persistence_local.dart';
 
 abstract class CorePersistenceLocalFactory<
-        IO extends CoreIO<PersistenceLocalEffect, PersistenceLocalUpdate>>
+        PersistenceLocal extends CoreIO<PersistenceLocalEffect,
+            PersistenceLocalUpdate>>
     implements
-        CoreIOFactory<IO, PersistenceLocalEffect, PersistenceLocalUpdate> {}
+        CoreIOFactory<PersistenceLocal, PersistenceLocalEffect,
+            PersistenceLocalUpdate> {
+  @override
+  Future<PersistenceLocal> create({
+    required ObjectKey key,
+    required covariant ({CorePersistenceLocalAdapter adapter}) param,
+  });
+}

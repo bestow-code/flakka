@@ -53,8 +53,15 @@ class PersistenceLocalAdapterFactorySembast
   @override
   Future<void> delete({
     required covariant ObjectKey key,
-    required covariant ({RootPath rootPath, StorePath storePath}) param,
+    required covariant ({
+      RootPath rootPath,
+      StorePath storePath,
+      PersistenceId? persistenceId
+    }) param,
   }) {
+    if (param.persistenceId != null) {
+      throw UnimplementedError();
+    }
     return databaseFactory
         .deleteDatabase(getDatabasePath(param.rootPath, param.storePath, key));
   }

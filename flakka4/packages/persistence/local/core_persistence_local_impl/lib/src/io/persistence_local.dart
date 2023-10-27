@@ -44,22 +44,33 @@ class PersistenceLocal
           return _localAdapter.import();
         },
       );
+  late StreamSubscription subscription;
 
   @override
   Future<void> provision(
     covariant PersistenceProvisioning provisioning,
   ) async {
     await _localAdapter.provision(request: provisioning);
-    unawaited(Rx.merge([
+    subscription = Rx.merge([
       _localAdapter.headSnapshot
           .map((event) => PersistenceLocalUpdate.ref(value: event.ref)),
       _localAdapter.entrySnapshot
           .map((event) => PersistenceLocalUpdate.entry(snapshot: event)),
       _localAdapter.eventSnapshot
           .map((event) => PersistenceLocalUpdate.event(snapshot: event)),
-    ]).pipe(outputSubject));
-    unawaited(
-        Future.wait([inputSubject.stream.asyncMap(onInput).drain<void>()]));
+    ]).listen(outputSubject.add);
+    unawaited(Future.wait([
+      inputSubject.stream
+          .asyncMap(onInput)
+          .drain<void>()
+          .then((value) async => close())
+    ]));
+  }
+
+  @override
+  Future<void> close() async {
+    await subscription.cancel();
+    await super.close();
   }
 
   @override

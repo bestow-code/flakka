@@ -27,6 +27,7 @@ abstract interface class CorePersistenceAdapterFactory<
     required covariant ({
       RootPath rootPath,
       StorePath storePath,
+      PersistenceId? persistenceId
     }) param,
   });
 }

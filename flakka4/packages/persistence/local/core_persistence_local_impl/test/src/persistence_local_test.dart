@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
+import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 import 'package:glados/glados.dart';
 
@@ -16,46 +18,45 @@ Future<CorePersistenceLocal> getSubject(
 
 void main() {
   Glados2(
-    any.refValue,
+    any.combine3(
+        any.persistentProviderContext,
+        any.objectKey,
+        any.persistenceProvisioningInitialize,
+        (providerContext, objectKey, persistenceProvisioningInitialize) => (
+              providerContext: providerContext,
+              objectKey: objectKey,
+              persistenceProvisioningInitialize:
+                  persistenceProvisioningInitialize,
+            )),
     any.persistenceLocalEffectList,
   ).test('produce expected output for valid call sequence',
-      (refValue, calls) async {
-    // final context = PersistenceFactoryContextImpl()
-    //   ..persistenceId = PersistenceId('instance-1');
-    // final subject = await getSubject(
-    //   refValue,
-    //   () => PersistenceLocalProvider(
-    //     context: context,
-    //     adapterProvider: PersistenceLocalAdapterProviderSembast.inMemory(
-    //       context,
-    //     ),
-    //   ),
-    // );
-    //  await subject.provision(
-    //   PersistenceProvisioning.resume(
-    //     ref: refValue,
-    //     sequenceNumber: 0,
-    //   ),
-    // );
-    // subject.connect();
-    final subject = throw UnimplementedError();
+      (context, calls) async {
+    final provider1 = PersistenceLocalProvider(
+        adapterProvider: PersistenceLocalAdapterProviderSembast.inMemory);
+    await provider1.delete(
+      context: context.providerContext,
+      key: context.objectKey,
+    );
+
+    final persistenceLocal = await provider1.get(
+      context: context.providerContext,
+      key: context.objectKey,
+    );
+
+    await persistenceLocal.provision(context.persistenceProvisioningInitialize);
+    persistenceLocal.connect();
     await expectLater(
-      () => apply(subject, calls),
+      () => apply(persistenceLocal, calls),
       returnsNormally,
     );
-    // await subject.close();
-    // await Future.wait(
-    //   [
-    //     subject.done,
-    //   ],
-    // );
+    await persistenceLocal.done;
+    await persistenceLocal.outputSubject.done;
   });
 }
 
 Future<void> apply(
   CorePersistenceLocal subject,
   Iterable<PersistenceLocalEffect> calls,
-// int startSequenceNumber,
 ) async {
   const startSequenceNumber = 0;
   var sequenceNumber = startSequenceNumber;
@@ -74,65 +75,3 @@ Future<void> apply(
       .toList();
   return Stream.fromIterable(sequencedCalls).pipe(subject.input);
 }
-
-// // persistenceLocalIOSpec('[PersistenceLocalIO]', (spec) {
-// //   spec.property('');
-// // });
-// Any.setDefault(any.persistenceLocalEffect);
-// Any.setDefault(any.persistenceLocalUpdate);
-// final persistenceId = PersistenceId('instance-1');
-// // asyncIOSpec('[PersistenceLocalIO]', ());
-// group(
-//   '[PersistenceLocalIO]',
-//   ioSpec<
-//       PersistenceLocalEffect,
-//       PersistenceLocalUpdate,
-//       PersistenceFactoryContextImpl,
-//       PersistenceFactoryParamImpl,
-//       PersistenceLocal>(
-//     provider: () => PersistenceLocalIOFactoryProvider(
-//       adapterFactoryProvider:
-//           PersistenceLocalAdapterFactoryProviderSembast.inMemory(),
-//     ),
-//     context: PersistenceFactoryContextImpl.new,
-//     param: PersistenceFactoryParamImpl.new,
-//     setUp: (context, param) {
-//       context.persistenceId = persistenceId;
-//       param
-//         ..version = Version.parse('0.0.1-pre')
-//         ..objectPath = ObjectPath(
-//           'o/1',
-//           base: StorePath('loco_data/test', base: RootPath('users/user1')),
-//         );
-//     },
-//   )((spec) {
-//     spec.inputTest(
-//       'for given input, output matches oracle expectations',
-//     )((io, inputs) async {
-//       // io.connect();
-//       //
-//       // inputs.map((e) => e.map(
-//       //       // provision: (provision){
-//       //       //   // return PersistenceLocalUpdate
-//       //       // },
-//       //       append: (append){},
-//       //       set: (forward){},
-//       //       import: (import){},
-//       //     ));
-//       // if (inputs.whereType<PersistenceLocalEffectProvision>().length <= 1) {
-//       //   expect(() async => io.input.addStream(Stream.fromIterable(inputs)),
-//       //       returnsNormally);
-//       // } else {
-//       //   print(inputs);
-//       //   expect(() async => io.input.addStream(Stream.fromIterable(inputs)),
-//       //       throwsException);
-//       // }
-//     });
-//   }),
-// );
-//
-// // IOFactoryProviderBase get testPersistenceLocalIOFactoryProvider => PersistenceLocalIOFactoryProvider(
-// //   adapterFactoryProvider:
-// //   PersistenceLocalAdapterFactoryProviderSembast.inMemory(),
-// // );
-// }
