@@ -8,8 +8,10 @@ abstract interface class CoreObjectFactory
     implements
         CoreBroadcastMergeFactory<
             CoreObject,
+            CoreObjectLocal,
             ObjectLocalEffect,
             ObjectLocalUpdate,
+            CoreObjectRemote,
             ObjectRemoteEffect,
             ObjectRemoteUpdate,
             ObjectEffect,

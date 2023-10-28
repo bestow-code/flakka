@@ -30,30 +30,44 @@ class ObjectProvider extends BroadcastMergeProviderBase<
   ObjectRemoteProvider get child2Provider => _child2Provider;
   final ObjectRemoteProvider _child2Provider;
 
-  // @override
-  // ObjectFactory build(covariant PersistenceFactoryContext param) =>
-  //     ObjectFactory(
-  //       child1Factory: child1Provider.get(param),
-  //       child2Factory: child2Provider.build(param),
-  //       context: param,
-  //     );
+  @override
+  Future<void> dispose({
+    required ProviderContext context,
+    required covariant ObjectKey key,
+  }) {
+    throw UnimplementedError();
+  }
 
   @override
   Future<Object> get(
-    covariant FactoryParam param,
-    covariant dynamic param2,
-  ) {
-    // TODO: implement get
+      {required ProviderContext context, required covariant ObjectKey key}) {
     throw UnimplementedError();
   }
 
-  @override
-  // TODO: implement context
-  ProviderContext get context => throw UnimplementedError();
+// @override
+// ObjectFactory build(covariant PersistenceFactoryContext param) =>
+//     ObjectFactory(
+//       child1Factory: child1Provider.get(param),
+//       child2Factory: child2Provider.build(param),
+//       context: param,
+//     );
 
-  @override
-  Future<void> delete(covariant FactoryParam param) {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
+// @override
+// Future<Object> get(
+//   covariant FactoryParam param,
+//   covariant dynamic param2,
+// ) {
+//   // TODO: implement get
+//   throw UnimplementedError();
+// }
+//
+// @override
+// // TODO: implement context
+// ProviderContext get context => throw UnimplementedError();
+//
+// @override
+// Future<void> delete(covariant FactoryParam param) {
+//   // TODO: implement delete
+//   throw UnimplementedError();
+// }
 }

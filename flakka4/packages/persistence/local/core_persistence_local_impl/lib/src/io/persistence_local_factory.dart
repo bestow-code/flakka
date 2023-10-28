@@ -5,9 +5,10 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
-class PersistenceLocalFactory extends IOFactoryBase<PersistenceLocal,
-        PersistenceLocalEffect, PersistenceLocalUpdate>
-    implements CorePersistenceLocalFactory<PersistenceLocal> {
+class PersistenceLocalFactory extends ResourceFactoryBase<
+    PersistenceLocalEffect,
+    PersistenceLocalUpdate,
+    CorePersistenceLocal> implements CorePersistenceLocalFactory {
   @override
   Future<PersistenceLocal> create({
     required ObjectKey key,

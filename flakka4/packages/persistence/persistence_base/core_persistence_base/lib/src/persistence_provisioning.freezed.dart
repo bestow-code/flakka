@@ -18,19 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PersistenceProvisioning {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({int createdAt, String ref}) ifNew) initialize,
+    required TResult Function(
+            ({int createdAt,  String ref}) ifNew)
+        initialize,
     required TResult Function(String ref, int sequenceNumber) resume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({int createdAt, String ref}) ifNew)? initialize,
+    TResult? Function(
+            ({int createdAt,  String ref}) ifNew)?
+        initialize,
     TResult? Function(String ref, int sequenceNumber)? resume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({int createdAt, String ref}) ifNew)? initialize,
+    TResult Function(
+            ({int createdAt,  String ref}) ifNew)?
+        initialize,
     TResult Function(String ref, int sequenceNumber)? resume,
     required TResult orElse(),
   }) =>
@@ -83,7 +89,7 @@ abstract class _$$PersistenceProvisioningInitializeCopyWith<$Res> {
           $Res Function(_$PersistenceProvisioningInitialize) then) =
       __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>;
   @useResult
-  $Res call({({int createdAt, String ref}) ifNew});
+  $Res call({({int createdAt,  String ref}) ifNew});
 }
 
 /// @nodoc
@@ -105,7 +111,7 @@ class __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>
       ifNew: null == ifNew
           ? _value.ifNew
           : ifNew // ignore: cast_nullable_to_non_nullable
-              as ({int createdAt, String ref}),
+              as ({int createdAt,  String ref}),
     ));
   }
 }
@@ -117,7 +123,7 @@ class _$PersistenceProvisioningInitialize
   _$PersistenceProvisioningInitialize({required this.ifNew});
 
   @override
-  final ({int createdAt, String ref}) ifNew;
+  final ({int createdAt,  String ref}) ifNew;
 
   @override
   String toString() {
@@ -146,7 +152,9 @@ class _$PersistenceProvisioningInitialize
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({int createdAt, String ref}) ifNew) initialize,
+    required TResult Function(
+            ({int createdAt,  String ref}) ifNew)
+        initialize,
     required TResult Function(String ref, int sequenceNumber) resume,
   }) {
     return initialize(ifNew);
@@ -155,7 +163,9 @@ class _$PersistenceProvisioningInitialize
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({int createdAt, String ref}) ifNew)? initialize,
+    TResult? Function(
+            ({int createdAt,  String ref}) ifNew)?
+        initialize,
     TResult? Function(String ref, int sequenceNumber)? resume,
   }) {
     return initialize?.call(ifNew);
@@ -164,7 +174,9 @@ class _$PersistenceProvisioningInitialize
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({int createdAt, String ref}) ifNew)? initialize,
+    TResult Function(
+            ({int createdAt,  String ref}) ifNew)?
+        initialize,
     TResult Function(String ref, int sequenceNumber)? resume,
     required TResult orElse(),
   }) {
@@ -210,10 +222,13 @@ class _$PersistenceProvisioningInitialize
 abstract class PersistenceProvisioningInitialize
     implements PersistenceProvisioning {
   factory PersistenceProvisioningInitialize(
-          {required final ({int createdAt, String ref}) ifNew}) =
-      _$PersistenceProvisioningInitialize;
+      {required final ({
+        int createdAt,
+        
+        String ref
+      }) ifNew}) = _$PersistenceProvisioningInitialize;
 
-  ({int createdAt, String ref}) get ifNew;
+  ({int createdAt,  String ref}) get ifNew;
   @JsonKey(ignore: true)
   _$$PersistenceProvisioningInitializeCopyWith<
           _$PersistenceProvisioningInitialize>
@@ -298,7 +313,9 @@ class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({int createdAt, String ref}) ifNew) initialize,
+    required TResult Function(
+            ({int createdAt,  String ref}) ifNew)
+        initialize,
     required TResult Function(String ref, int sequenceNumber) resume,
   }) {
     return resume(ref, sequenceNumber);
@@ -307,7 +324,9 @@ class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({int createdAt, String ref}) ifNew)? initialize,
+    TResult? Function(
+            ({int createdAt,  String ref}) ifNew)?
+        initialize,
     TResult? Function(String ref, int sequenceNumber)? resume,
   }) {
     return resume?.call(ref, sequenceNumber);
@@ -316,7 +335,9 @@ class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({int createdAt, String ref}) ifNew)? initialize,
+    TResult Function(
+            ({int createdAt,  String ref}) ifNew)?
+        initialize,
     TResult Function(String ref, int sequenceNumber)? resume,
     required TResult orElse(),
   }) {

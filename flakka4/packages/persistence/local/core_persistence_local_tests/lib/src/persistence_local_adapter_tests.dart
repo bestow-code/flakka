@@ -10,35 +10,41 @@ void Function() persistenceAdapterLocalTests(
       persistenceProviderLocalFactory,
 ) {
   return () {
-    Glados3<ProviderContext2, ObjectKey, PersistenceProvisioningInitialize>(
-      any.persistentProviderContext2,
-      any.objectKey,
-      any.persistenceProvisioningInitialize,
+    Glados<PersistenceAdapterTestContextInitialize2>(
+      any.persistenceLocalAdapterTestContext2,
     ).test('an object should be unique for a given initialization context',
-        (contexts, objectKey, persistenceProvisioningInitialize) async {
-      final provider1 = persistenceProviderLocalFactory(contexts.$1);
+        (testContext) async {
+      final objectKey = testContext.$1.objectKey;
+      final persistenceProvisioningInitialize =
+          testContext.$1.persistenceProvisioningInitialize;
+
+      final provider1 =
+          persistenceProviderLocalFactory(testContext.$1.providerContext);
       await provider1.delete(
-        context: contexts.$1,
+        context: testContext.$1.providerContext,
         key: objectKey,
       );
 
-      final provider2 = persistenceProviderLocalFactory(contexts.$2);
+      final provider2 =
+          persistenceProviderLocalFactory(testContext.$2.providerContext);
       await provider2.delete(
-        context: contexts.$2,
+        context: testContext.$2.providerContext,
         key: objectKey,
       );
 
       final adapter1 = await provider1.get(
-        context: contexts.$1,
+        context: testContext.$1.providerContext,
         key: objectKey,
       );
       final adapter2 = await provider2.get(
-        context: contexts.$2,
+        context: testContext.$2.providerContext,
         key: objectKey,
       );
 
-      if (contexts.$1.rootPathLocal == contexts.$2.rootPathLocal &&
-          contexts.$1.storePathLocal == contexts.$2.storePathLocal) {
+      if (testContext.$1.providerContext.rootPathLocal ==
+              testContext.$2.providerContext.rootPathLocal &&
+          testContext.$1.providerContext.storePathLocal ==
+              testContext.$2.providerContext.storePathLocal) {
         await adapter1.provision(request: persistenceProvisioningInitialize);
         expect(
           () => adapter2.provision(request: persistenceProvisioningInitialize),
@@ -56,16 +62,7 @@ void Function() persistenceAdapterLocalTests(
       }
     });
     Glados2(
-      any.combine3(
-        any.persistentProviderContext,
-        any.objectParam,
-        any.persistenceProvisioningInitialize,
-        (providerContext, objectParam, persistenceProvisioningInitialize) => (
-          providerContext: providerContext,
-          objectParam: objectParam,
-          persistenceProvisioningInitialize: persistenceProvisioningInitialize
-        ),
-      ),
+      any.persistenceLocalAdapterTestContext,
       any.nonEmptyList(any.persistenceLocalAdapterCallData),
       ExploreConfig(numRuns: 1, initialSize: 1),
     ).test('produce expected output for valid call sequence',
@@ -73,12 +70,12 @@ void Function() persistenceAdapterLocalTests(
       final provider1 =
           persistenceProviderLocalFactory(context.providerContext);
       await provider1.delete(
-        key: context.objectParam.objectPath,
+        key: context.objectKey,
         context: context.providerContext,
       );
 
       final adapter = await provider1.get(
-        key: context.objectParam.objectPath,
+        key: context.objectKey,
         context: context.providerContext,
       );
       await adapter.provision(

@@ -8,8 +8,7 @@ import 'package:glados/glados.dart';
 
 Future<CorePersistenceLocal> getSubject(
   String objectId,
-  CorePersistenceLocalProvider<CorePersistenceLocal> Function()
-      persistenceProviderLocalFactory,
+  CorePersistenceLocalProvider Function() persistenceProviderLocalFactory,
 ) async {
   final provider = persistenceProviderLocalFactory();
 
@@ -19,7 +18,7 @@ Future<CorePersistenceLocal> getSubject(
 void main() {
   Glados2(
     any.combine3(
-        any.persistentProviderContext,
+        any.providerContextPersistenceAdapter,
         any.objectKey,
         any.persistenceProvisioningInitialize,
         (providerContext, objectKey, persistenceProvisioningInitialize) => (
@@ -50,7 +49,7 @@ void main() {
       returnsNormally,
     );
     await persistenceLocal.done;
-    await persistenceLocal.outputSubject.done;
+    // await persistenceLocal.output;
   });
 }
 

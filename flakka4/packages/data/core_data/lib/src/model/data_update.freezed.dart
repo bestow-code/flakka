@@ -362,7 +362,7 @@ class _$DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'DataUpdate<$Event, $State, $View>.entry(loco_data: $data, pending: $pending)';
+    return 'DataUpdate<$Event, $State, $View>.entry(data: $data, pending: $pending)';
   }
 
   @override

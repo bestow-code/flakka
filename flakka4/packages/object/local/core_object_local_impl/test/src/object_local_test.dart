@@ -37,14 +37,13 @@ void main() {
     refValue,
     // calls,
   ) async {
-    final context=PersistenceFactoryContextImpl()
-      ..persistenceId = PersistenceId('instance-1');
+    // any.persistentProviderContext
     final subject = await getSubject(
         refValue,
         () => ObjectLocalProvider(
-              childFactoryProvider: PersistenceLocalProvider(context: context,
+              childProvider: PersistenceLocalProvider(
                 adapterProvider:
-                    PersistenceLocalAdapterProviderSembast.inMemory(),
+                    PersistenceLocalAdapterProviderSembast.inMemory,
               ),
             ));
     await subject.provision(

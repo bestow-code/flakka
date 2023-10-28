@@ -315,7 +315,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
 
   @override
   String toString() {
-    return 'ObjectUpdate.entry(loco_data: $data)';
+    return 'ObjectUpdate.entry(data: $data)';
   }
 
   @override
@@ -481,7 +481,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
 
   @override
   String toString() {
-    return 'ObjectUpdate.event(loco_data: $data)';
+    return 'ObjectUpdate.event(data: $data)';
   }
 
   @override
@@ -646,7 +646,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
 
   @override
   String toString() {
-    return 'ObjectUpdate.stateView(loco_data: $data)';
+    return 'ObjectUpdate.stateView(data: $data)';
   }
 
   @override

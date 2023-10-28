@@ -2,32 +2,32 @@ import 'package:core_loco/core_loco.dart';
 import 'package:core_loco_impl/core_loco_impl.dart';
 
 abstract class BroadcastMergeFactoryBase<
-        BroadcastMerge extends CoreBroadcastMerge<Effect1, Update1, Effect2,
-            Update2, In, Out>,
         Effect1,
         Update1,
+        Resource1 extends CoreResource<Effect1, Update1>,
         Effect2,
         Update2,
+        Resource2 extends CoreResource<Effect2, Update2>,
         In,
-        Out> extends ResourceFactoryBase<BroadcastMerge, In, Out>
+        Out,
+        BroadcastMerge extends CoreBroadcastMerge<
+            Effect1,
+            Update1,
+            Resource1,
+            Effect2,
+            Update2,
+            Resource2,
+            In,
+            Out>> extends ResourceFactoryBase<In, Out, BroadcastMerge>
     implements
-        CoreBroadcastMergeFactory<BroadcastMerge, Effect1, Update1, Effect2,
-            Update2, In, Out> {
-  BroadcastMergeFactoryBase({
-    required CoreResourceFactory<dynamic, Effect1, Update1> child1Factory,
-    required CoreResourceFactory<dynamic, Effect2, Update2> child2Factory,
-  })  : _child1Factory = child1Factory,
-        _child2Factory = child2Factory;
+        CoreBroadcastMergeFactory<Effect1, Update1, Resource1, Effect2, Update2,
+            Resource2, In, Out, BroadcastMerge> {
+  BroadcastMergeFactoryBase(
+      {required this.child1Provider, required this.child2Provider});
 
   @override
-  CoreResourceFactory<dynamic, Effect1, Update1> get child1Factory =>
-      _child1Factory;
-
-  final CoreResourceFactory<dynamic, Effect1, Update1> _child1Factory;
+  final CoreResourceProvider<Effect1, Update1, Resource1> child1Provider;
 
   @override
-  CoreResourceFactory<dynamic, Effect2, Update2> get child2Factory =>
-      _child2Factory;
-
-  final CoreResourceFactory<dynamic, Effect2, Update2> _child2Factory;
+  final CoreResourceProvider<Effect2, Update2, Resource2> child2Provider;
 }

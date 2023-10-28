@@ -10,8 +10,8 @@ import '../../core_loco.dart';
 //   // );
 // }
 
-abstract class CoreResourceProvider<Resource extends CoreResource<In, Out>, In,
-    Out> implements CoreProvider<Resource> {
+abstract class CoreResourceProvider<In, Out,
+    Resource extends CoreResource<In, Out>> implements CoreProvider<Resource> {
   // @override
   // Future<Resource> build(
   //   covariant FactoryParam param,

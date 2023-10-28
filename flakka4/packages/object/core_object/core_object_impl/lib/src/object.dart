@@ -6,8 +6,10 @@ import 'package:core_object_local/core_object_local.dart';
 import 'package:core_object_remote/core_object_remote.dart';
 
 class Object extends BroadcastMergeBase<
+    CoreObjectLocal,
     ObjectLocalEffect,
     ObjectLocalUpdate,
+    CoreObjectRemote,
     ObjectRemoteEffect,
     ObjectRemoteUpdate,
     ObjectEffect,

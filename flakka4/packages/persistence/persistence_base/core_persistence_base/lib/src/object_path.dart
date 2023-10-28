@@ -9,9 +9,10 @@ class ObjectKey with _$ObjectKey {
 
 @freezed
 class ObjectVersion with _$ObjectVersion {
-  static ObjectVersion get initial => ObjectVersion(0, 1);
   factory ObjectVersion(
-    int major,
-    int minor,
+    int event,
+    int stateView,
   ) = _ObjectVersion;
+
+  static ObjectVersion get initial => ObjectVersion(0, 0);
 }

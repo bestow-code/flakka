@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 class FlakkaObject extends FlakkaPersistence {
   FlakkaObject(GetIt getIt) : super(getIt);
 
-  CoreObjectIOFactoryProvider get objectIOFactoryProvider {
+  CoreObjectProvider get objectIOFactoryProvider {
     throw UnimplementedError();
     // return ObjectIOFactoryProvider(
     //     adaptersFactoryProvider: getPersistenceAdapterFactoryProvider(),
@@ -17,9 +17,9 @@ class FlakkaObject extends FlakkaPersistence {
     //   );
   }
 
-  Future<CoreObjectIO> getObjectIO(String path) async => objectIOFactoryProvider
-      .getFactory(
-        persistenceId.value,
-      )
-      .getInstance(path);
+  // Future<CoreObjectIO> getObjectIO(String path) async => objectIOFactoryProvider
+  //     .getFactory(
+  //       persistenceId.value,
+  //     )
+  //     .getInstance(path);
 }

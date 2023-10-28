@@ -1,6 +1,12 @@
 import '../../core_loco.dart';
 
-abstract class CoreNodeProvider<Node extends CoreNode<Effect, Update, In, Out>,
-    Effect, Update, In, Out> implements CoreResourceProvider<Node, In, Out> {
-  CoreResourceProvider<dynamic, Effect, Update> get childProvider;
+abstract class CoreNodeProvider<
+        Effect,
+        Update,
+        Resource extends CoreResource<Effect, Update>,
+        In,
+        Out,
+        Node extends CoreNode<Effect, Update, In, Out>>
+    implements CoreResourceProvider<In, Out, Node> {
+  CoreResourceProvider<Effect, Update, Resource> get childProvider;
 }

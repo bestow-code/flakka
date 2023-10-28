@@ -131,8 +131,8 @@ abstract class _ObjectKey implements ObjectKey {
 
 /// @nodoc
 mixin _$ObjectVersion {
-  int get major => throw _privateConstructorUsedError;
-  int get minor => throw _privateConstructorUsedError;
+  int get event => throw _privateConstructorUsedError;
+  int get stateView => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ObjectVersionCopyWith<ObjectVersion> get copyWith =>
@@ -145,7 +145,7 @@ abstract class $ObjectVersionCopyWith<$Res> {
           ObjectVersion value, $Res Function(ObjectVersion) then) =
       _$ObjectVersionCopyWithImpl<$Res, ObjectVersion>;
   @useResult
-  $Res call({int major, int minor});
+  $Res call({int event, int stateView});
 }
 
 /// @nodoc
@@ -161,17 +161,17 @@ class _$ObjectVersionCopyWithImpl<$Res, $Val extends ObjectVersion>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? major = null,
-    Object? minor = null,
+    Object? event = null,
+    Object? stateView = null,
   }) {
     return _then(_value.copyWith(
-      major: null == major
-          ? _value.major
-          : major // ignore: cast_nullable_to_non_nullable
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
               as int,
-      minor: null == minor
-          ? _value.minor
-          : minor // ignore: cast_nullable_to_non_nullable
+      stateView: null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -185,7 +185,7 @@ abstract class _$$_ObjectVersionCopyWith<$Res>
       __$$_ObjectVersionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int major, int minor});
+  $Res call({int event, int stateView});
 }
 
 /// @nodoc
@@ -199,17 +199,17 @@ class __$$_ObjectVersionCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? major = null,
-    Object? minor = null,
+    Object? event = null,
+    Object? stateView = null,
   }) {
     return _then(_$_ObjectVersion(
-      null == major
-          ? _value.major
-          : major // ignore: cast_nullable_to_non_nullable
+      null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
               as int,
-      null == minor
-          ? _value.minor
-          : minor // ignore: cast_nullable_to_non_nullable
+      null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -218,16 +218,16 @@ class __$$_ObjectVersionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ObjectVersion implements _ObjectVersion {
-  _$_ObjectVersion(this.major, this.minor);
+  _$_ObjectVersion(this.event, this.stateView);
 
   @override
-  final int major;
+  final int event;
   @override
-  final int minor;
+  final int stateView;
 
   @override
   String toString() {
-    return 'ObjectVersion(major: $major, minor: $minor)';
+    return 'ObjectVersion(event: $event, stateView: $stateView)';
   }
 
   @override
@@ -235,12 +235,13 @@ class _$_ObjectVersion implements _ObjectVersion {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectVersion &&
-            (identical(other.major, major) || other.major == major) &&
-            (identical(other.minor, minor) || other.minor == minor));
+            (identical(other.event, event) || other.event == event) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, major, minor);
+  int get hashCode => Object.hash(runtimeType, event, stateView);
 
   @JsonKey(ignore: true)
   @override
@@ -250,12 +251,13 @@ class _$_ObjectVersion implements _ObjectVersion {
 }
 
 abstract class _ObjectVersion implements ObjectVersion {
-  factory _ObjectVersion(final int major, final int minor) = _$_ObjectVersion;
+  factory _ObjectVersion(final int event, final int stateView) =
+      _$_ObjectVersion;
 
   @override
-  int get major;
+  int get event;
   @override
-  int get minor;
+  int get stateView;
   @override
   @JsonKey(ignore: true)
   _$$_ObjectVersionCopyWith<_$_ObjectVersion> get copyWith =>

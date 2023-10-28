@@ -1,17 +1,24 @@
 import '../../core_loco.dart';
 
 abstract class CoreBroadcastMergeProvider<
-    BroadcastMerge extends CoreBroadcastMerge<Effect1, Update1, Effect2,
-        Update2, In, Out>,
     Effect1,
     Update1,
+    Resource1 extends CoreResource<Effect1, Update1>,
     Effect2,
     Update2,
+    Resource2 extends CoreResource<Effect2, Update2>,
     In,
-    Out> implements CoreResourceProvider<BroadcastMerge, In, Out> {
-  CoreResourceProvider<dynamic, Effect1, Update1>
-      get child1Provider;
+    Out,
+    BroadcastMerge extends CoreBroadcastMerge<
+        Effect1,
+        Update1,
+        Resource1,
+        Effect2,
+        Update2,
+        Resource2,
+        In,
+        Out>> implements CoreResourceProvider<In, Out, BroadcastMerge> {
+  CoreResourceProvider<Effect1, Update1, Resource1> get child1Provider;
 
-  CoreResourceProvider<dynamic, Effect2, Update2>
-      get child2Provider;
+  CoreResourceProvider<Effect2, Update2, Resource2> get child2Provider;
 }

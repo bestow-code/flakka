@@ -3,13 +3,12 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 import '../core_object_local.dart';
 
-abstract interface class CoreObjectLocalFactory<
-        ObjectLocal extends CoreObjectLocal>
+abstract interface class CoreObjectLocalProvider
     implements
-        CoreNodeFactory<
+        CoreNodeProvider<
             PersistenceLocalEffect,
             PersistenceLocalUpdate,
             CorePersistenceLocal,
             ObjectLocalEffect,
             ObjectLocalUpdate,
-            ObjectLocal> {}
+            CoreObjectLocal> {}

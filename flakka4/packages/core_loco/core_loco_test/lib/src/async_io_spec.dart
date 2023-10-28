@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:core_loco/core_loco.dart';
 import 'package:core_loco_impl/core_loco_impl.dart';
-import 'package:get_it/get_it.dart';
 import 'package:glados/glados.dart';
 
 typedef Tester<IO, T> = FutureOr<void> Function(IO, List<T>);
@@ -22,7 +21,7 @@ abstract class IOBaseSpec<
     required this.onProvision,
   });
 
-  final CoreIOProvider<IO, In, Out> Function() factoryProvider;
+  final CoreIOProvider< In, Out,IO> Function() factoryProvider;
   final void Function(FactoryContext, FactoryParam)? setUp;
   final ProvisionRequest Function(ProvisionState state) onProvision;
 }
@@ -47,7 +46,7 @@ class AsyncIOSpec<
         // _effectTester = Glados(effectConfig?.generator, effectConfig?.explore),
         _effectTester = Glados2(),
         _updateTester = Glados(updateConfig?.generator, updateConfig?.explore);
-  final CoreIOProvider<IO, In, Out> Function() _provider;
+  final CoreIOProvider<In, Out,IO> Function() _provider;
   // final Glados<List<In>> _effectTester;
   final Glados2<In, List<int>> _effectTester;
   final Glados<Out> _updateTester;
@@ -101,27 +100,27 @@ class AsyncIOSpec<
   }
 }
 
-void Function() Function(
-  void Function(AsyncIOSpec<IO, In, Out, FactoryContext, FactoryParam>),
-) ioSpec<In, Out, FactoryContext extends FactoryContextImpl,
-    FactoryParam extends FactoryParamImpl, IO extends AsyncIOBase<In, Out>>({
-  required IOProviderBase<IO, In, Out> Function() provider,
-  required FactoryContext Function([GetIt?]) context,
-  required FactoryParam Function([GetIt?]) param,
-  void Function(FactoryContext, FactoryParam)? setUp,
-}) {
-  final spec = AsyncIOSpec<IO, In, Out, FactoryContext, FactoryParam>(
-    provider,
-    context: context,
-    param: param,
-    setUp: setUp,
-  );
-
-  return (body) {
-    return () {
-      body(spec);
-    };
-  };
-}
+// void Function() Function(
+//   void Function(AsyncIOSpec<IO, In, Out, FactoryContext, FactoryParam>),
+// ) ioSpec<In, Out, FactoryContext extends FactoryContextImpl,
+//     FactoryParam extends FactoryParamImpl, IO extends AsyncIOBase<In, Out>>({
+//   required IOProviderBase<IO, In, Out> Function() provider,
+//   required FactoryContext Function([GetIt?]) context,
+//   required FactoryParam Function([GetIt?]) param,
+//   void Function(FactoryContext, FactoryParam)? setUp,
+// }) {
+//   final spec = AsyncIOSpec<IO, In, Out, FactoryContext, FactoryParam>(
+//     provider,
+//     context: context,
+//     param: param,
+//     setUp: setUp,
+//   );
+//
+//   return (body) {
+//     return () {
+//       body(spec);
+//     };
+//   };
+// }
 
 // build provider, allow access via setup

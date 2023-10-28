@@ -35,7 +35,15 @@ class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
   }) = PersistenceLocalAdapterCallForward;
 
   factory PersistenceLocalAdapterCall.import({
-    Map<String, ({String ref, Iterable<String> parent, int createdAt})>? entry,
+    Map<
+            String,
+            ({
+              String ref,
+              Iterable<String> parent,
+              int createdAt,
+              
+            })>?
+        entry,
     Map<String, JsonMap>? event,
     Map<String, StateViewObject>? stateView,
   }) = PersistenceLocalAdapterCallImport;

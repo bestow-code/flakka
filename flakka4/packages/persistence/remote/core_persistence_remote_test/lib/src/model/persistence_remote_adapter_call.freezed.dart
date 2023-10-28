@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'persistence_local_adapter_call.dart';
+part of 'persistence_remote_adapter_call.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PersistenceLocalAdapterCall {
+mixin _$PersistenceRemoteAdapterCall {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String ref, List<String> parent,
@@ -24,14 +24,7 @@ mixin _$PersistenceLocalAdapterCall {
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -46,14 +39,7 @@ mixin _$PersistenceLocalAdapterCall {
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -68,14 +54,7 @@ mixin _$PersistenceLocalAdapterCall {
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -85,45 +64,46 @@ mixin _$PersistenceLocalAdapterCall {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallAppend value) append,
-    required TResult Function(PersistenceLocalAdapterCallAdd value) add,
-    required TResult Function(PersistenceLocalAdapterCallForward value) forward,
-    required TResult Function(PersistenceLocalAdapterCallImport value) import,
+    required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
+    required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
+    required TResult Function(PersistenceRemoteAdapterCallForward value)
+        forward,
+    required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult? Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult? Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult? Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult? Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult? Function(PersistenceRemoteAdapterCallImport value)? import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult Function(PersistenceRemoteAdapterCallImport value)? import,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PersistenceLocalAdapterCallCopyWith<$Res> {
-  factory $PersistenceLocalAdapterCallCopyWith(
-          PersistenceLocalAdapterCall value,
-          $Res Function(PersistenceLocalAdapterCall) then) =
-      _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-          PersistenceLocalAdapterCall>;
+abstract class $PersistenceRemoteAdapterCallCopyWith<$Res> {
+  factory $PersistenceRemoteAdapterCallCopyWith(
+          PersistenceRemoteAdapterCall value,
+          $Res Function(PersistenceRemoteAdapterCall) then) =
+      _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
+          PersistenceRemoteAdapterCall>;
 }
 
 /// @nodoc
-class _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        $Val extends PersistenceLocalAdapterCall>
-    implements $PersistenceLocalAdapterCallCopyWith<$Res> {
-  _$PersistenceLocalAdapterCallCopyWithImpl(this._value, this._then);
+class _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
+        $Val extends PersistenceRemoteAdapterCall>
+    implements $PersistenceRemoteAdapterCallCopyWith<$Res> {
+  _$PersistenceRemoteAdapterCallCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -132,11 +112,11 @@ class _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallAppendCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallAppendCopyWith(
-          _$PersistenceLocalAdapterCallAppend value,
-          $Res Function(_$PersistenceLocalAdapterCallAppend) then) =
-      __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallAppendCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallAppendCopyWith(
+          _$PersistenceRemoteAdapterCallAppend value,
+          $Res Function(_$PersistenceRemoteAdapterCallAppend) then) =
+      __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -147,13 +127,13 @@ abstract class _$$PersistenceLocalAdapterCallAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>
-    extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallAppend>
-    implements _$$PersistenceLocalAdapterCallAppendCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallAppendCopyWithImpl(
-      _$PersistenceLocalAdapterCallAppend _value,
-      $Res Function(_$PersistenceLocalAdapterCallAppend) _then)
+class __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<$Res>
+    extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
+        _$PersistenceRemoteAdapterCallAppend>
+    implements _$$PersistenceRemoteAdapterCallAppendCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallAppendCopyWithImpl(
+      _$PersistenceRemoteAdapterCallAppend _value,
+      $Res Function(_$PersistenceRemoteAdapterCallAppend) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -165,7 +145,7 @@ class __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalAdapterCallAppend(
+    return _then(_$PersistenceRemoteAdapterCallAppend(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -192,9 +172,9 @@ class __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallAppend
-    implements PersistenceLocalAdapterCallAppend {
-  _$PersistenceLocalAdapterCallAppend(
+class _$PersistenceRemoteAdapterCallAppend
+    implements PersistenceRemoteAdapterCallAppend {
+  _$PersistenceRemoteAdapterCallAppend(
       {required this.ref,
       required final List<String> parent,
       required final Map<String, dynamic>? event,
@@ -230,14 +210,14 @@ class _$PersistenceLocalAdapterCallAppend
 
   @override
   String toString() {
-    return 'PersistenceLocalAdapterCall.append(ref: $ref, parent: $parent, event: $event, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'PersistenceRemoteAdapterCall.append(ref: $ref, parent: $parent, event: $event, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallAppend &&
+            other is _$PersistenceRemoteAdapterCallAppend &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -259,10 +239,10 @@ class _$PersistenceLocalAdapterCallAppend
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallAppendCopyWith<
-          _$PersistenceLocalAdapterCallAppend>
-      get copyWith => __$$PersistenceLocalAdapterCallAppendCopyWithImpl<
-          _$PersistenceLocalAdapterCallAppend>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallAppendCopyWith<
+          _$PersistenceRemoteAdapterCallAppend>
+      get copyWith => __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<
+          _$PersistenceRemoteAdapterCallAppend>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -273,14 +253,7 @@ class _$PersistenceLocalAdapterCallAppend
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -298,14 +271,7 @@ class _$PersistenceLocalAdapterCallAppend
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -323,14 +289,7 @@ class _$PersistenceLocalAdapterCallAppend
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -346,10 +305,11 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallAppend value) append,
-    required TResult Function(PersistenceLocalAdapterCallAdd value) add,
-    required TResult Function(PersistenceLocalAdapterCallForward value) forward,
-    required TResult Function(PersistenceLocalAdapterCallImport value) import,
+    required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
+    required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
+    required TResult Function(PersistenceRemoteAdapterCallForward value)
+        forward,
+    required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return append(this);
   }
@@ -357,10 +317,10 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult? Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult? Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult? Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult? Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult? Function(PersistenceRemoteAdapterCallImport value)? import,
   }) {
     return append?.call(this);
   }
@@ -368,10 +328,10 @@ class _$PersistenceLocalAdapterCallAppend
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult Function(PersistenceRemoteAdapterCallImport value)? import,
     required TResult orElse(),
   }) {
     if (append != null) {
@@ -381,16 +341,17 @@ class _$PersistenceLocalAdapterCallAppend
   }
 }
 
-abstract class PersistenceLocalAdapterCallAppend
+abstract class PersistenceRemoteAdapterCallAppend
     implements
-        PersistenceLocalAdapterCall,
-        PersistenceLocalAdapterCallHeadUpdate {
-  factory PersistenceLocalAdapterCallAppend(
-      {required final String ref,
-      required final List<String> parent,
-      required final Map<String, dynamic>? event,
-      required final int createdAt,
-      required final int sequenceNumber}) = _$PersistenceLocalAdapterCallAppend;
+        PersistenceRemoteAdapterCall,
+        PersistenceRemoteAdapterCallHeadUpdate {
+  factory PersistenceRemoteAdapterCallAppend(
+          {required final String ref,
+          required final List<String> parent,
+          required final Map<String, dynamic>? event,
+          required final int createdAt,
+          required final int sequenceNumber}) =
+      _$PersistenceRemoteAdapterCallAppend;
 
   String get ref;
   List<String> get parent;
@@ -398,17 +359,17 @@ abstract class PersistenceLocalAdapterCallAppend
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallAppendCopyWith<
-          _$PersistenceLocalAdapterCallAppend>
+  _$$PersistenceRemoteAdapterCallAppendCopyWith<
+          _$PersistenceRemoteAdapterCallAppend>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallAddCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallAddCopyWith(
-          _$PersistenceLocalAdapterCallAdd value,
-          $Res Function(_$PersistenceLocalAdapterCallAdd) then) =
-      __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallAddCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallAddCopyWith(
+          _$PersistenceRemoteAdapterCallAdd value,
+          $Res Function(_$PersistenceRemoteAdapterCallAdd) then) =
+      __$$PersistenceRemoteAdapterCallAddCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, StateViewObject stateView});
 
@@ -416,13 +377,13 @@ abstract class _$$PersistenceLocalAdapterCallAddCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>
-    extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallAdd>
-    implements _$$PersistenceLocalAdapterCallAddCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallAddCopyWithImpl(
-      _$PersistenceLocalAdapterCallAdd _value,
-      $Res Function(_$PersistenceLocalAdapterCallAdd) _then)
+class __$$PersistenceRemoteAdapterCallAddCopyWithImpl<$Res>
+    extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
+        _$PersistenceRemoteAdapterCallAdd>
+    implements _$$PersistenceRemoteAdapterCallAddCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallAddCopyWithImpl(
+      _$PersistenceRemoteAdapterCallAdd _value,
+      $Res Function(_$PersistenceRemoteAdapterCallAdd) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +392,7 @@ class __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>
     Object? ref = null,
     Object? stateView = null,
   }) {
-    return _then(_$PersistenceLocalAdapterCallAdd(
+    return _then(_$PersistenceRemoteAdapterCallAdd(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -454,9 +415,9 @@ class __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallAdd
-    implements PersistenceLocalAdapterCallAdd {
-  _$PersistenceLocalAdapterCallAdd(
+class _$PersistenceRemoteAdapterCallAdd
+    implements PersistenceRemoteAdapterCallAdd {
+  _$PersistenceRemoteAdapterCallAdd(
       {required this.ref, required this.stateView});
 
   @override
@@ -466,14 +427,14 @@ class _$PersistenceLocalAdapterCallAdd
 
   @override
   String toString() {
-    return 'PersistenceLocalAdapterCall.add(ref: $ref, stateView: $stateView)';
+    return 'PersistenceRemoteAdapterCall.add(ref: $ref, stateView: $stateView)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallAdd &&
+            other is _$PersistenceRemoteAdapterCallAdd &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
@@ -485,9 +446,9 @@ class _$PersistenceLocalAdapterCallAdd
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallAddCopyWith<_$PersistenceLocalAdapterCallAdd>
-      get copyWith => __$$PersistenceLocalAdapterCallAddCopyWithImpl<
-          _$PersistenceLocalAdapterCallAdd>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallAddCopyWith<_$PersistenceRemoteAdapterCallAdd>
+      get copyWith => __$$PersistenceRemoteAdapterCallAddCopyWithImpl<
+          _$PersistenceRemoteAdapterCallAdd>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -498,14 +459,7 @@ class _$PersistenceLocalAdapterCallAdd
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -523,14 +477,7 @@ class _$PersistenceLocalAdapterCallAdd
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -548,14 +495,7 @@ class _$PersistenceLocalAdapterCallAdd
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -571,10 +511,11 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallAppend value) append,
-    required TResult Function(PersistenceLocalAdapterCallAdd value) add,
-    required TResult Function(PersistenceLocalAdapterCallForward value) forward,
-    required TResult Function(PersistenceLocalAdapterCallImport value) import,
+    required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
+    required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
+    required TResult Function(PersistenceRemoteAdapterCallForward value)
+        forward,
+    required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return add(this);
   }
@@ -582,10 +523,10 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult? Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult? Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult? Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult? Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult? Function(PersistenceRemoteAdapterCallImport value)? import,
   }) {
     return add?.call(this);
   }
@@ -593,10 +534,10 @@ class _$PersistenceLocalAdapterCallAdd
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult Function(PersistenceRemoteAdapterCallImport value)? import,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -606,38 +547,38 @@ class _$PersistenceLocalAdapterCallAdd
   }
 }
 
-abstract class PersistenceLocalAdapterCallAdd
-    implements PersistenceLocalAdapterCall {
-  factory PersistenceLocalAdapterCallAdd(
+abstract class PersistenceRemoteAdapterCallAdd
+    implements PersistenceRemoteAdapterCall {
+  factory PersistenceRemoteAdapterCallAdd(
           {required final String ref,
           required final StateViewObject stateView}) =
-      _$PersistenceLocalAdapterCallAdd;
+      _$PersistenceRemoteAdapterCallAdd;
 
   String get ref;
   StateViewObject get stateView;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallAddCopyWith<_$PersistenceLocalAdapterCallAdd>
+  _$$PersistenceRemoteAdapterCallAddCopyWith<_$PersistenceRemoteAdapterCallAdd>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallForwardCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallForwardCopyWith(
-          _$PersistenceLocalAdapterCallForward value,
-          $Res Function(_$PersistenceLocalAdapterCallForward) then) =
-      __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallForwardCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallForwardCopyWith(
+          _$PersistenceRemoteAdapterCallForward value,
+          $Res Function(_$PersistenceRemoteAdapterCallForward) then) =
+      __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>
-    extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallForward>
-    implements _$$PersistenceLocalAdapterCallForwardCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallForwardCopyWithImpl(
-      _$PersistenceLocalAdapterCallForward _value,
-      $Res Function(_$PersistenceLocalAdapterCallForward) _then)
+class __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<$Res>
+    extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
+        _$PersistenceRemoteAdapterCallForward>
+    implements _$$PersistenceRemoteAdapterCallForwardCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallForwardCopyWithImpl(
+      _$PersistenceRemoteAdapterCallForward _value,
+      $Res Function(_$PersistenceRemoteAdapterCallForward) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -646,7 +587,7 @@ class __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalAdapterCallForward(
+    return _then(_$PersistenceRemoteAdapterCallForward(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -661,9 +602,9 @@ class __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallForward
-    implements PersistenceLocalAdapterCallForward {
-  _$PersistenceLocalAdapterCallForward(
+class _$PersistenceRemoteAdapterCallForward
+    implements PersistenceRemoteAdapterCallForward {
+  _$PersistenceRemoteAdapterCallForward(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -673,14 +614,14 @@ class _$PersistenceLocalAdapterCallForward
 
   @override
   String toString() {
-    return 'PersistenceLocalAdapterCall.forward(ref: $ref, sequenceNumber: $sequenceNumber)';
+    return 'PersistenceRemoteAdapterCall.forward(ref: $ref, sequenceNumber: $sequenceNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallForward &&
+            other is _$PersistenceRemoteAdapterCallForward &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -692,10 +633,10 @@ class _$PersistenceLocalAdapterCallForward
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallForwardCopyWith<
-          _$PersistenceLocalAdapterCallForward>
-      get copyWith => __$$PersistenceLocalAdapterCallForwardCopyWithImpl<
-          _$PersistenceLocalAdapterCallForward>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallForwardCopyWith<
+          _$PersistenceRemoteAdapterCallForward>
+      get copyWith => __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<
+          _$PersistenceRemoteAdapterCallForward>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -706,14 +647,7 @@ class _$PersistenceLocalAdapterCallForward
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -731,14 +665,7 @@ class _$PersistenceLocalAdapterCallForward
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -756,14 +683,7 @@ class _$PersistenceLocalAdapterCallForward
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -779,10 +699,11 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallAppend value) append,
-    required TResult Function(PersistenceLocalAdapterCallAdd value) add,
-    required TResult Function(PersistenceLocalAdapterCallForward value) forward,
-    required TResult Function(PersistenceLocalAdapterCallImport value) import,
+    required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
+    required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
+    required TResult Function(PersistenceRemoteAdapterCallForward value)
+        forward,
+    required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return forward(this);
   }
@@ -790,10 +711,10 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult? Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult? Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult? Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult? Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult? Function(PersistenceRemoteAdapterCallImport value)? import,
   }) {
     return forward?.call(this);
   }
@@ -801,10 +722,10 @@ class _$PersistenceLocalAdapterCallForward
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult Function(PersistenceRemoteAdapterCallImport value)? import,
     required TResult orElse(),
   }) {
     if (forward != null) {
@@ -814,51 +735,44 @@ class _$PersistenceLocalAdapterCallForward
   }
 }
 
-abstract class PersistenceLocalAdapterCallForward
+abstract class PersistenceRemoteAdapterCallForward
     implements
-        PersistenceLocalAdapterCall,
-        PersistenceLocalAdapterCallHeadUpdate {
-  factory PersistenceLocalAdapterCallForward(
+        PersistenceRemoteAdapterCall,
+        PersistenceRemoteAdapterCallHeadUpdate {
+  factory PersistenceRemoteAdapterCallForward(
           {required final String ref, required final int sequenceNumber}) =
-      _$PersistenceLocalAdapterCallForward;
+      _$PersistenceRemoteAdapterCallForward;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallForwardCopyWith<
-          _$PersistenceLocalAdapterCallForward>
+  _$$PersistenceRemoteAdapterCallForwardCopyWith<
+          _$PersistenceRemoteAdapterCallForward>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallImportCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallImportCopyWith(
-          _$PersistenceLocalAdapterCallImport value,
-          $Res Function(_$PersistenceLocalAdapterCallImport) then) =
-      __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallImportCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallImportCopyWith(
+          _$PersistenceRemoteAdapterCallImport value,
+          $Res Function(_$PersistenceRemoteAdapterCallImport) then) =
+      __$$PersistenceRemoteAdapterCallImportCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Map<
-              String,
-              ({
-                int createdAt,
-                
-                Iterable<String> parent,
-                String ref
-              })>?
+      {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
       Map<String, JsonMap>? event,
       Map<String, StateViewObject>? stateView});
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
-    extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallImport>
-    implements _$$PersistenceLocalAdapterCallImportCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallImportCopyWithImpl(
-      _$PersistenceLocalAdapterCallImport _value,
-      $Res Function(_$PersistenceLocalAdapterCallImport) _then)
+class __$$PersistenceRemoteAdapterCallImportCopyWithImpl<$Res>
+    extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
+        _$PersistenceRemoteAdapterCallImport>
+    implements _$$PersistenceRemoteAdapterCallImportCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallImportCopyWithImpl(
+      _$PersistenceRemoteAdapterCallImport _value,
+      $Res Function(_$PersistenceRemoteAdapterCallImport) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -868,18 +782,12 @@ class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
     Object? event = freezed,
     Object? stateView = freezed,
   }) {
-    return _then(_$PersistenceLocalAdapterCallImport(
+    return _then(_$PersistenceRemoteAdapterCallImport(
       entry: freezed == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
-              as Map<
-                  String,
-                  ({
-                    int createdAt,
-                    
-                    Iterable<String> parent,
-                    String ref
-                  })>?,
+              as Map<String,
+                  ({int createdAt, Iterable<String> parent, String ref})>?,
       event: freezed == event
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
@@ -894,17 +802,11 @@ class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallImport
-    implements PersistenceLocalAdapterCallImport {
-  _$PersistenceLocalAdapterCallImport(
-      {final Map<
-              String,
-              ({
-                int createdAt,
-                
-                Iterable<String> parent,
-                String ref
-              })>?
+class _$PersistenceRemoteAdapterCallImport
+    implements PersistenceRemoteAdapterCallImport {
+  _$PersistenceRemoteAdapterCallImport(
+      {final Map<String,
+              ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
       final Map<String, JsonMap>? event,
       final Map<String, StateViewObject>? stateView})
@@ -912,23 +814,11 @@ class _$PersistenceLocalAdapterCallImport
         _event = event,
         _stateView = stateView;
 
-  final Map<
-      String,
-      ({
-        int createdAt,
-        
-        Iterable<String> parent,
-        String ref
-      })>? _entry;
+  final Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+      _entry;
   @override
-  Map<
-      String,
-      ({
-        int createdAt,
-        
-        Iterable<String> parent,
-        String ref
-      })>? get entry {
+  Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+      get entry {
     final value = _entry;
     if (value == null) return null;
     if (_entry is EqualUnmodifiableMapView) return _entry;
@@ -958,14 +848,14 @@ class _$PersistenceLocalAdapterCallImport
 
   @override
   String toString() {
-    return 'PersistenceLocalAdapterCall.import(entry: $entry, event: $event, stateView: $stateView)';
+    return 'PersistenceRemoteAdapterCall.import(entry: $entry, event: $event, stateView: $stateView)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallImport &&
+            other is _$PersistenceRemoteAdapterCallImport &&
             const DeepCollectionEquality().equals(other._entry, _entry) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
             const DeepCollectionEquality()
@@ -982,10 +872,10 @@ class _$PersistenceLocalAdapterCallImport
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallImportCopyWith<
-          _$PersistenceLocalAdapterCallImport>
-      get copyWith => __$$PersistenceLocalAdapterCallImportCopyWithImpl<
-          _$PersistenceLocalAdapterCallImport>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallImportCopyWith<
+          _$PersistenceRemoteAdapterCallImport>
+      get copyWith => __$$PersistenceRemoteAdapterCallImportCopyWithImpl<
+          _$PersistenceRemoteAdapterCallImport>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -996,14 +886,7 @@ class _$PersistenceLocalAdapterCallImport
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -1021,14 +904,7 @@ class _$PersistenceLocalAdapterCallImport
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -1046,14 +922,7 @@ class _$PersistenceLocalAdapterCallImport
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -1069,10 +938,11 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalAdapterCallAppend value) append,
-    required TResult Function(PersistenceLocalAdapterCallAdd value) add,
-    required TResult Function(PersistenceLocalAdapterCallForward value) forward,
-    required TResult Function(PersistenceLocalAdapterCallImport value) import,
+    required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
+    required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
+    required TResult Function(PersistenceRemoteAdapterCallForward value)
+        forward,
+    required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return import(this);
   }
@@ -1080,10 +950,10 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult? Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult? Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult? Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult? Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult? Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult? Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult? Function(PersistenceRemoteAdapterCallImport value)? import,
   }) {
     return import?.call(this);
   }
@@ -1091,10 +961,10 @@ class _$PersistenceLocalAdapterCallImport
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalAdapterCallAppend value)? append,
-    TResult Function(PersistenceLocalAdapterCallAdd value)? add,
-    TResult Function(PersistenceLocalAdapterCallForward value)? forward,
-    TResult Function(PersistenceLocalAdapterCallImport value)? import,
+    TResult Function(PersistenceRemoteAdapterCallAppend value)? append,
+    TResult Function(PersistenceRemoteAdapterCallAdd value)? add,
+    TResult Function(PersistenceRemoteAdapterCallForward value)? forward,
+    TResult Function(PersistenceRemoteAdapterCallImport value)? import,
     required TResult orElse(),
   }) {
     if (import != null) {
@@ -1104,34 +974,22 @@ class _$PersistenceLocalAdapterCallImport
   }
 }
 
-abstract class PersistenceLocalAdapterCallImport
-    implements PersistenceLocalAdapterCall {
-  factory PersistenceLocalAdapterCallImport(
-          {final Map<
-                  String,
-                  ({
-                    int createdAt,
-                    
-                    Iterable<String> parent,
-                    String ref
-                  })>?
+abstract class PersistenceRemoteAdapterCallImport
+    implements PersistenceRemoteAdapterCall {
+  factory PersistenceRemoteAdapterCallImport(
+          {final Map<String,
+                  ({int createdAt, Iterable<String> parent, String ref})>?
               entry,
           final Map<String, JsonMap>? event,
           final Map<String, StateViewObject>? stateView}) =
-      _$PersistenceLocalAdapterCallImport;
+      _$PersistenceRemoteAdapterCallImport;
 
-  Map<
-      String,
-      ({
-        int createdAt,
-        
-        Iterable<String> parent,
-        String ref
-      })>? get entry;
+  Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+      get entry;
   Map<String, JsonMap>? get event;
   Map<String, StateViewObject>? get stateView;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallImportCopyWith<
-          _$PersistenceLocalAdapterCallImport>
+  _$$PersistenceRemoteAdapterCallImportCopyWith<
+          _$PersistenceRemoteAdapterCallImport>
       get copyWith => throw _privateConstructorUsedError;
 }

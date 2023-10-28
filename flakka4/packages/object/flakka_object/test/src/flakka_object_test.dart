@@ -22,28 +22,28 @@ void main() {
       GetIt.instance.reset(dispose: false);
     });
     test('append event', () async {
-      final flakkaObject = FlakkaObject(GetIt.instance);
-      final persistenceId = PersistenceId('persistence-1');
-      flakkaObject.registerPersistenceId(persistenceId);
-      flakkaObject.registerPersistenceLocalAdapterFactoryProvider(
-          PersistenceLocalAdapterProviderSembast.inMemory);
-      flakkaObject.registerPersistenceRemoteAdapterFactoryProvider(
-          PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
-      const path = '/o/1';
-      final object = await flakkaObject.getObjectIO(path);
-      // object.
-      object.effect.add(ObjectEffect.append(
-        ref: ref,
-        parent: parent,
-        event: event,
-        stateView: stateView,
-        createdAt: createdAt,
-      ));
-      await Future.delayed(Duration(milliseconds: 100));
-      final adapters = await flakkaObject
-          .getPersistenceAdapterFactoryProvider()
-          .get(persistenceId.value)
-          .get(path);
+      // final flakkaObject = FlakkaObject(GetIt.instance);
+      // final persistenceId = PersistenceId('persistence-1');
+      // flakkaObject.registerPersistenceId(persistenceId);
+      // flakkaObject.registerPersistenceLocalAdapterFactoryProvider(
+      //     PersistenceLocalAdapterProviderSembast.inMemory);
+      // flakkaObject.registerPersistenceRemoteAdapterFactoryProvider(
+      //     PersistenceRemoteAdapterFactoryProviderSembast.inMemory);
+      // const path = '/o/1';
+      // final object = await flakkaObject.getObjectIO(path);
+      // // object.
+      // object.effect.add(ObjectEffect.append(
+      //   ref: ref,
+      //   parent: parent,
+      //   event: event,
+      //   stateView: stateView,
+      //   createdAt: createdAt,
+      // ));
+      // await Future.delayed(Duration(milliseconds: 100));
+      // final adapters = await flakkaObject
+      //     .getPersistenceAdapterFactoryProvider()
+      //     .get(persistenceId.value)
+      //     .get(path);
 
       throw UnimplementedError();
       // final result = await adapters.local.entryAll.first;

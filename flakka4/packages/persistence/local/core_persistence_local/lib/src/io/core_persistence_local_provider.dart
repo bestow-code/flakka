@@ -3,12 +3,10 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 
 import '../../core_persistence_local.dart';
 
-abstract class CorePersistenceLocalProvider<
-        PersistenceLocal extends CoreIO<PersistenceLocalEffect,
-            PersistenceLocalUpdate>>
+abstract class CorePersistenceLocalProvider
     implements
-        CoreIOProvider<PersistenceLocal, PersistenceLocalEffect,
-            PersistenceLocalUpdate> {
+        CoreResourceProvider<PersistenceLocalEffect, PersistenceLocalUpdate,
+            CorePersistenceLocal> {
   Future<void> delete({
     required ProviderContext context,
     required ObjectKey key,

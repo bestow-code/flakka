@@ -4,9 +4,10 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
-class PersistenceLocalProvider extends IOProviderBase<PersistenceLocal,
-        PersistenceLocalEffect, PersistenceLocalUpdate>
-    implements CorePersistenceLocalProvider<PersistenceLocal> {
+class PersistenceLocalProvider extends ResourceProviderBase<
+    PersistenceLocalEffect,
+    PersistenceLocalUpdate,
+    CorePersistenceLocal> implements CorePersistenceLocalProvider {
   PersistenceLocalProvider({
     required this.adapterProvider,
   });
@@ -25,7 +26,7 @@ class PersistenceLocalProvider extends IOProviderBase<PersistenceLocal,
   }
 
   @override
-  Future<PersistenceLocal> get({
+  Future<CorePersistenceLocal> get({
     required ProviderContext context,
     required ObjectKey key,
   }) async =>

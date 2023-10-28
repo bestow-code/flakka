@@ -8,4 +8,4 @@ abstract interface class CoreObjectProvider<Object extends CoreObject>
     implements
         CoreBroadcastMergeProvider<Object, ObjectLocalEffect, ObjectLocalUpdate,
             ObjectRemoteEffect, ObjectRemoteUpdate, ObjectEffect, ObjectUpdate>,
-        CoreProducer<Object> {}
+        CoreProvider<Object> {}

@@ -1,6 +1,4 @@
 import '../../core_loco.dart';
 
-abstract interface class CoreResourceFactory<
-    Resource extends CoreResource<In, Out>,
-    In,
-    Out> implements CoreFactory<Resource> {}
+abstract interface class CoreResourceFactory<In, Out,
+    Resource extends CoreResource<In, Out>> implements CoreFactory<Resource> {}

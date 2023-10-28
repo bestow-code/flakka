@@ -6,22 +6,31 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../core_loco_impl.dart';
 
-abstract class BroadcastMergeBase<Effect1, Update1, Effect2, Update2, In, Out>
-    extends ResourceBase<In, Out>
-    implements CoreBroadcastMerge<Effect1, Update1, Effect2, Update2, In, Out> {
+abstract class BroadcastMergeBase<
+        Effect1,
+        Update1,
+        Resource1 extends CoreResource<Effect1, Update1>,
+        Effect2,
+        Update2,
+        Resource2 extends CoreResource<Effect2, Update2>,
+        In,
+        Out> extends ResourceBase<In, Out>
+    implements
+        CoreBroadcastMerge<Effect1, Update1, Resource1, Effect2, Update2,
+            Resource2, In, Out> {
   BroadcastMergeBase({
-    required CoreResource<Effect1, Update1> child1,
-    required CoreResource<Effect2, Update2> child2,
+    required Resource1 child1,
+    required Resource2 child2,
   })  : _child1 = child1,
         _child2 = child2;
 
-  CoreResource<Effect1, Update1> get child1 => _child1;
+  Resource1 get child1 => _child1;
 
-  final CoreResource<Effect1, Update1> _child1;
+  final Resource1 _child1;
 
-  CoreResource<Effect2, Update2> get child2 => _child2;
+  Resource2 get child2 => _child2;
 
-  final CoreResource<Effect2, Update2> _child2;
+  final Resource2 _child2;
 
   PublishSubject<Effect1> get effect1Subject => _effect1Subject;
   final _effect1Subject = PublishSubject<Effect1>();
@@ -69,8 +78,7 @@ abstract class BroadcastMergeBase<Effect1, Update1, Effect2, Update2, In, Out>
       //   }),
       // )
       ..add(_child1.connect())
-      ..add(_child2.connect())
-    ;
+      ..add(_child2.connect());
   }
 
   @override
@@ -84,5 +92,4 @@ abstract class BroadcastMergeBase<Effect1, Update1, Effect2, Update2, In, Out>
     unawaited(_effect2Subject.pipe(child2.input));
     unawaited(child2.output.pipe(_update2Subject));
   }
-
 }

@@ -44,7 +44,7 @@ class PersistenceLocal
           return _localAdapter.import();
         },
       );
-  late StreamSubscription subscription;
+  late StreamSubscription<dynamic> subscription;
 
   @override
   Future<void> provision(
@@ -59,12 +59,14 @@ class PersistenceLocal
       _localAdapter.eventSnapshot
           .map((event) => PersistenceLocalUpdate.event(snapshot: event)),
     ]).listen(outputSubject.add);
-    unawaited(Future.wait([
-      inputSubject.stream
-          .asyncMap(onInput)
-          .drain<void>()
-          .then((value) async => close())
-    ]));
+    unawaited(
+      Future.wait([
+        inputSubject.stream
+            .asyncMap(onInput)
+            .drain<void>()
+            .then((value) async => close())
+      ]),
+    );
   }
 
   @override
