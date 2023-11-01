@@ -8,37 +8,34 @@ abstract class PersistenceLocalAdapterProviderBase
     extends PersistenceAdapterProviderBase<PersistenceLocalAdapterBase>
     implements
         CorePersistenceLocalAdapterProvider<PersistenceLocalAdapterBase> {
-  CorePersistenceLocalAdapterFactory<PersistenceLocalAdapterBase> getFactory(
-    ProviderContext context,
-  );
-
-  @override
-  Future<PersistenceLocalAdapterBase> get({
-    required ProviderContext context,
-    required ObjectKey key,
-  }) =>
-      getFactory(context).create(
-        key: key,
-        param: (
-          rootPath: context.rootPathLocal!,
-          storePath: context.storePathLocal!,
-          persistenceId: context.persistenceId!
-        ),
-      );
+  // CorePersistenceLocalAdapterFactory<PersistenceLocalAdapterBase> getFactory(
+  //   ProviderContext context,
+  // );
+  //
+  // @override
+  // Future<PersistenceLocalAdapterBase> get({
+  //   required ProviderContext context,
+  //   required ObjectKey key,
+  // }) =>
+  //     getFactory(context).create(
+  //       key: key,
+  //       param: (
+  //         storePath: context.storePathLocal!,
+  //         persistenceId: context.persistenceId!
+  //       ),
+  //     );
 
   @override
   Future<void> delete({
     required ProviderContext context,
     required ObjectKey key,
-  }) =>
-      getFactory(context).delete(
-        key: key,
-        param: (
-          rootPath: context.rootPathLocal!,
-          storePath: context.storePathLocal!,
-          persistenceId: null
-        ),
-      );
+  }) {
+    throw UnimplementedError();
+    // return getFactory(context).delete(
+    //     key: key,
+    //     param: (storePath: context.storePathLocal!, persistenceId: null),
+    //   );
+  }
 
   @override
   Future<void> dispose({

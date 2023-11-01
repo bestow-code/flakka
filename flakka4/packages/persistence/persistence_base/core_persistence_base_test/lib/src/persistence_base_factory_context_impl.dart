@@ -23,7 +23,7 @@ class PersistenceBaseFactoryContextImpl extends FactoryContextImpl
   // }
   //
   // @override
-  // set rootPath(RootPath rootPath) {
+  // set rootPath() {
   //   // TODO: implement rootPath
   // }
   //

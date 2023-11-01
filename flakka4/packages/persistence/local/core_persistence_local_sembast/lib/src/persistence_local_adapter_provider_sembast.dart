@@ -1,24 +1,22 @@
 import 'package:core_common/core_common.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
-import 'package:sembast/sembast.dart';
-import 'package:sembast/sembast_memory.dart';
 
 import '../core_persistence_local_sembast.dart';
 
 class PersistenceLocalAdapterProviderSembast
     extends PersistenceLocalAdapterProviderBase {
   PersistenceLocalAdapterProviderSembast({
-    required this.databaseFactory,
+    required this.storeProvider,
   });
 
-  static PersistenceLocalAdapterProviderSembast get inMemory =>
-      PersistenceLocalAdapterProviderSembast(
-          databaseFactory: databaseFactoryMemoryFs);
-  final DatabaseFactory databaseFactory;
+  final StoreLocalProviderSembast storeProvider;
 
   @override
-  PersistenceLocalAdapterFactorySembast getFactory(ProviderContext context) =>
-      PersistenceLocalAdapterFactorySembast(
-        databaseFactory: databaseFactory,
-      );
+  Future<PersistenceLocalAdapterBase> get(
+          {required ProviderContext context, required ObjectKey key}) async =>
+      PersistenceLocalAdapterFactorySembast().create(context: context, param: (
+        store: await storeProvider.get(context: context, key: key),
+        sessionId: context.sessionId!
+      ));
 }

@@ -8,7 +8,10 @@ abstract class CorePersistenceLocalFactory
             CorePersistenceLocal> {
   @override
   Future<CorePersistenceLocal> create({
-    required ObjectKey key,
-    required covariant ({CorePersistenceLocalAdapter adapter}) param,
+    required ProviderContext context,
+    required covariant ({
+      CorePersistenceLocalAdapter adapter,
+      ObjectKey key
+    }) param,
   });
 }

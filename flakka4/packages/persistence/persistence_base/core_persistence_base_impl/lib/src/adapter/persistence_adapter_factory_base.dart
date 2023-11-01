@@ -1,14 +1,13 @@
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class PersistenceAdapterFactoryBase<
-        PersistenceAdapter extends CorePersistenceAdapter>
+abstract class PersistenceAdapterFactoryBase<Store extends CoreObjectStore,
+        PersistenceAdapter extends CorePersistenceAdapter<Store>>
     extends FactoryBase<PersistenceAdapter>
-    implements CorePersistenceAdapterFactory<PersistenceAdapter> {
+    implements CorePersistenceAdapterFactory<Store, PersistenceAdapter> {
   @override
   String getBasePath({
-    required RootPath rootPath,
     required StorePath storePath,
   }) =>
-      '${rootPath.value}/${storePath.value}';
+      storePath.value;
 }

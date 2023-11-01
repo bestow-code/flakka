@@ -31,12 +31,13 @@ abstract class AutoIdGenerator {
   static final Random _random = Random();
 
   /// Automatically Generates a random new Id
-  static String autoId() {
+  static String autoId([({Random random, int length})? param]) {
     final stringBuffer = StringBuffer();
-    const maxRandom = autoIdAlphabet.length;
+    final maxRandom = param?.length ?? autoIdAlphabet.length;
 
     for (var i = 0; i < autoIdLength; ++i) {
-      stringBuffer.write(autoIdAlphabet[_random.nextInt(maxRandom)]);
+      stringBuffer
+          .write(autoIdAlphabet[(param?.random ?? _random).nextInt(maxRandom)]);
     }
 
     return stringBuffer.toString();

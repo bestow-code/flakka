@@ -11,7 +11,7 @@ class PersistenceRemoteAdapterFactorySembast
     extends PersistenceRemoteAdapterFactoryBase {
   PersistenceRemoteAdapterFactorySembast( // this.versionId,
       {
-    required this.rootPath,
+    
     required this.storePath,
     required this.persistenceId,
     required this.databaseFactory,
@@ -20,7 +20,7 @@ class PersistenceRemoteAdapterFactorySembast
   final PersistenceId persistenceId;
   final DatabaseFactory databaseFactory;
 
-  final RootPath rootPath;
+  ;
   final StorePath storePath;
 
   // final VersionId versionId;

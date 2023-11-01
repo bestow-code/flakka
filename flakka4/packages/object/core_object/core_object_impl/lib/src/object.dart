@@ -49,7 +49,7 @@ class Object extends BroadcastMergeBase<
             if (remoteHead != null) {
               return child1.provision(
                 PersistenceProvisioning.resume(
-                  ref: remoteHead.ref,
+                  ref: remoteHead._ref,
                   sequenceNumber: remoteHead.sequenceNumber,
                 ),
               );

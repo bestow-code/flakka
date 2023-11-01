@@ -13,4 +13,8 @@ abstract class CoreProvider<T> {
     required ProviderContext context,
     required covariant dynamic key,
   });
+  Future<void> delete({
+    required ProviderContext context,
+    required covariant dynamic key,
+  });
 }

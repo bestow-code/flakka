@@ -24,14 +24,7 @@ mixin _$PersistenceLocalAdapterCall {
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -46,14 +39,7 @@ mixin _$PersistenceLocalAdapterCall {
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -68,14 +54,7 @@ mixin _$PersistenceLocalAdapterCall {
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -273,14 +252,7 @@ class _$PersistenceLocalAdapterCallAppend
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -298,14 +270,7 @@ class _$PersistenceLocalAdapterCallAppend
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -323,14 +288,7 @@ class _$PersistenceLocalAdapterCallAppend
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -498,14 +456,7 @@ class _$PersistenceLocalAdapterCallAdd
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -523,14 +474,7 @@ class _$PersistenceLocalAdapterCallAdd
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -548,14 +492,7 @@ class _$PersistenceLocalAdapterCallAdd
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -706,14 +643,7 @@ class _$PersistenceLocalAdapterCallForward
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -731,14 +661,7 @@ class _$PersistenceLocalAdapterCallForward
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -756,14 +679,7 @@ class _$PersistenceLocalAdapterCallForward
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -838,14 +754,7 @@ abstract class _$$PersistenceLocalAdapterCallImportCopyWith<$Res> {
       __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Map<
-              String,
-              ({
-                int createdAt,
-                
-                Iterable<String> parent,
-                String ref
-              })>?
+      {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
       Map<String, JsonMap>? event,
       Map<String, StateViewObject>? stateView});
@@ -872,14 +781,8 @@ class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
       entry: freezed == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
-              as Map<
-                  String,
-                  ({
-                    int createdAt,
-                    
-                    Iterable<String> parent,
-                    String ref
-                  })>?,
+              as Map<String,
+                  ({int createdAt, Iterable<String> parent, String ref})>?,
       event: freezed == event
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
@@ -897,14 +800,8 @@ class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
 class _$PersistenceLocalAdapterCallImport
     implements PersistenceLocalAdapterCallImport {
   _$PersistenceLocalAdapterCallImport(
-      {final Map<
-              String,
-              ({
-                int createdAt,
-                
-                Iterable<String> parent,
-                String ref
-              })>?
+      {final Map<String,
+              ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
       final Map<String, JsonMap>? event,
       final Map<String, StateViewObject>? stateView})
@@ -912,23 +809,11 @@ class _$PersistenceLocalAdapterCallImport
         _event = event,
         _stateView = stateView;
 
-  final Map<
-      String,
-      ({
-        int createdAt,
-        
-        Iterable<String> parent,
-        String ref
-      })>? _entry;
+  final Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+      _entry;
   @override
-  Map<
-      String,
-      ({
-        int createdAt,
-        
-        Iterable<String> parent,
-        String ref
-      })>? get entry {
+  Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+      get entry {
     final value = _entry;
     if (value == null) return null;
     if (_entry is EqualUnmodifiableMapView) return _entry;
@@ -996,14 +881,7 @@ class _$PersistenceLocalAdapterCallImport
     required TResult Function(String ref, StateViewObject stateView) add,
     required TResult Function(String ref, int sequenceNumber) forward,
     required TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)
@@ -1021,14 +899,7 @@ class _$PersistenceLocalAdapterCallImport
     TResult? Function(String ref, StateViewObject stateView)? add,
     TResult? Function(String ref, int sequenceNumber)? forward,
     TResult? Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -1046,14 +917,7 @@ class _$PersistenceLocalAdapterCallImport
     TResult Function(String ref, StateViewObject stateView)? add,
     TResult Function(String ref, int sequenceNumber)? forward,
     TResult Function(
-            Map<
-                    String,
-                    ({
-                      int createdAt,
-                      
-                      Iterable<String> parent,
-                      String ref
-                    })>?
+            Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
                 entry,
             Map<String, JsonMap>? event,
             Map<String, StateViewObject>? stateView)?
@@ -1107,27 +971,15 @@ class _$PersistenceLocalAdapterCallImport
 abstract class PersistenceLocalAdapterCallImport
     implements PersistenceLocalAdapterCall {
   factory PersistenceLocalAdapterCallImport(
-          {final Map<
-                  String,
-                  ({
-                    int createdAt,
-                    
-                    Iterable<String> parent,
-                    String ref
-                  })>?
+          {final Map<String,
+                  ({int createdAt, Iterable<String> parent, String ref})>?
               entry,
           final Map<String, JsonMap>? event,
           final Map<String, StateViewObject>? stateView}) =
       _$PersistenceLocalAdapterCallImport;
 
-  Map<
-      String,
-      ({
-        int createdAt,
-        
-        Iterable<String> parent,
-        String ref
-      })>? get entry;
+  Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
+      get entry;
   Map<String, JsonMap>? get event;
   Map<String, StateViewObject>? get stateView;
   @JsonKey(ignore: true)

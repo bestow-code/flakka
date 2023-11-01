@@ -54,7 +54,7 @@ Future<CorePersistenceRemoteAdapter> getAdapter(
   PersistenceFactoryParamImpl param;
   param = PersistenceFactoryParamImpl()
     ..parseVersion('0')
-    ..objectPath = ObjectKey(
+    ..key = ObjectKey(
       'o/$objectId',
       base: StorePath('loco_data/test', base: RootPath('users/1')),
     );

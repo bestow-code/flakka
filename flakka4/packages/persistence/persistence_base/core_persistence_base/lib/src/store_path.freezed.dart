@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'version_id.dart';
+part of 'store_path.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,26 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$VersionId {
+mixin _$StorePath {
   String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $VersionIdCopyWith<VersionId> get copyWith =>
+  $StorePathCopyWith<StorePath> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VersionIdCopyWith<$Res> {
-  factory $VersionIdCopyWith(VersionId value, $Res Function(VersionId) then) =
-      _$VersionIdCopyWithImpl<$Res, VersionId>;
+abstract class $StorePathCopyWith<$Res> {
+  factory $StorePathCopyWith(StorePath value, $Res Function(StorePath) then) =
+      _$StorePathCopyWithImpl<$Res, StorePath>;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class _$VersionIdCopyWithImpl<$Res, $Val extends VersionId>
-    implements $VersionIdCopyWith<$Res> {
-  _$VersionIdCopyWithImpl(this._value, this._then);
+class _$StorePathCopyWithImpl<$Res, $Val extends StorePath>
+    implements $StorePathCopyWith<$Res> {
+  _$StorePathCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -56,21 +56,21 @@ class _$VersionIdCopyWithImpl<$Res, $Val extends VersionId>
 }
 
 /// @nodoc
-abstract class _$$_VersionIdCopyWith<$Res> implements $VersionIdCopyWith<$Res> {
-  factory _$$_VersionIdCopyWith(
-          _$_VersionId value, $Res Function(_$_VersionId) then) =
-      __$$_VersionIdCopyWithImpl<$Res>;
+abstract class _$$_StorePathCopyWith<$Res> implements $StorePathCopyWith<$Res> {
+  factory _$$_StorePathCopyWith(
+          _$_StorePath value, $Res Function(_$_StorePath) then) =
+      __$$_StorePathCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_VersionIdCopyWithImpl<$Res>
-    extends _$VersionIdCopyWithImpl<$Res, _$_VersionId>
-    implements _$$_VersionIdCopyWith<$Res> {
-  __$$_VersionIdCopyWithImpl(
-      _$_VersionId _value, $Res Function(_$_VersionId) _then)
+class __$$_StorePathCopyWithImpl<$Res>
+    extends _$StorePathCopyWithImpl<$Res, _$_StorePath>
+    implements _$$_StorePathCopyWith<$Res> {
+  __$$_StorePathCopyWithImpl(
+      _$_StorePath _value, $Res Function(_$_StorePath) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +78,7 @@ class __$$_VersionIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_VersionId(
+    return _then(_$_StorePath(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -89,22 +89,22 @@ class __$$_VersionIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VersionId implements _VersionId {
-  _$_VersionId(this.value);
+class _$_StorePath implements _StorePath {
+  _$_StorePath(this.value);
 
   @override
   final String value;
 
   @override
   String toString() {
-    return 'VersionId(value: $value)';
+    return 'StorePath(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VersionId &&
+            other is _$_StorePath &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -114,17 +114,17 @@ class _$_VersionId implements _VersionId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VersionIdCopyWith<_$_VersionId> get copyWith =>
-      __$$_VersionIdCopyWithImpl<_$_VersionId>(this, _$identity);
+  _$$_StorePathCopyWith<_$_StorePath> get copyWith =>
+      __$$_StorePathCopyWithImpl<_$_StorePath>(this, _$identity);
 }
 
-abstract class _VersionId implements VersionId {
-  factory _VersionId(final String value) = _$_VersionId;
+abstract class _StorePath implements StorePath {
+  factory _StorePath(final String value) = _$_StorePath;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_VersionIdCopyWith<_$_VersionId> get copyWith =>
+  _$$_StorePathCopyWith<_$_StorePath> get copyWith =>
       throw _privateConstructorUsedError;
 }

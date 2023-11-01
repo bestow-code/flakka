@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'object_path.dart';
+part of 'object_version.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,26 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectKey {
+mixin _$VersionId {
   String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ObjectKeyCopyWith<ObjectKey> get copyWith =>
+  $VersionIdCopyWith<VersionId> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectKeyCopyWith<$Res> {
-  factory $ObjectKeyCopyWith(ObjectKey value, $Res Function(ObjectKey) then) =
-      _$ObjectKeyCopyWithImpl<$Res, ObjectKey>;
+abstract class $VersionIdCopyWith<$Res> {
+  factory $VersionIdCopyWith(VersionId value, $Res Function(VersionId) then) =
+      _$VersionIdCopyWithImpl<$Res, VersionId>;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class _$ObjectKeyCopyWithImpl<$Res, $Val extends ObjectKey>
-    implements $ObjectKeyCopyWith<$Res> {
-  _$ObjectKeyCopyWithImpl(this._value, this._then);
+class _$VersionIdCopyWithImpl<$Res, $Val extends VersionId>
+    implements $VersionIdCopyWith<$Res> {
+  _$VersionIdCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -56,21 +56,21 @@ class _$ObjectKeyCopyWithImpl<$Res, $Val extends ObjectKey>
 }
 
 /// @nodoc
-abstract class _$$_ObjectKeyCopyWith<$Res> implements $ObjectKeyCopyWith<$Res> {
-  factory _$$_ObjectKeyCopyWith(
-          _$_ObjectKey value, $Res Function(_$_ObjectKey) then) =
-      __$$_ObjectKeyCopyWithImpl<$Res>;
+abstract class _$$_VersionIdCopyWith<$Res> implements $VersionIdCopyWith<$Res> {
+  factory _$$_VersionIdCopyWith(
+          _$_VersionId value, $Res Function(_$_VersionId) then) =
+      __$$_VersionIdCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_ObjectKeyCopyWithImpl<$Res>
-    extends _$ObjectKeyCopyWithImpl<$Res, _$_ObjectKey>
-    implements _$$_ObjectKeyCopyWith<$Res> {
-  __$$_ObjectKeyCopyWithImpl(
-      _$_ObjectKey _value, $Res Function(_$_ObjectKey) _then)
+class __$$_VersionIdCopyWithImpl<$Res>
+    extends _$VersionIdCopyWithImpl<$Res, _$_VersionId>
+    implements _$$_VersionIdCopyWith<$Res> {
+  __$$_VersionIdCopyWithImpl(
+      _$_VersionId _value, $Res Function(_$_VersionId) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +78,7 @@ class __$$_ObjectKeyCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_ObjectKey(
+    return _then(_$_VersionId(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -89,22 +89,22 @@ class __$$_ObjectKeyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ObjectKey implements _ObjectKey {
-  _$_ObjectKey(this.value);
+class _$_VersionId implements _VersionId {
+  _$_VersionId(this.value);
 
   @override
   final String value;
 
   @override
   String toString() {
-    return 'ObjectKey(value: $value)';
+    return 'VersionId(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ObjectKey &&
+            other is _$_VersionId &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -114,18 +114,18 @@ class _$_ObjectKey implements _ObjectKey {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ObjectKeyCopyWith<_$_ObjectKey> get copyWith =>
-      __$$_ObjectKeyCopyWithImpl<_$_ObjectKey>(this, _$identity);
+  _$$_VersionIdCopyWith<_$_VersionId> get copyWith =>
+      __$$_VersionIdCopyWithImpl<_$_VersionId>(this, _$identity);
 }
 
-abstract class _ObjectKey implements ObjectKey {
-  factory _ObjectKey(final String value) = _$_ObjectKey;
+abstract class _VersionId implements VersionId {
+  factory _VersionId(final String value) = _$_VersionId;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_ObjectKeyCopyWith<_$_ObjectKey> get copyWith =>
+  _$$_VersionIdCopyWith<_$_VersionId> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

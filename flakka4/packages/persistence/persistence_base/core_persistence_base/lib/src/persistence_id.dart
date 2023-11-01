@@ -6,3 +6,9 @@ part 'persistence_id.freezed.dart';
 class PersistenceId with _$PersistenceId {
   factory PersistenceId(String value) = _PersistenceId;
 }
+
+@freezed
+class SessionId with _$SessionId {
+  factory SessionId(String value, {required PersistenceId persistenceId}) =
+      _SessionId;
+}

@@ -1,19 +1,14 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class PersistenceAdapterBase implements CorePersistenceAdapter {
+abstract class PersistenceAdapterBase<Store extends CoreObjectStore> implements CorePersistenceAdapter<Store> {
   PersistenceAdapterBase({
-    required this.rootPath,
-    required this.storePath,
-    required this.objectPath,
-    required this.persistenceId,
+    required this.store,
+    required this.sessionId,
   });
 
   @override
-  final RootPath rootPath;
+  final Store store;
+
   @override
-  final StorePath storePath;
-  @override
-  final ObjectKey objectPath;
-  @override
-  final PersistenceId persistenceId;
+  final SessionId sessionId;
 }

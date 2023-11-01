@@ -1,12 +1,7 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract interface class CorePersistenceAdapter {
-  PersistenceId get persistenceId;
+abstract interface class CorePersistenceAdapter<Store extends CoreObjectStore> {
+  Store get store;
 
-  RootPath get rootPath;
-
-  StorePath get storePath;
-
-  ObjectKey get objectPath;
-
+  SessionId get sessionId;
 }

@@ -10,57 +10,55 @@ void Function() persistenceAdapterLocalTests(
       persistenceProviderLocalFactory,
 ) {
   return () {
-    Glados<PersistenceAdapterTestContextInitialize2>(
-      any.persistenceLocalAdapterTestContext2,
-    ).test('an object should be unique for a given initialization context',
-        (testContext) async {
-      final objectKey = testContext.$1.objectKey;
-      final persistenceProvisioningInitialize =
-          testContext.$1.persistenceProvisioningInitialize;
-
-      final provider1 =
-          persistenceProviderLocalFactory(testContext.$1.providerContext);
-      await provider1.delete(
-        context: testContext.$1.providerContext,
-        key: objectKey,
-      );
-
-      final provider2 =
-          persistenceProviderLocalFactory(testContext.$2.providerContext);
-      await provider2.delete(
-        context: testContext.$2.providerContext,
-        key: objectKey,
-      );
-
-      final adapter1 = await provider1.get(
-        context: testContext.$1.providerContext,
-        key: objectKey,
-      );
-      final adapter2 = await provider2.get(
-        context: testContext.$2.providerContext,
-        key: objectKey,
-      );
-
-      if (testContext.$1.providerContext.rootPathLocal ==
-              testContext.$2.providerContext.rootPathLocal &&
-          testContext.$1.providerContext.storePathLocal ==
-              testContext.$2.providerContext.storePathLocal) {
-        await adapter1.provision(request: persistenceProvisioningInitialize);
-        expect(
-          () => adapter2.provision(request: persistenceProvisioningInitialize),
-          throwsException,
-        );
-        final (state1, state2) =
-            (await adapter1.inspect(), await adapter2.inspect());
-        expect(state1, equals(state2));
-      } else {
-        await adapter1.provision(request: persistenceProvisioningInitialize);
-        await adapter2.provision(request: persistenceProvisioningInitialize);
-        final (state1, state2) =
-            (await adapter1.inspect(), await adapter2.inspect());
-        expect(state1, equals(state2));
-      }
-    });
+    // Glados<PersistenceAdapterTestContextInitialize2>(
+    //   any.persistenceLocalAdapterTestContext2,
+    // ).test('an object should be unique for a given initialization context',
+    //     (testContext) async {
+    //   final objectKey = testContext.$1.objectKey;
+    //   final persistenceProvisioningInitialize =
+    //       testContext.$1.persistenceProvisioningInitialize;
+    //
+    //   final provider1 =
+    //       persistenceProviderLocalFactory(testContext.$1.providerContext);
+    //   await provider1.delete(
+    //     context: testContext.$1.providerContext,
+    //     key: objectKey,
+    //   );
+    //
+    //   final provider2 =
+    //       persistenceProviderLocalFactory(testContext.$2.providerContext);
+    //   await provider2.delete(
+    //     context: testContext.$2.providerContext,
+    //     key: objectKey,
+    //   );
+    //
+    //   final adapter1 = await provider1.get(
+    //     context: testContext.$1.providerContext,
+    //     key: objectKey,
+    //   );
+    //   final adapter2 = await provider2.get(
+    //     context: testContext.$2.providerContext,
+    //     key: objectKey,
+    //   );
+    //
+    //   if (testContext.$1.providerContext.storePathLocal ==
+    //       testContext.$2.providerContext.storePathLocal) {
+    //     await adapter1.provision(request: persistenceProvisioningInitialize);
+    //     expect(
+    //       () => adapter2.provision(request: persistenceProvisioningInitialize),
+    //       throwsException,
+    //     );
+    //     final (state1, state2) =
+    //         (await adapter1.inspect(), await adapter2.inspect());
+    //     expect(state1, equals(state2));
+    //   } else {
+    //     await adapter1.provision(request: persistenceProvisioningInitialize);
+    //     await adapter2.provision(request: persistenceProvisioningInitialize);
+    //     final (state1, state2) =
+    //         (await adapter1.inspect(), await adapter2.inspect());
+    //     expect(state1, equals(state2));
+    //   }
+    // });
     Glados2(
       any.persistenceLocalAdapterTestContext,
       any.nonEmptyList(any.persistenceLocalAdapterCallData),

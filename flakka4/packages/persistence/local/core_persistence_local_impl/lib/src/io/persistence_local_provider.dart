@@ -31,8 +31,11 @@ class PersistenceLocalProvider extends ResourceProviderBase<
     required ObjectKey key,
   }) async =>
       factory.create(
-        key: key,
-        param: (adapter: await adapterProvider.get(context: context, key: key)),
+        context: context,
+        param: (
+          adapter: await adapterProvider.get(context: context, key: key),
+          key: key,
+        ),
       );
 
   @override
