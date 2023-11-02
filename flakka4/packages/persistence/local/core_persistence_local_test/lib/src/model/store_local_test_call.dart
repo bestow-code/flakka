@@ -20,18 +20,4 @@ class StoreLocalTestCall with _$StoreLocalTestCall {
 }
 
 extension AnyStoreLocalTestCallGeneratorExtension on Any {
-  Generator<StoreLocalTestCall> get storeLocalTestCall => any.oneOf([
-        storeLocalTestCallAddHead,
-        storeLocalTestCallAddEvent,
-        storeLocalTestCallAddEntry,
-      ]);
-
-  Generator<StoreLocalTestCall> get storeLocalTestCallAddHead =>
-      any.headData.map((data) => StoreLocalTestCall.addHead(data: data));
-
-  Generator<StoreLocalTestCall> get storeLocalTestCallAddEntry =>
-      any.entryData.map((data) => StoreLocalTestCall.addEntry(data: data));
-
-  Generator<StoreLocalTestCall> get storeLocalTestCallAddEvent =>
-      any.eventData.map((data) => StoreLocalTestCall.addEvent(data: data));
 }

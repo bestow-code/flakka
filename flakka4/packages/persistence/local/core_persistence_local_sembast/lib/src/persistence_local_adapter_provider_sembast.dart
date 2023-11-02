@@ -19,4 +19,9 @@ class PersistenceLocalAdapterProviderSembast
         store: await storeProvider.get(context: context, key: key),
         sessionId: context.sessionId!
       ));
+
+  @override
+  Future<void> delete(
+          {required ProviderContext context, required ObjectKey key}) =>
+      storeProvider.delete(context: context, key: key);
 }

@@ -4,12 +4,24 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 
-class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase<StoreLocalSembast>
+class PersistenceLocalAdapterSembast
+    extends PersistenceLocalAdapterBase<StoreLocalSembast>
     implements CorePersistenceLocalAdapter<StoreLocalSembast> {
   PersistenceLocalAdapterSembast({
     required super.store,
     required super.sessionId,
   });
+
+  @override
+  Future<void> provision({required PersistenceProvisioning request}) async =>
+      request.map(
+        initialize: (initialize) async => store.initialize(
+          sessionId,
+          ref: initialize.ifNew.ref,
+          createdAt: initialize.ifNew.createdAt,
+        ),
+        resume: (resume) async => throw UnimplementedError(),
+      );
 
   @override
   Future<void> add({required String ref, required StateViewObject stateView}) {
@@ -23,25 +35,47 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase<StoreLo
     required JsonMap? event,
     required int createdAt,
     required int sequenceNumber,
-  }) {
-    throw UnimplementedError();
-  }
+  }) =>
+      store.transact<void>(sessionId).run(
+            (handler) => handler
+                .addHead(HeadData(ref: ref, sequenceNumber: sequenceNumber))
+                .then((_) => handler.putEntry(
+                    EntryData(ref: ref, parent: parent, createdAt: createdAt)))
+                .then(
+                  (value) => handler.putEvent(EventData(ref: ref, data: event)),
+                ),
+          );
 
   @override
-  Stream<Map<String, ({int createdAt, Iterable<String> parent})>>
-      get entrySnapshot => throw UnimplementedError();
+  Stream<HeadData> get headSnapshot => store
+      .queryHead(sessionId.persistenceId)
+      .snapshots()
+      .map((event) => event.last);
 
   @override
-  Stream<Map<String, JsonMap?>> get eventSnapshot => throw UnimplementedError();
+  Stream<Map<String, EntryData>> get entrySnapshot =>
+      store.queryEntry().snapshots().map(
+            (event) => Map.fromEntries(
+              event.map(
+                (entryData) => MapEntry(entryData.ref, entryData),
+              ),
+            ),
+          );
+
+  @override
+  Stream<Map<String, EventData>> get eventSnapshot =>
+      store.queryEvent().snapshots().map(
+            (event) => Map.fromEntries(
+              event.map(
+                (eventData) => MapEntry(eventData.ref, eventData),
+              ),
+            ),
+          );
 
   @override
   Future<void> forward({required String ref, required int sequenceNumber}) {
     throw UnimplementedError();
   }
-
-  @override
-  Stream<({String ref, int sequenceNumber})> get headSnapshot =>
-      throw UnimplementedError();
 
   @override
   Future<void> import({
@@ -54,11 +88,6 @@ class PersistenceLocalAdapterSembast extends PersistenceLocalAdapterBase<StoreLo
 
   @override
   Future<({String ref, int sequenceNumber})?> inspect() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> provision({required PersistenceProvisioning request}) {
     throw UnimplementedError();
   }
 }

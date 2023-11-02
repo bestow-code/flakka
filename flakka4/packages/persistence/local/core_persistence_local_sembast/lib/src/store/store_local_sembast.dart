@@ -56,8 +56,16 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
   @override
   Future<void> initialize(SessionId sessionId,
           {required String ref, required int createdAt}) async =>
-      transact<void>(sessionId)
-          .run((handler) => handler.initialize(ref: ref, createdAt: createdAt));
+      transact<void>(sessionId).run((handler) async {
+        final head = await handler.head;
+        if (head != null) {
+          throw Exception('instance already initialized: $head');
+        } else {
+          return handler
+              .initialize(ref: ref, createdAt: createdAt)
+              .then((_) => true);
+        }
+      });
 }
 
 class StoreLocalQuerySembast<K, T> implements CoreQuery<T> {

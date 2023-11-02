@@ -10,6 +10,7 @@ extension PersistenceBaseTestContextExtension on Any {
   Generator<ProviderContext> get providerContext =>
       any.always(ProviderContext());
 
+
   // Bindings
 
   Generator<ProviderContext> providerContextStoreLocalPathBinding(

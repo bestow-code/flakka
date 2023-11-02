@@ -29,13 +29,16 @@ abstract class PersistenceLocalAdapterProviderBase
   Future<void> delete({
     required ProviderContext context,
     required ObjectKey key,
-  }) {
-    throw UnimplementedError();
-    // return getFactory(context).delete(
-    //     key: key,
-    //     param: (storePath: context.storePathLocal!, persistenceId: null),
-    //   );
-  }
+  })
+  ;
+  // {
+  //
+  //   throw UnimplementedError();
+  //   // return getFactory(context).delete(
+  //   //     key: key,
+  //   //     param: (storePath: context.storePathLocal!, persistenceId: null),
+  //   //   );
+  // }
 
   @override
   Future<void> dispose({

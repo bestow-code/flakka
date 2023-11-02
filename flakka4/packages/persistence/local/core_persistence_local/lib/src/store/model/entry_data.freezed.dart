@@ -21,7 +21,7 @@ EntryData _$EntryDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EntryData {
   String get ref => throw _privateConstructorUsedError;
-  Iterable<String> get parent => throw _privateConstructorUsedError;
+  List<String> get parent => throw _privateConstructorUsedError;
   int get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $EntryDataCopyWith<$Res> {
   factory $EntryDataCopyWith(EntryData value, $Res Function(EntryData) then) =
       _$EntryDataCopyWithImpl<$Res, EntryData>;
   @useResult
-  $Res call({String ref, Iterable<String> parent, int createdAt});
+  $Res call({String ref, List<String> parent, int createdAt});
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$EntryDataCopyWithImpl<$Res, $Val extends EntryData>
       parent: null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -79,7 +79,7 @@ abstract class _$$_EntryDataCopyWith<$Res> implements $EntryDataCopyWith<$Res> {
       __$$_EntryDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String ref, Iterable<String> parent, int createdAt});
+  $Res call({String ref, List<String> parent, int createdAt});
 }
 
 /// @nodoc
@@ -103,9 +103,9 @@ class __$$_EntryDataCopyWithImpl<$Res>
           : ref // ignore: cast_nullable_to_non_nullable
               as String,
       parent: null == parent
-          ? _value.parent
+          ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
+              as List<String>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -118,15 +118,24 @@ class __$$_EntryDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EntryData implements _EntryData {
   _$_EntryData(
-      {required this.ref, required this.parent, required this.createdAt});
+      {required this.ref,
+      required final List<String> parent,
+      required this.createdAt})
+      : _parent = parent;
 
   factory _$_EntryData.fromJson(Map<String, dynamic> json) =>
       _$$_EntryDataFromJson(json);
 
   @override
   final String ref;
+  final List<String> _parent;
   @override
-  final Iterable<String> parent;
+  List<String> get parent {
+    if (_parent is EqualUnmodifiableListView) return _parent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parent);
+  }
+
   @override
   final int createdAt;
 
@@ -141,15 +150,15 @@ class _$_EntryData implements _EntryData {
         (other.runtimeType == runtimeType &&
             other is _$_EntryData &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other.parent, parent) &&
+            const DeepCollectionEquality().equals(other._parent, _parent) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, ref, const DeepCollectionEquality().hash(parent), createdAt);
+  int get hashCode => Object.hash(runtimeType, ref,
+      const DeepCollectionEquality().hash(_parent), createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -168,7 +177,7 @@ class _$_EntryData implements _EntryData {
 abstract class _EntryData implements EntryData {
   factory _EntryData(
       {required final String ref,
-      required final Iterable<String> parent,
+      required final List<String> parent,
       required final int createdAt}) = _$_EntryData;
 
   factory _EntryData.fromJson(Map<String, dynamic> json) =
@@ -177,7 +186,7 @@ abstract class _EntryData implements EntryData {
   @override
   String get ref;
   @override
-  Iterable<String> get parent;
+  List<String> get parent;
   @override
   int get createdAt;
   @override

@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
@@ -10,8 +9,8 @@ void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
 ) {
   return () {
     Glados2(
-      testContextStoreLocal(providerGeneratorFactory),
-      storeLocalTestCalls(),
+      any.testContextStoreLocal(providerGeneratorFactory),
+      any.storeLocalTestCalls,
     ).test('transaction handler', (context, calls) async {
       await context.provider
           .delete(context: context.providerContext, key: context.key);
@@ -24,12 +23,12 @@ void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
       );
       await store
           .transact<void>(context.providerContext.sessionId!)
-          .run((transaction) async {
+          .run((handler) async {
         for (final call in calls) {
           await call.map(
-            addEntry: (addEntry) => transaction.putEntry(addEntry.data),
-            addEvent: (addEvent) => transaction.putEvent(addEvent.data),
-            addHead: (addHead) => transaction.addHead(addHead.data),
+            addEntry: (addEntry) => handler.putEntry(addEntry.data),
+            addEvent: (addEvent) => handler.putEvent(addEvent.data),
+            addHead: (addHead) => handler.addHead(addHead.data),
           );
         }
       });
@@ -52,21 +51,6 @@ void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
     });
   };
 }
-
-Generator<List<StoreLocalTestCall>> storeLocalTestCalls() =>
-    any.list(any.storeLocalTestCall).map((value) {
-      var index = 0;
-      return value
-          .map(
-            (e) =>
-                e.mapOrNull(
-                  addHead: (addHead) =>
-                      addHead.copyWith.data(sequenceNumber: index = index + 1),
-                ) ??
-                e,
-          )
-          .toList();
-    });
 
 ({HeadData? head, Set<EventData> event, Set<EntryData> entry}) _getExpectedData(
   Iterable<StoreLocalTestCall> calls,
@@ -101,33 +85,3 @@ Generator<List<StoreLocalTestCall>> storeLocalTestCalls() =>
     entry: entry,
   );
 }
-
-Generator<
-    ({
-      ProviderContext providerContext,
-      CoreStoreLocalProvider<StoreLocal> provider,
-      ObjectKey key,
-      ({String ref, int createdAt}) initialize,
-    })> testContextStoreLocal<StoreLocal extends CoreStoreLocal>(
-  Generator<CoreStoreLocalProvider<StoreLocal>> Function()
-      providerGeneratorFactory,
-) =>
-    any.combine4(
-      providerGeneratorFactory(),
-      any.providerContext
-          .bind(any.providerContextPersistentObjectSessionBinding),
-      any.objectKey,
-      initializeParam,
-      (provider, providerContext, key, initialize) => (
-        provider: provider,
-        providerContext: providerContext,
-        key: key,
-        initialize: initialize
-      ),
-    );
-
-Generator<({String ref, int createdAt})> get initializeParam => any.combine2(
-      any.refValue,
-      any.createdAtMillis,
-      (ref, createdAt) => (ref: ref, createdAt: createdAt),
-    );

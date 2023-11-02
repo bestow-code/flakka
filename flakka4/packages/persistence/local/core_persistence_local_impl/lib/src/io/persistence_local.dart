@@ -54,10 +54,10 @@ class PersistenceLocal
     subscription = Rx.merge([
       _localAdapter.headSnapshot
           .map((event) => PersistenceLocalUpdate.ref(value: event.ref)),
-      _localAdapter.entrySnapshot
-          .map((event) => PersistenceLocalUpdate.entry(snapshot: event)),
+      _localAdapter.entrySnapshot.map((event) => PersistenceLocalUpdate.entry(
+          snapshot: Map.fromEntries(throw UnimplementedError()))),
       _localAdapter.eventSnapshot
-          .map((event) => PersistenceLocalUpdate.event(snapshot: event)),
+          .map((event) => PersistenceLocalUpdate.event(snapshot: event.map((key, value) => MapEntry(key, value.data)))),
     ]).listen(outputSubject.add);
     unawaited(
       Future.wait([

@@ -4,8 +4,8 @@ import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 
-abstract interface class CorePersistenceLocalAdapter<Store extends CoreStoreLocal>
-    implements CorePersistenceAdapter<Store> {
+abstract interface class CorePersistenceLocalAdapter<
+    Store extends CoreStoreLocal> implements CorePersistenceAdapter<Store> {
   // Write
   Future<void> provision({
     required PersistenceProvisioning request,
@@ -43,12 +43,11 @@ abstract interface class CorePersistenceLocalAdapter<Store extends CoreStoreLoca
   });
 
   // Read
-  Stream<({String ref, int sequenceNumber})> get headSnapshot;
+  Stream<HeadData> get headSnapshot;
 
-  Stream<Map<String, ({Iterable<String> parent, int createdAt})>>
-      get entrySnapshot;
+  Stream<Map<String, EntryData>> get entrySnapshot;
 
-  Stream<Map<String, JsonMap?>> get eventSnapshot;
+  Stream<Map<String, EventData>> get eventSnapshot;
 
   Future<
       ({

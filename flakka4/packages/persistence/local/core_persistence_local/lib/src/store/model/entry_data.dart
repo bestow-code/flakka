@@ -8,7 +8,7 @@ part 'entry_data.g.dart';
 class EntryData with _$EntryData {
   factory EntryData({
     required String ref,
-    required Iterable<String> parent,
+    required List<String> parent,
     required int createdAt,
   }) = _EntryData;
 
