@@ -11,7 +11,7 @@ class ObjectLocalEffect with _$ObjectLocalEffect {
     required String ref,
     required List<String> parent,
     required JsonMap? event,
-    required StateViewObject? stateView,
+    // required StateViewObject? stateView,
     required int createdAt,
     required int sequenceNumber,
   }) = ObjectLocalEffectAppend;

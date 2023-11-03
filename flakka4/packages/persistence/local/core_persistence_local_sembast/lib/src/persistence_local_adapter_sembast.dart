@@ -47,10 +47,10 @@ class PersistenceLocalAdapterSembast
           );
 
   @override
-  Stream<HeadData> get headSnapshot => store
+  Stream<HeadData?> get headSnapshot => store
       .queryHead(sessionId.persistenceId)
       .snapshots()
-      .map((event) => event.last);
+      .map((event) => event.lastOrNull);
 
   @override
   Stream<Map<String, EntryData>> get entrySnapshot =>

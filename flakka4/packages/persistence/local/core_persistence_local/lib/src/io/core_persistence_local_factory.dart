@@ -4,7 +4,7 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 abstract class CorePersistenceLocalFactory
     implements
-        CoreResourceFactory<PersistenceLocalEffect, PersistenceLocalUpdate,
+        CoreResourceFactory<PersistenceLocalEffect, PersistenceLocalState,
             CorePersistenceLocal> {
   @override
   Future<CorePersistenceLocal> create({

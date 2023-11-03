@@ -3,7 +3,7 @@
 /// Common libraries for core_platform
 library core_loco_impl;
 
-export 'src/async_io/async_io.dart';
+export 'src/async_io/async_io_base.dart';
 export 'src/async_io/async_io_factory.dart';
 export 'src/broadcast_merge/broadcast_merge_base.dart';
 export 'src/broadcast_merge/broadcast_merge_factory_base.dart';

@@ -12,7 +12,7 @@ class TestNode extends NodeBase<int, int, int, int, int> {
   Future<void> provision(covariant dynamic provisioning) async {
     unawaited(inputSubject.pipe(effectSubject));
     await super.provision(provisioning);
-    unawaited(updateSubject.pipe(outputSubject));
+    unawaited(updateSubject.pipe(stateSubject));
     // child.output.pipe(up)
   }
 }
@@ -25,7 +25,7 @@ class TestResource extends ResourceBase<int, int> {
 
   @override
   Future<void> provision(covariant dynamic provisioning) async {
-    unawaited(source.pipe(outputSubject));
+    unawaited(source.pipe(stateSubject));
   }
 
   @override
@@ -51,9 +51,9 @@ void main() {
     await node.provision(null);
     node.connect();
     await Future.wait<void>(
-        [parent.source.pipe(node.input), node.output.pipe(parent.sink)]);
+        [parent.source.pipe(node.input), node.snapshot.pipe(parent.sink)]);
     await node.done;
-    await node.outputSubject.done;
+    await node.stateSubject.done;
     expect(child.sink.values, [2]);
     expect(parent.sink.values, [1]);
   });

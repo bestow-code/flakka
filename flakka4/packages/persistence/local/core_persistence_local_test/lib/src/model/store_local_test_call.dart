@@ -18,6 +18,3 @@ class StoreLocalTestCall with _$StoreLocalTestCall {
   factory StoreLocalTestCall.addHead({required HeadData data}) =
       StoreLocalTestCallAddHead;
 }
-
-extension AnyStoreLocalTestCallGeneratorExtension on Any {
-}

@@ -6,10 +6,10 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 class ObjectLocalProvider extends NodeProviderBase<
     PersistenceLocalEffect,
-    PersistenceLocalUpdate,
+    PersistenceLocalState,
     CorePersistenceLocal,
     ObjectLocalEffect,
-    ObjectLocalUpdate,
+    ObjectLocalState,
     CoreObjectLocal> implements CoreObjectLocalProvider {
   ObjectLocalProvider({required super.childProvider});
 
@@ -26,6 +26,12 @@ class ObjectLocalProvider extends NodeProviderBase<
     required ProviderContext context,
     required ObjectKey key,
   }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> delete({required ProviderContext context, covariant required key}) {
+    // TODO: implement delete
     throw UnimplementedError();
   }
 }

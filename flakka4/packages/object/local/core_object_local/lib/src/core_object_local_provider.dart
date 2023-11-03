@@ -7,8 +7,8 @@ abstract interface class CoreObjectLocalProvider
     implements
         CoreNodeProvider<
             PersistenceLocalEffect,
-            PersistenceLocalUpdate,
+            PersistenceLocalState,
             CorePersistenceLocal,
             ObjectLocalEffect,
-            ObjectLocalUpdate,
+            ObjectLocalState,
             CoreObjectLocal> {}

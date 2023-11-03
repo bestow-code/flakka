@@ -1,16 +1,15 @@
 import 'dart:async';
 
-import 'package:core_loco/core_loco.dart';
 import 'package:rxdart/rxdart.dart';
 
-abstract interface class CoreResource<In, Out>  {
-  StreamConsumer<In> get input;
+abstract interface class CoreResource<Input, State> {
+  StreamSink<Input> get input;
 
-  ValueStream<Out> get output;
+  ValueStream<State> get snapshot;
 
-  Future<void> provision(covariant dynamic provisioning);
+  Future<State> provision(covariant dynamic provisioning);
 
-  CompositeSubscription connect();
+  // CompositeSubscription connect();
 
   bool get isClosed;
 

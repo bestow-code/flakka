@@ -1,19 +1,20 @@
 import 'package:core_common/core_common.dart';
+import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'persistence_local_update.freezed.dart';
 
 @freezed
-class PersistenceLocalUpdate with _$PersistenceLocalUpdate {
-  factory PersistenceLocalUpdate.ref({
-    required String value,
-  }) = PersistenceLocalUpdateRef;
+class PersistenceLocalState with _$PersistenceLocalState {
+  factory PersistenceLocalState.ref({
+    required HeadData snapshot,
+  }) = PersistenceLocalStateRef;
 
-  factory PersistenceLocalUpdate.event({
-    required Map<String, JsonMap?> snapshot,
-  }) = PersistenceLocalUpdateEvent;
+  factory PersistenceLocalState.event({
+    required Map<String, EventData> snapshot,
+  }) = PersistenceLocalStateEvent;
 
-  factory PersistenceLocalUpdate.entry({
-    required Map<String, ({Iterable<String> parent, int createdAt})> snapshot,
-  }) = PersistenceLocalUpdateEntry;
+  factory PersistenceLocalState.entry({
+    required Map<String, EntryData> snapshot,
+  }) = PersistenceLocalStateEntry;
 }

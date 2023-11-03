@@ -6,7 +6,7 @@ import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
 class PersistenceLocalProvider extends ResourceProviderBase<
     PersistenceLocalEffect,
-    PersistenceLocalUpdate,
+    PersistenceLocalState,
     CorePersistenceLocal> implements CorePersistenceLocalProvider {
   PersistenceLocalProvider({
     required this.adapterProvider,

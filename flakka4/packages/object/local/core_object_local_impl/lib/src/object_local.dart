@@ -1,17 +1,14 @@
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object_local/core_object_local.dart';
-import 'package:core_object_local_impl/core_object_local_impl.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
-import 'package:rxdart/src/utils/composite_subscription.dart';
 
 class ObjectLocal extends NodeBase<
     ObjectLocalState,
     PersistenceLocalEffect,
-    PersistenceLocalUpdate,
+    PersistenceLocalState,
     ObjectLocalEffect,
-    ObjectLocalUpdate> implements CoreObjectLocal {
+    ObjectLocalState> implements CoreObjectLocal {
   ObjectLocal({required PersistenceLocal child})
       : _child = child,
         super(child: child);
@@ -20,14 +17,19 @@ class ObjectLocal extends NodeBase<
   PersistenceLocal get child => _child;
   final PersistenceLocal _child;
 
-  @override
-  Future<void> provision(PersistenceProvisioning provisioning) async {
-    await super.provision(provisioning);
+  ObjectLocalState build(PersistenceLocalState snapshot) {
+    throw UnimplementedError();
   }
 
-  @override
-  CompositeSubscription connect() => super.connect();
+  ({PersistenceLocalEffect? effect, ObjectLocalState? state}) onInput(
+      ObjectLocalEffect effect, ObjectLocalState state) {
+    throw UnimplementedError();
+  }
 
-  @override
-  Future<({String ref, int sequenceNumber})?> inspect() => _child.inspect();
+  ({PersistenceLocalEffect? effect, ObjectLocalState? state}) onSnapshot(
+    PersistenceLocalState snapshot,
+    ObjectLocalState state,
+  ) {
+    throw UnimplementedError();
+  }
 }

@@ -1,67 +1,89 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
-import 'package:glados/glados.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
-typedef ProviderSubject2<Provider extends CoreProvider<Subject>, Subject> = ({
-  Duplicate<Provider> provider,
-  Duplicate<Subject> subject,
-  Duplicate<ProviderContext> context,
-  ObjectKey key,
-});
-typedef ProviderSubject<Provider extends CoreProvider<Subject>, Subject> = ({
-  Provider provider,
-  Subject subject,
-  ProviderContext context,
-  ObjectKey key,
-});
+// PersistenceLocal
+extension TestPersistenceLocalContextExtension on Any {
+  // Test Context
+  Generator<
+      ({
+        ProviderContext providerContext,
+        CorePersistenceLocalProvider provider,
+        ObjectKey key,
+        PersistenceProvisioningInitialize initialize,
+      })> testContextPersistenceLocal<
+          PersistenceLocal extends CorePersistenceLocal>(
+    Generator<CorePersistenceLocalProvider> Function() providerGeneratorFactory,
+  ) =>
+      any.combine4(
+        providerGeneratorFactory(),
+        any.providerContext.bind(any.providerContextPersistenceLocalBinding),
+        any.objectKey,
+        persistenceProvisioningInitialize,
+        (provider, providerContext, key, initialize) => (
+          provider: provider,
+          providerContext: providerContext,
+          key: key,
+          initialize: initialize
+        ),
+      );
 
-typedef PersistenceLocalTestContextInitialize = ({
-  ObjectKey objectKey,
-  PersistenceProvisioningInitialize persistenceProvisioningInitialize,
-  ProviderContext providerContext
-});
+  Generator<ProviderContext> providerContextPersistenceLocalBinding(
+          ProviderContext context) =>
+      any.providerContextPersistenceLocalAdapterBinding(context);
 
-typedef PersistenceLocalTestContextInitialize2
-    = Duplicate<PersistenceLocalTestContextInitialize>;
+  // Initialization
+  Generator<PersistenceProvisioningInitialize>
+      get persistenceProvisioningInitialize => any.initializeParam
+          .map((value) => PersistenceProvisioningInitialize(ifNew: value));
 
-extension ProviderLocalTestContextExtension on Any {
-  // Generator<Duplicate<PersistenceLocalTestContextInitialize>>
-  //     get persistenceLocal2 =>
-  //         duplicate(persistenceLocal);
-  //
-  // Generator<PersistenceLocalTestContextInitialize>
-  //      persistenceLocal => any.combine3(
-  //           any.objectKey,
-  //           any.providerContextPersistenceLocal,
-  //           any.persistenceProvisioningInitialize,
-  //           (objectKey, providerContext, persistenceProvisioningInitialize) => (
-  //             providerContext: providerContext,
-  //             objectKey: objectKey,
-  //             persistenceProvisioningInitialize:
-  //                 persistenceProvisioningInitialize
-  //           ),
-  //         );
-  //
-  // Generator<Duplicate<ProviderContext> get providerContextPersistenceLocal2 => combine2(
-  //       providerContextPersistenceLocal,
-  //       providerContextPersistenceLocal,
-  //       (a, b) => (a, b),
-  //     );
-  //
-  // Generator<ProviderContext> get providerContextPersistenceLocal => combine3(
-  //       any.providerContextPersistenceLocalBase,
-  //       storePath,
-  //       storePath,
-  //       (
-  //         context,
-  //         storePathLocal,
-  //         storePathRemote,
-  //       ) =>
-  //           context
-  //             ..storePathLocal = storePathLocal
-  //             ..storePathRemote = storePathRemote,
-  //     );
+  // Effects
+  Generator<List<PersistenceLocalEffect>> get persistenceLocalHead =>
+      any.list(any.oneOf([persistenceLocalHeadEffectAppend]));
+
+  Generator<PersistenceLocalEffect> get persistenceLocalHeadEffectAppend =>
+      combine4(
+        any.refValue,
+        any.listWithLengthInRange(0, 2, any.refValue),
+        any.eventObject.nullable,
+        any.createdAtMillis,
+        (ref, parent, event, createdAt) => PersistenceLocalEffect.append(
+          ref: ref,
+          parent: parent,
+          event: event,
+          createdAt: createdAt,
+          sequenceNumber: -1,
+        ),
+      );
+
+  Generator<PersistenceLocalEffectImport> get persistenceLocalEffectImport =>
+      combine2(
+        any.refValue,
+        any.positiveInt,
+        (a, b) => PersistenceLocalEffectImport(
+          // entry: any.entryMapImport, event: any.eventMapImport,
+          entry: {}, event: {},
+        ),
+      );
+
+  Generator<PersistenceLocalEffect> get persistenceLocalEffectHeadUpdate =>
+      oneOf(
+        [
+          persistenceLocalHeadEffectAppend,
+          persistenceLocalHeadEffectForward,
+        ],
+      );
+
+  Generator<PersistenceLocalEffect> get persistenceLocalHeadEffectForward =>
+      combine2(
+        any.refValue,
+        any.sequenceNumber,
+        (ref, sequenceNumber) => PersistenceLocalEffect.forward(
+          ref: ref,
+          sequenceNumber: sequenceNumber,
+        ),
+      );
+
+// Data
 }

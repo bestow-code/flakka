@@ -10,7 +10,7 @@ abstract interface class CoreObjectFactory
             CoreObject,
             CoreObjectLocal,
             ObjectLocalEffect,
-            ObjectLocalUpdate,
+            ObjectLocalState,
             CoreObjectRemote,
             ObjectRemoteEffect,
             ObjectRemoteUpdate,

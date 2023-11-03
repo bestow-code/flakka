@@ -18,7 +18,7 @@ extension AnyStoreLocalTestExtension on Any {
       any.combine4(
         providerGeneratorFactory(),
         any.providerContext
-            .bind(any.providerContextPersistentObjectSessionBinding),
+            .bind(any.providerContextStoreLocalBinding),
         any.objectKey,
         initializeParam,
         (provider, providerContext, key, initialize) => (
@@ -28,6 +28,10 @@ extension AnyStoreLocalTestExtension on Any {
           initialize: initialize
         ),
       );
+
+  Generator<ProviderContext> providerContextStoreLocalBinding(
+          ProviderContext context) =>
+      any.providerContextPersistentObjectSessionBinding(context);
 
   Generator<({String ref, int createdAt})> get initializeParam => any.combine2(
         any.refValue,

@@ -9,7 +9,7 @@ class ObjectFactory extends BroadcastMergeFactoryBase<
     CoreObject,
     CoreObjectLocal,
     ObjectLocalEffect,
-    ObjectLocalUpdate,
+    ObjectLocalState,
     CoreObjectRemote,
     ObjectRemoteEffect,
     ObjectRemoteUpdate,

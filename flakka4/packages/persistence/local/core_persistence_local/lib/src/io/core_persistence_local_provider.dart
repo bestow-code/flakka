@@ -5,7 +5,7 @@ import '../../core_persistence_local.dart';
 
 abstract class CorePersistenceLocalProvider
     implements
-        CoreResourceProvider<PersistenceLocalEffect, PersistenceLocalUpdate,
+        CoreResourceProvider<PersistenceLocalEffect, PersistenceLocalState,
             CorePersistenceLocal> {
   Future<void> delete({
     required ProviderContext context,

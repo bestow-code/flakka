@@ -15,71 +15,66 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PersistenceLocalUpdate {
+mixin _$PersistenceLocalState {
+  Object get snapshot => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap?> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadData snapshot) ref,
+    required TResult Function(Map<String, EventData> snapshot) event,
+    required TResult Function(Map<String, EntryData> snapshot) entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap?> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadData snapshot)? ref,
+    TResult? Function(Map<String, EventData> snapshot)? event,
+    TResult? Function(Map<String, EntryData> snapshot)? entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap?> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadData snapshot)? ref,
+    TResult Function(Map<String, EventData> snapshot)? event,
+    TResult Function(Map<String, EntryData> snapshot)? entry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalUpdateRef value) ref,
-    required TResult Function(PersistenceLocalUpdateEvent value) event,
-    required TResult Function(PersistenceLocalUpdateEntry value) entry,
+    required TResult Function(PersistenceLocalStateRef value) ref,
+    required TResult Function(PersistenceLocalStateEvent value) event,
+    required TResult Function(PersistenceLocalStateEntry value) entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalUpdateRef value)? ref,
-    TResult? Function(PersistenceLocalUpdateEvent value)? event,
-    TResult? Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult? Function(PersistenceLocalStateRef value)? ref,
+    TResult? Function(PersistenceLocalStateEvent value)? event,
+    TResult? Function(PersistenceLocalStateEntry value)? entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalUpdateRef value)? ref,
-    TResult Function(PersistenceLocalUpdateEvent value)? event,
-    TResult Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult Function(PersistenceLocalStateRef value)? ref,
+    TResult Function(PersistenceLocalStateEvent value)? event,
+    TResult Function(PersistenceLocalStateEntry value)? entry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PersistenceLocalUpdateCopyWith<$Res> {
-  factory $PersistenceLocalUpdateCopyWith(PersistenceLocalUpdate value,
-          $Res Function(PersistenceLocalUpdate) then) =
-      _$PersistenceLocalUpdateCopyWithImpl<$Res, PersistenceLocalUpdate>;
+abstract class $PersistenceLocalStateCopyWith<$Res> {
+  factory $PersistenceLocalStateCopyWith(PersistenceLocalState value,
+          $Res Function(PersistenceLocalState) then) =
+      _$PersistenceLocalStateCopyWithImpl<$Res, PersistenceLocalState>;
 }
 
 /// @nodoc
-class _$PersistenceLocalUpdateCopyWithImpl<$Res,
-        $Val extends PersistenceLocalUpdate>
-    implements $PersistenceLocalUpdateCopyWith<$Res> {
-  _$PersistenceLocalUpdateCopyWithImpl(this._value, this._then);
+class _$PersistenceLocalStateCopyWithImpl<$Res,
+        $Val extends PersistenceLocalState>
+    implements $PersistenceLocalStateCopyWith<$Res> {
+  _$PersistenceLocalStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,105 +83,110 @@ class _$PersistenceLocalUpdateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalUpdateRefCopyWith<$Res> {
-  factory _$$PersistenceLocalUpdateRefCopyWith(
-          _$PersistenceLocalUpdateRef value,
-          $Res Function(_$PersistenceLocalUpdateRef) then) =
-      __$$PersistenceLocalUpdateRefCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalStateRefCopyWith<$Res> {
+  factory _$$PersistenceLocalStateRefCopyWith(_$PersistenceLocalStateRef value,
+          $Res Function(_$PersistenceLocalStateRef) then) =
+      __$$PersistenceLocalStateRefCopyWithImpl<$Res>;
   @useResult
-  $Res call({String value});
+  $Res call({HeadData snapshot});
+
+  $HeadDataCopyWith<$Res> get snapshot;
 }
 
 /// @nodoc
-class __$$PersistenceLocalUpdateRefCopyWithImpl<$Res>
-    extends _$PersistenceLocalUpdateCopyWithImpl<$Res,
-        _$PersistenceLocalUpdateRef>
-    implements _$$PersistenceLocalUpdateRefCopyWith<$Res> {
-  __$$PersistenceLocalUpdateRefCopyWithImpl(_$PersistenceLocalUpdateRef _value,
-      $Res Function(_$PersistenceLocalUpdateRef) _then)
+class __$$PersistenceLocalStateRefCopyWithImpl<$Res>
+    extends _$PersistenceLocalStateCopyWithImpl<$Res,
+        _$PersistenceLocalStateRef>
+    implements _$$PersistenceLocalStateRefCopyWith<$Res> {
+  __$$PersistenceLocalStateRefCopyWithImpl(_$PersistenceLocalStateRef _value,
+      $Res Function(_$PersistenceLocalStateRef) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? snapshot = null,
   }) {
-    return _then(_$PersistenceLocalUpdateRef(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$PersistenceLocalStateRef(
+      snapshot: null == snapshot
+          ? _value.snapshot
+          : snapshot // ignore: cast_nullable_to_non_nullable
+              as HeadData,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadDataCopyWith<$Res> get snapshot {
+    return $HeadDataCopyWith<$Res>(_value.snapshot, (value) {
+      return _then(_value.copyWith(snapshot: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
-  _$PersistenceLocalUpdateRef({required this.value});
+class _$PersistenceLocalStateRef implements PersistenceLocalStateRef {
+  _$PersistenceLocalStateRef({required this.snapshot});
 
   @override
-  final String value;
+  final HeadData snapshot;
 
   @override
   String toString() {
-    return 'PersistenceLocalUpdate.ref(value: $value)';
+    return 'PersistenceLocalState.ref(snapshot: $snapshot)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalUpdateRef &&
-            (identical(other.value, value) || other.value == value));
+            other is _$PersistenceLocalStateRef &&
+            (identical(other.snapshot, snapshot) ||
+                other.snapshot == snapshot));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, snapshot);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalUpdateRefCopyWith<_$PersistenceLocalUpdateRef>
-      get copyWith => __$$PersistenceLocalUpdateRefCopyWithImpl<
-          _$PersistenceLocalUpdateRef>(this, _$identity);
+  _$$PersistenceLocalStateRefCopyWith<_$PersistenceLocalStateRef>
+      get copyWith =>
+          __$$PersistenceLocalStateRefCopyWithImpl<_$PersistenceLocalStateRef>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap?> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadData snapshot) ref,
+    required TResult Function(Map<String, EventData> snapshot) event,
+    required TResult Function(Map<String, EntryData> snapshot) entry,
   }) {
-    return ref(value);
+    return ref(snapshot);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap?> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadData snapshot)? ref,
+    TResult? Function(Map<String, EventData> snapshot)? event,
+    TResult? Function(Map<String, EntryData> snapshot)? entry,
   }) {
-    return ref?.call(value);
+    return ref?.call(snapshot);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap?> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadData snapshot)? ref,
+    TResult Function(Map<String, EventData> snapshot)? event,
+    TResult Function(Map<String, EntryData> snapshot)? entry,
     required TResult orElse(),
   }) {
     if (ref != null) {
-      return ref(value);
+      return ref(snapshot);
     }
     return orElse();
   }
@@ -194,9 +194,9 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalUpdateRef value) ref,
-    required TResult Function(PersistenceLocalUpdateEvent value) event,
-    required TResult Function(PersistenceLocalUpdateEntry value) entry,
+    required TResult Function(PersistenceLocalStateRef value) ref,
+    required TResult Function(PersistenceLocalStateEvent value) event,
+    required TResult Function(PersistenceLocalStateEntry value) entry,
   }) {
     return ref(this);
   }
@@ -204,9 +204,9 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalUpdateRef value)? ref,
-    TResult? Function(PersistenceLocalUpdateEvent value)? event,
-    TResult? Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult? Function(PersistenceLocalStateRef value)? ref,
+    TResult? Function(PersistenceLocalStateEvent value)? event,
+    TResult? Function(PersistenceLocalStateEntry value)? entry,
   }) {
     return ref?.call(this);
   }
@@ -214,9 +214,9 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalUpdateRef value)? ref,
-    TResult Function(PersistenceLocalUpdateEvent value)? event,
-    TResult Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult Function(PersistenceLocalStateRef value)? ref,
+    TResult Function(PersistenceLocalStateEvent value)? event,
+    TResult Function(PersistenceLocalStateEntry value)? entry,
     required TResult orElse(),
   }) {
     if (ref != null) {
@@ -226,34 +226,35 @@ class _$PersistenceLocalUpdateRef implements PersistenceLocalUpdateRef {
   }
 }
 
-abstract class PersistenceLocalUpdateRef implements PersistenceLocalUpdate {
-  factory PersistenceLocalUpdateRef({required final String value}) =
-      _$PersistenceLocalUpdateRef;
+abstract class PersistenceLocalStateRef implements PersistenceLocalState {
+  factory PersistenceLocalStateRef({required final HeadData snapshot}) =
+      _$PersistenceLocalStateRef;
 
-  String get value;
+  @override
+  HeadData get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalUpdateRefCopyWith<_$PersistenceLocalUpdateRef>
+  _$$PersistenceLocalStateRefCopyWith<_$PersistenceLocalStateRef>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalUpdateEventCopyWith<$Res> {
-  factory _$$PersistenceLocalUpdateEventCopyWith(
-          _$PersistenceLocalUpdateEvent value,
-          $Res Function(_$PersistenceLocalUpdateEvent) then) =
-      __$$PersistenceLocalUpdateEventCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalStateEventCopyWith<$Res> {
+  factory _$$PersistenceLocalStateEventCopyWith(
+          _$PersistenceLocalStateEvent value,
+          $Res Function(_$PersistenceLocalStateEvent) then) =
+      __$$PersistenceLocalStateEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, JsonMap?> snapshot});
+  $Res call({Map<String, EventData> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceLocalUpdateEventCopyWithImpl<$Res>
-    extends _$PersistenceLocalUpdateCopyWithImpl<$Res,
-        _$PersistenceLocalUpdateEvent>
-    implements _$$PersistenceLocalUpdateEventCopyWith<$Res> {
-  __$$PersistenceLocalUpdateEventCopyWithImpl(
-      _$PersistenceLocalUpdateEvent _value,
-      $Res Function(_$PersistenceLocalUpdateEvent) _then)
+class __$$PersistenceLocalStateEventCopyWithImpl<$Res>
+    extends _$PersistenceLocalStateCopyWithImpl<$Res,
+        _$PersistenceLocalStateEvent>
+    implements _$$PersistenceLocalStateEventCopyWith<$Res> {
+  __$$PersistenceLocalStateEventCopyWithImpl(
+      _$PersistenceLocalStateEvent _value,
+      $Res Function(_$PersistenceLocalStateEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,24 +262,24 @@ class __$$PersistenceLocalUpdateEventCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceLocalUpdateEvent(
+    return _then(_$PersistenceLocalStateEvent(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
-              as Map<String, JsonMap?>,
+              as Map<String, EventData>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
-  _$PersistenceLocalUpdateEvent({required final Map<String, JsonMap?> snapshot})
+class _$PersistenceLocalStateEvent implements PersistenceLocalStateEvent {
+  _$PersistenceLocalStateEvent({required final Map<String, EventData> snapshot})
       : _snapshot = snapshot;
 
-  final Map<String, JsonMap?> _snapshot;
+  final Map<String, EventData> _snapshot;
   @override
-  Map<String, JsonMap?> get snapshot {
+  Map<String, EventData> get snapshot {
     if (_snapshot is EqualUnmodifiableMapView) return _snapshot;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_snapshot);
@@ -286,14 +287,14 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
 
   @override
   String toString() {
-    return 'PersistenceLocalUpdate.event(snapshot: $snapshot)';
+    return 'PersistenceLocalState.event(snapshot: $snapshot)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalUpdateEvent &&
+            other is _$PersistenceLocalStateEvent &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -304,18 +305,16 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalUpdateEventCopyWith<_$PersistenceLocalUpdateEvent>
-      get copyWith => __$$PersistenceLocalUpdateEventCopyWithImpl<
-          _$PersistenceLocalUpdateEvent>(this, _$identity);
+  _$$PersistenceLocalStateEventCopyWith<_$PersistenceLocalStateEvent>
+      get copyWith => __$$PersistenceLocalStateEventCopyWithImpl<
+          _$PersistenceLocalStateEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap?> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadData snapshot) ref,
+    required TResult Function(Map<String, EventData> snapshot) event,
+    required TResult Function(Map<String, EntryData> snapshot) entry,
   }) {
     return event(snapshot);
   }
@@ -323,11 +322,9 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap?> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadData snapshot)? ref,
+    TResult? Function(Map<String, EventData> snapshot)? event,
+    TResult? Function(Map<String, EntryData> snapshot)? entry,
   }) {
     return event?.call(snapshot);
   }
@@ -335,11 +332,9 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap?> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadData snapshot)? ref,
+    TResult Function(Map<String, EventData> snapshot)? event,
+    TResult Function(Map<String, EntryData> snapshot)? entry,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -351,9 +346,9 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalUpdateRef value) ref,
-    required TResult Function(PersistenceLocalUpdateEvent value) event,
-    required TResult Function(PersistenceLocalUpdateEntry value) entry,
+    required TResult Function(PersistenceLocalStateRef value) ref,
+    required TResult Function(PersistenceLocalStateEvent value) event,
+    required TResult Function(PersistenceLocalStateEntry value) entry,
   }) {
     return event(this);
   }
@@ -361,9 +356,9 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalUpdateRef value)? ref,
-    TResult? Function(PersistenceLocalUpdateEvent value)? event,
-    TResult? Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult? Function(PersistenceLocalStateRef value)? ref,
+    TResult? Function(PersistenceLocalStateEvent value)? event,
+    TResult? Function(PersistenceLocalStateEntry value)? entry,
   }) {
     return event?.call(this);
   }
@@ -371,9 +366,9 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalUpdateRef value)? ref,
-    TResult Function(PersistenceLocalUpdateEvent value)? event,
-    TResult Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult Function(PersistenceLocalStateRef value)? ref,
+    TResult Function(PersistenceLocalStateEvent value)? event,
+    TResult Function(PersistenceLocalStateEntry value)? entry,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -383,35 +378,36 @@ class _$PersistenceLocalUpdateEvent implements PersistenceLocalUpdateEvent {
   }
 }
 
-abstract class PersistenceLocalUpdateEvent implements PersistenceLocalUpdate {
-  factory PersistenceLocalUpdateEvent(
-          {required final Map<String, JsonMap?> snapshot}) =
-      _$PersistenceLocalUpdateEvent;
+abstract class PersistenceLocalStateEvent implements PersistenceLocalState {
+  factory PersistenceLocalStateEvent(
+          {required final Map<String, EventData> snapshot}) =
+      _$PersistenceLocalStateEvent;
 
-  Map<String, JsonMap?> get snapshot;
+  @override
+  Map<String, EventData> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalUpdateEventCopyWith<_$PersistenceLocalUpdateEvent>
+  _$$PersistenceLocalStateEventCopyWith<_$PersistenceLocalStateEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalUpdateEntryCopyWith<$Res> {
-  factory _$$PersistenceLocalUpdateEntryCopyWith(
-          _$PersistenceLocalUpdateEntry value,
-          $Res Function(_$PersistenceLocalUpdateEntry) then) =
-      __$$PersistenceLocalUpdateEntryCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalStateEntryCopyWith<$Res> {
+  factory _$$PersistenceLocalStateEntryCopyWith(
+          _$PersistenceLocalStateEntry value,
+          $Res Function(_$PersistenceLocalStateEntry) then) =
+      __$$PersistenceLocalStateEntryCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, ({int createdAt, Iterable<String> parent})> snapshot});
+  $Res call({Map<String, EntryData> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceLocalUpdateEntryCopyWithImpl<$Res>
-    extends _$PersistenceLocalUpdateCopyWithImpl<$Res,
-        _$PersistenceLocalUpdateEntry>
-    implements _$$PersistenceLocalUpdateEntryCopyWith<$Res> {
-  __$$PersistenceLocalUpdateEntryCopyWithImpl(
-      _$PersistenceLocalUpdateEntry _value,
-      $Res Function(_$PersistenceLocalUpdateEntry) _then)
+class __$$PersistenceLocalStateEntryCopyWithImpl<$Res>
+    extends _$PersistenceLocalStateCopyWithImpl<$Res,
+        _$PersistenceLocalStateEntry>
+    implements _$$PersistenceLocalStateEntryCopyWith<$Res> {
+  __$$PersistenceLocalStateEntryCopyWithImpl(
+      _$PersistenceLocalStateEntry _value,
+      $Res Function(_$PersistenceLocalStateEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -419,26 +415,24 @@ class __$$PersistenceLocalUpdateEntryCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceLocalUpdateEntry(
+    return _then(_$PersistenceLocalStateEntry(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
-              as Map<String, ({int createdAt, Iterable<String> parent})>,
+              as Map<String, EntryData>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
-  _$PersistenceLocalUpdateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          snapshot})
+class _$PersistenceLocalStateEntry implements PersistenceLocalStateEntry {
+  _$PersistenceLocalStateEntry({required final Map<String, EntryData> snapshot})
       : _snapshot = snapshot;
 
-  final Map<String, ({int createdAt, Iterable<String> parent})> _snapshot;
+  final Map<String, EntryData> _snapshot;
   @override
-  Map<String, ({int createdAt, Iterable<String> parent})> get snapshot {
+  Map<String, EntryData> get snapshot {
     if (_snapshot is EqualUnmodifiableMapView) return _snapshot;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_snapshot);
@@ -446,14 +440,14 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
 
   @override
   String toString() {
-    return 'PersistenceLocalUpdate.entry(snapshot: $snapshot)';
+    return 'PersistenceLocalState.entry(snapshot: $snapshot)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalUpdateEntry &&
+            other is _$PersistenceLocalStateEntry &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -464,18 +458,16 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalUpdateEntryCopyWith<_$PersistenceLocalUpdateEntry>
-      get copyWith => __$$PersistenceLocalUpdateEntryCopyWithImpl<
-          _$PersistenceLocalUpdateEntry>(this, _$identity);
+  _$$PersistenceLocalStateEntryCopyWith<_$PersistenceLocalStateEntry>
+      get copyWith => __$$PersistenceLocalStateEntryCopyWithImpl<
+          _$PersistenceLocalStateEntry>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap?> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadData snapshot) ref,
+    required TResult Function(Map<String, EventData> snapshot) event,
+    required TResult Function(Map<String, EntryData> snapshot) entry,
   }) {
     return entry(snapshot);
   }
@@ -483,11 +475,9 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap?> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadData snapshot)? ref,
+    TResult? Function(Map<String, EventData> snapshot)? event,
+    TResult? Function(Map<String, EntryData> snapshot)? entry,
   }) {
     return entry?.call(snapshot);
   }
@@ -495,11 +485,9 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap?> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadData snapshot)? ref,
+    TResult Function(Map<String, EventData> snapshot)? event,
+    TResult Function(Map<String, EntryData> snapshot)? entry,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -511,9 +499,9 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalUpdateRef value) ref,
-    required TResult Function(PersistenceLocalUpdateEvent value) event,
-    required TResult Function(PersistenceLocalUpdateEntry value) entry,
+    required TResult Function(PersistenceLocalStateRef value) ref,
+    required TResult Function(PersistenceLocalStateEvent value) event,
+    required TResult Function(PersistenceLocalStateEntry value) entry,
   }) {
     return entry(this);
   }
@@ -521,9 +509,9 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalUpdateRef value)? ref,
-    TResult? Function(PersistenceLocalUpdateEvent value)? event,
-    TResult? Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult? Function(PersistenceLocalStateRef value)? ref,
+    TResult? Function(PersistenceLocalStateEvent value)? event,
+    TResult? Function(PersistenceLocalStateEntry value)? entry,
   }) {
     return entry?.call(this);
   }
@@ -531,9 +519,9 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalUpdateRef value)? ref,
-    TResult Function(PersistenceLocalUpdateEvent value)? event,
-    TResult Function(PersistenceLocalUpdateEntry value)? entry,
+    TResult Function(PersistenceLocalStateRef value)? ref,
+    TResult Function(PersistenceLocalStateEvent value)? event,
+    TResult Function(PersistenceLocalStateEntry value)? entry,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -543,13 +531,14 @@ class _$PersistenceLocalUpdateEntry implements PersistenceLocalUpdateEntry {
   }
 }
 
-abstract class PersistenceLocalUpdateEntry implements PersistenceLocalUpdate {
-  factory PersistenceLocalUpdateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          snapshot}) = _$PersistenceLocalUpdateEntry;
+abstract class PersistenceLocalStateEntry implements PersistenceLocalState {
+  factory PersistenceLocalStateEntry(
+          {required final Map<String, EntryData> snapshot}) =
+      _$PersistenceLocalStateEntry;
 
-  Map<String, ({int createdAt, Iterable<String> parent})> get snapshot;
+  @override
+  Map<String, EntryData> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalUpdateEntryCopyWith<_$PersistenceLocalUpdateEntry>
+  _$$PersistenceLocalStateEntryCopyWith<_$PersistenceLocalStateEntry>
       get copyWith => throw _privateConstructorUsedError;
 }

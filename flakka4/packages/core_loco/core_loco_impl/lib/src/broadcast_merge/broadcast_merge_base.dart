@@ -44,52 +44,52 @@ abstract class BroadcastMergeBase<
   BehaviorSubject<Update2> get update2Subject => _update2Subject;
   final _update2Subject = BehaviorSubject<Update2>();
 
-  @override
-  @mustCallSuper
-  CompositeSubscription connect() {
-    return super.connect()
-      // ..add(
-      //   inputStream.listen((valueIn) {
-      //     throw UnimplementedError();
-      //     // final result = onInput(_state.value, valueIn);
-      //     // final (nextState, effect) = (result.state, result.effect);
-      //     // if (nextState != null) {
-      //     //   _state.value = nextState;
-      //     // }
-      //     // if (effect != null) {
-      //     //   _child.input.add(effect);
-      //     // }
-      //   }),
-      // )
-      // ..add(
-      //   _child.output.listen((update) {
-      //     throw UnimplementedError();
-      //     // final state2 =
-      //     //     _state.hasValue ? _state.value : buildInitialState(update.right);
-      //     // final result = onUpdate(state2, update.right);
-      //     // final (nextState, valueOut) = (result.state, result.value);
-      //     // if (nextState != null) {
-      //     //   _state.value = nextState;
-      //     // }
-      //     // if (valueOut != null) {
-      //     //   throw UnimplementedError();
-      //     //   // _output.value = valueOut;
-      //     // }
-      //   }),
-      // )
-      ..add(_child1.connect())
-      ..add(_child2.connect());
-  }
+  // @override
+  // @mustCallSuper
+  // CompositeSubscription connect() {
+  //   return super.connect()
+  //     // ..add(
+  //     //   inputStream.listen((valueIn) {
+  //     //     throw UnimplementedError();
+  //     //     // final result = onInput(_state.value, valueIn);
+  //     //     // final (nextState, effect) = (result.state, result.effect);
+  //     //     // if (nextState != null) {
+  //     //     //   _state.value = nextState;
+  //     //     // }
+  //     //     // if (effect != null) {
+  //     //     //   _child.input.add(effect);
+  //     //     // }
+  //     //   }),
+  //     // )
+  //     // ..add(
+  //     //   _child.output.listen((update) {
+  //     //     throw UnimplementedError();
+  //     //     // final state2 =
+  //     //     //     _state.hasValue ? _state.value : buildInitialState(update.right);
+  //     //     // final result = onUpdate(state2, update.right);
+  //     //     // final (nextState, valueOut) = (result.state, result.value);
+  //     //     // if (nextState != null) {
+  //     //     //   _state.value = nextState;
+  //     //     // }
+  //     //     // if (valueOut != null) {
+  //     //     //   throw UnimplementedError();
+  //     //     //   // _output.value = valueOut;
+  //     //     // }
+  //     //   }),
+  //     // )
+  //     ..add(_child1.connect())
+  //     ..add(_child2.connect());
+  // }
 
-  @override
-  @mustBeOverridden
-  @mustCallSuper
-  Future<void> provision(covariant dynamic provisioning) async {
-    await child1.provision(provisioning);
-    await child2.provision(provisioning);
-    unawaited(_effect1Subject.pipe(child1.input));
-    unawaited(child1.output.pipe(_update1Subject));
-    unawaited(_effect2Subject.pipe(child2.input));
-    unawaited(child2.output.pipe(_update2Subject));
-  }
+  // @override
+  // @mustBeOverridden
+  // @mustCallSuper
+  // Future<void> provision(covariant dynamic provisioning) async {
+  //   await child1.provision(provisioning);
+  //   await child2.provision(provisioning);
+  //   unawaited(_effect1Subject.pipe(child1.input));
+  //   unawaited(child1.snapshot.pipe(_update1Subject));
+  //   unawaited(_effect2Subject.pipe(child2.input));
+  //   unawaited(child2.snapshot.pipe(_update2Subject));
+  // }
 }

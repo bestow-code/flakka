@@ -7,10 +7,10 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 class ObjectLocalFactory extends NodeFactoryBase<
     PersistenceLocalEffect,
-    PersistenceLocalUpdate,
+    PersistenceLocalState,
     CorePersistenceLocal,
     ObjectLocalEffect,
-    ObjectLocalUpdate,
+    ObjectLocalState,
     CoreObjectLocal> implements CoreObjectLocalFactory<CoreObjectLocal> {
   ObjectLocalFactory({required super.childFactory});
 

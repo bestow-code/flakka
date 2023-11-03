@@ -43,7 +43,7 @@ abstract interface class CorePersistenceLocalAdapter<
   });
 
   // Read
-  Stream<HeadData> get headSnapshot;
+  Stream<HeadData?> get headSnapshot;
 
   Stream<Map<String, EntryData>> get entrySnapshot;
 

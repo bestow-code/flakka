@@ -8,8 +8,8 @@ abstract interface class CoreObjectLocalFactory<
     implements
         CoreNodeFactory<
             PersistenceLocalEffect,
-            PersistenceLocalUpdate,
+            PersistenceLocalState,
             CorePersistenceLocal,
             ObjectLocalEffect,
-            ObjectLocalUpdate,
+            ObjectLocalState,
             ObjectLocal> {}

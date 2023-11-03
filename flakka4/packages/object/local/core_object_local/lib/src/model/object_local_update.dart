@@ -4,21 +4,21 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'object_local_update.freezed.dart';
 
 @freezed
-class ObjectLocalUpdate with _$ObjectLocalUpdate {
-  factory ObjectLocalUpdate.head({
+class ObjectLocalState with _$ObjectLocalState {
+  factory ObjectLocalState.head({
     required ({
       String ref,
       int sequenceNumber,
     })? data,
-  }) = ObjectLocalUpdateHead;
+  }) = ObjectLocalStateHead;
 
-  factory ObjectLocalUpdate.entry({
+  factory ObjectLocalState.entry({
     required Map<String, ({Iterable<String> refs, int createdAt})> data,
-  }) = ObjectLocalUpdateEntry;
+  }) = ObjectLocalStateEntry;
 
-  factory ObjectLocalUpdate.event({
+  factory ObjectLocalState.event({
     required Map<String, JsonMap> data,
-  }) = ObjectLocalUpdateEvent;
+  }) = ObjectLocalStateEvent;
 }
 
 @freezed

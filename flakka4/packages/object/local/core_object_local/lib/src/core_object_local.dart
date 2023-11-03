@@ -5,5 +5,5 @@ import '../core_object_local.dart';
 
 abstract interface class CoreObjectLocal
     implements
-        CoreObjectBase<PersistenceLocalEffect, PersistenceLocalUpdate,
-            ObjectLocalEffect, ObjectLocalUpdate> {}
+        CoreObjectBase<PersistenceLocalEffect, PersistenceLocalState,
+            ObjectLocalEffect, ObjectLocalState> {}

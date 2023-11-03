@@ -3,17 +3,17 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../core_loco_impl.dart';
 
-abstract class StateNode<State, Effect, Update, In, Out>
-    extends NodeBase<State, Effect, Update, In, Out> {
-  StateNode({
-    required super.child,
-  });
-
-  @override
-  @mustBeOverridden
-  @mustCallSuper
-  CompositeSubscription connect() => super.connect();
-}
+// abstract class StateNode<State, Effect, Update, In, Out>
+//     extends NodeBase<State, Effect, Update, In, Out> {
+//   StateNode({
+//     required super.child,
+//   });
+//
+//   @override
+//   @mustBeOverridden
+//   @mustCallSuper
+//   CompositeSubscription connect() => super.connect();
+// }
 
 //
 // abstract class StateNode2<State, Effect1, Update1, Effect2, Update2, In, Out>

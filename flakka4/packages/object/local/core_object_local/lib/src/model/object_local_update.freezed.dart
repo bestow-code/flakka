@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectLocalUpdate {
+mixin _$ObjectLocalState {
   Object? get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -47,39 +47,39 @@ mixin _$ObjectLocalUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalUpdateHead value) head,
-    required TResult Function(ObjectLocalUpdateEntry value) entry,
-    required TResult Function(ObjectLocalUpdateEvent value) event,
+    required TResult Function(ObjectLocalStateHead value) head,
+    required TResult Function(ObjectLocalStateEntry value) entry,
+    required TResult Function(ObjectLocalStateEvent value) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalUpdateHead value)? head,
-    TResult? Function(ObjectLocalUpdateEntry value)? entry,
-    TResult? Function(ObjectLocalUpdateEvent value)? event,
+    TResult? Function(ObjectLocalStateHead value)? head,
+    TResult? Function(ObjectLocalStateEntry value)? entry,
+    TResult? Function(ObjectLocalStateEvent value)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalUpdateHead value)? head,
-    TResult Function(ObjectLocalUpdateEntry value)? entry,
-    TResult Function(ObjectLocalUpdateEvent value)? event,
+    TResult Function(ObjectLocalStateHead value)? head,
+    TResult Function(ObjectLocalStateEntry value)? entry,
+    TResult Function(ObjectLocalStateEvent value)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectLocalUpdateCopyWith<$Res> {
-  factory $ObjectLocalUpdateCopyWith(
-          ObjectLocalUpdate value, $Res Function(ObjectLocalUpdate) then) =
-      _$ObjectLocalUpdateCopyWithImpl<$Res, ObjectLocalUpdate>;
+abstract class $ObjectLocalStateCopyWith<$Res> {
+  factory $ObjectLocalStateCopyWith(
+          ObjectLocalState value, $Res Function(ObjectLocalState) then) =
+      _$ObjectLocalStateCopyWithImpl<$Res, ObjectLocalState>;
 }
 
 /// @nodoc
-class _$ObjectLocalUpdateCopyWithImpl<$Res, $Val extends ObjectLocalUpdate>
-    implements $ObjectLocalUpdateCopyWith<$Res> {
-  _$ObjectLocalUpdateCopyWithImpl(this._value, this._then);
+class _$ObjectLocalStateCopyWithImpl<$Res, $Val extends ObjectLocalState>
+    implements $ObjectLocalStateCopyWith<$Res> {
+  _$ObjectLocalStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,20 +88,20 @@ class _$ObjectLocalUpdateCopyWithImpl<$Res, $Val extends ObjectLocalUpdate>
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalUpdateHeadCopyWith<$Res> {
-  factory _$$ObjectLocalUpdateHeadCopyWith(_$ObjectLocalUpdateHead value,
-          $Res Function(_$ObjectLocalUpdateHead) then) =
-      __$$ObjectLocalUpdateHeadCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalStateHeadCopyWith<$Res> {
+  factory _$$ObjectLocalStateHeadCopyWith(_$ObjectLocalStateHead value,
+          $Res Function(_$ObjectLocalStateHead) then) =
+      __$$ObjectLocalStateHeadCopyWithImpl<$Res>;
   @useResult
   $Res call({({String ref, int sequenceNumber})? data});
 }
 
 /// @nodoc
-class __$$ObjectLocalUpdateHeadCopyWithImpl<$Res>
-    extends _$ObjectLocalUpdateCopyWithImpl<$Res, _$ObjectLocalUpdateHead>
-    implements _$$ObjectLocalUpdateHeadCopyWith<$Res> {
-  __$$ObjectLocalUpdateHeadCopyWithImpl(_$ObjectLocalUpdateHead _value,
-      $Res Function(_$ObjectLocalUpdateHead) _then)
+class __$$ObjectLocalStateHeadCopyWithImpl<$Res>
+    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateHead>
+    implements _$$ObjectLocalStateHeadCopyWith<$Res> {
+  __$$ObjectLocalStateHeadCopyWithImpl(_$ObjectLocalStateHead _value,
+      $Res Function(_$ObjectLocalStateHead) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$ObjectLocalUpdateHeadCopyWithImpl<$Res>
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_$ObjectLocalUpdateHead(
+    return _then(_$ObjectLocalStateHead(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -120,22 +120,22 @@ class __$$ObjectLocalUpdateHeadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
-  _$ObjectLocalUpdateHead({required this.data});
+class _$ObjectLocalStateHead implements ObjectLocalStateHead {
+  _$ObjectLocalStateHead({required this.data});
 
   @override
   final ({String ref, int sequenceNumber})? data;
 
   @override
   String toString() {
-    return 'ObjectLocalUpdate.head(data: $data)';
+    return 'ObjectLocalState.head(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalUpdateHead &&
+            other is _$ObjectLocalStateHead &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -145,8 +145,8 @@ class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalUpdateHeadCopyWith<_$ObjectLocalUpdateHead> get copyWith =>
-      __$$ObjectLocalUpdateHeadCopyWithImpl<_$ObjectLocalUpdateHead>(
+  _$$ObjectLocalStateHeadCopyWith<_$ObjectLocalStateHead> get copyWith =>
+      __$$ObjectLocalStateHeadCopyWithImpl<_$ObjectLocalStateHead>(
           this, _$identity);
 
   @override
@@ -192,9 +192,9 @@ class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalUpdateHead value) head,
-    required TResult Function(ObjectLocalUpdateEntry value) entry,
-    required TResult Function(ObjectLocalUpdateEvent value) event,
+    required TResult Function(ObjectLocalStateHead value) head,
+    required TResult Function(ObjectLocalStateEntry value) entry,
+    required TResult Function(ObjectLocalStateEvent value) event,
   }) {
     return head(this);
   }
@@ -202,9 +202,9 @@ class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalUpdateHead value)? head,
-    TResult? Function(ObjectLocalUpdateEntry value)? entry,
-    TResult? Function(ObjectLocalUpdateEvent value)? event,
+    TResult? Function(ObjectLocalStateHead value)? head,
+    TResult? Function(ObjectLocalStateEntry value)? entry,
+    TResult? Function(ObjectLocalStateEvent value)? event,
   }) {
     return head?.call(this);
   }
@@ -212,9 +212,9 @@ class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalUpdateHead value)? head,
-    TResult Function(ObjectLocalUpdateEntry value)? entry,
-    TResult Function(ObjectLocalUpdateEvent value)? event,
+    TResult Function(ObjectLocalStateHead value)? head,
+    TResult Function(ObjectLocalStateEntry value)? entry,
+    TResult Function(ObjectLocalStateEvent value)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -224,33 +224,33 @@ class _$ObjectLocalUpdateHead implements ObjectLocalUpdateHead {
   }
 }
 
-abstract class ObjectLocalUpdateHead implements ObjectLocalUpdate {
-  factory ObjectLocalUpdateHead(
+abstract class ObjectLocalStateHead implements ObjectLocalState {
+  factory ObjectLocalStateHead(
           {required final ({String ref, int sequenceNumber})? data}) =
-      _$ObjectLocalUpdateHead;
+      _$ObjectLocalStateHead;
 
   @override
   ({String ref, int sequenceNumber})? get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalUpdateHeadCopyWith<_$ObjectLocalUpdateHead> get copyWith =>
+  _$$ObjectLocalStateHeadCopyWith<_$ObjectLocalStateHead> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalUpdateEntryCopyWith<$Res> {
-  factory _$$ObjectLocalUpdateEntryCopyWith(_$ObjectLocalUpdateEntry value,
-          $Res Function(_$ObjectLocalUpdateEntry) then) =
-      __$$ObjectLocalUpdateEntryCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalStateEntryCopyWith<$Res> {
+  factory _$$ObjectLocalStateEntryCopyWith(_$ObjectLocalStateEntry value,
+          $Res Function(_$ObjectLocalStateEntry) then) =
+      __$$ObjectLocalStateEntryCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, ({int createdAt, Iterable<String> refs})> data});
 }
 
 /// @nodoc
-class __$$ObjectLocalUpdateEntryCopyWithImpl<$Res>
-    extends _$ObjectLocalUpdateCopyWithImpl<$Res, _$ObjectLocalUpdateEntry>
-    implements _$$ObjectLocalUpdateEntryCopyWith<$Res> {
-  __$$ObjectLocalUpdateEntryCopyWithImpl(_$ObjectLocalUpdateEntry _value,
-      $Res Function(_$ObjectLocalUpdateEntry) _then)
+class __$$ObjectLocalStateEntryCopyWithImpl<$Res>
+    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateEntry>
+    implements _$$ObjectLocalStateEntryCopyWith<$Res> {
+  __$$ObjectLocalStateEntryCopyWithImpl(_$ObjectLocalStateEntry _value,
+      $Res Function(_$ObjectLocalStateEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,7 +258,7 @@ class __$$ObjectLocalUpdateEntryCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectLocalUpdateEntry(
+    return _then(_$ObjectLocalStateEntry(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -269,8 +269,8 @@ class __$$ObjectLocalUpdateEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
-  _$ObjectLocalUpdateEntry(
+class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
+  _$ObjectLocalStateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
           data})
       : _data = data;
@@ -285,14 +285,14 @@ class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
 
   @override
   String toString() {
-    return 'ObjectLocalUpdate.entry(data: $data)';
+    return 'ObjectLocalState.entry(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalUpdateEntry &&
+            other is _$ObjectLocalStateEntry &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -303,8 +303,8 @@ class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalUpdateEntryCopyWith<_$ObjectLocalUpdateEntry> get copyWith =>
-      __$$ObjectLocalUpdateEntryCopyWithImpl<_$ObjectLocalUpdateEntry>(
+  _$$ObjectLocalStateEntryCopyWith<_$ObjectLocalStateEntry> get copyWith =>
+      __$$ObjectLocalStateEntryCopyWithImpl<_$ObjectLocalStateEntry>(
           this, _$identity);
 
   @override
@@ -350,9 +350,9 @@ class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalUpdateHead value) head,
-    required TResult Function(ObjectLocalUpdateEntry value) entry,
-    required TResult Function(ObjectLocalUpdateEvent value) event,
+    required TResult Function(ObjectLocalStateHead value) head,
+    required TResult Function(ObjectLocalStateEntry value) entry,
+    required TResult Function(ObjectLocalStateEvent value) event,
   }) {
     return entry(this);
   }
@@ -360,9 +360,9 @@ class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalUpdateHead value)? head,
-    TResult? Function(ObjectLocalUpdateEntry value)? entry,
-    TResult? Function(ObjectLocalUpdateEvent value)? event,
+    TResult? Function(ObjectLocalStateHead value)? head,
+    TResult? Function(ObjectLocalStateEntry value)? entry,
+    TResult? Function(ObjectLocalStateEvent value)? event,
   }) {
     return entry?.call(this);
   }
@@ -370,9 +370,9 @@ class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalUpdateHead value)? head,
-    TResult Function(ObjectLocalUpdateEntry value)? entry,
-    TResult Function(ObjectLocalUpdateEvent value)? event,
+    TResult Function(ObjectLocalStateHead value)? head,
+    TResult Function(ObjectLocalStateEntry value)? entry,
+    TResult Function(ObjectLocalStateEvent value)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -382,33 +382,33 @@ class _$ObjectLocalUpdateEntry implements ObjectLocalUpdateEntry {
   }
 }
 
-abstract class ObjectLocalUpdateEntry implements ObjectLocalUpdate {
-  factory ObjectLocalUpdateEntry(
+abstract class ObjectLocalStateEntry implements ObjectLocalState {
+  factory ObjectLocalStateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data}) = _$ObjectLocalUpdateEntry;
+          data}) = _$ObjectLocalStateEntry;
 
   @override
   Map<String, ({int createdAt, Iterable<String> refs})> get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalUpdateEntryCopyWith<_$ObjectLocalUpdateEntry> get copyWith =>
+  _$$ObjectLocalStateEntryCopyWith<_$ObjectLocalStateEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalUpdateEventCopyWith<$Res> {
-  factory _$$ObjectLocalUpdateEventCopyWith(_$ObjectLocalUpdateEvent value,
-          $Res Function(_$ObjectLocalUpdateEvent) then) =
-      __$$ObjectLocalUpdateEventCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalStateEventCopyWith<$Res> {
+  factory _$$ObjectLocalStateEventCopyWith(_$ObjectLocalStateEvent value,
+          $Res Function(_$ObjectLocalStateEvent) then) =
+      __$$ObjectLocalStateEventCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, JsonMap> data});
 }
 
 /// @nodoc
-class __$$ObjectLocalUpdateEventCopyWithImpl<$Res>
-    extends _$ObjectLocalUpdateCopyWithImpl<$Res, _$ObjectLocalUpdateEvent>
-    implements _$$ObjectLocalUpdateEventCopyWith<$Res> {
-  __$$ObjectLocalUpdateEventCopyWithImpl(_$ObjectLocalUpdateEvent _value,
-      $Res Function(_$ObjectLocalUpdateEvent) _then)
+class __$$ObjectLocalStateEventCopyWithImpl<$Res>
+    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateEvent>
+    implements _$$ObjectLocalStateEventCopyWith<$Res> {
+  __$$ObjectLocalStateEventCopyWithImpl(_$ObjectLocalStateEvent _value,
+      $Res Function(_$ObjectLocalStateEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -416,7 +416,7 @@ class __$$ObjectLocalUpdateEventCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectLocalUpdateEvent(
+    return _then(_$ObjectLocalStateEvent(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -427,8 +427,8 @@ class __$$ObjectLocalUpdateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
-  _$ObjectLocalUpdateEvent({required final Map<String, JsonMap> data})
+class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
+  _$ObjectLocalStateEvent({required final Map<String, JsonMap> data})
       : _data = data;
 
   final Map<String, JsonMap> _data;
@@ -441,14 +441,14 @@ class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
 
   @override
   String toString() {
-    return 'ObjectLocalUpdate.event(data: $data)';
+    return 'ObjectLocalState.event(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalUpdateEvent &&
+            other is _$ObjectLocalStateEvent &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -459,8 +459,8 @@ class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalUpdateEventCopyWith<_$ObjectLocalUpdateEvent> get copyWith =>
-      __$$ObjectLocalUpdateEventCopyWithImpl<_$ObjectLocalUpdateEvent>(
+  _$$ObjectLocalStateEventCopyWith<_$ObjectLocalStateEvent> get copyWith =>
+      __$$ObjectLocalStateEventCopyWithImpl<_$ObjectLocalStateEvent>(
           this, _$identity);
 
   @override
@@ -506,9 +506,9 @@ class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalUpdateHead value) head,
-    required TResult Function(ObjectLocalUpdateEntry value) entry,
-    required TResult Function(ObjectLocalUpdateEvent value) event,
+    required TResult Function(ObjectLocalStateHead value) head,
+    required TResult Function(ObjectLocalStateEntry value) entry,
+    required TResult Function(ObjectLocalStateEvent value) event,
   }) {
     return event(this);
   }
@@ -516,9 +516,9 @@ class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalUpdateHead value)? head,
-    TResult? Function(ObjectLocalUpdateEntry value)? entry,
-    TResult? Function(ObjectLocalUpdateEvent value)? event,
+    TResult? Function(ObjectLocalStateHead value)? head,
+    TResult? Function(ObjectLocalStateEntry value)? entry,
+    TResult? Function(ObjectLocalStateEvent value)? event,
   }) {
     return event?.call(this);
   }
@@ -526,9 +526,9 @@ class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalUpdateHead value)? head,
-    TResult Function(ObjectLocalUpdateEntry value)? entry,
-    TResult Function(ObjectLocalUpdateEvent value)? event,
+    TResult Function(ObjectLocalStateHead value)? head,
+    TResult Function(ObjectLocalStateEntry value)? entry,
+    TResult Function(ObjectLocalStateEvent value)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -538,14 +538,14 @@ class _$ObjectLocalUpdateEvent implements ObjectLocalUpdateEvent {
   }
 }
 
-abstract class ObjectLocalUpdateEvent implements ObjectLocalUpdate {
-  factory ObjectLocalUpdateEvent({required final Map<String, JsonMap> data}) =
-      _$ObjectLocalUpdateEvent;
+abstract class ObjectLocalStateEvent implements ObjectLocalState {
+  factory ObjectLocalStateEvent({required final Map<String, JsonMap> data}) =
+      _$ObjectLocalStateEvent;
 
   @override
   Map<String, JsonMap> get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalUpdateEventCopyWith<_$ObjectLocalUpdateEvent> get copyWith =>
+  _$$ObjectLocalStateEventCopyWith<_$ObjectLocalStateEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -7,26 +7,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PersistenceLocal
-    extends AsyncIOBase<PersistenceLocalEffect, PersistenceLocalUpdate>
+    extends AsyncIOBase<PersistenceLocalEffect, PersistenceLocalState>
     implements CorePersistenceLocal {
   PersistenceLocal({required CorePersistenceLocalAdapter localAdapter})
-      : _localAdapter = localAdapter;
-
-  @visibleForTesting
-  CorePersistenceLocalAdapter get localAdapter => _localAdapter;
-
-  final CorePersistenceLocalAdapter _localAdapter;
-
-  @override
-  Future<PersistenceLocalUpdate?> buildInitialValueOut() async {
-    return PersistenceLocalUpdate.ref(value: 'a');
-  }
-
-  @override
-  Stream<PersistenceLocalUpdate> buildOutputSource() => Rx.merge([]);
-
-  @override
-  Future<void> onInput(PersistenceLocalEffect valueIn) => valueIn.map(
+      : _localAdapter = localAdapter {
+    onInput(
+      (PersistenceLocalEffect input) => input.map(
         append: (append) {
           return _localAdapter.append(
             ref: append.ref,
@@ -38,44 +24,62 @@ class PersistenceLocal
         },
         forward: (forward) {
           return _localAdapter.forward(
-              ref: forward.ref, sequenceNumber: forward.sequenceNumber);
+            ref: forward.ref,
+            sequenceNumber: forward.sequenceNumber,
+          );
         },
         import: (import) {
           return _localAdapter.import();
         },
-      );
-  late StreamSubscription<dynamic> subscription;
-
-  @override
-  Future<void> provision(
-    covariant PersistenceProvisioning provisioning,
-  ) async {
-    await _localAdapter.provision(request: provisioning);
-    subscription = Rx.merge([
-      _localAdapter.headSnapshot
-          .map((event) => PersistenceLocalUpdate.ref(value: event.ref)),
-      _localAdapter.entrySnapshot.map((event) => PersistenceLocalUpdate.entry(
-          snapshot: Map.fromEntries(throw UnimplementedError()))),
-      _localAdapter.eventSnapshot
-          .map((event) => PersistenceLocalUpdate.event(snapshot: event.map((key, value) => MapEntry(key, value.data)))),
-    ]).listen(outputSubject.add);
-    unawaited(
-      Future.wait([
-        inputSubject.stream
-            .asyncMap(onInput)
-            .drain<void>()
-            .then((value) async => close())
+      ),
+    );
+    pipeOutput(
+      Rx.merge([
+        _localAdapter.headSnapshot
+            .whereNotNull()
+            .map((snapshot) => PersistenceLocalState.ref(snapshot: snapshot)),
+        _localAdapter.entrySnapshot
+            .where((snapshot) => snapshot.isNotEmpty)
+            .map((event) => PersistenceLocalState.entry(snapshot: event)),
+        _localAdapter.eventSnapshot
+            .where((snapshot) => snapshot.isNotEmpty)
+            .map((event) => PersistenceLocalState.event(snapshot: event)),
       ]),
     );
   }
 
-  @override
-  Future<void> close() async {
-    await subscription.cancel();
-    await super.close();
-  }
+  @visibleForTesting
+  CorePersistenceLocalAdapter get localAdapter => _localAdapter;
+
+  final CorePersistenceLocalAdapter _localAdapter;
 
   @override
   Future<({String ref, int sequenceNumber})?> inspect() =>
       _localAdapter.inspect();
+
+  @override
+  Future<PersistenceLocalState> provision(
+    covariant PersistenceProvisioning provisioning,
+  ) async {
+    await _localAdapter.provision(request: provisioning);
+    return super.provision(provisioning);
+  }
+
+  @override
+  Stream<PersistenceLocalState> buildOutput() => Rx.merge([
+        _localAdapter.headSnapshot
+            .whereNotNull()
+            .map((snapshot) => PersistenceLocalState.ref(snapshot: snapshot)),
+        _localAdapter.entrySnapshot
+            .where((snapshot) => snapshot.isNotEmpty)
+            .map((event) => PersistenceLocalState.entry(snapshot: event)),
+        _localAdapter.eventSnapshot
+            .where((snapshot) => snapshot.isNotEmpty)
+            .map((event) => PersistenceLocalState.event(snapshot: event)),
+      ]);
+
+  @override
+  Future<void> close() async {
+    await super.close();
+  }
 }
