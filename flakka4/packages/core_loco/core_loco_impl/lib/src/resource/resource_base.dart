@@ -7,12 +7,6 @@ import 'package:rxdart/rxdart.dart';
 
 abstract class ResourceBase<Input, State>
     implements CoreResource<Input, State> {
-  // @protected
-  // Future<void> drainInput(Stream<In> source);
-  //
-  // @protected
-  // Future<void> pipeOutput(StreamSink<Out> sink);
-
   @override
   StreamSink<Input> get input => inputSubject;
 
@@ -57,19 +51,62 @@ abstract class NodeBase<Effect, Snapshot, Input, State>
   NodeBase({
     required CoreResource<Effect, Snapshot> child,
   }) : _child = child {
-    subscription.add(Rx.merge<Either<Snapshot, Input>>(
-            [inputSubject.map(Right.new), child.snapshot.map(Left.new)])
-        .listen((event) {
-      final result = event.fold((snapshot) => onSnapshot(snapshot, state.value),
-          (input) => onInput(input, state.value));
-      if (result.effect != null) {
-        child.input.add(result.effect!);
-      }
-      if (result.state != null) {
-        state.add(result.state!);
-      }
-    }));
+    subscription.add(
+      Rx.merge<Either<Snapshot, Input>>(
+        [inputSubject.map(Right.new), child.snapshot.map(Left.new)],
+      ).listen((event) {
+        final (Effect? effect, State? result) = event.fold(
+          (snapshot) => _onSnapshot(
+            snapshot,
+            stateSubject.hasValue
+                ? state.value
+                : _initialStateFactory(snapshot),
+          ),
+          (input) => _onInput(input, state.value),
+        );
+        if (effect != null) {
+          child.input.add(effect);
+        }
+        if (result != null) {
+          state.add(result);
+        }
+      }),
+    );
   }
+
+  //ignore: use_setters_to_change_properties
+  void registerInitialStateFactory(State Function(Snapshot snapshot) factory) =>
+      _initialStateFactory = factory;
+
+  //ignore: use_setters_to_change_properties
+  void registerInputHandler(
+    (Effect? effect, State? state) Function(
+      Input input,
+      State state,
+    ) handler,
+  ) =>
+      _onInput = handler;
+
+  //ignore: use_setters_to_change_properties
+  void registerSnapshotHandler(
+    (Effect? effect, State? state) Function(
+      Snapshot snapshot,
+      State state,
+    ) handler,
+  ) =>
+      _onSnapshot = handler;
+
+  late final State Function(Snapshot snapshot) _initialStateFactory;
+
+  late final (Effect? effect, State? state) Function(
+    Input input,
+    State state,
+  ) _onInput;
+
+  late final (Effect? effect, State? state) Function(
+    Snapshot snapshot,
+    State state,
+  ) _onSnapshot;
 
   CoreResource<Effect, Snapshot> get child => _child;
 
@@ -80,9 +117,11 @@ abstract class NodeBase<Effect, Snapshot, Input, State>
   final _state = BehaviorSubject<State>();
 
   PublishSubject<Effect> get effectSubject => _effectSubject;
+
   final _effectSubject = PublishSubject<Effect>();
 
   BehaviorSubject<Snapshot> get updateSubject => _updateSubject;
+
   final _updateSubject = BehaviorSubject<Snapshot>();
 
   @override
@@ -90,25 +129,6 @@ abstract class NodeBase<Effect, Snapshot, Input, State>
   Future<State> provision(covariant dynamic provisioning) async {
     await child.provision(provisioning);
     return super.provision(provisioning);
-  }
-
-//
-  State initialize(Snapshot snapshot) {
-    throw UnimplementedError();
-  }
-
-  ({Effect? effect, State? state}) onInput(
-    Input input,
-    State state,
-  ) {
-    throw UnimplementedError();
-  }
-
-  ({Effect? effect, State? state}) onSnapshot(
-    Snapshot snapshot,
-    State state,
-  ) {
-    throw UnimplementedError();
   }
 
   @override

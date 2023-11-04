@@ -4,7 +4,6 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
 class ObjectLocal extends NodeBase<
-    ObjectLocalState,
     PersistenceLocalEffect,
     PersistenceLocalState,
     ObjectLocalEffect,
