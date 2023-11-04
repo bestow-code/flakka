@@ -10,8 +10,6 @@ export 'src/broadcast_merge/broadcast_merge_factory_base.dart';
 export 'src/broadcast_merge/broadcast_merge_provider_base.dart';
 export 'src/buildable/factory_base.dart';
 export 'src/buildable/provider_base.dart';
-export 'src/factory_context_impl.dart';
-export 'src/factory_param_impl.dart';
 export 'src/io/io_factory_base.dart';
 export 'src/io/io_provider_base.dart';
 export 'src/node/node_base.dart';

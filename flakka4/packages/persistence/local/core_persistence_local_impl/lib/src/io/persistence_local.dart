@@ -11,7 +11,7 @@ class PersistenceLocal
     implements CorePersistenceLocal {
   PersistenceLocal({required CorePersistenceLocalAdapter localAdapter})
       : _localAdapter = localAdapter {
-    onInput(
+    registerInputHandler(
       (PersistenceLocalEffect input) => input.map(
         append: (append) {
           return _localAdapter.append(
@@ -33,7 +33,7 @@ class PersistenceLocal
         },
       ),
     );
-    pipeOutput(
+    registerSnapshotFactory(()=>
       Rx.merge([
         _localAdapter.headSnapshot
             .whereNotNull()

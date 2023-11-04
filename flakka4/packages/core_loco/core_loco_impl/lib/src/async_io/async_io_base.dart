@@ -22,7 +22,7 @@ abstract class AsyncIOBase<Effect, Snapshot> extends IOBase<Effect, Snapshot> {
 
   @override
   Future<Snapshot> provision(covariant dynamic provisioning) {
-    _factory().pipe(stateSubject).ignore();
+    subscription.add(_factory().listen(stateSubject.add));
     return super.provision(provisioning);
   }
 }

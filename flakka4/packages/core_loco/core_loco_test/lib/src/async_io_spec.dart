@@ -12,9 +12,7 @@ abstract class IOBaseSpec<
     In,
     Out,
     ProvisionRequest,
-    ProvisionState,
-    FactoryContext extends FactoryContextImpl,
-    FactoryParam extends FactoryParamImpl> {
+    ProvisionState> {
   IOBaseSpec({
     required this.factoryProvider,
     required this.setUp,
@@ -22,21 +20,19 @@ abstract class IOBaseSpec<
   });
 
   final CoreIOProvider< In, Out,IO> Function() factoryProvider;
-  final void Function(FactoryContext, FactoryParam)? setUp;
+  final void Function(void, FactoryParam)? setUp;
   final ProvisionRequest Function(ProvisionState state) onProvision;
 }
 
 class AsyncIOSpec<
     IO extends AsyncIOBase<In, Out>,
     In,
-    Out,
-    FactoryContext extends FactoryContextImpl,
-    FactoryParam extends FactoryParamImpl> {
+    Out> {
   AsyncIOSpec(
     this._provider, {
-    required FactoryContext Function() context,
+    required void Function() context,
     required FactoryParam Function() param,
-    void Function(FactoryContext, FactoryParam)? setUp,
+    void Function(void, FactoryParam)? setUp,
     // TesterConfig<List<In>>? effectConfig,
     TesterConfig<List<int>>? effectConfig,
     TesterConfig<Out>? updateConfig,
@@ -50,9 +46,9 @@ class AsyncIOSpec<
   // final Glados<List<In>> _effectTester;
   final Glados2<In, List<int>> _effectTester;
   final Glados<Out> _updateTester;
-  final FactoryContext Function() _context;
+  final void Function() _context;
   final FactoryParam Function() _param;
-  final void Function(FactoryContext, FactoryParam)? _setUp;
+  final void Function(void, FactoryParam)? _setUp;
 
   void Function(
     void Function(
@@ -61,7 +57,7 @@ class AsyncIOSpec<
     ),
   ) inputTest(
     String description, {
-    void Function(FactoryContext, FactoryParam)? setUp,
+    void Function(void, FactoryParam)? setUp,
     String? testOn,
     Timeout? timeout,
     dynamic skip,
@@ -101,7 +97,7 @@ class AsyncIOSpec<
 }
 
 // void Function() Function(
-//   void Function(AsyncIOSpec<IO, In, Out, FactoryContext, FactoryParam>),
+//   void Function(AsyncIOSpec<IO, In, Out, void, FactoryParam>),
 // ) ioSpec<In, Out, FactoryContext extends FactoryContextImpl,
 //     FactoryParam extends FactoryParamImpl, IO extends AsyncIOBase<In, Out>>({
 //   required IOProviderBase<IO, In, Out> Function() provider,
