@@ -5,30 +5,52 @@ import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
 class ObjectLocal extends NodeBase<
     PersistenceLocalEffect,
-    PersistenceLocalState,
+    PersistenceLocalSnapshot,
     ObjectLocalEffect,
-    ObjectLocalState> implements CoreObjectLocal {
-  ObjectLocal({required PersistenceLocal child})
+    ObjectLocalSnapshot> implements CoreObjectLocal {
+  ObjectLocal({required CorePersistenceLocal child})
       : _child = child,
-        super(child: child);
+        super(child: child) {
+    registerInitialStateFactory(
+      (snapshot) => snapshot.map(
+        head: (head) => ObjectLocalSnapshot.head(data: head.snapshot),
+        event: (event) => ObjectLocalSnapshot.event(data: event.snapshot),
+        entry: (entry) => ObjectLocalSnapshot.entry(data: entry.snapshot),
+      ),
+    );
+    registerInputHandler(
+      (input, state) => input.map(
+        append: (append) => (
+          PersistenceLocalEffect.append(
+            ref: append.ref,
+            parent: append.parent,
+            event: append.event,
+            createdAt: append.createdAt,
+            sequenceNumber: append.sequenceNumber,
+          ),
+          null,
+        ),
+        forward: (forward) => throw UnimplementedError(),
+        add: (add) => throw UnimplementedError(),
+        none: (none) => throw UnimplementedError(),
+      ),
+    );
+    registerSnapshotHandler(
+      (snapshot, state) => snapshot.map(
+        head: (head) => (null, ObjectLocalSnapshot.head(data: head.snapshot)),
+        event: (event) =>
+            (null, ObjectLocalSnapshot.event(data: event.snapshot)),
+        entry: (entry) =>
+            (null, ObjectLocalSnapshot.entry(data: entry.snapshot)),
+      ),
+    );
+  }
 
   @override
-  PersistenceLocal get child => _child;
-  final PersistenceLocal _child;
+  CorePersistenceLocal get child => _child;
 
-  ObjectLocalState build(PersistenceLocalState snapshot) {
-    throw UnimplementedError();
-  }
+  final CorePersistenceLocal _child;
 
-  ({PersistenceLocalEffect? effect, ObjectLocalState? state}) onInput(
-      ObjectLocalEffect effect, ObjectLocalState state) {
-    throw UnimplementedError();
-  }
-
-  ({PersistenceLocalEffect? effect, ObjectLocalState? state}) onSnapshot(
-    PersistenceLocalState snapshot,
-    ObjectLocalState state,
-  ) {
-    throw UnimplementedError();
-  }
+  @override
+  Future<({String ref, int sequenceNumber})?> inspect() => child.inspect();
 }

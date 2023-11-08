@@ -12,7 +12,7 @@ class JournalFactory<Event extends CoreEvent, State extends CoreState,
         DataEffect<Event, State, View>,
         DataUpdate<Event, State, View>,
         JournalEffect<Event, State, View>,
-        JournalUpdate<Event, State, View>>
+        JournalSnapshot<Event, State, View>>
     implements CoreJournalFactory<Event, State, View> {
   JournalFactory({required super.childFactory, required super.context});
 

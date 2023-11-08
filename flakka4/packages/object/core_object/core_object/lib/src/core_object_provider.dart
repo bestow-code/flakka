@@ -6,6 +6,6 @@ import '../core_object.dart';
 
 abstract interface class CoreObjectProvider<Object extends CoreObject>
     implements
-        CoreBroadcastMergeProvider<Object, ObjectLocalEffect, ObjectLocalState,
+        CoreBroadcastMergeProvider<Object, ObjectLocalEffect, ObjectLocalSnapshot,
             ObjectRemoteEffect, ObjectRemoteUpdate, ObjectEffect, ObjectUpdate>,
         CoreProvider<Object> {}

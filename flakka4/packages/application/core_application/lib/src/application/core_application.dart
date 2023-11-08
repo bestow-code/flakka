@@ -14,7 +14,7 @@ abstract interface class CoreApplication<Event extends CoreEvent,
             JournalEffect<Event, State, View>,
             JournalUpdate<Event, State, View>,
             ApplicationRequest<Event, State>,
-            ApplicationUpdate<Event, State, View>> {
+            ApplicationSnapshot<Event, State, View>> {
   Ref request(RequestHandler<State, Event> handler);
 
   ValueStream<View> get view;

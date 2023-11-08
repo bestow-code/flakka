@@ -9,7 +9,7 @@ abstract interface class CoreObject
         CoreBroadcastMerge<
             CoreObjectLocal,
             ObjectLocalEffect,
-            ObjectLocalState,
+            ObjectLocalSnapshot,
             CoreObjectRemote,
             ObjectRemoteEffect,
             ObjectRemoteUpdate,

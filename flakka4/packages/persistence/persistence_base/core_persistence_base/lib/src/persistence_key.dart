@@ -1,12 +1,5 @@
-import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+class PersistenceKey {
+  PersistenceKey(this.path);
 
-part 'persistence_key.freezed.dart';
-
-@freezed
-class ObjectPersistenceKey with _$ObjectPersistenceKey {
-  factory ObjectPersistenceKey(
-    ObjectStoreKey storeObjectKey,
-    PersistenceId persistenceId,
-  ) = _ObjectPersistenceKey;
+  final String path;
 }

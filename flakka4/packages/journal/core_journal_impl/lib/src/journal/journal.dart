@@ -13,7 +13,7 @@ class Journal<Event extends CoreEvent, State extends CoreState,
         DataEffect<Event, State, View>,
         DataUpdate<Event, State, View>,
         JournalEffect<Event, State, View>,
-        JournalUpdate<Event, State, View>>
+        JournalSnapshot<Event, State, View>>
     implements CoreJournal<Event, State, View> {
   Journal({required super.child});
 }

@@ -16,7 +16,7 @@ class Application<Event extends CoreEvent, State extends CoreState,
         JournalEffect<Event, State, View>,
         JournalUpdate<Event, State, View>,
         ApplicationRequest<Event, State>,
-        ApplicationUpdate<Event, State, View>>
+        ApplicationSnapshot<Event, State, View>>
     implements CoreApplication<Event, State, View> {
   Application({required this.child}) : super(child: child);
 
@@ -59,7 +59,7 @@ class Application<Event extends CoreEvent, State extends CoreState,
 //   ApplicationState<State, View>? state,
 // }) onInput(
 //   ApplicationState<State, View> state,
-//   ApplicationUpdateRequest<Event, State, View> valueIn,
+//   ApplicationSnapshotRequest<Event, State, View> valueIn,
 // ) =>
 //     valueIn.request.handle(state.stateView.state).map(
 //           persist: (persist) {

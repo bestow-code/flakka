@@ -1,4 +1,3 @@
-import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
@@ -8,14 +7,13 @@ extension TestPersistenceLocalAdapterContextExtension on Any {
   // Test Context
   Generator<
       ({
-        ProviderContext providerContext,
-        CorePersistenceLocalAdapterProvider<PersistenceLocalAdapter> provider,
-        ObjectKey key,
+        PersistentProviderContext providerContext,
+        CorePersistenceLocalAdapterProvider provider,
+        PersistenceKey key,
         PersistenceProvisioningInitialize initialize,
       })> testContextPersistenceLocalAdapter<
           PersistenceLocalAdapter extends CorePersistenceLocalAdapter>(
-    Generator<CorePersistenceLocalAdapterProvider<PersistenceLocalAdapter>>
-            Function()
+    Generator<CorePersistenceLocalAdapterProvider> Function()
         providerGeneratorFactory,
   ) =>
       any.combine4(
@@ -32,9 +30,12 @@ extension TestPersistenceLocalAdapterContextExtension on Any {
         ),
       );
 
-  Generator<ProviderContext> providerContextPersistenceLocalAdapterBinding(
-      ProviderContext context) =>
-      any.providerContextStoreLocalBinding(context);
+  Generator<PersistentProviderContext>
+      providerContextPersistenceLocalAdapterBinding(
+    PersistentProviderContext context,
+  ) =>
+          any.providerContextStoreLocalBinding(context);
+
   // Initialization
   Generator<PersistenceProvisioningInitialize>
       get persistenceProvisioningInitialize => any.initializeParam

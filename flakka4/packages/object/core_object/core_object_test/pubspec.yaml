@@ -8,10 +8,10 @@ environment:
 
 dependencies:
   core_common: ^0.1.0+2
-  core_object_base:
+  core_object:
   core_object_base_test:
-  core_object_local:
-  core_object_remote:
+  core_object_local_test:
+  core_object_remote_test:
   core_persistence_base:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
@@ -33,3 +33,6 @@ index_generator:
       docs: Common libraries for core_platform
       exports:
         - package: package:core_object_base_test/core_object_base_test.dart
+        - package: package:core_object_local_test/core_object_local_test.dart
+        - package: package:core_object_remote_test/core_object_remote_test.dart
+        - package: package:core_persistence_test/core_persistence_test.dart

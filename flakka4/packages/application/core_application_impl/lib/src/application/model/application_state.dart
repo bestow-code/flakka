@@ -10,13 +10,4 @@ class ApplicationState<State extends CoreState, View extends CoreView>
     required Ref ref,
     required StateView<State, View> stateView,
   }) = _ApplicationState<State, View>;
-
-  factory ApplicationState.initializing({
-    required Ref ref,
-    required String lockKey,
-  }) = ApplicationStateInitializing;
-
-  factory ApplicationState.fetching({
-    required Ref ref,
-  }) = ApplicationStateFetching;
 }

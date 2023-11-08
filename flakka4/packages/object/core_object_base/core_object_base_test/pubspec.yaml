@@ -7,10 +7,8 @@ environment:
   sdk: ^3.0.5
 
 dependencies:
-  core_common:
-  core_common_impl:
-  core_common_test:
-  core_persistence_test:
+  core_object_base:
+  core_persistence_base_test:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
 
@@ -30,4 +28,4 @@ index_generator:
         - src
       docs: Common libraries for core_platform
       exports:
-        - package: package:core_persistence_test/core_persistence_test.dart
+        - package: package:core_persistence_base_test/core_persistence_base_test.dart

@@ -31,3 +31,5 @@ index_generator:
       include:
         - src
       docs: Foundation for Core Entry Store
+      exports:
+        - package: package:core_loco/core_loco.dart

@@ -8,8 +8,6 @@ environment:
 
 dependencies:
   bloc:
-  core_common:
-  core_object:
   core_persistence_base:
   core_persistence_local:
   core_persistence_remote:
@@ -40,3 +38,5 @@ index_generator:
       docs: Foundation for Core Entry Store
       exports:
         - package: package:core_persistence_base/core_persistence_base.dart
+        - package: package:core_persistence_local/core_persistence_local.dart
+        - package: package:core_persistence_remote/core_persistence_remote.dart

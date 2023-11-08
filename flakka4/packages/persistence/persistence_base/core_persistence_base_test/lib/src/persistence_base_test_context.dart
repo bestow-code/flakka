@@ -6,55 +6,55 @@ typedef Generator2<T> = Generator<Duplicate<T>>;
 typedef Duplicate<T> = (T, T);
 
 extension PersistenceBaseTestContextExtension on Any {
-  // Generator<ProviderContext> testContextPersistenceObject
-  Generator<ProviderContext> get providerContext =>
-      any.always(ProviderContext());
+  // Generator<PersistentProviderContext> testContextPersistenceObject
+  Generator<PersistentProviderContext> get providerContext =>
+      any.null_.map((_)=>PersistentProviderContext());
 
 
   // Bindings
 
-  Generator<ProviderContext> providerContextStoreLocalPathBinding(
-          ProviderContext context) =>
-      any.storePath.map((value) => context..storePathLocal = value);
+  // Generator<PersistentProviderContext> providerContextStoreLocalPathBinding(
+  //         PersistentProviderContext context) =>
+  //     any.storePath.map((value) => context..storePathLocal = value);
+  //
+  // Generator<PersistentProviderContext> providerContextPersistentObjectSessionBinding(
+  //         PersistentProviderContext context) =>
+  //     any
+  //         .providerContextPersistenceIdBinding(context)
+  //         .bind(any.providerContextSessionIdBinding)
+  //         .bind(providerContextStoreLocalPathBinding)
+  //     // .bind(any.providerContextObjectKeyBinding)
+  //     ;
 
-  Generator<ProviderContext> providerContextPersistentObjectSessionBinding(
-          ProviderContext context) =>
-      any
-          .providerContextPersistenceIdBinding(context)
-          .bind(any.providerContextSessionIdBinding)
-          .bind(providerContextStoreLocalPathBinding)
-      // .bind(any.providerContextObjectKeyBinding)
-      ;
-
-  Generator<ProviderContext> providerContextSessionIdBinding(
-    ProviderContext context,
+  Generator<PersistentProviderContext> providerContextSessionIdBinding(
+    PersistentProviderContext context,
   ) =>
       any.sessionId(context).map((value) => context..sessionId = value);
 
-  Generator<ProviderContext> providerContextPersistenceIdBinding(
-    ProviderContext context,
+  Generator<PersistentProviderContext> providerContextPersistenceIdBinding(
+    PersistentProviderContext context,
   ) =>
       persistenceId.map((value) => context..persistenceId = value);
 
-  Generator<ProviderContext> providerContextObjectKeyBinding(
-    ProviderContext context,
-  ) =>
-      objectKey.map((value) => context..key = value);
+  // Generator<PersistentProviderContext> providerContextObjectKeyBinding(
+  //   PersistentProviderContext context,
+  // ) =>
+  //     objectKey.map((value) => context..key = value);
 
   // Values
 
   Generator<StorePath> get storePath =>
       any.nonEmptyLetterOrDigits.map((value) => StorePath('store/$value'));
 
-  Generator<SessionId> sessionId(ProviderContext context) => any
+  Generator<SessionId> sessionId(PersistentProviderContext context) => any
       .nonEmptyLetterOrDigits
-      .map((value) => SessionId(value, persistenceId: context.persistenceId!));
+      .map((value) => SessionId(value, persistenceId: context.persistenceId));
 
   Generator<PersistenceId> get persistenceId =>
       any.nonEmptyLetterOrDigits.map(PersistenceId.new);
 
-  Generator<ObjectKey> get objectKey =>
-      any.nonEmptyLetterOrDigits.map((value) => ObjectKey('object/$value'));
+  Generator<PersistenceKey> get objectKey =>
+      any.nonEmptyLetterOrDigits.map((value) => PersistenceKey('object/$value'));
 
   // Util
 

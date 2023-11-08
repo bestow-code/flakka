@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PersistenceLocal
-    extends AsyncIOBase<PersistenceLocalEffect, PersistenceLocalState>
+    extends AsyncIOBase<PersistenceLocalEffect, PersistenceLocalSnapshot>
     implements CorePersistenceLocal {
   PersistenceLocal({required CorePersistenceLocalAdapter localAdapter})
       : _localAdapter = localAdapter {
@@ -37,13 +37,13 @@ class PersistenceLocal
       Rx.merge([
         _localAdapter.headSnapshot
             .whereNotNull()
-            .map((snapshot) => PersistenceLocalState.ref(snapshot: snapshot)),
+            .map((snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot)),
         _localAdapter.entrySnapshot
             .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceLocalState.entry(snapshot: event)),
+            .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
         _localAdapter.eventSnapshot
             .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceLocalState.event(snapshot: event)),
+            .map((event) => PersistenceLocalSnapshot.event(snapshot: event)),
       ]),
     );
   }
@@ -58,7 +58,7 @@ class PersistenceLocal
       _localAdapter.inspect();
 
   @override
-  Future<PersistenceLocalState> provision(
+  Future<PersistenceLocalSnapshot> provision(
     covariant PersistenceProvisioning provisioning,
   ) async {
     await _localAdapter.provision(request: provisioning);
@@ -66,16 +66,16 @@ class PersistenceLocal
   }
 
   @override
-  Stream<PersistenceLocalState> buildOutput() => Rx.merge([
+  Stream<PersistenceLocalSnapshot> buildOutput() => Rx.merge([
         _localAdapter.headSnapshot
             .whereNotNull()
-            .map((snapshot) => PersistenceLocalState.ref(snapshot: snapshot)),
+            .map((snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot)),
         _localAdapter.entrySnapshot
             .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceLocalState.entry(snapshot: event)),
+            .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
         _localAdapter.eventSnapshot
             .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceLocalState.event(snapshot: event)),
+            .map((event) => PersistenceLocalSnapshot.event(snapshot: event)),
       ]);
 
   @override

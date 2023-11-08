@@ -115,7 +115,7 @@ class _$DataNoteData<NoteT, T> implements DataNoteData<NoteT, T> {
 
   @override
   String toString() {
-    return 'DataNote<$NoteT, $T>.loco_data(loco_data: $data)';
+    return 'DataNote<$NoteT, $T>.data(data: $data)';
   }
 
   @override

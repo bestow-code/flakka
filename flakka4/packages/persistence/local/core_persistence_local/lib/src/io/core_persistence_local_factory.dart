@@ -4,14 +4,13 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 abstract class CorePersistenceLocalFactory
     implements
-        CoreResourceFactory<PersistenceLocalEffect, PersistenceLocalState,
+        CoreResourceFactory<PersistenceLocalEffect, PersistenceLocalSnapshot,
             CorePersistenceLocal> {
   @override
-  Future<CorePersistenceLocal> create({
-    required ProviderContext context,
+  CorePersistenceLocal create({
     required covariant ({
       CorePersistenceLocalAdapter adapter,
-      ObjectKey key
+      PersistenceKey key
     }) param,
   });
 }

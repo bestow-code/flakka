@@ -7,6 +7,4 @@ abstract class CoreNodeFactory<
         In,
         Out,
         Node extends CoreNode<Effect, Update, In, Out>>
-    implements CoreResourceFactory<In, Out, Node> {
-  CoreResourceFactory<Effect, Update, Resource> get childFactory;
-}
+    implements CoreResourceFactory<In, Out, Node> {}

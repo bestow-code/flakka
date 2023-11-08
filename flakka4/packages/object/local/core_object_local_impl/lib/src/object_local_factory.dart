@@ -1,35 +1,19 @@
-import 'dart:async';
-
 import 'package:core_common_impl/core_common_impl.dart';
-import 'package:core_object_base/core_object_base.dart';
 import 'package:core_object_local/core_object_local.dart';
+import 'package:core_object_local_impl/src/object_local.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 
 class ObjectLocalFactory extends NodeFactoryBase<
     PersistenceLocalEffect,
-    PersistenceLocalState,
+    PersistenceLocalSnapshot,
     CorePersistenceLocal,
     ObjectLocalEffect,
-    ObjectLocalState,
+    ObjectLocalSnapshot,
     CoreObjectLocal> implements CoreObjectLocalFactory<CoreObjectLocal> {
-  ObjectLocalFactory({required super.childFactory});
-
   @override
-  Future<CoreObjectLocal> create({
-    required covariant ObjectKey key,
-    required covariant dynamic param,
+  CoreObjectLocal create({
+    required ({CorePersistenceLocal persistenceLocal}) param,
   }) {
-    // TODO: implement create
-    throw UnimplementedError();
+    return ObjectLocal(child: param.persistenceLocal);
   }
-
-// @override
-// Future<CoreObjectLocal> create(
-//   covariant dynamic param,
-// ) async =>
-//     ObjectLocal(child: persistenceLocal);
-//
-// @override
-// Future<void> delete(covariant PersistenceAdapterFactoryParam param) =>
-//     _childFactory.delete(param);
 }

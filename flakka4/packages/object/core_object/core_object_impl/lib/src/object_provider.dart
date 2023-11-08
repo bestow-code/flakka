@@ -10,7 +10,7 @@ import 'package:core_object_remote_impl/core_object_remote_impl.dart';
 class ObjectProvider extends BroadcastMergeProviderBase<
     Object,
     ObjectLocalEffect,
-    ObjectLocalState,
+    ObjectLocalSnapshot,
     ObjectRemoteEffect,
     ObjectRemoteUpdate,
     ObjectEffect,

@@ -22,18 +22,18 @@ View extends CoreView> extends Cubit<ApplicationState<State, View>>
       : _stateViewProcessor = stateViewProcessor,
         _refDateTimeFactory = refDateTimeFactory,
         _journalEffect = journalEffect {
-    _applicationUpdate.stream.listen(_onApplicationUpdate);
+    _applicationUpdate.stream.listen(_onApplicationSnapshot);
     Rx.merge([
       journalUpdate.map(
             (update) =>
-            ApplicationUpdate.journal(
+            ApplicationSnapshot.journal(
               journalUpdate: update,
               refDateTime: _refDateTimeFactory.create(),
             ),
       ),
       _request.stream.map(
             (request) =>
-        ApplicationUpdate<Event, State, View>.request(
+        ApplicationSnapshot<Event, State, View>.request(
           request: request,
           refDateTime: _refDateTimeFactory.create(),
         ),
@@ -43,7 +43,7 @@ View extends CoreView> extends Cubit<ApplicationState<State, View>>
 
   final StateViewProcessor<Event, State, View> _stateViewProcessor;
   final _applicationUpdate =
-  StreamController<ApplicationUpdate<Event, State, View>>();
+  StreamController<ApplicationSnapshot<Event, State, View>>();
 
   final StreamSink<JournalEffect<Event, State, View>> _journalEffect;
   final RefDateTimeFactory _refDateTimeFactory;
@@ -56,7 +56,7 @@ View extends CoreView> extends Cubit<ApplicationState<State, View>>
   @override
   StateStreamableSource<View> get view => throw UnimplementedError();
 
-  void _onApplicationUpdate(ApplicationUpdate<Event, State, View> update) {
+  void _onApplicationSnapshot(ApplicationSnapshot<Event, State, View> update) {
     update.map(
       journal: (journal) =>
           journal.journalUpdate.journal.reconcile(state.ref).map(

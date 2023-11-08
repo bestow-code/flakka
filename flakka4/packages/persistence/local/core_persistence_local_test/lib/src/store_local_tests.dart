@@ -1,11 +1,9 @@
 import 'package:collection/collection.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
 void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
-  Generator<CoreStoreLocalProvider<StoreLocal>> Function()
-      providerGeneratorFactory,
+  Generator<CoreStoreLocalProvider> Function() providerGeneratorFactory,
 ) {
   return () {
     Glados2(
@@ -17,12 +15,12 @@ void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
       final store = await context.provider
           .get(context: context.providerContext, key: context.key);
       await store.initialize(
-        context.providerContext.sessionId!,
+        context.providerContext.sessionId,
         ref: context.initialize.ref,
         createdAt: context.initialize.createdAt,
       );
       await store
-          .transact<void>(context.providerContext.sessionId!)
+          .transact<void>(context.providerContext.sessionId)
           .run((handler) async {
         for (final call in calls) {
           await call.map(
@@ -33,7 +31,7 @@ void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
         }
       });
       final head = (await store
-              .queryHead(context.providerContext.sessionId!.persistenceId)
+              .queryHead(context.providerContext.sessionId.persistenceId)
               .snapshots()
               .first)
           .lastOrNull;

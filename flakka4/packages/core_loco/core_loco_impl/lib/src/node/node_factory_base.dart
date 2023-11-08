@@ -9,8 +9,4 @@ abstract class NodeFactoryBase<
         Out,
         Node extends CoreNode<Effect, Update, In, Out>>
     extends ResourceFactoryBase<In, Out, Node>
-    implements CoreNodeFactory<Effect, Update, Resource, In, Out, Node> {
-  NodeFactoryBase({required this.childFactory});
-
-  final CoreResourceFactory<Effect, Update, Resource> childFactory;
-}
+    implements CoreNodeFactory<Effect, Update, Resource, In, Out, Node> {}

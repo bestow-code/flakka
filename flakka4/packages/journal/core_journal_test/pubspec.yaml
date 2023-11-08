@@ -13,6 +13,7 @@ dependencies:
   core_data:
   core_data_test:
   core_journal:
+#  core_journal_impl:
   freezed_annotation: ^2.2.0
   get_it:
   glados:
@@ -39,3 +40,5 @@ index_generator:
       include:
         - src
       docs: Test kit for Core Entry Store implementations
+      exports:
+        - package: package:core_data_test/core_data_test.dart

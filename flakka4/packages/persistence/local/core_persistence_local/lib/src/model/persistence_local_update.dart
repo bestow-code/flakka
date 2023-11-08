@@ -5,16 +5,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'persistence_local_update.freezed.dart';
 
 @freezed
-class PersistenceLocalState with _$PersistenceLocalState {
-  factory PersistenceLocalState.ref({
+class PersistenceLocalSnapshot with _$PersistenceLocalSnapshot {
+  factory PersistenceLocalSnapshot.head({
     required HeadData snapshot,
-  }) = PersistenceLocalStateRef;
+  }) = PersistenceLocalSnapshotHead;
 
-  factory PersistenceLocalState.event({
+  factory PersistenceLocalSnapshot.event({
     required Map<String, EventData> snapshot,
-  }) = PersistenceLocalStateEvent;
+  }) = PersistenceLocalSnapshotEvent;
 
-  factory PersistenceLocalState.entry({
+  factory PersistenceLocalSnapshot.entry({
     required Map<String, EntryData> snapshot,
-  }) = PersistenceLocalStateEntry;
+  }) = PersistenceLocalSnapshotEntry;
 }

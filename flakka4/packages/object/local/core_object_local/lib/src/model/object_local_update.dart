@@ -1,24 +1,21 @@
-import 'package:core_common/core_common.dart';
+import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_local_update.freezed.dart';
 
 @freezed
-class ObjectLocalState with _$ObjectLocalState {
-  factory ObjectLocalState.head({
-    required ({
-      String ref,
-      int sequenceNumber,
-    })? data,
-  }) = ObjectLocalStateHead;
+class ObjectLocalSnapshot with _$ObjectLocalSnapshot {
+  factory ObjectLocalSnapshot.head({
+    required HeadData data,
+  }) = ObjectLocalSnapshotHead;
 
-  factory ObjectLocalState.entry({
-    required Map<String, ({Iterable<String> refs, int createdAt})> data,
-  }) = ObjectLocalStateEntry;
+  factory ObjectLocalSnapshot.entry({
+    required Map<String, EntryData> data,
+  }) = ObjectLocalSnapshotEntry;
 
-  factory ObjectLocalState.event({
-    required Map<String, JsonMap> data,
-  }) = ObjectLocalStateEvent;
+  factory ObjectLocalSnapshot.event({
+    required Map<String, EventData> data,
+  }) = ObjectLocalSnapshotEvent;
 }
 
 @freezed

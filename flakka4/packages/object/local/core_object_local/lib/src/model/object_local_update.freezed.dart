@@ -15,71 +15,65 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectLocalState {
-  Object? get data => throw _privateConstructorUsedError;
+mixin _$ObjectLocalSnapshot {
+  Object get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadData data) head,
+    required TResult Function(Map<String, EntryData> data) entry,
+    required TResult Function(Map<String, EventData> data) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadData data)? head,
+    TResult? Function(Map<String, EntryData> data)? entry,
+    TResult? Function(Map<String, EventData> data)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadData data)? head,
+    TResult Function(Map<String, EntryData> data)? entry,
+    TResult Function(Map<String, EventData> data)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalStateHead value) head,
-    required TResult Function(ObjectLocalStateEntry value) entry,
-    required TResult Function(ObjectLocalStateEvent value) event,
+    required TResult Function(ObjectLocalSnapshotHead value) head,
+    required TResult Function(ObjectLocalSnapshotEntry value) entry,
+    required TResult Function(ObjectLocalSnapshotEvent value) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalStateHead value)? head,
-    TResult? Function(ObjectLocalStateEntry value)? entry,
-    TResult? Function(ObjectLocalStateEvent value)? event,
+    TResult? Function(ObjectLocalSnapshotHead value)? head,
+    TResult? Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult? Function(ObjectLocalSnapshotEvent value)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalStateHead value)? head,
-    TResult Function(ObjectLocalStateEntry value)? entry,
-    TResult Function(ObjectLocalStateEvent value)? event,
+    TResult Function(ObjectLocalSnapshotHead value)? head,
+    TResult Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult Function(ObjectLocalSnapshotEvent value)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectLocalStateCopyWith<$Res> {
-  factory $ObjectLocalStateCopyWith(
-          ObjectLocalState value, $Res Function(ObjectLocalState) then) =
-      _$ObjectLocalStateCopyWithImpl<$Res, ObjectLocalState>;
+abstract class $ObjectLocalSnapshotCopyWith<$Res> {
+  factory $ObjectLocalSnapshotCopyWith(
+          ObjectLocalSnapshot value, $Res Function(ObjectLocalSnapshot) then) =
+      _$ObjectLocalSnapshotCopyWithImpl<$Res, ObjectLocalSnapshot>;
 }
 
 /// @nodoc
-class _$ObjectLocalStateCopyWithImpl<$Res, $Val extends ObjectLocalState>
-    implements $ObjectLocalStateCopyWith<$Res> {
-  _$ObjectLocalStateCopyWithImpl(this._value, this._then);
+class _$ObjectLocalSnapshotCopyWithImpl<$Res, $Val extends ObjectLocalSnapshot>
+    implements $ObjectLocalSnapshotCopyWith<$Res> {
+  _$ObjectLocalSnapshotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,54 +82,64 @@ class _$ObjectLocalStateCopyWithImpl<$Res, $Val extends ObjectLocalState>
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalStateHeadCopyWith<$Res> {
-  factory _$$ObjectLocalStateHeadCopyWith(_$ObjectLocalStateHead value,
-          $Res Function(_$ObjectLocalStateHead) then) =
-      __$$ObjectLocalStateHeadCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalSnapshotHeadCopyWith<$Res> {
+  factory _$$ObjectLocalSnapshotHeadCopyWith(_$ObjectLocalSnapshotHead value,
+          $Res Function(_$ObjectLocalSnapshotHead) then) =
+      __$$ObjectLocalSnapshotHeadCopyWithImpl<$Res>;
   @useResult
-  $Res call({({String ref, int sequenceNumber})? data});
+  $Res call({HeadData data});
+
+  $HeadDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$ObjectLocalStateHeadCopyWithImpl<$Res>
-    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateHead>
-    implements _$$ObjectLocalStateHeadCopyWith<$Res> {
-  __$$ObjectLocalStateHeadCopyWithImpl(_$ObjectLocalStateHead _value,
-      $Res Function(_$ObjectLocalStateHead) _then)
+class __$$ObjectLocalSnapshotHeadCopyWithImpl<$Res>
+    extends _$ObjectLocalSnapshotCopyWithImpl<$Res, _$ObjectLocalSnapshotHead>
+    implements _$$ObjectLocalSnapshotHeadCopyWith<$Res> {
+  __$$ObjectLocalSnapshotHeadCopyWithImpl(_$ObjectLocalSnapshotHead _value,
+      $Res Function(_$ObjectLocalSnapshotHead) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
-    return _then(_$ObjectLocalStateHead(
-      data: freezed == data
+    return _then(_$ObjectLocalSnapshotHead(
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ({String ref, int sequenceNumber})?,
+              as HeadData,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadDataCopyWith<$Res> get data {
+    return $HeadDataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$ObjectLocalStateHead implements ObjectLocalStateHead {
-  _$ObjectLocalStateHead({required this.data});
+class _$ObjectLocalSnapshotHead implements ObjectLocalSnapshotHead {
+  _$ObjectLocalSnapshotHead({required this.data});
 
   @override
-  final ({String ref, int sequenceNumber})? data;
+  final HeadData data;
 
   @override
   String toString() {
-    return 'ObjectLocalState.head(data: $data)';
+    return 'ObjectLocalSnapshot.head(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalStateHead &&
+            other is _$ObjectLocalSnapshotHead &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -145,18 +149,16 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalStateHeadCopyWith<_$ObjectLocalStateHead> get copyWith =>
-      __$$ObjectLocalStateHeadCopyWithImpl<_$ObjectLocalStateHead>(
+  _$$ObjectLocalSnapshotHeadCopyWith<_$ObjectLocalSnapshotHead> get copyWith =>
+      __$$ObjectLocalSnapshotHeadCopyWithImpl<_$ObjectLocalSnapshotHead>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadData data) head,
+    required TResult Function(Map<String, EntryData> data) entry,
+    required TResult Function(Map<String, EventData> data) event,
   }) {
     return head(data);
   }
@@ -164,11 +166,9 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadData data)? head,
+    TResult? Function(Map<String, EntryData> data)? entry,
+    TResult? Function(Map<String, EventData> data)? event,
   }) {
     return head?.call(data);
   }
@@ -176,11 +176,9 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadData data)? head,
+    TResult Function(Map<String, EntryData> data)? entry,
+    TResult Function(Map<String, EventData> data)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -192,9 +190,9 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalStateHead value) head,
-    required TResult Function(ObjectLocalStateEntry value) entry,
-    required TResult Function(ObjectLocalStateEvent value) event,
+    required TResult Function(ObjectLocalSnapshotHead value) head,
+    required TResult Function(ObjectLocalSnapshotEntry value) entry,
+    required TResult Function(ObjectLocalSnapshotEvent value) event,
   }) {
     return head(this);
   }
@@ -202,9 +200,9 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalStateHead value)? head,
-    TResult? Function(ObjectLocalStateEntry value)? entry,
-    TResult? Function(ObjectLocalStateEvent value)? event,
+    TResult? Function(ObjectLocalSnapshotHead value)? head,
+    TResult? Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult? Function(ObjectLocalSnapshotEvent value)? event,
   }) {
     return head?.call(this);
   }
@@ -212,9 +210,9 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalStateHead value)? head,
-    TResult Function(ObjectLocalStateEntry value)? entry,
-    TResult Function(ObjectLocalStateEvent value)? event,
+    TResult Function(ObjectLocalSnapshotHead value)? head,
+    TResult Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult Function(ObjectLocalSnapshotEvent value)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -224,33 +222,32 @@ class _$ObjectLocalStateHead implements ObjectLocalStateHead {
   }
 }
 
-abstract class ObjectLocalStateHead implements ObjectLocalState {
-  factory ObjectLocalStateHead(
-          {required final ({String ref, int sequenceNumber})? data}) =
-      _$ObjectLocalStateHead;
+abstract class ObjectLocalSnapshotHead implements ObjectLocalSnapshot {
+  factory ObjectLocalSnapshotHead({required final HeadData data}) =
+      _$ObjectLocalSnapshotHead;
 
   @override
-  ({String ref, int sequenceNumber})? get data;
+  HeadData get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalStateHeadCopyWith<_$ObjectLocalStateHead> get copyWith =>
+  _$$ObjectLocalSnapshotHeadCopyWith<_$ObjectLocalSnapshotHead> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalStateEntryCopyWith<$Res> {
-  factory _$$ObjectLocalStateEntryCopyWith(_$ObjectLocalStateEntry value,
-          $Res Function(_$ObjectLocalStateEntry) then) =
-      __$$ObjectLocalStateEntryCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalSnapshotEntryCopyWith<$Res> {
+  factory _$$ObjectLocalSnapshotEntryCopyWith(_$ObjectLocalSnapshotEntry value,
+          $Res Function(_$ObjectLocalSnapshotEntry) then) =
+      __$$ObjectLocalSnapshotEntryCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, ({int createdAt, Iterable<String> refs})> data});
+  $Res call({Map<String, EntryData> data});
 }
 
 /// @nodoc
-class __$$ObjectLocalStateEntryCopyWithImpl<$Res>
-    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateEntry>
-    implements _$$ObjectLocalStateEntryCopyWith<$Res> {
-  __$$ObjectLocalStateEntryCopyWithImpl(_$ObjectLocalStateEntry _value,
-      $Res Function(_$ObjectLocalStateEntry) _then)
+class __$$ObjectLocalSnapshotEntryCopyWithImpl<$Res>
+    extends _$ObjectLocalSnapshotCopyWithImpl<$Res, _$ObjectLocalSnapshotEntry>
+    implements _$$ObjectLocalSnapshotEntryCopyWith<$Res> {
+  __$$ObjectLocalSnapshotEntryCopyWithImpl(_$ObjectLocalSnapshotEntry _value,
+      $Res Function(_$ObjectLocalSnapshotEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,26 +255,24 @@ class __$$ObjectLocalStateEntryCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectLocalStateEntry(
+    return _then(_$ObjectLocalSnapshotEntry(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, ({int createdAt, Iterable<String> refs})>,
+              as Map<String, EntryData>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
-  _$ObjectLocalStateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data})
+class _$ObjectLocalSnapshotEntry implements ObjectLocalSnapshotEntry {
+  _$ObjectLocalSnapshotEntry({required final Map<String, EntryData> data})
       : _data = data;
 
-  final Map<String, ({int createdAt, Iterable<String> refs})> _data;
+  final Map<String, EntryData> _data;
   @override
-  Map<String, ({int createdAt, Iterable<String> refs})> get data {
+  Map<String, EntryData> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -285,14 +280,14 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
 
   @override
   String toString() {
-    return 'ObjectLocalState.entry(data: $data)';
+    return 'ObjectLocalSnapshot.entry(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalStateEntry &&
+            other is _$ObjectLocalSnapshotEntry &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -303,18 +298,17 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalStateEntryCopyWith<_$ObjectLocalStateEntry> get copyWith =>
-      __$$ObjectLocalStateEntryCopyWithImpl<_$ObjectLocalStateEntry>(
-          this, _$identity);
+  _$$ObjectLocalSnapshotEntryCopyWith<_$ObjectLocalSnapshotEntry>
+      get copyWith =>
+          __$$ObjectLocalSnapshotEntryCopyWithImpl<_$ObjectLocalSnapshotEntry>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadData data) head,
+    required TResult Function(Map<String, EntryData> data) entry,
+    required TResult Function(Map<String, EventData> data) event,
   }) {
     return entry(data);
   }
@@ -322,11 +316,9 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadData data)? head,
+    TResult? Function(Map<String, EntryData> data)? entry,
+    TResult? Function(Map<String, EventData> data)? event,
   }) {
     return entry?.call(data);
   }
@@ -334,11 +326,9 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadData data)? head,
+    TResult Function(Map<String, EntryData> data)? entry,
+    TResult Function(Map<String, EventData> data)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -350,9 +340,9 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalStateHead value) head,
-    required TResult Function(ObjectLocalStateEntry value) entry,
-    required TResult Function(ObjectLocalStateEvent value) event,
+    required TResult Function(ObjectLocalSnapshotHead value) head,
+    required TResult Function(ObjectLocalSnapshotEntry value) entry,
+    required TResult Function(ObjectLocalSnapshotEvent value) event,
   }) {
     return entry(this);
   }
@@ -360,9 +350,9 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalStateHead value)? head,
-    TResult? Function(ObjectLocalStateEntry value)? entry,
-    TResult? Function(ObjectLocalStateEvent value)? event,
+    TResult? Function(ObjectLocalSnapshotHead value)? head,
+    TResult? Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult? Function(ObjectLocalSnapshotEvent value)? event,
   }) {
     return entry?.call(this);
   }
@@ -370,9 +360,9 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalStateHead value)? head,
-    TResult Function(ObjectLocalStateEntry value)? entry,
-    TResult Function(ObjectLocalStateEvent value)? event,
+    TResult Function(ObjectLocalSnapshotHead value)? head,
+    TResult Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult Function(ObjectLocalSnapshotEvent value)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -382,33 +372,33 @@ class _$ObjectLocalStateEntry implements ObjectLocalStateEntry {
   }
 }
 
-abstract class ObjectLocalStateEntry implements ObjectLocalState {
-  factory ObjectLocalStateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data}) = _$ObjectLocalStateEntry;
+abstract class ObjectLocalSnapshotEntry implements ObjectLocalSnapshot {
+  factory ObjectLocalSnapshotEntry(
+          {required final Map<String, EntryData> data}) =
+      _$ObjectLocalSnapshotEntry;
 
   @override
-  Map<String, ({int createdAt, Iterable<String> refs})> get data;
+  Map<String, EntryData> get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalStateEntryCopyWith<_$ObjectLocalStateEntry> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ObjectLocalSnapshotEntryCopyWith<_$ObjectLocalSnapshotEntry>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalStateEventCopyWith<$Res> {
-  factory _$$ObjectLocalStateEventCopyWith(_$ObjectLocalStateEvent value,
-          $Res Function(_$ObjectLocalStateEvent) then) =
-      __$$ObjectLocalStateEventCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalSnapshotEventCopyWith<$Res> {
+  factory _$$ObjectLocalSnapshotEventCopyWith(_$ObjectLocalSnapshotEvent value,
+          $Res Function(_$ObjectLocalSnapshotEvent) then) =
+      __$$ObjectLocalSnapshotEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, JsonMap> data});
+  $Res call({Map<String, EventData> data});
 }
 
 /// @nodoc
-class __$$ObjectLocalStateEventCopyWithImpl<$Res>
-    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateEvent>
-    implements _$$ObjectLocalStateEventCopyWith<$Res> {
-  __$$ObjectLocalStateEventCopyWithImpl(_$ObjectLocalStateEvent _value,
-      $Res Function(_$ObjectLocalStateEvent) _then)
+class __$$ObjectLocalSnapshotEventCopyWithImpl<$Res>
+    extends _$ObjectLocalSnapshotCopyWithImpl<$Res, _$ObjectLocalSnapshotEvent>
+    implements _$$ObjectLocalSnapshotEventCopyWith<$Res> {
+  __$$ObjectLocalSnapshotEventCopyWithImpl(_$ObjectLocalSnapshotEvent _value,
+      $Res Function(_$ObjectLocalSnapshotEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -416,24 +406,24 @@ class __$$ObjectLocalStateEventCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectLocalStateEvent(
+    return _then(_$ObjectLocalSnapshotEvent(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, JsonMap>,
+              as Map<String, EventData>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
-  _$ObjectLocalStateEvent({required final Map<String, JsonMap> data})
+class _$ObjectLocalSnapshotEvent implements ObjectLocalSnapshotEvent {
+  _$ObjectLocalSnapshotEvent({required final Map<String, EventData> data})
       : _data = data;
 
-  final Map<String, JsonMap> _data;
+  final Map<String, EventData> _data;
   @override
-  Map<String, JsonMap> get data {
+  Map<String, EventData> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -441,14 +431,14 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
 
   @override
   String toString() {
-    return 'ObjectLocalState.event(data: $data)';
+    return 'ObjectLocalSnapshot.event(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalStateEvent &&
+            other is _$ObjectLocalSnapshotEvent &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -459,18 +449,17 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalStateEventCopyWith<_$ObjectLocalStateEvent> get copyWith =>
-      __$$ObjectLocalStateEventCopyWithImpl<_$ObjectLocalStateEvent>(
-          this, _$identity);
+  _$$ObjectLocalSnapshotEventCopyWith<_$ObjectLocalSnapshotEvent>
+      get copyWith =>
+          __$$ObjectLocalSnapshotEventCopyWithImpl<_$ObjectLocalSnapshotEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadData data) head,
+    required TResult Function(Map<String, EntryData> data) entry,
+    required TResult Function(Map<String, EventData> data) event,
   }) {
     return event(data);
   }
@@ -478,11 +467,9 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadData data)? head,
+    TResult? Function(Map<String, EntryData> data)? entry,
+    TResult? Function(Map<String, EventData> data)? event,
   }) {
     return event?.call(data);
   }
@@ -490,11 +477,9 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadData data)? head,
+    TResult Function(Map<String, EntryData> data)? entry,
+    TResult Function(Map<String, EventData> data)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -506,9 +491,9 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectLocalStateHead value) head,
-    required TResult Function(ObjectLocalStateEntry value) entry,
-    required TResult Function(ObjectLocalStateEvent value) event,
+    required TResult Function(ObjectLocalSnapshotHead value) head,
+    required TResult Function(ObjectLocalSnapshotEntry value) entry,
+    required TResult Function(ObjectLocalSnapshotEvent value) event,
   }) {
     return event(this);
   }
@@ -516,9 +501,9 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectLocalStateHead value)? head,
-    TResult? Function(ObjectLocalStateEntry value)? entry,
-    TResult? Function(ObjectLocalStateEvent value)? event,
+    TResult? Function(ObjectLocalSnapshotHead value)? head,
+    TResult? Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult? Function(ObjectLocalSnapshotEvent value)? event,
   }) {
     return event?.call(this);
   }
@@ -526,9 +511,9 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectLocalStateHead value)? head,
-    TResult Function(ObjectLocalStateEntry value)? entry,
-    TResult Function(ObjectLocalStateEvent value)? event,
+    TResult Function(ObjectLocalSnapshotHead value)? head,
+    TResult Function(ObjectLocalSnapshotEntry value)? entry,
+    TResult Function(ObjectLocalSnapshotEvent value)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -538,15 +523,16 @@ class _$ObjectLocalStateEvent implements ObjectLocalStateEvent {
   }
 }
 
-abstract class ObjectLocalStateEvent implements ObjectLocalState {
-  factory ObjectLocalStateEvent({required final Map<String, JsonMap> data}) =
-      _$ObjectLocalStateEvent;
+abstract class ObjectLocalSnapshotEvent implements ObjectLocalSnapshot {
+  factory ObjectLocalSnapshotEvent(
+          {required final Map<String, EventData> data}) =
+      _$ObjectLocalSnapshotEvent;
 
   @override
-  Map<String, JsonMap> get data;
+  Map<String, EventData> get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalStateEventCopyWith<_$ObjectLocalStateEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ObjectLocalSnapshotEventCopyWith<_$ObjectLocalSnapshotEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

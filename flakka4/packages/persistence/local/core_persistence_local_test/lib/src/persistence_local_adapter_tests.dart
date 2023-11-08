@@ -3,10 +3,8 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
-void Function() persistenceLocalAdapterTests<
-    PersistenceLocalAdapter extends CorePersistenceLocalAdapter>(
-  Generator<CorePersistenceLocalAdapterProvider<PersistenceLocalAdapter>>
-          Function()
+void Function() persistenceLocalAdapterTests(
+  Generator<CorePersistenceLocalAdapterProvider> Function()
       providerGeneratorFactory,
 ) {
   return () {
@@ -33,14 +31,15 @@ void Function() persistenceLocalAdapterTests<
               );
             } else {
               await expectLater(
-                  () => adapter.append(
-                        ref: append.ref,
-                        parent: append.parent,
-                        event: append.event,
-                        createdAt: append.createdAt,
-                        sequenceNumber: append.sequenceNumber,
-                      ),
-                  throwsException);
+                () => adapter.append(
+                  ref: append.ref,
+                  parent: append.parent,
+                  event: append.event,
+                  createdAt: append.createdAt,
+                  sequenceNumber: append.sequenceNumber,
+                ),
+                throwsException,
+              );
             }
           },
           add: (add) async {},
@@ -70,8 +69,11 @@ void Function() persistenceLocalAdapterTests<
 ) {
   var seen = {initialize.ifNew.ref};
   final head = calls
-          .map((e) => e.mapOrNull(
-              append: (append) => seen.add(append.ref) ? append : null))
+          .map(
+            (e) => e.mapOrNull(
+              append: (append) => seen.add(append.ref) ? append : null,
+            ),
+          )
           .whereNotNull()
           .map((e) => HeadData(ref: e.ref, sequenceNumber: e.sequenceNumber))
           .toList()

@@ -10,22 +10,25 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
 
   factory DataEffect.append({
     required Ref ref,
-    required List<Ref> parent,
-    required Event? event,
-    required StateView<State, View>? stateView,
-    required DateTime createdAt,
-  }) = DataEffectAppend;
-
-  factory DataEffect.forward({
-    required Ref ref,
+    required Ref parent,
+    required Event event,
     required StateView<State, View> stateView,
     required DateTime createdAt,
-  }) = DataEffectForward<Event, State, View>;
+    required int sequenceNumber,
+  }) = DataEffectAppend;
+
+  // factory DataEffect.forward({
+  //   required Ref ref,
+  //   required Ref previous,
+  //   required StateView<State, View> stateView,
+  //   required DateTime createdAt,
+  //   required int sequenceNumber,
+  // }) = DataEffectForward<Event, State, View>;
 
   // factory DataEffect.publish({
   //   required Ref ref,
   //   required Set<Ref> ancestors,
   // }) = DataEffectPublish<Event, State, View>;
 
-  factory DataEffect.none() = DataEffectNone;
+  // factory DataEffect.none() = DataEffectNone;
 }

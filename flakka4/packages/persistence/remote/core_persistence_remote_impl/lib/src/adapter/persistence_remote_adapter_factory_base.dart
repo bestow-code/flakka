@@ -9,5 +9,5 @@ abstract class PersistenceRemoteAdapterFactoryBase
     implements
         CorePersistenceRemoteAdapterFactory<PersistenceRemoteAdapterBase> {
   @override
-  Future<PersistenceRemoteAdapterBase> create(String key);
+  PersistenceRemoteAdapterBase create(String key);
 }
