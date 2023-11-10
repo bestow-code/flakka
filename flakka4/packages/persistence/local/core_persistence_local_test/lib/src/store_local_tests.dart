@@ -6,54 +6,52 @@ import 'core_tester_context_persistent_local.dart';
 
 void Function() storeLocalTests(
   Generator<CoreStoreLocalProvider> Function() providerGeneratorFactory,
-) {
-  return () {
-    CoreTesterContextPersistentLocal<
-        CoreTestContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>,
-        CoreStoreLocalProvider,
-        CoreStoreLocal>(
-      generator:
-          any.testContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>(),
-      provider: providerGeneratorFactory(),
-    ).tester(any.storeLocalTestCalls).test('description',
-        (context, calls) async {
-      final store = await context.provider
-          .get(context: context.providerContext, key: context.key);
-      await store.initialize(
-        context.providerContext.sessionId,
-        ref: context.provisioning.ifNew.ref,
-        createdAt: context.provisioning.ifNew.createdAt,
-      );
-      await store
-          .transact<void>(context.providerContext.sessionId)
-          .run((handler) async {
-        for (final call in calls) {
-          await call.map(
-            addEntry: (addEntry) => handler.putEntry(addEntry.data),
-            addEvent: (addEvent) => handler.putEvent(addEvent.data),
-            addHead: (addHead) => handler.addHead(addHead.data),
+) =>
+    () => CoreTesterContextPersistentLocal<
+            CoreTestContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>,
+            CoreStoreLocalProvider,
+            CoreStoreLocal>(
+          generator: any
+              .testContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>(),
+          provider: providerGeneratorFactory(),
+        ).tester(any.storeLocalTestCalls).test('description',
+            (context, calls) async {
+          final store = await context.provider
+              .get(context: context.providerContext, key: context.key);
+          await store.initialize(
+            context.providerContext.sessionId,
+            ref: context.provisioning.ifNew.ref,
+            createdAt: context.provisioning.ifNew.createdAt,
           );
-        }
-      });
-      final head = (await store
-              .queryHead(context.providerContext.sessionId.persistenceId)
-              .snapshots()
-              .first)
-          .lastOrNull;
-      final entry = (await store.queryEntry().snapshots().first).toSet();
-      final event = (await store.queryEvent().snapshots().first).toSet();
-      final expectedData = _getExpectedData(calls, context.provisioning.ifNew);
-      expect(head, equals(expectedData.head));
-      expect(
-        entry,
-        equals(
-          expectedData.entry,
-        ),
-      );
-      expect(event, equals(expectedData.event));
-    });
-  };
-}
+          await store
+              .transact<void>(context.providerContext.sessionId)
+              .run((handler) async {
+            for (final call in calls) {
+              await call.map(
+                addEntry: (addEntry) => handler.putEntry(addEntry.data),
+                addEvent: (addEvent) => handler.putEvent(addEvent.data),
+                addHead: (addHead) => handler.addHead(addHead.data),
+              );
+            }
+          });
+          final head = (await store
+                  .queryHead(context.providerContext.sessionId.persistenceId)
+                  .snapshots()
+                  .first)
+              .lastOrNull;
+          final entry = (await store.queryEntry().snapshots().first).toSet();
+          final event = (await store.queryEvent().snapshots().first).toSet();
+          final expectedData =
+              _getExpectedData(calls, context.provisioning.ifNew);
+          expect(head, equals(expectedData.head));
+          expect(
+            entry,
+            equals(
+              expectedData.entry,
+            ),
+          );
+          expect(event, equals(expectedData.event));
+        });
 
 ({HeadData? head, Set<EventData> event, Set<EntryData> entry}) _getExpectedData(
   Iterable<StoreLocalTestCall> calls,
