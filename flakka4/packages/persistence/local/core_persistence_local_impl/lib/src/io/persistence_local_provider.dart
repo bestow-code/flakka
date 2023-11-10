@@ -17,7 +17,7 @@ class PersistenceLocalProvider extends PersistentIOProvider<
 
   @override
   Future<void> delete({
-    required PersistentProviderContext context,
+    required CorePersistentProviderContext context,
     required PersistenceKey key,
   }) =>
       adapterProvider.delete(
@@ -27,7 +27,7 @@ class PersistenceLocalProvider extends PersistentIOProvider<
 
   @override
   Future<CorePersistenceLocal> get(
-          {required PersistentProviderContext context,
+          {required CorePersistentProviderContext context,
           required PersistenceKey key}) async =>
       factory.create(
         param: (

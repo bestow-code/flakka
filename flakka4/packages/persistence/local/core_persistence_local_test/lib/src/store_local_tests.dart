@@ -2,22 +2,27 @@ import 'package:collection/collection.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
-void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
+import 'core_tester_context_persistent_local.dart';
+
+void Function() storeLocalTests(
   Generator<CoreStoreLocalProvider> Function() providerGeneratorFactory,
 ) {
   return () {
-    Glados2(
-      any.testContextStoreLocal(providerGeneratorFactory),
-      any.storeLocalTestCalls,
-    ).test('transaction handler', (context, calls) async {
-      await context.provider
-          .delete(context: context.providerContext, key: context.key);
+    CoreTesterContextPersistentLocal<
+        CoreTestContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>,
+        CoreStoreLocalProvider,
+        CoreStoreLocal>(
+      generator:
+          any.testContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>(),
+      provider: providerGeneratorFactory(),
+    ).tester(any.storeLocalTestCalls).test('description',
+        (context, calls) async {
       final store = await context.provider
           .get(context: context.providerContext, key: context.key);
       await store.initialize(
         context.providerContext.sessionId,
-        ref: context.initialize.ref,
-        createdAt: context.initialize.createdAt,
+        ref: context.provisioning.ifNew.ref,
+        createdAt: context.provisioning.ifNew.createdAt,
       );
       await store
           .transact<void>(context.providerContext.sessionId)
@@ -37,7 +42,7 @@ void Function() storeLocalTests<StoreLocal extends CoreStoreLocal>(
           .lastOrNull;
       final entry = (await store.queryEntry().snapshots().first).toSet();
       final event = (await store.queryEvent().snapshots().first).toSet();
-      final expectedData = _getExpectedData(calls, context.initialize);
+      final expectedData = _getExpectedData(calls, context.provisioning.ifNew);
       expect(head, equals(expectedData.head));
       expect(
         entry,

@@ -1,43 +1,25 @@
+import 'dart:async';
+
 import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
 
 class CoreTester<
-        Provider extends CoreProviderV2<ProviderContext, Key, Subject>,
-        ProviderContext extends ProviderContextV2,
-        Key extends CoreKey<Subject>,
-        Subject,
-        T>
-    extends Glados2<CoreTestContext<Provider, ProviderContext, Key, Subject>,
-        T> {
+    TestContext extends CoreTestContext<Provider, ProviderContext, Key,
+        Subject>,
+    Provider extends CoreProvider<ProviderContext, Key, Subject>,
+    ProviderContext extends CoreProviderContext,
+    Key,
+    Subject,
+    T> {
   CoreTester([
-    Generator<ProviderContext> Function(ProviderContext)?
-        providerContextBinding,
+    Generator<TestContext>? testContextGenerator,
     Generator<T>? generator,
-  ]) : super(
-          buildTestContext<Provider, ProviderContext, Key, Subject>(
-            providerContextBinding,
-          ),
-          generator,
-        );
+  ])  : _testContextGenerator = testContextGenerator ?? Any.defaultFor(),
+        _generator = generator ?? Any.defaultFor();
 
-  static Generator<CoreTestContext<Provider, ProviderContext, Key, Subject>>
-      buildTestContext<
-          Provider extends CoreProviderV2<ProviderContext, Key, Subject>,
-          ProviderContext extends ProviderContextV2,
-          Key extends CoreKey<Subject>,
-          Subject>([
-    Generator<ProviderContext> Function(ProviderContext)?
-        providerContextBinding,
-    Generator<ProviderContext>? providerContextGenerator,
-    Generator<Provider>? providerGenerator,
-    Generator<Key>? keyGenerator,
-  ]) {
-    return any.combine3(
-      (providerContextGenerator ?? Any.defaultFor<ProviderContext>())
-          .bind(providerContextBinding ?? any.always),
-      providerGenerator ?? Any.defaultFor<Provider>(),
-      keyGenerator ?? Any.defaultFor<Key>(),
-      TestContext.new,
-    );
-  }
+  final Generator<TestContext> _testContextGenerator;
+  final Generator<T> _generator;
+
+  void test(String description, FutureOr<void> Function(TestContext, T) body) =>
+      Glados2(_testContextGenerator, _generator).test(description, body);
 }

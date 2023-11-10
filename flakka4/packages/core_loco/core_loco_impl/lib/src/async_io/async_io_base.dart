@@ -1,11 +1,6 @@
-import 'dart:async';
-
 import 'package:core_loco/core_loco.dart';
 
 import '../../core_loco_impl.dart';
-
-abstract class IOBase<Input, State> extends ResourceBase<Input, State>
-    implements CoreIO<Input, State> {}
 
 abstract class AsyncIOBase<Effect, Snapshot> extends IOBase<Effect, Snapshot> {
   void registerInputHandler(Future<void> Function(Effect) handler) {

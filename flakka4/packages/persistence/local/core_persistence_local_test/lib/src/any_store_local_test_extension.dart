@@ -7,7 +7,7 @@ extension AnyStoreLocalTestExtension on Any {
   // Context
   Generator<
       ({
-        PersistentProviderContext providerContext,
+        CorePersistentProviderContext providerContext,
         CoreStoreLocalProvider provider,
         PersistenceKey key,
         ({String ref, int createdAt}) initialize,
@@ -17,9 +17,9 @@ extension AnyStoreLocalTestExtension on Any {
   ) =>
       any.combine4(
         providerGeneratorFactory(),
-        any.providerContext
+        any.persistentProviderContext
             .bind(any.providerContextStoreLocalBinding),
-        any.objectKey,
+        any.persistenceKey,
         initializeParam,
         (provider, providerContext, key, initialize) => (
           provider: provider,
@@ -29,15 +29,15 @@ extension AnyStoreLocalTestExtension on Any {
         ),
       );
 
-  Generator<PersistentProviderContext> providerContextStoreLocalBinding(
-          PersistentProviderContext context) =>
+  Generator<CorePersistentProviderContext> providerContextStoreLocalBinding(
+          CorePersistentProviderContext context) =>
       any.providerContextPersistentObjectSessionBinding(context);
-  Generator<PersistentProviderContext> providerContextStoreLocalPathBinding(
-      PersistentProviderContext context) =>
+  Generator<CorePersistentProviderContext> providerContextStoreLocalPathBinding(
+      CorePersistentProviderContext context) =>
       any.storePath.map((value) => context..storePathLocal = value);
 
-  Generator<PersistentProviderContext> providerContextPersistentObjectSessionBinding(
-      PersistentProviderContext context) =>
+  Generator<CorePersistentProviderContext> providerContextPersistentObjectSessionBinding(
+      CorePersistentProviderContext context) =>
       any
           .providerContextPersistenceIdBinding(context)
           .bind(any.providerContextSessionIdBinding)

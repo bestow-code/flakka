@@ -29,14 +29,14 @@ class StoreLocalProviderSembast extends StoreLocalProviderBase {
 
   @override
   Future<void> delete(
-          {required PersistentProviderContext context,
+          {required CorePersistentProviderContext context,
           required PersistenceKey key}) =>
       _databaseFactory
           .deleteDatabase(_getDatabasePath(context.storePathLocal!, key));
 
   @override
   Future<CoreStoreLocal> get(
-          {required PersistentProviderContext context,
+          {required CorePersistentProviderContext context,
           required PersistenceKey key}) async =>
       StoreLocalSembast(
           database: await _openDatabase(context.storePathLocal!, key),

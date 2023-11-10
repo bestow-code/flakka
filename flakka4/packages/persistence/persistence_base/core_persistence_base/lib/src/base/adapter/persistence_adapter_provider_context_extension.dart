@@ -1,7 +1,7 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
 extension PersistenceAdapterProviderContextExtension
-    on PersistentProviderContext {
+    on CorePersistentProviderContext {
 
   StorePath? get storePathRemote => _storePathRemote[this];
 

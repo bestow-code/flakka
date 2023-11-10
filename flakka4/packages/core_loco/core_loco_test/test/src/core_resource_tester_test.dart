@@ -64,7 +64,7 @@ class _SampleA implements CoreResource<_In, _Out> {
 
 class _SampleAProvider
     implements
-        CoreResourceProviderV2<_SampleAProviderContext, _SampleAKey, _In, _Out,
+        CoreResourceProvider<_SampleAProviderContext, _SampleAKey, _In, _Out,
             _SampleA> {
   @override
   Future<void> delete({

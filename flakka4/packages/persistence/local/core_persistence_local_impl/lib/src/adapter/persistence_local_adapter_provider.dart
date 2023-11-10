@@ -15,7 +15,7 @@ class PersistenceLocalAdapterProvider extends PersistenceAdapterProviderBase<
 
   @override
   Future<CorePersistenceLocalAdapter> get({
-    required PersistentProviderContext context,
+    required CorePersistentProviderContext context,
     required PersistenceKey key,
   }) async =>
       PersistenceLocalAdapterFactory().create(param: (
@@ -25,7 +25,7 @@ class PersistenceLocalAdapterProvider extends PersistenceAdapterProviderBase<
 
   @override
   Future<void> delete({
-    required PersistentProviderContext context,
+    required CorePersistentProviderContext context,
     required PersistenceKey key,
   }) =>
       storeProvider.delete(context: context, key: key);

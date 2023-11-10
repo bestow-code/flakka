@@ -1,8 +1,8 @@
 import 'core_key.dart';
 import 'core_provider_context.dart';
 
-abstract class CoreProviderV2<
-    ProviderContext,
+abstract class CoreProvider<
+    ProviderContext extends CoreProviderContext,
     Key,
     Subject> {
   Future<Subject> get({

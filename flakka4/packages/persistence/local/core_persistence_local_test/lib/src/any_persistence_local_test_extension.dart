@@ -8,7 +8,7 @@ extension TestPersistenceLocalContextExtension on Any {
   // Test Context
   Generator<
       ({
-        PersistentProviderContext providerContext,
+        CorePersistentProviderContext providerContext,
         CorePersistenceLocalProvider provider,
         PersistenceKey key,
         PersistenceProvisioningInitialize initialize,
@@ -18,8 +18,8 @@ extension TestPersistenceLocalContextExtension on Any {
   ) =>
       any.combine4(
         providerGeneratorFactory(),
-        any.providerContext.bind(any.providerContextPersistenceLocalBinding),
-        any.objectKey,
+        any.persistentProviderContext.bind(any.providerContextPersistenceLocalBinding),
+        any.persistenceKey,
         persistenceProvisioningInitialize,
         (provider, providerContext, key, initialize) => (
           provider: provider,
@@ -29,8 +29,8 @@ extension TestPersistenceLocalContextExtension on Any {
         ),
       );
 
-  Generator<PersistentProviderContext> providerContextPersistenceLocalBinding(
-          PersistentProviderContext context) =>
+  Generator<CorePersistentProviderContext> providerContextPersistenceLocalBinding(
+          CorePersistentProviderContext context) =>
       any.providerContextPersistenceLocalAdapterBinding(context);
 
   // Initialization

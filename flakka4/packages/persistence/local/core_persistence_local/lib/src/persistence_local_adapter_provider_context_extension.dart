@@ -1,7 +1,7 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
 extension CorePersistenceLocalAdapterProviderContextExtension
-    on PersistentProviderContext {
+    on CorePersistentProviderContext {
   StorePath? get storePathLocal => _storePathLocal[this];
 
   set storePathLocal(StorePath? storePathLocal) =>

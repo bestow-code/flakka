@@ -9,3 +9,4 @@ export 'package:interleave/interleave.dart';
 
 export 'src/core_test_context.dart';
 export 'src/core_tester.dart';
+export 'src/core_tester_context.dart';
