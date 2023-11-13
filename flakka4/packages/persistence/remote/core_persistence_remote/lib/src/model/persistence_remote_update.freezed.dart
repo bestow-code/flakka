@@ -88,23 +88,23 @@ class _$PersistenceRemoteUpdateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteUpdateRefCopyWith<$Res> {
-  factory _$$PersistenceRemoteUpdateRefCopyWith(
-          _$PersistenceRemoteUpdateRef value,
-          $Res Function(_$PersistenceRemoteUpdateRef) then) =
-      __$$PersistenceRemoteUpdateRefCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteUpdateRefImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteUpdateRefImplCopyWith(
+          _$PersistenceRemoteUpdateRefImpl value,
+          $Res Function(_$PersistenceRemoteUpdateRefImpl) then) =
+      __$$PersistenceRemoteUpdateRefImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteUpdateRefCopyWithImpl<$Res>
+class __$$PersistenceRemoteUpdateRefImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        _$PersistenceRemoteUpdateRef>
-    implements _$$PersistenceRemoteUpdateRefCopyWith<$Res> {
-  __$$PersistenceRemoteUpdateRefCopyWithImpl(
-      _$PersistenceRemoteUpdateRef _value,
-      $Res Function(_$PersistenceRemoteUpdateRef) _then)
+        _$PersistenceRemoteUpdateRefImpl>
+    implements _$$PersistenceRemoteUpdateRefImplCopyWith<$Res> {
+  __$$PersistenceRemoteUpdateRefImplCopyWithImpl(
+      _$PersistenceRemoteUpdateRefImpl _value,
+      $Res Function(_$PersistenceRemoteUpdateRefImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$PersistenceRemoteUpdateRefCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$PersistenceRemoteUpdateRef(
+    return _then(_$PersistenceRemoteUpdateRefImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$PersistenceRemoteUpdateRefCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteUpdateRef implements PersistenceRemoteUpdateRef {
-  _$PersistenceRemoteUpdateRef({required this.value});
+class _$PersistenceRemoteUpdateRefImpl implements PersistenceRemoteUpdateRef {
+  _$PersistenceRemoteUpdateRefImpl({required this.value});
 
   @override
   final String value;
@@ -138,7 +138,7 @@ class _$PersistenceRemoteUpdateRef implements PersistenceRemoteUpdateRef {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteUpdateRef &&
+            other is _$PersistenceRemoteUpdateRefImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -148,9 +148,9 @@ class _$PersistenceRemoteUpdateRef implements PersistenceRemoteUpdateRef {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteUpdateRefCopyWith<_$PersistenceRemoteUpdateRef>
-      get copyWith => __$$PersistenceRemoteUpdateRefCopyWithImpl<
-          _$PersistenceRemoteUpdateRef>(this, _$identity);
+  _$$PersistenceRemoteUpdateRefImplCopyWith<_$PersistenceRemoteUpdateRefImpl>
+      get copyWith => __$$PersistenceRemoteUpdateRefImplCopyWithImpl<
+          _$PersistenceRemoteUpdateRefImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -229,32 +229,32 @@ class _$PersistenceRemoteUpdateRef implements PersistenceRemoteUpdateRef {
 
 abstract class PersistenceRemoteUpdateRef implements PersistenceRemoteUpdate {
   factory PersistenceRemoteUpdateRef({required final String value}) =
-      _$PersistenceRemoteUpdateRef;
+      _$PersistenceRemoteUpdateRefImpl;
 
   String get value;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteUpdateRefCopyWith<_$PersistenceRemoteUpdateRef>
+  _$$PersistenceRemoteUpdateRefImplCopyWith<_$PersistenceRemoteUpdateRefImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteUpdateEventCopyWith<$Res> {
-  factory _$$PersistenceRemoteUpdateEventCopyWith(
-          _$PersistenceRemoteUpdateEvent value,
-          $Res Function(_$PersistenceRemoteUpdateEvent) then) =
-      __$$PersistenceRemoteUpdateEventCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteUpdateEventImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteUpdateEventImplCopyWith(
+          _$PersistenceRemoteUpdateEventImpl value,
+          $Res Function(_$PersistenceRemoteUpdateEventImpl) then) =
+      __$$PersistenceRemoteUpdateEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, JsonMap> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteUpdateEventCopyWithImpl<$Res>
+class __$$PersistenceRemoteUpdateEventImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        _$PersistenceRemoteUpdateEvent>
-    implements _$$PersistenceRemoteUpdateEventCopyWith<$Res> {
-  __$$PersistenceRemoteUpdateEventCopyWithImpl(
-      _$PersistenceRemoteUpdateEvent _value,
-      $Res Function(_$PersistenceRemoteUpdateEvent) _then)
+        _$PersistenceRemoteUpdateEventImpl>
+    implements _$$PersistenceRemoteUpdateEventImplCopyWith<$Res> {
+  __$$PersistenceRemoteUpdateEventImplCopyWithImpl(
+      _$PersistenceRemoteUpdateEventImpl _value,
+      $Res Function(_$PersistenceRemoteUpdateEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -262,7 +262,7 @@ class __$$PersistenceRemoteUpdateEventCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceRemoteUpdateEvent(
+    return _then(_$PersistenceRemoteUpdateEventImpl(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
@@ -273,8 +273,10 @@ class __$$PersistenceRemoteUpdateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteUpdateEvent implements PersistenceRemoteUpdateEvent {
-  _$PersistenceRemoteUpdateEvent({required final Map<String, JsonMap> snapshot})
+class _$PersistenceRemoteUpdateEventImpl
+    implements PersistenceRemoteUpdateEvent {
+  _$PersistenceRemoteUpdateEventImpl(
+      {required final Map<String, JsonMap> snapshot})
       : _snapshot = snapshot;
 
   final Map<String, JsonMap> _snapshot;
@@ -294,7 +296,7 @@ class _$PersistenceRemoteUpdateEvent implements PersistenceRemoteUpdateEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteUpdateEvent &&
+            other is _$PersistenceRemoteUpdateEventImpl &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -305,9 +307,10 @@ class _$PersistenceRemoteUpdateEvent implements PersistenceRemoteUpdateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteUpdateEventCopyWith<_$PersistenceRemoteUpdateEvent>
-      get copyWith => __$$PersistenceRemoteUpdateEventCopyWithImpl<
-          _$PersistenceRemoteUpdateEvent>(this, _$identity);
+  _$$PersistenceRemoteUpdateEventImplCopyWith<
+          _$PersistenceRemoteUpdateEventImpl>
+      get copyWith => __$$PersistenceRemoteUpdateEventImplCopyWithImpl<
+          _$PersistenceRemoteUpdateEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -387,32 +390,33 @@ class _$PersistenceRemoteUpdateEvent implements PersistenceRemoteUpdateEvent {
 abstract class PersistenceRemoteUpdateEvent implements PersistenceRemoteUpdate {
   factory PersistenceRemoteUpdateEvent(
           {required final Map<String, JsonMap> snapshot}) =
-      _$PersistenceRemoteUpdateEvent;
+      _$PersistenceRemoteUpdateEventImpl;
 
   Map<String, JsonMap> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteUpdateEventCopyWith<_$PersistenceRemoteUpdateEvent>
+  _$$PersistenceRemoteUpdateEventImplCopyWith<
+          _$PersistenceRemoteUpdateEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteUpdateEntryCopyWith<$Res> {
-  factory _$$PersistenceRemoteUpdateEntryCopyWith(
-          _$PersistenceRemoteUpdateEntry value,
-          $Res Function(_$PersistenceRemoteUpdateEntry) then) =
-      __$$PersistenceRemoteUpdateEntryCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteUpdateEntryImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteUpdateEntryImplCopyWith(
+          _$PersistenceRemoteUpdateEntryImpl value,
+          $Res Function(_$PersistenceRemoteUpdateEntryImpl) then) =
+      __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, ({int createdAt, Iterable<String> parent})> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteUpdateEntryCopyWithImpl<$Res>
+class __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        _$PersistenceRemoteUpdateEntry>
-    implements _$$PersistenceRemoteUpdateEntryCopyWith<$Res> {
-  __$$PersistenceRemoteUpdateEntryCopyWithImpl(
-      _$PersistenceRemoteUpdateEntry _value,
-      $Res Function(_$PersistenceRemoteUpdateEntry) _then)
+        _$PersistenceRemoteUpdateEntryImpl>
+    implements _$$PersistenceRemoteUpdateEntryImplCopyWith<$Res> {
+  __$$PersistenceRemoteUpdateEntryImplCopyWithImpl(
+      _$PersistenceRemoteUpdateEntryImpl _value,
+      $Res Function(_$PersistenceRemoteUpdateEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -420,7 +424,7 @@ class __$$PersistenceRemoteUpdateEntryCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceRemoteUpdateEntry(
+    return _then(_$PersistenceRemoteUpdateEntryImpl(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
@@ -431,8 +435,9 @@ class __$$PersistenceRemoteUpdateEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteUpdateEntry implements PersistenceRemoteUpdateEntry {
-  _$PersistenceRemoteUpdateEntry(
+class _$PersistenceRemoteUpdateEntryImpl
+    implements PersistenceRemoteUpdateEntry {
+  _$PersistenceRemoteUpdateEntryImpl(
       {required final Map<String, ({int createdAt, Iterable<String> parent})>
           snapshot})
       : _snapshot = snapshot;
@@ -454,7 +459,7 @@ class _$PersistenceRemoteUpdateEntry implements PersistenceRemoteUpdateEntry {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteUpdateEntry &&
+            other is _$PersistenceRemoteUpdateEntryImpl &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -465,9 +470,10 @@ class _$PersistenceRemoteUpdateEntry implements PersistenceRemoteUpdateEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteUpdateEntryCopyWith<_$PersistenceRemoteUpdateEntry>
-      get copyWith => __$$PersistenceRemoteUpdateEntryCopyWithImpl<
-          _$PersistenceRemoteUpdateEntry>(this, _$identity);
+  _$$PersistenceRemoteUpdateEntryImplCopyWith<
+          _$PersistenceRemoteUpdateEntryImpl>
+      get copyWith => __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<
+          _$PersistenceRemoteUpdateEntryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -547,10 +553,11 @@ class _$PersistenceRemoteUpdateEntry implements PersistenceRemoteUpdateEntry {
 abstract class PersistenceRemoteUpdateEntry implements PersistenceRemoteUpdate {
   factory PersistenceRemoteUpdateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          snapshot}) = _$PersistenceRemoteUpdateEntry;
+          snapshot}) = _$PersistenceRemoteUpdateEntryImpl;
 
   Map<String, ({int createdAt, Iterable<String> parent})> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteUpdateEntryCopyWith<_$PersistenceRemoteUpdateEntry>
+  _$$PersistenceRemoteUpdateEntryImplCopyWith<
+          _$PersistenceRemoteUpdateEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

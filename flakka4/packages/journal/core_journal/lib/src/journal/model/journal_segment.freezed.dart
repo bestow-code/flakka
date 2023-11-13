@@ -110,28 +110,29 @@ class _$JournalSegmentCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$_JournalSegmentCopyWith<
+abstract class _$$JournalSegmentImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $JournalSegmentCopyWith<Event, State, View, $Res> {
-  factory _$$_JournalSegmentCopyWith(
-          _$_JournalSegment<Event, State, View> value,
-          $Res Function(_$_JournalSegment<Event, State, View>) then) =
-      __$$_JournalSegmentCopyWithImpl<Event, State, View, $Res>;
+  factory _$$JournalSegmentImplCopyWith(
+          _$JournalSegmentImpl<Event, State, View> value,
+          $Res Function(_$JournalSegmentImpl<Event, State, View>) then) =
+      __$$JournalSegmentImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call({({State state, View view}) initial, Iterable<Event> events});
 }
 
 /// @nodoc
-class __$$_JournalSegmentCopyWithImpl<Event extends CoreEvent,
+class __$$JournalSegmentImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$JournalSegmentCopyWithImpl<Event, State, View, $Res,
-        _$_JournalSegment<Event, State, View>>
-    implements _$$_JournalSegmentCopyWith<Event, State, View, $Res> {
-  __$$_JournalSegmentCopyWithImpl(_$_JournalSegment<Event, State, View> _value,
-      $Res Function(_$_JournalSegment<Event, State, View>) _then)
+        _$JournalSegmentImpl<Event, State, View>>
+    implements _$$JournalSegmentImplCopyWith<Event, State, View, $Res> {
+  __$$JournalSegmentImplCopyWithImpl(
+      _$JournalSegmentImpl<Event, State, View> _value,
+      $Res Function(_$JournalSegmentImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +141,7 @@ class __$$_JournalSegmentCopyWithImpl<Event extends CoreEvent,
     Object? initial = null,
     Object? events = null,
   }) {
-    return _then(_$_JournalSegment<Event, State, View>(
+    return _then(_$JournalSegmentImpl<Event, State, View>(
       initial: null == initial
           ? _value.initial
           : initial // ignore: cast_nullable_to_non_nullable
@@ -155,9 +156,9 @@ class __$$_JournalSegmentCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
+class _$JournalSegmentImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _JournalSegment<Event, State, View> {
-  _$_JournalSegment({required this.initial, required this.events});
+  _$JournalSegmentImpl({required this.initial, required this.events});
 
   @override
   final ({State state, View view}) initial;
@@ -173,7 +174,7 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JournalSegment<Event, State, View> &&
+            other is _$JournalSegmentImpl<Event, State, View> &&
             (identical(other.initial, initial) || other.initial == initial) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
@@ -185,10 +186,10 @@ class _$_JournalSegment<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JournalSegmentCopyWith<Event, State, View,
-          _$_JournalSegment<Event, State, View>>
-      get copyWith => __$$_JournalSegmentCopyWithImpl<Event, State, View,
-          _$_JournalSegment<Event, State, View>>(this, _$identity);
+  _$$JournalSegmentImplCopyWith<Event, State, View,
+          _$JournalSegmentImpl<Event, State, View>>
+      get copyWith => __$$JournalSegmentImplCopyWithImpl<Event, State, View,
+          _$JournalSegmentImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -264,42 +265,42 @@ abstract class _JournalSegment<Event extends CoreEvent, State extends CoreState,
   factory _JournalSegment(
           {required final ({State state, View view}) initial,
           required final Iterable<Event> events}) =
-      _$_JournalSegment<Event, State, View>;
+      _$JournalSegmentImpl<Event, State, View>;
 
   ({State state, View view}) get initial;
   @override
   Iterable<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$_JournalSegmentCopyWith<Event, State, View,
-          _$_JournalSegment<Event, State, View>>
+  _$$JournalSegmentImplCopyWith<Event, State, View,
+          _$JournalSegmentImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$JournalSegmentInitialCopyWith<
+abstract class _$$JournalSegmentInitialImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $JournalSegmentCopyWith<Event, State, View, $Res> {
-  factory _$$JournalSegmentInitialCopyWith(
-          _$JournalSegmentInitial<Event, State, View> value,
-          $Res Function(_$JournalSegmentInitial<Event, State, View>) then) =
-      __$$JournalSegmentInitialCopyWithImpl<Event, State, View, $Res>;
+  factory _$$JournalSegmentInitialImplCopyWith(
+          _$JournalSegmentInitialImpl<Event, State, View> value,
+          $Res Function(_$JournalSegmentInitialImpl<Event, State, View>) then) =
+      __$$JournalSegmentInitialImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call({Iterable<Event> events});
 }
 
 /// @nodoc
-class __$$JournalSegmentInitialCopyWithImpl<Event extends CoreEvent,
+class __$$JournalSegmentInitialImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$JournalSegmentCopyWithImpl<Event, State, View, $Res,
-        _$JournalSegmentInitial<Event, State, View>>
-    implements _$$JournalSegmentInitialCopyWith<Event, State, View, $Res> {
-  __$$JournalSegmentInitialCopyWithImpl(
-      _$JournalSegmentInitial<Event, State, View> _value,
-      $Res Function(_$JournalSegmentInitial<Event, State, View>) _then)
+        _$JournalSegmentInitialImpl<Event, State, View>>
+    implements _$$JournalSegmentInitialImplCopyWith<Event, State, View, $Res> {
+  __$$JournalSegmentInitialImplCopyWithImpl(
+      _$JournalSegmentInitialImpl<Event, State, View> _value,
+      $Res Function(_$JournalSegmentInitialImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -307,7 +308,7 @@ class __$$JournalSegmentInitialCopyWithImpl<Event extends CoreEvent,
   $Res call({
     Object? events = null,
   }) {
-    return _then(_$JournalSegmentInitial<Event, State, View>(
+    return _then(_$JournalSegmentInitialImpl<Event, State, View>(
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -318,10 +319,10 @@ class __$$JournalSegmentInitialCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$JournalSegmentInitial<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$JournalSegmentInitialImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements JournalSegmentInitial<Event, State, View> {
-  _$JournalSegmentInitial({required this.events});
+  _$JournalSegmentInitialImpl({required this.events});
 
   @override
   final Iterable<Event> events;
@@ -335,7 +336,7 @@ class _$JournalSegmentInitial<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JournalSegmentInitial<Event, State, View> &&
+            other is _$JournalSegmentInitialImpl<Event, State, View> &&
             const DeepCollectionEquality().equals(other.events, events));
   }
 
@@ -346,10 +347,13 @@ class _$JournalSegmentInitial<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$JournalSegmentInitialCopyWith<Event, State, View,
-          _$JournalSegmentInitial<Event, State, View>>
-      get copyWith => __$$JournalSegmentInitialCopyWithImpl<Event, State, View,
-          _$JournalSegmentInitial<Event, State, View>>(this, _$identity);
+  _$$JournalSegmentInitialImplCopyWith<Event, State, View,
+          _$JournalSegmentInitialImpl<Event, State, View>>
+      get copyWith => __$$JournalSegmentInitialImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$JournalSegmentInitialImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -425,14 +429,14 @@ abstract class JournalSegmentInitial<
     State extends CoreState,
     View extends CoreView> implements JournalSegment<Event, State, View> {
   factory JournalSegmentInitial({required final Iterable<Event> events}) =
-      _$JournalSegmentInitial<Event, State, View>;
+      _$JournalSegmentInitialImpl<Event, State, View>;
 
   @override
   Iterable<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$JournalSegmentInitialCopyWith<Event, State, View,
-          _$JournalSegmentInitial<Event, State, View>>
+  _$$JournalSegmentInitialImplCopyWith<Event, State, View,
+          _$JournalSegmentInitialImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -532,29 +536,29 @@ class _$JournalStateEventsCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$_JournalStateEventsCopyWith<
+abstract class _$$JournalStateEventsImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $JournalStateEventsCopyWith<Event, State, View, $Res> {
-  factory _$$_JournalStateEventsCopyWith(
-          _$_JournalStateEvents<Event, State, View> value,
-          $Res Function(_$_JournalStateEvents<Event, State, View>) then) =
-      __$$_JournalStateEventsCopyWithImpl<Event, State, View, $Res>;
+  factory _$$JournalStateEventsImplCopyWith(
+          _$JournalStateEventsImpl<Event, State, View> value,
+          $Res Function(_$JournalStateEventsImpl<Event, State, View>) then) =
+      __$$JournalStateEventsImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call({State start, Iterable<Event> events});
 }
 
 /// @nodoc
-class __$$_JournalStateEventsCopyWithImpl<Event extends CoreEvent,
+class __$$JournalStateEventsImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$JournalStateEventsCopyWithImpl<Event, State, View, $Res,
-        _$_JournalStateEvents<Event, State, View>>
-    implements _$$_JournalStateEventsCopyWith<Event, State, View, $Res> {
-  __$$_JournalStateEventsCopyWithImpl(
-      _$_JournalStateEvents<Event, State, View> _value,
-      $Res Function(_$_JournalStateEvents<Event, State, View>) _then)
+        _$JournalStateEventsImpl<Event, State, View>>
+    implements _$$JournalStateEventsImplCopyWith<Event, State, View, $Res> {
+  __$$JournalStateEventsImplCopyWithImpl(
+      _$JournalStateEventsImpl<Event, State, View> _value,
+      $Res Function(_$JournalStateEventsImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -563,7 +567,7 @@ class __$$_JournalStateEventsCopyWithImpl<Event extends CoreEvent,
     Object? start = null,
     Object? events = null,
   }) {
-    return _then(_$_JournalStateEvents<Event, State, View>(
+    return _then(_$JournalStateEventsImpl<Event, State, View>(
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -578,9 +582,9 @@ class __$$_JournalStateEventsCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$_JournalStateEvents<Event extends CoreEvent, State extends CoreState,
+class _$JournalStateEventsImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _JournalStateEvents<Event, State, View> {
-  _$_JournalStateEvents({required this.start, required this.events});
+  _$JournalStateEventsImpl({required this.start, required this.events});
 
   @override
   final State start;
@@ -596,7 +600,7 @@ class _$_JournalStateEvents<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JournalStateEvents<Event, State, View> &&
+            other is _$JournalStateEventsImpl<Event, State, View> &&
             const DeepCollectionEquality().equals(other.start, start) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
@@ -610,10 +614,10 @@ class _$_JournalStateEvents<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JournalStateEventsCopyWith<Event, State, View,
-          _$_JournalStateEvents<Event, State, View>>
-      get copyWith => __$$_JournalStateEventsCopyWithImpl<Event, State, View,
-          _$_JournalStateEvents<Event, State, View>>(this, _$identity);
+  _$$JournalStateEventsImplCopyWith<Event, State, View,
+          _$JournalStateEventsImpl<Event, State, View>>
+      get copyWith => __$$JournalStateEventsImplCopyWithImpl<Event, State, View,
+          _$JournalStateEventsImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -689,42 +693,44 @@ abstract class _JournalStateEvents<
     View extends CoreView> implements JournalStateEvents<Event, State, View> {
   factory _JournalStateEvents(
           {required final State start, required final Iterable<Event> events}) =
-      _$_JournalStateEvents<Event, State, View>;
+      _$JournalStateEventsImpl<Event, State, View>;
 
   State get start;
   @override
   Iterable<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$_JournalStateEventsCopyWith<Event, State, View,
-          _$_JournalStateEvents<Event, State, View>>
+  _$$JournalStateEventsImplCopyWith<Event, State, View,
+          _$JournalStateEventsImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$JournalStateEventsInitialCopyWith<
+abstract class _$$JournalStateEventsInitialImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $JournalStateEventsCopyWith<Event, State, View, $Res> {
-  factory _$$JournalStateEventsInitialCopyWith(
-          _$JournalStateEventsInitial<Event, State, View> value,
-          $Res Function(_$JournalStateEventsInitial<Event, State, View>) then) =
-      __$$JournalStateEventsInitialCopyWithImpl<Event, State, View, $Res>;
+  factory _$$JournalStateEventsInitialImplCopyWith(
+          _$JournalStateEventsInitialImpl<Event, State, View> value,
+          $Res Function(_$JournalStateEventsInitialImpl<Event, State, View>)
+              then) =
+      __$$JournalStateEventsInitialImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call({Iterable<Event> events});
 }
 
 /// @nodoc
-class __$$JournalStateEventsInitialCopyWithImpl<Event extends CoreEvent,
+class __$$JournalStateEventsInitialImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$JournalStateEventsCopyWithImpl<Event, State, View, $Res,
-        _$JournalStateEventsInitial<Event, State, View>>
-    implements _$$JournalStateEventsInitialCopyWith<Event, State, View, $Res> {
-  __$$JournalStateEventsInitialCopyWithImpl(
-      _$JournalStateEventsInitial<Event, State, View> _value,
-      $Res Function(_$JournalStateEventsInitial<Event, State, View>) _then)
+        _$JournalStateEventsInitialImpl<Event, State, View>>
+    implements
+        _$$JournalStateEventsInitialImplCopyWith<Event, State, View, $Res> {
+  __$$JournalStateEventsInitialImplCopyWithImpl(
+      _$JournalStateEventsInitialImpl<Event, State, View> _value,
+      $Res Function(_$JournalStateEventsInitialImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -732,7 +738,7 @@ class __$$JournalStateEventsInitialCopyWithImpl<Event extends CoreEvent,
   $Res call({
     Object? events = null,
   }) {
-    return _then(_$JournalStateEventsInitial<Event, State, View>(
+    return _then(_$JournalStateEventsInitialImpl<Event, State, View>(
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -743,10 +749,10 @@ class __$$JournalStateEventsInitialCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$JournalStateEventsInitial<Event extends CoreEvent,
+class _$JournalStateEventsInitialImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements JournalStateEventsInitial<Event, State, View> {
-  _$JournalStateEventsInitial({required this.events});
+  _$JournalStateEventsInitialImpl({required this.events});
 
   @override
   final Iterable<Event> events;
@@ -760,7 +766,7 @@ class _$JournalStateEventsInitial<Event extends CoreEvent,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JournalStateEventsInitial<Event, State, View> &&
+            other is _$JournalStateEventsInitialImpl<Event, State, View> &&
             const DeepCollectionEquality().equals(other.events, events));
   }
 
@@ -771,13 +777,11 @@ class _$JournalStateEventsInitial<Event extends CoreEvent,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$JournalStateEventsInitialCopyWith<Event, State, View,
-          _$JournalStateEventsInitial<Event, State, View>>
-      get copyWith => __$$JournalStateEventsInitialCopyWithImpl<
-          Event,
-          State,
-          View,
-          _$JournalStateEventsInitial<Event, State, View>>(this, _$identity);
+  _$$JournalStateEventsInitialImplCopyWith<Event, State, View,
+          _$JournalStateEventsInitialImpl<Event, State, View>>
+      get copyWith => __$$JournalStateEventsInitialImplCopyWithImpl<Event,
+              State, View, _$JournalStateEventsInitialImpl<Event, State, View>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -852,13 +856,13 @@ abstract class JournalStateEventsInitial<
     State extends CoreState,
     View extends CoreView> implements JournalStateEvents<Event, State, View> {
   factory JournalStateEventsInitial({required final Iterable<Event> events}) =
-      _$JournalStateEventsInitial<Event, State, View>;
+      _$JournalStateEventsInitialImpl<Event, State, View>;
 
   @override
   Iterable<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$JournalStateEventsInitialCopyWith<Event, State, View,
-          _$JournalStateEventsInitial<Event, State, View>>
+  _$$JournalStateEventsInitialImplCopyWith<Event, State, View,
+          _$JournalStateEventsInitialImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -80,23 +80,23 @@ class _$PersistenceLocalProvisionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalProvisionStateInitialCopyWith<$Res> {
-  factory _$$PersistenceLocalProvisionStateInitialCopyWith(
-          _$PersistenceLocalProvisionStateInitial value,
-          $Res Function(_$PersistenceLocalProvisionStateInitial) then) =
-      __$$PersistenceLocalProvisionStateInitialCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalProvisionStateInitialImplCopyWith<$Res> {
+  factory _$$PersistenceLocalProvisionStateInitialImplCopyWith(
+          _$PersistenceLocalProvisionStateInitialImpl value,
+          $Res Function(_$PersistenceLocalProvisionStateInitialImpl) then) =
+      __$$PersistenceLocalProvisionStateInitialImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String claimKey});
 }
 
 /// @nodoc
-class __$$PersistenceLocalProvisionStateInitialCopyWithImpl<$Res>
+class __$$PersistenceLocalProvisionStateInitialImplCopyWithImpl<$Res>
     extends _$PersistenceLocalProvisionStateCopyWithImpl<$Res,
-        _$PersistenceLocalProvisionStateInitial>
-    implements _$$PersistenceLocalProvisionStateInitialCopyWith<$Res> {
-  __$$PersistenceLocalProvisionStateInitialCopyWithImpl(
-      _$PersistenceLocalProvisionStateInitial _value,
-      $Res Function(_$PersistenceLocalProvisionStateInitial) _then)
+        _$PersistenceLocalProvisionStateInitialImpl>
+    implements _$$PersistenceLocalProvisionStateInitialImplCopyWith<$Res> {
+  __$$PersistenceLocalProvisionStateInitialImplCopyWithImpl(
+      _$PersistenceLocalProvisionStateInitialImpl _value,
+      $Res Function(_$PersistenceLocalProvisionStateInitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +104,7 @@ class __$$PersistenceLocalProvisionStateInitialCopyWithImpl<$Res>
   $Res call({
     Object? claimKey = null,
   }) {
-    return _then(_$PersistenceLocalProvisionStateInitial(
+    return _then(_$PersistenceLocalProvisionStateInitialImpl(
       claimKey: null == claimKey
           ? _value.claimKey
           : claimKey // ignore: cast_nullable_to_non_nullable
@@ -115,9 +115,9 @@ class __$$PersistenceLocalProvisionStateInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalProvisionStateInitial
+class _$PersistenceLocalProvisionStateInitialImpl
     implements PersistenceLocalProvisionStateInitial {
-  _$PersistenceLocalProvisionStateInitial({required this.claimKey});
+  _$PersistenceLocalProvisionStateInitialImpl({required this.claimKey});
 
   @override
   final String claimKey;
@@ -131,7 +131,7 @@ class _$PersistenceLocalProvisionStateInitial
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalProvisionStateInitial &&
+            other is _$PersistenceLocalProvisionStateInitialImpl &&
             (identical(other.claimKey, claimKey) ||
                 other.claimKey == claimKey));
   }
@@ -142,10 +142,10 @@ class _$PersistenceLocalProvisionStateInitial
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalProvisionStateInitialCopyWith<
-          _$PersistenceLocalProvisionStateInitial>
-      get copyWith => __$$PersistenceLocalProvisionStateInitialCopyWithImpl<
-          _$PersistenceLocalProvisionStateInitial>(this, _$identity);
+  _$$PersistenceLocalProvisionStateInitialImplCopyWith<
+          _$PersistenceLocalProvisionStateInitialImpl>
+      get copyWith => __$$PersistenceLocalProvisionStateInitialImplCopyWithImpl<
+          _$PersistenceLocalProvisionStateInitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -216,39 +216,39 @@ abstract class PersistenceLocalProvisionStateInitial
     implements PersistenceLocalProvisionState {
   factory PersistenceLocalProvisionStateInitial(
           {required final String claimKey}) =
-      _$PersistenceLocalProvisionStateInitial;
+      _$PersistenceLocalProvisionStateInitialImpl;
 
   String get claimKey;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalProvisionStateInitialCopyWith<
-          _$PersistenceLocalProvisionStateInitial>
+  _$$PersistenceLocalProvisionStateInitialImplCopyWith<
+          _$PersistenceLocalProvisionStateInitialImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalProvisionStatePendingCopyWith<$Res> {
-  factory _$$PersistenceLocalProvisionStatePendingCopyWith(
-          _$PersistenceLocalProvisionStatePending value,
-          $Res Function(_$PersistenceLocalProvisionStatePending) then) =
-      __$$PersistenceLocalProvisionStatePendingCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalProvisionStatePendingImplCopyWith<$Res> {
+  factory _$$PersistenceLocalProvisionStatePendingImplCopyWith(
+          _$PersistenceLocalProvisionStatePendingImpl value,
+          $Res Function(_$PersistenceLocalProvisionStatePendingImpl) then) =
+      __$$PersistenceLocalProvisionStatePendingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PersistenceLocalProvisionStatePendingCopyWithImpl<$Res>
+class __$$PersistenceLocalProvisionStatePendingImplCopyWithImpl<$Res>
     extends _$PersistenceLocalProvisionStateCopyWithImpl<$Res,
-        _$PersistenceLocalProvisionStatePending>
-    implements _$$PersistenceLocalProvisionStatePendingCopyWith<$Res> {
-  __$$PersistenceLocalProvisionStatePendingCopyWithImpl(
-      _$PersistenceLocalProvisionStatePending _value,
-      $Res Function(_$PersistenceLocalProvisionStatePending) _then)
+        _$PersistenceLocalProvisionStatePendingImpl>
+    implements _$$PersistenceLocalProvisionStatePendingImplCopyWith<$Res> {
+  __$$PersistenceLocalProvisionStatePendingImplCopyWithImpl(
+      _$PersistenceLocalProvisionStatePendingImpl _value,
+      $Res Function(_$PersistenceLocalProvisionStatePendingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PersistenceLocalProvisionStatePending
+class _$PersistenceLocalProvisionStatePendingImpl
     implements PersistenceLocalProvisionStatePending {
-  _$PersistenceLocalProvisionStatePending();
+  _$PersistenceLocalProvisionStatePendingImpl();
 
   @override
   String toString() {
@@ -259,7 +259,7 @@ class _$PersistenceLocalProvisionStatePending
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalProvisionStatePending);
+            other is _$PersistenceLocalProvisionStatePendingImpl);
   }
 
   @override
@@ -333,5 +333,5 @@ class _$PersistenceLocalProvisionStatePending
 abstract class PersistenceLocalProvisionStatePending
     implements PersistenceLocalProvisionState {
   factory PersistenceLocalProvisionStatePending() =
-      _$PersistenceLocalProvisionStatePending;
+      _$PersistenceLocalProvisionStatePendingImpl;
 }

@@ -100,11 +100,11 @@ class _$PersistenceRemoteEffectCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteEffectAppendCopyWith<$Res> {
-  factory _$$PersistenceRemoteEffectAppendCopyWith(
-          _$PersistenceRemoteEffectAppend value,
-          $Res Function(_$PersistenceRemoteEffectAppend) then) =
-      __$$PersistenceRemoteEffectAppendCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteEffectAppendImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteEffectAppendImplCopyWith(
+          _$PersistenceRemoteEffectAppendImpl value,
+          $Res Function(_$PersistenceRemoteEffectAppendImpl) then) =
+      __$$PersistenceRemoteEffectAppendImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -115,13 +115,13 @@ abstract class _$$PersistenceRemoteEffectAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceRemoteEffectAppendCopyWithImpl<$Res>
+class __$$PersistenceRemoteEffectAppendImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteEffectCopyWithImpl<$Res,
-        _$PersistenceRemoteEffectAppend>
-    implements _$$PersistenceRemoteEffectAppendCopyWith<$Res> {
-  __$$PersistenceRemoteEffectAppendCopyWithImpl(
-      _$PersistenceRemoteEffectAppend _value,
-      $Res Function(_$PersistenceRemoteEffectAppend) _then)
+        _$PersistenceRemoteEffectAppendImpl>
+    implements _$$PersistenceRemoteEffectAppendImplCopyWith<$Res> {
+  __$$PersistenceRemoteEffectAppendImplCopyWithImpl(
+      _$PersistenceRemoteEffectAppendImpl _value,
+      $Res Function(_$PersistenceRemoteEffectAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$PersistenceRemoteEffectAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceRemoteEffectAppend(
+    return _then(_$PersistenceRemoteEffectAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -160,8 +160,9 @@ class __$$PersistenceRemoteEffectAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteEffectAppend implements PersistenceRemoteEffectAppend {
-  _$PersistenceRemoteEffectAppend(
+class _$PersistenceRemoteEffectAppendImpl
+    implements PersistenceRemoteEffectAppend {
+  _$PersistenceRemoteEffectAppendImpl(
       {required this.ref,
       required this.parent,
       required final Map<String, dynamic>? event,
@@ -197,7 +198,7 @@ class _$PersistenceRemoteEffectAppend implements PersistenceRemoteEffectAppend {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteEffectAppend &&
+            other is _$PersistenceRemoteEffectAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.parent, parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -219,9 +220,10 @@ class _$PersistenceRemoteEffectAppend implements PersistenceRemoteEffectAppend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteEffectAppendCopyWith<_$PersistenceRemoteEffectAppend>
-      get copyWith => __$$PersistenceRemoteEffectAppendCopyWithImpl<
-          _$PersistenceRemoteEffectAppend>(this, _$identity);
+  _$$PersistenceRemoteEffectAppendImplCopyWith<
+          _$PersistenceRemoteEffectAppendImpl>
+      get copyWith => __$$PersistenceRemoteEffectAppendImplCopyWithImpl<
+          _$PersistenceRemoteEffectAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -317,7 +319,7 @@ abstract class PersistenceRemoteEffectAppend
       required final Iterable<String> parent,
       required final Map<String, dynamic>? event,
       required final int createdAt,
-      required final int sequenceNumber}) = _$PersistenceRemoteEffectAppend;
+      required final int sequenceNumber}) = _$PersistenceRemoteEffectAppendImpl;
 
   String get ref;
   Iterable<String> get parent;
@@ -325,28 +327,29 @@ abstract class PersistenceRemoteEffectAppend
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteEffectAppendCopyWith<_$PersistenceRemoteEffectAppend>
+  _$$PersistenceRemoteEffectAppendImplCopyWith<
+          _$PersistenceRemoteEffectAppendImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteEffectForwardCopyWith<$Res> {
-  factory _$$PersistenceRemoteEffectForwardCopyWith(
-          _$PersistenceRemoteEffectForward value,
-          $Res Function(_$PersistenceRemoteEffectForward) then) =
-      __$$PersistenceRemoteEffectForwardCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteEffectForwardImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteEffectForwardImplCopyWith(
+          _$PersistenceRemoteEffectForwardImpl value,
+          $Res Function(_$PersistenceRemoteEffectForwardImpl) then) =
+      __$$PersistenceRemoteEffectForwardImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteEffectForwardCopyWithImpl<$Res>
+class __$$PersistenceRemoteEffectForwardImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteEffectCopyWithImpl<$Res,
-        _$PersistenceRemoteEffectForward>
-    implements _$$PersistenceRemoteEffectForwardCopyWith<$Res> {
-  __$$PersistenceRemoteEffectForwardCopyWithImpl(
-      _$PersistenceRemoteEffectForward _value,
-      $Res Function(_$PersistenceRemoteEffectForward) _then)
+        _$PersistenceRemoteEffectForwardImpl>
+    implements _$$PersistenceRemoteEffectForwardImplCopyWith<$Res> {
+  __$$PersistenceRemoteEffectForwardImplCopyWithImpl(
+      _$PersistenceRemoteEffectForwardImpl _value,
+      $Res Function(_$PersistenceRemoteEffectForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,7 +358,7 @@ class __$$PersistenceRemoteEffectForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceRemoteEffectForward(
+    return _then(_$PersistenceRemoteEffectForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -370,9 +373,9 @@ class __$$PersistenceRemoteEffectForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteEffectForward
+class _$PersistenceRemoteEffectForwardImpl
     implements PersistenceRemoteEffectForward {
-  _$PersistenceRemoteEffectForward(
+  _$PersistenceRemoteEffectForwardImpl(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -389,7 +392,7 @@ class _$PersistenceRemoteEffectForward
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteEffectForward &&
+            other is _$PersistenceRemoteEffectForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -401,9 +404,10 @@ class _$PersistenceRemoteEffectForward
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteEffectForwardCopyWith<_$PersistenceRemoteEffectForward>
-      get copyWith => __$$PersistenceRemoteEffectForwardCopyWithImpl<
-          _$PersistenceRemoteEffectForward>(this, _$identity);
+  _$$PersistenceRemoteEffectForwardImplCopyWith<
+          _$PersistenceRemoteEffectForwardImpl>
+      get copyWith => __$$PersistenceRemoteEffectForwardImplCopyWithImpl<
+          _$PersistenceRemoteEffectForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -495,22 +499,23 @@ class _$PersistenceRemoteEffectForward
 abstract class PersistenceRemoteEffectForward
     implements PersistenceRemoteEffect {
   factory PersistenceRemoteEffectForward(
-      {required final String ref,
-      required final int sequenceNumber}) = _$PersistenceRemoteEffectForward;
+          {required final String ref, required final int sequenceNumber}) =
+      _$PersistenceRemoteEffectForwardImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteEffectForwardCopyWith<_$PersistenceRemoteEffectForward>
+  _$$PersistenceRemoteEffectForwardImplCopyWith<
+          _$PersistenceRemoteEffectForwardImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteEffectImportCopyWith<$Res> {
-  factory _$$PersistenceRemoteEffectImportCopyWith(
-          _$PersistenceRemoteEffectImport value,
-          $Res Function(_$PersistenceRemoteEffectImport) then) =
-      __$$PersistenceRemoteEffectImportCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteEffectImportImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteEffectImportImplCopyWith(
+          _$PersistenceRemoteEffectImportImpl value,
+          $Res Function(_$PersistenceRemoteEffectImportImpl) then) =
+      __$$PersistenceRemoteEffectImportImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
@@ -519,13 +524,13 @@ abstract class _$$PersistenceRemoteEffectImportCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceRemoteEffectImportCopyWithImpl<$Res>
+class __$$PersistenceRemoteEffectImportImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteEffectCopyWithImpl<$Res,
-        _$PersistenceRemoteEffectImport>
-    implements _$$PersistenceRemoteEffectImportCopyWith<$Res> {
-  __$$PersistenceRemoteEffectImportCopyWithImpl(
-      _$PersistenceRemoteEffectImport _value,
-      $Res Function(_$PersistenceRemoteEffectImport) _then)
+        _$PersistenceRemoteEffectImportImpl>
+    implements _$$PersistenceRemoteEffectImportImplCopyWith<$Res> {
+  __$$PersistenceRemoteEffectImportImplCopyWithImpl(
+      _$PersistenceRemoteEffectImportImpl _value,
+      $Res Function(_$PersistenceRemoteEffectImportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -534,7 +539,7 @@ class __$$PersistenceRemoteEffectImportCopyWithImpl<$Res>
     Object? entry = freezed,
     Object? event = freezed,
   }) {
-    return _then(_$PersistenceRemoteEffectImport(
+    return _then(_$PersistenceRemoteEffectImportImpl(
       entry: freezed == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
@@ -550,8 +555,9 @@ class __$$PersistenceRemoteEffectImportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteEffectImport implements PersistenceRemoteEffectImport {
-  _$PersistenceRemoteEffectImport(
+class _$PersistenceRemoteEffectImportImpl
+    implements PersistenceRemoteEffectImport {
+  _$PersistenceRemoteEffectImportImpl(
       {required final Map<String,
               ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
@@ -590,7 +596,7 @@ class _$PersistenceRemoteEffectImport implements PersistenceRemoteEffectImport {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteEffectImport &&
+            other is _$PersistenceRemoteEffectImportImpl &&
             const DeepCollectionEquality().equals(other._entry, _entry) &&
             const DeepCollectionEquality().equals(other._event, _event));
   }
@@ -604,9 +610,10 @@ class _$PersistenceRemoteEffectImport implements PersistenceRemoteEffectImport {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteEffectImportCopyWith<_$PersistenceRemoteEffectImport>
-      get copyWith => __$$PersistenceRemoteEffectImportCopyWithImpl<
-          _$PersistenceRemoteEffectImport>(this, _$identity);
+  _$$PersistenceRemoteEffectImportImplCopyWith<
+          _$PersistenceRemoteEffectImportImpl>
+      get copyWith => __$$PersistenceRemoteEffectImportImplCopyWithImpl<
+          _$PersistenceRemoteEffectImportImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -702,13 +709,14 @@ abstract class PersistenceRemoteEffectImport
                   ({int createdAt, Iterable<String> parent, String ref})>?
               entry,
           required final Map<String, JsonMap>? event}) =
-      _$PersistenceRemoteEffectImport;
+      _$PersistenceRemoteEffectImportImpl;
 
   Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
       get entry;
   Map<String, JsonMap>? get event;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteEffectImportCopyWith<_$PersistenceRemoteEffectImport>
+  _$$PersistenceRemoteEffectImportImplCopyWith<
+          _$PersistenceRemoteEffectImportImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -805,11 +813,12 @@ class _$RemoteHeadEffectCopyWithImpl<$Res, $Val extends RemoteHeadEffect>
 }
 
 /// @nodoc
-abstract class _$$RemoteHeadEffectAppendCopyWith<$Res>
+abstract class _$$RemoteHeadEffectAppendImplCopyWith<$Res>
     implements $RemoteHeadEffectCopyWith<$Res> {
-  factory _$$RemoteHeadEffectAppendCopyWith(_$RemoteHeadEffectAppend value,
-          $Res Function(_$RemoteHeadEffectAppend) then) =
-      __$$RemoteHeadEffectAppendCopyWithImpl<$Res>;
+  factory _$$RemoteHeadEffectAppendImplCopyWith(
+          _$RemoteHeadEffectAppendImpl value,
+          $Res Function(_$RemoteHeadEffectAppendImpl) then) =
+      __$$RemoteHeadEffectAppendImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -821,11 +830,12 @@ abstract class _$$RemoteHeadEffectAppendCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RemoteHeadEffectAppendCopyWithImpl<$Res>
-    extends _$RemoteHeadEffectCopyWithImpl<$Res, _$RemoteHeadEffectAppend>
-    implements _$$RemoteHeadEffectAppendCopyWith<$Res> {
-  __$$RemoteHeadEffectAppendCopyWithImpl(_$RemoteHeadEffectAppend _value,
-      $Res Function(_$RemoteHeadEffectAppend) _then)
+class __$$RemoteHeadEffectAppendImplCopyWithImpl<$Res>
+    extends _$RemoteHeadEffectCopyWithImpl<$Res, _$RemoteHeadEffectAppendImpl>
+    implements _$$RemoteHeadEffectAppendImplCopyWith<$Res> {
+  __$$RemoteHeadEffectAppendImplCopyWithImpl(
+      _$RemoteHeadEffectAppendImpl _value,
+      $Res Function(_$RemoteHeadEffectAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -837,7 +847,7 @@ class __$$RemoteHeadEffectAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$RemoteHeadEffectAppend(
+    return _then(_$RemoteHeadEffectAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -864,8 +874,8 @@ class __$$RemoteHeadEffectAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RemoteHeadEffectAppend implements RemoteHeadEffectAppend {
-  _$RemoteHeadEffectAppend(
+class _$RemoteHeadEffectAppendImpl implements RemoteHeadEffectAppend {
+  _$RemoteHeadEffectAppendImpl(
       {required this.ref,
       required this.parent,
       required final Map<String, dynamic>? event,
@@ -901,7 +911,7 @@ class _$RemoteHeadEffectAppend implements RemoteHeadEffectAppend {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoteHeadEffectAppend &&
+            other is _$RemoteHeadEffectAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.parent, parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -923,9 +933,9 @@ class _$RemoteHeadEffectAppend implements RemoteHeadEffectAppend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RemoteHeadEffectAppendCopyWith<_$RemoteHeadEffectAppend> get copyWith =>
-      __$$RemoteHeadEffectAppendCopyWithImpl<_$RemoteHeadEffectAppend>(
-          this, _$identity);
+  _$$RemoteHeadEffectAppendImplCopyWith<_$RemoteHeadEffectAppendImpl>
+      get copyWith => __$$RemoteHeadEffectAppendImplCopyWithImpl<
+          _$RemoteHeadEffectAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1002,7 +1012,7 @@ abstract class RemoteHeadEffectAppend implements RemoteHeadEffect {
       required final Iterable<String> parent,
       required final Map<String, dynamic>? event,
       required final int createdAt,
-      required final int sequenceNumber}) = _$RemoteHeadEffectAppend;
+      required final int sequenceNumber}) = _$RemoteHeadEffectAppendImpl;
 
   @override
   String get ref;
@@ -1013,27 +1023,29 @@ abstract class RemoteHeadEffectAppend implements RemoteHeadEffect {
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$RemoteHeadEffectAppendCopyWith<_$RemoteHeadEffectAppend> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RemoteHeadEffectAppendImplCopyWith<_$RemoteHeadEffectAppendImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RemoteHeadEffectForwardCopyWith<$Res>
+abstract class _$$RemoteHeadEffectForwardImplCopyWith<$Res>
     implements $RemoteHeadEffectCopyWith<$Res> {
-  factory _$$RemoteHeadEffectForwardCopyWith(_$RemoteHeadEffectForward value,
-          $Res Function(_$RemoteHeadEffectForward) then) =
-      __$$RemoteHeadEffectForwardCopyWithImpl<$Res>;
+  factory _$$RemoteHeadEffectForwardImplCopyWith(
+          _$RemoteHeadEffectForwardImpl value,
+          $Res Function(_$RemoteHeadEffectForwardImpl) then) =
+      __$$RemoteHeadEffectForwardImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$RemoteHeadEffectForwardCopyWithImpl<$Res>
-    extends _$RemoteHeadEffectCopyWithImpl<$Res, _$RemoteHeadEffectForward>
-    implements _$$RemoteHeadEffectForwardCopyWith<$Res> {
-  __$$RemoteHeadEffectForwardCopyWithImpl(_$RemoteHeadEffectForward _value,
-      $Res Function(_$RemoteHeadEffectForward) _then)
+class __$$RemoteHeadEffectForwardImplCopyWithImpl<$Res>
+    extends _$RemoteHeadEffectCopyWithImpl<$Res, _$RemoteHeadEffectForwardImpl>
+    implements _$$RemoteHeadEffectForwardImplCopyWith<$Res> {
+  __$$RemoteHeadEffectForwardImplCopyWithImpl(
+      _$RemoteHeadEffectForwardImpl _value,
+      $Res Function(_$RemoteHeadEffectForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1042,7 +1054,7 @@ class __$$RemoteHeadEffectForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$RemoteHeadEffectForward(
+    return _then(_$RemoteHeadEffectForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -1057,8 +1069,9 @@ class __$$RemoteHeadEffectForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RemoteHeadEffectForward implements RemoteHeadEffectForward {
-  _$RemoteHeadEffectForward({required this.ref, required this.sequenceNumber});
+class _$RemoteHeadEffectForwardImpl implements RemoteHeadEffectForward {
+  _$RemoteHeadEffectForwardImpl(
+      {required this.ref, required this.sequenceNumber});
 
   @override
   final String ref;
@@ -1074,7 +1087,7 @@ class _$RemoteHeadEffectForward implements RemoteHeadEffectForward {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoteHeadEffectForward &&
+            other is _$RemoteHeadEffectForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -1086,9 +1099,9 @@ class _$RemoteHeadEffectForward implements RemoteHeadEffectForward {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RemoteHeadEffectForwardCopyWith<_$RemoteHeadEffectForward> get copyWith =>
-      __$$RemoteHeadEffectForwardCopyWithImpl<_$RemoteHeadEffectForward>(
-          this, _$identity);
+  _$$RemoteHeadEffectForwardImplCopyWith<_$RemoteHeadEffectForwardImpl>
+      get copyWith => __$$RemoteHeadEffectForwardImplCopyWithImpl<
+          _$RemoteHeadEffectForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1162,7 +1175,7 @@ class _$RemoteHeadEffectForward implements RemoteHeadEffectForward {
 abstract class RemoteHeadEffectForward implements RemoteHeadEffect {
   factory RemoteHeadEffectForward(
       {required final String ref,
-      required final int sequenceNumber}) = _$RemoteHeadEffectForward;
+      required final int sequenceNumber}) = _$RemoteHeadEffectForwardImpl;
 
   @override
   String get ref;
@@ -1170,6 +1183,6 @@ abstract class RemoteHeadEffectForward implements RemoteHeadEffect {
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$RemoteHeadEffectForwardCopyWith<_$RemoteHeadEffectForward> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RemoteHeadEffectForwardImplCopyWith<_$RemoteHeadEffectForwardImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

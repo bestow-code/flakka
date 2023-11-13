@@ -107,12 +107,12 @@ class _$DataUpdateCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$DataUpdateHeadInitialCopyWith<Event extends CoreEvent,
+abstract class _$$DataUpdateHeadInitialImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataUpdateHeadInitialCopyWith(
-          _$DataUpdateHeadInitial<Event, State, View> value,
-          $Res Function(_$DataUpdateHeadInitial<Event, State, View>) then) =
-      __$$DataUpdateHeadInitialCopyWithImpl<Event, State, View, $Res>;
+  factory _$$DataUpdateHeadInitialImplCopyWith(
+          _$DataUpdateHeadInitialImpl<Event, State, View> value,
+          $Res Function(_$DataUpdateHeadInitialImpl<Event, State, View>) then) =
+      __$$DataUpdateHeadInitialImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref, int sequenceNumber});
 
@@ -120,14 +120,14 @@ abstract class _$$DataUpdateHeadInitialCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$DataUpdateHeadInitialCopyWithImpl<Event extends CoreEvent,
+class __$$DataUpdateHeadInitialImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
-        _$DataUpdateHeadInitial<Event, State, View>>
-    implements _$$DataUpdateHeadInitialCopyWith<Event, State, View, $Res> {
-  __$$DataUpdateHeadInitialCopyWithImpl(
-      _$DataUpdateHeadInitial<Event, State, View> _value,
-      $Res Function(_$DataUpdateHeadInitial<Event, State, View>) _then)
+        _$DataUpdateHeadInitialImpl<Event, State, View>>
+    implements _$$DataUpdateHeadInitialImplCopyWith<Event, State, View, $Res> {
+  __$$DataUpdateHeadInitialImplCopyWithImpl(
+      _$DataUpdateHeadInitialImpl<Event, State, View> _value,
+      $Res Function(_$DataUpdateHeadInitialImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,7 +136,7 @@ class __$$DataUpdateHeadInitialCopyWithImpl<Event extends CoreEvent,
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$DataUpdateHeadInitial<Event, State, View>(
+    return _then(_$DataUpdateHeadInitialImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -159,10 +159,11 @@ class __$$DataUpdateHeadInitialCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$DataUpdateHeadInitial<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$DataUpdateHeadInitialImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements DataUpdateHeadInitial<Event, State, View> {
-  _$DataUpdateHeadInitial({required this.ref, required this.sequenceNumber});
+  _$DataUpdateHeadInitialImpl(
+      {required this.ref, required this.sequenceNumber});
 
   @override
   final Ref ref;
@@ -178,7 +179,7 @@ class _$DataUpdateHeadInitial<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataUpdateHeadInitial<Event, State, View> &&
+            other is _$DataUpdateHeadInitialImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -190,10 +191,13 @@ class _$DataUpdateHeadInitial<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataUpdateHeadInitialCopyWith<Event, State, View,
-          _$DataUpdateHeadInitial<Event, State, View>>
-      get copyWith => __$$DataUpdateHeadInitialCopyWithImpl<Event, State, View,
-          _$DataUpdateHeadInitial<Event, State, View>>(this, _$identity);
+  _$$DataUpdateHeadInitialImplCopyWith<Event, State, View,
+          _$DataUpdateHeadInitialImpl<Event, State, View>>
+      get copyWith => __$$DataUpdateHeadInitialImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$DataUpdateHeadInitialImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -288,23 +292,23 @@ abstract class DataUpdateHeadInitial<
     View extends CoreView> implements DataUpdate<Event, State, View> {
   factory DataUpdateHeadInitial(
           {required final Ref ref, required final int sequenceNumber}) =
-      _$DataUpdateHeadInitial<Event, State, View>;
+      _$DataUpdateHeadInitialImpl<Event, State, View>;
 
   Ref get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$DataUpdateHeadInitialCopyWith<Event, State, View,
-          _$DataUpdateHeadInitial<Event, State, View>>
+  _$$DataUpdateHeadInitialImplCopyWith<Event, State, View,
+          _$DataUpdateHeadInitialImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DataUpdateEntryCopyWith<Event extends CoreEvent,
+abstract class _$$DataUpdateEntryImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataUpdateEntryCopyWith(
-          _$DataUpdateEntry<Event, State, View> value,
-          $Res Function(_$DataUpdateEntry<Event, State, View>) then) =
-      __$$DataUpdateEntryCopyWithImpl<Event, State, View, $Res>;
+  factory _$$DataUpdateEntryImplCopyWith(
+          _$DataUpdateEntryImpl<Event, State, View> value,
+          $Res Function(_$DataUpdateEntryImpl<Event, State, View>) then) =
+      __$$DataUpdateEntryImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call(
       {Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})> Function()
@@ -313,13 +317,14 @@ abstract class _$$DataUpdateEntryCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$DataUpdateEntryCopyWithImpl<Event extends CoreEvent,
+class __$$DataUpdateEntryImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
-        _$DataUpdateEntry<Event, State, View>>
-    implements _$$DataUpdateEntryCopyWith<Event, State, View, $Res> {
-  __$$DataUpdateEntryCopyWithImpl(_$DataUpdateEntry<Event, State, View> _value,
-      $Res Function(_$DataUpdateEntry<Event, State, View>) _then)
+        _$DataUpdateEntryImpl<Event, State, View>>
+    implements _$$DataUpdateEntryImplCopyWith<Event, State, View, $Res> {
+  __$$DataUpdateEntryImplCopyWithImpl(
+      _$DataUpdateEntryImpl<Event, State, View> _value,
+      $Res Function(_$DataUpdateEntryImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -328,7 +333,7 @@ class __$$DataUpdateEntryCopyWithImpl<Event extends CoreEvent,
     Object? data = null,
     Object? pending = null,
   }) {
-    return _then(_$DataUpdateEntry<Event, State, View>(
+    return _then(_$DataUpdateEntryImpl<Event, State, View>(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -344,9 +349,9 @@ class __$$DataUpdateEntryCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
+class _$DataUpdateEntryImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataUpdateEntry<Event, State, View> {
-  _$DataUpdateEntry({required this.data, required final Set<Ref> pending})
+  _$DataUpdateEntryImpl({required this.data, required final Set<Ref> pending})
       : _pending = pending;
 
   @override
@@ -369,7 +374,7 @@ class _$DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataUpdateEntry<Event, State, View> &&
+            other is _$DataUpdateEntryImpl<Event, State, View> &&
             (identical(other.data, data) || other.data == data) &&
             const DeepCollectionEquality().equals(other._pending, _pending));
   }
@@ -381,10 +386,10 @@ class _$DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataUpdateEntryCopyWith<Event, State, View,
-          _$DataUpdateEntry<Event, State, View>>
-      get copyWith => __$$DataUpdateEntryCopyWithImpl<Event, State, View,
-          _$DataUpdateEntry<Event, State, View>>(this, _$identity);
+  _$$DataUpdateEntryImplCopyWith<Event, State, View,
+          _$DataUpdateEntryImpl<Event, State, View>>
+      get copyWith => __$$DataUpdateEntryImplCopyWithImpl<Event, State, View,
+          _$DataUpdateEntryImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -476,27 +481,29 @@ class _$DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
 abstract class DataUpdateEntry<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataUpdate<Event, State, View> {
   factory DataUpdateEntry(
-      {required final Map<Ref,
-                  ({DateTime createdAt, Set<Ref> edges, Event? event})>
-              Function()
-          data,
-      required final Set<Ref> pending}) = _$DataUpdateEntry<Event, State, View>;
+          {required final Map<Ref,
+                      ({DateTime createdAt, Set<Ref> edges, Event? event})>
+                  Function()
+              data,
+          required final Set<Ref> pending}) =
+      _$DataUpdateEntryImpl<Event, State, View>;
 
   Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})> Function()
       get data;
   Set<Ref> get pending;
   @JsonKey(ignore: true)
-  _$$DataUpdateEntryCopyWith<Event, State, View,
-          _$DataUpdateEntry<Event, State, View>>
+  _$$DataUpdateEntryImplCopyWith<Event, State, View,
+          _$DataUpdateEntryImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DataUpdateMainCopyWith<Event extends CoreEvent,
+abstract class _$$DataUpdateMainImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$DataUpdateMainCopyWith(_$DataUpdateMain<Event, State, View> value,
-          $Res Function(_$DataUpdateMain<Event, State, View>) then) =
-      __$$DataUpdateMainCopyWithImpl<Event, State, View, $Res>;
+  factory _$$DataUpdateMainImplCopyWith(
+          _$DataUpdateMainImpl<Event, State, View> value,
+          $Res Function(_$DataUpdateMainImpl<Event, State, View>) then) =
+      __$$DataUpdateMainImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref});
 
@@ -504,13 +511,14 @@ abstract class _$$DataUpdateMainCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$DataUpdateMainCopyWithImpl<Event extends CoreEvent,
+class __$$DataUpdateMainImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$DataUpdateCopyWithImpl<Event, State, View, $Res,
-        _$DataUpdateMain<Event, State, View>>
-    implements _$$DataUpdateMainCopyWith<Event, State, View, $Res> {
-  __$$DataUpdateMainCopyWithImpl(_$DataUpdateMain<Event, State, View> _value,
-      $Res Function(_$DataUpdateMain<Event, State, View>) _then)
+        _$DataUpdateMainImpl<Event, State, View>>
+    implements _$$DataUpdateMainImplCopyWith<Event, State, View, $Res> {
+  __$$DataUpdateMainImplCopyWithImpl(
+      _$DataUpdateMainImpl<Event, State, View> _value,
+      $Res Function(_$DataUpdateMainImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -518,7 +526,7 @@ class __$$DataUpdateMainCopyWithImpl<Event extends CoreEvent,
   $Res call({
     Object? ref = null,
   }) {
-    return _then(_$DataUpdateMain<Event, State, View>(
+    return _then(_$DataUpdateMainImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -537,9 +545,9 @@ class __$$DataUpdateMainCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
+class _$DataUpdateMainImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataUpdateMain<Event, State, View> {
-  _$DataUpdateMain({required this.ref});
+  _$DataUpdateMainImpl({required this.ref});
 
   @override
   final Ref ref;
@@ -553,7 +561,7 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataUpdateMain<Event, State, View> &&
+            other is _$DataUpdateMainImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref));
   }
 
@@ -563,10 +571,10 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataUpdateMainCopyWith<Event, State, View,
-          _$DataUpdateMain<Event, State, View>>
-      get copyWith => __$$DataUpdateMainCopyWithImpl<Event, State, View,
-          _$DataUpdateMain<Event, State, View>>(this, _$identity);
+  _$$DataUpdateMainImplCopyWith<Event, State, View,
+          _$DataUpdateMainImpl<Event, State, View>>
+      get copyWith => __$$DataUpdateMainImplCopyWithImpl<Event, State, View,
+          _$DataUpdateMainImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -658,11 +666,11 @@ class _$DataUpdateMain<Event extends CoreEvent, State extends CoreState,
 abstract class DataUpdateMain<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataUpdate<Event, State, View> {
   factory DataUpdateMain({required final Ref ref}) =
-      _$DataUpdateMain<Event, State, View>;
+      _$DataUpdateMainImpl<Event, State, View>;
 
   Ref get ref;
   @JsonKey(ignore: true)
-  _$$DataUpdateMainCopyWith<Event, State, View,
-          _$DataUpdateMain<Event, State, View>>
+  _$$DataUpdateMainImplCopyWith<Event, State, View,
+          _$DataUpdateMainImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

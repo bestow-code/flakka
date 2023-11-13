@@ -75,20 +75,20 @@ class _$DataNoteCopyWithImpl<NoteT, T, $Res, $Val extends DataNote<NoteT, T>>
 }
 
 /// @nodoc
-abstract class _$$DataNoteDataCopyWith<NoteT, T, $Res> {
-  factory _$$DataNoteDataCopyWith(_$DataNoteData<NoteT, T> value,
-          $Res Function(_$DataNoteData<NoteT, T>) then) =
-      __$$DataNoteDataCopyWithImpl<NoteT, T, $Res>;
+abstract class _$$DataNoteDataImplCopyWith<NoteT, T, $Res> {
+  factory _$$DataNoteDataImplCopyWith(_$DataNoteDataImpl<NoteT, T> value,
+          $Res Function(_$DataNoteDataImpl<NoteT, T>) then) =
+      __$$DataNoteDataImplCopyWithImpl<NoteT, T, $Res>;
   @useResult
   $Res call({T data});
 }
 
 /// @nodoc
-class __$$DataNoteDataCopyWithImpl<NoteT, T, $Res>
-    extends _$DataNoteCopyWithImpl<NoteT, T, $Res, _$DataNoteData<NoteT, T>>
-    implements _$$DataNoteDataCopyWith<NoteT, T, $Res> {
-  __$$DataNoteDataCopyWithImpl(_$DataNoteData<NoteT, T> _value,
-      $Res Function(_$DataNoteData<NoteT, T>) _then)
+class __$$DataNoteDataImplCopyWithImpl<NoteT, T, $Res>
+    extends _$DataNoteCopyWithImpl<NoteT, T, $Res, _$DataNoteDataImpl<NoteT, T>>
+    implements _$$DataNoteDataImplCopyWith<NoteT, T, $Res> {
+  __$$DataNoteDataImplCopyWithImpl(_$DataNoteDataImpl<NoteT, T> _value,
+      $Res Function(_$DataNoteDataImpl<NoteT, T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$DataNoteDataCopyWithImpl<NoteT, T, $Res>
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_$DataNoteData<NoteT, T>(
+    return _then(_$DataNoteDataImpl<NoteT, T>(
       freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -107,8 +107,8 @@ class __$$DataNoteDataCopyWithImpl<NoteT, T, $Res>
 
 /// @nodoc
 
-class _$DataNoteData<NoteT, T> implements DataNoteData<NoteT, T> {
-  _$DataNoteData(this.data);
+class _$DataNoteDataImpl<NoteT, T> implements DataNoteData<NoteT, T> {
+  _$DataNoteDataImpl(this.data);
 
   @override
   final T data;
@@ -122,7 +122,7 @@ class _$DataNoteData<NoteT, T> implements DataNoteData<NoteT, T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataNoteData<NoteT, T> &&
+            other is _$DataNoteDataImpl<NoteT, T> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -133,9 +133,9 @@ class _$DataNoteData<NoteT, T> implements DataNoteData<NoteT, T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataNoteDataCopyWith<NoteT, T, _$DataNoteData<NoteT, T>> get copyWith =>
-      __$$DataNoteDataCopyWithImpl<NoteT, T, _$DataNoteData<NoteT, T>>(
-          this, _$identity);
+  _$$DataNoteDataImplCopyWith<NoteT, T, _$DataNoteDataImpl<NoteT, T>>
+      get copyWith => __$$DataNoteDataImplCopyWithImpl<NoteT, T,
+          _$DataNoteDataImpl<NoteT, T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -201,29 +201,29 @@ class _$DataNoteData<NoteT, T> implements DataNoteData<NoteT, T> {
 }
 
 abstract class DataNoteData<NoteT, T> implements DataNote<NoteT, T> {
-  factory DataNoteData(final T data) = _$DataNoteData<NoteT, T>;
+  factory DataNoteData(final T data) = _$DataNoteDataImpl<NoteT, T>;
 
   T get data;
   @JsonKey(ignore: true)
-  _$$DataNoteDataCopyWith<NoteT, T, _$DataNoteData<NoteT, T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DataNoteDataImplCopyWith<NoteT, T, _$DataNoteDataImpl<NoteT, T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DataNoteNoteCopyWith<NoteT, T, $Res> {
-  factory _$$DataNoteNoteCopyWith(_$DataNoteNote<NoteT, T> value,
-          $Res Function(_$DataNoteNote<NoteT, T>) then) =
-      __$$DataNoteNoteCopyWithImpl<NoteT, T, $Res>;
+abstract class _$$DataNoteNoteImplCopyWith<NoteT, T, $Res> {
+  factory _$$DataNoteNoteImplCopyWith(_$DataNoteNoteImpl<NoteT, T> value,
+          $Res Function(_$DataNoteNoteImpl<NoteT, T>) then) =
+      __$$DataNoteNoteImplCopyWithImpl<NoteT, T, $Res>;
   @useResult
   $Res call({NoteT note, String noteId});
 }
 
 /// @nodoc
-class __$$DataNoteNoteCopyWithImpl<NoteT, T, $Res>
-    extends _$DataNoteCopyWithImpl<NoteT, T, $Res, _$DataNoteNote<NoteT, T>>
-    implements _$$DataNoteNoteCopyWith<NoteT, T, $Res> {
-  __$$DataNoteNoteCopyWithImpl(_$DataNoteNote<NoteT, T> _value,
-      $Res Function(_$DataNoteNote<NoteT, T>) _then)
+class __$$DataNoteNoteImplCopyWithImpl<NoteT, T, $Res>
+    extends _$DataNoteCopyWithImpl<NoteT, T, $Res, _$DataNoteNoteImpl<NoteT, T>>
+    implements _$$DataNoteNoteImplCopyWith<NoteT, T, $Res> {
+  __$$DataNoteNoteImplCopyWithImpl(_$DataNoteNoteImpl<NoteT, T> _value,
+      $Res Function(_$DataNoteNoteImpl<NoteT, T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -232,7 +232,7 @@ class __$$DataNoteNoteCopyWithImpl<NoteT, T, $Res>
     Object? note = freezed,
     Object? noteId = null,
   }) {
-    return _then(_$DataNoteNote<NoteT, T>(
+    return _then(_$DataNoteNoteImpl<NoteT, T>(
       freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -247,8 +247,8 @@ class __$$DataNoteNoteCopyWithImpl<NoteT, T, $Res>
 
 /// @nodoc
 
-class _$DataNoteNote<NoteT, T> implements DataNoteNote<NoteT, T> {
-  _$DataNoteNote(this.note, {required this.noteId});
+class _$DataNoteNoteImpl<NoteT, T> implements DataNoteNote<NoteT, T> {
+  _$DataNoteNoteImpl(this.note, {required this.noteId});
 
   @override
   final NoteT note;
@@ -264,7 +264,7 @@ class _$DataNoteNote<NoteT, T> implements DataNoteNote<NoteT, T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataNoteNote<NoteT, T> &&
+            other is _$DataNoteNoteImpl<NoteT, T> &&
             const DeepCollectionEquality().equals(other.note, note) &&
             (identical(other.noteId, noteId) || other.noteId == noteId));
   }
@@ -276,9 +276,9 @@ class _$DataNoteNote<NoteT, T> implements DataNoteNote<NoteT, T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataNoteNoteCopyWith<NoteT, T, _$DataNoteNote<NoteT, T>> get copyWith =>
-      __$$DataNoteNoteCopyWithImpl<NoteT, T, _$DataNoteNote<NoteT, T>>(
-          this, _$identity);
+  _$$DataNoteNoteImplCopyWith<NoteT, T, _$DataNoteNoteImpl<NoteT, T>>
+      get copyWith => __$$DataNoteNoteImplCopyWithImpl<NoteT, T,
+          _$DataNoteNoteImpl<NoteT, T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -345,11 +345,11 @@ class _$DataNoteNote<NoteT, T> implements DataNoteNote<NoteT, T> {
 
 abstract class DataNoteNote<NoteT, T> implements DataNote<NoteT, T> {
   factory DataNoteNote(final NoteT note, {required final String noteId}) =
-      _$DataNoteNote<NoteT, T>;
+      _$DataNoteNoteImpl<NoteT, T>;
 
   NoteT get note;
   String get noteId;
   @JsonKey(ignore: true)
-  _$$DataNoteNoteCopyWith<NoteT, T, _$DataNoteNote<NoteT, T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DataNoteNoteImplCopyWith<NoteT, T, _$DataNoteNoteImpl<NoteT, T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

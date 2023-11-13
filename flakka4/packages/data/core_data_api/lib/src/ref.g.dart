@@ -6,20 +6,21 @@ part of 'ref.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Ref _$$_RefFromJson(Map<String, dynamic> json) => _$_Ref(
+_$RefImpl _$$RefImplFromJson(Map<String, dynamic> json) => _$RefImpl(
       json['value'] as String,
     );
 
-Map<String, dynamic> _$$_RefToJson(_$_Ref instance) => <String, dynamic>{
+Map<String, dynamic> _$$RefImplToJson(_$RefImpl instance) => <String, dynamic>{
       'value': instance.value,
     };
 
-_$_HeadRef _$$_HeadRefFromJson(Map<String, dynamic> json) => _$_HeadRef(
+_$HeadRefImpl _$$HeadRefImplFromJson(Map<String, dynamic> json) =>
+    _$HeadRefImpl(
       Ref.fromJson(json['ref'] as Map<String, dynamic>),
       json['sequenceNumber'] as int,
     );
 
-Map<String, dynamic> _$$_HeadRefToJson(_$_HeadRef instance) =>
+Map<String, dynamic> _$$HeadRefImplToJson(_$HeadRefImpl instance) =>
     <String, dynamic>{
       'ref': instance.ref.toJson(),
       'sequenceNumber': instance.sequenceNumber,

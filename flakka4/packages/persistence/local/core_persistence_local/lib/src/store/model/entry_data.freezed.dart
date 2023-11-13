@@ -73,21 +73,22 @@ class _$EntryDataCopyWithImpl<$Res, $Val extends EntryData>
 }
 
 /// @nodoc
-abstract class _$$_EntryDataCopyWith<$Res> implements $EntryDataCopyWith<$Res> {
-  factory _$$_EntryDataCopyWith(
-          _$_EntryData value, $Res Function(_$_EntryData) then) =
-      __$$_EntryDataCopyWithImpl<$Res>;
+abstract class _$$EntryDataImplCopyWith<$Res>
+    implements $EntryDataCopyWith<$Res> {
+  factory _$$EntryDataImplCopyWith(
+          _$EntryDataImpl value, $Res Function(_$EntryDataImpl) then) =
+      __$$EntryDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, List<String> parent, int createdAt});
 }
 
 /// @nodoc
-class __$$_EntryDataCopyWithImpl<$Res>
-    extends _$EntryDataCopyWithImpl<$Res, _$_EntryData>
-    implements _$$_EntryDataCopyWith<$Res> {
-  __$$_EntryDataCopyWithImpl(
-      _$_EntryData _value, $Res Function(_$_EntryData) _then)
+class __$$EntryDataImplCopyWithImpl<$Res>
+    extends _$EntryDataCopyWithImpl<$Res, _$EntryDataImpl>
+    implements _$$EntryDataImplCopyWith<$Res> {
+  __$$EntryDataImplCopyWithImpl(
+      _$EntryDataImpl _value, $Res Function(_$EntryDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$_EntryDataCopyWithImpl<$Res>
     Object? parent = null,
     Object? createdAt = null,
   }) {
-    return _then(_$_EntryData(
+    return _then(_$EntryDataImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -116,15 +117,15 @@ class __$$_EntryDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EntryData implements _EntryData {
-  _$_EntryData(
+class _$EntryDataImpl implements _EntryData {
+  _$EntryDataImpl(
       {required this.ref,
       required final List<String> parent,
       required this.createdAt})
       : _parent = parent;
 
-  factory _$_EntryData.fromJson(Map<String, dynamic> json) =>
-      _$$_EntryDataFromJson(json);
+  factory _$EntryDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EntryDataImplFromJson(json);
 
   @override
   final String ref;
@@ -148,7 +149,7 @@ class _$_EntryData implements _EntryData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EntryData &&
+            other is _$EntryDataImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             (identical(other.createdAt, createdAt) ||
@@ -163,12 +164,12 @@ class _$_EntryData implements _EntryData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EntryDataCopyWith<_$_EntryData> get copyWith =>
-      __$$_EntryDataCopyWithImpl<_$_EntryData>(this, _$identity);
+  _$$EntryDataImplCopyWith<_$EntryDataImpl> get copyWith =>
+      __$$EntryDataImplCopyWithImpl<_$EntryDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EntryDataToJson(
+    return _$$EntryDataImplToJson(
       this,
     );
   }
@@ -178,10 +179,10 @@ abstract class _EntryData implements EntryData {
   factory _EntryData(
       {required final String ref,
       required final List<String> parent,
-      required final int createdAt}) = _$_EntryData;
+      required final int createdAt}) = _$EntryDataImpl;
 
   factory _EntryData.fromJson(Map<String, dynamic> json) =
-      _$_EntryData.fromJson;
+      _$EntryDataImpl.fromJson;
 
   @override
   String get ref;
@@ -191,6 +192,6 @@ abstract class _EntryData implements EntryData {
   int get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_EntryDataCopyWith<_$_EntryData> get copyWith =>
+  _$$EntryDataImplCopyWith<_$EntryDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

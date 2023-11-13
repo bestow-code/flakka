@@ -76,21 +76,24 @@ class _$RequestEffectCopyWithImpl<Event extends CoreEvent, $Res,
 }
 
 /// @nodoc
-abstract class _$$RequestEffectPersistCopyWith<Event extends CoreEvent, $Res> {
-  factory _$$RequestEffectPersistCopyWith(_$RequestEffectPersist<Event> value,
-          $Res Function(_$RequestEffectPersist<Event>) then) =
-      __$$RequestEffectPersistCopyWithImpl<Event, $Res>;
+abstract class _$$RequestEffectPersistImplCopyWith<Event extends CoreEvent,
+    $Res> {
+  factory _$$RequestEffectPersistImplCopyWith(
+          _$RequestEffectPersistImpl<Event> value,
+          $Res Function(_$RequestEffectPersistImpl<Event>) then) =
+      __$$RequestEffectPersistImplCopyWithImpl<Event, $Res>;
   @useResult
   $Res call({Event event});
 }
 
 /// @nodoc
-class __$$RequestEffectPersistCopyWithImpl<Event extends CoreEvent, $Res>
+class __$$RequestEffectPersistImplCopyWithImpl<Event extends CoreEvent, $Res>
     extends _$RequestEffectCopyWithImpl<Event, $Res,
-        _$RequestEffectPersist<Event>>
-    implements _$$RequestEffectPersistCopyWith<Event, $Res> {
-  __$$RequestEffectPersistCopyWithImpl(_$RequestEffectPersist<Event> _value,
-      $Res Function(_$RequestEffectPersist<Event>) _then)
+        _$RequestEffectPersistImpl<Event>>
+    implements _$$RequestEffectPersistImplCopyWith<Event, $Res> {
+  __$$RequestEffectPersistImplCopyWithImpl(
+      _$RequestEffectPersistImpl<Event> _value,
+      $Res Function(_$RequestEffectPersistImpl<Event>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +101,7 @@ class __$$RequestEffectPersistCopyWithImpl<Event extends CoreEvent, $Res>
   $Res call({
     Object? event = null,
   }) {
-    return _then(_$RequestEffectPersist<Event>(
+    return _then(_$RequestEffectPersistImpl<Event>(
       event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -109,9 +112,9 @@ class __$$RequestEffectPersistCopyWithImpl<Event extends CoreEvent, $Res>
 
 /// @nodoc
 
-class _$RequestEffectPersist<Event extends CoreEvent>
+class _$RequestEffectPersistImpl<Event extends CoreEvent>
     implements RequestEffectPersist<Event> {
-  _$RequestEffectPersist({required this.event});
+  _$RequestEffectPersistImpl({required this.event});
 
   @override
   final Event event;
@@ -125,7 +128,7 @@ class _$RequestEffectPersist<Event extends CoreEvent>
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RequestEffectPersist<Event> &&
+            other is _$RequestEffectPersistImpl<Event> &&
             const DeepCollectionEquality().equals(other.event, event));
   }
 
@@ -136,9 +139,9 @@ class _$RequestEffectPersist<Event extends CoreEvent>
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RequestEffectPersistCopyWith<Event, _$RequestEffectPersist<Event>>
-      get copyWith => __$$RequestEffectPersistCopyWithImpl<Event,
-          _$RequestEffectPersist<Event>>(this, _$identity);
+  _$$RequestEffectPersistImplCopyWith<Event, _$RequestEffectPersistImpl<Event>>
+      get copyWith => __$$RequestEffectPersistImplCopyWithImpl<Event,
+          _$RequestEffectPersistImpl<Event>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -206,35 +209,36 @@ class _$RequestEffectPersist<Event extends CoreEvent>
 abstract class RequestEffectPersist<Event extends CoreEvent>
     implements RequestEffect<Event> {
   factory RequestEffectPersist({required final Event event}) =
-      _$RequestEffectPersist<Event>;
+      _$RequestEffectPersistImpl<Event>;
 
   Event get event;
   @JsonKey(ignore: true)
-  _$$RequestEffectPersistCopyWith<Event, _$RequestEffectPersist<Event>>
+  _$$RequestEffectPersistImplCopyWith<Event, _$RequestEffectPersistImpl<Event>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RequestEffectNoneCopyWith<Event extends CoreEvent, $Res> {
-  factory _$$RequestEffectNoneCopyWith(_$RequestEffectNone<Event> value,
-          $Res Function(_$RequestEffectNone<Event>) then) =
-      __$$RequestEffectNoneCopyWithImpl<Event, $Res>;
+abstract class _$$RequestEffectNoneImplCopyWith<Event extends CoreEvent, $Res> {
+  factory _$$RequestEffectNoneImplCopyWith(_$RequestEffectNoneImpl<Event> value,
+          $Res Function(_$RequestEffectNoneImpl<Event>) then) =
+      __$$RequestEffectNoneImplCopyWithImpl<Event, $Res>;
 }
 
 /// @nodoc
-class __$$RequestEffectNoneCopyWithImpl<Event extends CoreEvent, $Res>
-    extends _$RequestEffectCopyWithImpl<Event, $Res, _$RequestEffectNone<Event>>
-    implements _$$RequestEffectNoneCopyWith<Event, $Res> {
-  __$$RequestEffectNoneCopyWithImpl(_$RequestEffectNone<Event> _value,
-      $Res Function(_$RequestEffectNone<Event>) _then)
+class __$$RequestEffectNoneImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$RequestEffectCopyWithImpl<Event, $Res,
+        _$RequestEffectNoneImpl<Event>>
+    implements _$$RequestEffectNoneImplCopyWith<Event, $Res> {
+  __$$RequestEffectNoneImplCopyWithImpl(_$RequestEffectNoneImpl<Event> _value,
+      $Res Function(_$RequestEffectNoneImpl<Event>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RequestEffectNone<Event extends CoreEvent>
+class _$RequestEffectNoneImpl<Event extends CoreEvent>
     implements RequestEffectNone<Event> {
-  _$RequestEffectNone();
+  _$RequestEffectNoneImpl();
 
   @override
   String toString() {
@@ -245,7 +249,7 @@ class _$RequestEffectNone<Event extends CoreEvent>
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RequestEffectNone<Event>);
+            other is _$RequestEffectNoneImpl<Event>);
   }
 
   @override
@@ -316,5 +320,5 @@ class _$RequestEffectNone<Event extends CoreEvent>
 
 abstract class RequestEffectNone<Event extends CoreEvent>
     implements RequestEffect<Event> {
-  factory RequestEffectNone() = _$RequestEffectNone<Event>;
+  factory RequestEffectNone() = _$RequestEffectNoneImpl<Event>;
 }

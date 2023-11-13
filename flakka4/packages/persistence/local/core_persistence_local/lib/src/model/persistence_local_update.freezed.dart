@@ -83,11 +83,11 @@ class _$PersistenceLocalSnapshotCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalSnapshotHeadCopyWith<$Res> {
-  factory _$$PersistenceLocalSnapshotHeadCopyWith(
-          _$PersistenceLocalSnapshotHead value,
-          $Res Function(_$PersistenceLocalSnapshotHead) then) =
-      __$$PersistenceLocalSnapshotHeadCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalSnapshotHeadImplCopyWith<$Res> {
+  factory _$$PersistenceLocalSnapshotHeadImplCopyWith(
+          _$PersistenceLocalSnapshotHeadImpl value,
+          $Res Function(_$PersistenceLocalSnapshotHeadImpl) then) =
+      __$$PersistenceLocalSnapshotHeadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HeadData snapshot});
 
@@ -95,13 +95,13 @@ abstract class _$$PersistenceLocalSnapshotHeadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalSnapshotHeadCopyWithImpl<$Res>
+class __$$PersistenceLocalSnapshotHeadImplCopyWithImpl<$Res>
     extends _$PersistenceLocalSnapshotCopyWithImpl<$Res,
-        _$PersistenceLocalSnapshotHead>
-    implements _$$PersistenceLocalSnapshotHeadCopyWith<$Res> {
-  __$$PersistenceLocalSnapshotHeadCopyWithImpl(
-      _$PersistenceLocalSnapshotHead _value,
-      $Res Function(_$PersistenceLocalSnapshotHead) _then)
+        _$PersistenceLocalSnapshotHeadImpl>
+    implements _$$PersistenceLocalSnapshotHeadImplCopyWith<$Res> {
+  __$$PersistenceLocalSnapshotHeadImplCopyWithImpl(
+      _$PersistenceLocalSnapshotHeadImpl _value,
+      $Res Function(_$PersistenceLocalSnapshotHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$PersistenceLocalSnapshotHeadCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceLocalSnapshotHead(
+    return _then(_$PersistenceLocalSnapshotHeadImpl(
       snapshot: null == snapshot
           ? _value.snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
@@ -128,8 +128,9 @@ class __$$PersistenceLocalSnapshotHeadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalSnapshotHead implements PersistenceLocalSnapshotHead {
-  _$PersistenceLocalSnapshotHead({required this.snapshot});
+class _$PersistenceLocalSnapshotHeadImpl
+    implements PersistenceLocalSnapshotHead {
+  _$PersistenceLocalSnapshotHeadImpl({required this.snapshot});
 
   @override
   final HeadData snapshot;
@@ -143,7 +144,7 @@ class _$PersistenceLocalSnapshotHead implements PersistenceLocalSnapshotHead {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalSnapshotHead &&
+            other is _$PersistenceLocalSnapshotHeadImpl &&
             (identical(other.snapshot, snapshot) ||
                 other.snapshot == snapshot));
   }
@@ -154,9 +155,10 @@ class _$PersistenceLocalSnapshotHead implements PersistenceLocalSnapshotHead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalSnapshotHeadCopyWith<_$PersistenceLocalSnapshotHead>
-      get copyWith => __$$PersistenceLocalSnapshotHeadCopyWithImpl<
-          _$PersistenceLocalSnapshotHead>(this, _$identity);
+  _$$PersistenceLocalSnapshotHeadImplCopyWith<
+          _$PersistenceLocalSnapshotHeadImpl>
+      get copyWith => __$$PersistenceLocalSnapshotHeadImplCopyWithImpl<
+          _$PersistenceLocalSnapshotHeadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -230,33 +232,34 @@ class _$PersistenceLocalSnapshotHead implements PersistenceLocalSnapshotHead {
 abstract class PersistenceLocalSnapshotHead
     implements PersistenceLocalSnapshot {
   factory PersistenceLocalSnapshotHead({required final HeadData snapshot}) =
-      _$PersistenceLocalSnapshotHead;
+      _$PersistenceLocalSnapshotHeadImpl;
 
   @override
   HeadData get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalSnapshotHeadCopyWith<_$PersistenceLocalSnapshotHead>
+  _$$PersistenceLocalSnapshotHeadImplCopyWith<
+          _$PersistenceLocalSnapshotHeadImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalSnapshotEventCopyWith<$Res> {
-  factory _$$PersistenceLocalSnapshotEventCopyWith(
-          _$PersistenceLocalSnapshotEvent value,
-          $Res Function(_$PersistenceLocalSnapshotEvent) then) =
-      __$$PersistenceLocalSnapshotEventCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalSnapshotEventImplCopyWith<$Res> {
+  factory _$$PersistenceLocalSnapshotEventImplCopyWith(
+          _$PersistenceLocalSnapshotEventImpl value,
+          $Res Function(_$PersistenceLocalSnapshotEventImpl) then) =
+      __$$PersistenceLocalSnapshotEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, EventData> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceLocalSnapshotEventCopyWithImpl<$Res>
+class __$$PersistenceLocalSnapshotEventImplCopyWithImpl<$Res>
     extends _$PersistenceLocalSnapshotCopyWithImpl<$Res,
-        _$PersistenceLocalSnapshotEvent>
-    implements _$$PersistenceLocalSnapshotEventCopyWith<$Res> {
-  __$$PersistenceLocalSnapshotEventCopyWithImpl(
-      _$PersistenceLocalSnapshotEvent _value,
-      $Res Function(_$PersistenceLocalSnapshotEvent) _then)
+        _$PersistenceLocalSnapshotEventImpl>
+    implements _$$PersistenceLocalSnapshotEventImplCopyWith<$Res> {
+  __$$PersistenceLocalSnapshotEventImplCopyWithImpl(
+      _$PersistenceLocalSnapshotEventImpl _value,
+      $Res Function(_$PersistenceLocalSnapshotEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -264,7 +267,7 @@ class __$$PersistenceLocalSnapshotEventCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceLocalSnapshotEvent(
+    return _then(_$PersistenceLocalSnapshotEventImpl(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
@@ -275,8 +278,9 @@ class __$$PersistenceLocalSnapshotEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalSnapshotEvent implements PersistenceLocalSnapshotEvent {
-  _$PersistenceLocalSnapshotEvent(
+class _$PersistenceLocalSnapshotEventImpl
+    implements PersistenceLocalSnapshotEvent {
+  _$PersistenceLocalSnapshotEventImpl(
       {required final Map<String, EventData> snapshot})
       : _snapshot = snapshot;
 
@@ -297,7 +301,7 @@ class _$PersistenceLocalSnapshotEvent implements PersistenceLocalSnapshotEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalSnapshotEvent &&
+            other is _$PersistenceLocalSnapshotEventImpl &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -308,9 +312,10 @@ class _$PersistenceLocalSnapshotEvent implements PersistenceLocalSnapshotEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalSnapshotEventCopyWith<_$PersistenceLocalSnapshotEvent>
-      get copyWith => __$$PersistenceLocalSnapshotEventCopyWithImpl<
-          _$PersistenceLocalSnapshotEvent>(this, _$identity);
+  _$$PersistenceLocalSnapshotEventImplCopyWith<
+          _$PersistenceLocalSnapshotEventImpl>
+      get copyWith => __$$PersistenceLocalSnapshotEventImplCopyWithImpl<
+          _$PersistenceLocalSnapshotEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -385,33 +390,34 @@ abstract class PersistenceLocalSnapshotEvent
     implements PersistenceLocalSnapshot {
   factory PersistenceLocalSnapshotEvent(
           {required final Map<String, EventData> snapshot}) =
-      _$PersistenceLocalSnapshotEvent;
+      _$PersistenceLocalSnapshotEventImpl;
 
   @override
   Map<String, EventData> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalSnapshotEventCopyWith<_$PersistenceLocalSnapshotEvent>
+  _$$PersistenceLocalSnapshotEventImplCopyWith<
+          _$PersistenceLocalSnapshotEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalSnapshotEntryCopyWith<$Res> {
-  factory _$$PersistenceLocalSnapshotEntryCopyWith(
-          _$PersistenceLocalSnapshotEntry value,
-          $Res Function(_$PersistenceLocalSnapshotEntry) then) =
-      __$$PersistenceLocalSnapshotEntryCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalSnapshotEntryImplCopyWith<$Res> {
+  factory _$$PersistenceLocalSnapshotEntryImplCopyWith(
+          _$PersistenceLocalSnapshotEntryImpl value,
+          $Res Function(_$PersistenceLocalSnapshotEntryImpl) then) =
+      __$$PersistenceLocalSnapshotEntryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, EntryData> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceLocalSnapshotEntryCopyWithImpl<$Res>
+class __$$PersistenceLocalSnapshotEntryImplCopyWithImpl<$Res>
     extends _$PersistenceLocalSnapshotCopyWithImpl<$Res,
-        _$PersistenceLocalSnapshotEntry>
-    implements _$$PersistenceLocalSnapshotEntryCopyWith<$Res> {
-  __$$PersistenceLocalSnapshotEntryCopyWithImpl(
-      _$PersistenceLocalSnapshotEntry _value,
-      $Res Function(_$PersistenceLocalSnapshotEntry) _then)
+        _$PersistenceLocalSnapshotEntryImpl>
+    implements _$$PersistenceLocalSnapshotEntryImplCopyWith<$Res> {
+  __$$PersistenceLocalSnapshotEntryImplCopyWithImpl(
+      _$PersistenceLocalSnapshotEntryImpl _value,
+      $Res Function(_$PersistenceLocalSnapshotEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -419,7 +425,7 @@ class __$$PersistenceLocalSnapshotEntryCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceLocalSnapshotEntry(
+    return _then(_$PersistenceLocalSnapshotEntryImpl(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
@@ -430,8 +436,9 @@ class __$$PersistenceLocalSnapshotEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalSnapshotEntry implements PersistenceLocalSnapshotEntry {
-  _$PersistenceLocalSnapshotEntry(
+class _$PersistenceLocalSnapshotEntryImpl
+    implements PersistenceLocalSnapshotEntry {
+  _$PersistenceLocalSnapshotEntryImpl(
       {required final Map<String, EntryData> snapshot})
       : _snapshot = snapshot;
 
@@ -452,7 +459,7 @@ class _$PersistenceLocalSnapshotEntry implements PersistenceLocalSnapshotEntry {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalSnapshotEntry &&
+            other is _$PersistenceLocalSnapshotEntryImpl &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -463,9 +470,10 @@ class _$PersistenceLocalSnapshotEntry implements PersistenceLocalSnapshotEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalSnapshotEntryCopyWith<_$PersistenceLocalSnapshotEntry>
-      get copyWith => __$$PersistenceLocalSnapshotEntryCopyWithImpl<
-          _$PersistenceLocalSnapshotEntry>(this, _$identity);
+  _$$PersistenceLocalSnapshotEntryImplCopyWith<
+          _$PersistenceLocalSnapshotEntryImpl>
+      get copyWith => __$$PersistenceLocalSnapshotEntryImplCopyWithImpl<
+          _$PersistenceLocalSnapshotEntryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -540,11 +548,12 @@ abstract class PersistenceLocalSnapshotEntry
     implements PersistenceLocalSnapshot {
   factory PersistenceLocalSnapshotEntry(
           {required final Map<String, EntryData> snapshot}) =
-      _$PersistenceLocalSnapshotEntry;
+      _$PersistenceLocalSnapshotEntryImpl;
 
   @override
   Map<String, EntryData> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalSnapshotEntryCopyWith<_$PersistenceLocalSnapshotEntry>
+  _$$PersistenceLocalSnapshotEntryImplCopyWith<
+          _$PersistenceLocalSnapshotEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

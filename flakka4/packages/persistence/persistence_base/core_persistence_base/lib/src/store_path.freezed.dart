@@ -56,21 +56,22 @@ class _$StorePathCopyWithImpl<$Res, $Val extends StorePath>
 }
 
 /// @nodoc
-abstract class _$$_StorePathCopyWith<$Res> implements $StorePathCopyWith<$Res> {
-  factory _$$_StorePathCopyWith(
-          _$_StorePath value, $Res Function(_$_StorePath) then) =
-      __$$_StorePathCopyWithImpl<$Res>;
+abstract class _$$StorePathImplCopyWith<$Res>
+    implements $StorePathCopyWith<$Res> {
+  factory _$$StorePathImplCopyWith(
+          _$StorePathImpl value, $Res Function(_$StorePathImpl) then) =
+      __$$StorePathImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_StorePathCopyWithImpl<$Res>
-    extends _$StorePathCopyWithImpl<$Res, _$_StorePath>
-    implements _$$_StorePathCopyWith<$Res> {
-  __$$_StorePathCopyWithImpl(
-      _$_StorePath _value, $Res Function(_$_StorePath) _then)
+class __$$StorePathImplCopyWithImpl<$Res>
+    extends _$StorePathCopyWithImpl<$Res, _$StorePathImpl>
+    implements _$$StorePathImplCopyWith<$Res> {
+  __$$StorePathImplCopyWithImpl(
+      _$StorePathImpl _value, $Res Function(_$StorePathImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_StorePathCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_StorePath(
+    return _then(_$StorePathImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_StorePathCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StorePath implements _StorePath {
-  _$_StorePath(this.value);
+class _$StorePathImpl implements _StorePath {
+  _$StorePathImpl(this.value);
 
   @override
   final String value;
@@ -104,7 +105,7 @@ class _$_StorePath implements _StorePath {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StorePath &&
+            other is _$StorePathImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -114,17 +115,17 @@ class _$_StorePath implements _StorePath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StorePathCopyWith<_$_StorePath> get copyWith =>
-      __$$_StorePathCopyWithImpl<_$_StorePath>(this, _$identity);
+  _$$StorePathImplCopyWith<_$StorePathImpl> get copyWith =>
+      __$$StorePathImplCopyWithImpl<_$StorePathImpl>(this, _$identity);
 }
 
 abstract class _StorePath implements StorePath {
-  factory _StorePath(final String value) = _$_StorePath;
+  factory _StorePath(final String value) = _$StorePathImpl;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_StorePathCopyWith<_$_StorePath> get copyWith =>
+  _$$StorePathImplCopyWith<_$StorePathImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -57,22 +57,22 @@ class _$PersistenceIdCopyWithImpl<$Res, $Val extends PersistenceId>
 }
 
 /// @nodoc
-abstract class _$$_PersistenceIdCopyWith<$Res>
+abstract class _$$PersistenceIdImplCopyWith<$Res>
     implements $PersistenceIdCopyWith<$Res> {
-  factory _$$_PersistenceIdCopyWith(
-          _$_PersistenceId value, $Res Function(_$_PersistenceId) then) =
-      __$$_PersistenceIdCopyWithImpl<$Res>;
+  factory _$$PersistenceIdImplCopyWith(
+          _$PersistenceIdImpl value, $Res Function(_$PersistenceIdImpl) then) =
+      __$$PersistenceIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_PersistenceIdCopyWithImpl<$Res>
-    extends _$PersistenceIdCopyWithImpl<$Res, _$_PersistenceId>
-    implements _$$_PersistenceIdCopyWith<$Res> {
-  __$$_PersistenceIdCopyWithImpl(
-      _$_PersistenceId _value, $Res Function(_$_PersistenceId) _then)
+class __$$PersistenceIdImplCopyWithImpl<$Res>
+    extends _$PersistenceIdCopyWithImpl<$Res, _$PersistenceIdImpl>
+    implements _$$PersistenceIdImplCopyWith<$Res> {
+  __$$PersistenceIdImplCopyWithImpl(
+      _$PersistenceIdImpl _value, $Res Function(_$PersistenceIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_PersistenceIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_PersistenceId(
+    return _then(_$PersistenceIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_PersistenceIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PersistenceId implements _PersistenceId {
-  _$_PersistenceId(this.value);
+class _$PersistenceIdImpl implements _PersistenceId {
+  _$PersistenceIdImpl(this.value);
 
   @override
   final String value;
@@ -106,7 +106,7 @@ class _$_PersistenceId implements _PersistenceId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PersistenceId &&
+            other is _$PersistenceIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -116,18 +116,18 @@ class _$_PersistenceId implements _PersistenceId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PersistenceIdCopyWith<_$_PersistenceId> get copyWith =>
-      __$$_PersistenceIdCopyWithImpl<_$_PersistenceId>(this, _$identity);
+  _$$PersistenceIdImplCopyWith<_$PersistenceIdImpl> get copyWith =>
+      __$$PersistenceIdImplCopyWithImpl<_$PersistenceIdImpl>(this, _$identity);
 }
 
 abstract class _PersistenceId implements PersistenceId {
-  factory _PersistenceId(final String value) = _$_PersistenceId;
+  factory _PersistenceId(final String value) = _$PersistenceIdImpl;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_PersistenceIdCopyWith<_$_PersistenceId> get copyWith =>
+  _$$PersistenceIdImplCopyWith<_$PersistenceIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -189,10 +189,11 @@ class _$SessionIdCopyWithImpl<$Res, $Val extends SessionId>
 }
 
 /// @nodoc
-abstract class _$$_SessionIdCopyWith<$Res> implements $SessionIdCopyWith<$Res> {
-  factory _$$_SessionIdCopyWith(
-          _$_SessionId value, $Res Function(_$_SessionId) then) =
-      __$$_SessionIdCopyWithImpl<$Res>;
+abstract class _$$SessionIdImplCopyWith<$Res>
+    implements $SessionIdCopyWith<$Res> {
+  factory _$$SessionIdImplCopyWith(
+          _$SessionIdImpl value, $Res Function(_$SessionIdImpl) then) =
+      __$$SessionIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value, PersistenceId persistenceId});
@@ -202,11 +203,11 @@ abstract class _$$_SessionIdCopyWith<$Res> implements $SessionIdCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SessionIdCopyWithImpl<$Res>
-    extends _$SessionIdCopyWithImpl<$Res, _$_SessionId>
-    implements _$$_SessionIdCopyWith<$Res> {
-  __$$_SessionIdCopyWithImpl(
-      _$_SessionId _value, $Res Function(_$_SessionId) _then)
+class __$$SessionIdImplCopyWithImpl<$Res>
+    extends _$SessionIdCopyWithImpl<$Res, _$SessionIdImpl>
+    implements _$$SessionIdImplCopyWith<$Res> {
+  __$$SessionIdImplCopyWithImpl(
+      _$SessionIdImpl _value, $Res Function(_$SessionIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -215,7 +216,7 @@ class __$$_SessionIdCopyWithImpl<$Res>
     Object? value = null,
     Object? persistenceId = null,
   }) {
-    return _then(_$_SessionId(
+    return _then(_$SessionIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -230,8 +231,8 @@ class __$$_SessionIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SessionId implements _SessionId {
-  _$_SessionId(this.value, {required this.persistenceId});
+class _$SessionIdImpl implements _SessionId {
+  _$SessionIdImpl(this.value, {required this.persistenceId});
 
   @override
   final String value;
@@ -247,7 +248,7 @@ class _$_SessionId implements _SessionId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SessionId &&
+            other is _$SessionIdImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.persistenceId, persistenceId) ||
                 other.persistenceId == persistenceId));
@@ -259,13 +260,13 @@ class _$_SessionId implements _SessionId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SessionIdCopyWith<_$_SessionId> get copyWith =>
-      __$$_SessionIdCopyWithImpl<_$_SessionId>(this, _$identity);
+  _$$SessionIdImplCopyWith<_$SessionIdImpl> get copyWith =>
+      __$$SessionIdImplCopyWithImpl<_$SessionIdImpl>(this, _$identity);
 }
 
 abstract class _SessionId implements SessionId {
   factory _SessionId(final String value,
-      {required final PersistenceId persistenceId}) = _$_SessionId;
+      {required final PersistenceId persistenceId}) = _$SessionIdImpl;
 
   @override
   String get value;
@@ -273,6 +274,6 @@ abstract class _SessionId implements SessionId {
   PersistenceId get persistenceId;
   @override
   @JsonKey(ignore: true)
-  _$$_SessionIdCopyWith<_$_SessionId> get copyWith =>
+  _$$SessionIdImplCopyWith<_$SessionIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

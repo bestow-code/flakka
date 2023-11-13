@@ -66,20 +66,21 @@ class _$HeadRefCopyWithImpl<$Res, $Val extends HeadRef>
 }
 
 /// @nodoc
-abstract class _$$_HeadRefCopyWith<$Res> implements $HeadRefCopyWith<$Res> {
-  factory _$$_HeadRefCopyWith(
-          _$_HeadRef value, $Res Function(_$_HeadRef) then) =
-      __$$_HeadRefCopyWithImpl<$Res>;
+abstract class _$$HeadRefImplCopyWith<$Res> implements $HeadRefCopyWith<$Res> {
+  factory _$$HeadRefImplCopyWith(
+          _$HeadRefImpl value, $Res Function(_$HeadRefImpl) then) =
+      __$$HeadRefImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$_HeadRefCopyWithImpl<$Res>
-    extends _$HeadRefCopyWithImpl<$Res, _$_HeadRef>
-    implements _$$_HeadRefCopyWith<$Res> {
-  __$$_HeadRefCopyWithImpl(_$_HeadRef _value, $Res Function(_$_HeadRef) _then)
+class __$$HeadRefImplCopyWithImpl<$Res>
+    extends _$HeadRefCopyWithImpl<$Res, _$HeadRefImpl>
+    implements _$$HeadRefImplCopyWith<$Res> {
+  __$$HeadRefImplCopyWithImpl(
+      _$HeadRefImpl _value, $Res Function(_$HeadRefImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +89,7 @@ class __$$_HeadRefCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$_HeadRef(
+    return _then(_$HeadRefImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -103,11 +104,11 @@ class __$$_HeadRefCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_HeadRef extends _HeadRef {
-  _$_HeadRef({required this.ref, required this.sequenceNumber}) : super._();
+class _$HeadRefImpl extends _HeadRef {
+  _$HeadRefImpl({required this.ref, required this.sequenceNumber}) : super._();
 
-  factory _$_HeadRef.fromJson(Map<String, dynamic> json) =>
-      _$$_HeadRefFromJson(json);
+  factory _$HeadRefImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HeadRefImplFromJson(json);
 
   @override
   final String ref;
@@ -123,7 +124,7 @@ class _$_HeadRef extends _HeadRef {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HeadRef &&
+            other is _$HeadRefImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -136,12 +137,12 @@ class _$_HeadRef extends _HeadRef {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HeadRefCopyWith<_$_HeadRef> get copyWith =>
-      __$$_HeadRefCopyWithImpl<_$_HeadRef>(this, _$identity);
+  _$$HeadRefImplCopyWith<_$HeadRefImpl> get copyWith =>
+      __$$HeadRefImplCopyWithImpl<_$HeadRefImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HeadRefToJson(
+    return _$$HeadRefImplToJson(
       this,
     );
   }
@@ -150,10 +151,10 @@ class _$_HeadRef extends _HeadRef {
 abstract class _HeadRef extends HeadRef {
   factory _HeadRef(
       {required final String ref,
-      required final int sequenceNumber}) = _$_HeadRef;
+      required final int sequenceNumber}) = _$HeadRefImpl;
   _HeadRef._() : super._();
 
-  factory _HeadRef.fromJson(Map<String, dynamic> json) = _$_HeadRef.fromJson;
+  factory _HeadRef.fromJson(Map<String, dynamic> json) = _$HeadRefImpl.fromJson;
 
   @override
   String get ref;
@@ -161,6 +162,6 @@ abstract class _HeadRef extends HeadRef {
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_HeadRefCopyWith<_$_HeadRef> get copyWith =>
+  _$$HeadRefImplCopyWith<_$HeadRefImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

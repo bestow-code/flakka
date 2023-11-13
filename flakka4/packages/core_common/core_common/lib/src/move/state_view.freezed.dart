@@ -68,22 +68,22 @@ class _$StateViewObjectCopyWithImpl<$Res, $Val extends StateViewObject>
 }
 
 /// @nodoc
-abstract class _$$_StateViewObjectCopyWith<$Res>
+abstract class _$$StateViewObjectImplCopyWith<$Res>
     implements $StateViewObjectCopyWith<$Res> {
-  factory _$$_StateViewObjectCopyWith(
-          _$_StateViewObject value, $Res Function(_$_StateViewObject) then) =
-      __$$_StateViewObjectCopyWithImpl<$Res>;
+  factory _$$StateViewObjectImplCopyWith(_$StateViewObjectImpl value,
+          $Res Function(_$StateViewObjectImpl) then) =
+      __$$StateViewObjectImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, dynamic> state, Map<String, dynamic> view});
 }
 
 /// @nodoc
-class __$$_StateViewObjectCopyWithImpl<$Res>
-    extends _$StateViewObjectCopyWithImpl<$Res, _$_StateViewObject>
-    implements _$$_StateViewObjectCopyWith<$Res> {
-  __$$_StateViewObjectCopyWithImpl(
-      _$_StateViewObject _value, $Res Function(_$_StateViewObject) _then)
+class __$$StateViewObjectImplCopyWithImpl<$Res>
+    extends _$StateViewObjectCopyWithImpl<$Res, _$StateViewObjectImpl>
+    implements _$$StateViewObjectImplCopyWith<$Res> {
+  __$$StateViewObjectImplCopyWithImpl(
+      _$StateViewObjectImpl _value, $Res Function(_$StateViewObjectImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_StateViewObjectCopyWithImpl<$Res>
     Object? state = null,
     Object? view = null,
   }) {
-    return _then(_$_StateViewObject(
+    return _then(_$StateViewObjectImpl(
       state: null == state
           ? _value._state
           : state // ignore: cast_nullable_to_non_nullable
@@ -107,15 +107,15 @@ class __$$_StateViewObjectCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StateViewObject implements _StateViewObject {
-  _$_StateViewObject(
+class _$StateViewObjectImpl implements _StateViewObject {
+  _$StateViewObjectImpl(
       {required final Map<String, dynamic> state,
       required final Map<String, dynamic> view})
       : _state = state,
         _view = view;
 
-  factory _$_StateViewObject.fromJson(Map<String, dynamic> json) =>
-      _$$_StateViewObjectFromJson(json);
+  factory _$StateViewObjectImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StateViewObjectImplFromJson(json);
 
   final Map<String, dynamic> _state;
   @override
@@ -142,7 +142,7 @@ class _$_StateViewObject implements _StateViewObject {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateViewObject &&
+            other is _$StateViewObjectImpl &&
             const DeepCollectionEquality().equals(other._state, _state) &&
             const DeepCollectionEquality().equals(other._view, _view));
   }
@@ -157,12 +157,13 @@ class _$_StateViewObject implements _StateViewObject {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateViewObjectCopyWith<_$_StateViewObject> get copyWith =>
-      __$$_StateViewObjectCopyWithImpl<_$_StateViewObject>(this, _$identity);
+  _$$StateViewObjectImplCopyWith<_$StateViewObjectImpl> get copyWith =>
+      __$$StateViewObjectImplCopyWithImpl<_$StateViewObjectImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StateViewObjectToJson(
+    return _$$StateViewObjectImplToJson(
       this,
     );
   }
@@ -171,10 +172,10 @@ class _$_StateViewObject implements _StateViewObject {
 abstract class _StateViewObject implements StateViewObject {
   factory _StateViewObject(
       {required final Map<String, dynamic> state,
-      required final Map<String, dynamic> view}) = _$_StateViewObject;
+      required final Map<String, dynamic> view}) = _$StateViewObjectImpl;
 
   factory _StateViewObject.fromJson(Map<String, dynamic> json) =
-      _$_StateViewObject.fromJson;
+      _$StateViewObjectImpl.fromJson;
 
   @override
   Map<String, dynamic> get state;
@@ -182,6 +183,6 @@ abstract class _StateViewObject implements StateViewObject {
   Map<String, dynamic> get view;
   @override
   @JsonKey(ignore: true)
-  _$$_StateViewObjectCopyWith<_$_StateViewObject> get copyWith =>
+  _$$StateViewObjectImplCopyWith<_$StateViewObjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

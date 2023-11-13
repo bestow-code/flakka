@@ -99,10 +99,10 @@ class _$ObjectUpdateCopyWithImpl<$Res, $Val extends ObjectUpdate>
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateHeadCopyWith<$Res> {
-  factory _$$ObjectUpdateHeadCopyWith(
-          _$ObjectUpdateHead value, $Res Function(_$ObjectUpdateHead) then) =
-      __$$ObjectUpdateHeadCopyWithImpl<$Res>;
+abstract class _$$ObjectUpdateHeadImplCopyWith<$Res> {
+  factory _$$ObjectUpdateHeadImplCopyWith(_$ObjectUpdateHeadImpl value,
+          $Res Function(_$ObjectUpdateHeadImpl) then) =
+      __$$ObjectUpdateHeadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ObjectHead value});
 
@@ -110,11 +110,11 @@ abstract class _$$ObjectUpdateHeadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectUpdateHeadCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateHead>
-    implements _$$ObjectUpdateHeadCopyWith<$Res> {
-  __$$ObjectUpdateHeadCopyWithImpl(
-      _$ObjectUpdateHead _value, $Res Function(_$ObjectUpdateHead) _then)
+class __$$ObjectUpdateHeadImplCopyWithImpl<$Res>
+    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateHeadImpl>
+    implements _$$ObjectUpdateHeadImplCopyWith<$Res> {
+  __$$ObjectUpdateHeadImplCopyWithImpl(_$ObjectUpdateHeadImpl _value,
+      $Res Function(_$ObjectUpdateHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$ObjectUpdateHeadCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$ObjectUpdateHead(
+    return _then(_$ObjectUpdateHeadImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$ObjectUpdateHeadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateHead implements ObjectUpdateHead {
-  _$ObjectUpdateHead({required this.value});
+class _$ObjectUpdateHeadImpl implements ObjectUpdateHead {
+  _$ObjectUpdateHeadImpl({required this.value});
 
   @override
   final ObjectHead value;
@@ -156,7 +156,7 @@ class _$ObjectUpdateHead implements ObjectUpdateHead {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateHead &&
+            other is _$ObjectUpdateHeadImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -166,8 +166,9 @@ class _$ObjectUpdateHead implements ObjectUpdateHead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateHeadCopyWith<_$ObjectUpdateHead> get copyWith =>
-      __$$ObjectUpdateHeadCopyWithImpl<_$ObjectUpdateHead>(this, _$identity);
+  _$$ObjectUpdateHeadImplCopyWith<_$ObjectUpdateHeadImpl> get copyWith =>
+      __$$ObjectUpdateHeadImplCopyWithImpl<_$ObjectUpdateHeadImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -258,29 +259,29 @@ class _$ObjectUpdateHead implements ObjectUpdateHead {
 
 abstract class ObjectUpdateHead implements ObjectUpdate {
   factory ObjectUpdateHead({required final ObjectHead value}) =
-      _$ObjectUpdateHead;
+      _$ObjectUpdateHeadImpl;
 
   ObjectHead get value;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateHeadCopyWith<_$ObjectUpdateHead> get copyWith =>
+  _$$ObjectUpdateHeadImplCopyWith<_$ObjectUpdateHeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateEntryCopyWith<$Res> {
-  factory _$$ObjectUpdateEntryCopyWith(
-          _$ObjectUpdateEntry value, $Res Function(_$ObjectUpdateEntry) then) =
-      __$$ObjectUpdateEntryCopyWithImpl<$Res>;
+abstract class _$$ObjectUpdateEntryImplCopyWith<$Res> {
+  factory _$$ObjectUpdateEntryImplCopyWith(_$ObjectUpdateEntryImpl value,
+          $Res Function(_$ObjectUpdateEntryImpl) then) =
+      __$$ObjectUpdateEntryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, ({int createdAt, Iterable<String> refs})> data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateEntryCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateEntry>
-    implements _$$ObjectUpdateEntryCopyWith<$Res> {
-  __$$ObjectUpdateEntryCopyWithImpl(
-      _$ObjectUpdateEntry _value, $Res Function(_$ObjectUpdateEntry) _then)
+class __$$ObjectUpdateEntryImplCopyWithImpl<$Res>
+    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateEntryImpl>
+    implements _$$ObjectUpdateEntryImplCopyWith<$Res> {
+  __$$ObjectUpdateEntryImplCopyWithImpl(_$ObjectUpdateEntryImpl _value,
+      $Res Function(_$ObjectUpdateEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -288,7 +289,7 @@ class __$$ObjectUpdateEntryCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectUpdateEntry(
+    return _then(_$ObjectUpdateEntryImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -299,8 +300,8 @@ class __$$ObjectUpdateEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateEntry implements ObjectUpdateEntry {
-  _$ObjectUpdateEntry(
+class _$ObjectUpdateEntryImpl implements ObjectUpdateEntry {
+  _$ObjectUpdateEntryImpl(
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
           data})
       : _data = data;
@@ -322,7 +323,7 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateEntry &&
+            other is _$ObjectUpdateEntryImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -333,8 +334,9 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateEntryCopyWith<_$ObjectUpdateEntry> get copyWith =>
-      __$$ObjectUpdateEntryCopyWithImpl<_$ObjectUpdateEntry>(this, _$identity);
+  _$$ObjectUpdateEntryImplCopyWith<_$ObjectUpdateEntryImpl> get copyWith =>
+      __$$ObjectUpdateEntryImplCopyWithImpl<_$ObjectUpdateEntryImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -426,29 +428,29 @@ class _$ObjectUpdateEntry implements ObjectUpdateEntry {
 abstract class ObjectUpdateEntry implements ObjectUpdate {
   factory ObjectUpdateEntry(
       {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data}) = _$ObjectUpdateEntry;
+          data}) = _$ObjectUpdateEntryImpl;
 
   Map<String, ({int createdAt, Iterable<String> refs})> get data;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateEntryCopyWith<_$ObjectUpdateEntry> get copyWith =>
+  _$$ObjectUpdateEntryImplCopyWith<_$ObjectUpdateEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateEventCopyWith<$Res> {
-  factory _$$ObjectUpdateEventCopyWith(
-          _$ObjectUpdateEvent value, $Res Function(_$ObjectUpdateEvent) then) =
-      __$$ObjectUpdateEventCopyWithImpl<$Res>;
+abstract class _$$ObjectUpdateEventImplCopyWith<$Res> {
+  factory _$$ObjectUpdateEventImplCopyWith(_$ObjectUpdateEventImpl value,
+          $Res Function(_$ObjectUpdateEventImpl) then) =
+      __$$ObjectUpdateEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, JsonMap> data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateEventCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateEvent>
-    implements _$$ObjectUpdateEventCopyWith<$Res> {
-  __$$ObjectUpdateEventCopyWithImpl(
-      _$ObjectUpdateEvent _value, $Res Function(_$ObjectUpdateEvent) _then)
+class __$$ObjectUpdateEventImplCopyWithImpl<$Res>
+    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateEventImpl>
+    implements _$$ObjectUpdateEventImplCopyWith<$Res> {
+  __$$ObjectUpdateEventImplCopyWithImpl(_$ObjectUpdateEventImpl _value,
+      $Res Function(_$ObjectUpdateEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -456,7 +458,7 @@ class __$$ObjectUpdateEventCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectUpdateEvent(
+    return _then(_$ObjectUpdateEventImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -467,8 +469,8 @@ class __$$ObjectUpdateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateEvent implements ObjectUpdateEvent {
-  _$ObjectUpdateEvent({required final Map<String, JsonMap> data})
+class _$ObjectUpdateEventImpl implements ObjectUpdateEvent {
+  _$ObjectUpdateEventImpl({required final Map<String, JsonMap> data})
       : _data = data;
 
   final Map<String, JsonMap> _data;
@@ -488,7 +490,7 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateEvent &&
+            other is _$ObjectUpdateEventImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -499,8 +501,9 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateEventCopyWith<_$ObjectUpdateEvent> get copyWith =>
-      __$$ObjectUpdateEventCopyWithImpl<_$ObjectUpdateEvent>(this, _$identity);
+  _$$ObjectUpdateEventImplCopyWith<_$ObjectUpdateEventImpl> get copyWith =>
+      __$$ObjectUpdateEventImplCopyWithImpl<_$ObjectUpdateEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -591,29 +594,30 @@ class _$ObjectUpdateEvent implements ObjectUpdateEvent {
 
 abstract class ObjectUpdateEvent implements ObjectUpdate {
   factory ObjectUpdateEvent({required final Map<String, JsonMap> data}) =
-      _$ObjectUpdateEvent;
+      _$ObjectUpdateEventImpl;
 
   Map<String, JsonMap> get data;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateEventCopyWith<_$ObjectUpdateEvent> get copyWith =>
+  _$$ObjectUpdateEventImplCopyWith<_$ObjectUpdateEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateStateViewCopyWith<$Res> {
-  factory _$$ObjectUpdateStateViewCopyWith(_$ObjectUpdateStateView value,
-          $Res Function(_$ObjectUpdateStateView) then) =
-      __$$ObjectUpdateStateViewCopyWithImpl<$Res>;
+abstract class _$$ObjectUpdateStateViewImplCopyWith<$Res> {
+  factory _$$ObjectUpdateStateViewImplCopyWith(
+          _$ObjectUpdateStateViewImpl value,
+          $Res Function(_$ObjectUpdateStateViewImpl) then) =
+      __$$ObjectUpdateStateViewImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, StateViewObject> data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateStateViewCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateStateView>
-    implements _$$ObjectUpdateStateViewCopyWith<$Res> {
-  __$$ObjectUpdateStateViewCopyWithImpl(_$ObjectUpdateStateView _value,
-      $Res Function(_$ObjectUpdateStateView) _then)
+class __$$ObjectUpdateStateViewImplCopyWithImpl<$Res>
+    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateStateViewImpl>
+    implements _$$ObjectUpdateStateViewImplCopyWith<$Res> {
+  __$$ObjectUpdateStateViewImplCopyWithImpl(_$ObjectUpdateStateViewImpl _value,
+      $Res Function(_$ObjectUpdateStateViewImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -621,7 +625,7 @@ class __$$ObjectUpdateStateViewCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectUpdateStateView(
+    return _then(_$ObjectUpdateStateViewImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -632,8 +636,9 @@ class __$$ObjectUpdateStateViewCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateStateView implements ObjectUpdateStateView {
-  _$ObjectUpdateStateView({required final Map<String, StateViewObject> data})
+class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
+  _$ObjectUpdateStateViewImpl(
+      {required final Map<String, StateViewObject> data})
       : _data = data;
 
   final Map<String, StateViewObject> _data;
@@ -653,7 +658,7 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateStateView &&
+            other is _$ObjectUpdateStateViewImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -664,9 +669,9 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateStateViewCopyWith<_$ObjectUpdateStateView> get copyWith =>
-      __$$ObjectUpdateStateViewCopyWithImpl<_$ObjectUpdateStateView>(
-          this, _$identity);
+  _$$ObjectUpdateStateViewImplCopyWith<_$ObjectUpdateStateViewImpl>
+      get copyWith => __$$ObjectUpdateStateViewImplCopyWithImpl<
+          _$ObjectUpdateStateViewImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -758,29 +763,29 @@ class _$ObjectUpdateStateView implements ObjectUpdateStateView {
 abstract class ObjectUpdateStateView implements ObjectUpdate {
   factory ObjectUpdateStateView(
           {required final Map<String, StateViewObject> data}) =
-      _$ObjectUpdateStateView;
+      _$ObjectUpdateStateViewImpl;
 
   Map<String, StateViewObject> get data;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateStateViewCopyWith<_$ObjectUpdateStateView> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ObjectUpdateStateViewImplCopyWith<_$ObjectUpdateStateViewImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateMainCopyWith<$Res> {
-  factory _$$ObjectUpdateMainCopyWith(
-          _$ObjectUpdateMain value, $Res Function(_$ObjectUpdateMain) then) =
-      __$$ObjectUpdateMainCopyWithImpl<$Res>;
+abstract class _$$ObjectUpdateMainImplCopyWith<$Res> {
+  factory _$$ObjectUpdateMainImplCopyWith(_$ObjectUpdateMainImpl value,
+          $Res Function(_$ObjectUpdateMainImpl) then) =
+      __$$ObjectUpdateMainImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref});
 }
 
 /// @nodoc
-class __$$ObjectUpdateMainCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateMain>
-    implements _$$ObjectUpdateMainCopyWith<$Res> {
-  __$$ObjectUpdateMainCopyWithImpl(
-      _$ObjectUpdateMain _value, $Res Function(_$ObjectUpdateMain) _then)
+class __$$ObjectUpdateMainImplCopyWithImpl<$Res>
+    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateMainImpl>
+    implements _$$ObjectUpdateMainImplCopyWith<$Res> {
+  __$$ObjectUpdateMainImplCopyWithImpl(_$ObjectUpdateMainImpl _value,
+      $Res Function(_$ObjectUpdateMainImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -788,7 +793,7 @@ class __$$ObjectUpdateMainCopyWithImpl<$Res>
   $Res call({
     Object? ref = null,
   }) {
-    return _then(_$ObjectUpdateMain(
+    return _then(_$ObjectUpdateMainImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -799,8 +804,8 @@ class __$$ObjectUpdateMainCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateMain implements ObjectUpdateMain {
-  _$ObjectUpdateMain({required this.ref});
+class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
+  _$ObjectUpdateMainImpl({required this.ref});
 
   @override
   final String ref;
@@ -814,7 +819,7 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateMain &&
+            other is _$ObjectUpdateMainImpl &&
             (identical(other.ref, ref) || other.ref == ref));
   }
 
@@ -824,8 +829,9 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateMainCopyWith<_$ObjectUpdateMain> get copyWith =>
-      __$$ObjectUpdateMainCopyWithImpl<_$ObjectUpdateMain>(this, _$identity);
+  _$$ObjectUpdateMainImplCopyWith<_$ObjectUpdateMainImpl> get copyWith =>
+      __$$ObjectUpdateMainImplCopyWithImpl<_$ObjectUpdateMainImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -915,11 +921,12 @@ class _$ObjectUpdateMain implements ObjectUpdateMain {
 }
 
 abstract class ObjectUpdateMain implements ObjectUpdate {
-  factory ObjectUpdateMain({required final String ref}) = _$ObjectUpdateMain;
+  factory ObjectUpdateMain({required final String ref}) =
+      _$ObjectUpdateMainImpl;
 
   String get ref;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateMainCopyWith<_$ObjectUpdateMain> get copyWith =>
+  _$$ObjectUpdateMainImplCopyWith<_$ObjectUpdateMainImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -996,20 +1003,20 @@ class _$ObjectHeadCopyWithImpl<$Res, $Val extends ObjectHead>
 }
 
 /// @nodoc
-abstract class _$$ObjectHeadAcquiringCopyWith<$Res> {
-  factory _$$ObjectHeadAcquiringCopyWith(_$ObjectHeadAcquiring value,
-          $Res Function(_$ObjectHeadAcquiring) then) =
-      __$$ObjectHeadAcquiringCopyWithImpl<$Res>;
+abstract class _$$ObjectHeadAcquiringImplCopyWith<$Res> {
+  factory _$$ObjectHeadAcquiringImplCopyWith(_$ObjectHeadAcquiringImpl value,
+          $Res Function(_$ObjectHeadAcquiringImpl) then) =
+      __$$ObjectHeadAcquiringImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String claimKey});
 }
 
 /// @nodoc
-class __$$ObjectHeadAcquiringCopyWithImpl<$Res>
-    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadAcquiring>
-    implements _$$ObjectHeadAcquiringCopyWith<$Res> {
-  __$$ObjectHeadAcquiringCopyWithImpl(
-      _$ObjectHeadAcquiring _value, $Res Function(_$ObjectHeadAcquiring) _then)
+class __$$ObjectHeadAcquiringImplCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadAcquiringImpl>
+    implements _$$ObjectHeadAcquiringImplCopyWith<$Res> {
+  __$$ObjectHeadAcquiringImplCopyWithImpl(_$ObjectHeadAcquiringImpl _value,
+      $Res Function(_$ObjectHeadAcquiringImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1017,7 +1024,7 @@ class __$$ObjectHeadAcquiringCopyWithImpl<$Res>
   $Res call({
     Object? claimKey = null,
   }) {
-    return _then(_$ObjectHeadAcquiring(
+    return _then(_$ObjectHeadAcquiringImpl(
       claimKey: null == claimKey
           ? _value.claimKey
           : claimKey // ignore: cast_nullable_to_non_nullable
@@ -1028,8 +1035,8 @@ class __$$ObjectHeadAcquiringCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectHeadAcquiring implements ObjectHeadAcquiring {
-  _$ObjectHeadAcquiring({required this.claimKey});
+class _$ObjectHeadAcquiringImpl implements ObjectHeadAcquiring {
+  _$ObjectHeadAcquiringImpl({required this.claimKey});
 
   @override
   final String claimKey;
@@ -1043,7 +1050,7 @@ class _$ObjectHeadAcquiring implements ObjectHeadAcquiring {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectHeadAcquiring &&
+            other is _$ObjectHeadAcquiringImpl &&
             (identical(other.claimKey, claimKey) ||
                 other.claimKey == claimKey));
   }
@@ -1054,8 +1061,8 @@ class _$ObjectHeadAcquiring implements ObjectHeadAcquiring {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectHeadAcquiringCopyWith<_$ObjectHeadAcquiring> get copyWith =>
-      __$$ObjectHeadAcquiringCopyWithImpl<_$ObjectHeadAcquiring>(
+  _$$ObjectHeadAcquiringImplCopyWith<_$ObjectHeadAcquiringImpl> get copyWith =>
+      __$$ObjectHeadAcquiringImplCopyWithImpl<_$ObjectHeadAcquiringImpl>(
           this, _$identity);
 
   @override
@@ -1135,29 +1142,29 @@ class _$ObjectHeadAcquiring implements ObjectHeadAcquiring {
 
 abstract class ObjectHeadAcquiring implements ObjectHead {
   factory ObjectHeadAcquiring({required final String claimKey}) =
-      _$ObjectHeadAcquiring;
+      _$ObjectHeadAcquiringImpl;
 
   String get claimKey;
   @JsonKey(ignore: true)
-  _$$ObjectHeadAcquiringCopyWith<_$ObjectHeadAcquiring> get copyWith =>
+  _$$ObjectHeadAcquiringImplCopyWith<_$ObjectHeadAcquiringImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectHeadLockedCopyWith<$Res> {
-  factory _$$ObjectHeadLockedCopyWith(
-          _$ObjectHeadLocked value, $Res Function(_$ObjectHeadLocked) then) =
-      __$$ObjectHeadLockedCopyWithImpl<$Res>;
+abstract class _$$ObjectHeadLockedImplCopyWith<$Res> {
+  factory _$$ObjectHeadLockedImplCopyWith(_$ObjectHeadLockedImpl value,
+          $Res Function(_$ObjectHeadLockedImpl) then) =
+      __$$ObjectHeadLockedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int createdAt});
 }
 
 /// @nodoc
-class __$$ObjectHeadLockedCopyWithImpl<$Res>
-    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadLocked>
-    implements _$$ObjectHeadLockedCopyWith<$Res> {
-  __$$ObjectHeadLockedCopyWithImpl(
-      _$ObjectHeadLocked _value, $Res Function(_$ObjectHeadLocked) _then)
+class __$$ObjectHeadLockedImplCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadLockedImpl>
+    implements _$$ObjectHeadLockedImplCopyWith<$Res> {
+  __$$ObjectHeadLockedImplCopyWithImpl(_$ObjectHeadLockedImpl _value,
+      $Res Function(_$ObjectHeadLockedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1165,7 +1172,7 @@ class __$$ObjectHeadLockedCopyWithImpl<$Res>
   $Res call({
     Object? createdAt = null,
   }) {
-    return _then(_$ObjectHeadLocked(
+    return _then(_$ObjectHeadLockedImpl(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -1176,8 +1183,8 @@ class __$$ObjectHeadLockedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectHeadLocked implements ObjectHeadLocked {
-  _$ObjectHeadLocked({required this.createdAt});
+class _$ObjectHeadLockedImpl implements ObjectHeadLocked {
+  _$ObjectHeadLockedImpl({required this.createdAt});
 
   @override
   final int createdAt;
@@ -1191,7 +1198,7 @@ class _$ObjectHeadLocked implements ObjectHeadLocked {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectHeadLocked &&
+            other is _$ObjectHeadLockedImpl &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
@@ -1202,8 +1209,9 @@ class _$ObjectHeadLocked implements ObjectHeadLocked {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectHeadLockedCopyWith<_$ObjectHeadLocked> get copyWith =>
-      __$$ObjectHeadLockedCopyWithImpl<_$ObjectHeadLocked>(this, _$identity);
+  _$$ObjectHeadLockedImplCopyWith<_$ObjectHeadLockedImpl> get copyWith =>
+      __$$ObjectHeadLockedImplCopyWithImpl<_$ObjectHeadLockedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1281,29 +1289,30 @@ class _$ObjectHeadLocked implements ObjectHeadLocked {
 }
 
 abstract class ObjectHeadLocked implements ObjectHead {
-  factory ObjectHeadLocked({required final int createdAt}) = _$ObjectHeadLocked;
+  factory ObjectHeadLocked({required final int createdAt}) =
+      _$ObjectHeadLockedImpl;
 
   int get createdAt;
   @JsonKey(ignore: true)
-  _$$ObjectHeadLockedCopyWith<_$ObjectHeadLocked> get copyWith =>
+  _$$ObjectHeadLockedImplCopyWith<_$ObjectHeadLockedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectHeadImportingCopyWith<$Res> {
-  factory _$$ObjectHeadImportingCopyWith(_$ObjectHeadImporting value,
-          $Res Function(_$ObjectHeadImporting) then) =
-      __$$ObjectHeadImportingCopyWithImpl<$Res>;
+abstract class _$$ObjectHeadImportingImplCopyWith<$Res> {
+  factory _$$ObjectHeadImportingImplCopyWith(_$ObjectHeadImportingImpl value,
+          $Res Function(_$ObjectHeadImportingImpl) then) =
+      __$$ObjectHeadImportingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$ObjectHeadImportingCopyWithImpl<$Res>
-    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadImporting>
-    implements _$$ObjectHeadImportingCopyWith<$Res> {
-  __$$ObjectHeadImportingCopyWithImpl(
-      _$ObjectHeadImporting _value, $Res Function(_$ObjectHeadImporting) _then)
+class __$$ObjectHeadImportingImplCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadImportingImpl>
+    implements _$$ObjectHeadImportingImplCopyWith<$Res> {
+  __$$ObjectHeadImportingImplCopyWithImpl(_$ObjectHeadImportingImpl _value,
+      $Res Function(_$ObjectHeadImportingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1312,7 +1321,7 @@ class __$$ObjectHeadImportingCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$ObjectHeadImporting(
+    return _then(_$ObjectHeadImportingImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -1327,8 +1336,8 @@ class __$$ObjectHeadImportingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectHeadImporting implements ObjectHeadImporting {
-  _$ObjectHeadImporting({required this.ref, required this.sequenceNumber});
+class _$ObjectHeadImportingImpl implements ObjectHeadImporting {
+  _$ObjectHeadImportingImpl({required this.ref, required this.sequenceNumber});
 
   @override
   final String ref;
@@ -1344,7 +1353,7 @@ class _$ObjectHeadImporting implements ObjectHeadImporting {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectHeadImporting &&
+            other is _$ObjectHeadImportingImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -1356,8 +1365,8 @@ class _$ObjectHeadImporting implements ObjectHeadImporting {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectHeadImportingCopyWith<_$ObjectHeadImporting> get copyWith =>
-      __$$ObjectHeadImportingCopyWithImpl<_$ObjectHeadImporting>(
+  _$$ObjectHeadImportingImplCopyWith<_$ObjectHeadImportingImpl> get copyWith =>
+      __$$ObjectHeadImportingImplCopyWithImpl<_$ObjectHeadImportingImpl>(
           this, _$identity);
 
   @override
@@ -1438,30 +1447,30 @@ class _$ObjectHeadImporting implements ObjectHeadImporting {
 abstract class ObjectHeadImporting implements ObjectHead {
   factory ObjectHeadImporting(
       {required final String ref,
-      required final int sequenceNumber}) = _$ObjectHeadImporting;
+      required final int sequenceNumber}) = _$ObjectHeadImportingImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$ObjectHeadImportingCopyWith<_$ObjectHeadImporting> get copyWith =>
+  _$$ObjectHeadImportingImplCopyWith<_$ObjectHeadImportingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectHeadReadyCopyWith<$Res> {
-  factory _$$ObjectHeadReadyCopyWith(
-          _$ObjectHeadReady value, $Res Function(_$ObjectHeadReady) then) =
-      __$$ObjectHeadReadyCopyWithImpl<$Res>;
+abstract class _$$ObjectHeadReadyImplCopyWith<$Res> {
+  factory _$$ObjectHeadReadyImplCopyWith(_$ObjectHeadReadyImpl value,
+          $Res Function(_$ObjectHeadReadyImpl) then) =
+      __$$ObjectHeadReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$ObjectHeadReadyCopyWithImpl<$Res>
-    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadReady>
-    implements _$$ObjectHeadReadyCopyWith<$Res> {
-  __$$ObjectHeadReadyCopyWithImpl(
-      _$ObjectHeadReady _value, $Res Function(_$ObjectHeadReady) _then)
+class __$$ObjectHeadReadyImplCopyWithImpl<$Res>
+    extends _$ObjectHeadCopyWithImpl<$Res, _$ObjectHeadReadyImpl>
+    implements _$$ObjectHeadReadyImplCopyWith<$Res> {
+  __$$ObjectHeadReadyImplCopyWithImpl(
+      _$ObjectHeadReadyImpl _value, $Res Function(_$ObjectHeadReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1470,7 +1479,7 @@ class __$$ObjectHeadReadyCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$ObjectHeadReady(
+    return _then(_$ObjectHeadReadyImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -1485,8 +1494,8 @@ class __$$ObjectHeadReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectHeadReady implements ObjectHeadReady {
-  _$ObjectHeadReady({required this.ref, required this.sequenceNumber});
+class _$ObjectHeadReadyImpl implements ObjectHeadReady {
+  _$ObjectHeadReadyImpl({required this.ref, required this.sequenceNumber});
 
   @override
   final String ref;
@@ -1502,7 +1511,7 @@ class _$ObjectHeadReady implements ObjectHeadReady {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectHeadReady &&
+            other is _$ObjectHeadReadyImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -1514,8 +1523,9 @@ class _$ObjectHeadReady implements ObjectHeadReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectHeadReadyCopyWith<_$ObjectHeadReady> get copyWith =>
-      __$$ObjectHeadReadyCopyWithImpl<_$ObjectHeadReady>(this, _$identity);
+  _$$ObjectHeadReadyImplCopyWith<_$ObjectHeadReadyImpl> get copyWith =>
+      __$$ObjectHeadReadyImplCopyWithImpl<_$ObjectHeadReadyImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1595,11 +1605,11 @@ class _$ObjectHeadReady implements ObjectHeadReady {
 abstract class ObjectHeadReady implements ObjectHead {
   factory ObjectHeadReady(
       {required final String ref,
-      required final int sequenceNumber}) = _$ObjectHeadReady;
+      required final int sequenceNumber}) = _$ObjectHeadReadyImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$ObjectHeadReadyCopyWith<_$ObjectHeadReady> get copyWith =>
+  _$$ObjectHeadReadyImplCopyWith<_$ObjectHeadReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

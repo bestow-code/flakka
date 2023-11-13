@@ -111,11 +111,11 @@ class _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallAppendCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallAppendCopyWith(
-          _$PersistenceLocalAdapterCallAppend value,
-          $Res Function(_$PersistenceLocalAdapterCallAppend) then) =
-      __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalAdapterCallAppendImplCopyWith<$Res> {
+  factory _$$PersistenceLocalAdapterCallAppendImplCopyWith(
+          _$PersistenceLocalAdapterCallAppendImpl value,
+          $Res Function(_$PersistenceLocalAdapterCallAppendImpl) then) =
+      __$$PersistenceLocalAdapterCallAppendImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -126,13 +126,13 @@ abstract class _$$PersistenceLocalAdapterCallAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>
+class __$$PersistenceLocalAdapterCallAppendImplCopyWithImpl<$Res>
     extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallAppend>
-    implements _$$PersistenceLocalAdapterCallAppendCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallAppendCopyWithImpl(
-      _$PersistenceLocalAdapterCallAppend _value,
-      $Res Function(_$PersistenceLocalAdapterCallAppend) _then)
+        _$PersistenceLocalAdapterCallAppendImpl>
+    implements _$$PersistenceLocalAdapterCallAppendImplCopyWith<$Res> {
+  __$$PersistenceLocalAdapterCallAppendImplCopyWithImpl(
+      _$PersistenceLocalAdapterCallAppendImpl _value,
+      $Res Function(_$PersistenceLocalAdapterCallAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +144,7 @@ class __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalAdapterCallAppend(
+    return _then(_$PersistenceLocalAdapterCallAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -171,9 +171,9 @@ class __$$PersistenceLocalAdapterCallAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallAppend
+class _$PersistenceLocalAdapterCallAppendImpl
     implements PersistenceLocalAdapterCallAppend {
-  _$PersistenceLocalAdapterCallAppend(
+  _$PersistenceLocalAdapterCallAppendImpl(
       {required this.ref,
       required final List<String> parent,
       required final Map<String, dynamic>? event,
@@ -216,7 +216,7 @@ class _$PersistenceLocalAdapterCallAppend
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallAppend &&
+            other is _$PersistenceLocalAdapterCallAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -238,10 +238,10 @@ class _$PersistenceLocalAdapterCallAppend
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallAppendCopyWith<
-          _$PersistenceLocalAdapterCallAppend>
-      get copyWith => __$$PersistenceLocalAdapterCallAppendCopyWithImpl<
-          _$PersistenceLocalAdapterCallAppend>(this, _$identity);
+  _$$PersistenceLocalAdapterCallAppendImplCopyWith<
+          _$PersistenceLocalAdapterCallAppendImpl>
+      get copyWith => __$$PersistenceLocalAdapterCallAppendImplCopyWithImpl<
+          _$PersistenceLocalAdapterCallAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -344,11 +344,12 @@ abstract class PersistenceLocalAdapterCallAppend
         PersistenceLocalAdapterCall,
         PersistenceLocalAdapterCallHeadUpdate {
   factory PersistenceLocalAdapterCallAppend(
-      {required final String ref,
-      required final List<String> parent,
-      required final Map<String, dynamic>? event,
-      required final int createdAt,
-      required final int sequenceNumber}) = _$PersistenceLocalAdapterCallAppend;
+          {required final String ref,
+          required final List<String> parent,
+          required final Map<String, dynamic>? event,
+          required final int createdAt,
+          required final int sequenceNumber}) =
+      _$PersistenceLocalAdapterCallAppendImpl;
 
   String get ref;
   List<String> get parent;
@@ -356,17 +357,17 @@ abstract class PersistenceLocalAdapterCallAppend
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallAppendCopyWith<
-          _$PersistenceLocalAdapterCallAppend>
+  _$$PersistenceLocalAdapterCallAppendImplCopyWith<
+          _$PersistenceLocalAdapterCallAppendImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallAddCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallAddCopyWith(
-          _$PersistenceLocalAdapterCallAdd value,
-          $Res Function(_$PersistenceLocalAdapterCallAdd) then) =
-      __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalAdapterCallAddImplCopyWith<$Res> {
+  factory _$$PersistenceLocalAdapterCallAddImplCopyWith(
+          _$PersistenceLocalAdapterCallAddImpl value,
+          $Res Function(_$PersistenceLocalAdapterCallAddImpl) then) =
+      __$$PersistenceLocalAdapterCallAddImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, StateViewObject stateView});
 
@@ -374,13 +375,13 @@ abstract class _$$PersistenceLocalAdapterCallAddCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>
+class __$$PersistenceLocalAdapterCallAddImplCopyWithImpl<$Res>
     extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallAdd>
-    implements _$$PersistenceLocalAdapterCallAddCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallAddCopyWithImpl(
-      _$PersistenceLocalAdapterCallAdd _value,
-      $Res Function(_$PersistenceLocalAdapterCallAdd) _then)
+        _$PersistenceLocalAdapterCallAddImpl>
+    implements _$$PersistenceLocalAdapterCallAddImplCopyWith<$Res> {
+  __$$PersistenceLocalAdapterCallAddImplCopyWithImpl(
+      _$PersistenceLocalAdapterCallAddImpl _value,
+      $Res Function(_$PersistenceLocalAdapterCallAddImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -389,7 +390,7 @@ class __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>
     Object? ref = null,
     Object? stateView = null,
   }) {
-    return _then(_$PersistenceLocalAdapterCallAdd(
+    return _then(_$PersistenceLocalAdapterCallAddImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -412,9 +413,9 @@ class __$$PersistenceLocalAdapterCallAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallAdd
+class _$PersistenceLocalAdapterCallAddImpl
     implements PersistenceLocalAdapterCallAdd {
-  _$PersistenceLocalAdapterCallAdd(
+  _$PersistenceLocalAdapterCallAddImpl(
       {required this.ref, required this.stateView});
 
   @override
@@ -431,7 +432,7 @@ class _$PersistenceLocalAdapterCallAdd
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallAdd &&
+            other is _$PersistenceLocalAdapterCallAddImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
@@ -443,9 +444,10 @@ class _$PersistenceLocalAdapterCallAdd
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallAddCopyWith<_$PersistenceLocalAdapterCallAdd>
-      get copyWith => __$$PersistenceLocalAdapterCallAddCopyWithImpl<
-          _$PersistenceLocalAdapterCallAdd>(this, _$identity);
+  _$$PersistenceLocalAdapterCallAddImplCopyWith<
+          _$PersistenceLocalAdapterCallAddImpl>
+      get copyWith => __$$PersistenceLocalAdapterCallAddImplCopyWithImpl<
+          _$PersistenceLocalAdapterCallAddImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -548,33 +550,34 @@ abstract class PersistenceLocalAdapterCallAdd
   factory PersistenceLocalAdapterCallAdd(
           {required final String ref,
           required final StateViewObject stateView}) =
-      _$PersistenceLocalAdapterCallAdd;
+      _$PersistenceLocalAdapterCallAddImpl;
 
   String get ref;
   StateViewObject get stateView;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallAddCopyWith<_$PersistenceLocalAdapterCallAdd>
+  _$$PersistenceLocalAdapterCallAddImplCopyWith<
+          _$PersistenceLocalAdapterCallAddImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallForwardCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallForwardCopyWith(
-          _$PersistenceLocalAdapterCallForward value,
-          $Res Function(_$PersistenceLocalAdapterCallForward) then) =
-      __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalAdapterCallForwardImplCopyWith<$Res> {
+  factory _$$PersistenceLocalAdapterCallForwardImplCopyWith(
+          _$PersistenceLocalAdapterCallForwardImpl value,
+          $Res Function(_$PersistenceLocalAdapterCallForwardImpl) then) =
+      __$$PersistenceLocalAdapterCallForwardImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>
+class __$$PersistenceLocalAdapterCallForwardImplCopyWithImpl<$Res>
     extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallForward>
-    implements _$$PersistenceLocalAdapterCallForwardCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallForwardCopyWithImpl(
-      _$PersistenceLocalAdapterCallForward _value,
-      $Res Function(_$PersistenceLocalAdapterCallForward) _then)
+        _$PersistenceLocalAdapterCallForwardImpl>
+    implements _$$PersistenceLocalAdapterCallForwardImplCopyWith<$Res> {
+  __$$PersistenceLocalAdapterCallForwardImplCopyWithImpl(
+      _$PersistenceLocalAdapterCallForwardImpl _value,
+      $Res Function(_$PersistenceLocalAdapterCallForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -583,7 +586,7 @@ class __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalAdapterCallForward(
+    return _then(_$PersistenceLocalAdapterCallForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -598,9 +601,9 @@ class __$$PersistenceLocalAdapterCallForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallForward
+class _$PersistenceLocalAdapterCallForwardImpl
     implements PersistenceLocalAdapterCallForward {
-  _$PersistenceLocalAdapterCallForward(
+  _$PersistenceLocalAdapterCallForwardImpl(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -617,7 +620,7 @@ class _$PersistenceLocalAdapterCallForward
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallForward &&
+            other is _$PersistenceLocalAdapterCallForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -629,10 +632,10 @@ class _$PersistenceLocalAdapterCallForward
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallForwardCopyWith<
-          _$PersistenceLocalAdapterCallForward>
-      get copyWith => __$$PersistenceLocalAdapterCallForwardCopyWithImpl<
-          _$PersistenceLocalAdapterCallForward>(this, _$identity);
+  _$$PersistenceLocalAdapterCallForwardImplCopyWith<
+          _$PersistenceLocalAdapterCallForwardImpl>
+      get copyWith => __$$PersistenceLocalAdapterCallForwardImplCopyWithImpl<
+          _$PersistenceLocalAdapterCallForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -736,22 +739,22 @@ abstract class PersistenceLocalAdapterCallForward
         PersistenceLocalAdapterCallHeadUpdate {
   factory PersistenceLocalAdapterCallForward(
           {required final String ref, required final int sequenceNumber}) =
-      _$PersistenceLocalAdapterCallForward;
+      _$PersistenceLocalAdapterCallForwardImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallForwardCopyWith<
-          _$PersistenceLocalAdapterCallForward>
+  _$$PersistenceLocalAdapterCallForwardImplCopyWith<
+          _$PersistenceLocalAdapterCallForwardImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalAdapterCallImportCopyWith<$Res> {
-  factory _$$PersistenceLocalAdapterCallImportCopyWith(
-          _$PersistenceLocalAdapterCallImport value,
-          $Res Function(_$PersistenceLocalAdapterCallImport) then) =
-      __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalAdapterCallImportImplCopyWith<$Res> {
+  factory _$$PersistenceLocalAdapterCallImportImplCopyWith(
+          _$PersistenceLocalAdapterCallImportImpl value,
+          $Res Function(_$PersistenceLocalAdapterCallImportImpl) then) =
+      __$$PersistenceLocalAdapterCallImportImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
@@ -761,13 +764,13 @@ abstract class _$$PersistenceLocalAdapterCallImportCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
+class __$$PersistenceLocalAdapterCallImportImplCopyWithImpl<$Res>
     extends _$PersistenceLocalAdapterCallCopyWithImpl<$Res,
-        _$PersistenceLocalAdapterCallImport>
-    implements _$$PersistenceLocalAdapterCallImportCopyWith<$Res> {
-  __$$PersistenceLocalAdapterCallImportCopyWithImpl(
-      _$PersistenceLocalAdapterCallImport _value,
-      $Res Function(_$PersistenceLocalAdapterCallImport) _then)
+        _$PersistenceLocalAdapterCallImportImpl>
+    implements _$$PersistenceLocalAdapterCallImportImplCopyWith<$Res> {
+  __$$PersistenceLocalAdapterCallImportImplCopyWithImpl(
+      _$PersistenceLocalAdapterCallImportImpl _value,
+      $Res Function(_$PersistenceLocalAdapterCallImportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -777,7 +780,7 @@ class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
     Object? event = freezed,
     Object? stateView = freezed,
   }) {
-    return _then(_$PersistenceLocalAdapterCallImport(
+    return _then(_$PersistenceLocalAdapterCallImportImpl(
       entry: freezed == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
@@ -797,9 +800,9 @@ class __$$PersistenceLocalAdapterCallImportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalAdapterCallImport
+class _$PersistenceLocalAdapterCallImportImpl
     implements PersistenceLocalAdapterCallImport {
-  _$PersistenceLocalAdapterCallImport(
+  _$PersistenceLocalAdapterCallImportImpl(
       {final Map<String,
               ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
@@ -850,7 +853,7 @@ class _$PersistenceLocalAdapterCallImport
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalAdapterCallImport &&
+            other is _$PersistenceLocalAdapterCallImportImpl &&
             const DeepCollectionEquality().equals(other._entry, _entry) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
             const DeepCollectionEquality()
@@ -867,10 +870,10 @@ class _$PersistenceLocalAdapterCallImport
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalAdapterCallImportCopyWith<
-          _$PersistenceLocalAdapterCallImport>
-      get copyWith => __$$PersistenceLocalAdapterCallImportCopyWithImpl<
-          _$PersistenceLocalAdapterCallImport>(this, _$identity);
+  _$$PersistenceLocalAdapterCallImportImplCopyWith<
+          _$PersistenceLocalAdapterCallImportImpl>
+      get copyWith => __$$PersistenceLocalAdapterCallImportImplCopyWithImpl<
+          _$PersistenceLocalAdapterCallImportImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -976,14 +979,14 @@ abstract class PersistenceLocalAdapterCallImport
               entry,
           final Map<String, JsonMap>? event,
           final Map<String, StateViewObject>? stateView}) =
-      _$PersistenceLocalAdapterCallImport;
+      _$PersistenceLocalAdapterCallImportImpl;
 
   Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
       get entry;
   Map<String, JsonMap>? get event;
   Map<String, StateViewObject>? get stateView;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalAdapterCallImportCopyWith<
-          _$PersistenceLocalAdapterCallImport>
+  _$$PersistenceLocalAdapterCallImportImplCopyWith<
+          _$PersistenceLocalAdapterCallImportImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

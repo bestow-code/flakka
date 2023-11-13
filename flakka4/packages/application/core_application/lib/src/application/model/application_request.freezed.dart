@@ -87,14 +87,14 @@ class _$ApplicationRequestCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$_ApplicationRequestCopyWith<
+abstract class _$$ApplicationRequestImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     $Res> implements $ApplicationRequestCopyWith<Event, State, $Res> {
-  factory _$$_ApplicationRequestCopyWith(
-          _$_ApplicationRequest<Event, State> value,
-          $Res Function(_$_ApplicationRequest<Event, State>) then) =
-      __$$_ApplicationRequestCopyWithImpl<Event, State, $Res>;
+  factory _$$ApplicationRequestImplCopyWith(
+          _$ApplicationRequestImpl<Event, State> value,
+          $Res Function(_$ApplicationRequestImpl<Event, State>) then) =
+      __$$ApplicationRequestImplCopyWithImpl<Event, State, $Res>;
   @override
   @useResult
   $Res call(
@@ -105,14 +105,14 @@ abstract class _$$_ApplicationRequestCopyWith<
 }
 
 /// @nodoc
-class __$$_ApplicationRequestCopyWithImpl<Event extends CoreEvent,
+class __$$ApplicationRequestImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, $Res>
     extends _$ApplicationRequestCopyWithImpl<Event, State, $Res,
-        _$_ApplicationRequest<Event, State>>
-    implements _$$_ApplicationRequestCopyWith<Event, State, $Res> {
-  __$$_ApplicationRequestCopyWithImpl(
-      _$_ApplicationRequest<Event, State> _value,
-      $Res Function(_$_ApplicationRequest<Event, State>) _then)
+        _$ApplicationRequestImpl<Event, State>>
+    implements _$$ApplicationRequestImplCopyWith<Event, State, $Res> {
+  __$$ApplicationRequestImplCopyWithImpl(
+      _$ApplicationRequestImpl<Event, State> _value,
+      $Res Function(_$ApplicationRequestImpl<Event, State>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$_ApplicationRequestCopyWithImpl<Event extends CoreEvent,
     Object? createdAt = null,
     Object? handler = null,
   }) {
-    return _then(_$_ApplicationRequest<Event, State>(
+    return _then(_$ApplicationRequestImpl<Event, State>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -141,9 +141,9 @@ class __$$_ApplicationRequestCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$_ApplicationRequest<Event extends CoreEvent, State extends CoreState>
+class _$ApplicationRequestImpl<Event extends CoreEvent, State extends CoreState>
     implements _ApplicationRequest<Event, State> {
-  _$_ApplicationRequest(
+  _$ApplicationRequestImpl(
       {required this.ref, required this.createdAt, required this.handler});
 
   @override
@@ -162,7 +162,7 @@ class _$_ApplicationRequest<Event extends CoreEvent, State extends CoreState>
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApplicationRequest<Event, State> &&
+            other is _$ApplicationRequestImpl<Event, State> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -175,10 +175,10 @@ class _$_ApplicationRequest<Event extends CoreEvent, State extends CoreState>
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApplicationRequestCopyWith<Event, State,
-          _$_ApplicationRequest<Event, State>>
-      get copyWith => __$$_ApplicationRequestCopyWithImpl<Event, State,
-          _$_ApplicationRequest<Event, State>>(this, _$identity);
+  _$$ApplicationRequestImplCopyWith<Event, State,
+          _$ApplicationRequestImpl<Event, State>>
+      get copyWith => __$$ApplicationRequestImplCopyWithImpl<Event, State,
+          _$ApplicationRequestImpl<Event, State>>(this, _$identity);
 }
 
 abstract class _ApplicationRequest<Event extends CoreEvent,
@@ -187,7 +187,7 @@ abstract class _ApplicationRequest<Event extends CoreEvent,
           {required final Ref ref,
           required final DateTime createdAt,
           required final RequestHandler<State, Event> handler}) =
-      _$_ApplicationRequest<Event, State>;
+      _$ApplicationRequestImpl<Event, State>;
 
   @override
   Ref get ref;
@@ -197,7 +197,7 @@ abstract class _ApplicationRequest<Event extends CoreEvent,
   RequestHandler<State, Event> get handler;
   @override
   @JsonKey(ignore: true)
-  _$$_ApplicationRequestCopyWith<Event, State,
-          _$_ApplicationRequest<Event, State>>
+  _$$ApplicationRequestImplCopyWith<Event, State,
+          _$ApplicationRequestImpl<Event, State>>
       get copyWith => throw _privateConstructorUsedError;
 }

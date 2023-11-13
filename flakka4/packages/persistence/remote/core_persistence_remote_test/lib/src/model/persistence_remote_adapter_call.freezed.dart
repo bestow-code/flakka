@@ -112,11 +112,11 @@ class _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteAdapterCallAppendCopyWith<$Res> {
-  factory _$$PersistenceRemoteAdapterCallAppendCopyWith(
-          _$PersistenceRemoteAdapterCallAppend value,
-          $Res Function(_$PersistenceRemoteAdapterCallAppend) then) =
-      __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallAppendImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallAppendImplCopyWith(
+          _$PersistenceRemoteAdapterCallAppendImpl value,
+          $Res Function(_$PersistenceRemoteAdapterCallAppendImpl) then) =
+      __$$PersistenceRemoteAdapterCallAppendImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -127,13 +127,13 @@ abstract class _$$PersistenceRemoteAdapterCallAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<$Res>
+class __$$PersistenceRemoteAdapterCallAppendImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
-        _$PersistenceRemoteAdapterCallAppend>
-    implements _$$PersistenceRemoteAdapterCallAppendCopyWith<$Res> {
-  __$$PersistenceRemoteAdapterCallAppendCopyWithImpl(
-      _$PersistenceRemoteAdapterCallAppend _value,
-      $Res Function(_$PersistenceRemoteAdapterCallAppend) _then)
+        _$PersistenceRemoteAdapterCallAppendImpl>
+    implements _$$PersistenceRemoteAdapterCallAppendImplCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallAppendImplCopyWithImpl(
+      _$PersistenceRemoteAdapterCallAppendImpl _value,
+      $Res Function(_$PersistenceRemoteAdapterCallAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceRemoteAdapterCallAppend(
+    return _then(_$PersistenceRemoteAdapterCallAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -172,9 +172,9 @@ class __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteAdapterCallAppend
+class _$PersistenceRemoteAdapterCallAppendImpl
     implements PersistenceRemoteAdapterCallAppend {
-  _$PersistenceRemoteAdapterCallAppend(
+  _$PersistenceRemoteAdapterCallAppendImpl(
       {required this.ref,
       required final List<String> parent,
       required final Map<String, dynamic>? event,
@@ -217,7 +217,7 @@ class _$PersistenceRemoteAdapterCallAppend
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteAdapterCallAppend &&
+            other is _$PersistenceRemoteAdapterCallAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -239,10 +239,10 @@ class _$PersistenceRemoteAdapterCallAppend
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteAdapterCallAppendCopyWith<
-          _$PersistenceRemoteAdapterCallAppend>
-      get copyWith => __$$PersistenceRemoteAdapterCallAppendCopyWithImpl<
-          _$PersistenceRemoteAdapterCallAppend>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallAppendImplCopyWith<
+          _$PersistenceRemoteAdapterCallAppendImpl>
+      get copyWith => __$$PersistenceRemoteAdapterCallAppendImplCopyWithImpl<
+          _$PersistenceRemoteAdapterCallAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -351,7 +351,7 @@ abstract class PersistenceRemoteAdapterCallAppend
           required final Map<String, dynamic>? event,
           required final int createdAt,
           required final int sequenceNumber}) =
-      _$PersistenceRemoteAdapterCallAppend;
+      _$PersistenceRemoteAdapterCallAppendImpl;
 
   String get ref;
   List<String> get parent;
@@ -359,17 +359,17 @@ abstract class PersistenceRemoteAdapterCallAppend
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteAdapterCallAppendCopyWith<
-          _$PersistenceRemoteAdapterCallAppend>
+  _$$PersistenceRemoteAdapterCallAppendImplCopyWith<
+          _$PersistenceRemoteAdapterCallAppendImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteAdapterCallAddCopyWith<$Res> {
-  factory _$$PersistenceRemoteAdapterCallAddCopyWith(
-          _$PersistenceRemoteAdapterCallAdd value,
-          $Res Function(_$PersistenceRemoteAdapterCallAdd) then) =
-      __$$PersistenceRemoteAdapterCallAddCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallAddImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallAddImplCopyWith(
+          _$PersistenceRemoteAdapterCallAddImpl value,
+          $Res Function(_$PersistenceRemoteAdapterCallAddImpl) then) =
+      __$$PersistenceRemoteAdapterCallAddImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, StateViewObject stateView});
 
@@ -377,13 +377,13 @@ abstract class _$$PersistenceRemoteAdapterCallAddCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceRemoteAdapterCallAddCopyWithImpl<$Res>
+class __$$PersistenceRemoteAdapterCallAddImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
-        _$PersistenceRemoteAdapterCallAdd>
-    implements _$$PersistenceRemoteAdapterCallAddCopyWith<$Res> {
-  __$$PersistenceRemoteAdapterCallAddCopyWithImpl(
-      _$PersistenceRemoteAdapterCallAdd _value,
-      $Res Function(_$PersistenceRemoteAdapterCallAdd) _then)
+        _$PersistenceRemoteAdapterCallAddImpl>
+    implements _$$PersistenceRemoteAdapterCallAddImplCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallAddImplCopyWithImpl(
+      _$PersistenceRemoteAdapterCallAddImpl _value,
+      $Res Function(_$PersistenceRemoteAdapterCallAddImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -392,7 +392,7 @@ class __$$PersistenceRemoteAdapterCallAddCopyWithImpl<$Res>
     Object? ref = null,
     Object? stateView = null,
   }) {
-    return _then(_$PersistenceRemoteAdapterCallAdd(
+    return _then(_$PersistenceRemoteAdapterCallAddImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -415,9 +415,9 @@ class __$$PersistenceRemoteAdapterCallAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteAdapterCallAdd
+class _$PersistenceRemoteAdapterCallAddImpl
     implements PersistenceRemoteAdapterCallAdd {
-  _$PersistenceRemoteAdapterCallAdd(
+  _$PersistenceRemoteAdapterCallAddImpl(
       {required this.ref, required this.stateView});
 
   @override
@@ -434,7 +434,7 @@ class _$PersistenceRemoteAdapterCallAdd
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteAdapterCallAdd &&
+            other is _$PersistenceRemoteAdapterCallAddImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
@@ -446,9 +446,10 @@ class _$PersistenceRemoteAdapterCallAdd
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteAdapterCallAddCopyWith<_$PersistenceRemoteAdapterCallAdd>
-      get copyWith => __$$PersistenceRemoteAdapterCallAddCopyWithImpl<
-          _$PersistenceRemoteAdapterCallAdd>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallAddImplCopyWith<
+          _$PersistenceRemoteAdapterCallAddImpl>
+      get copyWith => __$$PersistenceRemoteAdapterCallAddImplCopyWithImpl<
+          _$PersistenceRemoteAdapterCallAddImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -552,33 +553,34 @@ abstract class PersistenceRemoteAdapterCallAdd
   factory PersistenceRemoteAdapterCallAdd(
           {required final String ref,
           required final StateViewObject stateView}) =
-      _$PersistenceRemoteAdapterCallAdd;
+      _$PersistenceRemoteAdapterCallAddImpl;
 
   String get ref;
   StateViewObject get stateView;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteAdapterCallAddCopyWith<_$PersistenceRemoteAdapterCallAdd>
+  _$$PersistenceRemoteAdapterCallAddImplCopyWith<
+          _$PersistenceRemoteAdapterCallAddImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteAdapterCallForwardCopyWith<$Res> {
-  factory _$$PersistenceRemoteAdapterCallForwardCopyWith(
-          _$PersistenceRemoteAdapterCallForward value,
-          $Res Function(_$PersistenceRemoteAdapterCallForward) then) =
-      __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallForwardImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallForwardImplCopyWith(
+          _$PersistenceRemoteAdapterCallForwardImpl value,
+          $Res Function(_$PersistenceRemoteAdapterCallForwardImpl) then) =
+      __$$PersistenceRemoteAdapterCallForwardImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<$Res>
+class __$$PersistenceRemoteAdapterCallForwardImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
-        _$PersistenceRemoteAdapterCallForward>
-    implements _$$PersistenceRemoteAdapterCallForwardCopyWith<$Res> {
-  __$$PersistenceRemoteAdapterCallForwardCopyWithImpl(
-      _$PersistenceRemoteAdapterCallForward _value,
-      $Res Function(_$PersistenceRemoteAdapterCallForward) _then)
+        _$PersistenceRemoteAdapterCallForwardImpl>
+    implements _$$PersistenceRemoteAdapterCallForwardImplCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallForwardImplCopyWithImpl(
+      _$PersistenceRemoteAdapterCallForwardImpl _value,
+      $Res Function(_$PersistenceRemoteAdapterCallForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -587,7 +589,7 @@ class __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceRemoteAdapterCallForward(
+    return _then(_$PersistenceRemoteAdapterCallForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -602,9 +604,9 @@ class __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteAdapterCallForward
+class _$PersistenceRemoteAdapterCallForwardImpl
     implements PersistenceRemoteAdapterCallForward {
-  _$PersistenceRemoteAdapterCallForward(
+  _$PersistenceRemoteAdapterCallForwardImpl(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -621,7 +623,7 @@ class _$PersistenceRemoteAdapterCallForward
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteAdapterCallForward &&
+            other is _$PersistenceRemoteAdapterCallForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -633,10 +635,10 @@ class _$PersistenceRemoteAdapterCallForward
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteAdapterCallForwardCopyWith<
-          _$PersistenceRemoteAdapterCallForward>
-      get copyWith => __$$PersistenceRemoteAdapterCallForwardCopyWithImpl<
-          _$PersistenceRemoteAdapterCallForward>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallForwardImplCopyWith<
+          _$PersistenceRemoteAdapterCallForwardImpl>
+      get copyWith => __$$PersistenceRemoteAdapterCallForwardImplCopyWithImpl<
+          _$PersistenceRemoteAdapterCallForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -741,22 +743,22 @@ abstract class PersistenceRemoteAdapterCallForward
         PersistenceRemoteAdapterCallHeadUpdate {
   factory PersistenceRemoteAdapterCallForward(
           {required final String ref, required final int sequenceNumber}) =
-      _$PersistenceRemoteAdapterCallForward;
+      _$PersistenceRemoteAdapterCallForwardImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteAdapterCallForwardCopyWith<
-          _$PersistenceRemoteAdapterCallForward>
+  _$$PersistenceRemoteAdapterCallForwardImplCopyWith<
+          _$PersistenceRemoteAdapterCallForwardImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteAdapterCallImportCopyWith<$Res> {
-  factory _$$PersistenceRemoteAdapterCallImportCopyWith(
-          _$PersistenceRemoteAdapterCallImport value,
-          $Res Function(_$PersistenceRemoteAdapterCallImport) then) =
-      __$$PersistenceRemoteAdapterCallImportCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteAdapterCallImportImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteAdapterCallImportImplCopyWith(
+          _$PersistenceRemoteAdapterCallImportImpl value,
+          $Res Function(_$PersistenceRemoteAdapterCallImportImpl) then) =
+      __$$PersistenceRemoteAdapterCallImportImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
@@ -766,13 +768,13 @@ abstract class _$$PersistenceRemoteAdapterCallImportCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceRemoteAdapterCallImportCopyWithImpl<$Res>
+class __$$PersistenceRemoteAdapterCallImportImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteAdapterCallCopyWithImpl<$Res,
-        _$PersistenceRemoteAdapterCallImport>
-    implements _$$PersistenceRemoteAdapterCallImportCopyWith<$Res> {
-  __$$PersistenceRemoteAdapterCallImportCopyWithImpl(
-      _$PersistenceRemoteAdapterCallImport _value,
-      $Res Function(_$PersistenceRemoteAdapterCallImport) _then)
+        _$PersistenceRemoteAdapterCallImportImpl>
+    implements _$$PersistenceRemoteAdapterCallImportImplCopyWith<$Res> {
+  __$$PersistenceRemoteAdapterCallImportImplCopyWithImpl(
+      _$PersistenceRemoteAdapterCallImportImpl _value,
+      $Res Function(_$PersistenceRemoteAdapterCallImportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -782,7 +784,7 @@ class __$$PersistenceRemoteAdapterCallImportCopyWithImpl<$Res>
     Object? event = freezed,
     Object? stateView = freezed,
   }) {
-    return _then(_$PersistenceRemoteAdapterCallImport(
+    return _then(_$PersistenceRemoteAdapterCallImportImpl(
       entry: freezed == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
@@ -802,9 +804,9 @@ class __$$PersistenceRemoteAdapterCallImportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteAdapterCallImport
+class _$PersistenceRemoteAdapterCallImportImpl
     implements PersistenceRemoteAdapterCallImport {
-  _$PersistenceRemoteAdapterCallImport(
+  _$PersistenceRemoteAdapterCallImportImpl(
       {final Map<String,
               ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
@@ -855,7 +857,7 @@ class _$PersistenceRemoteAdapterCallImport
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteAdapterCallImport &&
+            other is _$PersistenceRemoteAdapterCallImportImpl &&
             const DeepCollectionEquality().equals(other._entry, _entry) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
             const DeepCollectionEquality()
@@ -872,10 +874,10 @@ class _$PersistenceRemoteAdapterCallImport
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteAdapterCallImportCopyWith<
-          _$PersistenceRemoteAdapterCallImport>
-      get copyWith => __$$PersistenceRemoteAdapterCallImportCopyWithImpl<
-          _$PersistenceRemoteAdapterCallImport>(this, _$identity);
+  _$$PersistenceRemoteAdapterCallImportImplCopyWith<
+          _$PersistenceRemoteAdapterCallImportImpl>
+      get copyWith => __$$PersistenceRemoteAdapterCallImportImplCopyWithImpl<
+          _$PersistenceRemoteAdapterCallImportImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -982,14 +984,14 @@ abstract class PersistenceRemoteAdapterCallImport
               entry,
           final Map<String, JsonMap>? event,
           final Map<String, StateViewObject>? stateView}) =
-      _$PersistenceRemoteAdapterCallImport;
+      _$PersistenceRemoteAdapterCallImportImpl;
 
   Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
       get entry;
   Map<String, JsonMap>? get event;
   Map<String, StateViewObject>? get stateView;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteAdapterCallImportCopyWith<
-          _$PersistenceRemoteAdapterCallImport>
+  _$$PersistenceRemoteAdapterCallImportImplCopyWith<
+          _$PersistenceRemoteAdapterCallImportImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

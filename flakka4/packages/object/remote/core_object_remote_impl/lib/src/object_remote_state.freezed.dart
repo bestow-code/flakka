@@ -36,25 +36,25 @@ class _$ObjectRemoteStateCopyWithImpl<$Res, $Val extends ObjectRemoteState>
 }
 
 /// @nodoc
-abstract class _$$_ObjectRemoteStateCopyWith<$Res> {
-  factory _$$_ObjectRemoteStateCopyWith(_$_ObjectRemoteState value,
-          $Res Function(_$_ObjectRemoteState) then) =
-      __$$_ObjectRemoteStateCopyWithImpl<$Res>;
+abstract class _$$ObjectRemoteStateImplCopyWith<$Res> {
+  factory _$$ObjectRemoteStateImplCopyWith(_$ObjectRemoteStateImpl value,
+          $Res Function(_$ObjectRemoteStateImpl) then) =
+      __$$ObjectRemoteStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ObjectRemoteStateCopyWithImpl<$Res>
-    extends _$ObjectRemoteStateCopyWithImpl<$Res, _$_ObjectRemoteState>
-    implements _$$_ObjectRemoteStateCopyWith<$Res> {
-  __$$_ObjectRemoteStateCopyWithImpl(
-      _$_ObjectRemoteState _value, $Res Function(_$_ObjectRemoteState) _then)
+class __$$ObjectRemoteStateImplCopyWithImpl<$Res>
+    extends _$ObjectRemoteStateCopyWithImpl<$Res, _$ObjectRemoteStateImpl>
+    implements _$$ObjectRemoteStateImplCopyWith<$Res> {
+  __$$ObjectRemoteStateImplCopyWithImpl(_$ObjectRemoteStateImpl _value,
+      $Res Function(_$ObjectRemoteStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ObjectRemoteState implements _ObjectRemoteState {
-  _$_ObjectRemoteState();
+class _$ObjectRemoteStateImpl implements _ObjectRemoteState {
+  _$ObjectRemoteStateImpl();
 
   @override
   String toString() {
@@ -64,7 +64,7 @@ class _$_ObjectRemoteState implements _ObjectRemoteState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectRemoteState);
+        (other.runtimeType == runtimeType && other is _$ObjectRemoteStateImpl);
   }
 
   @override
@@ -72,5 +72,5 @@ class _$_ObjectRemoteState implements _ObjectRemoteState {
 }
 
 abstract class _ObjectRemoteState implements ObjectRemoteState {
-  factory _ObjectRemoteState() = _$_ObjectRemoteState;
+  factory _ObjectRemoteState() = _$ObjectRemoteStateImpl;
 }

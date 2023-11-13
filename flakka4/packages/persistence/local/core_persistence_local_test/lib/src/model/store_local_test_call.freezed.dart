@@ -82,11 +82,11 @@ class _$StoreLocalTestCallCopyWithImpl<$Res, $Val extends StoreLocalTestCall>
 }
 
 /// @nodoc
-abstract class _$$StoreLocalTestCallAddEntryCopyWith<$Res> {
-  factory _$$StoreLocalTestCallAddEntryCopyWith(
-          _$StoreLocalTestCallAddEntry value,
-          $Res Function(_$StoreLocalTestCallAddEntry) then) =
-      __$$StoreLocalTestCallAddEntryCopyWithImpl<$Res>;
+abstract class _$$StoreLocalTestCallAddEntryImplCopyWith<$Res> {
+  factory _$$StoreLocalTestCallAddEntryImplCopyWith(
+          _$StoreLocalTestCallAddEntryImpl value,
+          $Res Function(_$StoreLocalTestCallAddEntryImpl) then) =
+      __$$StoreLocalTestCallAddEntryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EntryData data});
 
@@ -94,12 +94,13 @@ abstract class _$$StoreLocalTestCallAddEntryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$StoreLocalTestCallAddEntryCopyWithImpl<$Res>
-    extends _$StoreLocalTestCallCopyWithImpl<$Res, _$StoreLocalTestCallAddEntry>
-    implements _$$StoreLocalTestCallAddEntryCopyWith<$Res> {
-  __$$StoreLocalTestCallAddEntryCopyWithImpl(
-      _$StoreLocalTestCallAddEntry _value,
-      $Res Function(_$StoreLocalTestCallAddEntry) _then)
+class __$$StoreLocalTestCallAddEntryImplCopyWithImpl<$Res>
+    extends _$StoreLocalTestCallCopyWithImpl<$Res,
+        _$StoreLocalTestCallAddEntryImpl>
+    implements _$$StoreLocalTestCallAddEntryImplCopyWith<$Res> {
+  __$$StoreLocalTestCallAddEntryImplCopyWithImpl(
+      _$StoreLocalTestCallAddEntryImpl _value,
+      $Res Function(_$StoreLocalTestCallAddEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +108,7 @@ class __$$StoreLocalTestCallAddEntryCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$StoreLocalTestCallAddEntry(
+    return _then(_$StoreLocalTestCallAddEntryImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -126,8 +127,8 @@ class __$$StoreLocalTestCallAddEntryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoreLocalTestCallAddEntry implements StoreLocalTestCallAddEntry {
-  _$StoreLocalTestCallAddEntry({required this.data});
+class _$StoreLocalTestCallAddEntryImpl implements StoreLocalTestCallAddEntry {
+  _$StoreLocalTestCallAddEntryImpl({required this.data});
 
   @override
   final EntryData data;
@@ -141,7 +142,7 @@ class _$StoreLocalTestCallAddEntry implements StoreLocalTestCallAddEntry {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoreLocalTestCallAddEntry &&
+            other is _$StoreLocalTestCallAddEntryImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -151,9 +152,9 @@ class _$StoreLocalTestCallAddEntry implements StoreLocalTestCallAddEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StoreLocalTestCallAddEntryCopyWith<_$StoreLocalTestCallAddEntry>
-      get copyWith => __$$StoreLocalTestCallAddEntryCopyWithImpl<
-          _$StoreLocalTestCallAddEntry>(this, _$identity);
+  _$$StoreLocalTestCallAddEntryImplCopyWith<_$StoreLocalTestCallAddEntryImpl>
+      get copyWith => __$$StoreLocalTestCallAddEntryImplCopyWithImpl<
+          _$StoreLocalTestCallAddEntryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -226,21 +227,21 @@ class _$StoreLocalTestCallAddEntry implements StoreLocalTestCallAddEntry {
 
 abstract class StoreLocalTestCallAddEntry implements StoreLocalTestCall {
   factory StoreLocalTestCallAddEntry({required final EntryData data}) =
-      _$StoreLocalTestCallAddEntry;
+      _$StoreLocalTestCallAddEntryImpl;
 
   @override
   EntryData get data;
   @JsonKey(ignore: true)
-  _$$StoreLocalTestCallAddEntryCopyWith<_$StoreLocalTestCallAddEntry>
+  _$$StoreLocalTestCallAddEntryImplCopyWith<_$StoreLocalTestCallAddEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoreLocalTestCallAddEventCopyWith<$Res> {
-  factory _$$StoreLocalTestCallAddEventCopyWith(
-          _$StoreLocalTestCallAddEvent value,
-          $Res Function(_$StoreLocalTestCallAddEvent) then) =
-      __$$StoreLocalTestCallAddEventCopyWithImpl<$Res>;
+abstract class _$$StoreLocalTestCallAddEventImplCopyWith<$Res> {
+  factory _$$StoreLocalTestCallAddEventImplCopyWith(
+          _$StoreLocalTestCallAddEventImpl value,
+          $Res Function(_$StoreLocalTestCallAddEventImpl) then) =
+      __$$StoreLocalTestCallAddEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EventData data});
 
@@ -248,12 +249,13 @@ abstract class _$$StoreLocalTestCallAddEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$StoreLocalTestCallAddEventCopyWithImpl<$Res>
-    extends _$StoreLocalTestCallCopyWithImpl<$Res, _$StoreLocalTestCallAddEvent>
-    implements _$$StoreLocalTestCallAddEventCopyWith<$Res> {
-  __$$StoreLocalTestCallAddEventCopyWithImpl(
-      _$StoreLocalTestCallAddEvent _value,
-      $Res Function(_$StoreLocalTestCallAddEvent) _then)
+class __$$StoreLocalTestCallAddEventImplCopyWithImpl<$Res>
+    extends _$StoreLocalTestCallCopyWithImpl<$Res,
+        _$StoreLocalTestCallAddEventImpl>
+    implements _$$StoreLocalTestCallAddEventImplCopyWith<$Res> {
+  __$$StoreLocalTestCallAddEventImplCopyWithImpl(
+      _$StoreLocalTestCallAddEventImpl _value,
+      $Res Function(_$StoreLocalTestCallAddEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,7 +263,7 @@ class __$$StoreLocalTestCallAddEventCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$StoreLocalTestCallAddEvent(
+    return _then(_$StoreLocalTestCallAddEventImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -280,8 +282,8 @@ class __$$StoreLocalTestCallAddEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoreLocalTestCallAddEvent implements StoreLocalTestCallAddEvent {
-  _$StoreLocalTestCallAddEvent({required this.data});
+class _$StoreLocalTestCallAddEventImpl implements StoreLocalTestCallAddEvent {
+  _$StoreLocalTestCallAddEventImpl({required this.data});
 
   @override
   final EventData data;
@@ -295,7 +297,7 @@ class _$StoreLocalTestCallAddEvent implements StoreLocalTestCallAddEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoreLocalTestCallAddEvent &&
+            other is _$StoreLocalTestCallAddEventImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -305,9 +307,9 @@ class _$StoreLocalTestCallAddEvent implements StoreLocalTestCallAddEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StoreLocalTestCallAddEventCopyWith<_$StoreLocalTestCallAddEvent>
-      get copyWith => __$$StoreLocalTestCallAddEventCopyWithImpl<
-          _$StoreLocalTestCallAddEvent>(this, _$identity);
+  _$$StoreLocalTestCallAddEventImplCopyWith<_$StoreLocalTestCallAddEventImpl>
+      get copyWith => __$$StoreLocalTestCallAddEventImplCopyWithImpl<
+          _$StoreLocalTestCallAddEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -380,21 +382,21 @@ class _$StoreLocalTestCallAddEvent implements StoreLocalTestCallAddEvent {
 
 abstract class StoreLocalTestCallAddEvent implements StoreLocalTestCall {
   factory StoreLocalTestCallAddEvent({required final EventData data}) =
-      _$StoreLocalTestCallAddEvent;
+      _$StoreLocalTestCallAddEventImpl;
 
   @override
   EventData get data;
   @JsonKey(ignore: true)
-  _$$StoreLocalTestCallAddEventCopyWith<_$StoreLocalTestCallAddEvent>
+  _$$StoreLocalTestCallAddEventImplCopyWith<_$StoreLocalTestCallAddEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoreLocalTestCallAddHeadCopyWith<$Res> {
-  factory _$$StoreLocalTestCallAddHeadCopyWith(
-          _$StoreLocalTestCallAddHead value,
-          $Res Function(_$StoreLocalTestCallAddHead) then) =
-      __$$StoreLocalTestCallAddHeadCopyWithImpl<$Res>;
+abstract class _$$StoreLocalTestCallAddHeadImplCopyWith<$Res> {
+  factory _$$StoreLocalTestCallAddHeadImplCopyWith(
+          _$StoreLocalTestCallAddHeadImpl value,
+          $Res Function(_$StoreLocalTestCallAddHeadImpl) then) =
+      __$$StoreLocalTestCallAddHeadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HeadData data});
 
@@ -402,11 +404,13 @@ abstract class _$$StoreLocalTestCallAddHeadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$StoreLocalTestCallAddHeadCopyWithImpl<$Res>
-    extends _$StoreLocalTestCallCopyWithImpl<$Res, _$StoreLocalTestCallAddHead>
-    implements _$$StoreLocalTestCallAddHeadCopyWith<$Res> {
-  __$$StoreLocalTestCallAddHeadCopyWithImpl(_$StoreLocalTestCallAddHead _value,
-      $Res Function(_$StoreLocalTestCallAddHead) _then)
+class __$$StoreLocalTestCallAddHeadImplCopyWithImpl<$Res>
+    extends _$StoreLocalTestCallCopyWithImpl<$Res,
+        _$StoreLocalTestCallAddHeadImpl>
+    implements _$$StoreLocalTestCallAddHeadImplCopyWith<$Res> {
+  __$$StoreLocalTestCallAddHeadImplCopyWithImpl(
+      _$StoreLocalTestCallAddHeadImpl _value,
+      $Res Function(_$StoreLocalTestCallAddHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -414,7 +418,7 @@ class __$$StoreLocalTestCallAddHeadCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$StoreLocalTestCallAddHead(
+    return _then(_$StoreLocalTestCallAddHeadImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -433,8 +437,8 @@ class __$$StoreLocalTestCallAddHeadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoreLocalTestCallAddHead implements StoreLocalTestCallAddHead {
-  _$StoreLocalTestCallAddHead({required this.data});
+class _$StoreLocalTestCallAddHeadImpl implements StoreLocalTestCallAddHead {
+  _$StoreLocalTestCallAddHeadImpl({required this.data});
 
   @override
   final HeadData data;
@@ -448,7 +452,7 @@ class _$StoreLocalTestCallAddHead implements StoreLocalTestCallAddHead {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoreLocalTestCallAddHead &&
+            other is _$StoreLocalTestCallAddHeadImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -458,9 +462,9 @@ class _$StoreLocalTestCallAddHead implements StoreLocalTestCallAddHead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StoreLocalTestCallAddHeadCopyWith<_$StoreLocalTestCallAddHead>
-      get copyWith => __$$StoreLocalTestCallAddHeadCopyWithImpl<
-          _$StoreLocalTestCallAddHead>(this, _$identity);
+  _$$StoreLocalTestCallAddHeadImplCopyWith<_$StoreLocalTestCallAddHeadImpl>
+      get copyWith => __$$StoreLocalTestCallAddHeadImplCopyWithImpl<
+          _$StoreLocalTestCallAddHeadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -533,11 +537,11 @@ class _$StoreLocalTestCallAddHead implements StoreLocalTestCallAddHead {
 
 abstract class StoreLocalTestCallAddHead implements StoreLocalTestCall {
   factory StoreLocalTestCallAddHead({required final HeadData data}) =
-      _$StoreLocalTestCallAddHead;
+      _$StoreLocalTestCallAddHeadImpl;
 
   @override
   HeadData get data;
   @JsonKey(ignore: true)
-  _$$StoreLocalTestCallAddHeadCopyWith<_$StoreLocalTestCallAddHead>
+  _$$StoreLocalTestCallAddHeadImplCopyWith<_$StoreLocalTestCallAddHeadImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -126,10 +126,11 @@ class _$ObjectLocalEffectCopyWithImpl<$Res, $Val extends ObjectLocalEffect>
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalEffectAppendCopyWith<$Res> {
-  factory _$$ObjectLocalEffectAppendCopyWith(_$ObjectLocalEffectAppend value,
-          $Res Function(_$ObjectLocalEffectAppend) then) =
-      __$$ObjectLocalEffectAppendCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectAppendImplCopyWith<$Res> {
+  factory _$$ObjectLocalEffectAppendImplCopyWith(
+          _$ObjectLocalEffectAppendImpl value,
+          $Res Function(_$ObjectLocalEffectAppendImpl) then) =
+      __$$ObjectLocalEffectAppendImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -140,11 +141,12 @@ abstract class _$$ObjectLocalEffectAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectLocalEffectAppendCopyWithImpl<$Res>
-    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectAppend>
-    implements _$$ObjectLocalEffectAppendCopyWith<$Res> {
-  __$$ObjectLocalEffectAppendCopyWithImpl(_$ObjectLocalEffectAppend _value,
-      $Res Function(_$ObjectLocalEffectAppend) _then)
+class __$$ObjectLocalEffectAppendImplCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectAppendImpl>
+    implements _$$ObjectLocalEffectAppendImplCopyWith<$Res> {
+  __$$ObjectLocalEffectAppendImplCopyWithImpl(
+      _$ObjectLocalEffectAppendImpl _value,
+      $Res Function(_$ObjectLocalEffectAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -156,7 +158,7 @@ class __$$ObjectLocalEffectAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$ObjectLocalEffectAppend(
+    return _then(_$ObjectLocalEffectAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -183,8 +185,8 @@ class __$$ObjectLocalEffectAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectLocalEffectAppend implements ObjectLocalEffectAppend {
-  _$ObjectLocalEffectAppend(
+class _$ObjectLocalEffectAppendImpl implements ObjectLocalEffectAppend {
+  _$ObjectLocalEffectAppendImpl(
       {required this.ref,
       required final List<String> parent,
       required final Map<String, dynamic>? event,
@@ -228,7 +230,7 @@ class _$ObjectLocalEffectAppend implements ObjectLocalEffectAppend {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalEffectAppend &&
+            other is _$ObjectLocalEffectAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -250,9 +252,9 @@ class _$ObjectLocalEffectAppend implements ObjectLocalEffectAppend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalEffectAppendCopyWith<_$ObjectLocalEffectAppend> get copyWith =>
-      __$$ObjectLocalEffectAppendCopyWithImpl<_$ObjectLocalEffectAppend>(
-          this, _$identity);
+  _$$ObjectLocalEffectAppendImplCopyWith<_$ObjectLocalEffectAppendImpl>
+      get copyWith => __$$ObjectLocalEffectAppendImplCopyWithImpl<
+          _$ObjectLocalEffectAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -374,7 +376,7 @@ abstract class ObjectLocalEffectAppend implements ObjectLocalEffect {
       required final List<String> parent,
       required final Map<String, dynamic>? event,
       required final int createdAt,
-      required final int sequenceNumber}) = _$ObjectLocalEffectAppend;
+      required final int sequenceNumber}) = _$ObjectLocalEffectAppendImpl;
 
   String get ref;
   List<String> get parent;
@@ -382,15 +384,16 @@ abstract class ObjectLocalEffectAppend implements ObjectLocalEffect {
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$ObjectLocalEffectAppendCopyWith<_$ObjectLocalEffectAppend> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ObjectLocalEffectAppendImplCopyWith<_$ObjectLocalEffectAppendImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalEffectForwardCopyWith<$Res> {
-  factory _$$ObjectLocalEffectForwardCopyWith(_$ObjectLocalEffectForward value,
-          $Res Function(_$ObjectLocalEffectForward) then) =
-      __$$ObjectLocalEffectForwardCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectForwardImplCopyWith<$Res> {
+  factory _$$ObjectLocalEffectForwardImplCopyWith(
+          _$ObjectLocalEffectForwardImpl value,
+          $Res Function(_$ObjectLocalEffectForwardImpl) then) =
+      __$$ObjectLocalEffectForwardImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, StateViewObject? stateView, int sequenceNumber});
 
@@ -398,11 +401,13 @@ abstract class _$$ObjectLocalEffectForwardCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectLocalEffectForwardCopyWithImpl<$Res>
-    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectForward>
-    implements _$$ObjectLocalEffectForwardCopyWith<$Res> {
-  __$$ObjectLocalEffectForwardCopyWithImpl(_$ObjectLocalEffectForward _value,
-      $Res Function(_$ObjectLocalEffectForward) _then)
+class __$$ObjectLocalEffectForwardImplCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res,
+        _$ObjectLocalEffectForwardImpl>
+    implements _$$ObjectLocalEffectForwardImplCopyWith<$Res> {
+  __$$ObjectLocalEffectForwardImplCopyWithImpl(
+      _$ObjectLocalEffectForwardImpl _value,
+      $Res Function(_$ObjectLocalEffectForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -412,7 +417,7 @@ class __$$ObjectLocalEffectForwardCopyWithImpl<$Res>
     Object? stateView = freezed,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$ObjectLocalEffectForward(
+    return _then(_$ObjectLocalEffectForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -443,8 +448,8 @@ class __$$ObjectLocalEffectForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectLocalEffectForward implements ObjectLocalEffectForward {
-  _$ObjectLocalEffectForward(
+class _$ObjectLocalEffectForwardImpl implements ObjectLocalEffectForward {
+  _$ObjectLocalEffectForwardImpl(
       {required this.ref,
       required this.stateView,
       required this.sequenceNumber});
@@ -465,7 +470,7 @@ class _$ObjectLocalEffectForward implements ObjectLocalEffectForward {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalEffectForward &&
+            other is _$ObjectLocalEffectForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView) &&
@@ -479,10 +484,9 @@ class _$ObjectLocalEffectForward implements ObjectLocalEffectForward {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalEffectForwardCopyWith<_$ObjectLocalEffectForward>
-      get copyWith =>
-          __$$ObjectLocalEffectForwardCopyWithImpl<_$ObjectLocalEffectForward>(
-              this, _$identity);
+  _$$ObjectLocalEffectForwardImplCopyWith<_$ObjectLocalEffectForwardImpl>
+      get copyWith => __$$ObjectLocalEffectForwardImplCopyWithImpl<
+          _$ObjectLocalEffectForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -602,21 +606,21 @@ abstract class ObjectLocalEffectForward implements ObjectLocalEffect {
   factory ObjectLocalEffectForward(
       {required final String ref,
       required final StateViewObject? stateView,
-      required final int sequenceNumber}) = _$ObjectLocalEffectForward;
+      required final int sequenceNumber}) = _$ObjectLocalEffectForwardImpl;
 
   String get ref;
   StateViewObject? get stateView;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$ObjectLocalEffectForwardCopyWith<_$ObjectLocalEffectForward>
+  _$$ObjectLocalEffectForwardImplCopyWith<_$ObjectLocalEffectForwardImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalEffectAddCopyWith<$Res> {
-  factory _$$ObjectLocalEffectAddCopyWith(_$ObjectLocalEffectAdd value,
-          $Res Function(_$ObjectLocalEffectAdd) then) =
-      __$$ObjectLocalEffectAddCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectAddImplCopyWith<$Res> {
+  factory _$$ObjectLocalEffectAddImplCopyWith(_$ObjectLocalEffectAddImpl value,
+          $Res Function(_$ObjectLocalEffectAddImpl) then) =
+      __$$ObjectLocalEffectAddImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<
@@ -630,11 +634,11 @@ abstract class _$$ObjectLocalEffectAddCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ObjectLocalEffectAddCopyWithImpl<$Res>
-    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectAdd>
-    implements _$$ObjectLocalEffectAddCopyWith<$Res> {
-  __$$ObjectLocalEffectAddCopyWithImpl(_$ObjectLocalEffectAdd _value,
-      $Res Function(_$ObjectLocalEffectAdd) _then)
+class __$$ObjectLocalEffectAddImplCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectAddImpl>
+    implements _$$ObjectLocalEffectAddImplCopyWith<$Res> {
+  __$$ObjectLocalEffectAddImplCopyWithImpl(_$ObjectLocalEffectAddImpl _value,
+      $Res Function(_$ObjectLocalEffectAddImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -642,7 +646,7 @@ class __$$ObjectLocalEffectAddCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectLocalEffectAdd(
+    return _then(_$ObjectLocalEffectAddImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -659,8 +663,8 @@ class __$$ObjectLocalEffectAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectLocalEffectAdd implements ObjectLocalEffectAdd {
-  _$ObjectLocalEffectAdd(
+class _$ObjectLocalEffectAddImpl implements ObjectLocalEffectAdd {
+  _$ObjectLocalEffectAddImpl(
       {required final Map<
               String,
               ({
@@ -700,7 +704,7 @@ class _$ObjectLocalEffectAdd implements ObjectLocalEffectAdd {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalEffectAdd &&
+            other is _$ObjectLocalEffectAddImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -711,9 +715,10 @@ class _$ObjectLocalEffectAdd implements ObjectLocalEffectAdd {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectLocalEffectAddCopyWith<_$ObjectLocalEffectAdd> get copyWith =>
-      __$$ObjectLocalEffectAddCopyWithImpl<_$ObjectLocalEffectAdd>(
-          this, _$identity);
+  _$$ObjectLocalEffectAddImplCopyWith<_$ObjectLocalEffectAddImpl>
+      get copyWith =>
+          __$$ObjectLocalEffectAddImplCopyWithImpl<_$ObjectLocalEffectAddImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -838,7 +843,7 @@ abstract class ObjectLocalEffectAdd implements ObjectLocalEffect {
                 Map<String, dynamic>? event,
                 StateViewObject? stateView
               })>
-          data}) = _$ObjectLocalEffectAdd;
+          data}) = _$ObjectLocalEffectAddImpl;
 
   Map<
       String,
@@ -848,30 +853,31 @@ abstract class ObjectLocalEffectAdd implements ObjectLocalEffect {
         StateViewObject? stateView
       })> get data;
   @JsonKey(ignore: true)
-  _$$ObjectLocalEffectAddCopyWith<_$ObjectLocalEffectAdd> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ObjectLocalEffectAddImplCopyWith<_$ObjectLocalEffectAddImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalEffectNoneCopyWith<$Res> {
-  factory _$$ObjectLocalEffectNoneCopyWith(_$ObjectLocalEffectNone value,
-          $Res Function(_$ObjectLocalEffectNone) then) =
-      __$$ObjectLocalEffectNoneCopyWithImpl<$Res>;
+abstract class _$$ObjectLocalEffectNoneImplCopyWith<$Res> {
+  factory _$$ObjectLocalEffectNoneImplCopyWith(
+          _$ObjectLocalEffectNoneImpl value,
+          $Res Function(_$ObjectLocalEffectNoneImpl) then) =
+      __$$ObjectLocalEffectNoneImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ObjectLocalEffectNoneCopyWithImpl<$Res>
-    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectNone>
-    implements _$$ObjectLocalEffectNoneCopyWith<$Res> {
-  __$$ObjectLocalEffectNoneCopyWithImpl(_$ObjectLocalEffectNone _value,
-      $Res Function(_$ObjectLocalEffectNone) _then)
+class __$$ObjectLocalEffectNoneImplCopyWithImpl<$Res>
+    extends _$ObjectLocalEffectCopyWithImpl<$Res, _$ObjectLocalEffectNoneImpl>
+    implements _$$ObjectLocalEffectNoneImplCopyWith<$Res> {
+  __$$ObjectLocalEffectNoneImplCopyWithImpl(_$ObjectLocalEffectNoneImpl _value,
+      $Res Function(_$ObjectLocalEffectNoneImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ObjectLocalEffectNone implements ObjectLocalEffectNone {
-  _$ObjectLocalEffectNone();
+class _$ObjectLocalEffectNoneImpl implements ObjectLocalEffectNone {
+  _$ObjectLocalEffectNoneImpl();
 
   @override
   String toString() {
@@ -881,7 +887,8 @@ class _$ObjectLocalEffectNone implements ObjectLocalEffectNone {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ObjectLocalEffectNone);
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectLocalEffectNoneImpl);
   }
 
   @override
@@ -1002,5 +1009,5 @@ class _$ObjectLocalEffectNone implements ObjectLocalEffectNone {
 }
 
 abstract class ObjectLocalEffectNone implements ObjectLocalEffect {
-  factory ObjectLocalEffectNone() = _$ObjectLocalEffectNone;
+  factory ObjectLocalEffectNone() = _$ObjectLocalEffectNoneImpl;
 }

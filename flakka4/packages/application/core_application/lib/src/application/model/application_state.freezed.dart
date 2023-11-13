@@ -82,15 +82,15 @@ class _$ApplicationStateCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$_ApplicationStateCopyWith<
+abstract class _$$ApplicationStateImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $ApplicationStateCopyWith<Event, State, View, $Res> {
-  factory _$$_ApplicationStateCopyWith(
-          _$_ApplicationState<Event, State, View> value,
-          $Res Function(_$_ApplicationState<Event, State, View>) then) =
-      __$$_ApplicationStateCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ApplicationStateImplCopyWith(
+          _$ApplicationStateImpl<Event, State, View> value,
+          $Res Function(_$ApplicationStateImpl<Event, State, View>) then) =
+      __$$ApplicationStateImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call(
@@ -100,14 +100,14 @@ abstract class _$$_ApplicationStateCopyWith<
 }
 
 /// @nodoc
-class __$$_ApplicationStateCopyWithImpl<Event extends CoreEvent,
+class __$$ApplicationStateImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ApplicationStateCopyWithImpl<Event, State, View, $Res,
-        _$_ApplicationState<Event, State, View>>
-    implements _$$_ApplicationStateCopyWith<Event, State, View, $Res> {
-  __$$_ApplicationStateCopyWithImpl(
-      _$_ApplicationState<Event, State, View> _value,
-      $Res Function(_$_ApplicationState<Event, State, View>) _then)
+        _$ApplicationStateImpl<Event, State, View>>
+    implements _$$ApplicationStateImplCopyWith<Event, State, View, $Res> {
+  __$$ApplicationStateImplCopyWithImpl(
+      _$ApplicationStateImpl<Event, State, View> _value,
+      $Res Function(_$ApplicationStateImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -117,7 +117,7 @@ class __$$_ApplicationStateCopyWithImpl<Event extends CoreEvent,
     Object? result = null,
     Object? ready = null,
   }) {
-    return _then(_$_ApplicationState<Event, State, View>(
+    return _then(_$ApplicationStateImpl<Event, State, View>(
       refDateTime: null == refDateTime
           ? _value.refDateTime
           : refDateTime // ignore: cast_nullable_to_non_nullable
@@ -136,9 +136,9 @@ class __$$_ApplicationStateCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$_ApplicationState<Event extends CoreEvent, State extends CoreState,
+class _$ApplicationStateImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _ApplicationState<Event, State, View> {
-  _$_ApplicationState(
+  _$ApplicationStateImpl(
       {required this.refDateTime, required this.result, required this.ready});
 
   @override
@@ -157,7 +157,7 @@ class _$_ApplicationState<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApplicationState<Event, State, View> &&
+            other is _$ApplicationStateImpl<Event, State, View> &&
             (identical(other.refDateTime, refDateTime) ||
                 other.refDateTime == refDateTime) &&
             (identical(other.result, result) || other.result == result) &&
@@ -170,10 +170,10 @@ class _$_ApplicationState<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApplicationStateCopyWith<Event, State, View,
-          _$_ApplicationState<Event, State, View>>
-      get copyWith => __$$_ApplicationStateCopyWithImpl<Event, State, View,
-          _$_ApplicationState<Event, State, View>>(this, _$identity);
+  _$$ApplicationStateImplCopyWith<Event, State, View,
+          _$ApplicationStateImpl<Event, State, View>>
+      get copyWith => __$$ApplicationStateImplCopyWithImpl<Event, State, View,
+          _$ApplicationStateImpl<Event, State, View>>(this, _$identity);
 }
 
 abstract class _ApplicationState<
@@ -184,7 +184,7 @@ abstract class _ApplicationState<
           {required final ({DateTime createdAt, Ref ref}) refDateTime,
           required final ({State state, View view}) result,
           required final ({bool local, bool remote}) ready}) =
-      _$_ApplicationState<Event, State, View>;
+      _$ApplicationStateImpl<Event, State, View>;
 
   @override
   ({DateTime createdAt, Ref ref}) get refDateTime;
@@ -194,7 +194,7 @@ abstract class _ApplicationState<
   ({bool local, bool remote}) get ready;
   @override
   @JsonKey(ignore: true)
-  _$$_ApplicationStateCopyWith<Event, State, View,
-          _$_ApplicationState<Event, State, View>>
+  _$$ApplicationStateImplCopyWith<Event, State, View,
+          _$ApplicationStateImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

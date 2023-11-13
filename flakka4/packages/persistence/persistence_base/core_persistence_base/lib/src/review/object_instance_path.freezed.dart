@@ -63,22 +63,22 @@ class _$ObjectInstancePathCopyWithImpl<$Res, $Val extends ObjectInstancePath>
 }
 
 /// @nodoc
-abstract class _$$_ObjectInstancePathCopyWith<$Res>
+abstract class _$$ObjectInstancePathImplCopyWith<$Res>
     implements $ObjectInstancePathCopyWith<$Res> {
-  factory _$$_ObjectInstancePathCopyWith(_$_ObjectInstancePath value,
-          $Res Function(_$_ObjectInstancePath) then) =
-      __$$_ObjectInstancePathCopyWithImpl<$Res>;
+  factory _$$ObjectInstancePathImplCopyWith(_$ObjectInstancePathImpl value,
+          $Res Function(_$ObjectInstancePathImpl) then) =
+      __$$ObjectInstancePathImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value, String persistenceId});
 }
 
 /// @nodoc
-class __$$_ObjectInstancePathCopyWithImpl<$Res>
-    extends _$ObjectInstancePathCopyWithImpl<$Res, _$_ObjectInstancePath>
-    implements _$$_ObjectInstancePathCopyWith<$Res> {
-  __$$_ObjectInstancePathCopyWithImpl(
-      _$_ObjectInstancePath _value, $Res Function(_$_ObjectInstancePath) _then)
+class __$$ObjectInstancePathImplCopyWithImpl<$Res>
+    extends _$ObjectInstancePathCopyWithImpl<$Res, _$ObjectInstancePathImpl>
+    implements _$$ObjectInstancePathImplCopyWith<$Res> {
+  __$$ObjectInstancePathImplCopyWithImpl(_$ObjectInstancePathImpl _value,
+      $Res Function(_$ObjectInstancePathImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ObjectInstancePathCopyWithImpl<$Res>
     Object? value = null,
     Object? persistenceId = null,
   }) {
-    return _then(_$_ObjectInstancePath(
+    return _then(_$ObjectInstancePathImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ObjectInstancePathCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ObjectInstancePath implements _ObjectInstancePath {
-  _$_ObjectInstancePath(this.value, this.persistenceId);
+class _$ObjectInstancePathImpl implements _ObjectInstancePath {
+  _$ObjectInstancePathImpl(this.value, this.persistenceId);
 
   @override
   final String value;
@@ -119,7 +119,7 @@ class _$_ObjectInstancePath implements _ObjectInstancePath {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ObjectInstancePath &&
+            other is _$ObjectInstancePathImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.persistenceId, persistenceId) ||
                 other.persistenceId == persistenceId));
@@ -131,14 +131,14 @@ class _$_ObjectInstancePath implements _ObjectInstancePath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ObjectInstancePathCopyWith<_$_ObjectInstancePath> get copyWith =>
-      __$$_ObjectInstancePathCopyWithImpl<_$_ObjectInstancePath>(
+  _$$ObjectInstancePathImplCopyWith<_$ObjectInstancePathImpl> get copyWith =>
+      __$$ObjectInstancePathImplCopyWithImpl<_$ObjectInstancePathImpl>(
           this, _$identity);
 }
 
 abstract class _ObjectInstancePath implements ObjectInstancePath {
   factory _ObjectInstancePath(final String value, final String persistenceId) =
-      _$_ObjectInstancePath;
+      _$ObjectInstancePathImpl;
 
   @override
   String get value;
@@ -146,6 +146,6 @@ abstract class _ObjectInstancePath implements ObjectInstancePath {
   String get persistenceId;
   @override
   @JsonKey(ignore: true)
-  _$$_ObjectInstancePathCopyWith<_$_ObjectInstancePath> get copyWith =>
+  _$$ObjectInstancePathImplCopyWith<_$ObjectInstancePathImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

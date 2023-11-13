@@ -6,14 +6,15 @@ part of 'entry_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EntryData _$$_EntryDataFromJson(Map<String, dynamic> json) => _$_EntryData(
+_$EntryDataImpl _$$EntryDataImplFromJson(Map<String, dynamic> json) =>
+    _$EntryDataImpl(
       ref: json['ref'] as String,
       parent:
           (json['parent'] as List<dynamic>).map((e) => e as String).toList(),
       createdAt: json['createdAt'] as int,
     );
 
-Map<String, dynamic> _$$_EntryDataToJson(_$_EntryData instance) =>
+Map<String, dynamic> _$$EntryDataImplToJson(_$EntryDataImpl instance) =>
     <String, dynamic>{
       'ref': instance.ref,
       'parent': instance.parent,

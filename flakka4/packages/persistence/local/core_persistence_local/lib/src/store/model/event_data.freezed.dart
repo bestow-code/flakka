@@ -67,21 +67,22 @@ class _$EventDataCopyWithImpl<$Res, $Val extends EventData>
 }
 
 /// @nodoc
-abstract class _$$_EventDataCopyWith<$Res> implements $EventDataCopyWith<$Res> {
-  factory _$$_EventDataCopyWith(
-          _$_EventData value, $Res Function(_$_EventData) then) =
-      __$$_EventDataCopyWithImpl<$Res>;
+abstract class _$$EventDataImplCopyWith<$Res>
+    implements $EventDataCopyWith<$Res> {
+  factory _$$EventDataImplCopyWith(
+          _$EventDataImpl value, $Res Function(_$EventDataImpl) then) =
+      __$$EventDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, Map<String, dynamic>? data});
 }
 
 /// @nodoc
-class __$$_EventDataCopyWithImpl<$Res>
-    extends _$EventDataCopyWithImpl<$Res, _$_EventData>
-    implements _$$_EventDataCopyWith<$Res> {
-  __$$_EventDataCopyWithImpl(
-      _$_EventData _value, $Res Function(_$_EventData) _then)
+class __$$EventDataImplCopyWithImpl<$Res>
+    extends _$EventDataCopyWithImpl<$Res, _$EventDataImpl>
+    implements _$$EventDataImplCopyWith<$Res> {
+  __$$EventDataImplCopyWithImpl(
+      _$EventDataImpl _value, $Res Function(_$EventDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_EventDataCopyWithImpl<$Res>
     Object? ref = null,
     Object? data = freezed,
   }) {
-    return _then(_$_EventData(
+    return _then(_$EventDataImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -105,12 +106,13 @@ class __$$_EventDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EventData implements _EventData {
-  _$_EventData({required this.ref, required final Map<String, dynamic>? data})
+class _$EventDataImpl implements _EventData {
+  _$EventDataImpl(
+      {required this.ref, required final Map<String, dynamic>? data})
       : _data = data;
 
-  factory _$_EventData.fromJson(Map<String, dynamic> json) =>
-      _$$_EventDataFromJson(json);
+  factory _$EventDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventDataImplFromJson(json);
 
   @override
   final String ref;
@@ -133,7 +135,7 @@ class _$_EventData implements _EventData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventData &&
+            other is _$EventDataImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
@@ -146,12 +148,12 @@ class _$_EventData implements _EventData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventDataCopyWith<_$_EventData> get copyWith =>
-      __$$_EventDataCopyWithImpl<_$_EventData>(this, _$identity);
+  _$$EventDataImplCopyWith<_$EventDataImpl> get copyWith =>
+      __$$EventDataImplCopyWithImpl<_$EventDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventDataToJson(
+    return _$$EventDataImplToJson(
       this,
     );
   }
@@ -160,10 +162,10 @@ class _$_EventData implements _EventData {
 abstract class _EventData implements EventData {
   factory _EventData(
       {required final String ref,
-      required final Map<String, dynamic>? data}) = _$_EventData;
+      required final Map<String, dynamic>? data}) = _$EventDataImpl;
 
   factory _EventData.fromJson(Map<String, dynamic> json) =
-      _$_EventData.fromJson;
+      _$EventDataImpl.fromJson;
 
   @override
   String get ref;
@@ -171,6 +173,6 @@ abstract class _EventData implements EventData {
   Map<String, dynamic>? get data;
   @override
   @JsonKey(ignore: true)
-  _$$_EventDataCopyWith<_$_EventData> get copyWith =>
+  _$$EventDataImplCopyWith<_$EventDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

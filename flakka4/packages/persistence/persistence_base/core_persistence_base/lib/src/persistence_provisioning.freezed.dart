@@ -77,23 +77,23 @@ class _$PersistenceProvisioningCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceProvisioningInitializeCopyWith<$Res> {
-  factory _$$PersistenceProvisioningInitializeCopyWith(
-          _$PersistenceProvisioningInitialize value,
-          $Res Function(_$PersistenceProvisioningInitialize) then) =
-      __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>;
+abstract class _$$PersistenceProvisioningInitializeImplCopyWith<$Res> {
+  factory _$$PersistenceProvisioningInitializeImplCopyWith(
+          _$PersistenceProvisioningInitializeImpl value,
+          $Res Function(_$PersistenceProvisioningInitializeImpl) then) =
+      __$$PersistenceProvisioningInitializeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({({int createdAt, String ref}) ifNew});
 }
 
 /// @nodoc
-class __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>
+class __$$PersistenceProvisioningInitializeImplCopyWithImpl<$Res>
     extends _$PersistenceProvisioningCopyWithImpl<$Res,
-        _$PersistenceProvisioningInitialize>
-    implements _$$PersistenceProvisioningInitializeCopyWith<$Res> {
-  __$$PersistenceProvisioningInitializeCopyWithImpl(
-      _$PersistenceProvisioningInitialize _value,
-      $Res Function(_$PersistenceProvisioningInitialize) _then)
+        _$PersistenceProvisioningInitializeImpl>
+    implements _$$PersistenceProvisioningInitializeImplCopyWith<$Res> {
+  __$$PersistenceProvisioningInitializeImplCopyWithImpl(
+      _$PersistenceProvisioningInitializeImpl _value,
+      $Res Function(_$PersistenceProvisioningInitializeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>
   $Res call({
     Object? ifNew = null,
   }) {
-    return _then(_$PersistenceProvisioningInitialize(
+    return _then(_$PersistenceProvisioningInitializeImpl(
       ifNew: null == ifNew
           ? _value.ifNew
           : ifNew // ignore: cast_nullable_to_non_nullable
@@ -112,9 +112,9 @@ class __$$PersistenceProvisioningInitializeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceProvisioningInitialize
+class _$PersistenceProvisioningInitializeImpl
     implements PersistenceProvisioningInitialize {
-  _$PersistenceProvisioningInitialize({required this.ifNew});
+  _$PersistenceProvisioningInitializeImpl({required this.ifNew});
 
   @override
   final ({int createdAt, String ref}) ifNew;
@@ -128,7 +128,7 @@ class _$PersistenceProvisioningInitialize
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceProvisioningInitialize &&
+            other is _$PersistenceProvisioningInitializeImpl &&
             (identical(other.ifNew, ifNew) || other.ifNew == ifNew));
   }
 
@@ -138,10 +138,10 @@ class _$PersistenceProvisioningInitialize
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceProvisioningInitializeCopyWith<
-          _$PersistenceProvisioningInitialize>
-      get copyWith => __$$PersistenceProvisioningInitializeCopyWithImpl<
-          _$PersistenceProvisioningInitialize>(this, _$identity);
+  _$$PersistenceProvisioningInitializeImplCopyWith<
+          _$PersistenceProvisioningInitializeImpl>
+      get copyWith => __$$PersistenceProvisioningInitializeImplCopyWithImpl<
+          _$PersistenceProvisioningInitializeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -211,33 +211,33 @@ abstract class PersistenceProvisioningInitialize
     implements PersistenceProvisioning {
   factory PersistenceProvisioningInitialize(
           {required final ({int createdAt, String ref}) ifNew}) =
-      _$PersistenceProvisioningInitialize;
+      _$PersistenceProvisioningInitializeImpl;
 
   ({int createdAt, String ref}) get ifNew;
   @JsonKey(ignore: true)
-  _$$PersistenceProvisioningInitializeCopyWith<
-          _$PersistenceProvisioningInitialize>
+  _$$PersistenceProvisioningInitializeImplCopyWith<
+          _$PersistenceProvisioningInitializeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceProvisioningResumeCopyWith<$Res> {
-  factory _$$PersistenceProvisioningResumeCopyWith(
-          _$PersistenceProvisioningResume value,
-          $Res Function(_$PersistenceProvisioningResume) then) =
-      __$$PersistenceProvisioningResumeCopyWithImpl<$Res>;
+abstract class _$$PersistenceProvisioningResumeImplCopyWith<$Res> {
+  factory _$$PersistenceProvisioningResumeImplCopyWith(
+          _$PersistenceProvisioningResumeImpl value,
+          $Res Function(_$PersistenceProvisioningResumeImpl) then) =
+      __$$PersistenceProvisioningResumeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceProvisioningResumeCopyWithImpl<$Res>
+class __$$PersistenceProvisioningResumeImplCopyWithImpl<$Res>
     extends _$PersistenceProvisioningCopyWithImpl<$Res,
-        _$PersistenceProvisioningResume>
-    implements _$$PersistenceProvisioningResumeCopyWith<$Res> {
-  __$$PersistenceProvisioningResumeCopyWithImpl(
-      _$PersistenceProvisioningResume _value,
-      $Res Function(_$PersistenceProvisioningResume) _then)
+        _$PersistenceProvisioningResumeImpl>
+    implements _$$PersistenceProvisioningResumeImplCopyWith<$Res> {
+  __$$PersistenceProvisioningResumeImplCopyWithImpl(
+      _$PersistenceProvisioningResumeImpl _value,
+      $Res Function(_$PersistenceProvisioningResumeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -246,7 +246,7 @@ class __$$PersistenceProvisioningResumeCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceProvisioningResume(
+    return _then(_$PersistenceProvisioningResumeImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -261,8 +261,9 @@ class __$$PersistenceProvisioningResumeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
-  _$PersistenceProvisioningResume(
+class _$PersistenceProvisioningResumeImpl
+    implements PersistenceProvisioningResume {
+  _$PersistenceProvisioningResumeImpl(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -279,7 +280,7 @@ class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceProvisioningResume &&
+            other is _$PersistenceProvisioningResumeImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -291,9 +292,10 @@ class _$PersistenceProvisioningResume implements PersistenceProvisioningResume {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceProvisioningResumeCopyWith<_$PersistenceProvisioningResume>
-      get copyWith => __$$PersistenceProvisioningResumeCopyWithImpl<
-          _$PersistenceProvisioningResume>(this, _$identity);
+  _$$PersistenceProvisioningResumeImplCopyWith<
+          _$PersistenceProvisioningResumeImpl>
+      get copyWith => __$$PersistenceProvisioningResumeImplCopyWithImpl<
+          _$PersistenceProvisioningResumeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -363,11 +365,12 @@ abstract class PersistenceProvisioningResume
     implements PersistenceProvisioning {
   factory PersistenceProvisioningResume(
       {required final String ref,
-      required final int sequenceNumber}) = _$PersistenceProvisioningResume;
+      required final int sequenceNumber}) = _$PersistenceProvisioningResumeImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceProvisioningResumeCopyWith<_$PersistenceProvisioningResume>
+  _$$PersistenceProvisioningResumeImplCopyWith<
+          _$PersistenceProvisioningResumeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

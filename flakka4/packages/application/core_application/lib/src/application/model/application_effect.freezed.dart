@@ -125,15 +125,16 @@ class _$ApplicationEffectCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$ApplicationEffectRequestCopyWith<
+abstract class _$$ApplicationEffectRequestImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $ApplicationEffectCopyWith<Event, State, View, $Res> {
-  factory _$$ApplicationEffectRequestCopyWith(
-          _$ApplicationEffectRequest<Event, State, View> value,
-          $Res Function(_$ApplicationEffectRequest<Event, State, View>) then) =
-      __$$ApplicationEffectRequestCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ApplicationEffectRequestImplCopyWith(
+          _$ApplicationEffectRequestImpl<Event, State, View> value,
+          $Res Function(_$ApplicationEffectRequestImpl<Event, State, View>)
+              then) =
+      __$$ApplicationEffectRequestImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call(
@@ -143,14 +144,15 @@ abstract class _$$ApplicationEffectRequestCopyWith<
 }
 
 /// @nodoc
-class __$$ApplicationEffectRequestCopyWithImpl<Event extends CoreEvent,
+class __$$ApplicationEffectRequestImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ApplicationEffectCopyWithImpl<Event, State, View, $Res,
-        _$ApplicationEffectRequest<Event, State, View>>
-    implements _$$ApplicationEffectRequestCopyWith<Event, State, View, $Res> {
-  __$$ApplicationEffectRequestCopyWithImpl(
-      _$ApplicationEffectRequest<Event, State, View> _value,
-      $Res Function(_$ApplicationEffectRequest<Event, State, View>) _then)
+        _$ApplicationEffectRequestImpl<Event, State, View>>
+    implements
+        _$$ApplicationEffectRequestImplCopyWith<Event, State, View, $Res> {
+  __$$ApplicationEffectRequestImplCopyWithImpl(
+      _$ApplicationEffectRequestImpl<Event, State, View> _value,
+      $Res Function(_$ApplicationEffectRequestImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -160,7 +162,7 @@ class __$$ApplicationEffectRequestCopyWithImpl<Event extends CoreEvent,
     Object? request = null,
     Object? result = null,
   }) {
-    return _then(_$ApplicationEffectRequest<Event, State, View>(
+    return _then(_$ApplicationEffectRequestImpl<Event, State, View>(
       refDateTime: null == refDateTime
           ? _value.refDateTime
           : refDateTime // ignore: cast_nullable_to_non_nullable
@@ -179,10 +181,10 @@ class __$$ApplicationEffectRequestCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$ApplicationEffectRequest<Event extends CoreEvent,
+class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ApplicationEffectRequest<Event, State, View> {
-  _$ApplicationEffectRequest(
+  _$ApplicationEffectRequestImpl(
       {required this.refDateTime, required this.request, required this.result});
 
   @override
@@ -201,7 +203,7 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationEffectRequest<Event, State, View> &&
+            other is _$ApplicationEffectRequestImpl<Event, State, View> &&
             (identical(other.refDateTime, refDateTime) ||
                 other.refDateTime == refDateTime) &&
             (identical(other.request, request) || other.request == request) &&
@@ -214,13 +216,13 @@ class _$ApplicationEffectRequest<Event extends CoreEvent,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationEffectRequestCopyWith<Event, State, View,
-          _$ApplicationEffectRequest<Event, State, View>>
-      get copyWith => __$$ApplicationEffectRequestCopyWithImpl<
+  _$$ApplicationEffectRequestImplCopyWith<Event, State, View,
+          _$ApplicationEffectRequestImpl<Event, State, View>>
+      get copyWith => __$$ApplicationEffectRequestImplCopyWithImpl<
           Event,
           State,
           View,
-          _$ApplicationEffectRequest<Event, State, View>>(this, _$identity);
+          _$ApplicationEffectRequestImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -297,7 +299,7 @@ abstract class ApplicationEffectRequest<
           {required final ({DateTime createdAt, Ref ref}) refDateTime,
           required final Request<State, Event> request,
           required final ({State state, View view}) result}) =
-      _$ApplicationEffectRequest<Event, State, View>;
+      _$ApplicationEffectRequestImpl<Event, State, View>;
 
   @override
   ({DateTime createdAt, Ref ref}) get refDateTime;
@@ -307,7 +309,7 @@ abstract class ApplicationEffectRequest<
   ({State state, View view}) get result;
   @override
   @JsonKey(ignore: true)
-  _$$ApplicationEffectRequestCopyWith<Event, State, View,
-          _$ApplicationEffectRequest<Event, State, View>>
+  _$$ApplicationEffectRequestImplCopyWith<Event, State, View,
+          _$ApplicationEffectRequestImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

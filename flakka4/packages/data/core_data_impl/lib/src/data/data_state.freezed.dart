@@ -104,14 +104,14 @@ class _$DataStateCopyWithImpl<Event extends CoreEvent, State extends CoreState,
 }
 
 /// @nodoc
-abstract class _$$_DataStateCopyWith<
+abstract class _$$DataStateImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
     $Res> implements $DataStateCopyWith<Event, State, View, $Res> {
-  factory _$$_DataStateCopyWith(_$_DataState<Event, State, View> value,
-          $Res Function(_$_DataState<Event, State, View>) then) =
-      __$$_DataStateCopyWithImpl<Event, State, View, $Res>;
+  factory _$$DataStateImplCopyWith(_$DataStateImpl<Event, State, View> value,
+          $Res Function(_$DataStateImpl<Event, State, View>) then) =
+      __$$DataStateImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call(
@@ -129,13 +129,13 @@ abstract class _$$_DataStateCopyWith<
 }
 
 /// @nodoc
-class __$$_DataStateCopyWithImpl<Event extends CoreEvent,
+class __$$DataStateImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$DataStateCopyWithImpl<Event, State, View, $Res,
-        _$_DataState<Event, State, View>>
-    implements _$$_DataStateCopyWith<Event, State, View, $Res> {
-  __$$_DataStateCopyWithImpl(_$_DataState<Event, State, View> _value,
-      $Res Function(_$_DataState<Event, State, View>) _then)
+        _$DataStateImpl<Event, State, View>>
+    implements _$$DataStateImplCopyWith<Event, State, View, $Res> {
+  __$$DataStateImplCopyWithImpl(_$DataStateImpl<Event, State, View> _value,
+      $Res Function(_$DataStateImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -146,7 +146,7 @@ class __$$_DataStateCopyWithImpl<Event extends CoreEvent,
     Object? pending = null,
     Object? ref = null,
   }) {
-    return _then(_$_DataState<Event, State, View>(
+    return _then(_$DataStateImpl<Event, State, View>(
       ready: null == ready
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
@@ -176,9 +176,9 @@ class __$$_DataStateCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$_DataState<Event extends CoreEvent, State extends CoreState,
+class _$DataStateImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _DataState<Event, State, View> {
-  _$_DataState(
+  _$DataStateImpl(
       {required this.ready,
       required this.loading,
       required final Set<Ref> pending,
@@ -222,7 +222,7 @@ class _$_DataState<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataState<Event, State, View> &&
+            other is _$DataStateImpl<Event, State, View> &&
             (identical(other.ready, ready) || other.ready == ready) &&
             (identical(other.loading, loading) || other.loading == loading) &&
             const DeepCollectionEquality().equals(other._pending, _pending) &&
@@ -240,25 +240,27 @@ class _$_DataState<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataStateCopyWith<Event, State, View, _$_DataState<Event, State, View>>
-      get copyWith => __$$_DataStateCopyWithImpl<Event, State, View,
-          _$_DataState<Event, State, View>>(this, _$identity);
+  _$$DataStateImplCopyWith<Event, State, View,
+          _$DataStateImpl<Event, State, View>>
+      get copyWith => __$$DataStateImplCopyWithImpl<Event, State, View,
+          _$DataStateImpl<Event, State, View>>(this, _$identity);
 }
 
 abstract class _DataState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataState<Event, State, View> {
   factory _DataState(
-      {required final ({
-        Map<Ref, DateTime> createdAt,
-        Map<Ref, Set<Ref>> edges,
-        Map<Ref, Event> event
-      }) ready,
-      required final ({
-        Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-        Map<Ref, Event> event
-      }) loading,
-      required final Set<Ref> pending,
-      required final Map<String, Ref> ref}) = _$_DataState<Event, State, View>;
+          {required final ({
+            Map<Ref, DateTime> createdAt,
+            Map<Ref, Set<Ref>> edges,
+            Map<Ref, Event> event
+          }) ready,
+          required final ({
+            Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
+            Map<Ref, Event> event
+          }) loading,
+          required final Set<Ref> pending,
+          required final Map<String, Ref> ref}) =
+      _$DataStateImpl<Event, State, View>;
 
   @override
   ({
@@ -277,6 +279,7 @@ abstract class _DataState<Event extends CoreEvent, State extends CoreState,
   Map<String, Ref> get ref;
   @override
   @JsonKey(ignore: true)
-  _$$_DataStateCopyWith<Event, State, View, _$_DataState<Event, State, View>>
+  _$$DataStateImplCopyWith<Event, State, View,
+          _$DataStateImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

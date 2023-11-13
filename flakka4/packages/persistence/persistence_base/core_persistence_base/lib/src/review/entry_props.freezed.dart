@@ -68,22 +68,22 @@ class _$EntryPropsCopyWithImpl<$Res, $Val extends EntryProps>
 }
 
 /// @nodoc
-abstract class _$$_EntryPropsCopyWith<$Res>
+abstract class _$$EntryPropsImplCopyWith<$Res>
     implements $EntryPropsCopyWith<$Res> {
-  factory _$$_EntryPropsCopyWith(
-          _$_EntryProps value, $Res Function(_$_EntryProps) then) =
-      __$$_EntryPropsCopyWithImpl<$Res>;
+  factory _$$EntryPropsImplCopyWith(
+          _$EntryPropsImpl value, $Res Function(_$EntryPropsImpl) then) =
+      __$$EntryPropsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Iterable<String> parent, int createdAt});
 }
 
 /// @nodoc
-class __$$_EntryPropsCopyWithImpl<$Res>
-    extends _$EntryPropsCopyWithImpl<$Res, _$_EntryProps>
-    implements _$$_EntryPropsCopyWith<$Res> {
-  __$$_EntryPropsCopyWithImpl(
-      _$_EntryProps _value, $Res Function(_$_EntryProps) _then)
+class __$$EntryPropsImplCopyWithImpl<$Res>
+    extends _$EntryPropsCopyWithImpl<$Res, _$EntryPropsImpl>
+    implements _$$EntryPropsImplCopyWith<$Res> {
+  __$$EntryPropsImplCopyWithImpl(
+      _$EntryPropsImpl _value, $Res Function(_$EntryPropsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_EntryPropsCopyWithImpl<$Res>
     Object? parent = null,
     Object? createdAt = null,
   }) {
-    return _then(_$_EntryProps(
+    return _then(_$EntryPropsImpl(
       parent: null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_EntryPropsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EntryProps extends _EntryProps {
-  _$_EntryProps({required this.parent, required this.createdAt}) : super._();
+class _$EntryPropsImpl extends _EntryProps {
+  _$EntryPropsImpl({required this.parent, required this.createdAt}) : super._();
 
-  factory _$_EntryProps.fromJson(Map<String, dynamic> json) =>
-      _$$_EntryPropsFromJson(json);
+  factory _$EntryPropsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EntryPropsImplFromJson(json);
 
   @override
   final Iterable<String> parent;
@@ -127,7 +127,7 @@ class _$_EntryProps extends _EntryProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EntryProps &&
+            other is _$EntryPropsImpl &&
             const DeepCollectionEquality().equals(other.parent, parent) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -141,12 +141,12 @@ class _$_EntryProps extends _EntryProps {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EntryPropsCopyWith<_$_EntryProps> get copyWith =>
-      __$$_EntryPropsCopyWithImpl<_$_EntryProps>(this, _$identity);
+  _$$EntryPropsImplCopyWith<_$EntryPropsImpl> get copyWith =>
+      __$$EntryPropsImplCopyWithImpl<_$EntryPropsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EntryPropsToJson(
+    return _$$EntryPropsImplToJson(
       this,
     );
   }
@@ -155,11 +155,11 @@ class _$_EntryProps extends _EntryProps {
 abstract class _EntryProps extends EntryProps {
   factory _EntryProps(
       {required final Iterable<String> parent,
-      required final int createdAt}) = _$_EntryProps;
+      required final int createdAt}) = _$EntryPropsImpl;
   _EntryProps._() : super._();
 
   factory _EntryProps.fromJson(Map<String, dynamic> json) =
-      _$_EntryProps.fromJson;
+      _$EntryPropsImpl.fromJson;
 
   @override
   Iterable<String> get parent;
@@ -167,6 +167,6 @@ abstract class _EntryProps extends EntryProps {
   int get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_EntryPropsCopyWith<_$_EntryProps> get copyWith =>
+  _$$EntryPropsImplCopyWith<_$EntryPropsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

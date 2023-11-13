@@ -138,11 +138,11 @@ class _$EntryComparisonCopyWithImpl<$Res, $Val extends EntryComparison>
 }
 
 /// @nodoc
-abstract class _$$EntryComparisonEqualCopyWith<$Res>
+abstract class _$$EntryComparisonEqualImplCopyWith<$Res>
     implements $EntryComparisonCopyWith<$Res> {
-  factory _$$EntryComparisonEqualCopyWith(_$EntryComparisonEqual value,
-          $Res Function(_$EntryComparisonEqual) then) =
-      __$$EntryComparisonEqualCopyWithImpl<$Res>;
+  factory _$$EntryComparisonEqualImplCopyWith(_$EntryComparisonEqualImpl value,
+          $Res Function(_$EntryComparisonEqualImpl) then) =
+      __$$EntryComparisonEqualImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Ref main, Ref instance});
@@ -154,11 +154,11 @@ abstract class _$$EntryComparisonEqualCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EntryComparisonEqualCopyWithImpl<$Res>
-    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonEqual>
-    implements _$$EntryComparisonEqualCopyWith<$Res> {
-  __$$EntryComparisonEqualCopyWithImpl(_$EntryComparisonEqual _value,
-      $Res Function(_$EntryComparisonEqual) _then)
+class __$$EntryComparisonEqualImplCopyWithImpl<$Res>
+    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonEqualImpl>
+    implements _$$EntryComparisonEqualImplCopyWith<$Res> {
+  __$$EntryComparisonEqualImplCopyWithImpl(_$EntryComparisonEqualImpl _value,
+      $Res Function(_$EntryComparisonEqualImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -167,7 +167,7 @@ class __$$EntryComparisonEqualCopyWithImpl<$Res>
     Object? main = null,
     Object? instance = null,
   }) {
-    return _then(_$EntryComparisonEqual(
+    return _then(_$EntryComparisonEqualImpl(
       main: null == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
@@ -182,8 +182,8 @@ class __$$EntryComparisonEqualCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryComparisonEqual implements EntryComparisonEqual {
-  _$EntryComparisonEqual({required this.main, required this.instance});
+class _$EntryComparisonEqualImpl implements EntryComparisonEqual {
+  _$EntryComparisonEqualImpl({required this.main, required this.instance});
 
   @override
   final Ref main;
@@ -199,7 +199,7 @@ class _$EntryComparisonEqual implements EntryComparisonEqual {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryComparisonEqual &&
+            other is _$EntryComparisonEqualImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.instance, instance) ||
                 other.instance == instance));
@@ -211,9 +211,10 @@ class _$EntryComparisonEqual implements EntryComparisonEqual {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryComparisonEqualCopyWith<_$EntryComparisonEqual> get copyWith =>
-      __$$EntryComparisonEqualCopyWithImpl<_$EntryComparisonEqual>(
-          this, _$identity);
+  _$$EntryComparisonEqualImplCopyWith<_$EntryComparisonEqualImpl>
+      get copyWith =>
+          __$$EntryComparisonEqualImplCopyWithImpl<_$EntryComparisonEqualImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -299,7 +300,7 @@ class _$EntryComparisonEqual implements EntryComparisonEqual {
 abstract class EntryComparisonEqual implements EntryComparison {
   factory EntryComparisonEqual(
       {required final Ref main,
-      required final Ref instance}) = _$EntryComparisonEqual;
+      required final Ref instance}) = _$EntryComparisonEqualImpl;
 
   @override
   Ref get main;
@@ -307,16 +308,16 @@ abstract class EntryComparisonEqual implements EntryComparison {
   Ref get instance;
   @override
   @JsonKey(ignore: true)
-  _$$EntryComparisonEqualCopyWith<_$EntryComparisonEqual> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EntryComparisonEqualImplCopyWith<_$EntryComparisonEqualImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EntryComparisonAheadCopyWith<$Res>
+abstract class _$$EntryComparisonAheadImplCopyWith<$Res>
     implements $EntryComparisonCopyWith<$Res> {
-  factory _$$EntryComparisonAheadCopyWith(_$EntryComparisonAhead value,
-          $Res Function(_$EntryComparisonAhead) then) =
-      __$$EntryComparisonAheadCopyWithImpl<$Res>;
+  factory _$$EntryComparisonAheadImplCopyWith(_$EntryComparisonAheadImpl value,
+          $Res Function(_$EntryComparisonAheadImpl) then) =
+      __$$EntryComparisonAheadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Ref main, Ref instance, List<Ref> path});
@@ -328,11 +329,11 @@ abstract class _$$EntryComparisonAheadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EntryComparisonAheadCopyWithImpl<$Res>
-    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonAhead>
-    implements _$$EntryComparisonAheadCopyWith<$Res> {
-  __$$EntryComparisonAheadCopyWithImpl(_$EntryComparisonAhead _value,
-      $Res Function(_$EntryComparisonAhead) _then)
+class __$$EntryComparisonAheadImplCopyWithImpl<$Res>
+    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonAheadImpl>
+    implements _$$EntryComparisonAheadImplCopyWith<$Res> {
+  __$$EntryComparisonAheadImplCopyWithImpl(_$EntryComparisonAheadImpl _value,
+      $Res Function(_$EntryComparisonAheadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -342,7 +343,7 @@ class __$$EntryComparisonAheadCopyWithImpl<$Res>
     Object? instance = null,
     Object? path = null,
   }) {
-    return _then(_$EntryComparisonAhead(
+    return _then(_$EntryComparisonAheadImpl(
       main: null == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
@@ -361,8 +362,8 @@ class __$$EntryComparisonAheadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryComparisonAhead implements EntryComparisonAhead {
-  _$EntryComparisonAhead(
+class _$EntryComparisonAheadImpl implements EntryComparisonAhead {
+  _$EntryComparisonAheadImpl(
       {required this.main,
       required this.instance,
       required final List<Ref> path})
@@ -389,7 +390,7 @@ class _$EntryComparisonAhead implements EntryComparisonAhead {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryComparisonAhead &&
+            other is _$EntryComparisonAheadImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.instance, instance) ||
                 other.instance == instance) &&
@@ -403,9 +404,10 @@ class _$EntryComparisonAhead implements EntryComparisonAhead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryComparisonAheadCopyWith<_$EntryComparisonAhead> get copyWith =>
-      __$$EntryComparisonAheadCopyWithImpl<_$EntryComparisonAhead>(
-          this, _$identity);
+  _$$EntryComparisonAheadImplCopyWith<_$EntryComparisonAheadImpl>
+      get copyWith =>
+          __$$EntryComparisonAheadImplCopyWithImpl<_$EntryComparisonAheadImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -492,7 +494,7 @@ abstract class EntryComparisonAhead implements EntryComparison {
   factory EntryComparisonAhead(
       {required final Ref main,
       required final Ref instance,
-      required final List<Ref> path}) = _$EntryComparisonAhead;
+      required final List<Ref> path}) = _$EntryComparisonAheadImpl;
 
   @override
   Ref get main;
@@ -501,16 +503,17 @@ abstract class EntryComparisonAhead implements EntryComparison {
   List<Ref> get path;
   @override
   @JsonKey(ignore: true)
-  _$$EntryComparisonAheadCopyWith<_$EntryComparisonAhead> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EntryComparisonAheadImplCopyWith<_$EntryComparisonAheadImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EntryComparisonBehindCopyWith<$Res>
+abstract class _$$EntryComparisonBehindImplCopyWith<$Res>
     implements $EntryComparisonCopyWith<$Res> {
-  factory _$$EntryComparisonBehindCopyWith(_$EntryComparisonBehind value,
-          $Res Function(_$EntryComparisonBehind) then) =
-      __$$EntryComparisonBehindCopyWithImpl<$Res>;
+  factory _$$EntryComparisonBehindImplCopyWith(
+          _$EntryComparisonBehindImpl value,
+          $Res Function(_$EntryComparisonBehindImpl) then) =
+      __$$EntryComparisonBehindImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Ref main, Ref instance, List<Ref> path});
@@ -522,11 +525,11 @@ abstract class _$$EntryComparisonBehindCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EntryComparisonBehindCopyWithImpl<$Res>
-    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonBehind>
-    implements _$$EntryComparisonBehindCopyWith<$Res> {
-  __$$EntryComparisonBehindCopyWithImpl(_$EntryComparisonBehind _value,
-      $Res Function(_$EntryComparisonBehind) _then)
+class __$$EntryComparisonBehindImplCopyWithImpl<$Res>
+    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonBehindImpl>
+    implements _$$EntryComparisonBehindImplCopyWith<$Res> {
+  __$$EntryComparisonBehindImplCopyWithImpl(_$EntryComparisonBehindImpl _value,
+      $Res Function(_$EntryComparisonBehindImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -536,7 +539,7 @@ class __$$EntryComparisonBehindCopyWithImpl<$Res>
     Object? instance = null,
     Object? path = null,
   }) {
-    return _then(_$EntryComparisonBehind(
+    return _then(_$EntryComparisonBehindImpl(
       main: null == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
@@ -555,8 +558,8 @@ class __$$EntryComparisonBehindCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryComparisonBehind implements EntryComparisonBehind {
-  _$EntryComparisonBehind(
+class _$EntryComparisonBehindImpl implements EntryComparisonBehind {
+  _$EntryComparisonBehindImpl(
       {required this.main,
       required this.instance,
       required final List<Ref> path})
@@ -583,7 +586,7 @@ class _$EntryComparisonBehind implements EntryComparisonBehind {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryComparisonBehind &&
+            other is _$EntryComparisonBehindImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.instance, instance) ||
                 other.instance == instance) &&
@@ -597,9 +600,9 @@ class _$EntryComparisonBehind implements EntryComparisonBehind {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryComparisonBehindCopyWith<_$EntryComparisonBehind> get copyWith =>
-      __$$EntryComparisonBehindCopyWithImpl<_$EntryComparisonBehind>(
-          this, _$identity);
+  _$$EntryComparisonBehindImplCopyWith<_$EntryComparisonBehindImpl>
+      get copyWith => __$$EntryComparisonBehindImplCopyWithImpl<
+          _$EntryComparisonBehindImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -686,7 +689,7 @@ abstract class EntryComparisonBehind implements EntryComparison {
   factory EntryComparisonBehind(
       {required final Ref main,
       required final Ref instance,
-      required final List<Ref> path}) = _$EntryComparisonBehind;
+      required final List<Ref> path}) = _$EntryComparisonBehindImpl;
 
   @override
   Ref get main;
@@ -695,16 +698,17 @@ abstract class EntryComparisonBehind implements EntryComparison {
   List<Ref> get path;
   @override
   @JsonKey(ignore: true)
-  _$$EntryComparisonBehindCopyWith<_$EntryComparisonBehind> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EntryComparisonBehindImplCopyWith<_$EntryComparisonBehindImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EntryComparisonDivergedCopyWith<$Res>
+abstract class _$$EntryComparisonDivergedImplCopyWith<$Res>
     implements $EntryComparisonCopyWith<$Res> {
-  factory _$$EntryComparisonDivergedCopyWith(_$EntryComparisonDiverged value,
-          $Res Function(_$EntryComparisonDiverged) then) =
-      __$$EntryComparisonDivergedCopyWithImpl<$Res>;
+  factory _$$EntryComparisonDivergedImplCopyWith(
+          _$EntryComparisonDivergedImpl value,
+          $Res Function(_$EntryComparisonDivergedImpl) then) =
+      __$$EntryComparisonDivergedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Ref main, Ref instance, List<Ref> path});
@@ -716,11 +720,12 @@ abstract class _$$EntryComparisonDivergedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EntryComparisonDivergedCopyWithImpl<$Res>
-    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonDiverged>
-    implements _$$EntryComparisonDivergedCopyWith<$Res> {
-  __$$EntryComparisonDivergedCopyWithImpl(_$EntryComparisonDiverged _value,
-      $Res Function(_$EntryComparisonDiverged) _then)
+class __$$EntryComparisonDivergedImplCopyWithImpl<$Res>
+    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonDivergedImpl>
+    implements _$$EntryComparisonDivergedImplCopyWith<$Res> {
+  __$$EntryComparisonDivergedImplCopyWithImpl(
+      _$EntryComparisonDivergedImpl _value,
+      $Res Function(_$EntryComparisonDivergedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -730,7 +735,7 @@ class __$$EntryComparisonDivergedCopyWithImpl<$Res>
     Object? instance = null,
     Object? path = null,
   }) {
-    return _then(_$EntryComparisonDiverged(
+    return _then(_$EntryComparisonDivergedImpl(
       main: null == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
@@ -749,8 +754,8 @@ class __$$EntryComparisonDivergedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryComparisonDiverged implements EntryComparisonDiverged {
-  _$EntryComparisonDiverged(
+class _$EntryComparisonDivergedImpl implements EntryComparisonDiverged {
+  _$EntryComparisonDivergedImpl(
       {required this.main,
       required this.instance,
       required final List<Ref> path})
@@ -777,7 +782,7 @@ class _$EntryComparisonDiverged implements EntryComparisonDiverged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryComparisonDiverged &&
+            other is _$EntryComparisonDivergedImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.instance, instance) ||
                 other.instance == instance) &&
@@ -791,9 +796,9 @@ class _$EntryComparisonDiverged implements EntryComparisonDiverged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryComparisonDivergedCopyWith<_$EntryComparisonDiverged> get copyWith =>
-      __$$EntryComparisonDivergedCopyWithImpl<_$EntryComparisonDiverged>(
-          this, _$identity);
+  _$$EntryComparisonDivergedImplCopyWith<_$EntryComparisonDivergedImpl>
+      get copyWith => __$$EntryComparisonDivergedImplCopyWithImpl<
+          _$EntryComparisonDivergedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -880,7 +885,7 @@ abstract class EntryComparisonDiverged implements EntryComparison {
   factory EntryComparisonDiverged(
       {required final Ref main,
       required final Ref instance,
-      required final List<Ref> path}) = _$EntryComparisonDiverged;
+      required final List<Ref> path}) = _$EntryComparisonDivergedImpl;
 
   @override
   Ref get main;
@@ -889,16 +894,17 @@ abstract class EntryComparisonDiverged implements EntryComparison {
   List<Ref> get path;
   @override
   @JsonKey(ignore: true)
-  _$$EntryComparisonDivergedCopyWith<_$EntryComparisonDiverged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EntryComparisonDivergedImplCopyWith<_$EntryComparisonDivergedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EntryComparisonUnknownCopyWith<$Res>
+abstract class _$$EntryComparisonUnknownImplCopyWith<$Res>
     implements $EntryComparisonCopyWith<$Res> {
-  factory _$$EntryComparisonUnknownCopyWith(_$EntryComparisonUnknown value,
-          $Res Function(_$EntryComparisonUnknown) then) =
-      __$$EntryComparisonUnknownCopyWithImpl<$Res>;
+  factory _$$EntryComparisonUnknownImplCopyWith(
+          _$EntryComparisonUnknownImpl value,
+          $Res Function(_$EntryComparisonUnknownImpl) then) =
+      __$$EntryComparisonUnknownImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Ref main, Ref instance});
@@ -910,11 +916,12 @@ abstract class _$$EntryComparisonUnknownCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EntryComparisonUnknownCopyWithImpl<$Res>
-    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonUnknown>
-    implements _$$EntryComparisonUnknownCopyWith<$Res> {
-  __$$EntryComparisonUnknownCopyWithImpl(_$EntryComparisonUnknown _value,
-      $Res Function(_$EntryComparisonUnknown) _then)
+class __$$EntryComparisonUnknownImplCopyWithImpl<$Res>
+    extends _$EntryComparisonCopyWithImpl<$Res, _$EntryComparisonUnknownImpl>
+    implements _$$EntryComparisonUnknownImplCopyWith<$Res> {
+  __$$EntryComparisonUnknownImplCopyWithImpl(
+      _$EntryComparisonUnknownImpl _value,
+      $Res Function(_$EntryComparisonUnknownImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -923,7 +930,7 @@ class __$$EntryComparisonUnknownCopyWithImpl<$Res>
     Object? main = null,
     Object? instance = null,
   }) {
-    return _then(_$EntryComparisonUnknown(
+    return _then(_$EntryComparisonUnknownImpl(
       main: null == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
@@ -938,8 +945,8 @@ class __$$EntryComparisonUnknownCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryComparisonUnknown implements EntryComparisonUnknown {
-  _$EntryComparisonUnknown({required this.main, required this.instance});
+class _$EntryComparisonUnknownImpl implements EntryComparisonUnknown {
+  _$EntryComparisonUnknownImpl({required this.main, required this.instance});
 
   @override
   final Ref main;
@@ -955,7 +962,7 @@ class _$EntryComparisonUnknown implements EntryComparisonUnknown {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryComparisonUnknown &&
+            other is _$EntryComparisonUnknownImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.instance, instance) ||
                 other.instance == instance));
@@ -967,9 +974,9 @@ class _$EntryComparisonUnknown implements EntryComparisonUnknown {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryComparisonUnknownCopyWith<_$EntryComparisonUnknown> get copyWith =>
-      __$$EntryComparisonUnknownCopyWithImpl<_$EntryComparisonUnknown>(
-          this, _$identity);
+  _$$EntryComparisonUnknownImplCopyWith<_$EntryComparisonUnknownImpl>
+      get copyWith => __$$EntryComparisonUnknownImplCopyWithImpl<
+          _$EntryComparisonUnknownImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1055,7 +1062,7 @@ class _$EntryComparisonUnknown implements EntryComparisonUnknown {
 abstract class EntryComparisonUnknown implements EntryComparison {
   factory EntryComparisonUnknown(
       {required final Ref main,
-      required final Ref instance}) = _$EntryComparisonUnknown;
+      required final Ref instance}) = _$EntryComparisonUnknownImpl;
 
   @override
   Ref get main;
@@ -1063,6 +1070,6 @@ abstract class EntryComparisonUnknown implements EntryComparison {
   Ref get instance;
   @override
   @JsonKey(ignore: true)
-  _$$EntryComparisonUnknownCopyWith<_$EntryComparisonUnknown> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EntryComparisonUnknownImplCopyWith<_$EntryComparisonUnknownImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

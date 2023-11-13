@@ -56,21 +56,22 @@ class _$VersionIdCopyWithImpl<$Res, $Val extends VersionId>
 }
 
 /// @nodoc
-abstract class _$$_VersionIdCopyWith<$Res> implements $VersionIdCopyWith<$Res> {
-  factory _$$_VersionIdCopyWith(
-          _$_VersionId value, $Res Function(_$_VersionId) then) =
-      __$$_VersionIdCopyWithImpl<$Res>;
+abstract class _$$VersionIdImplCopyWith<$Res>
+    implements $VersionIdCopyWith<$Res> {
+  factory _$$VersionIdImplCopyWith(
+          _$VersionIdImpl value, $Res Function(_$VersionIdImpl) then) =
+      __$$VersionIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_VersionIdCopyWithImpl<$Res>
-    extends _$VersionIdCopyWithImpl<$Res, _$_VersionId>
-    implements _$$_VersionIdCopyWith<$Res> {
-  __$$_VersionIdCopyWithImpl(
-      _$_VersionId _value, $Res Function(_$_VersionId) _then)
+class __$$VersionIdImplCopyWithImpl<$Res>
+    extends _$VersionIdCopyWithImpl<$Res, _$VersionIdImpl>
+    implements _$$VersionIdImplCopyWith<$Res> {
+  __$$VersionIdImplCopyWithImpl(
+      _$VersionIdImpl _value, $Res Function(_$VersionIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_VersionIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_VersionId(
+    return _then(_$VersionIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_VersionIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VersionId implements _VersionId {
-  _$_VersionId(this.value);
+class _$VersionIdImpl implements _VersionId {
+  _$VersionIdImpl(this.value);
 
   @override
   final String value;
@@ -104,7 +105,7 @@ class _$_VersionId implements _VersionId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VersionId &&
+            other is _$VersionIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -114,18 +115,18 @@ class _$_VersionId implements _VersionId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VersionIdCopyWith<_$_VersionId> get copyWith =>
-      __$$_VersionIdCopyWithImpl<_$_VersionId>(this, _$identity);
+  _$$VersionIdImplCopyWith<_$VersionIdImpl> get copyWith =>
+      __$$VersionIdImplCopyWithImpl<_$VersionIdImpl>(this, _$identity);
 }
 
 abstract class _VersionId implements VersionId {
-  factory _VersionId(final String value) = _$_VersionId;
+  factory _VersionId(final String value) = _$VersionIdImpl;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_VersionIdCopyWith<_$_VersionId> get copyWith =>
+  _$$VersionIdImplCopyWith<_$VersionIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -178,22 +179,22 @@ class _$ObjectVersionCopyWithImpl<$Res, $Val extends ObjectVersion>
 }
 
 /// @nodoc
-abstract class _$$_ObjectVersionCopyWith<$Res>
+abstract class _$$ObjectVersionImplCopyWith<$Res>
     implements $ObjectVersionCopyWith<$Res> {
-  factory _$$_ObjectVersionCopyWith(
-          _$_ObjectVersion value, $Res Function(_$_ObjectVersion) then) =
-      __$$_ObjectVersionCopyWithImpl<$Res>;
+  factory _$$ObjectVersionImplCopyWith(
+          _$ObjectVersionImpl value, $Res Function(_$ObjectVersionImpl) then) =
+      __$$ObjectVersionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int event, int stateView});
 }
 
 /// @nodoc
-class __$$_ObjectVersionCopyWithImpl<$Res>
-    extends _$ObjectVersionCopyWithImpl<$Res, _$_ObjectVersion>
-    implements _$$_ObjectVersionCopyWith<$Res> {
-  __$$_ObjectVersionCopyWithImpl(
-      _$_ObjectVersion _value, $Res Function(_$_ObjectVersion) _then)
+class __$$ObjectVersionImplCopyWithImpl<$Res>
+    extends _$ObjectVersionCopyWithImpl<$Res, _$ObjectVersionImpl>
+    implements _$$ObjectVersionImplCopyWith<$Res> {
+  __$$ObjectVersionImplCopyWithImpl(
+      _$ObjectVersionImpl _value, $Res Function(_$ObjectVersionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -202,7 +203,7 @@ class __$$_ObjectVersionCopyWithImpl<$Res>
     Object? event = null,
     Object? stateView = null,
   }) {
-    return _then(_$_ObjectVersion(
+    return _then(_$ObjectVersionImpl(
       null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -217,8 +218,8 @@ class __$$_ObjectVersionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ObjectVersion implements _ObjectVersion {
-  _$_ObjectVersion(this.event, this.stateView);
+class _$ObjectVersionImpl implements _ObjectVersion {
+  _$ObjectVersionImpl(this.event, this.stateView);
 
   @override
   final int event;
@@ -234,7 +235,7 @@ class _$_ObjectVersion implements _ObjectVersion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ObjectVersion &&
+            other is _$ObjectVersionImpl &&
             (identical(other.event, event) || other.event == event) &&
             (identical(other.stateView, stateView) ||
                 other.stateView == stateView));
@@ -246,13 +247,13 @@ class _$_ObjectVersion implements _ObjectVersion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ObjectVersionCopyWith<_$_ObjectVersion> get copyWith =>
-      __$$_ObjectVersionCopyWithImpl<_$_ObjectVersion>(this, _$identity);
+  _$$ObjectVersionImplCopyWith<_$ObjectVersionImpl> get copyWith =>
+      __$$ObjectVersionImplCopyWithImpl<_$ObjectVersionImpl>(this, _$identity);
 }
 
 abstract class _ObjectVersion implements ObjectVersion {
   factory _ObjectVersion(final int event, final int stateView) =
-      _$_ObjectVersion;
+      _$ObjectVersionImpl;
 
   @override
   int get event;
@@ -260,6 +261,6 @@ abstract class _ObjectVersion implements ObjectVersion {
   int get stateView;
   @override
   @JsonKey(ignore: true)
-  _$$_ObjectVersionCopyWith<_$_ObjectVersion> get copyWith =>
+  _$$ObjectVersionImplCopyWith<_$ObjectVersionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

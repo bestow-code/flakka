@@ -57,22 +57,22 @@ class _$RevisionIdCopyWithImpl<$Res, $Val extends RevisionId>
 }
 
 /// @nodoc
-abstract class _$$_RevisionIdCopyWith<$Res>
+abstract class _$$RevisionIdImplCopyWith<$Res>
     implements $RevisionIdCopyWith<$Res> {
-  factory _$$_RevisionIdCopyWith(
-          _$_RevisionId value, $Res Function(_$_RevisionId) then) =
-      __$$_RevisionIdCopyWithImpl<$Res>;
+  factory _$$RevisionIdImplCopyWith(
+          _$RevisionIdImpl value, $Res Function(_$RevisionIdImpl) then) =
+      __$$RevisionIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_RevisionIdCopyWithImpl<$Res>
-    extends _$RevisionIdCopyWithImpl<$Res, _$_RevisionId>
-    implements _$$_RevisionIdCopyWith<$Res> {
-  __$$_RevisionIdCopyWithImpl(
-      _$_RevisionId _value, $Res Function(_$_RevisionId) _then)
+class __$$RevisionIdImplCopyWithImpl<$Res>
+    extends _$RevisionIdCopyWithImpl<$Res, _$RevisionIdImpl>
+    implements _$$RevisionIdImplCopyWith<$Res> {
+  __$$RevisionIdImplCopyWithImpl(
+      _$RevisionIdImpl _value, $Res Function(_$RevisionIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_RevisionIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_RevisionId(
+    return _then(_$RevisionIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_RevisionIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RevisionId implements _RevisionId {
-  _$_RevisionId(this.value);
+class _$RevisionIdImpl implements _RevisionId {
+  _$RevisionIdImpl(this.value);
 
   @override
   final String value;
@@ -106,7 +106,7 @@ class _$_RevisionId implements _RevisionId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RevisionId &&
+            other is _$RevisionIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -116,17 +116,17 @@ class _$_RevisionId implements _RevisionId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RevisionIdCopyWith<_$_RevisionId> get copyWith =>
-      __$$_RevisionIdCopyWithImpl<_$_RevisionId>(this, _$identity);
+  _$$RevisionIdImplCopyWith<_$RevisionIdImpl> get copyWith =>
+      __$$RevisionIdImplCopyWithImpl<_$RevisionIdImpl>(this, _$identity);
 }
 
 abstract class _RevisionId implements RevisionId {
-  factory _RevisionId(final String value) = _$_RevisionId;
+  factory _RevisionId(final String value) = _$RevisionIdImpl;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_RevisionIdCopyWith<_$_RevisionId> get copyWith =>
+  _$$RevisionIdImplCopyWith<_$RevisionIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

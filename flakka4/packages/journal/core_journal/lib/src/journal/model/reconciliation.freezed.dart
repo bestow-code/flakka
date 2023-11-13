@@ -128,12 +128,12 @@ class _$ReconciliationCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$ReconciliationForwardCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationForwardImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationForwardCopyWith(
-          _$ReconciliationForward<Event, State, View> value,
-          $Res Function(_$ReconciliationForward<Event, State, View>) then) =
-      __$$ReconciliationForwardCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationForwardImplCopyWith(
+          _$ReconciliationForwardImpl<Event, State, View> value,
+          $Res Function(_$ReconciliationForwardImpl<Event, State, View>) then) =
+      __$$ReconciliationForwardImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref, Iterable<Event> events});
 
@@ -141,14 +141,14 @@ abstract class _$$ReconciliationForwardCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$ReconciliationForwardCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationForwardImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationForward<Event, State, View>>
-    implements _$$ReconciliationForwardCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationForwardCopyWithImpl(
-      _$ReconciliationForward<Event, State, View> _value,
-      $Res Function(_$ReconciliationForward<Event, State, View>) _then)
+        _$ReconciliationForwardImpl<Event, State, View>>
+    implements _$$ReconciliationForwardImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationForwardImplCopyWithImpl(
+      _$ReconciliationForwardImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationForwardImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,7 +157,7 @@ class __$$ReconciliationForwardCopyWithImpl<Event extends CoreEvent,
     Object? ref = null,
     Object? events = null,
   }) {
-    return _then(_$ReconciliationForward<Event, State, View>(
+    return _then(_$ReconciliationForwardImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -180,10 +180,10 @@ class __$$ReconciliationForwardCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$ReconciliationForwardImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements ReconciliationForward<Event, State, View> {
-  _$ReconciliationForward({required this.ref, required this.events});
+  _$ReconciliationForwardImpl({required this.ref, required this.events});
 
   @override
   final Ref ref;
@@ -199,7 +199,7 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationForward<Event, State, View> &&
+            other is _$ReconciliationForwardImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.events, events));
   }
@@ -211,10 +211,13 @@ class _$ReconciliationForward<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReconciliationForwardCopyWith<Event, State, View,
-          _$ReconciliationForward<Event, State, View>>
-      get copyWith => __$$ReconciliationForwardCopyWithImpl<Event, State, View,
-          _$ReconciliationForward<Event, State, View>>(this, _$identity);
+  _$$ReconciliationForwardImplCopyWith<Event, State, View,
+          _$ReconciliationForwardImpl<Event, State, View>>
+      get copyWith => __$$ReconciliationForwardImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ReconciliationForwardImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -330,23 +333,23 @@ abstract class ReconciliationForward<
     View extends CoreView> implements Reconciliation<Event, State, View> {
   factory ReconciliationForward(
           {required final Ref ref, required final Iterable<Event> events}) =
-      _$ReconciliationForward<Event, State, View>;
+      _$ReconciliationForwardImpl<Event, State, View>;
 
   Ref get ref;
   Iterable<Event> get events;
   @JsonKey(ignore: true)
-  _$$ReconciliationForwardCopyWith<Event, State, View,
-          _$ReconciliationForward<Event, State, View>>
+  _$$ReconciliationForwardImplCopyWith<Event, State, View,
+          _$ReconciliationForwardImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ReconciliationResetCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationResetImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationResetCopyWith(
-          _$ReconciliationReset<Event, State, View> value,
-          $Res Function(_$ReconciliationReset<Event, State, View>) then) =
-      __$$ReconciliationResetCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationResetImplCopyWith(
+          _$ReconciliationResetImpl<Event, State, View> value,
+          $Res Function(_$ReconciliationResetImpl<Event, State, View>) then) =
+      __$$ReconciliationResetImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref, ({State state, View view}) base, Iterable<Event> events});
 
@@ -354,14 +357,14 @@ abstract class _$$ReconciliationResetCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$ReconciliationResetCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationResetImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationReset<Event, State, View>>
-    implements _$$ReconciliationResetCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationResetCopyWithImpl(
-      _$ReconciliationReset<Event, State, View> _value,
-      $Res Function(_$ReconciliationReset<Event, State, View>) _then)
+        _$ReconciliationResetImpl<Event, State, View>>
+    implements _$$ReconciliationResetImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationResetImplCopyWithImpl(
+      _$ReconciliationResetImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationResetImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -371,7 +374,7 @@ class __$$ReconciliationResetCopyWithImpl<Event extends CoreEvent,
     Object? base = null,
     Object? events = null,
   }) {
-    return _then(_$ReconciliationReset<Event, State, View>(
+    return _then(_$ReconciliationResetImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -398,9 +401,11 @@ class __$$ReconciliationResetCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
+class _$ReconciliationResetImpl<
+    Event extends CoreEvent,
+    State extends CoreState,
     View extends CoreView> implements ReconciliationReset<Event, State, View> {
-  _$ReconciliationReset(
+  _$ReconciliationResetImpl(
       {required this.ref, required this.base, required this.events});
 
   @override
@@ -419,7 +424,7 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationReset<Event, State, View> &&
+            other is _$ReconciliationResetImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.base, base) || other.base == base) &&
             const DeepCollectionEquality().equals(other.events, events));
@@ -432,10 +437,13 @@ class _$ReconciliationReset<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReconciliationResetCopyWith<Event, State, View,
-          _$ReconciliationReset<Event, State, View>>
-      get copyWith => __$$ReconciliationResetCopyWithImpl<Event, State, View,
-          _$ReconciliationReset<Event, State, View>>(this, _$identity);
+  _$$ReconciliationResetImplCopyWith<Event, State, View,
+          _$ReconciliationResetImpl<Event, State, View>>
+      get copyWith => __$$ReconciliationResetImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ReconciliationResetImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -553,24 +561,24 @@ abstract class ReconciliationReset<
           {required final Ref ref,
           required final ({State state, View view}) base,
           required final Iterable<Event> events}) =
-      _$ReconciliationReset<Event, State, View>;
+      _$ReconciliationResetImpl<Event, State, View>;
 
   Ref get ref;
   ({State state, View view}) get base;
   Iterable<Event> get events;
   @JsonKey(ignore: true)
-  _$$ReconciliationResetCopyWith<Event, State, View,
-          _$ReconciliationReset<Event, State, View>>
+  _$$ReconciliationResetImplCopyWith<Event, State, View,
+          _$ReconciliationResetImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ReconciliationMergeCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationMergeImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationMergeCopyWith(
-          _$ReconciliationMerge<Event, State, View> value,
-          $Res Function(_$ReconciliationMerge<Event, State, View>) then) =
-      __$$ReconciliationMergeCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationMergeImplCopyWith(
+          _$ReconciliationMergeImpl<Event, State, View> value,
+          $Res Function(_$ReconciliationMergeImpl<Event, State, View>) then) =
+      __$$ReconciliationMergeImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref, ({State state, View view}) base, Iterable<Event> events});
 
@@ -578,14 +586,14 @@ abstract class _$$ReconciliationMergeCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$ReconciliationMergeCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationMergeImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationMerge<Event, State, View>>
-    implements _$$ReconciliationMergeCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationMergeCopyWithImpl(
-      _$ReconciliationMerge<Event, State, View> _value,
-      $Res Function(_$ReconciliationMerge<Event, State, View>) _then)
+        _$ReconciliationMergeImpl<Event, State, View>>
+    implements _$$ReconciliationMergeImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationMergeImplCopyWithImpl(
+      _$ReconciliationMergeImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationMergeImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -595,7 +603,7 @@ class __$$ReconciliationMergeCopyWithImpl<Event extends CoreEvent,
     Object? base = null,
     Object? events = null,
   }) {
-    return _then(_$ReconciliationMerge<Event, State, View>(
+    return _then(_$ReconciliationMergeImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -622,9 +630,11 @@ class __$$ReconciliationMergeCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
+class _$ReconciliationMergeImpl<
+    Event extends CoreEvent,
+    State extends CoreState,
     View extends CoreView> implements ReconciliationMerge<Event, State, View> {
-  _$ReconciliationMerge(
+  _$ReconciliationMergeImpl(
       {required this.ref, required this.base, required this.events});
 
   @override
@@ -643,7 +653,7 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationMerge<Event, State, View> &&
+            other is _$ReconciliationMergeImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.base, base) || other.base == base) &&
             const DeepCollectionEquality().equals(other.events, events));
@@ -656,10 +666,13 @@ class _$ReconciliationMerge<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReconciliationMergeCopyWith<Event, State, View,
-          _$ReconciliationMerge<Event, State, View>>
-      get copyWith => __$$ReconciliationMergeCopyWithImpl<Event, State, View,
-          _$ReconciliationMerge<Event, State, View>>(this, _$identity);
+  _$$ReconciliationMergeImplCopyWith<Event, State, View,
+          _$ReconciliationMergeImpl<Event, State, View>>
+      get copyWith => __$$ReconciliationMergeImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ReconciliationMergeImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -777,24 +790,24 @@ abstract class ReconciliationMerge<
           {required final Ref ref,
           required final ({State state, View view}) base,
           required final Iterable<Event> events}) =
-      _$ReconciliationMerge<Event, State, View>;
+      _$ReconciliationMergeImpl<Event, State, View>;
 
   Ref get ref;
   ({State state, View view}) get base;
   Iterable<Event> get events;
   @JsonKey(ignore: true)
-  _$$ReconciliationMergeCopyWith<Event, State, View,
-          _$ReconciliationMerge<Event, State, View>>
+  _$$ReconciliationMergeImplCopyWith<Event, State, View,
+          _$ReconciliationMergeImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ReconciliationPublishCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationPublishImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationPublishCopyWith(
-          _$ReconciliationPublish<Event, State, View> value,
-          $Res Function(_$ReconciliationPublish<Event, State, View>) then) =
-      __$$ReconciliationPublishCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationPublishImplCopyWith(
+          _$ReconciliationPublishImpl<Event, State, View> value,
+          $Res Function(_$ReconciliationPublishImpl<Event, State, View>) then) =
+      __$$ReconciliationPublishImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref, Iterable<Ref> allowFrom});
 
@@ -802,14 +815,14 @@ abstract class _$$ReconciliationPublishCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$ReconciliationPublishCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationPublishImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationPublish<Event, State, View>>
-    implements _$$ReconciliationPublishCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationPublishCopyWithImpl(
-      _$ReconciliationPublish<Event, State, View> _value,
-      $Res Function(_$ReconciliationPublish<Event, State, View>) _then)
+        _$ReconciliationPublishImpl<Event, State, View>>
+    implements _$$ReconciliationPublishImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationPublishImplCopyWithImpl(
+      _$ReconciliationPublishImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationPublishImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -818,7 +831,7 @@ class __$$ReconciliationPublishCopyWithImpl<Event extends CoreEvent,
     Object? ref = null,
     Object? allowFrom = null,
   }) {
-    return _then(_$ReconciliationPublish<Event, State, View>(
+    return _then(_$ReconciliationPublishImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -841,10 +854,10 @@ class __$$ReconciliationPublishCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$ReconciliationPublishImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements ReconciliationPublish<Event, State, View> {
-  _$ReconciliationPublish({required this.ref, required this.allowFrom});
+  _$ReconciliationPublishImpl({required this.ref, required this.allowFrom});
 
   @override
   final Ref ref;
@@ -860,7 +873,7 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationPublish<Event, State, View> &&
+            other is _$ReconciliationPublishImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.allowFrom, allowFrom));
   }
@@ -872,10 +885,13 @@ class _$ReconciliationPublish<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReconciliationPublishCopyWith<Event, State, View,
-          _$ReconciliationPublish<Event, State, View>>
-      get copyWith => __$$ReconciliationPublishCopyWithImpl<Event, State, View,
-          _$ReconciliationPublish<Event, State, View>>(this, _$identity);
+  _$$ReconciliationPublishImplCopyWith<Event, State, View,
+          _$ReconciliationPublishImpl<Event, State, View>>
+      get copyWith => __$$ReconciliationPublishImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ReconciliationPublishImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -991,43 +1007,43 @@ abstract class ReconciliationPublish<
     View extends CoreView> implements Reconciliation<Event, State, View> {
   factory ReconciliationPublish(
           {required final Ref ref, required final Iterable<Ref> allowFrom}) =
-      _$ReconciliationPublish<Event, State, View>;
+      _$ReconciliationPublishImpl<Event, State, View>;
 
   Ref get ref;
   Iterable<Ref> get allowFrom;
   @JsonKey(ignore: true)
-  _$$ReconciliationPublishCopyWith<Event, State, View,
-          _$ReconciliationPublish<Event, State, View>>
+  _$$ReconciliationPublishImplCopyWith<Event, State, View,
+          _$ReconciliationPublishImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ReconciliationPendingCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationPendingImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationPendingCopyWith(
-          _$ReconciliationPending<Event, State, View> value,
-          $Res Function(_$ReconciliationPending<Event, State, View>) then) =
-      __$$ReconciliationPendingCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationPendingImplCopyWith(
+          _$ReconciliationPendingImpl<Event, State, View> value,
+          $Res Function(_$ReconciliationPendingImpl<Event, State, View>) then) =
+      __$$ReconciliationPendingImplCopyWithImpl<Event, State, View, $Res>;
 }
 
 /// @nodoc
-class __$$ReconciliationPendingCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationPendingImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationPending<Event, State, View>>
-    implements _$$ReconciliationPendingCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationPendingCopyWithImpl(
-      _$ReconciliationPending<Event, State, View> _value,
-      $Res Function(_$ReconciliationPending<Event, State, View>) _then)
+        _$ReconciliationPendingImpl<Event, State, View>>
+    implements _$$ReconciliationPendingImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationPendingImplCopyWithImpl(
+      _$ReconciliationPendingImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationPendingImpl<Event, State, View>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ReconciliationPending<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$ReconciliationPendingImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements ReconciliationPending<Event, State, View> {
-  _$ReconciliationPending();
+  _$ReconciliationPendingImpl();
 
   @override
   String toString() {
@@ -1038,7 +1054,7 @@ class _$ReconciliationPending<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationPending<Event, State, View>);
+            other is _$ReconciliationPendingImpl<Event, State, View>);
   }
 
   @override
@@ -1156,38 +1172,43 @@ abstract class ReconciliationPending<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
-  factory ReconciliationPending() = _$ReconciliationPending<Event, State, View>;
+  factory ReconciliationPending() =
+      _$ReconciliationPendingImpl<Event, State, View>;
 }
 
 /// @nodoc
-abstract class _$$ReconciliationUnreconcilableCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationUnreconcilableCopyWith(
-          _$ReconciliationUnreconcilable<Event, State, View> value,
-          $Res Function(_$ReconciliationUnreconcilable<Event, State, View>)
-              then) =
-      __$$ReconciliationUnreconcilableCopyWithImpl<Event, State, View, $Res>;
+abstract class _$$ReconciliationUnreconcilableImplCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> {
+  factory _$$ReconciliationUnreconcilableImplCopyWith(
+      _$ReconciliationUnreconcilableImpl<Event, State, View> value,
+      $Res Function(_$ReconciliationUnreconcilableImpl<Event, State, View>)
+          then) = __$$ReconciliationUnreconcilableImplCopyWithImpl<Event, State,
+      View, $Res>;
 }
 
 /// @nodoc
-class __$$ReconciliationUnreconcilableCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationUnreconcilableImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationUnreconcilable<Event, State, View>>
+        _$ReconciliationUnreconcilableImpl<Event, State, View>>
     implements
-        _$$ReconciliationUnreconcilableCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationUnreconcilableCopyWithImpl(
-      _$ReconciliationUnreconcilable<Event, State, View> _value,
-      $Res Function(_$ReconciliationUnreconcilable<Event, State, View>) _then)
+        _$$ReconciliationUnreconcilableImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationUnreconcilableImplCopyWithImpl(
+      _$ReconciliationUnreconcilableImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationUnreconcilableImpl<Event, State, View>)
+          _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ReconciliationUnreconcilable<Event extends CoreEvent,
+class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     implements ReconciliationUnreconcilable<Event, State, View> {
-  _$ReconciliationUnreconcilable();
+  _$ReconciliationUnreconcilableImpl();
 
   @override
   String toString() {
@@ -1198,7 +1219,7 @@ class _$ReconciliationUnreconcilable<Event extends CoreEvent,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationUnreconcilable<Event, State, View>);
+            other is _$ReconciliationUnreconcilableImpl<Event, State, View>);
   }
 
   @override
@@ -1317,5 +1338,5 @@ abstract class ReconciliationUnreconcilable<
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
   factory ReconciliationUnreconcilable() =
-      _$ReconciliationUnreconcilable<Event, State, View>;
+      _$ReconciliationUnreconcilableImpl<Event, State, View>;
 }

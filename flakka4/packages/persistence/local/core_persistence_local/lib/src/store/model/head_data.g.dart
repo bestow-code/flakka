@@ -6,12 +6,13 @@ part of 'head_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_HeadData _$$_HeadDataFromJson(Map<String, dynamic> json) => _$_HeadData(
+_$HeadDataImpl _$$HeadDataImplFromJson(Map<String, dynamic> json) =>
+    _$HeadDataImpl(
       ref: json['ref'] as String,
       sequenceNumber: json['sequenceNumber'] as int,
     );
 
-Map<String, dynamic> _$$_HeadDataToJson(_$_HeadData instance) =>
+Map<String, dynamic> _$$HeadDataImplToJson(_$HeadDataImpl instance) =>
     <String, dynamic>{
       'ref': instance.ref,
       'sequenceNumber': instance.sequenceNumber,

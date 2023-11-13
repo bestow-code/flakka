@@ -80,23 +80,23 @@ class _$PersistenceRemoteProvisionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteProvisionStateInitialCopyWith<$Res> {
-  factory _$$PersistenceRemoteProvisionStateInitialCopyWith(
-          _$PersistenceRemoteProvisionStateInitial value,
-          $Res Function(_$PersistenceRemoteProvisionStateInitial) then) =
-      __$$PersistenceRemoteProvisionStateInitialCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteProvisionStateInitialImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteProvisionStateInitialImplCopyWith(
+          _$PersistenceRemoteProvisionStateInitialImpl value,
+          $Res Function(_$PersistenceRemoteProvisionStateInitialImpl) then) =
+      __$$PersistenceRemoteProvisionStateInitialImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String claimKey});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteProvisionStateInitialCopyWithImpl<$Res>
+class __$$PersistenceRemoteProvisionStateInitialImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteProvisionStateCopyWithImpl<$Res,
-        _$PersistenceRemoteProvisionStateInitial>
-    implements _$$PersistenceRemoteProvisionStateInitialCopyWith<$Res> {
-  __$$PersistenceRemoteProvisionStateInitialCopyWithImpl(
-      _$PersistenceRemoteProvisionStateInitial _value,
-      $Res Function(_$PersistenceRemoteProvisionStateInitial) _then)
+        _$PersistenceRemoteProvisionStateInitialImpl>
+    implements _$$PersistenceRemoteProvisionStateInitialImplCopyWith<$Res> {
+  __$$PersistenceRemoteProvisionStateInitialImplCopyWithImpl(
+      _$PersistenceRemoteProvisionStateInitialImpl _value,
+      $Res Function(_$PersistenceRemoteProvisionStateInitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +104,7 @@ class __$$PersistenceRemoteProvisionStateInitialCopyWithImpl<$Res>
   $Res call({
     Object? claimKey = null,
   }) {
-    return _then(_$PersistenceRemoteProvisionStateInitial(
+    return _then(_$PersistenceRemoteProvisionStateInitialImpl(
       claimKey: null == claimKey
           ? _value.claimKey
           : claimKey // ignore: cast_nullable_to_non_nullable
@@ -115,9 +115,9 @@ class __$$PersistenceRemoteProvisionStateInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceRemoteProvisionStateInitial
+class _$PersistenceRemoteProvisionStateInitialImpl
     implements PersistenceRemoteProvisionStateInitial {
-  _$PersistenceRemoteProvisionStateInitial({required this.claimKey});
+  _$PersistenceRemoteProvisionStateInitialImpl({required this.claimKey});
 
   @override
   final String claimKey;
@@ -131,7 +131,7 @@ class _$PersistenceRemoteProvisionStateInitial
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteProvisionStateInitial &&
+            other is _$PersistenceRemoteProvisionStateInitialImpl &&
             (identical(other.claimKey, claimKey) ||
                 other.claimKey == claimKey));
   }
@@ -142,10 +142,11 @@ class _$PersistenceRemoteProvisionStateInitial
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteProvisionStateInitialCopyWith<
-          _$PersistenceRemoteProvisionStateInitial>
-      get copyWith => __$$PersistenceRemoteProvisionStateInitialCopyWithImpl<
-          _$PersistenceRemoteProvisionStateInitial>(this, _$identity);
+  _$$PersistenceRemoteProvisionStateInitialImplCopyWith<
+          _$PersistenceRemoteProvisionStateInitialImpl>
+      get copyWith =>
+          __$$PersistenceRemoteProvisionStateInitialImplCopyWithImpl<
+              _$PersistenceRemoteProvisionStateInitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -216,39 +217,39 @@ abstract class PersistenceRemoteProvisionStateInitial
     implements PersistenceRemoteProvisionState {
   factory PersistenceRemoteProvisionStateInitial(
           {required final String claimKey}) =
-      _$PersistenceRemoteProvisionStateInitial;
+      _$PersistenceRemoteProvisionStateInitialImpl;
 
   String get claimKey;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteProvisionStateInitialCopyWith<
-          _$PersistenceRemoteProvisionStateInitial>
+  _$$PersistenceRemoteProvisionStateInitialImplCopyWith<
+          _$PersistenceRemoteProvisionStateInitialImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteProvisionStatePendingCopyWith<$Res> {
-  factory _$$PersistenceRemoteProvisionStatePendingCopyWith(
-          _$PersistenceRemoteProvisionStatePending value,
-          $Res Function(_$PersistenceRemoteProvisionStatePending) then) =
-      __$$PersistenceRemoteProvisionStatePendingCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteProvisionStatePendingImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteProvisionStatePendingImplCopyWith(
+          _$PersistenceRemoteProvisionStatePendingImpl value,
+          $Res Function(_$PersistenceRemoteProvisionStatePendingImpl) then) =
+      __$$PersistenceRemoteProvisionStatePendingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PersistenceRemoteProvisionStatePendingCopyWithImpl<$Res>
+class __$$PersistenceRemoteProvisionStatePendingImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteProvisionStateCopyWithImpl<$Res,
-        _$PersistenceRemoteProvisionStatePending>
-    implements _$$PersistenceRemoteProvisionStatePendingCopyWith<$Res> {
-  __$$PersistenceRemoteProvisionStatePendingCopyWithImpl(
-      _$PersistenceRemoteProvisionStatePending _value,
-      $Res Function(_$PersistenceRemoteProvisionStatePending) _then)
+        _$PersistenceRemoteProvisionStatePendingImpl>
+    implements _$$PersistenceRemoteProvisionStatePendingImplCopyWith<$Res> {
+  __$$PersistenceRemoteProvisionStatePendingImplCopyWithImpl(
+      _$PersistenceRemoteProvisionStatePendingImpl _value,
+      $Res Function(_$PersistenceRemoteProvisionStatePendingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PersistenceRemoteProvisionStatePending
+class _$PersistenceRemoteProvisionStatePendingImpl
     implements PersistenceRemoteProvisionStatePending {
-  _$PersistenceRemoteProvisionStatePending();
+  _$PersistenceRemoteProvisionStatePendingImpl();
 
   @override
   String toString() {
@@ -259,7 +260,7 @@ class _$PersistenceRemoteProvisionStatePending
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteProvisionStatePending);
+            other is _$PersistenceRemoteProvisionStatePendingImpl);
   }
 
   @override
@@ -333,5 +334,5 @@ class _$PersistenceRemoteProvisionStatePending
 abstract class PersistenceRemoteProvisionStatePending
     implements PersistenceRemoteProvisionState {
   factory PersistenceRemoteProvisionStatePending() =
-      _$PersistenceRemoteProvisionStatePending;
+      _$PersistenceRemoteProvisionStatePendingImpl;
 }

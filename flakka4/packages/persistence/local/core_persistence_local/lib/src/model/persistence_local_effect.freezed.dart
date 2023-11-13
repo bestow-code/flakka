@@ -100,11 +100,11 @@ class _$PersistenceLocalEffectCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalEffectAppendCopyWith<$Res> {
-  factory _$$PersistenceLocalEffectAppendCopyWith(
-          _$PersistenceLocalEffectAppend value,
-          $Res Function(_$PersistenceLocalEffectAppend) then) =
-      __$$PersistenceLocalEffectAppendCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalEffectAppendImplCopyWith<$Res> {
+  factory _$$PersistenceLocalEffectAppendImplCopyWith(
+          _$PersistenceLocalEffectAppendImpl value,
+          $Res Function(_$PersistenceLocalEffectAppendImpl) then) =
+      __$$PersistenceLocalEffectAppendImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String ref,
@@ -115,13 +115,13 @@ abstract class _$$PersistenceLocalEffectAppendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalEffectAppendCopyWithImpl<$Res>
+class __$$PersistenceLocalEffectAppendImplCopyWithImpl<$Res>
     extends _$PersistenceLocalEffectCopyWithImpl<$Res,
-        _$PersistenceLocalEffectAppend>
-    implements _$$PersistenceLocalEffectAppendCopyWith<$Res> {
-  __$$PersistenceLocalEffectAppendCopyWithImpl(
-      _$PersistenceLocalEffectAppend _value,
-      $Res Function(_$PersistenceLocalEffectAppend) _then)
+        _$PersistenceLocalEffectAppendImpl>
+    implements _$$PersistenceLocalEffectAppendImplCopyWith<$Res> {
+  __$$PersistenceLocalEffectAppendImplCopyWithImpl(
+      _$PersistenceLocalEffectAppendImpl _value,
+      $Res Function(_$PersistenceLocalEffectAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$PersistenceLocalEffectAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalEffectAppend(
+    return _then(_$PersistenceLocalEffectAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -160,8 +160,9 @@ class __$$PersistenceLocalEffectAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalEffectAppend implements PersistenceLocalEffectAppend {
-  _$PersistenceLocalEffectAppend(
+class _$PersistenceLocalEffectAppendImpl
+    implements PersistenceLocalEffectAppend {
+  _$PersistenceLocalEffectAppendImpl(
       {required this.ref,
       required this.parent,
       required final Map<String, dynamic>? event,
@@ -197,7 +198,7 @@ class _$PersistenceLocalEffectAppend implements PersistenceLocalEffectAppend {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalEffectAppend &&
+            other is _$PersistenceLocalEffectAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.parent, parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -219,9 +220,10 @@ class _$PersistenceLocalEffectAppend implements PersistenceLocalEffectAppend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalEffectAppendCopyWith<_$PersistenceLocalEffectAppend>
-      get copyWith => __$$PersistenceLocalEffectAppendCopyWithImpl<
-          _$PersistenceLocalEffectAppend>(this, _$identity);
+  _$$PersistenceLocalEffectAppendImplCopyWith<
+          _$PersistenceLocalEffectAppendImpl>
+      get copyWith => __$$PersistenceLocalEffectAppendImplCopyWithImpl<
+          _$PersistenceLocalEffectAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -317,7 +319,7 @@ abstract class PersistenceLocalEffectAppend
       required final Iterable<String> parent,
       required final Map<String, dynamic>? event,
       required final int createdAt,
-      required final int sequenceNumber}) = _$PersistenceLocalEffectAppend;
+      required final int sequenceNumber}) = _$PersistenceLocalEffectAppendImpl;
 
   String get ref;
   Iterable<String> get parent;
@@ -325,28 +327,29 @@ abstract class PersistenceLocalEffectAppend
   int get createdAt;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalEffectAppendCopyWith<_$PersistenceLocalEffectAppend>
+  _$$PersistenceLocalEffectAppendImplCopyWith<
+          _$PersistenceLocalEffectAppendImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalEffectForwardCopyWith<$Res> {
-  factory _$$PersistenceLocalEffectForwardCopyWith(
-          _$PersistenceLocalEffectForward value,
-          $Res Function(_$PersistenceLocalEffectForward) then) =
-      __$$PersistenceLocalEffectForwardCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalEffectForwardImplCopyWith<$Res> {
+  factory _$$PersistenceLocalEffectForwardImplCopyWith(
+          _$PersistenceLocalEffectForwardImpl value,
+          $Res Function(_$PersistenceLocalEffectForwardImpl) then) =
+      __$$PersistenceLocalEffectForwardImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$PersistenceLocalEffectForwardCopyWithImpl<$Res>
+class __$$PersistenceLocalEffectForwardImplCopyWithImpl<$Res>
     extends _$PersistenceLocalEffectCopyWithImpl<$Res,
-        _$PersistenceLocalEffectForward>
-    implements _$$PersistenceLocalEffectForwardCopyWith<$Res> {
-  __$$PersistenceLocalEffectForwardCopyWithImpl(
-      _$PersistenceLocalEffectForward _value,
-      $Res Function(_$PersistenceLocalEffectForward) _then)
+        _$PersistenceLocalEffectForwardImpl>
+    implements _$$PersistenceLocalEffectForwardImplCopyWith<$Res> {
+  __$$PersistenceLocalEffectForwardImplCopyWithImpl(
+      _$PersistenceLocalEffectForwardImpl _value,
+      $Res Function(_$PersistenceLocalEffectForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,7 +358,7 @@ class __$$PersistenceLocalEffectForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$PersistenceLocalEffectForward(
+    return _then(_$PersistenceLocalEffectForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -370,8 +373,9 @@ class __$$PersistenceLocalEffectForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalEffectForward implements PersistenceLocalEffectForward {
-  _$PersistenceLocalEffectForward(
+class _$PersistenceLocalEffectForwardImpl
+    implements PersistenceLocalEffectForward {
+  _$PersistenceLocalEffectForwardImpl(
       {required this.ref, required this.sequenceNumber});
 
   @override
@@ -388,7 +392,7 @@ class _$PersistenceLocalEffectForward implements PersistenceLocalEffectForward {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalEffectForward &&
+            other is _$PersistenceLocalEffectForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -400,9 +404,10 @@ class _$PersistenceLocalEffectForward implements PersistenceLocalEffectForward {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalEffectForwardCopyWith<_$PersistenceLocalEffectForward>
-      get copyWith => __$$PersistenceLocalEffectForwardCopyWithImpl<
-          _$PersistenceLocalEffectForward>(this, _$identity);
+  _$$PersistenceLocalEffectForwardImplCopyWith<
+          _$PersistenceLocalEffectForwardImpl>
+      get copyWith => __$$PersistenceLocalEffectForwardImplCopyWithImpl<
+          _$PersistenceLocalEffectForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -494,21 +499,22 @@ class _$PersistenceLocalEffectForward implements PersistenceLocalEffectForward {
 abstract class PersistenceLocalEffectForward implements PersistenceLocalEffect {
   factory PersistenceLocalEffectForward(
       {required final String ref,
-      required final int sequenceNumber}) = _$PersistenceLocalEffectForward;
+      required final int sequenceNumber}) = _$PersistenceLocalEffectForwardImpl;
 
   String get ref;
   int get sequenceNumber;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalEffectForwardCopyWith<_$PersistenceLocalEffectForward>
+  _$$PersistenceLocalEffectForwardImplCopyWith<
+          _$PersistenceLocalEffectForwardImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalEffectImportCopyWith<$Res> {
-  factory _$$PersistenceLocalEffectImportCopyWith(
-          _$PersistenceLocalEffectImport value,
-          $Res Function(_$PersistenceLocalEffectImport) then) =
-      __$$PersistenceLocalEffectImportCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalEffectImportImplCopyWith<$Res> {
+  factory _$$PersistenceLocalEffectImportImplCopyWith(
+          _$PersistenceLocalEffectImportImpl value,
+          $Res Function(_$PersistenceLocalEffectImportImpl) then) =
+      __$$PersistenceLocalEffectImportImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
@@ -517,13 +523,13 @@ abstract class _$$PersistenceLocalEffectImportCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PersistenceLocalEffectImportCopyWithImpl<$Res>
+class __$$PersistenceLocalEffectImportImplCopyWithImpl<$Res>
     extends _$PersistenceLocalEffectCopyWithImpl<$Res,
-        _$PersistenceLocalEffectImport>
-    implements _$$PersistenceLocalEffectImportCopyWith<$Res> {
-  __$$PersistenceLocalEffectImportCopyWithImpl(
-      _$PersistenceLocalEffectImport _value,
-      $Res Function(_$PersistenceLocalEffectImport) _then)
+        _$PersistenceLocalEffectImportImpl>
+    implements _$$PersistenceLocalEffectImportImplCopyWith<$Res> {
+  __$$PersistenceLocalEffectImportImplCopyWithImpl(
+      _$PersistenceLocalEffectImportImpl _value,
+      $Res Function(_$PersistenceLocalEffectImportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -532,7 +538,7 @@ class __$$PersistenceLocalEffectImportCopyWithImpl<$Res>
     Object? entry = freezed,
     Object? event = freezed,
   }) {
-    return _then(_$PersistenceLocalEffectImport(
+    return _then(_$PersistenceLocalEffectImportImpl(
       entry: freezed == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
@@ -548,8 +554,9 @@ class __$$PersistenceLocalEffectImportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
-  _$PersistenceLocalEffectImport(
+class _$PersistenceLocalEffectImportImpl
+    implements PersistenceLocalEffectImport {
+  _$PersistenceLocalEffectImportImpl(
       {required final Map<String,
               ({int createdAt, Iterable<String> parent, String ref})>?
           entry,
@@ -588,7 +595,7 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalEffectImport &&
+            other is _$PersistenceLocalEffectImportImpl &&
             const DeepCollectionEquality().equals(other._entry, _entry) &&
             const DeepCollectionEquality().equals(other._event, _event));
   }
@@ -602,9 +609,10 @@ class _$PersistenceLocalEffectImport implements PersistenceLocalEffectImport {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalEffectImportCopyWith<_$PersistenceLocalEffectImport>
-      get copyWith => __$$PersistenceLocalEffectImportCopyWithImpl<
-          _$PersistenceLocalEffectImport>(this, _$identity);
+  _$$PersistenceLocalEffectImportImplCopyWith<
+          _$PersistenceLocalEffectImportImpl>
+      get copyWith => __$$PersistenceLocalEffectImportImplCopyWithImpl<
+          _$PersistenceLocalEffectImportImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -699,13 +707,14 @@ abstract class PersistenceLocalEffectImport implements PersistenceLocalEffect {
                   ({int createdAt, Iterable<String> parent, String ref})>?
               entry,
           required final Map<String, JsonMap>? event}) =
-      _$PersistenceLocalEffectImport;
+      _$PersistenceLocalEffectImportImpl;
 
   Map<String, ({int createdAt, Iterable<String> parent, String ref})>?
       get entry;
   Map<String, JsonMap>? get event;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalEffectImportCopyWith<_$PersistenceLocalEffectImport>
+  _$$PersistenceLocalEffectImportImplCopyWith<
+          _$PersistenceLocalEffectImportImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -802,11 +811,12 @@ class _$LocalHeadEffectCopyWithImpl<$Res, $Val extends LocalHeadEffect>
 }
 
 /// @nodoc
-abstract class _$$LocalHeadEffectAppendCopyWith<$Res>
+abstract class _$$LocalHeadEffectAppendImplCopyWith<$Res>
     implements $LocalHeadEffectCopyWith<$Res> {
-  factory _$$LocalHeadEffectAppendCopyWith(_$LocalHeadEffectAppend value,
-          $Res Function(_$LocalHeadEffectAppend) then) =
-      __$$LocalHeadEffectAppendCopyWithImpl<$Res>;
+  factory _$$LocalHeadEffectAppendImplCopyWith(
+          _$LocalHeadEffectAppendImpl value,
+          $Res Function(_$LocalHeadEffectAppendImpl) then) =
+      __$$LocalHeadEffectAppendImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -818,11 +828,11 @@ abstract class _$$LocalHeadEffectAppendCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$LocalHeadEffectAppendCopyWithImpl<$Res>
-    extends _$LocalHeadEffectCopyWithImpl<$Res, _$LocalHeadEffectAppend>
-    implements _$$LocalHeadEffectAppendCopyWith<$Res> {
-  __$$LocalHeadEffectAppendCopyWithImpl(_$LocalHeadEffectAppend _value,
-      $Res Function(_$LocalHeadEffectAppend) _then)
+class __$$LocalHeadEffectAppendImplCopyWithImpl<$Res>
+    extends _$LocalHeadEffectCopyWithImpl<$Res, _$LocalHeadEffectAppendImpl>
+    implements _$$LocalHeadEffectAppendImplCopyWith<$Res> {
+  __$$LocalHeadEffectAppendImplCopyWithImpl(_$LocalHeadEffectAppendImpl _value,
+      $Res Function(_$LocalHeadEffectAppendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -834,7 +844,7 @@ class __$$LocalHeadEffectAppendCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$LocalHeadEffectAppend(
+    return _then(_$LocalHeadEffectAppendImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -861,8 +871,8 @@ class __$$LocalHeadEffectAppendCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalHeadEffectAppend implements LocalHeadEffectAppend {
-  _$LocalHeadEffectAppend(
+class _$LocalHeadEffectAppendImpl implements LocalHeadEffectAppend {
+  _$LocalHeadEffectAppendImpl(
       {required this.ref,
       required this.parent,
       required final Map<String, dynamic>? event,
@@ -898,7 +908,7 @@ class _$LocalHeadEffectAppend implements LocalHeadEffectAppend {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalHeadEffectAppend &&
+            other is _$LocalHeadEffectAppendImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             const DeepCollectionEquality().equals(other.parent, parent) &&
             const DeepCollectionEquality().equals(other._event, _event) &&
@@ -920,9 +930,9 @@ class _$LocalHeadEffectAppend implements LocalHeadEffectAppend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalHeadEffectAppendCopyWith<_$LocalHeadEffectAppend> get copyWith =>
-      __$$LocalHeadEffectAppendCopyWithImpl<_$LocalHeadEffectAppend>(
-          this, _$identity);
+  _$$LocalHeadEffectAppendImplCopyWith<_$LocalHeadEffectAppendImpl>
+      get copyWith => __$$LocalHeadEffectAppendImplCopyWithImpl<
+          _$LocalHeadEffectAppendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -999,7 +1009,7 @@ abstract class LocalHeadEffectAppend implements LocalHeadEffect {
       required final Iterable<String> parent,
       required final Map<String, dynamic>? event,
       required final int createdAt,
-      required final int sequenceNumber}) = _$LocalHeadEffectAppend;
+      required final int sequenceNumber}) = _$LocalHeadEffectAppendImpl;
 
   @override
   String get ref;
@@ -1010,27 +1020,29 @@ abstract class LocalHeadEffectAppend implements LocalHeadEffect {
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$LocalHeadEffectAppendCopyWith<_$LocalHeadEffectAppend> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LocalHeadEffectAppendImplCopyWith<_$LocalHeadEffectAppendImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalHeadEffectForwardCopyWith<$Res>
+abstract class _$$LocalHeadEffectForwardImplCopyWith<$Res>
     implements $LocalHeadEffectCopyWith<$Res> {
-  factory _$$LocalHeadEffectForwardCopyWith(_$LocalHeadEffectForward value,
-          $Res Function(_$LocalHeadEffectForward) then) =
-      __$$LocalHeadEffectForwardCopyWithImpl<$Res>;
+  factory _$$LocalHeadEffectForwardImplCopyWith(
+          _$LocalHeadEffectForwardImpl value,
+          $Res Function(_$LocalHeadEffectForwardImpl) then) =
+      __$$LocalHeadEffectForwardImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ref, int sequenceNumber});
 }
 
 /// @nodoc
-class __$$LocalHeadEffectForwardCopyWithImpl<$Res>
-    extends _$LocalHeadEffectCopyWithImpl<$Res, _$LocalHeadEffectForward>
-    implements _$$LocalHeadEffectForwardCopyWith<$Res> {
-  __$$LocalHeadEffectForwardCopyWithImpl(_$LocalHeadEffectForward _value,
-      $Res Function(_$LocalHeadEffectForward) _then)
+class __$$LocalHeadEffectForwardImplCopyWithImpl<$Res>
+    extends _$LocalHeadEffectCopyWithImpl<$Res, _$LocalHeadEffectForwardImpl>
+    implements _$$LocalHeadEffectForwardImplCopyWith<$Res> {
+  __$$LocalHeadEffectForwardImplCopyWithImpl(
+      _$LocalHeadEffectForwardImpl _value,
+      $Res Function(_$LocalHeadEffectForwardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1039,7 +1051,7 @@ class __$$LocalHeadEffectForwardCopyWithImpl<$Res>
     Object? ref = null,
     Object? sequenceNumber = null,
   }) {
-    return _then(_$LocalHeadEffectForward(
+    return _then(_$LocalHeadEffectForwardImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -1054,8 +1066,9 @@ class __$$LocalHeadEffectForwardCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalHeadEffectForward implements LocalHeadEffectForward {
-  _$LocalHeadEffectForward({required this.ref, required this.sequenceNumber});
+class _$LocalHeadEffectForwardImpl implements LocalHeadEffectForward {
+  _$LocalHeadEffectForwardImpl(
+      {required this.ref, required this.sequenceNumber});
 
   @override
   final String ref;
@@ -1071,7 +1084,7 @@ class _$LocalHeadEffectForward implements LocalHeadEffectForward {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalHeadEffectForward &&
+            other is _$LocalHeadEffectForwardImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
                 other.sequenceNumber == sequenceNumber));
@@ -1083,9 +1096,9 @@ class _$LocalHeadEffectForward implements LocalHeadEffectForward {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalHeadEffectForwardCopyWith<_$LocalHeadEffectForward> get copyWith =>
-      __$$LocalHeadEffectForwardCopyWithImpl<_$LocalHeadEffectForward>(
-          this, _$identity);
+  _$$LocalHeadEffectForwardImplCopyWith<_$LocalHeadEffectForwardImpl>
+      get copyWith => __$$LocalHeadEffectForwardImplCopyWithImpl<
+          _$LocalHeadEffectForwardImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1159,7 +1172,7 @@ class _$LocalHeadEffectForward implements LocalHeadEffectForward {
 abstract class LocalHeadEffectForward implements LocalHeadEffect {
   factory LocalHeadEffectForward(
       {required final String ref,
-      required final int sequenceNumber}) = _$LocalHeadEffectForward;
+      required final int sequenceNumber}) = _$LocalHeadEffectForwardImpl;
 
   @override
   String get ref;
@@ -1167,6 +1180,6 @@ abstract class LocalHeadEffectForward implements LocalHeadEffect {
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$LocalHeadEffectForwardCopyWith<_$LocalHeadEffectForward> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LocalHeadEffectForwardImplCopyWith<_$LocalHeadEffectForwardImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
