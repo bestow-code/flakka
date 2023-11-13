@@ -7,8 +7,7 @@ import 'core_tester_context_persistent_local.dart';
 void Function() storeLocalTests(
   Generator<CoreStoreLocalProvider> Function() providerGeneratorFactory,
 ) =>
-    () => CoreTesterContextPersistentLocal<
-            CoreTestContextPersistent<CoreStoreLocalProvider, CoreStoreLocal>,
+    () => TesterContextPersistentLocal<
             CoreStoreLocalProvider,
             CoreStoreLocal>(
           generator: any

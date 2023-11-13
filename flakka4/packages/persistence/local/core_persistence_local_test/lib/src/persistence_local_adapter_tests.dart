@@ -9,7 +9,7 @@ void Function() persistenceLocalAdapterTests(
       providerGeneratorFactory,
 ) {
   return () {
-    CoreTesterContextPersistentLocal(
+    TesterContextPersistentLocal(
             generator: any.testContextPersistent<
                 CorePersistenceLocalAdapterProvider,
                 CorePersistenceLocalAdapter>(),

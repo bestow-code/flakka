@@ -1,14 +1,14 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-import '../core_persistence_base_test.dart';
+import '../../../core_persistence_base_test.dart';
 
-class CoreTesterContextPersistentBase<
-        TestContext extends CoreTestContextPersistent<Provider, Subject>,
+class TesterContextPersistentBase<
+        TestContext extends CorePersistentTestContext<Provider, Subject>,
         Provider extends CorePersistentProvider<Subject>,
         Subject extends CorePersistent>
     extends CoreTesterContext<TestContext, Provider,
         CorePersistentProviderContext, PersistenceKey, Subject> {
-  CoreTesterContextPersistentBase({
+  TesterContextPersistentBase({
     super.generator,
     super.provider,
     Generator<CorePersistentProviderContext>? providerContext,

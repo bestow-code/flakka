@@ -1,7 +1,7 @@
 import 'package:core_common_test/core_common_test.dart';
 import 'package:core_loco/core_loco.dart';
 
-class CoreAsyncIOTester<
+class CoreTesterAsyncIO<
         Provider extends CoreAsyncIOProvider<ProviderContext, Key, In, Out,
             AsyncIO>,
 ProviderContext extends CoreProviderContext,
@@ -11,7 +11,7 @@ ProviderContext extends CoreProviderContext,
         AsyncIO extends CoreAsyncIO<In, Out>,
         T>
     extends CoreIOTester<Provider, ProviderContext, Key, In, Out, AsyncIO, T> {
-  CoreAsyncIOTester([
+  CoreTesterAsyncIO([
     super.providerContextBinding,
     super.generator,
   ]);

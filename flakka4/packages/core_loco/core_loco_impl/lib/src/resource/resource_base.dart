@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:core_loco/core_loco.dart';
-import 'package:either_dart/either.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -40,8 +39,6 @@ abstract class ResourceBase<Input, State>
   @override
   @mustCallSuper
   Future<State> provision(covariant dynamic provisioning) => stateSubject.first;
-
-
 }
 
 abstract class NodeBase<Effect, Snapshot, Input, State>
@@ -55,14 +52,13 @@ abstract class NodeBase<Effect, Snapshot, Input, State>
         [inputSubject.map(Right.new), child.snapshot.map(Left.new)],
       ).listen((event) {
         final (Effect? effect, State? result) = event.fold(
-              (snapshot) =>
-              _onSnapshot(
-                snapshot,
-                stateSubject.hasValue
-                    ? state.value
-                    : _initialStateFactory(snapshot),
-              ),
-              (input) => _onInput(input, state.value),
+          (snapshot) => _onSnapshot(
+            snapshot,
+            stateSubject.hasValue
+                ? state.value
+                : _initialStateFactory(snapshot),
+          ),
+          (input) => _onInput(input, state.value),
         );
         if (effect != null) {
           child.input.add(effect);
@@ -79,36 +75,33 @@ abstract class NodeBase<Effect, Snapshot, Input, State>
       _initialStateFactory = factory;
 
   //ignore: use_setters_to_change_properties
-  void registerInputHandler
-
-  (
-
-  (Effect? effect, State? state) Function(
-  Input input,
-  State state,
-  ) handler,
+  void registerInputHandler(
+    (Effect? effect, State? state) Function(
+      Input input,
+      State state,
+    ) handler,
   ) =>
-  _onInput = handler;
+      _onInput = handler;
 
   //ignore: use_setters_to_change_properties
   void registerSnapshotHandler(
-  (Effect? effect, State? state) Function(
-  Snapshot snapshot,
-  State state,
-  ) handler,
+    (Effect? effect, State? state) Function(
+      Snapshot snapshot,
+      State state,
+    ) handler,
   ) =>
-  _onSnapshot = handler;
+      _onSnapshot = handler;
 
   late final State Function(Snapshot snapshot) _initialStateFactory;
 
   late final (Effect? effect, State? state) Function(
-  Input input,
-  State state,
+    Input input,
+    State state,
   ) _onInput;
 
   late final (Effect? effect, State? state) Function(
-  Snapshot snapshot,
-  State state,
+    Snapshot snapshot,
+    State state,
   ) _onSnapshot;
 
   CoreResource<Effect, Snapshot> get child => _child;
@@ -130,14 +123,14 @@ abstract class NodeBase<Effect, Snapshot, Input, State>
   @override
   @mustCallSuper
   Future<State> provision(covariant dynamic provisioning) async {
-  await child.provision(provisioning);
-  return super.provision(provisioning);
+    await child.provision(provisioning);
+    return super.provision(provisioning);
   }
 
   @override
   @mustCallSuper
   Future<void> close() async {
-  await child.close();
-  return super.close();
+    await child.close();
+    return super.close();
   }
 }

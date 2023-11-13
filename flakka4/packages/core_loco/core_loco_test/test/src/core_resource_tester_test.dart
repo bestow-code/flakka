@@ -8,7 +8,7 @@ void main() {
   Any.setDefault(
     any.null_.map(
       (_) => _SampleAProviderContext(),
-    ),
+    )
   );
   Any.setDefault(any.always(_SampleAProvider()));
   Any.setDefault(any.always(_SampleAKey()));
@@ -22,7 +22,7 @@ void main() {
       _SampleA,
       //ignore: prefer_void_to_null
       Null>(
-    (context) => any.int.map((value) => context..value = value),
+
   ).test('description', (context, value) async {
     final subject = await context.provider
         .get(context: context.providerContext, key: context.key);

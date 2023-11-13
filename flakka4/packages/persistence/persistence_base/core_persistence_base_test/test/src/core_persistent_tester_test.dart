@@ -6,8 +6,8 @@ void main() {
   Any.setDefault(any.null_.map((_) => CorePersistentProviderContext()));
   Any.setDefault(any.nonEmptyLetterOrDigits.map(PersistenceKey.new));
 
-  CoreTesterContextPersistentBase<
-          CoreTestContextPersistent<_SampleAProvider, _SampleA>,
+  TesterContextPersistentBase<
+          CorePersistentTestContext<_SampleAProvider, _SampleA>,
           _SampleAProvider,
           _SampleA>(generator: any.testContextPersistent())
       .tester(any.int)
@@ -20,7 +20,7 @@ void main() {
   });
 }
 
-class _SampleA with CorePersistent {
+class _SampleA implements CorePersistent {
   const _SampleA(this.value);
 
   final int value;

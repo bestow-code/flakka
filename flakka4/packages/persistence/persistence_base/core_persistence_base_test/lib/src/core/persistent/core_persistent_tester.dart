@@ -1,11 +1,16 @@
-import 'package:core_common_test/core_common_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-// class CorePersistentTester<Persistent extends CorePersistent, T>
-//     extends CoreTester<CorePersistentProvider<Persistent>,
-//         PersistentProviderContext, PersistenceKey, Persistent, T> {
-//   CorePersistentTester([
-//     super.providerContextBinding,
-//     super.generator,
-//   ]);
-// }
+import '../../../core_persistence_base_test.dart';
+
+abstract class CoreTesterPersistent<
+        TestContext extends TestContextPersistent<Provider, Persistent>,
+        Provider extends CorePersistentProvider<Persistent>,
+        Persistent extends CorePersistent,
+        T>
+    extends CoreTester<TestContext, Provider, CorePersistentProviderContext,
+        PersistenceKey, Persistent, T> {
+  CoreTesterPersistent([
+    super.testContextGenerator,
+    super.generator,
+  ]);
+}

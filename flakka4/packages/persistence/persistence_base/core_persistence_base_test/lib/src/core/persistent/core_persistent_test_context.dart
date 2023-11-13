@@ -1,7 +1,7 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 
-abstract class CoreTestContextPersistent<
+abstract class CorePersistentTestContext<
         Provider extends CorePersistentProvider<Persistent>,
         Persistent extends CorePersistent>
     extends
@@ -13,13 +13,13 @@ abstract class CoreTestContextPersistent<
 class TestContextPersistent<Provider extends CorePersistentProvider<Persistent>,
         Persistent extends CorePersistent>
     extends TestContext<Provider, CorePersistentProviderContext, PersistenceKey,
-        Persistent> implements CoreTestContextPersistent<Provider, Persistent> {
+        Persistent> implements CorePersistentTestContext<Provider, Persistent> {
   @override
   late PersistenceProvisioningInitialize provisioning;
 }
 
 extension AnyPersistentTestContext on Any {
-  Generator<CoreTestContextPersistent<Provider, Subject>> testContextPersistent<
+  Generator<CorePersistentTestContext<Provider, Subject>> testContextPersistent<
           Provider extends CorePersistentProvider<Subject>,
           Subject extends CorePersistent>() =>
       any.persistenceProvisioningInitialize.map((provisioning) =>

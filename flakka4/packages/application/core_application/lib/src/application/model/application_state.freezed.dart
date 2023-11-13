@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'application_snapshot.dart';
+part of 'application_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ApplicationSnapshot<Event extends CoreEvent, State extends CoreState,
+mixin _$ApplicationState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   ({DateTime createdAt, Ref ref}) get refDateTime =>
       throw _privateConstructorUsedError;
@@ -23,19 +23,18 @@ mixin _$ApplicationSnapshot<Event extends CoreEvent, State extends CoreState,
   ({bool local, bool remote}) get ready => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ApplicationSnapshotCopyWith<Event, State, View,
-          ApplicationSnapshot<Event, State, View>>
+  $ApplicationStateCopyWith<Event, State, View,
+          ApplicationState<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApplicationSnapshotCopyWith<Event extends CoreEvent,
+abstract class $ApplicationStateCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory $ApplicationSnapshotCopyWith(
-          ApplicationSnapshot<Event, State, View> value,
-          $Res Function(ApplicationSnapshot<Event, State, View>) then) =
-      _$ApplicationSnapshotCopyWithImpl<Event, State, View, $Res,
-          ApplicationSnapshot<Event, State, View>>;
+  factory $ApplicationStateCopyWith(ApplicationState<Event, State, View> value,
+          $Res Function(ApplicationState<Event, State, View>) then) =
+      _$ApplicationStateCopyWithImpl<Event, State, View, $Res,
+          ApplicationState<Event, State, View>>;
   @useResult
   $Res call(
       {({DateTime createdAt, Ref ref}) refDateTime,
@@ -44,14 +43,14 @@ abstract class $ApplicationSnapshotCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class _$ApplicationSnapshotCopyWithImpl<
+class _$ApplicationStateCopyWithImpl<
         Event extends CoreEvent,
         State extends CoreState,
         View extends CoreView,
         $Res,
-        $Val extends ApplicationSnapshot<Event, State, View>>
-    implements $ApplicationSnapshotCopyWith<Event, State, View, $Res> {
-  _$ApplicationSnapshotCopyWithImpl(this._value, this._then);
+        $Val extends ApplicationState<Event, State, View>>
+    implements $ApplicationStateCopyWith<Event, State, View, $Res> {
+  _$ApplicationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,15 +82,15 @@ class _$ApplicationSnapshotCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$_ApplicationSnapshotCopyWith<
+abstract class _$$_ApplicationStateCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView,
-    $Res> implements $ApplicationSnapshotCopyWith<Event, State, View, $Res> {
-  factory _$$_ApplicationSnapshotCopyWith(
-          _$_ApplicationSnapshot<Event, State, View> value,
-          $Res Function(_$_ApplicationSnapshot<Event, State, View>) then) =
-      __$$_ApplicationSnapshotCopyWithImpl<Event, State, View, $Res>;
+    $Res> implements $ApplicationStateCopyWith<Event, State, View, $Res> {
+  factory _$$_ApplicationStateCopyWith(
+          _$_ApplicationState<Event, State, View> value,
+          $Res Function(_$_ApplicationState<Event, State, View>) then) =
+      __$$_ApplicationStateCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
   $Res call(
@@ -101,14 +100,14 @@ abstract class _$$_ApplicationSnapshotCopyWith<
 }
 
 /// @nodoc
-class __$$_ApplicationSnapshotCopyWithImpl<Event extends CoreEvent,
+class __$$_ApplicationStateCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
-    extends _$ApplicationSnapshotCopyWithImpl<Event, State, View, $Res,
-        _$_ApplicationSnapshot<Event, State, View>>
-    implements _$$_ApplicationSnapshotCopyWith<Event, State, View, $Res> {
-  __$$_ApplicationSnapshotCopyWithImpl(
-      _$_ApplicationSnapshot<Event, State, View> _value,
-      $Res Function(_$_ApplicationSnapshot<Event, State, View>) _then)
+    extends _$ApplicationStateCopyWithImpl<Event, State, View, $Res,
+        _$_ApplicationState<Event, State, View>>
+    implements _$$_ApplicationStateCopyWith<Event, State, View, $Res> {
+  __$$_ApplicationStateCopyWithImpl(
+      _$_ApplicationState<Event, State, View> _value,
+      $Res Function(_$_ApplicationState<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +117,7 @@ class __$$_ApplicationSnapshotCopyWithImpl<Event extends CoreEvent,
     Object? result = null,
     Object? ready = null,
   }) {
-    return _then(_$_ApplicationSnapshot<Event, State, View>(
+    return _then(_$_ApplicationState<Event, State, View>(
       refDateTime: null == refDateTime
           ? _value.refDateTime
           : refDateTime // ignore: cast_nullable_to_non_nullable
@@ -137,9 +136,9 @@ class __$$_ApplicationSnapshotCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$_ApplicationSnapshot<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements _ApplicationSnapshot<Event, State, View> {
-  _$_ApplicationSnapshot(
+class _$_ApplicationState<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements _ApplicationState<Event, State, View> {
+  _$_ApplicationState(
       {required this.refDateTime, required this.result, required this.ready});
 
   @override
@@ -151,14 +150,14 @@ class _$_ApplicationSnapshot<Event extends CoreEvent, State extends CoreState,
 
   @override
   String toString() {
-    return 'ApplicationSnapshot<$Event, $State, $View>(refDateTime: $refDateTime, result: $result, ready: $ready)';
+    return 'ApplicationState<$Event, $State, $View>(refDateTime: $refDateTime, result: $result, ready: $ready)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApplicationSnapshot<Event, State, View> &&
+            other is _$_ApplicationState<Event, State, View> &&
             (identical(other.refDateTime, refDateTime) ||
                 other.refDateTime == refDateTime) &&
             (identical(other.result, result) || other.result == result) &&
@@ -171,21 +170,21 @@ class _$_ApplicationSnapshot<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApplicationSnapshotCopyWith<Event, State, View,
-          _$_ApplicationSnapshot<Event, State, View>>
-      get copyWith => __$$_ApplicationSnapshotCopyWithImpl<Event, State, View,
-          _$_ApplicationSnapshot<Event, State, View>>(this, _$identity);
+  _$$_ApplicationStateCopyWith<Event, State, View,
+          _$_ApplicationState<Event, State, View>>
+      get copyWith => __$$_ApplicationStateCopyWithImpl<Event, State, View,
+          _$_ApplicationState<Event, State, View>>(this, _$identity);
 }
 
-abstract class _ApplicationSnapshot<
+abstract class _ApplicationState<
     Event extends CoreEvent,
     State extends CoreState,
-    View extends CoreView> implements ApplicationSnapshot<Event, State, View> {
-  factory _ApplicationSnapshot(
+    View extends CoreView> implements ApplicationState<Event, State, View> {
+  factory _ApplicationState(
           {required final ({DateTime createdAt, Ref ref}) refDateTime,
           required final ({State state, View view}) result,
           required final ({bool local, bool remote}) ready}) =
-      _$_ApplicationSnapshot<Event, State, View>;
+      _$_ApplicationState<Event, State, View>;
 
   @override
   ({DateTime createdAt, Ref ref}) get refDateTime;
@@ -195,7 +194,7 @@ abstract class _ApplicationSnapshot<
   ({bool local, bool remote}) get ready;
   @override
   @JsonKey(ignore: true)
-  _$$_ApplicationSnapshotCopyWith<Event, State, View,
-          _$_ApplicationSnapshot<Event, State, View>>
+  _$$_ApplicationStateCopyWith<Event, State, View,
+          _$_ApplicationState<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
