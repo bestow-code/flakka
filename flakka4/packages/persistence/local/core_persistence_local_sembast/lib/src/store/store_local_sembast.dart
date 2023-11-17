@@ -24,24 +24,24 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
       StoreLocalTransactionSembast<T>(database: database, sessionId: sessionId);
 
   @override
-  CoreQuery<EntryData> queryEntry() => StoreLocalQuerySembast(
+  CoreQuery<EntryRecord> queryEntry() => StoreLocalQuerySembast(
         ref: _ref.entry,
-        fromJson: EntryData.fromJson,
+        fromJson: EntryRecord.fromJson,
         database: database,
       );
 
   @override
-  CoreQuery<EventData> queryEvent() => StoreLocalQuerySembast(
+  CoreQuery<EventRecord> queryEvent() => StoreLocalQuerySembast(
         ref: _ref.event,
-        fromJson: EventData.fromJson,
+        fromJson: EventRecord.fromJson,
         database: database,
       );
 
   @override
-  CoreQuery<HeadData> queryHead(PersistenceId persistenceId) =>
+  CoreQuery<HeadRecord> queryHead(PersistenceId persistenceId) =>
       StoreLocalQuerySembast(
         ref: _ref.head(persistenceId),
-        fromJson: HeadData.fromJson,
+        fromJson: HeadRecord.fromJson,
         database: database,
       );
 
@@ -64,6 +64,18 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
               .then((_) => true);
         }
       });
+
+  @override
+  Future<({String ref, int sequenceNumber})?> inspect() {
+    // TODO: implement inspect
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> provision(PersistenceProvisioning provisioning) {
+    // TODO: implement provision
+    throw UnimplementedError();
+  }
 }
 
 class StoreLocalQuerySembast<K, T> implements CoreQuery<T> {

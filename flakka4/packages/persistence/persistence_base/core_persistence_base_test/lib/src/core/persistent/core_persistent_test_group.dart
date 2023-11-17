@@ -3,22 +3,26 @@ import 'package:core_persistence_base_test/src/core/_persistent/core_persistent_
 
 import '../../../core_persistence_base_test.dart';
 
-abstract class CorePersistentTestGroup<
+class CorePersistentTestGroup<
         ProviderContext extends CorePersistentProviderContext,
-        Provider extends CorePersistentProvider<ProviderContext, Subject>,
-        Subject extends CorePersistent,
+        Provider extends CorePersistentProvider<ProviderContext, Persistent>,
+        Persistent extends CorePersistent,
         T>
     extends CoreTestGroup<
-        CorePersistentTestData<Provider, ProviderContext, Subject, T>,
+        CorePersistentTestData<Provider, ProviderContext, Persistent, T>,
         Provider,
         ProviderContext,
         PersistenceKey,
-        Subject,
+        Persistent,
         T> {
   CorePersistentTestGroup(
     super.generator, {
     super.provider,
     super.providerContext,
     super.key,
+    super.testData,
   });
+
+  late final PersistenceProvisioningInitialize provisioning;
+
 }

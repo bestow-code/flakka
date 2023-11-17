@@ -1,4 +1,5 @@
 import 'package:core_common/core_common.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base/src/persistence_id.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:sembast/sembast.dart';
@@ -28,11 +29,11 @@ class StoreLocalTransactionHandlerSembast
       )
       .then(
         (result) =>
-            result != null ? HeadData.fromJson(result.value).record : null,
+            result != null ? HeadRecord.fromJson(result.value).record : null,
       );
 
   @override
-  Future<void> addHead(HeadData data) async {
+  Future<void> addHead(HeadRecord data) async {
     final current = await head;
     if (current == null) {
       throw Exception('instance not initialized');
@@ -49,7 +50,7 @@ class StoreLocalTransactionHandlerSembast
   }
 
   @override
-  Future<void> putEntry(EntryData data) async {
+  Future<void> putEntry(EntryRecord data) async {
     final key =
         await _ref.entry.record(data.ref).add(_transaction, data.toJson());
     if (key == null) {
@@ -58,7 +59,7 @@ class StoreLocalTransactionHandlerSembast
   }
 
   @override
-  Future<void> putEvent(EventData data) async {
+  Future<void> putEvent(EventRecord data) async {
     final key =
         await _ref.event.record(data.ref).add(_transaction, data.toJson());
     if (key == null) {
@@ -74,9 +75,9 @@ class StoreLocalTransactionHandlerSembast
     } else {
       final key = await _ref.head.add(
         _transaction,
-        HeadData(ref: ref, sequenceNumber: 0).toJson(),
+        HeadRecord(ref: ref, sequenceNumber: 0).toJson(),
       );
-      await putEntry(EntryData(ref: ref, parent: [], createdAt: createdAt));
+      await putEntry(EntryRecord(ref: ref, parent: [], createdAt: createdAt));
       // await putEvent(data)
     }
   }
