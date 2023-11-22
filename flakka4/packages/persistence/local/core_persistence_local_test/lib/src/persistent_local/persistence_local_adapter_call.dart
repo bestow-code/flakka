@@ -66,23 +66,23 @@ class PersistenceLocalAdapterCall with _$PersistenceLocalAdapterCall {
         )
         .toList();
     for (final e in sequencedCalls) {
-      await e.map(
-        append: (append) => adapter.append(
-          ref: append.ref,
-          parent: append.parent,
-          event: append.event,
-          createdAt: append.createdAt,
-          sequenceNumber: append.sequenceNumber,
-        ),
-        add: (add) => adapter.add(ref: add.ref, stateView: add.stateView),
-        forward: (forward) => adapter.forward(
-            ref: forward.ref, sequenceNumber: forward.sequenceNumber),
-        import: (import) => adapter.import(
-          entry: import.entry,
-          event: import.event,
-          stateView: import.stateView,
-        ),
-      );
+      // await e.map(
+      //   append: (append) => adapter.appendEvent(
+      //     ref: append.ref,
+      //     parent: append.parent,
+      //     event: append.event,
+      //     createdAt: append.createdAt,
+      //     sequenceNumber: append.sequenceNumber,
+      //   ),
+      //   add: (add) => adapter.addStateView(ref: add.ref, stateView: add.stateView),
+      //   forward: (forward) => adapter.forward(
+      //       ref: forward.ref, sequenceNumber: forward.sequenceNumber),
+      //   import: (import) => adapter.import(
+      //     entry: import.entry,
+      //     event: import.event,
+      //     stateView: import.stateView,
+      //   ),
+      // );
     }
   }
 }

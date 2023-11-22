@@ -1,7 +1,7 @@
 import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'application_snapshot2.freezed.dart';
+part 'application_snapshot.freezed.dart';
 
 // // apply
 // // forward

@@ -6,26 +6,21 @@ part 'entry_record.g.dart';
 
 @freezed
 class EntryRecord with _$EntryRecord {
-  factory EntryRecord({
-    required String ref,
+
+  factory EntryRecord.initial({
+    required int createdAt,
+  }) = EntryRecordInitial;
+
+  factory EntryRecord.event({
+    required String parent,
+    required int createdAt,
+  }) = EntryRecordEvent;
+
+  factory EntryRecord.merge({
     required List<String> parent,
     required int createdAt,
-  }) = _EntryRecord;
+  }) = EntryRecordMerge;
 
   factory EntryRecord.fromJson(Map<String, dynamic> json) =>
       _$EntryRecordFromJson(json);
-}
-
-abstract class SequentialRefValue {
-  String get ref;
-
-  List<String> get parent;
-
-  int get createdAt;
-
-  set ref(String value);
-
-  set parent(List<String> value);
-
-  set createdAt(int value);
 }

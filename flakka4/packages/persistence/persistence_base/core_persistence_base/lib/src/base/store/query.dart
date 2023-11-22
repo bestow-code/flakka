@@ -1,3 +1,3 @@
-abstract class CoreQuery<T> {
-  Stream<Iterable<T>> snapshots();
+abstract class CoreQuery<K,T> {
+  Stream<Map<K,T>> snapshots();
 }

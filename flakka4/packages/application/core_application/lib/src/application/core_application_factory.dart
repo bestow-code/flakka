@@ -14,6 +14,6 @@ abstract interface class CoreApplicationFactory<
             State,
             View,
             JournalEffect<Event, State, View>,
-            JournalUpdate<Event, State, View>,
+            JournalSnapshot<Event, State, View>,
             ApplicationRequest<Event, State>,
             ApplicationSnapshot<Event, State, View>> {}

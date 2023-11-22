@@ -6,7 +6,5 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 abstract interface class CorePersistenceLocal
     implements
-        CorePersistentIO<PersistenceLocalEffect, PersistenceLocalSnapshot> {
-  @override
-  Future<PersistenceLocalSnapshot> provision(PersistenceProvisioning provisioning);
+        CorePersistentIO<PersistenceLocalEffect, PersistenceLocalSnapshot>,CoreInitializer {
 }

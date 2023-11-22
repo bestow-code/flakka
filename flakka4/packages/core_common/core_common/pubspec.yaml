@@ -12,6 +12,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation:
   meta: ^1.9.1
+  option_result:
   rxdart:
 
 dev_dependencies:
@@ -19,7 +20,7 @@ dev_dependencies:
   freezed:
   json_serializable:
   test: ^1.21.0
-  very_good_analysis: 5.0.0+1
+  very_good_analysis: ^5.1.0
 
 index_generator:
   exclude:
@@ -31,3 +32,4 @@ index_generator:
       docs: Common libraries for core_platform
       exports:
         - package: package:either_dart/either.dart
+        - package: package:option_result/option_result.dart

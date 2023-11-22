@@ -1,6 +1,4 @@
 import 'package:core_application/core_application.dart';
-import 'package:core_application_impl/core_application_impl.dart';
-import 'package:core_data/src/state_view.dart';
 import 'package:core_data_test/core_data_test.dart';
 
 class TestApplicationBehavior

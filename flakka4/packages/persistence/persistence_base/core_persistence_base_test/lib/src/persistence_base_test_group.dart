@@ -6,15 +6,10 @@ typedef Duplicate<T> = (T, T);
 
 extension PersistenceBaseTestContextExtension on Any {
   Generator<CoreProviderContext> get providerContext =>
-      any.null_.map((_) => ProviderContext());
+      any.null_.map((_) => ProviderContextBase());
 
   Generator<CorePersistentProviderContext> get persistentProviderContext =>
       any.null_.map((_) => CorePersistentProviderContext());
-
-  Generator<CorePersistentProviderContext> providerContextSessionIdBinding(
-    CorePersistentProviderContext context,
-  ) =>
-      any.sessionId(context).map((value) => context..sessionId = value);
 
   Generator<CorePersistentProviderContext> providerContextPersistenceIdBinding(
     CorePersistentProviderContext context,
@@ -26,12 +21,15 @@ extension PersistenceBaseTestContextExtension on Any {
   Generator<StorePath> get storePath =>
       any.nonEmptyLetterOrDigits.map((value) => StorePath('store/$value'));
 
-  Generator<SessionId> sessionId(CorePersistentProviderContext context) => any
-      .nonEmptyLetterOrDigits
-      .map((value) => SessionId(value, persistenceId: context.persistenceId));
+  Generator<SessionId> get sessionId =>
+      any.persistenceId.bind(any.sessionIdFactory);
 
   Generator<PersistenceId> get persistenceId =>
       any.nonEmptyLetterOrDigits.map(PersistenceId.new);
+
+  Generator<SessionId> sessionIdFactory(PersistenceId persistenceId) =>
+      any.nonEmptyLetterOrDigits
+          .map((value) => SessionId(value, persistenceId: persistenceId));
 
   Generator<PersistenceKey> get persistenceKey => any.nonEmptyLetterOrDigits
       .map((value) => PersistenceKey('object/$value'));

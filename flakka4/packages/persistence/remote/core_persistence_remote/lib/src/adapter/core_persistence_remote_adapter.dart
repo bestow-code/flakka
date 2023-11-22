@@ -9,7 +9,7 @@ abstract interface class CorePersistenceRemoteAdapter
     implements CorePersistenceAdapter {
   // Write
   Future<void> provision({
-    required PersistenceProvisioning request,
+    required PersistenceProvisioning provisioning,
   });
 
   Future<void> append({

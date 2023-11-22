@@ -4,19 +4,16 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 
 import '../../core_persistence_local.dart';
 
-abstract interface class CoreStoreLocal implements CoreObjectStore {
-  Future<void> initialize(SessionId sessionId,
-      {required String ref, required int createdAt});
+abstract interface class CoreStoreLocal implements CoreStore {
 
   CoreStoreLocalTransaction<T> transact<T>(
     SessionId sessionId,
   );
 
-  CoreQuery<HeadData> queryHead(PersistenceId persistenceId);
+  CoreQuery<int,HeadRecord> queryHead(PersistenceId persistenceId);
 
-  CoreQuery<EntryData> queryEntry();
+  CoreQuery<String,EntryRecord> queryEntry();
 
-  CoreQuery<EventData> queryEvent();
+  CoreQuery<String,EventRecord> queryEvent();
 
-  Future<void> delete();
 }

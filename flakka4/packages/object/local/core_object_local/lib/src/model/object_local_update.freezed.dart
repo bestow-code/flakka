@@ -16,27 +16,26 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectLocalSnapshot {
-  Object get data => throw _privateConstructorUsedError;
-  bool get isReady => throw _privateConstructorUsedError;
+  InvalidType get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadData data, bool isReady) head,
-    required TResult Function(Map<String, EntryData> data, bool isReady) entry,
-    required TResult Function(Map<String, EventData> data, bool isReady) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadData data, bool isReady)? head,
-    TResult? Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult? Function(Map<String, EventData> data, bool isReady)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadData data, bool isReady)? head,
-    TResult Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult Function(Map<String, EventData> data, bool isReady)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,10 +61,6 @@ mixin _$ObjectLocalSnapshot {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ObjectLocalSnapshotCopyWith<ObjectLocalSnapshot> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -73,8 +68,6 @@ abstract class $ObjectLocalSnapshotCopyWith<$Res> {
   factory $ObjectLocalSnapshotCopyWith(
           ObjectLocalSnapshot value, $Res Function(ObjectLocalSnapshot) then) =
       _$ObjectLocalSnapshotCopyWithImpl<$Res, ObjectLocalSnapshot>;
-  @useResult
-  $Res call({bool isReady});
 }
 
 /// @nodoc
@@ -86,33 +79,16 @@ class _$ObjectLocalSnapshotCopyWithImpl<$Res, $Val extends ObjectLocalSnapshot>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isReady = null,
-  }) {
-    return _then(_value.copyWith(
-      isReady: null == isReady
-          ? _value.isReady
-          : isReady // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalSnapshotHeadImplCopyWith<$Res>
-    implements $ObjectLocalSnapshotCopyWith<$Res> {
+abstract class _$$ObjectLocalSnapshotHeadImplCopyWith<$Res> {
   factory _$$ObjectLocalSnapshotHeadImplCopyWith(
           _$ObjectLocalSnapshotHeadImpl value,
           $Res Function(_$ObjectLocalSnapshotHeadImpl) then) =
       __$$ObjectLocalSnapshotHeadImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({HeadData data, bool isReady});
-
-  $HeadDataCopyWith<$Res> get data;
+  $Res call({HeadRecord data});
 }
 
 /// @nodoc
@@ -128,43 +104,28 @@ class __$$ObjectLocalSnapshotHeadImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
-    Object? isReady = null,
+    Object? data = freezed,
   }) {
     return _then(_$ObjectLocalSnapshotHeadImpl(
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as HeadData,
-      isReady: null == isReady
-          ? _value.isReady
-          : isReady // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as HeadRecord,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadDataCopyWith<$Res> get data {
-    return $HeadDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$ObjectLocalSnapshotHeadImpl implements ObjectLocalSnapshotHead {
-  _$ObjectLocalSnapshotHeadImpl({required this.data, required this.isReady});
+  _$ObjectLocalSnapshotHeadImpl({required this.data});
 
   @override
-  final HeadData data;
-  @override
-  final bool isReady;
+  final HeadRecord data;
 
   @override
   String toString() {
-    return 'ObjectLocalSnapshot.head(data: $data, isReady: $isReady)';
+    return 'ObjectLocalSnapshot.head(data: $data)';
   }
 
   @override
@@ -172,12 +133,12 @@ class _$ObjectLocalSnapshotHeadImpl implements ObjectLocalSnapshotHead {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectLocalSnapshotHeadImpl &&
-            (identical(other.data, data) || other.data == data) &&
-            (identical(other.isReady, isReady) || other.isReady == isReady));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data, isReady);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -189,33 +150,33 @@ class _$ObjectLocalSnapshotHeadImpl implements ObjectLocalSnapshotHead {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadData data, bool isReady) head,
-    required TResult Function(Map<String, EntryData> data, bool isReady) entry,
-    required TResult Function(Map<String, EventData> data, bool isReady) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) {
-    return head(data, isReady);
+    return head(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadData data, bool isReady)? head,
-    TResult? Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult? Function(Map<String, EventData> data, bool isReady)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) {
-    return head?.call(data, isReady);
+    return head?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadData data, bool isReady)? head,
-    TResult Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult Function(Map<String, EventData> data, bool isReady)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
-      return head(data, isReady);
+      return head(data);
     }
     return orElse();
   }
@@ -256,30 +217,24 @@ class _$ObjectLocalSnapshotHeadImpl implements ObjectLocalSnapshotHead {
 }
 
 abstract class ObjectLocalSnapshotHead implements ObjectLocalSnapshot {
-  factory ObjectLocalSnapshotHead(
-      {required final HeadData data,
-      required final bool isReady}) = _$ObjectLocalSnapshotHeadImpl;
+  factory ObjectLocalSnapshotHead({required final HeadRecord data}) =
+      _$ObjectLocalSnapshotHeadImpl;
 
   @override
-  HeadData get data;
-  @override
-  bool get isReady;
-  @override
+  HeadRecord get data;
   @JsonKey(ignore: true)
   _$$ObjectLocalSnapshotHeadImplCopyWith<_$ObjectLocalSnapshotHeadImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalSnapshotEntryImplCopyWith<$Res>
-    implements $ObjectLocalSnapshotCopyWith<$Res> {
+abstract class _$$ObjectLocalSnapshotEntryImplCopyWith<$Res> {
   factory _$$ObjectLocalSnapshotEntryImplCopyWith(
           _$ObjectLocalSnapshotEntryImpl value,
           $Res Function(_$ObjectLocalSnapshotEntryImpl) then) =
       __$$ObjectLocalSnapshotEntryImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({Map<String, EntryData> data, bool isReady});
+  $Res call({Map<String, EntryRecord> data});
 }
 
 /// @nodoc
@@ -296,17 +251,12 @@ class __$$ObjectLocalSnapshotEntryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? isReady = null,
   }) {
     return _then(_$ObjectLocalSnapshotEntryImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryData>,
-      isReady: null == isReady
-          ? _value.isReady
-          : isReady // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as Map<String, EntryRecord>,
     ));
   }
 }
@@ -314,24 +264,20 @@ class __$$ObjectLocalSnapshotEntryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectLocalSnapshotEntryImpl implements ObjectLocalSnapshotEntry {
-  _$ObjectLocalSnapshotEntryImpl(
-      {required final Map<String, EntryData> data, required this.isReady})
+  _$ObjectLocalSnapshotEntryImpl({required final Map<String, EntryRecord> data})
       : _data = data;
 
-  final Map<String, EntryData> _data;
+  final Map<String, EntryRecord> _data;
   @override
-  Map<String, EntryData> get data {
+  Map<String, EntryRecord> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
   }
 
   @override
-  final bool isReady;
-
-  @override
   String toString() {
-    return 'ObjectLocalSnapshot.entry(data: $data, isReady: $isReady)';
+    return 'ObjectLocalSnapshot.entry(data: $data)';
   }
 
   @override
@@ -339,13 +285,12 @@ class _$ObjectLocalSnapshotEntryImpl implements ObjectLocalSnapshotEntry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectLocalSnapshotEntryImpl &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
-            (identical(other.isReady, isReady) || other.isReady == isReady));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_data), isReady);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -357,33 +302,33 @@ class _$ObjectLocalSnapshotEntryImpl implements ObjectLocalSnapshotEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadData data, bool isReady) head,
-    required TResult Function(Map<String, EntryData> data, bool isReady) entry,
-    required TResult Function(Map<String, EventData> data, bool isReady) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) {
-    return entry(data, isReady);
+    return entry(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadData data, bool isReady)? head,
-    TResult? Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult? Function(Map<String, EventData> data, bool isReady)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) {
-    return entry?.call(data, isReady);
+    return entry?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadData data, bool isReady)? head,
-    TResult Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult Function(Map<String, EventData> data, bool isReady)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
-      return entry(data, isReady);
+      return entry(data);
     }
     return orElse();
   }
@@ -425,29 +370,24 @@ class _$ObjectLocalSnapshotEntryImpl implements ObjectLocalSnapshotEntry {
 
 abstract class ObjectLocalSnapshotEntry implements ObjectLocalSnapshot {
   factory ObjectLocalSnapshotEntry(
-      {required final Map<String, EntryData> data,
-      required final bool isReady}) = _$ObjectLocalSnapshotEntryImpl;
+          {required final Map<String, EntryRecord> data}) =
+      _$ObjectLocalSnapshotEntryImpl;
 
   @override
-  Map<String, EntryData> get data;
-  @override
-  bool get isReady;
-  @override
+  Map<String, EntryRecord> get data;
   @JsonKey(ignore: true)
   _$$ObjectLocalSnapshotEntryImplCopyWith<_$ObjectLocalSnapshotEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectLocalSnapshotEventImplCopyWith<$Res>
-    implements $ObjectLocalSnapshotCopyWith<$Res> {
+abstract class _$$ObjectLocalSnapshotEventImplCopyWith<$Res> {
   factory _$$ObjectLocalSnapshotEventImplCopyWith(
           _$ObjectLocalSnapshotEventImpl value,
           $Res Function(_$ObjectLocalSnapshotEventImpl) then) =
       __$$ObjectLocalSnapshotEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({Map<String, EventData> data, bool isReady});
+  $Res call({Map<String, EventRecord> data});
 }
 
 /// @nodoc
@@ -464,17 +404,12 @@ class __$$ObjectLocalSnapshotEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? isReady = null,
   }) {
     return _then(_$ObjectLocalSnapshotEventImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventData>,
-      isReady: null == isReady
-          ? _value.isReady
-          : isReady // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as Map<String, EventRecord>,
     ));
   }
 }
@@ -482,24 +417,20 @@ class __$$ObjectLocalSnapshotEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectLocalSnapshotEventImpl implements ObjectLocalSnapshotEvent {
-  _$ObjectLocalSnapshotEventImpl(
-      {required final Map<String, EventData> data, required this.isReady})
+  _$ObjectLocalSnapshotEventImpl({required final Map<String, EventRecord> data})
       : _data = data;
 
-  final Map<String, EventData> _data;
+  final Map<String, EventRecord> _data;
   @override
-  Map<String, EventData> get data {
+  Map<String, EventRecord> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
   }
 
   @override
-  final bool isReady;
-
-  @override
   String toString() {
-    return 'ObjectLocalSnapshot.event(data: $data, isReady: $isReady)';
+    return 'ObjectLocalSnapshot.event(data: $data)';
   }
 
   @override
@@ -507,13 +438,12 @@ class _$ObjectLocalSnapshotEventImpl implements ObjectLocalSnapshotEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectLocalSnapshotEventImpl &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
-            (identical(other.isReady, isReady) || other.isReady == isReady));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_data), isReady);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -525,33 +455,33 @@ class _$ObjectLocalSnapshotEventImpl implements ObjectLocalSnapshotEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadData data, bool isReady) head,
-    required TResult Function(Map<String, EntryData> data, bool isReady) entry,
-    required TResult Function(Map<String, EventData> data, bool isReady) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) {
-    return event(data, isReady);
+    return event(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadData data, bool isReady)? head,
-    TResult? Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult? Function(Map<String, EventData> data, bool isReady)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) {
-    return event?.call(data, isReady);
+    return event?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadData data, bool isReady)? head,
-    TResult Function(Map<String, EntryData> data, bool isReady)? entry,
-    TResult Function(Map<String, EventData> data, bool isReady)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
-      return event(data, isReady);
+      return event(data);
     }
     return orElse();
   }
@@ -593,353 +523,12 @@ class _$ObjectLocalSnapshotEventImpl implements ObjectLocalSnapshotEvent {
 
 abstract class ObjectLocalSnapshotEvent implements ObjectLocalSnapshot {
   factory ObjectLocalSnapshotEvent(
-      {required final Map<String, EventData> data,
-      required final bool isReady}) = _$ObjectLocalSnapshotEventImpl;
+          {required final Map<String, EventRecord> data}) =
+      _$ObjectLocalSnapshotEventImpl;
 
   @override
-  Map<String, EventData> get data;
-  @override
-  bool get isReady;
-  @override
+  Map<String, EventRecord> get data;
   @JsonKey(ignore: true)
   _$$ObjectLocalSnapshotEventImplCopyWith<_$ObjectLocalSnapshotEventImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ObjectLocalState {
-  Map<String, EventData> get event => throw _privateConstructorUsedError;
-  Map<String, EntryData> get entry => throw _privateConstructorUsedError;
-  HeadData get head => throw _privateConstructorUsedError;
-  bool get headIsReady => throw _privateConstructorUsedError;
-  Set<String> get eventNotReady => throw _privateConstructorUsedError;
-  Set<String> get entryNotReady => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ObjectLocalStateCopyWith<ObjectLocalState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ObjectLocalStateCopyWith<$Res> {
-  factory $ObjectLocalStateCopyWith(
-          ObjectLocalState value, $Res Function(ObjectLocalState) then) =
-      _$ObjectLocalStateCopyWithImpl<$Res, ObjectLocalState>;
-  @useResult
-  $Res call(
-      {Map<String, EventData> event,
-      Map<String, EntryData> entry,
-      HeadData head,
-      bool headIsReady,
-      Set<String> eventNotReady,
-      Set<String> entryNotReady});
-
-  $HeadDataCopyWith<$Res> get head;
-}
-
-/// @nodoc
-class _$ObjectLocalStateCopyWithImpl<$Res, $Val extends ObjectLocalState>
-    implements $ObjectLocalStateCopyWith<$Res> {
-  _$ObjectLocalStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? event = null,
-    Object? entry = null,
-    Object? head = null,
-    Object? headIsReady = null,
-    Object? eventNotReady = null,
-    Object? entryNotReady = null,
-  }) {
-    return _then(_value.copyWith(
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventData>,
-      entry: null == entry
-          ? _value.entry
-          : entry // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryData>,
-      head: null == head
-          ? _value.head
-          : head // ignore: cast_nullable_to_non_nullable
-              as HeadData,
-      headIsReady: null == headIsReady
-          ? _value.headIsReady
-          : headIsReady // ignore: cast_nullable_to_non_nullable
-              as bool,
-      eventNotReady: null == eventNotReady
-          ? _value.eventNotReady
-          : eventNotReady // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      entryNotReady: null == entryNotReady
-          ? _value.entryNotReady
-          : entryNotReady // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadDataCopyWith<$Res> get head {
-    return $HeadDataCopyWith<$Res>(_value.head, (value) {
-      return _then(_value.copyWith(head: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ObjectLocalStateImplCopyWith<$Res>
-    implements $ObjectLocalStateCopyWith<$Res> {
-  factory _$$ObjectLocalStateImplCopyWith(_$ObjectLocalStateImpl value,
-          $Res Function(_$ObjectLocalStateImpl) then) =
-      __$$ObjectLocalStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Map<String, EventData> event,
-      Map<String, EntryData> entry,
-      HeadData head,
-      bool headIsReady,
-      Set<String> eventNotReady,
-      Set<String> entryNotReady});
-
-  @override
-  $HeadDataCopyWith<$Res> get head;
-}
-
-/// @nodoc
-class __$$ObjectLocalStateImplCopyWithImpl<$Res>
-    extends _$ObjectLocalStateCopyWithImpl<$Res, _$ObjectLocalStateImpl>
-    implements _$$ObjectLocalStateImplCopyWith<$Res> {
-  __$$ObjectLocalStateImplCopyWithImpl(_$ObjectLocalStateImpl _value,
-      $Res Function(_$ObjectLocalStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? event = null,
-    Object? entry = null,
-    Object? head = null,
-    Object? headIsReady = null,
-    Object? eventNotReady = null,
-    Object? entryNotReady = null,
-  }) {
-    return _then(_$ObjectLocalStateImpl(
-      event: null == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventData>,
-      entry: null == entry
-          ? _value._entry
-          : entry // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryData>,
-      head: null == head
-          ? _value.head
-          : head // ignore: cast_nullable_to_non_nullable
-              as HeadData,
-      headIsReady: null == headIsReady
-          ? _value.headIsReady
-          : headIsReady // ignore: cast_nullable_to_non_nullable
-              as bool,
-      eventNotReady: null == eventNotReady
-          ? _value._eventNotReady
-          : eventNotReady // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      entryNotReady: null == entryNotReady
-          ? _value._entryNotReady
-          : entryNotReady // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectLocalStateImpl implements _ObjectLocalState {
-  _$ObjectLocalStateImpl(
-      {required final Map<String, EventData> event,
-      required final Map<String, EntryData> entry,
-      required this.head,
-      required this.headIsReady,
-      required final Set<String> eventNotReady,
-      required final Set<String> entryNotReady})
-      : _event = event,
-        _entry = entry,
-        _eventNotReady = eventNotReady,
-        _entryNotReady = entryNotReady;
-
-  final Map<String, EventData> _event;
-  @override
-  Map<String, EventData> get event {
-    if (_event is EqualUnmodifiableMapView) return _event;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_event);
-  }
-
-  final Map<String, EntryData> _entry;
-  @override
-  Map<String, EntryData> get entry {
-    if (_entry is EqualUnmodifiableMapView) return _entry;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_entry);
-  }
-
-  @override
-  final HeadData head;
-  @override
-  final bool headIsReady;
-  final Set<String> _eventNotReady;
-  @override
-  Set<String> get eventNotReady {
-    if (_eventNotReady is EqualUnmodifiableSetView) return _eventNotReady;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_eventNotReady);
-  }
-
-  final Set<String> _entryNotReady;
-  @override
-  Set<String> get entryNotReady {
-    if (_entryNotReady is EqualUnmodifiableSetView) return _entryNotReady;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_entryNotReady);
-  }
-
-  @override
-  String toString() {
-    return 'ObjectLocalState(event: $event, entry: $entry, head: $head, headIsReady: $headIsReady, eventNotReady: $eventNotReady, entryNotReady: $entryNotReady)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalStateImpl &&
-            const DeepCollectionEquality().equals(other._event, _event) &&
-            const DeepCollectionEquality().equals(other._entry, _entry) &&
-            (identical(other.head, head) || other.head == head) &&
-            (identical(other.headIsReady, headIsReady) ||
-                other.headIsReady == headIsReady) &&
-            const DeepCollectionEquality()
-                .equals(other._eventNotReady, _eventNotReady) &&
-            const DeepCollectionEquality()
-                .equals(other._entryNotReady, _entryNotReady));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_event),
-      const DeepCollectionEquality().hash(_entry),
-      head,
-      headIsReady,
-      const DeepCollectionEquality().hash(_eventNotReady),
-      const DeepCollectionEquality().hash(_entryNotReady));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectLocalStateImplCopyWith<_$ObjectLocalStateImpl> get copyWith =>
-      __$$ObjectLocalStateImplCopyWithImpl<_$ObjectLocalStateImpl>(
-          this, _$identity);
-}
-
-abstract class _ObjectLocalState implements ObjectLocalState {
-  factory _ObjectLocalState(
-      {required final Map<String, EventData> event,
-      required final Map<String, EntryData> entry,
-      required final HeadData head,
-      required final bool headIsReady,
-      required final Set<String> eventNotReady,
-      required final Set<String> entryNotReady}) = _$ObjectLocalStateImpl;
-
-  @override
-  Map<String, EventData> get event;
-  @override
-  Map<String, EntryData> get entry;
-  @override
-  HeadData get head;
-  @override
-  bool get headIsReady;
-  @override
-  Set<String> get eventNotReady;
-  @override
-  Set<String> get entryNotReady;
-  @override
-  @JsonKey(ignore: true)
-  _$$ObjectLocalStateImplCopyWith<_$ObjectLocalStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ObjectLocalProvisionState {}
-
-/// @nodoc
-abstract class $ObjectLocalProvisionStateCopyWith<$Res> {
-  factory $ObjectLocalProvisionStateCopyWith(ObjectLocalProvisionState value,
-          $Res Function(ObjectLocalProvisionState) then) =
-      _$ObjectLocalProvisionStateCopyWithImpl<$Res, ObjectLocalProvisionState>;
-}
-
-/// @nodoc
-class _$ObjectLocalProvisionStateCopyWithImpl<$Res,
-        $Val extends ObjectLocalProvisionState>
-    implements $ObjectLocalProvisionStateCopyWith<$Res> {
-  _$ObjectLocalProvisionStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ObjectLocalProvisionStateImplCopyWith<$Res> {
-  factory _$$ObjectLocalProvisionStateImplCopyWith(
-          _$ObjectLocalProvisionStateImpl value,
-          $Res Function(_$ObjectLocalProvisionStateImpl) then) =
-      __$$ObjectLocalProvisionStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ObjectLocalProvisionStateImplCopyWithImpl<$Res>
-    extends _$ObjectLocalProvisionStateCopyWithImpl<$Res,
-        _$ObjectLocalProvisionStateImpl>
-    implements _$$ObjectLocalProvisionStateImplCopyWith<$Res> {
-  __$$ObjectLocalProvisionStateImplCopyWithImpl(
-      _$ObjectLocalProvisionStateImpl _value,
-      $Res Function(_$ObjectLocalProvisionStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ObjectLocalProvisionStateImpl implements _ObjectLocalProvisionState {
-  _$ObjectLocalProvisionStateImpl();
-
-  @override
-  String toString() {
-    return 'ObjectLocalProvisionState()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectLocalProvisionStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-}
-
-abstract class _ObjectLocalProvisionState implements ObjectLocalProvisionState {
-  factory _ObjectLocalProvisionState() = _$ObjectLocalProvisionStateImpl;
 }

@@ -18,6 +18,3 @@ export 'src/store/core_store_local_factory.dart';
 export 'src/store/core_store_local_provider.dart';
 export 'src/store/core_store_local_transaction.dart';
 export 'src/store/core_store_local_transaction_handler.dart';
-export 'src/store/model/entry_data.dart';
-export 'src/store/model/event_data.dart';
-export 'src/store/model/head_data.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 import '../../../core_persistence_base.dart';
 
 abstract interface class CorePersistenceAdapterFactory<
-        Store extends CoreObjectStore,
+        Store extends CoreStore,
         PersistenceAdapter extends CorePersistenceAdapter<Store>>
     implements CoreFactory<PersistenceAdapter> {
   String getBasePath({

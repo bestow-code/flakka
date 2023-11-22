@@ -1,23 +1,33 @@
-import 'package:core_loco/core_loco.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../core_loco_impl.dart';
 
 abstract class AsyncIOBase<Effect, Snapshot> extends IOBase<Effect, Snapshot> {
+  //ignore: use_setters_to_change_properties
   void registerInputHandler(Future<void> Function(Effect) handler) {
     _handler = handler;
-    subscription.add(inputSubject.asyncMap(_handler).listen((event) {}));
   }
 
   late final Future<void> Function(Effect) _handler;
-  late final Stream<Snapshot> Function() _factory;
 
   //ignore: use_setters_to_change_properties
   void registerSnapshotFactory(Stream<Snapshot> Function() factory) =>
       _factory = factory;
+  late final Stream<Snapshot> Function() _factory;
+
+  final subscription = CompositeSubscription();
 
   @override
-  Future<Snapshot> provision(covariant dynamic provisioning) {
-    subscription.add(_factory().listen(stateSubject.add));
-    return super.provision(provisioning);
+  Future<void> connect() async {
+    _factory().pipe(output).ignore();
+    await output.first;
+    subscription.add(input.listen(_handler));
+  }
+
+  @override
+  Future<void> close() async {
+    await input.close();
+    await subscription.cancel();
+    await output.close();
   }
 }

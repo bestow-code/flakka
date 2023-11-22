@@ -24,61 +24,44 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
       StoreLocalTransactionSembast<T>(database: database, sessionId: sessionId);
 
   @override
-  CoreQuery<EntryRecord> queryEntry() => StoreLocalQuerySembast(
+  CoreQuery<String, EntryRecord> queryEntry() => StoreLocalQuerySembast(
         ref: _ref.entry,
         fromJson: EntryRecord.fromJson,
         database: database,
       );
 
   @override
-  CoreQuery<EventRecord> queryEvent() => StoreLocalQuerySembast(
+  CoreQuery<String, EventRecord> queryEvent() => StoreLocalQuerySembast(
         ref: _ref.event,
         fromJson: EventRecord.fromJson,
         database: database,
       );
 
   @override
-  CoreQuery<HeadRecord> queryHead(PersistenceId persistenceId) =>
+  CoreQuery<int, HeadRecord> queryHead(PersistenceId persistenceId) =>
       StoreLocalQuerySembast(
         ref: _ref.head(persistenceId),
         fromJson: HeadRecord.fromJson,
         database: database,
       );
 
-  Future<void> delete() async {
-    throw UnimplementedError();
-    // print(await _ref.event.query().getSnapshot(database));
-    // print(await )
-  }
+  @override
+  Future<void> initialize(
+    SessionId sessionId, {
+    required String ref,
+    required int createdAt,
+  }) async =>
+      transact<void>(sessionId).run((handler) async =>
+          handler.initialize(ref: ref, createdAt: createdAt).then((_) => true));
 
   @override
-  Future<void> initialize(SessionId sessionId,
-          {required String ref, required int createdAt}) async =>
-      transact<void>(sessionId).run((handler) async {
-        final head = await handler.head;
-        if (head != null) {
-          throw Exception('instance already initialized: $head');
-        } else {
-          return handler
-              .initialize(ref: ref, createdAt: createdAt)
-              .then((_) => true);
-        }
-      });
-
-  @override
-  Future<({String ref, int sequenceNumber})?> inspect() {
+  Future<HeadRecord?> inspect() {
     // TODO: implement inspect
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> provision(PersistenceProvisioning provisioning) {
-    // TODO: implement provision
     throw UnimplementedError();
   }
 }
 
-class StoreLocalQuerySembast<K, T> implements CoreQuery<T> {
+class StoreLocalQuerySembast<K, T> implements CoreQuery<K, T> {
   StoreLocalQuerySembast({
     required StoreRef<K, JsonMap> ref,
     required T Function(JsonMap) fromJson,
@@ -92,8 +75,9 @@ class StoreLocalQuerySembast<K, T> implements CoreQuery<T> {
   final Database _database;
 
   @override
-  Stream<Iterable<T>> snapshots() => _ref
+  Stream<Map<K, T>> snapshots() => _ref
       .query(finder: Finder())
       .onSnapshots(_database)
-      .map((event) => event.map((e) => _fromJson(e.value)));
+      .map((event) => Map.fromEntries(
+          event.map((e) => MapEntry(e.key, _fromJson(e.value)))));
 }

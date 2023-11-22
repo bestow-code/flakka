@@ -7,84 +7,67 @@ class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
   PersistenceLocalAdapter({required super.store, required super.sessionId});
 
   @override
-  Future<void> provision({required PersistenceProvisioning request}) async =>
-      request.map(
-        initialize: (initialize) async => store.initialize(
-          sessionId,
-          ref: initialize.ifNew.ref,
-          createdAt: initialize.ifNew.createdAt,
-        ),
-        resume: (resume) async => throw UnimplementedError(),
-      );
-
-  @override
-  Future<void> add({required String ref, required StateViewObject stateView}) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> append({
+  Future<void> addStateView({
     required String ref,
-    required List<String> parent,
-    required JsonMap? event,
-    required int createdAt,
-    required int sequenceNumber,
-  }) =>
-      store.transact<void>(sessionId).run(
-            (handler) => handler
-                .addHead(HeadData(ref: ref, sequenceNumber: sequenceNumber))
-                .then(
-                  (_) => handler.putEntry(
-                    EntryData(ref: ref, parent: parent, createdAt: createdAt),
-                  ),
-                )
-                .then(
-                  (value) => handler.putEvent(EventData(ref: ref, data: event)),
-                ),
-          );
-
-  @override
-  Stream<HeadData?> get headSnapshot => store
-      .queryHead(sessionId.persistenceId)
-      .snapshots()
-      .map((event) => event.lastOrNull);
-
-  @override
-  Stream<Map<String, EntryData>> get entrySnapshot =>
-      store.queryEntry().snapshots().map(
-            (event) => Map.fromEntries(
-              event.map(
-                (entryData) => MapEntry(entryData.ref, entryData),
-              ),
-            ),
-          );
-
-  @override
-  Stream<Map<String, EventData>> get eventSnapshot =>
-      store.queryEvent().snapshots().map(
-            (event) => Map.fromEntries(
-              event.map(
-                (eventData) => MapEntry(eventData.ref, eventData),
-              ),
-            ),
-          );
-
-  @override
-  Future<void> forward({required String ref, required int sequenceNumber}) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> import({
-    Map<String, ({int createdAt, Iterable<String> parent, String ref})>? entry,
-    Map<String, JsonMap>? event,
-    Map<String, StateViewObject>? stateView,
+    required StateViewObject stateView,
   }) {
     throw UnimplementedError();
   }
 
   @override
-  Future<({String ref, int sequenceNumber})?> inspect() {
+  Stream<HeadRecord> get headSnapshot => store
+      .queryHead(sessionId.persistenceId)
+      .snapshots()
+      .map((event) => event.values.single);
+
+  @override
+  Stream<Map<String, EntryRecord>> get entrySnapshot =>
+      store.queryEntry().snapshots();
+
+  @override
+  Stream<Map<String, EventRecord>> get eventSnapshot =>
+      store.queryEvent().snapshots();
+
+  @override
+  Future<HeadRecord> inspect() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> initialize(
+    SessionId sessionId, {
+    required String ref,
+    required int createdAt,
+  }) async =>
+      store.initialize(
+        sessionId,
+        ref: ref,
+        createdAt: createdAt,
+      );
+
+  @override
+  Future<void> append(
+    HeadRecord head,
+    HeadEffectRecord data,
+  ) =>
+      store.transact<void>(sessionId).run(
+            (handler) => handler
+                .addHead(head)
+                .then((_) => handler.addHead(head))
+                .then(
+                  (value) => data.map(
+                    event: (event) => handler
+                        .putEntry(head.ref, event.entry)
+                        .then((_) => handler.putEvent(head.ref, event.data)),
+                    merge: (merge) => handler.putEntry(head.ref, merge.entry),
+                    forward: (forward) => Future<void>.value(),
+                  ),
+                ),
+          );
+
+  @override
+  Future<void> import(ImportEffectRecord data) {
+    // TODO: implement import
     throw UnimplementedError();
   }
 }

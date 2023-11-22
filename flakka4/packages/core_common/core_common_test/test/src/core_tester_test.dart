@@ -1,43 +1,60 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
-import 'package:core_common_test/src/core_tester_context.dart';
+import 'package:core_common_test/core_common_test_scaffolding.dart';
 
 void main() {
-  Any.setDefault(
-    any.null_.map(
-      (_) => _SampleAProviderContext(),
-    ),
-  );
+  Generator<List<_SampleAProviderContext>> providerContext(int instanceCount) =>
+      any.always(List.generate(instanceCount, _SampleAProviderContext.new));
   Any.setDefault(any.always(_SampleAProvider()));
   Any.setDefault(any.always(_SampleAKey()));
 
-  CoreTesterContext<
-          CoreTestContext<_SampleAProvider, _SampleAProviderContext,
-              _SampleAKey, _SampleA>,
-          _SampleAProvider,
-          _SampleAProviderContext,
-          _SampleAKey,
-          _SampleA>(generator: any.testContext())
-      .tester(any.int)
-      .test('description', (context, value) async {
-    context.providerContext.value = value;
-    final subject = await context.provider
-        .get(context: context.providerContext, key: context.key);
-    expect(subject.value, context.providerContext.value);
+  Generator<TestOperations<int>> operations(
+          int instanceCount, int operationCount) =>
+      any
+          .listWithLength(
+              operationCount,
+              any.intInRange(0, instanceCount - 1).bind((instanceIndex) =>
+                  any.int.map(
+                      (value) => InstanceOperation(instanceIndex, value))))
+          .map((operations) => TestOperations(operations));
+
+  Generator<
+      CoreTestContext<_SampleAProvider, _SampleAProviderContext, _SampleAKey,
+          _SampleA>> testContext(int instanceCount) => any.combine3(
+      any.always(_SampleAProvider()),
+      providerContext(instanceCount),
+      any.always(_SampleAKey()),
+      CoreTestContext<_SampleAProvider, _SampleAProviderContext, _SampleAKey,
+              _SampleA>
+          .new);
+
+  Future<List<_SampleA>> initialize(List<_SampleA> subjects,
+          CoreTestOperationsData<int> operationsData) async =>
+      subjects;
+
+  suite(testContext)((suite) {
+    suite.tester<CoreTestOperationsData<int>, int>(
+      operations,
+      initialize,
+    )((tester) {
+      tester.test('hello world', (context, subjects, operationsData) {
+        print(context);
+        print(subjects);
+        print(operationsData);
+      });
+    });
   });
 }
 
 class _SampleA {
-  const _SampleA(this.value);
-
-  final int value;
+  const _SampleA();
 }
 
 class _SampleAProvider
     implements CoreProvider<_SampleAProviderContext, _SampleAKey, _SampleA> {
   @override
   Future<void> delete({
-    required ProviderContextV2 context,
+    required ProviderContext context,
     required CoreKey<_SampleA> key,
   }) async {}
 
@@ -46,13 +63,13 @@ class _SampleAProvider
     required _SampleAProviderContext context,
     required CoreKey<_SampleA> key,
   }) async =>
-      _SampleA(context.value);
+      _SampleA();
 }
 
-class _SampleAProviderContext extends ProviderContextV2 {
-  _SampleAProviderContext();
+class _SampleAProviderContext extends ProviderContext {
+  _SampleAProviderContext(this.value);
 
-  late final int value;
+  final int value;
 }
 
 class _SampleAKey extends CoreKey<_SampleA> {}

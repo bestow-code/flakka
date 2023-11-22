@@ -4,5 +4,5 @@ import '../../core_persistence_local.dart';
 
 abstract interface class CorePersistenceLocalAdapterProvider
     implements
-        CorePersistenceAdapterProvider<CorePersistenceLocalAdapter,
+        CorePersistenceAdapterProvider<CorePersistentProviderContext,CorePersistenceLocalAdapter,
             CoreStoreLocal> {}

@@ -1,6 +1,13 @@
-import 'package:core_common/core_common.dart';
+import '../core_object_base.dart';
 
-abstract interface class CoreObjectBase<Effect, Update, In, Out>
-    implements CoreNode<Effect, Update, In, Out> {
-  Future<({String ref, int sequenceNumber})?> inspect();
+abstract interface class CoreObjectBase<
+        EffectOut,
+        SnapshotIn,
+        Resource extends CorePersistentResource<EffectOut, SnapshotIn>,
+        EffectIn,
+        SnapshotOut>
+    implements
+        CorePersistentNode<EffectOut, SnapshotIn, Resource, EffectIn,
+            SnapshotOut> {
+  // Future<({String ref, int sequenceNumber})?> inspect();
 }

@@ -98,8 +98,8 @@ class PersistenceRemoteAdapterSembast extends PersistenceRemoteAdapterBase
     required StateViewObject stateView,
   }) async {
     return _database.transaction((transaction) async {
-      await store.stateRef.add(transaction, ref);
-      await store.state.record(ref).add(transaction, stateView.toJson());
+      await store.stateRef.combine(transaction, ref);
+      await store.state.record(ref).combine(transaction, stateView.toJson());
     });
   }
 
@@ -112,7 +112,7 @@ class PersistenceRemoteAdapterSembast extends PersistenceRemoteAdapterBase
       _database.transaction((transaction) async {
         if (entry != null) {
           entry.forEach((ref, value) async {
-            await store.entry.record(ref).add(
+            await store.entry.record(ref).combine(
                   transaction,
                   EntryProps(parent: value.parent, createdAt: value.createdAt)
                       .toJson(),
@@ -121,13 +121,13 @@ class PersistenceRemoteAdapterSembast extends PersistenceRemoteAdapterBase
         }
         if (event != null) {
           event.forEach((ref, value) async {
-            await store.event.record(ref).add(transaction, value);
+            await store.event.record(ref).combine(transaction, value);
           });
         }
         if (stateView != null) {
           stateView.forEach((ref, value) async {
-            await store.stateRef.add(transaction, ref);
-            await store.state.record(ref).add(transaction, value.toJson());
+            await store.stateRef.combine(transaction, ref);
+            await store.state.record(ref).combine(transaction, value.toJson());
           });
         }
       });
@@ -161,14 +161,14 @@ class PersistenceRemoteAdapterSembast extends PersistenceRemoteAdapterBase
       });
 
   @override
-  Future<void> provision({required PersistenceProvisioning request}) async =>
+  Future<void> provision({required PersistenceProvisioning provisioning}) async =>
       _database.transaction((transaction) async {
         if (await store.head.record(persistenceId.value).exists(transaction)) {
           throw Exception(
             'initialize called on existing instance',
           );
         }
-        await request.map(
+        await provisioning.map(
           initialize: (initialize) async {
             // TODO add creation of entry
             return store.head.record(persistenceId.value).put(transaction, {

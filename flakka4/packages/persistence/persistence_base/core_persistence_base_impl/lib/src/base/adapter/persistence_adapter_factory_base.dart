@@ -5,7 +5,7 @@ import '../../../core_persistence_base_impl.dart';
 
 abstract class PersistenceAdapterFactoryBase<
         PersistenceAdapter extends CorePersistenceAdapter<Store>,
-        Store extends CoreObjectStore>
+        Store extends CoreStore>
     extends PersistentFactory<PersistenceAdapter>
     implements CorePersistenceAdapterFactory<Store, PersistenceAdapter> {
   @override

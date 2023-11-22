@@ -32,7 +32,7 @@ class ObjectProvider extends BroadcastMergeProviderBase<
 
   @override
   Future<void> dispose({
-    required ProviderContext context,
+    required ProviderContextBase context,
     required covariant ObjectKey key,
   }) {
     throw UnimplementedError();
@@ -40,7 +40,7 @@ class ObjectProvider extends BroadcastMergeProviderBase<
 
   @override
   Future<Object> get(
-      {required ProviderContext context, required covariant ObjectKey key}) {
+      {required ProviderContextBase context, required covariant ObjectKey key}) {
     throw UnimplementedError();
   }
 

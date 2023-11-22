@@ -2,11 +2,17 @@ import 'package:core_loco/core_loco.dart';
 import 'package:core_loco_impl/core_loco_impl.dart';
 
 abstract class NodeFactoryBase<
-        Effect,
-        Update,
-        Resource extends CoreResource<Effect, Update>,
-        In,
-        Out,
-        Node extends CoreNode<Effect, Update, In, Out>>
-    extends ResourceFactoryBase<In, Out, Node>
-    implements CoreNodeFactory<Effect, Update, Resource, In, Out, Node> {}
+EffectIn,
+SnapshotIn,
+Resource extends CoreResource<EffectIn, SnapshotIn>,
+EffectOut,
+SnapshotOut,
+Node extends CoreNode<EffectIn, SnapshotIn, Resource, EffectOut,
+    SnapshotOut>>
+    extends ResourceFactoryBase<EffectOut,
+        SnapshotOut,
+        Node>
+    implements CoreNodeFactory<EffectIn,
+        SnapshotIn, Resource, EffectOut,
+        SnapshotOut,
+        Node> {}

@@ -23,7 +23,7 @@ dev_dependencies:
   freezed:
   json_serializable:
   test: ^1.21.0
-  very_good_analysis: 5.0.0+1
+  very_good_analysis: ^5.1.0
 
 index_generator:
   exclude:

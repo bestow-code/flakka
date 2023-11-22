@@ -17,47 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  Ref get ref => throw _privateConstructorUsedError;
-  Ref get parent => throw _privateConstructorUsedError;
-  Event get event => throw _privateConstructorUsedError;
-  ({State state, View view}) get stateView =>
+  HeadEffect<Event, State, View> get effect =>
       throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  int get sequenceNumber => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Ref parent,
-            Event event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
-        append,
+    required TResult Function(HeadEffect<Event, State, View> effect) append,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Ref parent,
-            Event event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
-        append,
+    TResult? Function(HeadEffect<Event, State, View> effect)? append,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Ref parent,
-            Event event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
-        append,
+    TResult Function(HeadEffect<Event, State, View> effect)? append,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -92,16 +66,9 @@ abstract class $DataEffectCopyWith<Event extends CoreEvent,
       _$DataEffectCopyWithImpl<Event, State, View, $Res,
           DataEffect<Event, State, View>>;
   @useResult
-  $Res call(
-      {Ref ref,
-      Ref parent,
-      Event event,
-      ({State state, View view}) stateView,
-      DateTime createdAt,
-      int sequenceNumber});
+  $Res call({HeadEffect<Event, State, View> effect});
 
-  $RefCopyWith<$Res> get ref;
-  $RefCopyWith<$Res> get parent;
+  $HeadEffectCopyWith<Event, State, View, $Res> get effect;
 }
 
 /// @nodoc
@@ -122,54 +89,22 @@ class _$DataEffectCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? parent = null,
-    Object? event = null,
-    Object? stateView = null,
-    Object? createdAt = null,
-    Object? sequenceNumber = null,
+    Object? effect = null,
   }) {
     return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Event,
-      stateView: null == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      effect: null == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as HeadEffect<Event, State, View>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get parent {
-    return $RefCopyWith<$Res>(_value.parent, (value) {
-      return _then(_value.copyWith(parent: value) as $Val);
+  $HeadEffectCopyWith<Event, State, View, $Res> get effect {
+    return $HeadEffectCopyWith<Event, State, View, $Res>(_value.effect,
+        (value) {
+      return _then(_value.copyWith(effect: value) as $Val);
     });
   }
 }
@@ -186,18 +121,10 @@ abstract class _$$DataEffectAppendImplCopyWith<
       __$$DataEffectAppendImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call(
-      {Ref ref,
-      Ref parent,
-      Event event,
-      ({State state, View view}) stateView,
-      DateTime createdAt,
-      int sequenceNumber});
+  $Res call({HeadEffect<Event, State, View> effect});
 
   @override
-  $RefCopyWith<$Res> get ref;
-  @override
-  $RefCopyWith<$Res> get parent;
+  $HeadEffectCopyWith<Event, State, View, $Res> get effect;
 }
 
 /// @nodoc
@@ -214,38 +141,13 @@ class __$$DataEffectAppendImplCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? parent = null,
-    Object? event = null,
-    Object? stateView = null,
-    Object? createdAt = null,
-    Object? sequenceNumber = null,
+    Object? effect = null,
   }) {
     return _then(_$DataEffectAppendImpl<Event, State, View>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      parent: null == parent
-          ? _value.parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Event,
-      stateView: null == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      effect: null == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as HeadEffect<Event, State, View>,
     ));
   }
 }
@@ -254,30 +156,14 @@ class __$$DataEffectAppendImplCopyWithImpl<Event extends CoreEvent,
 
 class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataEffectAppend<Event, State, View> {
-  _$DataEffectAppendImpl(
-      {required this.ref,
-      required this.parent,
-      required this.event,
-      required this.stateView,
-      required this.createdAt,
-      required this.sequenceNumber});
+  _$DataEffectAppendImpl({required this.effect});
 
   @override
-  final Ref ref;
-  @override
-  final Ref parent;
-  @override
-  final Event event;
-  @override
-  final ({State state, View view}) stateView;
-  @override
-  final DateTime createdAt;
-  @override
-  final int sequenceNumber;
+  final HeadEffect<Event, State, View> effect;
 
   @override
   String toString() {
-    return 'DataEffect<$Event, $State, $View>.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+    return 'DataEffect<$Event, $State, $View>.append(effect: $effect)';
   }
 
   @override
@@ -285,26 +171,11 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataEffectAppendImpl<Event, State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.parent, parent) || other.parent == parent) &&
-            const DeepCollectionEquality().equals(other.event, event) &&
-            (identical(other.stateView, stateView) ||
-                other.stateView == stateView) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
+            (identical(other.effect, effect) || other.effect == effect));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      ref,
-      parent,
-      const DeepCollectionEquality().hash(event),
-      stateView,
-      createdAt,
-      sequenceNumber);
+  int get hashCode => Object.hash(runtimeType, effect);
 
   @JsonKey(ignore: true)
   @override
@@ -317,49 +188,27 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ref ref,
-            Ref parent,
-            Event event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)
-        append,
+    required TResult Function(HeadEffect<Event, State, View> effect) append,
   }) {
-    return append(ref, parent, event, stateView, createdAt, sequenceNumber);
+    return append(effect);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Ref ref,
-            Ref parent,
-            Event event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
-        append,
+    TResult? Function(HeadEffect<Event, State, View> effect)? append,
   }) {
-    return append?.call(
-        ref, parent, event, stateView, createdAt, sequenceNumber);
+    return append?.call(effect);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ref ref,
-            Ref parent,
-            Event event,
-            ({State state, View view}) stateView,
-            DateTime createdAt,
-            int sequenceNumber)?
-        append,
+    TResult Function(HeadEffect<Event, State, View> effect)? append,
     required TResult orElse(),
   }) {
     if (append != null) {
-      return append(ref, parent, event, stateView, createdAt, sequenceNumber);
+      return append(effect);
     }
     return orElse();
   }
@@ -399,13 +248,349 @@ abstract class DataEffectAppend<
     State extends CoreState,
     View extends CoreView> implements DataEffect<Event, State, View> {
   factory DataEffectAppend(
+          {required final HeadEffect<Event, State, View> effect}) =
+      _$DataEffectAppendImpl<Event, State, View>;
+
+  @override
+  HeadEffect<Event, State, View> get effect;
+  @override
+  @JsonKey(ignore: true)
+  _$$DataEffectAppendImplCopyWith<Event, State, View,
+          _$DataEffectAppendImpl<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$HeadEffect<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> {
+  Ref get ref => throw _privateConstructorUsedError;
+  Ref get parent => throw _privateConstructorUsedError;
+  Event get event => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  int get sequenceNumber => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref, Ref parent, Event event,
+            DateTime createdAt, int sequenceNumber)
+        event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Ref ref, Ref parent, Event event, DateTime createdAt,
+            int sequenceNumber)?
+        event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Ref ref, Ref parent, Event event, DateTime createdAt,
+            int sequenceNumber)?
+        event,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HeadEffectEvent<Event, State, View> value) event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffectEvent<Event, State, View> value)? event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HeadEffectEvent<Event, State, View> value)? event,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HeadEffectCopyWith<Event, State, View, HeadEffect<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HeadEffectCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory $HeadEffectCopyWith(HeadEffect<Event, State, View> value,
+          $Res Function(HeadEffect<Event, State, View>) then) =
+      _$HeadEffectCopyWithImpl<Event, State, View, $Res,
+          HeadEffect<Event, State, View>>;
+  @useResult
+  $Res call(
+      {Ref ref,
+      Ref parent,
+      Event event,
+      DateTime createdAt,
+      int sequenceNumber});
+
+  $RefCopyWith<$Res> get ref;
+  $RefCopyWith<$Res> get parent;
+}
+
+/// @nodoc
+class _$HeadEffectCopyWithImpl<
+        Event extends CoreEvent,
+        State extends CoreState,
+        View extends CoreView,
+        $Res,
+        $Val extends HeadEffect<Event, State, View>>
+    implements $HeadEffectCopyWith<Event, State, View, $Res> {
+  _$HeadEffectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? parent = null,
+    Object? event = null,
+    Object? createdAt = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      parent: null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
+      return _then(_value.copyWith(parent: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$HeadEffectEventImplCopyWith<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView,
+    $Res> implements $HeadEffectCopyWith<Event, State, View, $Res> {
+  factory _$$HeadEffectEventImplCopyWith(
+          _$HeadEffectEventImpl<Event, State, View> value,
+          $Res Function(_$HeadEffectEventImpl<Event, State, View>) then) =
+      __$$HeadEffectEventImplCopyWithImpl<Event, State, View, $Res>;
+  @override
+  @useResult
+  $Res call(
+      {Ref ref,
+      Ref parent,
+      Event event,
+      DateTime createdAt,
+      int sequenceNumber});
+
+  @override
+  $RefCopyWith<$Res> get ref;
+  @override
+  $RefCopyWith<$Res> get parent;
+}
+
+/// @nodoc
+class __$$HeadEffectEventImplCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$HeadEffectCopyWithImpl<Event, State, View, $Res,
+        _$HeadEffectEventImpl<Event, State, View>>
+    implements _$$HeadEffectEventImplCopyWith<Event, State, View, $Res> {
+  __$$HeadEffectEventImplCopyWithImpl(
+      _$HeadEffectEventImpl<Event, State, View> _value,
+      $Res Function(_$HeadEffectEventImpl<Event, State, View>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? parent = null,
+    Object? event = null,
+    Object? createdAt = null,
+    Object? sequenceNumber = null,
+  }) {
+    return _then(_$HeadEffectEventImpl<Event, State, View>(
+      ref: null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      parent: null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      sequenceNumber: null == sequenceNumber
+          ? _value.sequenceNumber
+          : sequenceNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HeadEffectEventImpl<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements HeadEffectEvent<Event, State, View> {
+  _$HeadEffectEventImpl(
+      {required this.ref,
+      required this.parent,
+      required this.event,
+      required this.createdAt,
+      required this.sequenceNumber});
+
+  @override
+  final Ref ref;
+  @override
+  final Ref parent;
+  @override
+  final Event event;
+  @override
+  final DateTime createdAt;
+  @override
+  final int sequenceNumber;
+
+  @override
+  String toString() {
+    return 'HeadEffect<$Event, $State, $View>.event(ref: $ref, parent: $parent, event: $event, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HeadEffectEventImpl<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.parent, parent) || other.parent == parent) &&
+            const DeepCollectionEquality().equals(other.event, event) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.sequenceNumber, sequenceNumber) ||
+                other.sequenceNumber == sequenceNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, parent,
+      const DeepCollectionEquality().hash(event), createdAt, sequenceNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HeadEffectEventImplCopyWith<Event, State, View,
+          _$HeadEffectEventImpl<Event, State, View>>
+      get copyWith => __$$HeadEffectEventImplCopyWithImpl<Event, State, View,
+          _$HeadEffectEventImpl<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Ref ref, Ref parent, Event event,
+            DateTime createdAt, int sequenceNumber)
+        event,
+  }) {
+    return event(ref, parent, this.event, createdAt, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Ref ref, Ref parent, Event event, DateTime createdAt,
+            int sequenceNumber)?
+        event,
+  }) {
+    return event?.call(ref, parent, this.event, createdAt, sequenceNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Ref ref, Ref parent, Event event, DateTime createdAt,
+            int sequenceNumber)?
+        event,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(ref, parent, this.event, createdAt, sequenceNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HeadEffectEvent<Event, State, View> value) event,
+  }) {
+    return event(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffectEvent<Event, State, View> value)? event,
+  }) {
+    return event?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HeadEffectEvent<Event, State, View> value)? event,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HeadEffectEvent<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements HeadEffect<Event, State, View> {
+  factory HeadEffectEvent(
           {required final Ref ref,
           required final Ref parent,
           required final Event event,
-          required final ({State state, View view}) stateView,
           required final DateTime createdAt,
           required final int sequenceNumber}) =
-      _$DataEffectAppendImpl<Event, State, View>;
+      _$HeadEffectEventImpl<Event, State, View>;
 
   @override
   Ref get ref;
@@ -414,14 +599,12 @@ abstract class DataEffectAppend<
   @override
   Event get event;
   @override
-  ({State state, View view}) get stateView;
-  @override
   DateTime get createdAt;
   @override
   int get sequenceNumber;
   @override
   @JsonKey(ignore: true)
-  _$$DataEffectAppendImplCopyWith<Event, State, View,
-          _$DataEffectAppendImpl<Event, State, View>>
+  _$$HeadEffectEventImplCopyWith<Event, State, View,
+          _$HeadEffectEventImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

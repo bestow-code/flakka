@@ -1,32 +1,45 @@
 import 'dart:async';
 
-import 'package:core_common_test/core_common_test.dart';
 import 'package:core_loco/core_loco.dart';
-import 'package:rxdart/src/streams/value_stream.dart';
+import 'package:core_loco_test/core_loco_test.dart';
+import 'package:rxdart/rxdart.dart';
+
+class A {
+  int get a => 1;
+
+  int get b => a;
+}
+
+class B extends A {
+  @override
+  int get a => 2;
+}
 
 void main() {
-  Any.setDefault(
-    any.null_.map(
-      (_) => _SampleAProviderContext(),
-    )
-  );
-  Any.setDefault(any.always(_SampleAProvider()));
-  Any.setDefault(any.always(_SampleAKey()));
+  Any.setDefault(any.null_.map(
+    (_) => _SampleAProviderContext(),
+  ));
+  Any.setDefault(any.null_.map((value) => _SampleAProvider()));
+  Any.setDefault(any.null_.map((_) => _SampleAKey()));
 
-  CoreResourceTester<
-      _SampleAProvider,
-      _SampleAProviderContext,
-      _SampleAKey,
-      _In,
-      _Out,
-      _SampleA,
-      //ignore: prefer_void_to_null
-      Null>(
-
-  ).test('description', (context, value) async {
-    final subject = await context.provider
-        .get(context: context.providerContext, key: context.key);
-    expect(subject.value, context.providerContext.value);
+  CoreResourceTestSuite<
+          CoreResourceTestContext<_SampleAProvider, _SampleAProviderContext,
+              _SampleAKey, _In, _Out, _SampleA>,
+          _SampleAProvider,
+          _SampleAProviderContext,
+          _SampleAKey,
+          _In,
+          _Out,
+          _SampleA>()
+      .tester(any.list(any.int.map((e) => _In())))
+      .test('description', (context, data) async {
+    // final subject = await context.provider
+    //     .get(context: context.providerContext, key: context.key);
+    await context.subject.connect();
+    // await context.subject.sink
+    //     .addStream(Stream.fromIterable(context.data.map((e) => _In())));
+    // context
+    // expect(context.subject);
   });
 }
 
@@ -35,9 +48,9 @@ class _In {}
 class _Out {}
 
 class _SampleA implements CoreResource<_In, _Out> {
-  const _SampleA(this.value);
+  // const _SampleA(this.value);
 
-  final int value;
+  // final int value;
 
   @override
   Future<void> close() {
@@ -48,18 +61,27 @@ class _SampleA implements CoreResource<_In, _Out> {
   Future<dynamic> get done => throw UnimplementedError();
 
   @override
-  StreamSink<_In> get input => throw UnimplementedError();
+  StreamSink<_In> get sink => throw UnimplementedError();
 
   @override
   bool get isClosed => throw UnimplementedError();
 
   @override
-  Future<_Out> provision(covariant dynamic provisioning) {
+  ValueStream<_Out> get stream => throw UnimplementedError();
+
+  @override
+  Future<void> connect() {
+    // TODO: implement connect
     throw UnimplementedError();
   }
 
   @override
-  ValueStream<_Out> get snapshot => throw UnimplementedError();
+  // TODO: implement input
+  PublishSubject<_In> get input => throw UnimplementedError();
+
+  @override
+  // TODO: implement output
+  BehaviorSubject<_Out> get output => throw UnimplementedError();
 }
 
 class _SampleAProvider
@@ -68,7 +90,7 @@ class _SampleAProvider
             _SampleA> {
   @override
   Future<void> delete({
-    required ProviderContextV2 context,
+    required ProviderContext context,
     required CoreKey<_SampleA> key,
   }) async {}
 
@@ -77,10 +99,10 @@ class _SampleAProvider
     required _SampleAProviderContext context,
     required CoreKey<_SampleA> key,
   }) async =>
-      _SampleA(context.value);
+      _SampleA();
 }
 
-class _SampleAProviderContext extends ProviderContextV2 {
+class _SampleAProviderContext extends ProviderContext {
   _SampleAProviderContext();
 
   late final int value;

@@ -6,6 +6,7 @@ part 'persistence_provisioning.freezed.dart';
 
 @freezed
 class PersistenceProvisioning with _$PersistenceProvisioning {
+
   factory PersistenceProvisioning.initialize({
     required ({
       String ref,

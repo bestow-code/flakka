@@ -13,31 +13,14 @@ class PersistenceLocal
       : _localAdapter = localAdapter {
     registerInputHandler(
       (PersistenceLocalEffect input) => input.map(
-        append: (append) {
-          return _localAdapter.append(
-            ref: append.ref,
-            parent: append.parent.toList(),
-            event: append.event,
-            createdAt: append.createdAt,
-            sequenceNumber: append.sequenceNumber,
-          );
-        },
-        forward: (forward) {
-          return _localAdapter.forward(
-            ref: forward.ref,
-            sequenceNumber: forward.sequenceNumber,
-          );
-        },
-        import: (import) {
-          return _localAdapter.import();
-        },
+        append: (append) => _localAdapter.append(append.head, append.data),
+        import: (import) => _localAdapter.import(import.data),
       ),
     );
-    registerSnapshotFactory(()=>
-      Rx.merge([
-        _localAdapter.headSnapshot
-            .whereNotNull()
-            .map((snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot)),
+    registerSnapshotFactory(
+      () => Rx.merge([
+        _localAdapter.headSnapshot.whereNotNull().map(
+            (snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot)),
         _localAdapter.entrySnapshot
             .where((snapshot) => snapshot.isNotEmpty)
             .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
@@ -54,32 +37,10 @@ class PersistenceLocal
   final CorePersistenceLocalAdapter _localAdapter;
 
   @override
-  Future<({String ref, int sequenceNumber})?> inspect() =>
-      _localAdapter.inspect();
+  Future<HeadRecord?> inspect() => _localAdapter.inspect();
 
   @override
-  Future<PersistenceLocalSnapshot> provision(
-    covariant PersistenceProvisioning provisioning,
-  ) async {
-    await _localAdapter.provision(request: provisioning);
-    return super.provision(provisioning);
-  }
-
-  @override
-  Stream<PersistenceLocalSnapshot> buildOutput() => Rx.merge([
-        _localAdapter.headSnapshot
-            .whereNotNull()
-            .map((snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot)),
-        _localAdapter.entrySnapshot
-            .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
-        _localAdapter.eventSnapshot
-            .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceLocalSnapshot.event(snapshot: event)),
-      ]);
-
-  @override
-  Future<void> close() async {
-    await super.close();
-  }
+  Future<void> initialize(SessionId sessionId,
+          {required String ref, required int createdAt}) =>
+      _localAdapter.initialize(sessionId, ref: ref, createdAt: createdAt);
 }

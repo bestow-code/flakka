@@ -8,11 +8,11 @@ environment:
 
 dependencies:
   bloc:
-  core_common:
-  core_common_impl:
-  core_common_test:
+  core_loco:
+#  core_common_impl:
+  core_loco_test:
   core_persistence_base:
-  core_persistence_base_impl:
+#  core_persistence_base_impl:
   freezed_annotation: ^2.2.0
   glados:
   meta: ^1.9.1
@@ -36,4 +36,4 @@ index_generator:
         - src
       docs: Foundation for Core Entry Store
       exports:
-        - package: package:core_common_test/core_common_test.dart
+        - package: package:core_loco_test/core_loco_test.dart

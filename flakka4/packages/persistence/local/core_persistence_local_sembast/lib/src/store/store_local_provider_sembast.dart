@@ -38,8 +38,11 @@ class StoreLocalProviderSembast extends StoreLocalProviderBase {
   Future<CoreStoreLocal> get(
           {required CorePersistentProviderContext context,
           required PersistenceKey key}) async =>
-      StoreLocalSembast(
+      StoreLocalFactorySembast().create(
+        param: (
           database: await _openDatabase(context.storePathLocal!, key),
           path: context.storePathLocal!,
-          key: key);
+          key: key
+        ),
+      );
 }

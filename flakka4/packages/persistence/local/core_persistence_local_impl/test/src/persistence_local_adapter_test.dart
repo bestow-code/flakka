@@ -4,31 +4,36 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
-// import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
 void main() {
-  TesterContextPersistentLocal<
+  CorePersistentLocalTestSuite<
+      CorePersistentTestContext<CorePersistenceLocalAdapterProvider,
+          CorePersistentProviderContext, CorePersistenceLocalAdapter>,
       CorePersistenceLocalAdapterProvider,
+      CorePersistentProviderContext,
       CorePersistenceLocalAdapter>(
-    generator: any.testContextPersistent(),
     provider: any.always(
       PersistenceLocalAdapterProvider(
         storeProvider: StoreLocalProviderSembast.inMemory,
       ),
     ),
+    providerContext: any.persistentProviderContext,
+    key: any.persistenceKey,
   ).tester(any.persistenceLocalAdapterCalls).test('transaction handler',
-      (context, calls) async {
-    await context.provider
-        .delete(context: context.providerContext, key: context.key);
-    final adapter = await context.provider
-        .get(context: context.providerContext, key: context.key);
-    await adapter.provision(request: context.provisioning);
+      (context, data) async {
+    // await context.provider
+    //     .delete(context: context.providerContext, key: context.key);
+    // final adapter = await context.provider
+    //     .get(context: context.providerContext, key: context.key);
+
+    final adapter = context.subject;
+    await adapter.provision(context.provisioning);
     final seen = {context.provisioning.ifNew.ref};
-    for (final call in calls) {
+    for (final call in data) {
       await call.map(
         append: (append) async {
           if (seen.add(append.ref)) {
-            await adapter.append(
+            await adapter.appendEvent(
               ref: append.ref,
               parent: append.parent,
               event: append.event,
@@ -37,7 +42,7 @@ void main() {
             );
           } else {
             await expectLater(
-              () => adapter.append(
+              () => adapter.appendEvent(
                 ref: append.ref,
                 parent: append.parent,
                 event: append.event,
@@ -57,7 +62,7 @@ void main() {
     final head = await adapter.headSnapshot.first;
     final entry = await adapter.entrySnapshot.first;
     final event = await adapter.eventSnapshot.first;
-    final expected = _getExpectedData(calls, context.provisioning);
+    final expected = _getExpectedData(data, context.provisioning);
     expect(entry, equals(expected.entry));
     expect(event, equals(expected.event));
     expect(head, equals(expected.head));
@@ -65,9 +70,9 @@ void main() {
 }
 
 ({
-  HeadData head,
-  Map<String, EventData> event,
-  Map<String, EntryData> entry,
+  HeadRecord head,
+  Map<String, EventRecord> event,
+  Map<String, EntryRecord> entry,
 }) _getExpectedData(
   Iterable<PersistenceLocalAdapterCall> calls,
   PersistenceProvisioningInitialize initialize,
@@ -80,10 +85,10 @@ void main() {
             ),
           )
           .whereNotNull()
-          .map((e) => HeadData(ref: e.ref, sequenceNumber: e.sequenceNumber))
+          .map((e) => HeadRecord(ref: e.ref, sequenceNumber: e.sequenceNumber))
           .toList()
           .lastOrNull ??
-      HeadData(ref: initialize.ifNew.ref, sequenceNumber: 0);
+      HeadRecord(ref: initialize.ifNew.ref, sequenceNumber: 0);
   seen = {initialize.ifNew.ref};
   final event = Map.fromEntries(
     calls
@@ -92,7 +97,7 @@ void main() {
             append: (append) => seen.add(append.ref)
                 ? MapEntry(
                     append.ref,
-                    EventData(ref: append.ref, data: append.event),
+                    EventRecord(ref: append.ref, data: append.event),
                   )
                 : null,
           ),
@@ -107,7 +112,7 @@ void main() {
             append: (append) => seen.add(append.ref)
                 ? MapEntry(
                     append.ref,
-                    EntryData(
+                    EntryRecord(
                       ref: append.ref,
                       parent: append.parent,
                       createdAt: append.createdAt,
@@ -117,7 +122,7 @@ void main() {
           ),
         )
         .whereNotNull(),
-  )..[initialize.ifNew.ref] = EntryData(
+  )..[initialize.ifNew.ref] = EntryRecord(
       ref: initialize.ifNew.ref,
       parent: [],
       createdAt: initialize.ifNew.createdAt,

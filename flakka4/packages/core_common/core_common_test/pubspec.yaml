@@ -10,7 +10,7 @@ dependencies:
   bloc:
   core_common:
   core_common_impl:
-  core_loco_test:
+  dart_random_choice:
   freezed_annotation: ^2.2.0
   get_it:
   glados:
@@ -26,7 +26,7 @@ dev_dependencies:
   json_serializable:
   mocktail:
   test: ^1.21.0
-  very_good_analysis: 5.0.0+1
+  very_good_analysis: ^5.1.0
 
 index_generator:
   exclude:
@@ -34,9 +34,36 @@ index_generator:
   indexes:
     - path: lib
       include:
-        - src
+        - src/scaffolding
+      name: core_common_test_scaffolding
+    - path: lib
+      include:
+        - src/core
       docs: Common libraries for core_platform
       exports:
-        - package: package:core_loco_test/core_loco_test.dart
         - package: package:glados/glados.dart
-        - package: package:interleave/interleave.dart
+#          show:
+#            - Any
+#            - ExploreConfig
+#            - Glados
+#            - Glados2
+#            - Glados3
+#            - Generator
+#            - AnyUtils
+#            - BigIntAnys
+#            - BoolAny
+#            - CombinableAny
+#            - DateTimeAnys
+#            - DoubleAnys
+#            - DurationAnys
+#            - GeneratorUtils
+#            - IntAnys
+#            - ListAnys
+#            - MapAnys
+#            - NullAny
+#            - NumAnys
+#            - RandomUtils
+#            - SetAyns
+#            - StringAnys
+#            - any
+#        - package: package:test/expect.dart

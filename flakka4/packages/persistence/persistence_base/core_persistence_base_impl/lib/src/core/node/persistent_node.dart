@@ -1,7 +1,7 @@
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class PersistentNodeBase<
+abstract class PersistentNode<
         EffectOut,
         SnapshotIn,
         Resource extends CorePersistentResource<EffectOut, SnapshotIn>,
@@ -13,5 +13,6 @@ abstract class PersistentNodeBase<
     implements
         CorePersistentNode<EffectOut, SnapshotIn, Resource, EffectIn,
             SnapshotOut> {
-  PersistentNodeBase({required super.child});
+  PersistentNode({required super.child});
+
 }

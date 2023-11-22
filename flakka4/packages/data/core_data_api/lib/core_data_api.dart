@@ -6,6 +6,7 @@ library core_data_api;
 export 'src/core_event.dart';
 export 'src/core_state.dart';
 export 'src/core_view.dart';
+export 'src/event_state_view.dart';
 export 'src/ref.dart';
 export 'src/ref_factory.dart';
 export 'src/state_view.dart';

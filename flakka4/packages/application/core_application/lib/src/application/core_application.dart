@@ -12,7 +12,7 @@ abstract interface class CoreApplication<Event extends CoreEvent,
             State,
             View,
             JournalEffect<Event, State, View>,
-            JournalUpdate<Event, State, View>,
+            JournalSnapshot<Event, State, View>,
             ApplicationRequest<Event, State>,
             ApplicationSnapshot<Event, State, View>> {
   Ref request(RequestHandler<State, Event> handler);

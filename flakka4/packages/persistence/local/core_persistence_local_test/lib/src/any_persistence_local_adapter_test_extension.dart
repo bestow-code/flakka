@@ -1,4 +1,5 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
@@ -36,10 +37,6 @@ extension TestPersistenceLocalAdapterContextExtension on Any {
   ) =>
           any.providerContextStoreLocalBinding(context);
 
-  // Initialization
-  Generator<PersistenceProvisioningInitialize>
-      get persistenceProvisioningInitialize => any.initializeParam
-          .map((value) => PersistenceProvisioningInitialize(ifNew: value));
 
   // Calls
   Generator<List<PersistenceLocalAdapterCall>>

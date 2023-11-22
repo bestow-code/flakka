@@ -1,15 +1,18 @@
 import '../../core_loco.dart';
 
 abstract class CoreNodeProvider<
-ProviderContext extends CoreProviderContext,
+        ProviderContext extends CoreProviderContext,
         Key,
-        Effect,
-        Update,
-        Resource extends CoreResource<Effect, Update>,
-        In,
-        Out,
-        Node extends CoreNode<Effect, Update, In, Out>>
-    implements CoreResourceProvider<ProviderContext, Key, In, Out, Node> {
-  CoreResourceProvider<ProviderContext, Key, Effect, Update, Resource>
+        EffectIn,
+        SnapshotIn,
+        Resource extends CoreResource<EffectIn, SnapshotIn>,
+        EffectOut,
+        SnapshotOut,
+        Node extends CoreNode<EffectIn, SnapshotIn, Resource, EffectOut,
+            SnapshotOut>>
+    implements
+        CoreResourceProvider<ProviderContext, Key, EffectOut, SnapshotOut,
+            Node> {
+  CoreResourceProvider<ProviderContext, Key, EffectIn, SnapshotIn, Resource>
       get childProvider;
 }

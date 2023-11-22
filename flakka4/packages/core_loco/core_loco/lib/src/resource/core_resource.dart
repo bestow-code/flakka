@@ -1,19 +1,24 @@
 import 'dart:async';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
-abstract interface class CoreResource<Input, State>  {
-  StreamSink<Input> get input;
+abstract interface class CoreResource<Effect, T> {
+  StreamSink<Effect> get sink;
 
-  ValueStream<State> get snapshot;
+  @protected
+  PublishSubject<Effect> get input;
 
-  Future<State> provision(covariant dynamic provisioning);
+  ValueStream<T> get stream;
 
-  // CompositeSubscription connect();
+  @protected
+  BehaviorSubject<T> get output;
 
   bool get isClosed;
 
-  Future<dynamic> get done;
+  Future<void> connect();
+
+  Future<void> get done;
 
   Future<void> close();
 }

@@ -19,7 +19,6 @@ export 'src/io/io_provider_base.dart';
 export 'src/node/node_base.dart';
 export 'src/node/node_factory_base.dart';
 export 'src/node/node_provider_base.dart';
-export 'src/node/state_node.dart';
 export 'src/resource/resource_base.dart';
 export 'src/resource/resource_factory_base.dart';
 export 'src/resource/resource_provider_base.dart';

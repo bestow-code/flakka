@@ -1,6 +1,6 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class CoreObjectStore implements CorePersistent {
+abstract class CoreStore implements CoreInitializer {
   StorePath get path;
 
   PersistenceKey get key;

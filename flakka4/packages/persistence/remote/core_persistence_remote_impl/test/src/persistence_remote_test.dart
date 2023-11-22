@@ -86,7 +86,7 @@ Future<void> apply(
         ),
       )
       .toList();
-  return Stream.fromIterable(sequencedCalls).pipe(subject.input);
+  return Stream.fromIterable(sequencedCalls).pipe(subject.sink);
 }
 
 // // persistenceRemoteIOSpec('[PersistenceRemoteIO]', (spec) {

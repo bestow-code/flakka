@@ -1,29 +1,16 @@
 import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../core_object.dart';
+
 part 'object_effect.freezed.dart';
 
 @freezed
 class ObjectEffect with _$ObjectEffect {
-  factory ObjectEffect.append({
-    required String ref,
-    required List<String> parent,
-    required JsonMap? event,
-    required StateViewObject? stateView,
-    required int createdAt,
-  }) = ObjectEffectAppend;
+  factory ObjectEffect.append(
+    HeadRecord head,
+    HeadEffectRecord data,
+  ) = ObjectEffectAppend;
 
-  factory ObjectEffect.forward({
-    required String ref,
-    required StateViewObject? stateView,
-    required int createdAt,
-  }) = ObjectEffectForward;
-
-  factory ObjectEffect.publish({
-    required String ref,
-    required List<String> from,
-    required int createdAt,
-  }) = ObjectEffectPublish;
-
-  factory ObjectEffect.none() = ObjectEffectNone;
+  factory ObjectEffect.import(ImportEffectRecord data) = ObjectEffectImport;
 }

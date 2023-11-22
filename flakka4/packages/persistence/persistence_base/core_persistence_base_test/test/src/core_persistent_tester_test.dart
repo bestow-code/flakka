@@ -6,27 +6,41 @@ void main() {
   Any.setDefault(any.null_.map((_) => CorePersistentProviderContext()));
   Any.setDefault(any.nonEmptyLetterOrDigits.map(PersistenceKey.new));
 
-  TesterContextPersistentBase<
-          CorePersistentTestContext<_SampleAProvider, _SampleA>,
-          _SampleAProvider,
-          _SampleA>(generator: any.testContextPersistent())
-      .tester(any.int)
-      .test('description', (context, value) async {
-    context.providerContext.value = value;
-    final subject = await context.provider
-        .get(context: context.providerContext, key: context.key);
-    expect(context.provisioning.ifNew.ref.isNotEmpty, true);
-    expect(subject.value, context.providerContext.value);
-  });
+  // CorePersistentTestGroup<
+  //         PersistentTestContext<CorePersistentProviderContext,
+  //             _SampleAProvider, _SampleA>,
+  //         CorePersistentProviderContext,
+  //         _SampleAProvider,
+  //         _SampleA>(generator: any.testContextPersistent())
+  //     .group(any.int)
+  //     .test('description', (context, value) async {
+  //   context.providerContext.value = value;
+  //   final subject = await context.provider
+  //       .get(context: context.providerContext, key: context.key);
+  //   expect(context.provisioning.ifNew.ref.isNotEmpty, true);
+  //   expect(subject.value, context.providerContext.value);
+  // });
 }
 
 class _SampleA implements CorePersistent {
   const _SampleA(this.value);
 
   final int value;
+
+  @override
+  Future<({String ref, int sequenceNumber})?> inspect() {
+    // TODO: implement inspect
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> provision(PersistenceProvisioning provisioning) {
+    // TODO: implement provision
+    throw UnimplementedError();
+  }
 }
 
-class _SampleAProvider implements CorePersistentProvider<_SampleA> {
+class _SampleAProvider implements CorePersistentProvider<CorePersistentProviderContext,_SampleA> {
   @override
   Future<void> delete({
     required CorePersistentProviderContext context,

@@ -1,8 +1,17 @@
-import 'package:core_common/core_common.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
+import '../../../core_persistence_base.dart';
 
-abstract interface  class CorePersistent
-    {
-  // @override
+abstract interface class CorePersistent {
   // Future<({String ref, int sequenceNumber})?> inspect();
+
+}
+
+abstract interface class CoreInitializer implements CorePersistent{
+  Future<HeadRecord?> inspect();
+
+  Future<void> initialize(SessionId sessionId,
+      {required String ref, required int createdAt});
+}
+
+abstract interface class CoreProvisioner implements CorePersistent{
+  Future<HeadRecord> provision(PersistenceProvisioning provisioning);
 }

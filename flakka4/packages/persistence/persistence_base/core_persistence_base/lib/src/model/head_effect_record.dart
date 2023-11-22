@@ -1,15 +1,16 @@
-import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'head_data_effect.freezed.dart';
+import '../../core_persistence_base.dart';
+
+part 'head_effect_record.freezed.dart';
 
 @freezed
 class HeadEffectRecord with _$HeadEffectRecord {
-  factory HeadEffectRecord.event({
-    required String ref,
-    required String parent,
-    required JsonMap event,
-    required int createdAt,
-    required int sequenceNumber,
-  }) = HeadEffectRecordEvent;
+  factory HeadEffectRecord.event(EntryRecordEvent entry, EventRecord data) =
+      HeadEffectRecordEvent;
+
+  factory HeadEffectRecord.merge(EntryRecordMerge entry) =
+      HeadEffectRecordMerge;
+
+  factory HeadEffectRecord.forward() = HeadEffectRecordForward;
 }

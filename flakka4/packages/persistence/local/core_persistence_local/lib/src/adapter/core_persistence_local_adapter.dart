@@ -6,51 +6,23 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 abstract interface class CorePersistenceLocalAdapter
     implements CorePersistenceAdapter<CoreStoreLocal> {
   // Write
-  Future<void> provision({
-    required PersistenceProvisioning request,
-  });
 
-  Future<void> append({
-    required String ref,
-    required List<String> parent,
-    required JsonMap? event,
-    required int createdAt,
-    required int sequenceNumber,
-  });
+  Future<void> append(
+    HeadRecord head,
+    HeadEffectRecord data,
+  );
 
-  Future<void> add({
+  Future<void> addStateView({
     required String ref,
     required StateViewObject stateView,
   });
 
-  Future<void> forward({
-    required String ref,
-    required int sequenceNumber,
-  });
-
-  Future<void> import({
-    Map<
-            String,
-            ({
-              String ref,
-              Iterable<String> parent,
-              int createdAt,
-            })>?
-        entry,
-    Map<String, JsonMap>? event,
-    Map<String, StateViewObject>? stateView,
-  });
+  Future<void> import(ImportEffectRecord data);
 
   // Read
-  Stream<HeadData?> get headSnapshot;
+  Stream<HeadRecord> get headSnapshot;
 
-  Stream<Map<String, EntryData>> get entrySnapshot;
+  Stream<Map<String, EntryRecord>> get entrySnapshot;
 
-  Stream<Map<String, EventData>> get eventSnapshot;
-
-  Future<
-      ({
-        String ref,
-        int sequenceNumber,
-      })?> inspect();
+  Stream<Map<String, EventRecord>> get eventSnapshot;
 }

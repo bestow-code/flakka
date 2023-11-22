@@ -1,6 +1,6 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class PersistenceAdapterBase<Store extends CoreObjectStore> implements CorePersistenceAdapter<Store> {
+abstract class PersistenceAdapterBase<Store extends CoreStore> implements CorePersistenceAdapter<Store> {
   PersistenceAdapterBase({
     required this.store,
     required this.sessionId,

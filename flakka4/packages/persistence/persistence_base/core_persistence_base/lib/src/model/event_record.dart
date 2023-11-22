@@ -7,8 +7,7 @@ part 'event_record.g.dart';
 @freezed
 class EventRecord with _$EventRecord {
   factory EventRecord({
-    required String ref,
-    required JsonMap? data,
+    required JsonMap data,
   }) = _EventRecord;
 
   factory EventRecord.fromJson(Map<String, dynamic> json) =>

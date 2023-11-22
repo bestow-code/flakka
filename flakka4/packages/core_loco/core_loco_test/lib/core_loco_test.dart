@@ -5,7 +5,9 @@ library core_loco_test;
 
 export 'package:core_common_test/core_common_test.dart';
 
-export 'src/core_async_io_tester.dart';
-export 'src/core_io_tester.dart';
-export 'src/core_node_tester.dart';
-export 'src/core_resource_tester.dart';
+export 'src/node/core_node_test_context.dart';
+export 'src/node/core_node_test_data.dart';
+export 'src/node/core_node_test_group.dart';
+export 'src/resource/core_resource_test_context.dart';
+export 'src/resource/core_resource_test_data.dart';
+export 'src/resource/core_resource_test_group.dart';

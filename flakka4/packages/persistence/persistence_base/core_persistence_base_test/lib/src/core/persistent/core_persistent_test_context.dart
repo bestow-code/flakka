@@ -1,24 +1,52 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:core_persistence_base_test/src/core/_persistent/core_persistent_test_data.dart';
+import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 
-import '../../../core_persistence_base_test.dart';
-
-abstract class CorePersistentTestGroup<
+// abstract class PersistentTestContext<
+//         ProviderContext extends CorePersistentProviderContext,
+//         Provider extends CorePersistentProvider<ProviderContext, Persistent>,
+//         Persistent extends CorePersistent>
+//     extends CoreTestContext<Provider,ProviderContext,
+//         PersistenceKey, Persistent> {
+//   PersistenceProvisioningInitialize get provisioning;
+// }
+//
+class CorePersistentTestContext<
+        Provider extends CorePersistentProvider<ProviderContext, Persistent>,
         ProviderContext extends CorePersistentProviderContext,
-        Provider extends CorePersistentProvider<ProviderContext, Subject>,
-        Subject extends CorePersistent,
-        T>
-    extends CoreTestGroup<
-        CorePersistentTestData<Provider, ProviderContext, Subject, T>,
-        Provider,
-        ProviderContext,
-        PersistenceKey,
-        Subject,
-        T> {
-  CorePersistentTestGroup(
-    super.generator, {
+        Persistent extends CorePersistent>
+    extends CoreTestContext<Provider, ProviderContext, PersistenceKey,
+        Persistent>
+    with
+        CorePersistentTestContextProperties<Provider, ProviderContext,
+            Persistent> {
+  CorePersistentTestContext(
     super.provider,
     super.providerContext,
     super.key,
-  });
+    PersistenceProvisioningInitialize provisioningInitialize,
+  ) {
+    provisioning = provisioningInitialize;
+  }
 }
+
+mixin CorePersistentTestContextProperties<
+        Provider extends CorePersistentProvider<ProviderContext, Persistent>,
+        ProviderContext extends CorePersistentProviderContext,
+        Persistent extends CorePersistent>
+    on CoreTestContext<Provider, ProviderContext, PersistenceKey, Persistent> {
+  late final PersistenceProvisioningInitialize provisioning;
+}
+
+// extension AnyPersistentTestContext on Any {
+//   Generator<CorePersistentTestData<Provider,ProviderContext, Subject>>
+//       testContextPersistent<
+//               ProviderContext extends CorePersistentProviderContext,
+//               Provider extends CorePersistentProvider<ProviderContext, Subject>,
+//               Subject extends CorePersistent>() =>
+//           any.persistenceProvisioningInitialize.map((provisioning) {
+//             throw UnimplementedError();
+//             // return TestContextPersistent2()..provisioning = provisioning;
+//           });
+//
+// // TODO create binding to add provisioning
+// }

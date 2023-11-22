@@ -32,7 +32,7 @@ class DataProvider extends NodeProviderBase<
 
   @override
   // TODO: implement context
-  ProviderContext get context => throw UnimplementedError();
+  ProviderContextBase get context => throw UnimplementedError();
 
   @override
   Future<Data<Event, State, View>> get<
