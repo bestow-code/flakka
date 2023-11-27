@@ -35,6 +35,7 @@ export 'src/model/event_record.dart';
 export 'src/model/head_effect_record.dart';
 export 'src/model/head_record.dart';
 export 'src/model/import_effect_record.dart';
+export 'src/model/persistence_record.dart';
 export 'src/persistence_id.dart';
 export 'src/persistence_key.dart';
 export 'src/persistence_provider_context_extension.dart';

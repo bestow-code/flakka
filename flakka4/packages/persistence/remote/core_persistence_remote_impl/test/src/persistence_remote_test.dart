@@ -1,152 +1,49 @@
-import 'dart:async';
-
 import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 import 'package:core_persistence_remote_sembast/core_persistence_remote_sembast.dart';
-import 'package:core_persistence_remote_test/core_persistence_remote_test.dart';
 import 'package:glados/glados.dart';
 
-Future<CorePersistenceRemote> getSubject(
-  String objectId,
-  CorePersistenceRemoteProvider<CorePersistenceRemote> Function()
-      persistenceProviderRemoteFactory,
-) async {
-  final provider = persistenceProviderRemoteFactory();
-  PersistenceAdapterFactoryContext context;
-  context = PersistenceFactoryContextImpl()
-    ..persistenceId = PersistenceId('instance-1');
-  PersistenceFactoryParamImpl param;
-  param = PersistenceFactoryParamImpl()
-    ..parseVersion('0')
-    ..key = ObjectKey(
-      'o/$objectId',
-      base: StorePath('loco_data/test', base: RootPath('users/1')),
-    );
-  await provider.delete(param);
-  final persistence = await provider.get(
-    param,
-    null,
-  );
-
-  return persistence;
-}
-
 void main() {
-  Glados2(
-    any.refValue,
-    any.persistenceRemoteEffectList,
-  ).test('produce expected output for valid call sequence',
-      (refValue, calls) async {
-    final subject = await getSubject(
-      refValue,
-      () => PersistenceRemoteProvider(
-        adapterFactoryProvider:
-            PersistenceRemoteAdapterProviderSembast.inMemory(),
-      ),
-    );
-    await subject.provision(
-      PersistenceProvisioning.resume(
-        ref: refValue,
-        sequenceNumber: 0,
-      ),
-    );
-    subject.connect();
-    await expectLater(
-      () => apply(subject, calls),
-      returnsNormally,
-    );
-    await subject.close();
-    // await Future.wait(
-    //   [
-    //     subject.done,
-    //   ],
-    // );
+  group('append', () {
+    late ProviderContext providerContext;
+    final key = PersistenceKey('1');
+    setUp(() {
+      providerContext = ProviderContext()
+        ..persistenceId = PersistenceId('1')
+        ..sessionId = SessionId('1');
+    });
+    test('emits', () async {
+      final persistenceRemote = await PersistenceRemoteProvider(
+        adapterProvider: PersistenceRemoteAdapterProvider(
+          storeProvider: StoreRemoteProviderSembast.inMemory,
+        ),
+      ).get(context: providerContext, key: key);
+      await persistenceRemote.initialize(ref: '1', createdAt: 0);
+
+      persistenceRemote.connect();
+      const ref = '2';
+      persistenceRemote.sink.add(
+        PersistenceRemoteEffect.persist(
+          PersistenceRecord.event(ref, EventRecord(data: {'value': 1})),
+        ),
+      );
+      persistenceRemote.sink.add(
+        PersistenceRemoteEffect.persist(
+          PersistenceRecord.entry(
+            ref,
+            EntryRecordEvent(parent: '1', createdAt: 1),
+          ),
+        ),
+      );
+      persistenceRemote.sink.add(
+        PersistenceRemoteEffect.persist(
+          PersistenceRecord.head(HeadRecord(ref: ref, sequenceNumber: 1)),
+        ),
+      );
+      // await expectLater(persistenceRemote.stream.take(3), );
+      print(await persistenceRemote.stream.take(3).toList());
+      print(await persistenceRemote.stream.take(3).toList());
+    });
   });
 }
-
-Future<void> apply(
-  CorePersistenceRemote subject,
-  Iterable<PersistenceRemoteEffect> calls,
-// int startSequenceNumber,
-) async {
-  const startSequenceNumber = 0;
-  var sequenceNumber = startSequenceNumber;
-  final sequencedCalls = calls
-      .map(
-        (e) => e.map(
-          append: (append) => append.copyWith(
-            sequenceNumber: sequenceNumber = sequenceNumber + 1,
-          ),
-          forward: (forward) => forward.copyWith(
-            sequenceNumber: sequenceNumber = sequenceNumber + 1,
-          ),
-          import: (import) => import,
-        ),
-      )
-      .toList();
-  return Stream.fromIterable(sequencedCalls).pipe(subject.sink);
-}
-
-// // persistenceRemoteIOSpec('[PersistenceRemoteIO]', (spec) {
-// //   spec.property('');
-// // });
-// Any.setDefault(any.persistenceRemoteEffect);
-// Any.setDefault(any.persistenceRemoteUpdate);
-// final persistenceId = PersistenceId('instance-1');
-// // asyncIOSpec('[PersistenceRemoteIO]', ());
-// group(
-//   '[PersistenceRemoteIO]',
-//   ioSpec<
-//       PersistenceRemoteEffect,
-//       PersistenceRemoteUpdate,
-//       PersistenceFactoryContextImpl,
-//       PersistenceFactoryParamImpl,
-//       PersistenceRemote>(
-//     provider: () => PersistenceRemoteIOFactoryProvider(
-//       adapterFactoryProvider:
-//           PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
-//     ),
-//     context: PersistenceFactoryContextImpl.new,
-//     param: PersistenceFactoryParamImpl.new,
-//     setUp: (context, param) {
-//       context.persistenceId = persistenceId;
-//       param
-//         ..version = Version.parse('0.0.1-pre')
-//         ..objectPath = ObjectPath(
-//           'o/1',
-//           base: StorePath('loco_data/test', base: RootPath('users/user1')),
-//         );
-//     },
-//   )((spec) {
-//     spec.inputTest(
-//       'for given input, output matches oracle expectations',
-//     )((io, inputs) async {
-//       // io.connect();
-//       //
-//       // inputs.map((e) => e.map(
-//       //       // provision: (provision){
-//       //       //   // return PersistenceRemoteUpdate
-//       //       // },
-//       //       append: (append){},
-//       //       set: (forward){},
-//       //       import: (import){},
-//       //     ));
-//       // if (inputs.whereType<PersistenceRemoteEffectProvision>().length <= 1) {
-//       //   expect(() async => io.input.addStream(Stream.fromIterable(inputs)),
-//       //       returnsNormally);
-//       // } else {
-//       //   print(inputs);
-//       //   expect(() async => io.input.addStream(Stream.fromIterable(inputs)),
-//       //       throwsException);
-//       // }
-//     });
-//   }),
-// );
-//
-// // IOFactoryProviderBase get testPersistenceRemoteIOFactoryProvider => PersistenceRemoteIOFactoryProvider(
-// //   adapterFactoryProvider:
-// //   PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
-// // );
-// }

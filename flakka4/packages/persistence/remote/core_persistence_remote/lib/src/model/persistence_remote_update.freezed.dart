@@ -15,71 +15,66 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PersistenceRemoteUpdate {
+mixin _$PersistenceRemoteSnapshot {
+  Object get snapshot => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadRecord snapshot) head,
+    required TResult Function(Map<String, EventRecord> snapshot) event,
+    required TResult Function(Map<String, EntryRecord> snapshot) entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadRecord snapshot)? head,
+    TResult? Function(Map<String, EventRecord> snapshot)? event,
+    TResult? Function(Map<String, EntryRecord> snapshot)? entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadRecord snapshot)? head,
+    TResult Function(Map<String, EventRecord> snapshot)? event,
+    TResult Function(Map<String, EntryRecord> snapshot)? entry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceRemoteUpdateRef value) ref,
-    required TResult Function(PersistenceRemoteUpdateEvent value) event,
-    required TResult Function(PersistenceRemoteUpdateEntry value) entry,
+    required TResult Function(PersistenceRemoteSnapshotHead value) head,
+    required TResult Function(PersistenceRemoteSnapshotEvent value) event,
+    required TResult Function(PersistenceRemoteSnapshotEntry value) entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult? Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult? Function(PersistenceRemoteUpdateEntry value)? entry,
+    TResult? Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult? Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult? Function(PersistenceRemoteSnapshotEntry value)? entry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult Function(PersistenceRemoteUpdateEntry value)? entry,
+    TResult Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult Function(PersistenceRemoteSnapshotEntry value)? entry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PersistenceRemoteUpdateCopyWith<$Res> {
-  factory $PersistenceRemoteUpdateCopyWith(PersistenceRemoteUpdate value,
-          $Res Function(PersistenceRemoteUpdate) then) =
-      _$PersistenceRemoteUpdateCopyWithImpl<$Res, PersistenceRemoteUpdate>;
+abstract class $PersistenceRemoteSnapshotCopyWith<$Res> {
+  factory $PersistenceRemoteSnapshotCopyWith(PersistenceRemoteSnapshot value,
+          $Res Function(PersistenceRemoteSnapshot) then) =
+      _$PersistenceRemoteSnapshotCopyWithImpl<$Res, PersistenceRemoteSnapshot>;
 }
 
 /// @nodoc
-class _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        $Val extends PersistenceRemoteUpdate>
-    implements $PersistenceRemoteUpdateCopyWith<$Res> {
-  _$PersistenceRemoteUpdateCopyWithImpl(this._value, this._then);
+class _$PersistenceRemoteSnapshotCopyWithImpl<$Res,
+        $Val extends PersistenceRemoteSnapshot>
+    implements $PersistenceRemoteSnapshotCopyWith<$Res> {
+  _$PersistenceRemoteSnapshotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,173 +83,25 @@ class _$PersistenceRemoteUpdateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteUpdateRefImplCopyWith<$Res> {
-  factory _$$PersistenceRemoteUpdateRefImplCopyWith(
-          _$PersistenceRemoteUpdateRefImpl value,
-          $Res Function(_$PersistenceRemoteUpdateRefImpl) then) =
-      __$$PersistenceRemoteUpdateRefImplCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteSnapshotHeadImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteSnapshotHeadImplCopyWith(
+          _$PersistenceRemoteSnapshotHeadImpl value,
+          $Res Function(_$PersistenceRemoteSnapshotHeadImpl) then) =
+      __$$PersistenceRemoteSnapshotHeadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String value});
+  $Res call({HeadRecord snapshot});
+
+  $HeadRecordCopyWith<$Res> get snapshot;
 }
 
 /// @nodoc
-class __$$PersistenceRemoteUpdateRefImplCopyWithImpl<$Res>
-    extends _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        _$PersistenceRemoteUpdateRefImpl>
-    implements _$$PersistenceRemoteUpdateRefImplCopyWith<$Res> {
-  __$$PersistenceRemoteUpdateRefImplCopyWithImpl(
-      _$PersistenceRemoteUpdateRefImpl _value,
-      $Res Function(_$PersistenceRemoteUpdateRefImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$PersistenceRemoteUpdateRefImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PersistenceRemoteUpdateRefImpl implements PersistenceRemoteUpdateRef {
-  _$PersistenceRemoteUpdateRefImpl({required this.value});
-
-  @override
-  final String value;
-
-  @override
-  String toString() {
-    return 'PersistenceRemoteUpdate.ref(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteUpdateRefImpl &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, value);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteUpdateRefImplCopyWith<_$PersistenceRemoteUpdateRefImpl>
-      get copyWith => __$$PersistenceRemoteUpdateRefImplCopyWithImpl<
-          _$PersistenceRemoteUpdateRefImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
-  }) {
-    return ref(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
-  }) {
-    return ref?.call(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
-    required TResult orElse(),
-  }) {
-    if (ref != null) {
-      return ref(value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceRemoteUpdateRef value) ref,
-    required TResult Function(PersistenceRemoteUpdateEvent value) event,
-    required TResult Function(PersistenceRemoteUpdateEntry value) entry,
-  }) {
-    return ref(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult? Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult? Function(PersistenceRemoteUpdateEntry value)? entry,
-  }) {
-    return ref?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult Function(PersistenceRemoteUpdateEntry value)? entry,
-    required TResult orElse(),
-  }) {
-    if (ref != null) {
-      return ref(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PersistenceRemoteUpdateRef implements PersistenceRemoteUpdate {
-  factory PersistenceRemoteUpdateRef({required final String value}) =
-      _$PersistenceRemoteUpdateRefImpl;
-
-  String get value;
-  @JsonKey(ignore: true)
-  _$$PersistenceRemoteUpdateRefImplCopyWith<_$PersistenceRemoteUpdateRefImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$PersistenceRemoteUpdateEventImplCopyWith<$Res> {
-  factory _$$PersistenceRemoteUpdateEventImplCopyWith(
-          _$PersistenceRemoteUpdateEventImpl value,
-          $Res Function(_$PersistenceRemoteUpdateEventImpl) then) =
-      __$$PersistenceRemoteUpdateEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Map<String, JsonMap> snapshot});
-}
-
-/// @nodoc
-class __$$PersistenceRemoteUpdateEventImplCopyWithImpl<$Res>
-    extends _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        _$PersistenceRemoteUpdateEventImpl>
-    implements _$$PersistenceRemoteUpdateEventImplCopyWith<$Res> {
-  __$$PersistenceRemoteUpdateEventImplCopyWithImpl(
-      _$PersistenceRemoteUpdateEventImpl _value,
-      $Res Function(_$PersistenceRemoteUpdateEventImpl) _then)
+class __$$PersistenceRemoteSnapshotHeadImplCopyWithImpl<$Res>
+    extends _$PersistenceRemoteSnapshotCopyWithImpl<$Res,
+        _$PersistenceRemoteSnapshotHeadImpl>
+    implements _$$PersistenceRemoteSnapshotHeadImplCopyWith<$Res> {
+  __$$PersistenceRemoteSnapshotHeadImplCopyWithImpl(
+      _$PersistenceRemoteSnapshotHeadImpl _value,
+      $Res Function(_$PersistenceRemoteSnapshotHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -262,26 +109,184 @@ class __$$PersistenceRemoteUpdateEventImplCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceRemoteUpdateEventImpl(
+    return _then(_$PersistenceRemoteSnapshotHeadImpl(
+      snapshot: null == snapshot
+          ? _value.snapshot
+          : snapshot // ignore: cast_nullable_to_non_nullable
+              as HeadRecord,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadRecordCopyWith<$Res> get snapshot {
+    return $HeadRecordCopyWith<$Res>(_value.snapshot, (value) {
+      return _then(_value.copyWith(snapshot: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$PersistenceRemoteSnapshotHeadImpl
+    implements PersistenceRemoteSnapshotHead {
+  _$PersistenceRemoteSnapshotHeadImpl({required this.snapshot});
+
+  @override
+  final HeadRecord snapshot;
+
+  @override
+  String toString() {
+    return 'PersistenceRemoteSnapshot.head(snapshot: $snapshot)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersistenceRemoteSnapshotHeadImpl &&
+            (identical(other.snapshot, snapshot) ||
+                other.snapshot == snapshot));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, snapshot);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersistenceRemoteSnapshotHeadImplCopyWith<
+          _$PersistenceRemoteSnapshotHeadImpl>
+      get copyWith => __$$PersistenceRemoteSnapshotHeadImplCopyWithImpl<
+          _$PersistenceRemoteSnapshotHeadImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HeadRecord snapshot) head,
+    required TResult Function(Map<String, EventRecord> snapshot) event,
+    required TResult Function(Map<String, EntryRecord> snapshot) entry,
+  }) {
+    return head(snapshot);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HeadRecord snapshot)? head,
+    TResult? Function(Map<String, EventRecord> snapshot)? event,
+    TResult? Function(Map<String, EntryRecord> snapshot)? entry,
+  }) {
+    return head?.call(snapshot);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HeadRecord snapshot)? head,
+    TResult Function(Map<String, EventRecord> snapshot)? event,
+    TResult Function(Map<String, EntryRecord> snapshot)? entry,
+    required TResult orElse(),
+  }) {
+    if (head != null) {
+      return head(snapshot);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PersistenceRemoteSnapshotHead value) head,
+    required TResult Function(PersistenceRemoteSnapshotEvent value) event,
+    required TResult Function(PersistenceRemoteSnapshotEntry value) entry,
+  }) {
+    return head(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult? Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult? Function(PersistenceRemoteSnapshotEntry value)? entry,
+  }) {
+    return head?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult Function(PersistenceRemoteSnapshotEntry value)? entry,
+    required TResult orElse(),
+  }) {
+    if (head != null) {
+      return head(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PersistenceRemoteSnapshotHead
+    implements PersistenceRemoteSnapshot {
+  factory PersistenceRemoteSnapshotHead({required final HeadRecord snapshot}) =
+      _$PersistenceRemoteSnapshotHeadImpl;
+
+  @override
+  HeadRecord get snapshot;
+  @JsonKey(ignore: true)
+  _$$PersistenceRemoteSnapshotHeadImplCopyWith<
+          _$PersistenceRemoteSnapshotHeadImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PersistenceRemoteSnapshotEventImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteSnapshotEventImplCopyWith(
+          _$PersistenceRemoteSnapshotEventImpl value,
+          $Res Function(_$PersistenceRemoteSnapshotEventImpl) then) =
+      __$$PersistenceRemoteSnapshotEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, EventRecord> snapshot});
+}
+
+/// @nodoc
+class __$$PersistenceRemoteSnapshotEventImplCopyWithImpl<$Res>
+    extends _$PersistenceRemoteSnapshotCopyWithImpl<$Res,
+        _$PersistenceRemoteSnapshotEventImpl>
+    implements _$$PersistenceRemoteSnapshotEventImplCopyWith<$Res> {
+  __$$PersistenceRemoteSnapshotEventImplCopyWithImpl(
+      _$PersistenceRemoteSnapshotEventImpl _value,
+      $Res Function(_$PersistenceRemoteSnapshotEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? snapshot = null,
+  }) {
+    return _then(_$PersistenceRemoteSnapshotEventImpl(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
-              as Map<String, JsonMap>,
+              as Map<String, EventRecord>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$PersistenceRemoteUpdateEventImpl
-    implements PersistenceRemoteUpdateEvent {
-  _$PersistenceRemoteUpdateEventImpl(
-      {required final Map<String, JsonMap> snapshot})
+class _$PersistenceRemoteSnapshotEventImpl
+    implements PersistenceRemoteSnapshotEvent {
+  _$PersistenceRemoteSnapshotEventImpl(
+      {required final Map<String, EventRecord> snapshot})
       : _snapshot = snapshot;
 
-  final Map<String, JsonMap> _snapshot;
+  final Map<String, EventRecord> _snapshot;
   @override
-  Map<String, JsonMap> get snapshot {
+  Map<String, EventRecord> get snapshot {
     if (_snapshot is EqualUnmodifiableMapView) return _snapshot;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_snapshot);
@@ -289,14 +294,14 @@ class _$PersistenceRemoteUpdateEventImpl
 
   @override
   String toString() {
-    return 'PersistenceRemoteUpdate.event(snapshot: $snapshot)';
+    return 'PersistenceRemoteSnapshot.event(snapshot: $snapshot)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteUpdateEventImpl &&
+            other is _$PersistenceRemoteSnapshotEventImpl &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -307,19 +312,17 @@ class _$PersistenceRemoteUpdateEventImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteUpdateEventImplCopyWith<
-          _$PersistenceRemoteUpdateEventImpl>
-      get copyWith => __$$PersistenceRemoteUpdateEventImplCopyWithImpl<
-          _$PersistenceRemoteUpdateEventImpl>(this, _$identity);
+  _$$PersistenceRemoteSnapshotEventImplCopyWith<
+          _$PersistenceRemoteSnapshotEventImpl>
+      get copyWith => __$$PersistenceRemoteSnapshotEventImplCopyWithImpl<
+          _$PersistenceRemoteSnapshotEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadRecord snapshot) head,
+    required TResult Function(Map<String, EventRecord> snapshot) event,
+    required TResult Function(Map<String, EntryRecord> snapshot) entry,
   }) {
     return event(snapshot);
   }
@@ -327,11 +330,9 @@ class _$PersistenceRemoteUpdateEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadRecord snapshot)? head,
+    TResult? Function(Map<String, EventRecord> snapshot)? event,
+    TResult? Function(Map<String, EntryRecord> snapshot)? entry,
   }) {
     return event?.call(snapshot);
   }
@@ -339,11 +340,9 @@ class _$PersistenceRemoteUpdateEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadRecord snapshot)? head,
+    TResult Function(Map<String, EventRecord> snapshot)? event,
+    TResult Function(Map<String, EntryRecord> snapshot)? entry,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -355,9 +354,9 @@ class _$PersistenceRemoteUpdateEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceRemoteUpdateRef value) ref,
-    required TResult Function(PersistenceRemoteUpdateEvent value) event,
-    required TResult Function(PersistenceRemoteUpdateEntry value) entry,
+    required TResult Function(PersistenceRemoteSnapshotHead value) head,
+    required TResult Function(PersistenceRemoteSnapshotEvent value) event,
+    required TResult Function(PersistenceRemoteSnapshotEntry value) entry,
   }) {
     return event(this);
   }
@@ -365,9 +364,9 @@ class _$PersistenceRemoteUpdateEventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult? Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult? Function(PersistenceRemoteUpdateEntry value)? entry,
+    TResult? Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult? Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult? Function(PersistenceRemoteSnapshotEntry value)? entry,
   }) {
     return event?.call(this);
   }
@@ -375,9 +374,9 @@ class _$PersistenceRemoteUpdateEventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult Function(PersistenceRemoteUpdateEntry value)? entry,
+    TResult Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult Function(PersistenceRemoteSnapshotEntry value)? entry,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -387,36 +386,38 @@ class _$PersistenceRemoteUpdateEventImpl
   }
 }
 
-abstract class PersistenceRemoteUpdateEvent implements PersistenceRemoteUpdate {
-  factory PersistenceRemoteUpdateEvent(
-          {required final Map<String, JsonMap> snapshot}) =
-      _$PersistenceRemoteUpdateEventImpl;
+abstract class PersistenceRemoteSnapshotEvent
+    implements PersistenceRemoteSnapshot {
+  factory PersistenceRemoteSnapshotEvent(
+          {required final Map<String, EventRecord> snapshot}) =
+      _$PersistenceRemoteSnapshotEventImpl;
 
-  Map<String, JsonMap> get snapshot;
+  @override
+  Map<String, EventRecord> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteUpdateEventImplCopyWith<
-          _$PersistenceRemoteUpdateEventImpl>
+  _$$PersistenceRemoteSnapshotEventImplCopyWith<
+          _$PersistenceRemoteSnapshotEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteUpdateEntryImplCopyWith<$Res> {
-  factory _$$PersistenceRemoteUpdateEntryImplCopyWith(
-          _$PersistenceRemoteUpdateEntryImpl value,
-          $Res Function(_$PersistenceRemoteUpdateEntryImpl) then) =
-      __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<$Res>;
+abstract class _$$PersistenceRemoteSnapshotEntryImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteSnapshotEntryImplCopyWith(
+          _$PersistenceRemoteSnapshotEntryImpl value,
+          $Res Function(_$PersistenceRemoteSnapshotEntryImpl) then) =
+      __$$PersistenceRemoteSnapshotEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, ({int createdAt, Iterable<String> parent})> snapshot});
+  $Res call({Map<String, EntryRecord> snapshot});
 }
 
 /// @nodoc
-class __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<$Res>
-    extends _$PersistenceRemoteUpdateCopyWithImpl<$Res,
-        _$PersistenceRemoteUpdateEntryImpl>
-    implements _$$PersistenceRemoteUpdateEntryImplCopyWith<$Res> {
-  __$$PersistenceRemoteUpdateEntryImplCopyWithImpl(
-      _$PersistenceRemoteUpdateEntryImpl _value,
-      $Res Function(_$PersistenceRemoteUpdateEntryImpl) _then)
+class __$$PersistenceRemoteSnapshotEntryImplCopyWithImpl<$Res>
+    extends _$PersistenceRemoteSnapshotCopyWithImpl<$Res,
+        _$PersistenceRemoteSnapshotEntryImpl>
+    implements _$$PersistenceRemoteSnapshotEntryImplCopyWith<$Res> {
+  __$$PersistenceRemoteSnapshotEntryImplCopyWithImpl(
+      _$PersistenceRemoteSnapshotEntryImpl _value,
+      $Res Function(_$PersistenceRemoteSnapshotEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -424,27 +425,26 @@ class __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<$Res>
   $Res call({
     Object? snapshot = null,
   }) {
-    return _then(_$PersistenceRemoteUpdateEntryImpl(
+    return _then(_$PersistenceRemoteSnapshotEntryImpl(
       snapshot: null == snapshot
           ? _value._snapshot
           : snapshot // ignore: cast_nullable_to_non_nullable
-              as Map<String, ({int createdAt, Iterable<String> parent})>,
+              as Map<String, EntryRecord>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$PersistenceRemoteUpdateEntryImpl
-    implements PersistenceRemoteUpdateEntry {
-  _$PersistenceRemoteUpdateEntryImpl(
-      {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          snapshot})
+class _$PersistenceRemoteSnapshotEntryImpl
+    implements PersistenceRemoteSnapshotEntry {
+  _$PersistenceRemoteSnapshotEntryImpl(
+      {required final Map<String, EntryRecord> snapshot})
       : _snapshot = snapshot;
 
-  final Map<String, ({int createdAt, Iterable<String> parent})> _snapshot;
+  final Map<String, EntryRecord> _snapshot;
   @override
-  Map<String, ({int createdAt, Iterable<String> parent})> get snapshot {
+  Map<String, EntryRecord> get snapshot {
     if (_snapshot is EqualUnmodifiableMapView) return _snapshot;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_snapshot);
@@ -452,14 +452,14 @@ class _$PersistenceRemoteUpdateEntryImpl
 
   @override
   String toString() {
-    return 'PersistenceRemoteUpdate.entry(snapshot: $snapshot)';
+    return 'PersistenceRemoteSnapshot.entry(snapshot: $snapshot)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteUpdateEntryImpl &&
+            other is _$PersistenceRemoteSnapshotEntryImpl &&
             const DeepCollectionEquality().equals(other._snapshot, _snapshot));
   }
 
@@ -470,19 +470,17 @@ class _$PersistenceRemoteUpdateEntryImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteUpdateEntryImplCopyWith<
-          _$PersistenceRemoteUpdateEntryImpl>
-      get copyWith => __$$PersistenceRemoteUpdateEntryImplCopyWithImpl<
-          _$PersistenceRemoteUpdateEntryImpl>(this, _$identity);
+  _$$PersistenceRemoteSnapshotEntryImplCopyWith<
+          _$PersistenceRemoteSnapshotEntryImpl>
+      get copyWith => __$$PersistenceRemoteSnapshotEntryImplCopyWithImpl<
+          _$PersistenceRemoteSnapshotEntryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) ref,
-    required TResult Function(Map<String, JsonMap> snapshot) event,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)
-        entry,
+    required TResult Function(HeadRecord snapshot) head,
+    required TResult Function(Map<String, EventRecord> snapshot) event,
+    required TResult Function(Map<String, EntryRecord> snapshot) entry,
   }) {
     return entry(snapshot);
   }
@@ -490,11 +488,9 @@ class _$PersistenceRemoteUpdateEntryImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? ref,
-    TResult? Function(Map<String, JsonMap> snapshot)? event,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult? Function(HeadRecord snapshot)? head,
+    TResult? Function(Map<String, EventRecord> snapshot)? event,
+    TResult? Function(Map<String, EntryRecord> snapshot)? entry,
   }) {
     return entry?.call(snapshot);
   }
@@ -502,11 +498,9 @@ class _$PersistenceRemoteUpdateEntryImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? ref,
-    TResult Function(Map<String, JsonMap> snapshot)? event,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> parent})> snapshot)?
-        entry,
+    TResult Function(HeadRecord snapshot)? head,
+    TResult Function(Map<String, EventRecord> snapshot)? event,
+    TResult Function(Map<String, EntryRecord> snapshot)? entry,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -518,9 +512,9 @@ class _$PersistenceRemoteUpdateEntryImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceRemoteUpdateRef value) ref,
-    required TResult Function(PersistenceRemoteUpdateEvent value) event,
-    required TResult Function(PersistenceRemoteUpdateEntry value) entry,
+    required TResult Function(PersistenceRemoteSnapshotHead value) head,
+    required TResult Function(PersistenceRemoteSnapshotEvent value) event,
+    required TResult Function(PersistenceRemoteSnapshotEntry value) entry,
   }) {
     return entry(this);
   }
@@ -528,9 +522,9 @@ class _$PersistenceRemoteUpdateEntryImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult? Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult? Function(PersistenceRemoteUpdateEntry value)? entry,
+    TResult? Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult? Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult? Function(PersistenceRemoteSnapshotEntry value)? entry,
   }) {
     return entry?.call(this);
   }
@@ -538,9 +532,9 @@ class _$PersistenceRemoteUpdateEntryImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceRemoteUpdateRef value)? ref,
-    TResult Function(PersistenceRemoteUpdateEvent value)? event,
-    TResult Function(PersistenceRemoteUpdateEntry value)? entry,
+    TResult Function(PersistenceRemoteSnapshotHead value)? head,
+    TResult Function(PersistenceRemoteSnapshotEvent value)? event,
+    TResult Function(PersistenceRemoteSnapshotEntry value)? entry,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -550,14 +544,16 @@ class _$PersistenceRemoteUpdateEntryImpl
   }
 }
 
-abstract class PersistenceRemoteUpdateEntry implements PersistenceRemoteUpdate {
-  factory PersistenceRemoteUpdateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> parent})>
-          snapshot}) = _$PersistenceRemoteUpdateEntryImpl;
+abstract class PersistenceRemoteSnapshotEntry
+    implements PersistenceRemoteSnapshot {
+  factory PersistenceRemoteSnapshotEntry(
+          {required final Map<String, EntryRecord> snapshot}) =
+      _$PersistenceRemoteSnapshotEntryImpl;
 
-  Map<String, ({int createdAt, Iterable<String> parent})> get snapshot;
+  @override
+  Map<String, EntryRecord> get snapshot;
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteUpdateEntryImplCopyWith<
-          _$PersistenceRemoteUpdateEntryImpl>
+  _$$PersistenceRemoteSnapshotEntryImplCopyWith<
+          _$PersistenceRemoteSnapshotEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

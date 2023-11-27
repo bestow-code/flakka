@@ -5,5 +5,10 @@ library core_persistence_remote_test;
 
 export 'package:core_persistence_base_test/core_persistence_base_test.dart';
 
-export 'src/model/persistence_remote_adapter_call.dart';
-export 'src/model/persistence_remote_effect_generator.dart';
+export 'src/any_persistence_remote_adapter_test_extension.dart';
+export 'src/any_persistence_remote_test_extension.dart';
+export 'src/persistent_remote/persistence_remote_adapter_call.dart';
+export 'src/register_generators_persistence_remote.dart';
+export 'src/store_remote/any_store_remote_test_extension.dart';
+export 'src/store_remote/store_remote_test_call.dart';
+export 'src/store_remote/store_remote_tests.dart';

@@ -66,8 +66,7 @@ mixin _$PersistenceRemoteAdapterCall {
   TResult map<TResult extends Object?>({
     required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
     required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
-    required TResult Function(PersistenceRemoteAdapterCallForward value)
-        forward,
+    required TResult Function(PersistenceRemoteAdapterCallForward value) forward,
     required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) =>
       throw _privateConstructorUsedError;
@@ -307,8 +306,7 @@ class _$PersistenceRemoteAdapterCallAppendImpl
   TResult map<TResult extends Object?>({
     required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
     required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
-    required TResult Function(PersistenceRemoteAdapterCallForward value)
-        forward,
+    required TResult Function(PersistenceRemoteAdapterCallForward value) forward,
     required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return append(this);
@@ -514,8 +512,7 @@ class _$PersistenceRemoteAdapterCallAddImpl
   TResult map<TResult extends Object?>({
     required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
     required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
-    required TResult Function(PersistenceRemoteAdapterCallForward value)
-        forward,
+    required TResult Function(PersistenceRemoteAdapterCallForward value) forward,
     required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return add(this);
@@ -703,8 +700,7 @@ class _$PersistenceRemoteAdapterCallForwardImpl
   TResult map<TResult extends Object?>({
     required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
     required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
-    required TResult Function(PersistenceRemoteAdapterCallForward value)
-        forward,
+    required TResult Function(PersistenceRemoteAdapterCallForward value) forward,
     required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return forward(this);
@@ -942,8 +938,7 @@ class _$PersistenceRemoteAdapterCallImportImpl
   TResult map<TResult extends Object?>({
     required TResult Function(PersistenceRemoteAdapterCallAppend value) append,
     required TResult Function(PersistenceRemoteAdapterCallAdd value) add,
-    required TResult Function(PersistenceRemoteAdapterCallForward value)
-        forward,
+    required TResult Function(PersistenceRemoteAdapterCallForward value) forward,
     required TResult Function(PersistenceRemoteAdapterCallImport value) import,
   }) {
     return import(this);

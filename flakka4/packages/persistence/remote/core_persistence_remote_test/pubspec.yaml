@@ -8,7 +8,11 @@ environment:
 
 dependencies:
   bloc:
+  collection:
   core_common:
+  core_common_test:
+  core_loco:
+  core_loco_test:
   core_persistence_base:
   core_persistence_base_impl:
   core_persistence_base_test:

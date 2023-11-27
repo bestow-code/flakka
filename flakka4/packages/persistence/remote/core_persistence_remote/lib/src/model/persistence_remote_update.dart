@@ -1,19 +1,19 @@
-import 'package:core_common/core_common.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'persistence_remote_update.freezed.dart';
 
 @freezed
-class PersistenceRemoteUpdate with _$PersistenceRemoteUpdate {
-  factory PersistenceRemoteUpdate.ref({
-    required String value,
-  }) = PersistenceRemoteUpdateRef;
+class PersistenceRemoteSnapshot with _$PersistenceRemoteSnapshot {
+  factory PersistenceRemoteSnapshot.head({
+    required HeadRecord snapshot,
+  }) = PersistenceRemoteSnapshotHead;
 
-  factory PersistenceRemoteUpdate.event({
-    required Map<String, JsonMap> snapshot,
-  }) = PersistenceRemoteUpdateEvent;
+  factory PersistenceRemoteSnapshot.event({
+    required Map<String, EventRecord> snapshot,
+  }) = PersistenceRemoteSnapshotEvent;
 
-  factory PersistenceRemoteUpdate.entry({
-    required Map<String, ({Iterable<String> parent, int createdAt})> snapshot,
-  }) = PersistenceRemoteUpdateEntry;
+  factory PersistenceRemoteSnapshot.entry({
+    required Map<String, EntryRecord> snapshot,
+  }) = PersistenceRemoteSnapshotEntry;
 }

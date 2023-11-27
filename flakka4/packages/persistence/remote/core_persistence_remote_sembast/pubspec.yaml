@@ -10,8 +10,8 @@ dependencies:
   async: ^2.11.0
   collection: ^1.17.1
   core_common:
-  core_object:
   core_persistence_base:
+  core_persistence_base_impl:
   core_persistence_remote:
   core_persistence_remote_impl:
   meta: ^1.9.1
