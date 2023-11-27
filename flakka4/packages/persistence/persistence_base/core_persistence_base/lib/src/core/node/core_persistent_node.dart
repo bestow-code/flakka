@@ -8,5 +8,4 @@ abstract interface class CorePersistentNode<
         SnapshotOut>
     implements
         CoreNode<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut>,
-        CorePersistentResource<EffectIn, SnapshotOut>,
-        CorePersistent {}
+        CorePersistentResource<EffectIn, SnapshotOut>{}

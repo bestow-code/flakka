@@ -1,3 +1,4 @@
+import 'package:core_common_test/core_common_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -6,36 +7,36 @@ import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 // PersistenceLocalAdapter
 extension TestPersistenceLocalAdapterContextExtension on Any {
   // Test Context
-  Generator<
-      ({
-        CorePersistentProviderContext providerContext,
-        CorePersistenceLocalAdapterProvider provider,
-        PersistenceKey key,
-        PersistenceProvisioningInitialize initialize,
-      })> testContextPersistenceLocalAdapter<
-          PersistenceLocalAdapter extends CorePersistenceLocalAdapter>(
-    Generator<CorePersistenceLocalAdapterProvider> Function()
-        providerGeneratorFactory,
-  ) =>
-      any.combine4(
-        providerGeneratorFactory(),
-        any.persistentProviderContext
-            .bind(any.providerContextPersistenceLocalAdapterBinding),
-        any.persistenceKey,
-        persistenceProvisioningInitialize,
-        (provider, providerContext, key, initialize) => (
-          provider: provider,
-          providerContext: providerContext,
-          key: key,
-          initialize: initialize
-        ),
-      );
+  // Generator<
+  //     ({
+  //       CorePersistentProviderContext providerContext,
+  //       CorePersistenceLocalAdapterProvider provider,
+  //       PersistenceKey key,
+  //       PersistenceProvisioningInitialize initialize,
+  //     })> testContextPersistenceLocalAdapter<
+  //         PersistenceLocalAdapter extends CorePersistenceLocalAdapter>(
+  //   Generator<CorePersistenceLocalAdapterProvider> Function()
+  //       providerGeneratorFactory,
+  // ) =>
+  //     any.combine4(
+  //       providerGeneratorFactory(),
+  //       any.persistentProviderContext
+  //           .bind(any.providerContextPersistenceLocalAdapterBinding),
+  //       any.persistenceKey,
+  //       persistenceProvisioningInitialize,
+  //       (provider, providerContext, key, initialize) => (
+  //         provider: provider,
+  //         providerContext: providerContext,
+  //         key: key,
+  //         initialize: initialize
+  //       ),
+  //     );
 
-  Generator<CorePersistentProviderContext>
-      providerContextPersistenceLocalAdapterBinding(
-    CorePersistentProviderContext context,
-  ) =>
-          any.providerContextStoreLocalBinding(context);
+  // Generator<CorePersistentProviderContext>
+  //     providerContextPersistenceLocalAdapterBinding(
+  //   CorePersistentProviderContext context,
+  // ) =>
+  //         any.providerContextStoreLocalBinding(context);
 
 
   // Calls

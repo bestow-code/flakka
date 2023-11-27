@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectLocalSnapshot {
-  InvalidType get data => throw _privateConstructorUsedError;
+  Object get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord data) head,
@@ -89,6 +89,8 @@ abstract class _$$ObjectLocalSnapshotHeadImplCopyWith<$Res> {
       __$$ObjectLocalSnapshotHeadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HeadRecord data});
+
+  $HeadRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -104,14 +106,22 @@ class __$$ObjectLocalSnapshotHeadImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$ObjectLocalSnapshotHeadImpl(
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as HeadRecord,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadRecordCopyWith<$Res> get data {
+    return $HeadRecordCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
@@ -133,12 +143,11 @@ class _$ObjectLocalSnapshotHeadImpl implements ObjectLocalSnapshotHead {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectLocalSnapshotHeadImpl &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -531,4 +540,357 @@ abstract class ObjectLocalSnapshotEvent implements ObjectLocalSnapshot {
   @JsonKey(ignore: true)
   _$$ObjectLocalSnapshotEventImplCopyWith<_$ObjectLocalSnapshotEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$EntryObject {
+  EntryRecord get entry => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EntryRecordEvent entry, EventRecord event) event,
+    required TResult Function(EntryRecordInitial entry) initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult? Function(EntryRecordInitial entry)? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult Function(EntryRecordInitial entry)? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntryObjectEvent value) event,
+    required TResult Function(EntryObjectInitial value) initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EntryObjectEvent value)? event,
+    TResult? Function(EntryObjectInitial value)? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntryObjectEvent value)? event,
+    TResult Function(EntryObjectInitial value)? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EntryObjectCopyWith<$Res> {
+  factory $EntryObjectCopyWith(
+          EntryObject value, $Res Function(EntryObject) then) =
+      _$EntryObjectCopyWithImpl<$Res, EntryObject>;
+}
+
+/// @nodoc
+class _$EntryObjectCopyWithImpl<$Res, $Val extends EntryObject>
+    implements $EntryObjectCopyWith<$Res> {
+  _$EntryObjectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$EntryObjectEventImplCopyWith<$Res> {
+  factory _$$EntryObjectEventImplCopyWith(_$EntryObjectEventImpl value,
+          $Res Function(_$EntryObjectEventImpl) then) =
+      __$$EntryObjectEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EntryRecordEvent entry, EventRecord event});
+
+  $EventRecordCopyWith<$Res> get event;
+}
+
+/// @nodoc
+class __$$EntryObjectEventImplCopyWithImpl<$Res>
+    extends _$EntryObjectCopyWithImpl<$Res, _$EntryObjectEventImpl>
+    implements _$$EntryObjectEventImplCopyWith<$Res> {
+  __$$EntryObjectEventImplCopyWithImpl(_$EntryObjectEventImpl _value,
+      $Res Function(_$EntryObjectEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entry = null,
+    Object? event = null,
+  }) {
+    return _then(_$EntryObjectEventImpl(
+      null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as EntryRecordEvent,
+      null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventRecord,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventRecordCopyWith<$Res> get event {
+    return $EventRecordCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$EntryObjectEventImpl implements EntryObjectEvent {
+  _$EntryObjectEventImpl(this.entry, this.event);
+
+  @override
+  final EntryRecordEvent entry;
+  @override
+  final EventRecord event;
+
+  @override
+  String toString() {
+    return 'EntryObject.event(entry: $entry, event: $event)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EntryObjectEventImpl &&
+            (identical(other.entry, entry) || other.entry == entry) &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, entry, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EntryObjectEventImplCopyWith<_$EntryObjectEventImpl> get copyWith =>
+      __$$EntryObjectEventImplCopyWithImpl<_$EntryObjectEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EntryRecordEvent entry, EventRecord event) event,
+    required TResult Function(EntryRecordInitial entry) initial,
+  }) {
+    return event(entry, this.event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult? Function(EntryRecordInitial entry)? initial,
+  }) {
+    return event?.call(entry, this.event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult Function(EntryRecordInitial entry)? initial,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(entry, this.event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntryObjectEvent value) event,
+    required TResult Function(EntryObjectInitial value) initial,
+  }) {
+    return event(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EntryObjectEvent value)? event,
+    TResult? Function(EntryObjectInitial value)? initial,
+  }) {
+    return event?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntryObjectEvent value)? event,
+    TResult Function(EntryObjectInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EntryObjectEvent implements EntryObject {
+  factory EntryObjectEvent(
+          final EntryRecordEvent entry, final EventRecord event) =
+      _$EntryObjectEventImpl;
+
+  @override
+  EntryRecordEvent get entry;
+  EventRecord get event;
+  @JsonKey(ignore: true)
+  _$$EntryObjectEventImplCopyWith<_$EntryObjectEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EntryObjectInitialImplCopyWith<$Res> {
+  factory _$$EntryObjectInitialImplCopyWith(_$EntryObjectInitialImpl value,
+          $Res Function(_$EntryObjectInitialImpl) then) =
+      __$$EntryObjectInitialImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EntryRecordInitial entry});
+}
+
+/// @nodoc
+class __$$EntryObjectInitialImplCopyWithImpl<$Res>
+    extends _$EntryObjectCopyWithImpl<$Res, _$EntryObjectInitialImpl>
+    implements _$$EntryObjectInitialImplCopyWith<$Res> {
+  __$$EntryObjectInitialImplCopyWithImpl(_$EntryObjectInitialImpl _value,
+      $Res Function(_$EntryObjectInitialImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entry = null,
+  }) {
+    return _then(_$EntryObjectInitialImpl(
+      null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as EntryRecordInitial,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EntryObjectInitialImpl implements EntryObjectInitial {
+  _$EntryObjectInitialImpl(this.entry);
+
+  @override
+  final EntryRecordInitial entry;
+
+  @override
+  String toString() {
+    return 'EntryObject.initial(entry: $entry)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EntryObjectInitialImpl &&
+            (identical(other.entry, entry) || other.entry == entry));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, entry);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EntryObjectInitialImplCopyWith<_$EntryObjectInitialImpl> get copyWith =>
+      __$$EntryObjectInitialImplCopyWithImpl<_$EntryObjectInitialImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EntryRecordEvent entry, EventRecord event) event,
+    required TResult Function(EntryRecordInitial entry) initial,
+  }) {
+    return initial(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult? Function(EntryRecordInitial entry)? initial,
+  }) {
+    return initial?.call(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult Function(EntryRecordInitial entry)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(entry);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntryObjectEvent value) event,
+    required TResult Function(EntryObjectInitial value) initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EntryObjectEvent value)? event,
+    TResult? Function(EntryObjectInitial value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntryObjectEvent value)? event,
+    TResult Function(EntryObjectInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EntryObjectInitial implements EntryObject {
+  factory EntryObjectInitial(final EntryRecordInitial entry) =
+      _$EntryObjectInitialImpl;
+
+  @override
+  EntryRecordInitial get entry;
+  @JsonKey(ignore: true)
+  _$$EntryObjectInitialImplCopyWith<_$EntryObjectInitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

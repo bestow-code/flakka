@@ -10,20 +10,14 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
     required HeadEffect<Event, State, View> effect,
   }) = DataEffectAppend;
 
-// factory DataEffect.forward({
-//   required Ref ref,
-//   required Ref previous,
-//   required StateView<State, View> stateView,
-//   required DateTime createdAt,
-//   required int sequenceNumber,
-// }) = DataEffectForward<Event, State, View>;
+  factory DataEffect.persist(Ref ref, StateView<State, View> stateView) =
+      DataEffectPersist;
 
 // factory DataEffect.publish({
 //   required Ref ref,
 //   required Set<Ref> ancestors,
 // }) = DataEffectPublish<Event, State, View>;
 
-// factory DataEffect.none() = DataEffectNone;
 }
 
 @freezed

@@ -12,11 +12,13 @@ class PersistenceLocalAdapterFactory extends PersistenceAdapterFactoryBase<
   CorePersistenceLocalAdapter create({
     required ({
       CoreStoreLocal storeLocal,
+      PersistenceId persistenceId,
       SessionId sessionId,
     }) param,
   }) =>
       PersistenceLocalAdapter(
         store: param.storeLocal,
         sessionId: param.sessionId,
+        persistenceId: param.persistenceId,
       );
 }

@@ -16,7 +16,7 @@ abstract interface class CoreResource<Effect, T> {
 
   bool get isClosed;
 
-  Future<void> connect();
+  void connect();
 
   Future<void> get done;
 

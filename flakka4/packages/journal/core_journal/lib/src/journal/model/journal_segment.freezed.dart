@@ -20,23 +20,21 @@ mixin _$JournalSegment<Event extends CoreEvent, State extends CoreState,
   Iterable<Event> get events => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(({State state, View view}) initial, Iterable<Event> events)
+    TResult Function(StateView<State, View> initial, Iterable<Event> events)
         $default, {
     required TResult Function(Iterable<Event> events) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            ({State state, View view}) initial, Iterable<Event> events)?
+    TResult? Function(StateView<State, View> initial, Iterable<Event> events)?
         $default, {
     TResult? Function(Iterable<Event> events)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            ({State state, View view}) initial, Iterable<Event> events)?
+    TResult Function(StateView<State, View> initial, Iterable<Event> events)?
         $default, {
     TResult Function(Iterable<Event> events)? initial,
     required TResult orElse(),
@@ -121,7 +119,9 @@ abstract class _$$JournalSegmentImplCopyWith<
       __$$JournalSegmentImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call({({State state, View view}) initial, Iterable<Event> events});
+  $Res call({StateView<State, View> initial, Iterable<Event> events});
+
+  $StateViewCopyWith<State, View, $Res> get initial;
 }
 
 /// @nodoc
@@ -145,12 +145,20 @@ class __$$JournalSegmentImplCopyWithImpl<Event extends CoreEvent,
       initial: null == initial
           ? _value.initial
           : initial // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as Iterable<Event>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewCopyWith<State, View, $Res> get initial {
+    return $StateViewCopyWith<State, View, $Res>(_value.initial, (value) {
+      return _then(_value.copyWith(initial: value));
+    });
   }
 }
 
@@ -161,7 +169,7 @@ class _$JournalSegmentImpl<Event extends CoreEvent, State extends CoreState,
   _$JournalSegmentImpl({required this.initial, required this.events});
 
   @override
-  final ({State state, View view}) initial;
+  final StateView<State, View> initial;
   @override
   final Iterable<Event> events;
 
@@ -194,7 +202,7 @@ class _$JournalSegmentImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(({State state, View view}) initial, Iterable<Event> events)
+    TResult Function(StateView<State, View> initial, Iterable<Event> events)
         $default, {
     required TResult Function(Iterable<Event> events) initial,
   }) {
@@ -204,8 +212,7 @@ class _$JournalSegmentImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            ({State state, View view}) initial, Iterable<Event> events)?
+    TResult? Function(StateView<State, View> initial, Iterable<Event> events)?
         $default, {
     TResult? Function(Iterable<Event> events)? initial,
   }) {
@@ -215,8 +222,7 @@ class _$JournalSegmentImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            ({State state, View view}) initial, Iterable<Event> events)?
+    TResult Function(StateView<State, View> initial, Iterable<Event> events)?
         $default, {
     TResult Function(Iterable<Event> events)? initial,
     required TResult orElse(),
@@ -263,11 +269,11 @@ class _$JournalSegmentImpl<Event extends CoreEvent, State extends CoreState,
 abstract class _JournalSegment<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements JournalSegment<Event, State, View> {
   factory _JournalSegment(
-          {required final ({State state, View view}) initial,
+          {required final StateView<State, View> initial,
           required final Iterable<Event> events}) =
       _$JournalSegmentImpl<Event, State, View>;
 
-  ({State state, View view}) get initial;
+  StateView<State, View> get initial;
   @override
   Iterable<Event> get events;
   @override
@@ -358,7 +364,7 @@ class _$JournalSegmentInitialImpl<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(({State state, View view}) initial, Iterable<Event> events)
+    TResult Function(StateView<State, View> initial, Iterable<Event> events)
         $default, {
     required TResult Function(Iterable<Event> events) initial,
   }) {
@@ -368,8 +374,7 @@ class _$JournalSegmentInitialImpl<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            ({State state, View view}) initial, Iterable<Event> events)?
+    TResult? Function(StateView<State, View> initial, Iterable<Event> events)?
         $default, {
     TResult? Function(Iterable<Event> events)? initial,
   }) {
@@ -379,8 +384,7 @@ class _$JournalSegmentInitialImpl<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            ({State state, View view}) initial, Iterable<Event> events)?
+    TResult Function(StateView<State, View> initial, Iterable<Event> events)?
         $default, {
     TResult Function(Iterable<Event> events)? initial,
     required TResult orElse(),

@@ -9,6 +9,8 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
     required this.database,
     required super.path,
     required super.key,
+    required super.persistenceId,
+    required super.sessionId,
   });
 
   final Database database;
@@ -21,21 +23,26 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
 
   @override
   CoreStoreLocalTransaction<T> transact<T>(SessionId sessionId) =>
-      StoreLocalTransactionSembast<T>(database: database, sessionId: sessionId);
+      StoreLocalTransactionSembast<T>(
+        database: database,
+        sessionId: sessionId,
+        persistenceId: persistenceId,
+      );
 
   @override
   CoreQuery<String, EntryRecord> queryEntry() => StoreLocalQuerySembast(
         ref: _ref.entry,
         fromJson: EntryRecord.fromJson,
         database: database,
+        finder: Finder(),
       );
 
   @override
   CoreQuery<String, EventRecord> queryEvent() => StoreLocalQuerySembast(
-        ref: _ref.event,
-        fromJson: EventRecord.fromJson,
-        database: database,
-      );
+      ref: _ref.event,
+      fromJson: EventRecord.fromJson,
+      database: database,
+      finder: Finder());
 
   @override
   CoreQuery<int, HeadRecord> queryHead(PersistenceId persistenceId) =>
@@ -43,22 +50,18 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
         ref: _ref.head(persistenceId),
         fromJson: HeadRecord.fromJson,
         database: database,
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)], limit: 1),
       );
 
   @override
-  Future<void> initialize(
-    SessionId sessionId, {
-    required String ref,
-    required int createdAt,
-  }) async =>
-      transact<void>(sessionId).run((handler) async =>
-          handler.initialize(ref: ref, createdAt: createdAt).then((_) => true));
+  @override
+  Future<void> initialize({required String ref, required int createdAt}) =>
+      transact<void>(sessionId)
+          .run((handler) => handler.initialize(ref: ref, createdAt: createdAt));
 
   @override
-  Future<HeadRecord?> inspect() {
-    // TODO: implement inspect
-    throw UnimplementedError();
-  }
+  Future<HeadRecord?> get inspect => transact<HeadRecord?>(sessionId)
+      .run((transaction) => transaction.inspect);
 }
 
 class StoreLocalQuerySembast<K, T> implements CoreQuery<K, T> {
@@ -66,18 +69,36 @@ class StoreLocalQuerySembast<K, T> implements CoreQuery<K, T> {
     required StoreRef<K, JsonMap> ref,
     required T Function(JsonMap) fromJson,
     required Database database,
+    required Finder finder,
   })  : _ref = ref,
         _fromJson = fromJson,
-        _database = database;
-
+        _database = database,
+        _finder = finder;
+  final Finder _finder;
   final StoreRef<K, JsonMap> _ref;
   final T Function(JsonMap) _fromJson;
   final Database _database;
 
   @override
-  Stream<Map<K, T>> snapshots() => _ref
-      .query(finder: Finder())
-      .onSnapshots(_database)
-      .map((event) => Map.fromEntries(
-          event.map((e) => MapEntry(e.key, _fromJson(e.value)))));
+  Stream<Map<K, T>> snapshots() =>
+      _ref.query(finder: _finder).onSnapshots(_database).map(
+            (event) => Map.fromEntries(
+              event.map((e) => MapEntry(e.key, _fromJson(e.value))),
+            ),
+          );
+
+// Future<void> provision(PersistenceProvisioning provisioning) =>
+//     provisioning.map(
+//       initialize: (initialize) => transact<void>(sessionId).run(
+//             (handler) async => handler.inspect.then(
+//               (value) async => value == null
+//               ? handler.initialize(
+//             ref: initialize.ifNew.ref,
+//             createdAt: initialize.ifNew.createdAt,
+//           )
+//               : null,
+//         ),
+//       ),
+//       resume: (resume) => throw UnimplementedError(),
+//     );
 }

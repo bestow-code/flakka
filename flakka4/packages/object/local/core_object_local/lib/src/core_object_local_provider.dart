@@ -6,7 +6,7 @@ import '../core_object_local.dart';
 
 abstract interface class CoreObjectLocalProvider
     implements
-        CorePersistentNodeProvider<CorePersistentProviderContext,
+        CorePersistentNodeProvider<CoreProviderContext,
             PersistenceLocalEffect,
             PersistenceLocalSnapshot,
             CorePersistenceLocal,

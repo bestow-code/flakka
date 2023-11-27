@@ -4,21 +4,18 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
     implements CorePersistenceLocalAdapter {
-  PersistenceLocalAdapter({required super.store, required super.sessionId});
+  PersistenceLocalAdapter({
+    required super.store,
+    required super.persistenceId,
+    required super.sessionId,
+  });
 
   @override
-  Future<void> addStateView({
-    required String ref,
-    required StateViewObject stateView,
-  }) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Stream<HeadRecord> get headSnapshot => store
-      .queryHead(sessionId.persistenceId)
-      .snapshots()
-      .map((event) => event.values.single);
+  Stream<HeadRecord> get headSnapshot =>
+      store.queryHead(persistenceId).snapshots().map((event) {
+        print(event.values);
+        return event.values.single;
+      });
 
   @override
   Stream<Map<String, EntryRecord>> get entrySnapshot =>
@@ -29,45 +26,46 @@ class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
       store.queryEvent().snapshots();
 
   @override
-  Future<HeadRecord> inspect() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> initialize(
-    SessionId sessionId, {
-    required String ref,
-    required int createdAt,
-  }) async =>
-      store.initialize(
-        sessionId,
-        ref: ref,
-        createdAt: createdAt,
-      );
-
-  @override
-  Future<void> append(
-    HeadRecord head,
-    HeadEffectRecord data,
-  ) =>
-      store.transact<void>(sessionId).run(
-            (handler) => handler
-                .addHead(head)
-                .then((_) => handler.addHead(head))
-                .then(
-                  (value) => data.map(
-                    event: (event) => handler
-                        .putEntry(head.ref, event.entry)
-                        .then((_) => handler.putEvent(head.ref, event.data)),
-                    merge: (merge) => handler.putEntry(head.ref, merge.entry),
-                    forward: (forward) => Future<void>.value(),
-                  ),
-                ),
+  Future<void> persist(Iterable<PersistenceRecord> data) async =>
+      store.transact<void>(sessionId).run((handler) async {
+        for (final record in data) {
+          await record.map(
+            head: (head) => handler.addHead(head.head),
+            entry: (entry) => handler.putEntry(entry.ref, entry.entry),
+            event: (event) => handler.putEvent(event.ref, event.event),
           );
+        }
+      });
 
   @override
-  Future<void> import(ImportEffectRecord data) {
-    // TODO: implement import
-    throw UnimplementedError();
-  }
+  Future<void> initialize({required String ref, required int createdAt}) =>
+      store.initialize(ref: ref, createdAt: createdAt);
+
+  @override
+  Future<HeadRecord?> get inspect => store.inspect;
+
+//     @override
+//   Future<void> append(
+//     HeadRecord head,
+//     HeadEffectRecord data,
+//   ) =>
+//       store.transact<void>(sessionId).run(
+//             (handler) => handler.addHead(head).then(
+//                   (value) => data.map(
+//                     event: (event) => handler
+//                         .putEntry(head.ref, event.entry)
+//                         .then((_) => handler.putEvent(head.ref, event.data)),
+//                     merge: (merge) => handler.putEntry(head.ref, merge.entry),
+//                     forward: (forward) {
+//                       throw UnimplementedError();
+//                     },
+//                   ),
+//                 ),
+//           );
+//
+//   @override
+//   Future<void> import(ImportEffectRecord data) {
+//     // TODO: implement import
+//     throw UnimplementedError();
+//   }
 }

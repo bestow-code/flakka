@@ -1,4 +1,4 @@
-import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_object_base/core_object_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_local_update.freezed.dart';
@@ -16,4 +16,14 @@ class ObjectLocalSnapshot with _$ObjectLocalSnapshot {
   factory ObjectLocalSnapshot.event({
     required Map<String, EventRecord> data,
   }) = ObjectLocalSnapshotEvent;
+}
+
+@freezed
+class EntryObject with _$EntryObject {
+  factory EntryObject.event(
+    EntryRecordEvent entry,
+    EventRecord event,
+  ) = EntryObjectEvent;
+
+  factory EntryObject.initial(EntryRecordInitial entry) = EntryObjectInitial;
 }

@@ -4,17 +4,20 @@ import 'package:sembast/sembast.dart';
 
 class StoreLocalTransactionHandlerSembast
     implements CoreStoreLocalTransactionHandler {
-  StoreLocalTransactionHandlerSembast({
+  StoreLocalTransactionHandlerSembast( {
+    required this.persistenceId,
     required this.sessionId,
     required Transaction transaction,
   }) : _transaction = transaction;
 
   @override
   final SessionId sessionId;
+  @override
+  final PersistenceId persistenceId;
 
   final Transaction _transaction;
   late final _ref = (
-    head: StoreRef<int, JsonMap>('head-${sessionId.persistenceId.value}'),
+    head: StoreRef<int, JsonMap>('head-${persistenceId.value}'),
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event'),
   );
@@ -23,7 +26,7 @@ class StoreLocalTransactionHandlerSembast
   Future<HeadRecord?> get inspect => _ref.head
           .findFirst(
         _transaction,
-        finder: Finder(sortOrders: [SortOrder(Field.key, false)]),
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)], limit: 1),
       )
           .then(
         (result) {
@@ -47,6 +50,7 @@ class StoreLocalTransactionHandlerSembast
   @override
   Future<void> addHead(HeadRecord data) async {
     final current = await head;
+    print(current);
     if (current.sequenceNumber + 1 != data.sequenceNumber) {
       throw ArgumentError(
         'Invalid sequence number: ${data.sequenceNumber} (current: ${current.sequenceNumber}',
@@ -84,7 +88,7 @@ class StoreLocalTransactionHandlerSembast
       _transaction,
       HeadRecord(ref: ref, sequenceNumber: 0).toJson(),
     );
-    assert(key == 0, 'Initial entry key was not 0');
+    assert(key == 1, 'Initial entry key was not 1 ($key)');
     await putEntry(ref, EntryRecord.initial(createdAt: createdAt));
   }
 }

@@ -4,4 +4,7 @@ abstract class CoreStore implements CoreInitializer {
   StorePath get path;
 
   PersistenceKey get key;
+
+  PersistenceId get persistenceId;
+  SessionId get sessionId;
 }

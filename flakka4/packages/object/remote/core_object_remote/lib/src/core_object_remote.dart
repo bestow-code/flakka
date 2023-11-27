@@ -6,4 +6,4 @@ import '../core_object_remote.dart';
 abstract interface class CoreObjectRemote
     implements
         CoreObjectBase<PersistenceRemoteEffect, PersistenceRemoteUpdate,
-            ObjectRemoteEffect, ObjectRemoteUpdate> {}
+            CorePersistenceRemote, ObjectRemoteEffect, ObjectRemoteUpdate> {}

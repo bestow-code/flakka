@@ -18,9 +18,8 @@ abstract class AsyncIOBase<Effect, Snapshot> extends IOBase<Effect, Snapshot> {
   final subscription = CompositeSubscription();
 
   @override
-  Future<void> connect() async {
+  void connect()  {
     _factory().pipe(output).ignore();
-    await output.first;
     subscription.add(input.listen(_handler));
   }
 

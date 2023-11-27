@@ -24,7 +24,7 @@ mixin _$JournalState<Event extends CoreEvent, State extends CoreState,
   Map<Ref, Set<Ref>> get edges => throw _privateConstructorUsedError;
   Map<Ref, DateTime> get createdAt => throw _privateConstructorUsedError;
   Map<Ref, Event> get event => throw _privateConstructorUsedError;
-  Map<Ref, ({State state, View view})> get stateView =>
+  Map<Ref, StateView<State, View>> get stateView =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,7 +48,7 @@ abstract class $JournalStateCopyWith<Event extends CoreEvent,
       Map<Ref, Set<Ref>> edges,
       Map<Ref, DateTime> createdAt,
       Map<Ref, Event> event,
-      Map<Ref, ({State state, View view})> stateView});
+      Map<Ref, StateView<State, View>> stateView});
 
   $RefCopyWith<$Res> get main;
   $RefCopyWith<$Res> get base;
@@ -114,7 +114,7 @@ class _$JournalStateCopyWithImpl<
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, ({State state, View view})>,
+              as Map<Ref, StateView<State, View>>,
     ) as $Val);
   }
 
@@ -167,7 +167,7 @@ abstract class _$$JournalStateImplCopyWith<
       Map<Ref, Set<Ref>> edges,
       Map<Ref, DateTime> createdAt,
       Map<Ref, Event> event,
-      Map<Ref, ({State state, View view})> stateView});
+      Map<Ref, StateView<State, View>> stateView});
 
   @override
   $RefCopyWith<$Res> get main;
@@ -232,7 +232,7 @@ class __$$JournalStateImplCopyWithImpl<Event extends CoreEvent,
       stateView: null == stateView
           ? _value._stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, ({State state, View view})>,
+              as Map<Ref, StateView<State, View>>,
     ));
   }
 }
@@ -249,7 +249,7 @@ class _$JournalStateImpl<Event extends CoreEvent, State extends CoreState,
       required final Map<Ref, Set<Ref>> edges,
       required final Map<Ref, DateTime> createdAt,
       required final Map<Ref, Event> event,
-      required final Map<Ref, ({State state, View view})> stateView})
+      required final Map<Ref, StateView<State, View>> stateView})
       : _pending = pending,
         _edges = edges,
         _createdAt = createdAt,
@@ -295,9 +295,9 @@ class _$JournalStateImpl<Event extends CoreEvent, State extends CoreState,
     return EqualUnmodifiableMapView(_event);
   }
 
-  final Map<Ref, ({State state, View view})> _stateView;
+  final Map<Ref, StateView<State, View>> _stateView;
   @override
-  Map<Ref, ({State state, View view})> get stateView {
+  Map<Ref, StateView<State, View>> get stateView {
     if (_stateView is EqualUnmodifiableMapView) return _stateView;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_stateView);
@@ -357,7 +357,7 @@ abstract class _JournalState<Event extends CoreEvent, State extends CoreState,
           required final Map<Ref, Set<Ref>> edges,
           required final Map<Ref, DateTime> createdAt,
           required final Map<Ref, Event> event,
-          required final Map<Ref, ({State state, View view})> stateView}) =
+          required final Map<Ref, StateView<State, View>> stateView}) =
       _$JournalStateImpl<Event, State, View>;
   const _JournalState._() : super._();
 
@@ -376,7 +376,7 @@ abstract class _JournalState<Event extends CoreEvent, State extends CoreState,
   @override
   Map<Ref, Event> get event;
   @override
-  Map<Ref, ({State state, View view})> get stateView;
+  Map<Ref, StateView<State, View>> get stateView;
   @override
   @JsonKey(ignore: true)
   _$$JournalStateImplCopyWith<Event, State, View,

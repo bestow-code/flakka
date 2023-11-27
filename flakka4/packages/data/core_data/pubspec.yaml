@@ -35,3 +35,4 @@ index_generator:
       docs: Common libraries for core_platform
       exports:
         - package: package:core_data_api/core_data_api.dart
+        - package: package:core_object/core_object.dart

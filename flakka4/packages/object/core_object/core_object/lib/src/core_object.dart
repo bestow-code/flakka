@@ -7,11 +7,11 @@ import '../core_object.dart';
 abstract interface class CoreObject
     implements
         CoreBroadcastMerge<
-            CoreObjectLocal,
             ObjectLocalEffect,
             ObjectLocalSnapshot,
-            CoreObjectRemote,
+            CoreObjectLocal,
             ObjectRemoteEffect,
             ObjectRemoteUpdate,
+            CoreObjectRemote,
             ObjectEffect,
-            ObjectUpdate> {}
+            ObjectUpdate>, CoreProvisioner {}

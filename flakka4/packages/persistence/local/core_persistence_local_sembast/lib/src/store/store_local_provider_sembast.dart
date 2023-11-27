@@ -8,11 +8,17 @@ import 'package:sembast/sembast_memory.dart';
 class StoreLocalProviderSembast extends StoreLocalProviderBase {
   StoreLocalProviderSembast({
     required DatabaseFactory databaseFactory,
-  }) : _databaseFactory = databaseFactory;
+    required StorePath storePath,
+  })  : _storePath = storePath,
+        _databaseFactory = databaseFactory;
 
-  static StoreLocalProviderSembast get inMemory =>
-      StoreLocalProviderSembast(databaseFactory: databaseFactoryMemoryFs);
+  static StoreLocalProviderSembast get inMemory => StoreLocalProviderSembast(
+        databaseFactory: databaseFactoryMemoryFs,
+        storePath: StorePath('/fake/inMemory'),
+      );
+
   final DatabaseFactory _databaseFactory;
+  final StorePath _storePath;
 
   String _getDatabasePath(
     StorePath path,
@@ -28,21 +34,24 @@ class StoreLocalProviderSembast extends StoreLocalProviderBase {
       _databaseFactory.openDatabase(_getDatabasePath(storePath, key));
 
   @override
-  Future<void> delete(
-          {required CorePersistentProviderContext context,
-          required PersistenceKey key}) =>
-      _databaseFactory
-          .deleteDatabase(_getDatabasePath(context.storePathLocal!, key));
+  Future<void> delete({
+    required CoreProviderContext context,
+    required PersistenceKey key,
+  }) =>
+      _databaseFactory.deleteDatabase(_getDatabasePath(_storePath, key));
 
   @override
-  Future<CoreStoreLocal> get(
-          {required CorePersistentProviderContext context,
-          required PersistenceKey key}) async =>
+  Future<CoreStoreLocal> get({
+    required CoreProviderContext context,
+    required PersistenceKey key,
+  }) async =>
       StoreLocalFactorySembast().create(
         param: (
-          database: await _openDatabase(context.storePathLocal!, key),
-          path: context.storePathLocal!,
-          key: key
+          database: await _openDatabase(_storePath, key),
+          path: _storePath,
+          key: key,
+          persistenceId: context.persistenceId!,
+          sessionId: context.sessionId!,
         ),
       );
 }

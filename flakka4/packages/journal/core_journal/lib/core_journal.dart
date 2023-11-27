@@ -3,6 +3,8 @@
 /// Common libraries for core_platform
 library core_journal;
 
+export 'package:core_data/core_data.dart';
+
 export 'src/journal/core_journal.dart';
 export 'src/journal/core_journal_factory.dart';
 export 'src/journal/core_journal_querable.dart';

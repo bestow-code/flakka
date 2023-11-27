@@ -16,11 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectLocalState {
-  Map<String, EventRecord> get event => throw _privateConstructorUsedError;
-  Map<String, EntryRecord> get entry => throw _privateConstructorUsedError;
-  HeadRecord get head => throw _privateConstructorUsedError;
-  Set<String> get eventNotReady => throw _privateConstructorUsedError;
-  Set<String> get entryNotReady => throw _privateConstructorUsedError;
+  Set<String> get seenEntry => throw _privateConstructorUsedError;
+  Set<String> get seenEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ObjectLocalStateCopyWith<ObjectLocalState> get copyWith =>
@@ -33,14 +30,7 @@ abstract class $ObjectLocalStateCopyWith<$Res> {
           ObjectLocalState value, $Res Function(ObjectLocalState) then) =
       _$ObjectLocalStateCopyWithImpl<$Res, ObjectLocalState>;
   @useResult
-  $Res call(
-      {Map<String, EventRecord> event,
-      Map<String, EntryRecord> entry,
-      HeadRecord head,
-      Set<String> eventNotReady,
-      Set<String> entryNotReady});
-
-  $HeadRecordCopyWith<$Res> get head;
+  $Res call({Set<String> seenEntry, Set<String> seenEvent});
 }
 
 /// @nodoc
@@ -56,42 +46,19 @@ class _$ObjectLocalStateCopyWithImpl<$Res, $Val extends ObjectLocalState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = null,
-    Object? entry = null,
-    Object? head = null,
-    Object? eventNotReady = null,
-    Object? entryNotReady = null,
+    Object? seenEntry = null,
+    Object? seenEvent = null,
   }) {
     return _then(_value.copyWith(
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventRecord>,
-      entry: null == entry
-          ? _value.entry
-          : entry // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryRecord>,
-      head: null == head
-          ? _value.head
-          : head // ignore: cast_nullable_to_non_nullable
-              as HeadRecord,
-      eventNotReady: null == eventNotReady
-          ? _value.eventNotReady
-          : eventNotReady // ignore: cast_nullable_to_non_nullable
+      seenEntry: null == seenEntry
+          ? _value.seenEntry
+          : seenEntry // ignore: cast_nullable_to_non_nullable
               as Set<String>,
-      entryNotReady: null == entryNotReady
-          ? _value.entryNotReady
-          : entryNotReady // ignore: cast_nullable_to_non_nullable
+      seenEvent: null == seenEvent
+          ? _value.seenEvent
+          : seenEvent // ignore: cast_nullable_to_non_nullable
               as Set<String>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadRecordCopyWith<$Res> get head {
-    return $HeadRecordCopyWith<$Res>(_value.head, (value) {
-      return _then(_value.copyWith(head: value) as $Val);
-    });
   }
 }
 
@@ -103,15 +70,7 @@ abstract class _$$ObjectLocalStateImplCopyWith<$Res>
       __$$ObjectLocalStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Map<String, EventRecord> event,
-      Map<String, EntryRecord> entry,
-      HeadRecord head,
-      Set<String> eventNotReady,
-      Set<String> entryNotReady});
-
-  @override
-  $HeadRecordCopyWith<$Res> get head;
+  $Res call({Set<String> seenEntry, Set<String> seenEvent});
 }
 
 /// @nodoc
@@ -125,32 +84,17 @@ class __$$ObjectLocalStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = null,
-    Object? entry = null,
-    Object? head = null,
-    Object? eventNotReady = null,
-    Object? entryNotReady = null,
+    Object? seenEntry = null,
+    Object? seenEvent = null,
   }) {
     return _then(_$ObjectLocalStateImpl(
-      event: null == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventRecord>,
-      entry: null == entry
-          ? _value._entry
-          : entry // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryRecord>,
-      head: null == head
-          ? _value.head
-          : head // ignore: cast_nullable_to_non_nullable
-              as HeadRecord,
-      eventNotReady: null == eventNotReady
-          ? _value._eventNotReady
-          : eventNotReady // ignore: cast_nullable_to_non_nullable
+      null == seenEntry
+          ? _value._seenEntry
+          : seenEntry // ignore: cast_nullable_to_non_nullable
               as Set<String>,
-      entryNotReady: null == entryNotReady
-          ? _value._entryNotReady
-          : entryNotReady // ignore: cast_nullable_to_non_nullable
+      null == seenEvent
+          ? _value._seenEvent
+          : seenEvent // ignore: cast_nullable_to_non_nullable
               as Set<String>,
     ));
   }
@@ -160,53 +104,29 @@ class __$$ObjectLocalStateImplCopyWithImpl<$Res>
 
 class _$ObjectLocalStateImpl implements _ObjectLocalState {
   _$ObjectLocalStateImpl(
-      {required final Map<String, EventRecord> event,
-      required final Map<String, EntryRecord> entry,
-      required this.head,
-      required final Set<String> eventNotReady,
-      required final Set<String> entryNotReady})
-      : _event = event,
-        _entry = entry,
-        _eventNotReady = eventNotReady,
-        _entryNotReady = entryNotReady;
+      final Set<String> seenEntry, final Set<String> seenEvent)
+      : _seenEntry = seenEntry,
+        _seenEvent = seenEvent;
 
-  final Map<String, EventRecord> _event;
+  final Set<String> _seenEntry;
   @override
-  Map<String, EventRecord> get event {
-    if (_event is EqualUnmodifiableMapView) return _event;
+  Set<String> get seenEntry {
+    if (_seenEntry is EqualUnmodifiableSetView) return _seenEntry;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_event);
+    return EqualUnmodifiableSetView(_seenEntry);
   }
 
-  final Map<String, EntryRecord> _entry;
+  final Set<String> _seenEvent;
   @override
-  Map<String, EntryRecord> get entry {
-    if (_entry is EqualUnmodifiableMapView) return _entry;
+  Set<String> get seenEvent {
+    if (_seenEvent is EqualUnmodifiableSetView) return _seenEvent;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_entry);
-  }
-
-  @override
-  final HeadRecord head;
-  final Set<String> _eventNotReady;
-  @override
-  Set<String> get eventNotReady {
-    if (_eventNotReady is EqualUnmodifiableSetView) return _eventNotReady;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_eventNotReady);
-  }
-
-  final Set<String> _entryNotReady;
-  @override
-  Set<String> get entryNotReady {
-    if (_entryNotReady is EqualUnmodifiableSetView) return _entryNotReady;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_entryNotReady);
+    return EqualUnmodifiableSetView(_seenEvent);
   }
 
   @override
   String toString() {
-    return 'ObjectLocalState(event: $event, entry: $entry, head: $head, eventNotReady: $eventNotReady, entryNotReady: $entryNotReady)';
+    return 'ObjectLocalState(seenEntry: $seenEntry, seenEvent: $seenEvent)';
   }
 
   @override
@@ -214,23 +134,17 @@ class _$ObjectLocalStateImpl implements _ObjectLocalState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectLocalStateImpl &&
-            const DeepCollectionEquality().equals(other._event, _event) &&
-            const DeepCollectionEquality().equals(other._entry, _entry) &&
-            (identical(other.head, head) || other.head == head) &&
             const DeepCollectionEquality()
-                .equals(other._eventNotReady, _eventNotReady) &&
+                .equals(other._seenEntry, _seenEntry) &&
             const DeepCollectionEquality()
-                .equals(other._entryNotReady, _entryNotReady));
+                .equals(other._seenEvent, _seenEvent));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_event),
-      const DeepCollectionEquality().hash(_entry),
-      head,
-      const DeepCollectionEquality().hash(_eventNotReady),
-      const DeepCollectionEquality().hash(_entryNotReady));
+      const DeepCollectionEquality().hash(_seenEntry),
+      const DeepCollectionEquality().hash(_seenEvent));
 
   @JsonKey(ignore: true)
   @override
@@ -242,22 +156,13 @@ class _$ObjectLocalStateImpl implements _ObjectLocalState {
 
 abstract class _ObjectLocalState implements ObjectLocalState {
   factory _ObjectLocalState(
-      {required final Map<String, EventRecord> event,
-      required final Map<String, EntryRecord> entry,
-      required final HeadRecord head,
-      required final Set<String> eventNotReady,
-      required final Set<String> entryNotReady}) = _$ObjectLocalStateImpl;
+          final Set<String> seenEntry, final Set<String> seenEvent) =
+      _$ObjectLocalStateImpl;
 
   @override
-  Map<String, EventRecord> get event;
+  Set<String> get seenEntry;
   @override
-  Map<String, EntryRecord> get entry;
-  @override
-  HeadRecord get head;
-  @override
-  Set<String> get eventNotReady;
-  @override
-  Set<String> get entryNotReady;
+  Set<String> get seenEvent;
   @override
   @JsonKey(ignore: true)
   _$$ObjectLocalStateImplCopyWith<_$ObjectLocalStateImpl> get copyWith =>

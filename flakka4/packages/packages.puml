@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object Application
+object Journal
+object Data
+object Object
+object ObjectLocal
+object ObjectRemote
+object PersistenceLocal
+object PersistenceRemote
+object StoreLocal
+object StoreRemote
+
+
+Application --> Journal
+Journal --> Application
+Journal --> Data
+Data --> Journal
+Data --> Object
+Object --> Data
+Object --> ObjectLocal
+ObjectLocal --> Object
+Object --> ObjectRemote
+ObjectRemote --> Object
+ObjectLocal --> PersistenceLocal
+PersistenceLocal --> ObjectLocal
+ObjectRemote --> PersistenceRemote
+PersistenceRemote --> ObjectRemote
+PersistenceLocal --> StoreLocal
+StoreLocal --> PersistenceLocal
+PersistenceRemote --> StoreRemote
+StoreRemote --> PersistenceRemote
+
+
+
+
+@enduml
+
+@startuml
+'https://plantuml.com/object-diagram
+object Flakka
+object Application
+object Journal
+object Data
+object Object
+object ObjectLocal
+object ObjectRemote
+object PersistenceLocal
+object PersistenceRemote
+object PersistenceBase
+object CoreLoco
+object CoreCommon
+Flakka --> Application
+Application --> Journal
+Journal --> Data
+Data --> Object
+Object --> ObjectLocal
+Object --> ObjectRemote
+ObjectLocal --> PersistenceLocal
+ObjectRemote --> PersistenceRemote
+
+PersistenceLocal --> PersistenceBase
+
+PersistenceRemote --> PersistenceBase
+PersistenceBase --> CoreLoco
+CoreLoco --> CoreCommon
+
+@enduml

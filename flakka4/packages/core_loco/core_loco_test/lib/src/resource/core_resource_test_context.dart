@@ -1,69 +1,66 @@
+import 'package:core_common_test/core_common_test.dart';
 import 'package:core_loco/core_loco.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../core_loco_test.dart';
 
-class CoreResourceTestSuite<
-    TestContext extends CoreResourceTestContext<Provider, ProviderContext, Key,
-        EffectIn, SnapshotOut, Resource>,
-    Provider extends CoreResourceProvider<ProviderContext, Key, EffectIn,
-        SnapshotOut, Resource>,
-    ProviderContext extends CoreProviderContext,
-    Key,
-    EffectIn,
-    SnapshotOut,
-    Resource extends CoreResource<EffectIn,
-        SnapshotOut>> extends CoreTestSuite<TestContext, Provider,
-    ProviderContext, Key, Resource> {
-  //
-  CoreResourceTestSuite({
-    super.provider,
-    super.providerContext,
-    super.key,
-  });
+part 'core_resource_test_context.freezed.dart';
 
-  @override
-  CoreResourceTester<
-      CoreResourceTestContext<Provider, ProviderContext, Key, EffectIn,
-          SnapshotOut, Resource>,
-      Provider,
-      ProviderContext,
-      Key,
-      EffectIn,
-      SnapshotOut,
-      Resource,
-      T> tester<T>(
-    Generator<T> data,
-  ) =>
-      CoreResourceTester(
-        context: combine(context),
-        data: data,
-      );
-
-// CoreResourceTestGroup<
-//     CoreResourceTestData<Provider, ProviderContext, Key, EffectIn, SnapshotOut,
-//         Resource>,
-//     Provider,
-//     ProviderContext,
-//     Key,
-//     EffectIn,
-//     SnapshotOut,
-//     Resource> groupT<(
-//   Generator<List<T>> generator,
-// ) =>
-//     CoreResourceTestGroup(
-//       generator,
-//       provider: _provider,
-//       providerContext: _providerContext,
-//       key: _key,
-//     );
+class CoreResourceTestContext<
+        Provider extends CoreResourceProvider<ProviderContext, Key, EffectIn,
+            SnapshotOut, Resource>,
+        ProviderContext extends CoreProviderContext,
+        Key,
+        EffectIn,
+        SnapshotOut,
+        Resource extends CoreResource<EffectIn, SnapshotOut>>
+    extends CoreTestContext<Provider, ProviderContext, Key, Resource> {
+  CoreResourceTestContext(super.provider, super.providerContext, super.key);
 }
 
-class Session<Effect> {
-  late final List<Effect> effects;
+@freezed
+class ResourceTestContext<
+        Provider extends CoreResourceProvider<ProviderContext, Key, EffectIn,
+            SnapshotOut, Resource>,
+        ProviderContext extends CoreProviderContext,
+        Key,
+        EffectIn,
+        SnapshotOut,
+        Resource extends CoreResource<EffectIn, SnapshotOut>>
+    extends CoreResourceTestContext<Provider, ProviderContext, Key, EffectIn,
+        SnapshotOut, Resource>
+    with
+        _$ResourceTestContext<Provider, ProviderContext, Key, EffectIn,
+            SnapshotOut, Resource> {
+  factory ResourceTestContext(
+    Provider provider,
+    List<ProviderContext> providerContext,
+    Key key,
+  ) = _ResourceTestContext<Provider, ProviderContext, Key, EffectIn,
+      SnapshotOut, Resource>;
 }
 
-class SessionMatcher<Snapshot> {
-  late final List<Either<Snapshot, Matcher>> snapshots;
+extension AnyResourceTestContext on Any {
+  Generator<
+          CoreResourceTestContext<Provider, ProviderContext, Key, EffectIn,
+              SnapshotOut, Resource>>
+      resourceTestContext<
+                  Provider extends CoreResourceProvider<ProviderContext, Key,
+                      EffectIn, SnapshotOut, Resource>,
+                  ProviderContext extends CoreProviderContext,
+                  Key,
+                  EffectIn,
+                  SnapshotOut,
+                  Resource extends CoreResource<EffectIn, SnapshotOut>>(
+              Generator<Provider> provider,
+              Generator<List<ProviderContext>> providerContext,
+              Generator<Key> key) =>
+          any.combine3(
+            provider,
+            providerContext,
+            key,
+            ResourceTestContext<Provider, ProviderContext, Key, EffectIn,
+                    SnapshotOut, Resource>
+                .new,
+          );
 }
-
-extension TestContextGeneratorExtension on Any {}

@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ApplicationState<State extends CoreState, View extends CoreView> {
   Ref get ref => throw _privateConstructorUsedError;
-  ({State state, View view}) get stateView =>
-      throw _privateConstructorUsedError;
+  StateView<State, View> get stateView => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplicationStateCopyWith<State, View, ApplicationState<State, View>>
@@ -33,9 +32,10 @@ abstract class $ApplicationStateCopyWith<State extends CoreState,
       _$ApplicationStateCopyWithImpl<State, View, $Res,
           ApplicationState<State, View>>;
   @useResult
-  $Res call({Ref ref, ({State state, View view}) stateView});
+  $Res call({Ref ref, StateView<State, View> stateView});
 
   $RefCopyWith<$Res> get ref;
+  $StateViewCopyWith<State, View, $Res> get stateView;
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$ApplicationStateCopyWithImpl<State extends CoreState,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
     ) as $Val);
   }
 
@@ -72,6 +72,14 @@ class _$ApplicationStateCopyWithImpl<State extends CoreState,
   $RefCopyWith<$Res> get ref {
     return $RefCopyWith<$Res>(_value.ref, (value) {
       return _then(_value.copyWith(ref: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewCopyWith<State, View, $Res> get stateView {
+    return $StateViewCopyWith<State, View, $Res>(_value.stateView, (value) {
+      return _then(_value.copyWith(stateView: value) as $Val);
     });
   }
 }
@@ -87,10 +95,12 @@ abstract class _$$ApplicationStateImplCopyWith<
       __$$ApplicationStateImplCopyWithImpl<State, View, $Res>;
   @override
   @useResult
-  $Res call({Ref ref, ({State state, View view}) stateView});
+  $Res call({Ref ref, StateView<State, View> stateView});
 
   @override
   $RefCopyWith<$Res> get ref;
+  @override
+  $StateViewCopyWith<State, View, $Res> get stateView;
 }
 
 /// @nodoc
@@ -118,7 +128,7 @@ class __$$ApplicationStateImplCopyWithImpl<State extends CoreState,
       stateView: null == stateView
           ? _value.stateView
           : stateView // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
     ));
   }
 }
@@ -132,7 +142,7 @@ class _$ApplicationStateImpl<State extends CoreState, View extends CoreView>
   @override
   final Ref ref;
   @override
-  final ({State state, View view}) stateView;
+  final StateView<State, View> stateView;
 
   @override
   String toString() {
@@ -165,13 +175,13 @@ abstract class _ApplicationState<State extends CoreState, View extends CoreView>
     implements ApplicationState<State, View> {
   factory _ApplicationState(
           {required final Ref ref,
-          required final ({State state, View view}) stateView}) =
+          required final StateView<State, View> stateView}) =
       _$ApplicationStateImpl<State, View>;
 
   @override
   Ref get ref;
   @override
-  ({State state, View view}) get stateView;
+  StateView<State, View> get stateView;
   @override
   @JsonKey(ignore: true)
   _$$ApplicationStateImplCopyWith<State, View,

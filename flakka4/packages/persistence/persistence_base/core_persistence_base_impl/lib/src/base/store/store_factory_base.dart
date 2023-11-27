@@ -1,8 +1,6 @@
-import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class StoreFactoryBase<
-        Store extends CoreStore>
-    extends FactoryBase<Store>
-    implements CoreStoreFactory<Store> {
-}
+import '../../../core_persistence_base_impl.dart';
+
+abstract class StoreFactoryBase<Store extends CoreStore>
+    extends FactoryBase<Store> implements CoreStoreFactory<Store> {}

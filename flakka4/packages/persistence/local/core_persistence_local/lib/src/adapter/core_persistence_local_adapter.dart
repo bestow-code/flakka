@@ -7,17 +7,19 @@ abstract interface class CorePersistenceLocalAdapter
     implements CorePersistenceAdapter<CoreStoreLocal> {
   // Write
 
-  Future<void> append(
-    HeadRecord head,
-    HeadEffectRecord data,
-  );
+  Future<void> persist(Iterable<PersistenceRecord> data);
 
-  Future<void> addStateView({
-    required String ref,
-    required StateViewObject stateView,
-  });
-
-  Future<void> import(ImportEffectRecord data);
+  // Future<void> append(
+  //   HeadRecord head,
+  //   HeadEffectRecord data,
+  // );
+  //
+  // Future<void> addStateView({
+  //   required String ref,
+  //   required StateViewObject stateView,
+  // });
+  //
+  // Future<void> import(ImportEffectRecord data);
 
   // Read
   Stream<HeadRecord> get headSnapshot;

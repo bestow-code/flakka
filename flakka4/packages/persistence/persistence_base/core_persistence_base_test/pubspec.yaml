@@ -8,8 +8,10 @@ environment:
 
 dependencies:
   bloc:
+  characters:
+  core_common:
+  core_common_test:
   core_loco:
-#  core_common_impl:
   core_loco_test:
   core_persistence_base:
 #  core_persistence_base_impl:
@@ -17,6 +19,7 @@ dependencies:
   glados:
   meta: ^1.9.1
   rxdart: ^0.27.7
+
 dev_dependencies:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
@@ -34,6 +37,3 @@ index_generator:
     - path: lib
       include:
         - src
-      docs: Foundation for Core Entry Store
-      exports:
-        - package: package:core_loco_test/core_loco_test.dart

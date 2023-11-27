@@ -4,7 +4,8 @@ import '../../core_persistence_local.dart';
 
 abstract class CorePersistenceLocalProvider
     implements
-        CorePersistentIOProvider<CorePersistentProviderContext,
+        CorePersistentResourceProvider<
+            CoreProviderContext,
             PersistenceLocalEffect,
             PersistenceLocalSnapshot,
             CorePersistenceLocal> {}

@@ -16,44 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PersistenceLocalEffect {
-  Object get data => throw _privateConstructorUsedError;
+  PersistenceRecord get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadRecord head, HeadEffectRecord data) append,
-    required TResult Function(ImportEffectRecord data) import,
+    required TResult Function(PersistenceRecord data) persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult? Function(ImportEffectRecord data)? import,
+    TResult? Function(PersistenceRecord data)? persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult Function(ImportEffectRecord data)? import,
+    TResult Function(PersistenceRecord data)? persist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalEffectAppend value) append,
-    required TResult Function(PersistenceLocalEffectImport value) import,
+    required TResult Function(PersistenceLocalEffectPersist value) persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalEffectAppend value)? append,
-    TResult? Function(PersistenceLocalEffectImport value)? import,
+    TResult? Function(PersistenceLocalEffectPersist value)? persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalEffectAppend value)? append,
-    TResult Function(PersistenceLocalEffectImport value)? import,
+    TResult Function(PersistenceLocalEffectPersist value)? persist,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PersistenceLocalEffectCopyWith<PersistenceLocalEffect> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,6 +60,10 @@ abstract class $PersistenceLocalEffectCopyWith<$Res> {
   factory $PersistenceLocalEffectCopyWith(PersistenceLocalEffect value,
           $Res Function(PersistenceLocalEffect) then) =
       _$PersistenceLocalEffectCopyWithImpl<$Res, PersistenceLocalEffect>;
+  @useResult
+  $Res call({PersistenceRecord data});
+
+  $PersistenceRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -74,46 +76,267 @@ class _$PersistenceLocalEffectCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as PersistenceRecord,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PersistenceRecordCopyWith<$Res> get data {
+    return $PersistenceRecordCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalEffectAppendImplCopyWith<$Res> {
-  factory _$$PersistenceLocalEffectAppendImplCopyWith(
-          _$PersistenceLocalEffectAppendImpl value,
-          $Res Function(_$PersistenceLocalEffectAppendImpl) then) =
-      __$$PersistenceLocalEffectAppendImplCopyWithImpl<$Res>;
+abstract class _$$PersistenceLocalEffectPersistImplCopyWith<$Res>
+    implements $PersistenceLocalEffectCopyWith<$Res> {
+  factory _$$PersistenceLocalEffectPersistImplCopyWith(
+          _$PersistenceLocalEffectPersistImpl value,
+          $Res Function(_$PersistenceLocalEffectPersistImpl) then) =
+      __$$PersistenceLocalEffectPersistImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({HeadRecord head, HeadEffectRecord data});
+  $Res call({PersistenceRecord data});
+
+  @override
+  $PersistenceRecordCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$PersistenceLocalEffectPersistImplCopyWithImpl<$Res>
+    extends _$PersistenceLocalEffectCopyWithImpl<$Res,
+        _$PersistenceLocalEffectPersistImpl>
+    implements _$$PersistenceLocalEffectPersistImplCopyWith<$Res> {
+  __$$PersistenceLocalEffectPersistImplCopyWithImpl(
+      _$PersistenceLocalEffectPersistImpl _value,
+      $Res Function(_$PersistenceLocalEffectPersistImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$PersistenceLocalEffectPersistImpl(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as PersistenceRecord,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PersistenceLocalEffectPersistImpl
+    implements PersistenceLocalEffectPersist {
+  _$PersistenceLocalEffectPersistImpl(this.data);
+
+  @override
+  final PersistenceRecord data;
+
+  @override
+  String toString() {
+    return 'PersistenceLocalEffect.persist(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersistenceLocalEffectPersistImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersistenceLocalEffectPersistImplCopyWith<
+          _$PersistenceLocalEffectPersistImpl>
+      get copyWith => __$$PersistenceLocalEffectPersistImplCopyWithImpl<
+          _$PersistenceLocalEffectPersistImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PersistenceRecord data) persist,
+  }) {
+    return persist(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceRecord data)? persist,
+  }) {
+    return persist?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PersistenceRecord data)? persist,
+    required TResult orElse(),
+  }) {
+    if (persist != null) {
+      return persist(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PersistenceLocalEffectPersist value) persist,
+  }) {
+    return persist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceLocalEffectPersist value)? persist,
+  }) {
+    return persist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PersistenceLocalEffectPersist value)? persist,
+    required TResult orElse(),
+  }) {
+    if (persist != null) {
+      return persist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PersistenceLocalEffectPersist implements PersistenceLocalEffect {
+  factory PersistenceLocalEffectPersist(final PersistenceRecord data) =
+      _$PersistenceLocalEffectPersistImpl;
+
+  @override
+  PersistenceRecord get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$PersistenceLocalEffectPersistImplCopyWith<
+          _$PersistenceLocalEffectPersistImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$PersistenceRecord {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(String ref, EntryRecord entry) entry,
+    required TResult Function(String ref, EventRecord event) event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(String ref, EntryRecord entry)? entry,
+    TResult? Function(String ref, EventRecord event)? event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HeadRecord head)? head,
+    TResult Function(String ref, EntryRecord entry)? entry,
+    TResult Function(String ref, EventRecord event)? event,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PersistenceRecordHead value) head,
+    required TResult Function(PersistenceRecordEntry value) entry,
+    required TResult Function(PersistenceRecordEvent value) event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceRecordHead value)? head,
+    TResult? Function(PersistenceRecordEntry value)? entry,
+    TResult? Function(PersistenceRecordEvent value)? event,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PersistenceRecordHead value)? head,
+    TResult Function(PersistenceRecordEntry value)? entry,
+    TResult Function(PersistenceRecordEvent value)? event,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PersistenceRecordCopyWith<$Res> {
+  factory $PersistenceRecordCopyWith(
+          PersistenceRecord value, $Res Function(PersistenceRecord) then) =
+      _$PersistenceRecordCopyWithImpl<$Res, PersistenceRecord>;
+}
+
+/// @nodoc
+class _$PersistenceRecordCopyWithImpl<$Res, $Val extends PersistenceRecord>
+    implements $PersistenceRecordCopyWith<$Res> {
+  _$PersistenceRecordCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$PersistenceRecordHeadImplCopyWith<$Res> {
+  factory _$$PersistenceRecordHeadImplCopyWith(
+          _$PersistenceRecordHeadImpl value,
+          $Res Function(_$PersistenceRecordHeadImpl) then) =
+      __$$PersistenceRecordHeadImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({HeadRecord head});
 
   $HeadRecordCopyWith<$Res> get head;
-  $HeadEffectRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$PersistenceLocalEffectAppendImplCopyWithImpl<$Res>
-    extends _$PersistenceLocalEffectCopyWithImpl<$Res,
-        _$PersistenceLocalEffectAppendImpl>
-    implements _$$PersistenceLocalEffectAppendImplCopyWith<$Res> {
-  __$$PersistenceLocalEffectAppendImplCopyWithImpl(
-      _$PersistenceLocalEffectAppendImpl _value,
-      $Res Function(_$PersistenceLocalEffectAppendImpl) _then)
+class __$$PersistenceRecordHeadImplCopyWithImpl<$Res>
+    extends _$PersistenceRecordCopyWithImpl<$Res, _$PersistenceRecordHeadImpl>
+    implements _$$PersistenceRecordHeadImplCopyWith<$Res> {
+  __$$PersistenceRecordHeadImplCopyWithImpl(_$PersistenceRecordHeadImpl _value,
+      $Res Function(_$PersistenceRecordHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? head = null,
-    Object? data = null,
   }) {
-    return _then(_$PersistenceLocalEffectAppendImpl(
+    return _then(_$PersistenceRecordHeadImpl(
       null == head
           ? _value.head
           : head // ignore: cast_nullable_to_non_nullable
               as HeadRecord,
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as HeadEffectRecord,
     ));
   }
 
@@ -124,79 +347,69 @@ class __$$PersistenceLocalEffectAppendImplCopyWithImpl<$Res>
       return _then(_value.copyWith(head: value));
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadEffectRecordCopyWith<$Res> get data {
-    return $HeadEffectRecordCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$PersistenceLocalEffectAppendImpl
-    implements PersistenceLocalEffectAppend {
-  _$PersistenceLocalEffectAppendImpl(this.head, this.data);
+class _$PersistenceRecordHeadImpl implements PersistenceRecordHead {
+  _$PersistenceRecordHeadImpl(this.head);
 
   @override
   final HeadRecord head;
-  @override
-  final HeadEffectRecord data;
 
   @override
   String toString() {
-    return 'PersistenceLocalEffect.append(head: $head, data: $data)';
+    return 'PersistenceRecord.head(head: $head)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalEffectAppendImpl &&
-            (identical(other.head, head) || other.head == head) &&
-            (identical(other.data, data) || other.data == data));
+            other is _$PersistenceRecordHeadImpl &&
+            (identical(other.head, head) || other.head == head));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, head, data);
+  int get hashCode => Object.hash(runtimeType, head);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalEffectAppendImplCopyWith<
-          _$PersistenceLocalEffectAppendImpl>
-      get copyWith => __$$PersistenceLocalEffectAppendImplCopyWithImpl<
-          _$PersistenceLocalEffectAppendImpl>(this, _$identity);
+  _$$PersistenceRecordHeadImplCopyWith<_$PersistenceRecordHeadImpl>
+      get copyWith => __$$PersistenceRecordHeadImplCopyWithImpl<
+          _$PersistenceRecordHeadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadRecord head, HeadEffectRecord data) append,
-    required TResult Function(ImportEffectRecord data) import,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(String ref, EntryRecord entry) entry,
+    required TResult Function(String ref, EventRecord event) event,
   }) {
-    return append(head, data);
+    return head(this.head);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult? Function(ImportEffectRecord data)? import,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(String ref, EntryRecord entry)? entry,
+    TResult? Function(String ref, EventRecord event)? event,
   }) {
-    return append?.call(head, data);
+    return head?.call(this.head);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult Function(ImportEffectRecord data)? import,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(String ref, EntryRecord entry)? entry,
+    TResult Function(String ref, EventRecord event)? event,
     required TResult orElse(),
   }) {
-    if (append != null) {
-      return append(head, data);
+    if (head != null) {
+      return head(this.head);
     }
     return orElse();
   }
@@ -204,153 +417,160 @@ class _$PersistenceLocalEffectAppendImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalEffectAppend value) append,
-    required TResult Function(PersistenceLocalEffectImport value) import,
+    required TResult Function(PersistenceRecordHead value) head,
+    required TResult Function(PersistenceRecordEntry value) entry,
+    required TResult Function(PersistenceRecordEvent value) event,
   }) {
-    return append(this);
+    return head(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalEffectAppend value)? append,
-    TResult? Function(PersistenceLocalEffectImport value)? import,
+    TResult? Function(PersistenceRecordHead value)? head,
+    TResult? Function(PersistenceRecordEntry value)? entry,
+    TResult? Function(PersistenceRecordEvent value)? event,
   }) {
-    return append?.call(this);
+    return head?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalEffectAppend value)? append,
-    TResult Function(PersistenceLocalEffectImport value)? import,
+    TResult Function(PersistenceRecordHead value)? head,
+    TResult Function(PersistenceRecordEntry value)? entry,
+    TResult Function(PersistenceRecordEvent value)? event,
     required TResult orElse(),
   }) {
-    if (append != null) {
-      return append(this);
+    if (head != null) {
+      return head(this);
     }
     return orElse();
   }
 }
 
-abstract class PersistenceLocalEffectAppend implements PersistenceLocalEffect {
-  factory PersistenceLocalEffectAppend(
-          final HeadRecord head, final HeadEffectRecord data) =
-      _$PersistenceLocalEffectAppendImpl;
+abstract class PersistenceRecordHead implements PersistenceRecord {
+  factory PersistenceRecordHead(final HeadRecord head) =
+      _$PersistenceRecordHeadImpl;
 
   HeadRecord get head;
-  @override
-  HeadEffectRecord get data;
   @JsonKey(ignore: true)
-  _$$PersistenceLocalEffectAppendImplCopyWith<
-          _$PersistenceLocalEffectAppendImpl>
+  _$$PersistenceRecordHeadImplCopyWith<_$PersistenceRecordHeadImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersistenceLocalEffectImportImplCopyWith<$Res> {
-  factory _$$PersistenceLocalEffectImportImplCopyWith(
-          _$PersistenceLocalEffectImportImpl value,
-          $Res Function(_$PersistenceLocalEffectImportImpl) then) =
-      __$$PersistenceLocalEffectImportImplCopyWithImpl<$Res>;
+abstract class _$$PersistenceRecordEntryImplCopyWith<$Res> {
+  factory _$$PersistenceRecordEntryImplCopyWith(
+          _$PersistenceRecordEntryImpl value,
+          $Res Function(_$PersistenceRecordEntryImpl) then) =
+      __$$PersistenceRecordEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ImportEffectRecord data});
+  $Res call({String ref, EntryRecord entry});
 
-  $ImportEffectRecordCopyWith<$Res> get data;
+  $EntryRecordCopyWith<$Res> get entry;
 }
 
 /// @nodoc
-class __$$PersistenceLocalEffectImportImplCopyWithImpl<$Res>
-    extends _$PersistenceLocalEffectCopyWithImpl<$Res,
-        _$PersistenceLocalEffectImportImpl>
-    implements _$$PersistenceLocalEffectImportImplCopyWith<$Res> {
-  __$$PersistenceLocalEffectImportImplCopyWithImpl(
-      _$PersistenceLocalEffectImportImpl _value,
-      $Res Function(_$PersistenceLocalEffectImportImpl) _then)
+class __$$PersistenceRecordEntryImplCopyWithImpl<$Res>
+    extends _$PersistenceRecordCopyWithImpl<$Res, _$PersistenceRecordEntryImpl>
+    implements _$$PersistenceRecordEntryImplCopyWith<$Res> {
+  __$$PersistenceRecordEntryImplCopyWithImpl(
+      _$PersistenceRecordEntryImpl _value,
+      $Res Function(_$PersistenceRecordEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? ref = null,
+    Object? entry = null,
   }) {
-    return _then(_$PersistenceLocalEffectImportImpl(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as ImportEffectRecord,
+    return _then(_$PersistenceRecordEntryImpl(
+      null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as EntryRecord,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ImportEffectRecordCopyWith<$Res> get data {
-    return $ImportEffectRecordCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
+  $EntryRecordCopyWith<$Res> get entry {
+    return $EntryRecordCopyWith<$Res>(_value.entry, (value) {
+      return _then(_value.copyWith(entry: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$PersistenceLocalEffectImportImpl
-    implements PersistenceLocalEffectImport {
-  _$PersistenceLocalEffectImportImpl(this.data);
+class _$PersistenceRecordEntryImpl implements PersistenceRecordEntry {
+  _$PersistenceRecordEntryImpl(this.ref, this.entry);
 
   @override
-  final ImportEffectRecord data;
+  final String ref;
+  @override
+  final EntryRecord entry;
 
   @override
   String toString() {
-    return 'PersistenceLocalEffect.import(data: $data)';
+    return 'PersistenceRecord.entry(ref: $ref, entry: $entry)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceLocalEffectImportImpl &&
-            (identical(other.data, data) || other.data == data));
+            other is _$PersistenceRecordEntryImpl &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.entry, entry) || other.entry == entry));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, ref, entry);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceLocalEffectImportImplCopyWith<
-          _$PersistenceLocalEffectImportImpl>
-      get copyWith => __$$PersistenceLocalEffectImportImplCopyWithImpl<
-          _$PersistenceLocalEffectImportImpl>(this, _$identity);
+  _$$PersistenceRecordEntryImplCopyWith<_$PersistenceRecordEntryImpl>
+      get copyWith => __$$PersistenceRecordEntryImplCopyWithImpl<
+          _$PersistenceRecordEntryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HeadRecord head, HeadEffectRecord data) append,
-    required TResult Function(ImportEffectRecord data) import,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(String ref, EntryRecord entry) entry,
+    required TResult Function(String ref, EventRecord event) event,
   }) {
-    return import(data);
+    return entry(ref, this.entry);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult? Function(ImportEffectRecord data)? import,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(String ref, EntryRecord entry)? entry,
+    TResult? Function(String ref, EventRecord event)? event,
   }) {
-    return import?.call(data);
+    return entry?.call(ref, this.entry);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult Function(ImportEffectRecord data)? import,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(String ref, EntryRecord entry)? entry,
+    TResult Function(String ref, EventRecord event)? event,
     required TResult orElse(),
   }) {
-    if (import != null) {
-      return import(data);
+    if (entry != null) {
+      return entry(ref, this.entry);
     }
     return orElse();
   }
@@ -358,43 +578,207 @@ class _$PersistenceLocalEffectImportImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceLocalEffectAppend value) append,
-    required TResult Function(PersistenceLocalEffectImport value) import,
+    required TResult Function(PersistenceRecordHead value) head,
+    required TResult Function(PersistenceRecordEntry value) entry,
+    required TResult Function(PersistenceRecordEvent value) event,
   }) {
-    return import(this);
+    return entry(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceLocalEffectAppend value)? append,
-    TResult? Function(PersistenceLocalEffectImport value)? import,
+    TResult? Function(PersistenceRecordHead value)? head,
+    TResult? Function(PersistenceRecordEntry value)? entry,
+    TResult? Function(PersistenceRecordEvent value)? event,
   }) {
-    return import?.call(this);
+    return entry?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceLocalEffectAppend value)? append,
-    TResult Function(PersistenceLocalEffectImport value)? import,
+    TResult Function(PersistenceRecordHead value)? head,
+    TResult Function(PersistenceRecordEntry value)? entry,
+    TResult Function(PersistenceRecordEvent value)? event,
     required TResult orElse(),
   }) {
-    if (import != null) {
-      return import(this);
+    if (entry != null) {
+      return entry(this);
     }
     return orElse();
   }
 }
 
-abstract class PersistenceLocalEffectImport implements PersistenceLocalEffect {
-  factory PersistenceLocalEffectImport(final ImportEffectRecord data) =
-      _$PersistenceLocalEffectImportImpl;
+abstract class PersistenceRecordEntry implements PersistenceRecord {
+  factory PersistenceRecordEntry(final String ref, final EntryRecord entry) =
+      _$PersistenceRecordEntryImpl;
+
+  String get ref;
+  EntryRecord get entry;
+  @JsonKey(ignore: true)
+  _$$PersistenceRecordEntryImplCopyWith<_$PersistenceRecordEntryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PersistenceRecordEventImplCopyWith<$Res> {
+  factory _$$PersistenceRecordEventImplCopyWith(
+          _$PersistenceRecordEventImpl value,
+          $Res Function(_$PersistenceRecordEventImpl) then) =
+      __$$PersistenceRecordEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String ref, EventRecord event});
+
+  $EventRecordCopyWith<$Res> get event;
+}
+
+/// @nodoc
+class __$$PersistenceRecordEventImplCopyWithImpl<$Res>
+    extends _$PersistenceRecordCopyWithImpl<$Res, _$PersistenceRecordEventImpl>
+    implements _$$PersistenceRecordEventImplCopyWith<$Res> {
+  __$$PersistenceRecordEventImplCopyWithImpl(
+      _$PersistenceRecordEventImpl _value,
+      $Res Function(_$PersistenceRecordEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? event = null,
+  }) {
+    return _then(_$PersistenceRecordEventImpl(
+      null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventRecord,
+    ));
+  }
 
   @override
-  ImportEffectRecord get data;
+  @pragma('vm:prefer-inline')
+  $EventRecordCopyWith<$Res> get event {
+    return $EventRecordCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$PersistenceRecordEventImpl implements PersistenceRecordEvent {
+  _$PersistenceRecordEventImpl(this.ref, this.event);
+
+  @override
+  final String ref;
+  @override
+  final EventRecord event;
+
+  @override
+  String toString() {
+    return 'PersistenceRecord.event(ref: $ref, event: $event)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersistenceRecordEventImpl &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, event);
+
   @JsonKey(ignore: true)
-  _$$PersistenceLocalEffectImportImplCopyWith<
-          _$PersistenceLocalEffectImportImpl>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersistenceRecordEventImplCopyWith<_$PersistenceRecordEventImpl>
+      get copyWith => __$$PersistenceRecordEventImplCopyWithImpl<
+          _$PersistenceRecordEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(String ref, EntryRecord entry) entry,
+    required TResult Function(String ref, EventRecord event) event,
+  }) {
+    return event(ref, this.event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(String ref, EntryRecord entry)? entry,
+    TResult? Function(String ref, EventRecord event)? event,
+  }) {
+    return event?.call(ref, this.event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HeadRecord head)? head,
+    TResult Function(String ref, EntryRecord entry)? entry,
+    TResult Function(String ref, EventRecord event)? event,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(ref, this.event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PersistenceRecordHead value) head,
+    required TResult Function(PersistenceRecordEntry value) entry,
+    required TResult Function(PersistenceRecordEvent value) event,
+  }) {
+    return event(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceRecordHead value)? head,
+    TResult? Function(PersistenceRecordEntry value)? entry,
+    TResult? Function(PersistenceRecordEvent value)? event,
+  }) {
+    return event?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PersistenceRecordHead value)? head,
+    TResult Function(PersistenceRecordEntry value)? entry,
+    TResult Function(PersistenceRecordEvent value)? event,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PersistenceRecordEvent implements PersistenceRecord {
+  factory PersistenceRecordEvent(final String ref, final EventRecord event) =
+      _$PersistenceRecordEventImpl;
+
+  String get ref;
+  EventRecord get event;
+  @JsonKey(ignore: true)
+  _$$PersistenceRecordEventImplCopyWith<_$PersistenceRecordEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

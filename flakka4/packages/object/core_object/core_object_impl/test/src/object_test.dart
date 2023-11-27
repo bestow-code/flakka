@@ -1,99 +1,111 @@
 import 'package:core_object/core_object.dart';
 import 'package:core_object_impl/core_object_impl.dart';
+import 'package:core_object_local/core_object_local.dart';
+import 'package:core_object_local_impl/core_object_local_impl.dart';
+import 'package:core_object_remote_impl/core_object_remote_impl.dart';
 import 'package:core_object_test/core_object_test.dart';
+import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
+import 'package:core_persistence_local_sembast/core_persistence_local_sembast.dart';
 import 'package:glados/glados.dart';
 
-Future<Object> getSubject(
-  String objectId,
-  ObjectProvider Function() persistenceProviderFactory,
-) async {
-  final provider = persistenceProviderFactory();
-  throw UnimplementedError();
-  // PersistenceFactoryContextImpl context;
-  // context = PersistenceFactoryContextImpl()
-  //   ..persistenceId = PersistenceId('instance-1');
-  // // final factory = provider.build(context);
-  // PersistenceFactoryParamImpl param;
-  // param = PersistenceFactoryParamImpl()
-  //   ..parseVersion('0')
-  //   ..objectPath = ObjectKey(
-  //     'o/$objectId',
-  //     base: StorePath('loco_data/test', base: RootPath('users/1')),
-  //   );
-  // await provider.delete(param);
-  //
-  // final persistence = await provider.get(param, null);
-  // return persistence;
-}
 
 void main() {
-  Glados(
-    any.refValue,
-    // any.persistenceEffectList,
-  ).test('produce expected output for valid call sequence', (
-    refValue,
-    // calls,
-  ) async {
-    // final context = PersistenceFactoryContextImpl()
-    //   ..persistenceId = PersistenceId('instance-1');
-    // final subject = await getSubject(
-    //   refValue,
-    //   () => ObjectProvider(
-    //     child1Provider: ObjectLocalProvider(
-    //       childFactoryProvider: PersistenceLocalProvider(
-    //         adapterProvider:
-    //             PersistenceLocalAdapterProviderSembast.inMemory(context),
-    //         context: context,
-    //       ),
-    //     ),
-    //     child2Provider: ObjectRemoteProvider(
-    //       childFactoryProvider: PersistenceRemoteProvider(
-    //         adapterFactoryProvider:
-    //             PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
-    //       ),
-    //     ),
-    //   ),
-    // );
-    // await subject.provision(
-    //   PersistenceProvisioning.resume(
-    //     ref: refValue,
-    //     sequenceNumber: 0,
-    //   ),
-    // );
-    // subject.connect();
+  group('loading', (){
+    late ProviderContext providerContext;
+    final key = PersistenceKey('1');
+    setUp(() {
+      providerContext = ProviderContext()
+        ..persistenceId = PersistenceId('1')
+        ..sessionId = SessionId('1');
+    });
+    // Scenario: Local has entry/event a, b; Remote has entry/event a, c
+    // Expect: Object emits entry/event a,b,c snapshots, emits a,b,c import
     //
-    // await subject.close();
-    // await Future.wait(
-    //   [
-    //     subject.done,
-    //   ],
-    // );
-  });
-}
 
-Future<void> apply(
-  CoreObject subject,
-  Iterable<ObjectEffect> calls,
-// int startSequenceNumber,
-) async {
-  // const startSequenceNumber = 0;
-  // var sequenceNumber = startSequenceNumber;
-  throw UnimplementedError();
-  // final sequencedCalls = calls
-  //     .map(
-  //       (e) =>
-  //       e.map(
-  //         append: (append) =>
-  //             append.copyWith(
-  //               sequenceNumber: sequenceNumber = sequenceNumber + 1,
-  //             ),
-  //         forward: (forward) =>
-  //             forward.copyWith(
-  //               sequenceNumber: sequenceNumber = sequenceNumber + 1,
-  //             ),
-  //         import: (import) => import,
-  //       ),
-  // )
-  //     .toList();
-  // return Stream.fromIterable(sequencedCalls).pipe(subject.input);
+    test('emits', () async {
+      ObjectProvider(child1Provider: ObjectLocalProvider(
+        childProvider: PersistenceLocalProvider(
+          adapterProvider: PersistenceLocalAdapterProvider(
+            storeProvider: StoreLocalProviderSembast.inMemory,
+          ),
+        ),
+      ), child2Provider: ObjectRemoteProvider(
+        childProvider: PersistenceRemoteProvider(
+          adapterProvider: PersistenceRemoteAdapterProvider(
+            storeProvider: StoreRemoteProviderSembast.inMemory,
+          ),
+        ),
+      ))
+      final objectLocal = await ObjectLocalProvider(
+        childProvider: PersistenceLocalProvider(
+          adapterProvider: PersistenceLocalAdapterProvider(
+            storeProvider: StoreLocalProviderSembast.inMemory,
+          ),
+        ),
+      ).get(context: providerContext, key: key);
+      await objectLocal.initialize(ref: '1', createdAt: 0);
+
+      objectLocal.connect();
+      const ref = '2';
+      objectLocal.sink.add(
+        ObjectLocalEffect.add(
+          ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
+        ),
+      );
+      objectLocal.sink.add(
+        ObjectLocalEffect.add(
+          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
+        ),
+      );
+      objectLocal.sink.add(
+        ObjectLocalEffect.add(
+          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
+        ),
+      );
+
+      print(await objectLocal.stream.take(3).toList());
+      print(await objectLocal.stream.take(3).toList());
+    });
+  });
+  group('append', () {
+    late ProviderContext providerContext;
+    final key = PersistenceKey('1');
+    setUp(() {
+      providerContext = ProviderContext()
+        ..persistenceId = PersistenceId('1')
+        ..sessionId = SessionId('1');
+    });
+    test('emits', () async {
+      final objectLocal = await ObjectLocalProvider(
+        childProvider: PersistenceLocalProvider(
+          adapterProvider: PersistenceLocalAdapterProvider(
+            storeProvider: StoreLocalProviderSembast.inMemory,
+          ),
+        ),
+      ).get(context: providerContext, key: key);
+      await objectLocal.initialize(ref: '1', createdAt: 0);
+
+      objectLocal.connect();
+      const ref = '2';
+      objectLocal.sink.add(
+        ObjectLocalEffect.add(
+          ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
+        ),
+      );
+      objectLocal.sink.add(
+        ObjectLocalEffect.add(
+          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
+        ),
+      );
+      objectLocal.sink.add(
+        ObjectLocalEffect.add(
+          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
+        ),
+      );
+
+      print(await objectLocal.stream.take(3).toList());
+      print(await objectLocal.stream.take(3).toList());
+    });
+  });
+
 }

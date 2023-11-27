@@ -1,17 +1,17 @@
 import 'dart:async';
 
-import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object/core_object.dart';
 import 'package:core_object_local/core_object_local.dart';
 import 'package:core_object_remote/core_object_remote.dart';
+import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 
 class Object extends BroadcastMergeBase<
-    CoreObjectLocal,
     ObjectLocalEffect,
     ObjectLocalSnapshot,
-    CoreObjectRemote,
+    CoreObjectLocal,
     ObjectRemoteEffect,
     ObjectRemoteUpdate,
+    CoreObjectRemote,
     ObjectEffect,
     ObjectUpdate> implements CoreObject {
   Object({required super.child1, required super.child2});
@@ -35,7 +35,7 @@ class Object extends BroadcastMergeBase<
   Future<void> provision(PersistenceProvisioning provisioning) async =>
       provisioning.map(
         initialize: (initialize) async {
-          final localHead = await child1.inspect();
+          final localHead = await child1.inspect;
           if (localHead != null) {
             throw UnimplementedError();
             // final remoteHead = await child2.inspect();

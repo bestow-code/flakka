@@ -11,9 +11,8 @@ class ObjectLocal extends PersistentNode<
     ObjectLocalEffect,
     ObjectLocalSnapshot,
     ObjectLocalState> implements CoreObjectLocal {
-  ObjectLocal({required CorePersistenceLocal child})
-      : _child = child,
-        super(child: child) {
+  ObjectLocal({required super.child}) {
+    registerStateFactory(() => ObjectLocalState({}, {}));
     registerInitialStateHandler(
       (snapshot) => snapshot.map(
         head: (head) => throw UnimplementedError(),
@@ -23,37 +22,60 @@ class ObjectLocal extends PersistentNode<
     );
     registerInputHandler(
       (state, input) => input.map(
-        append: (append) {
-          throw UnimplementedError();
-          //   return (
-          //   PersistenceLocalEffect.append(
-          //     ref: append.ref,
-          //     parent: append.parent,
-          //     event: append.event,
-          //     createdAt: append.createdAt,
-          //     sequenceNumber: append.sequenceNumber,
-          //   ),
-          //   null,
-          // );
-        },
-        forward: (forward) => throw UnimplementedError(),
-        add: (add) => throw UnimplementedError(),
-        none: (none) => throw UnimplementedError(),
+        add: (add) => add.map(
+          add: (add2) => add2.data.map(
+            entry: (entry) => (
+              state: state.copyWith(seenEntry: {entry.ref, ...state.seenEntry}),
+              effect: PersistenceLocalEffect.persist(
+                  PersistenceRecord.entry(entry.ref, entry.entry)),
+              snapshot: null,
+            ),
+            event: (event) => (
+              state: state.copyWith(seenEntry: {event.ref, ...state.seenEntry}),
+              effect: PersistenceLocalEffect.persist(
+                  PersistenceRecord.event(event.ref, event.event)),
+              snapshot: null,
+            ),
+            head: (head) => (
+              state: state,
+              effect: PersistenceLocalEffect.persist(
+                PersistenceRecord.head(head.head),
+              ),
+              snapshot: null,
+            ),
+          ),
+          import: (import) => throw UnimplementedError(),
+        ),
+        import: (import) => throw UnimplementedError(),
       ),
     );
     registerSnapshotHandler(
       (state, snapshot) => snapshot.map(
-        head: (head) => throw UnimplementedError(),
-        event: (event) => throw UnimplementedError(),
-        entry: (entry) => throw UnimplementedError(),
+        head: (head) => (
+          state: state,
+          effect: null,
+          snapshot: ObjectLocalSnapshot.head(data: head.snapshot)
+        ),
+        event: (event) => (
+          state: state.copyWith(
+              seenEvent: {...event.snapshot.keys, ...state.seenEvent}),
+          effect: null,
+          snapshot: ObjectLocalSnapshot.event(data: event.snapshot)
+        ),
+        entry: (entry) => (
+          state: state.copyWith(
+              seenEntry: {...entry.snapshot.keys, ...state.seenEntry}),
+          effect: null,
+          snapshot: ObjectLocalSnapshot.entry(data: entry.snapshot)
+        ),
       ),
     );
   }
 
   @override
-  CorePersistenceLocal get child => _child;
+  Future<void> initialize({required String ref, required int createdAt}) =>
+      child.initialize(ref: ref, createdAt: createdAt);
 
-  final CorePersistenceLocal _child;
-
-
+  @override
+  Future<HeadRecord?> get inspect => child.inspect;
 }

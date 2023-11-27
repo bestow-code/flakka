@@ -1,7 +1,7 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
 abstract interface class CorePersistentNodeProvider<
-        ProviderContext extends CorePersistentProviderContext,
+        ProviderContext extends CoreProviderContext,
         EffectOut,
         SnapshotIn,
         Resource extends CorePersistentResource<EffectOut, SnapshotIn>,

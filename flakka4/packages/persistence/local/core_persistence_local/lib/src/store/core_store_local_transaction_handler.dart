@@ -2,14 +2,17 @@ import 'dart:async';
 
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-abstract class CoreStoreLocalTransactionHandler {
+abstract class CoreStoreLocalTransactionHandler implements CoreInitializer{
+  PersistenceId get persistenceId;
   SessionId get sessionId;
 
+  @override
   Future<void> initialize({
     required String ref,
     required int createdAt,
   });
 
+  @override
   Future<HeadRecord?> get inspect;
 
   Future<HeadRecord> get head;

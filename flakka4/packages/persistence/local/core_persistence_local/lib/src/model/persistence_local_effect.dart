@@ -5,11 +5,17 @@ part 'persistence_local_effect.freezed.dart';
 
 @freezed
 sealed class PersistenceLocalEffect with _$PersistenceLocalEffect {
-  factory PersistenceLocalEffect.append(
-    HeadRecord head,
-    HeadEffectRecord data,
-  ) = PersistenceLocalEffectAppend;
+  factory PersistenceLocalEffect.persist(PersistenceRecord data) =
+      PersistenceLocalEffectPersist;
+}
 
-  factory PersistenceLocalEffect.import(ImportEffectRecord data) =
-      PersistenceLocalEffectImport;
+@freezed
+class PersistenceRecord with _$PersistenceRecord {
+  factory PersistenceRecord.head(HeadRecord head) = PersistenceRecordHead;
+
+  factory PersistenceRecord.entry(String ref, EntryRecord entry) =
+      PersistenceRecordEntry;
+
+  factory PersistenceRecord.event(String ref, EventRecord event) =
+      PersistenceRecordEvent;
 }

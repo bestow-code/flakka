@@ -19,7 +19,7 @@ mixin _$ApplicationState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   ({DateTime createdAt, Ref ref}) get refDateTime =>
       throw _privateConstructorUsedError;
-  ({State state, View view}) get result => throw _privateConstructorUsedError;
+  StateView<State, View> get result => throw _privateConstructorUsedError;
   ({bool local, bool remote}) get ready => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,8 +38,10 @@ abstract class $ApplicationStateCopyWith<Event extends CoreEvent,
   @useResult
   $Res call(
       {({DateTime createdAt, Ref ref}) refDateTime,
-      ({State state, View view}) result,
+      StateView<State, View> result,
       ({bool local, bool remote}) ready});
+
+  $StateViewCopyWith<State, View, $Res> get result;
 }
 
 /// @nodoc
@@ -72,12 +74,20 @@ class _$ApplicationStateCopyWithImpl<
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
       ready: null == ready
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
               as ({bool local, bool remote}),
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewCopyWith<State, View, $Res> get result {
+    return $StateViewCopyWith<State, View, $Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
+    });
   }
 }
 
@@ -95,8 +105,11 @@ abstract class _$$ApplicationStateImplCopyWith<
   @useResult
   $Res call(
       {({DateTime createdAt, Ref ref}) refDateTime,
-      ({State state, View view}) result,
+      StateView<State, View> result,
       ({bool local, bool remote}) ready});
+
+  @override
+  $StateViewCopyWith<State, View, $Res> get result;
 }
 
 /// @nodoc
@@ -125,7 +138,7 @@ class __$$ApplicationStateImplCopyWithImpl<Event extends CoreEvent,
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
       ready: null == ready
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
@@ -144,7 +157,7 @@ class _$ApplicationStateImpl<Event extends CoreEvent, State extends CoreState,
   @override
   final ({DateTime createdAt, Ref ref}) refDateTime;
   @override
-  final ({State state, View view}) result;
+  final StateView<State, View> result;
   @override
   final ({bool local, bool remote}) ready;
 
@@ -182,14 +195,14 @@ abstract class _ApplicationState<
     View extends CoreView> implements ApplicationState<Event, State, View> {
   factory _ApplicationState(
           {required final ({DateTime createdAt, Ref ref}) refDateTime,
-          required final ({State state, View view}) result,
+          required final StateView<State, View> result,
           required final ({bool local, bool remote}) ready}) =
       _$ApplicationStateImpl<Event, State, View>;
 
   @override
   ({DateTime createdAt, Ref ref}) get refDateTime;
   @override
-  ({State state, View view}) get result;
+  StateView<State, View> get result;
   @override
   ({bool local, bool remote}) get ready;
   @override

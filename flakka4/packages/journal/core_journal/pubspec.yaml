@@ -34,3 +34,5 @@ index_generator:
       include:
         - src
       docs: Common libraries for core_platform
+      exports:
+        - package: package:core_data/core_data.dart

@@ -5,7 +5,7 @@ import 'package:core_persistence_local/core_persistence_local.dart';
 
 import '../core_object_local_impl.dart';
 
-class ObjectLocalProvider extends PersistentNodeProvider<CorePersistentProviderContext,
+class ObjectLocalProvider extends PersistentNodeProvider<CoreProviderContext,
     PersistenceLocalEffect,
     PersistenceLocalSnapshot,
     CorePersistenceLocal,
@@ -16,14 +16,14 @@ class ObjectLocalProvider extends PersistentNodeProvider<CorePersistentProviderC
 
   @override
   final CorePersistentResourceProvider<
-      CorePersistentProviderContext,
+      CoreProviderContext,
       PersistenceLocalEffect,
       PersistenceLocalSnapshot,
       CorePersistenceLocal> childProvider;
 
   @override
   Future<void> delete(
-      {required CorePersistentProviderContext context,
+      {required CoreProviderContext context,
       required PersistenceKey key}) {
     // TODO: implement delete
     throw UnimplementedError();
@@ -31,7 +31,7 @@ class ObjectLocalProvider extends PersistentNodeProvider<CorePersistentProviderC
 
   @override
   Future<CoreObjectLocal> get(
-          {required CorePersistentProviderContext context,
+          {required CoreProviderContext context,
           required PersistenceKey key}) async =>
       ObjectLocalFactory().create(param: (
         persistenceLocal: await childProvider.get(context: context, key: key)

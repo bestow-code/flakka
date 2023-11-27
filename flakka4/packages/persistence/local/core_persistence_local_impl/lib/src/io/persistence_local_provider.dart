@@ -3,7 +3,9 @@ import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_impl/core_persistence_local_impl.dart';
 
-class PersistenceLocalProvider extends PersistentIOProvider<CorePersistentProviderContext,
+class PersistenceLocalProvider extends ResourceProviderBase<
+    CoreProviderContext,
+    PersistenceKey,
     PersistenceLocalEffect,
     PersistenceLocalSnapshot,
     CorePersistenceLocal> implements CorePersistenceLocalProvider {
@@ -17,7 +19,7 @@ class PersistenceLocalProvider extends PersistentIOProvider<CorePersistentProvid
 
   @override
   Future<void> delete({
-    required CorePersistentProviderContext context,
+    required CoreProviderContext context,
     required PersistenceKey key,
   }) =>
       adapterProvider.delete(
@@ -27,7 +29,7 @@ class PersistenceLocalProvider extends PersistentIOProvider<CorePersistentProvid
 
   @override
   Future<CorePersistenceLocal> get(
-          {required CorePersistentProviderContext context,
+          {required CoreProviderContext context,
           required PersistenceKey key}) async =>
       factory.create(
         param: (

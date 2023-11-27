@@ -1,5 +1,5 @@
 import 'package:core_common_test/core_common_test.dart';
-import 'package:core_common_test/src/core/any_frequency.dart';
+import 'package:glados/glados.dart';
 
 void main() {
   test('description', () {

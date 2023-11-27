@@ -4,7 +4,8 @@ import 'package:core_loco/core_loco.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
-abstract class ResourceBase<Effect, T> implements CoreResource<Effect, T> {
+// abstract
+class ResourceBase<Effect, T> implements CoreResource<Effect, T> {
   @override
   StreamSink<Effect> get sink => input;
 
@@ -26,5 +27,11 @@ abstract class ResourceBase<Effect, T> implements CoreResource<Effect, T> {
   bool get isClosed => output.isClosed;
 
   @override
-  Future<void> connect() => output.first;
+  void connect() {}
+
+  @override
+  Future<void> close() async {
+    await input.close();
+    await output.close();
+  }
 }

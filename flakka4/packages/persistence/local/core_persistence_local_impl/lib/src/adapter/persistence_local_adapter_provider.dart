@@ -1,5 +1,4 @@
-import 'package:core_persistence_base/src/core_persistence_base_context.dart';
-import 'package:core_persistence_base/src/persistence_key.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 
@@ -15,17 +14,18 @@ class PersistenceLocalAdapterProvider extends PersistenceAdapterProviderBase<
 
   @override
   Future<CorePersistenceLocalAdapter> get({
-    required CorePersistentProviderContext context,
+    required CoreProviderContext context,
     required PersistenceKey key,
   }) async =>
       PersistenceLocalAdapterFactory().create(param: (
         storeLocal: await storeProvider.get(context: context, key: key),
-        sessionId: context.sessionId
+        persistenceId: context.persistenceId!,
+        sessionId: context.sessionId!,
       ));
 
   @override
   Future<void> delete({
-    required CorePersistentProviderContext context,
+    required CoreProviderContext context,
     required PersistenceKey key,
   }) =>
       storeProvider.delete(context: context, key: key);

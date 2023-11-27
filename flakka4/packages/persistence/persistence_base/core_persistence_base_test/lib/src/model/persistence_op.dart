@@ -1,5 +1,5 @@
+import 'package:core_common_test/core_common_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'persistence_op.freezed.dart';
@@ -15,8 +15,7 @@ class PersistenceOp with _$PersistenceOp {
   factory PersistenceOp.publish() = PersistenceOpPublish;
 }
 
-
-enum PersistenceOpType { head, data, publish }
+enum PersistenceOpKind { provision, head, data, publish }
 
 @freezed
 class HeadOp with _$HeadOp {
@@ -48,8 +47,8 @@ extension AnyPersistenceOp on Any {
 
 // Generator<HeadOpEvent> get headOpEvent => any.always(HeadOpEvent());
 
-  Generator<PersistenceOpType> get persistenceOpType => any.frequency([
-        (5, PersistenceOpType.head),
+  Generator<PersistenceOpKind> get persistenceOpType => any.frequency([
+        (5, PersistenceOpKind.head),
         // (2, PersistenceOpType.data),
       ]);
 }

@@ -17,21 +17,23 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  HeadEffect<Event, State, View> get effect =>
-      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadEffect<Event, State, View> effect) append,
+    required TResult Function(Ref ref, StateView<State, View> stateView)
+        persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadEffect<Event, State, View> effect)? append,
+    TResult? Function(Ref ref, StateView<State, View> stateView)? persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadEffect<Event, State, View> effect)? append,
+    TResult Function(Ref ref, StateView<State, View> stateView)? persist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,23 +41,23 @@ mixin _$DataEffect<Event extends CoreEvent, State extends CoreState,
   TResult map<TResult extends Object?>({
     required TResult Function(DataEffectAppend<Event, State, View> value)
         append,
+    required TResult Function(DataEffectPersist<Event, State, View> value)
+        persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DataEffectAppend<Event, State, View> value)? append,
+    TResult? Function(DataEffectPersist<Event, State, View> value)? persist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DataEffectAppend<Event, State, View> value)? append,
+    TResult Function(DataEffectPersist<Event, State, View> value)? persist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DataEffectCopyWith<Event, State, View, DataEffect<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -65,10 +67,6 @@ abstract class $DataEffectCopyWith<Event extends CoreEvent,
           $Res Function(DataEffect<Event, State, View>) then) =
       _$DataEffectCopyWithImpl<Event, State, View, $Res,
           DataEffect<Event, State, View>>;
-  @useResult
-  $Res call({HeadEffect<Event, State, View> effect});
-
-  $HeadEffectCopyWith<Event, State, View, $Res> get effect;
 }
 
 /// @nodoc
@@ -85,45 +83,18 @@ class _$DataEffectCopyWithImpl<
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? effect = null,
-  }) {
-    return _then(_value.copyWith(
-      effect: null == effect
-          ? _value.effect
-          : effect // ignore: cast_nullable_to_non_nullable
-              as HeadEffect<Event, State, View>,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadEffectCopyWith<Event, State, View, $Res> get effect {
-    return $HeadEffectCopyWith<Event, State, View, $Res>(_value.effect,
-        (value) {
-      return _then(_value.copyWith(effect: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$DataEffectAppendImplCopyWith<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView,
-    $Res> implements $DataEffectCopyWith<Event, State, View, $Res> {
+abstract class _$$DataEffectAppendImplCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
   factory _$$DataEffectAppendImplCopyWith(
           _$DataEffectAppendImpl<Event, State, View> value,
           $Res Function(_$DataEffectAppendImpl<Event, State, View>) then) =
       __$$DataEffectAppendImplCopyWithImpl<Event, State, View, $Res>;
-  @override
   @useResult
   $Res call({HeadEffect<Event, State, View> effect});
 
-  @override
   $HeadEffectCopyWith<Event, State, View, $Res> get effect;
 }
 
@@ -149,6 +120,15 @@ class __$$DataEffectAppendImplCopyWithImpl<Event extends CoreEvent,
           : effect // ignore: cast_nullable_to_non_nullable
               as HeadEffect<Event, State, View>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadEffectCopyWith<Event, State, View, $Res> get effect {
+    return $HeadEffectCopyWith<Event, State, View, $Res>(_value.effect,
+        (value) {
+      return _then(_value.copyWith(effect: value));
+    });
   }
 }
 
@@ -189,6 +169,8 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadEffect<Event, State, View> effect) append,
+    required TResult Function(Ref ref, StateView<State, View> stateView)
+        persist,
   }) {
     return append(effect);
   }
@@ -197,6 +179,7 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadEffect<Event, State, View> effect)? append,
+    TResult? Function(Ref ref, StateView<State, View> stateView)? persist,
   }) {
     return append?.call(effect);
   }
@@ -205,6 +188,7 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadEffect<Event, State, View> effect)? append,
+    TResult Function(Ref ref, StateView<State, View> stateView)? persist,
     required TResult orElse(),
   }) {
     if (append != null) {
@@ -218,6 +202,8 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   TResult map<TResult extends Object?>({
     required TResult Function(DataEffectAppend<Event, State, View> value)
         append,
+    required TResult Function(DataEffectPersist<Event, State, View> value)
+        persist,
   }) {
     return append(this);
   }
@@ -226,6 +212,7 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DataEffectAppend<Event, State, View> value)? append,
+    TResult? Function(DataEffectPersist<Event, State, View> value)? persist,
   }) {
     return append?.call(this);
   }
@@ -234,6 +221,7 @@ class _$DataEffectAppendImpl<Event extends CoreEvent, State extends CoreState,
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DataEffectAppend<Event, State, View> value)? append,
+    TResult Function(DataEffectPersist<Event, State, View> value)? persist,
     required TResult orElse(),
   }) {
     if (append != null) {
@@ -251,12 +239,189 @@ abstract class DataEffectAppend<
           {required final HeadEffect<Event, State, View> effect}) =
       _$DataEffectAppendImpl<Event, State, View>;
 
-  @override
   HeadEffect<Event, State, View> get effect;
-  @override
   @JsonKey(ignore: true)
   _$$DataEffectAppendImplCopyWith<Event, State, View,
           _$DataEffectAppendImpl<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DataEffectPersistImplCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory _$$DataEffectPersistImplCopyWith(
+          _$DataEffectPersistImpl<Event, State, View> value,
+          $Res Function(_$DataEffectPersistImpl<Event, State, View>) then) =
+      __$$DataEffectPersistImplCopyWithImpl<Event, State, View, $Res>;
+  @useResult
+  $Res call({Ref ref, StateView<State, View> stateView});
+
+  $RefCopyWith<$Res> get ref;
+  $StateViewCopyWith<State, View, $Res> get stateView;
+}
+
+/// @nodoc
+class __$$DataEffectPersistImplCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$DataEffectCopyWithImpl<Event, State, View, $Res,
+        _$DataEffectPersistImpl<Event, State, View>>
+    implements _$$DataEffectPersistImplCopyWith<Event, State, View, $Res> {
+  __$$DataEffectPersistImplCopyWithImpl(
+      _$DataEffectPersistImpl<Event, State, View> _value,
+      $Res Function(_$DataEffectPersistImpl<Event, State, View>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ref = null,
+    Object? stateView = null,
+  }) {
+    return _then(_$DataEffectPersistImpl<Event, State, View>(
+      null == ref
+          ? _value.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as Ref,
+      null == stateView
+          ? _value.stateView
+          : stateView // ignore: cast_nullable_to_non_nullable
+              as StateView<State, View>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewCopyWith<State, View, $Res> get stateView {
+    return $StateViewCopyWith<State, View, $Res>(_value.stateView, (value) {
+      return _then(_value.copyWith(stateView: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DataEffectPersistImpl<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements DataEffectPersist<Event, State, View> {
+  _$DataEffectPersistImpl(this.ref, this.stateView);
+
+  @override
+  final Ref ref;
+  @override
+  final StateView<State, View> stateView;
+
+  @override
+  String toString() {
+    return 'DataEffect<$Event, $State, $View>.persist(ref: $ref, stateView: $stateView)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataEffectPersistImpl<Event, State, View> &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.stateView, stateView) ||
+                other.stateView == stateView));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ref, stateView);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataEffectPersistImplCopyWith<Event, State, View,
+          _$DataEffectPersistImpl<Event, State, View>>
+      get copyWith => __$$DataEffectPersistImplCopyWithImpl<Event, State, View,
+          _$DataEffectPersistImpl<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HeadEffect<Event, State, View> effect) append,
+    required TResult Function(Ref ref, StateView<State, View> stateView)
+        persist,
+  }) {
+    return persist(ref, stateView);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffect<Event, State, View> effect)? append,
+    TResult? Function(Ref ref, StateView<State, View> stateView)? persist,
+  }) {
+    return persist?.call(ref, stateView);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HeadEffect<Event, State, View> effect)? append,
+    TResult Function(Ref ref, StateView<State, View> stateView)? persist,
+    required TResult orElse(),
+  }) {
+    if (persist != null) {
+      return persist(ref, stateView);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DataEffectAppend<Event, State, View> value)
+        append,
+    required TResult Function(DataEffectPersist<Event, State, View> value)
+        persist,
+  }) {
+    return persist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataEffectAppend<Event, State, View> value)? append,
+    TResult? Function(DataEffectPersist<Event, State, View> value)? persist,
+  }) {
+    return persist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataEffectAppend<Event, State, View> value)? append,
+    TResult Function(DataEffectPersist<Event, State, View> value)? persist,
+    required TResult orElse(),
+  }) {
+    if (persist != null) {
+      return persist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DataEffectPersist<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements DataEffect<Event, State, View> {
+  factory DataEffectPersist(
+          final Ref ref, final StateView<State, View> stateView) =
+      _$DataEffectPersistImpl<Event, State, View>;
+
+  Ref get ref;
+  StateView<State, View> get stateView;
+  @JsonKey(ignore: true)
+  _$$DataEffectPersistImplCopyWith<Event, State, View,
+          _$DataEffectPersistImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 

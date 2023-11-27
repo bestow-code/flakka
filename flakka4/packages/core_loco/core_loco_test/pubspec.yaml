@@ -30,6 +30,11 @@ index_generator:
     - path: lib
       include:
         - src
+      exclude:
+        - src/scaffolding
       docs: Common libraries for core_platform
-      exports:
-        - package: package:core_common_test/core_common_test.dart
+
+    - name: resource_scaffolding
+      path: lib
+      include:
+        - src/scaffolding/resource_scaffolding.dart

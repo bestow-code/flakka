@@ -1,6 +1,6 @@
 import 'package:core_persistence_base/core_persistence_base.dart';
 
 abstract class CoreStoreProvider<
-        ProviderContext extends CorePersistentProviderContext,
+        ProviderContext extends CoreProviderContext,
         Store extends CoreStore>
-    implements CorePersistentProvider<ProviderContext, Store> {}
+    implements CoreProvider<ProviderContext, PersistenceKey, Store> {}

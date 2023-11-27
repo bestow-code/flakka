@@ -32,38 +32,39 @@ index_generator:
   exclude:
     - '**.*.dart'
   indexes:
-    - path: lib
+    - name: scaffolding
+      path: lib
       include:
         - src/scaffolding
-      name: core_common_test_scaffolding
+
     - path: lib
       include:
         - src/core
       docs: Common libraries for core_platform
       exports:
         - package: package:glados/glados.dart
-#          show:
-#            - Any
-#            - ExploreConfig
-#            - Glados
-#            - Glados2
-#            - Glados3
-#            - Generator
-#            - AnyUtils
-#            - BigIntAnys
-#            - BoolAny
-#            - CombinableAny
-#            - DateTimeAnys
-#            - DoubleAnys
-#            - DurationAnys
-#            - GeneratorUtils
-#            - IntAnys
-#            - ListAnys
-#            - MapAnys
-#            - NullAny
-#            - NumAnys
-#            - RandomUtils
-#            - SetAyns
-#            - StringAnys
-#            - any
-#        - package: package:test/expect.dart
+          show:
+            - Any
+            - ExploreConfig
+            - Glados
+            - Glados2
+            - Glados3
+            - Generator
+            - AnyUtils
+            - BigIntAnys
+            - BoolAny
+            - CombinableAny
+            - DateTimeAnys
+            - DoubleAnys
+            - DurationAnys
+            - GeneratorUtils
+            - IntAnys
+            - ListAnys
+            - MapAnys
+            - NullAny
+            - NumAnys
+            - RandomUtils
+            - SetAyns
+            - StringAnys
+            - any
+        - package: package:test/expect.dart

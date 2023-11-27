@@ -2,6 +2,8 @@
 
 library core_application;
 
+export 'package:core_journal/core_journal.dart';
+
 export 'src/application/core_application.dart';
 export 'src/application/core_application_factory.dart';
 export 'src/application/core_application_provider.dart';

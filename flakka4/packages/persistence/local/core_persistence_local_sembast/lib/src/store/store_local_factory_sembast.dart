@@ -10,11 +10,19 @@ class StoreLocalFactorySembast
 
   @override
   StoreLocalSembast create({
-    required ({StorePath path, PersistenceKey key, Database database}) param,
+    required ({
+      StorePath path,
+      PersistenceKey key,
+      Database database,
+      PersistenceId persistenceId,
+      SessionId sessionId,
+    }) param,
   }) =>
       StoreLocalSembast(
         path: param.path,
         key: param.key,
         database: param.database,
+        persistenceId: param.persistenceId,
+        sessionId: param.sessionId,
       );
 }

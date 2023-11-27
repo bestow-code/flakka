@@ -20,25 +20,25 @@ mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
   ({DateTime createdAt, Ref ref}) get refDateTime =>
       throw _privateConstructorUsedError;
   Request<State, Event> get request => throw _privateConstructorUsedError;
-  ({State state, View view}) get result => throw _privateConstructorUsedError;
+  StateView<State, View> get result => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(({DateTime createdAt, Ref ref}) refDateTime,
-            Request<State, Event> request, ({State state, View view}) result)
+            Request<State, Event> request, StateView<State, View> result)
         request,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(({DateTime createdAt, Ref ref}) refDateTime,
-            Request<State, Event> request, ({State state, View view}) result)?
+            Request<State, Event> request, StateView<State, View> result)?
         request,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(({DateTime createdAt, Ref ref}) refDateTime,
-            Request<State, Event> request, ({State state, View view}) result)?
+            Request<State, Event> request, StateView<State, View> result)?
         request,
     required TResult orElse(),
   }) =>
@@ -82,7 +82,9 @@ abstract class $ApplicationEffectCopyWith<Event extends CoreEvent,
   $Res call(
       {({DateTime createdAt, Ref ref}) refDateTime,
       Request<State, Event> request,
-      ({State state, View view}) result});
+      StateView<State, View> result});
+
+  $StateViewCopyWith<State, View, $Res> get result;
 }
 
 /// @nodoc
@@ -119,8 +121,16 @@ class _$ApplicationEffectCopyWithImpl<
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewCopyWith<State, View, $Res> get result {
+    return $StateViewCopyWith<State, View, $Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
+    });
   }
 }
 
@@ -140,7 +150,10 @@ abstract class _$$ApplicationEffectRequestImplCopyWith<
   $Res call(
       {({DateTime createdAt, Ref ref}) refDateTime,
       Request<State, Event> request,
-      ({State state, View view}) result});
+      StateView<State, View> result});
+
+  @override
+  $StateViewCopyWith<State, View, $Res> get result;
 }
 
 /// @nodoc
@@ -174,7 +187,7 @@ class __$$ApplicationEffectRequestImplCopyWithImpl<Event extends CoreEvent,
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as ({State state, View view}),
+              as StateView<State, View>,
     ));
   }
 }
@@ -192,7 +205,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @override
   final Request<State, Event> request;
   @override
-  final ({State state, View view}) result;
+  final StateView<State, View> result;
 
   @override
   String toString() {
@@ -228,7 +241,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(({DateTime createdAt, Ref ref}) refDateTime,
-            Request<State, Event> request, ({State state, View view}) result)
+            Request<State, Event> request, StateView<State, View> result)
         request,
   }) {
     return request(refDateTime, this.request, result);
@@ -238,7 +251,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(({DateTime createdAt, Ref ref}) refDateTime,
-            Request<State, Event> request, ({State state, View view}) result)?
+            Request<State, Event> request, StateView<State, View> result)?
         request,
   }) {
     return request?.call(refDateTime, this.request, result);
@@ -248,7 +261,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(({DateTime createdAt, Ref ref}) refDateTime,
-            Request<State, Event> request, ({State state, View view}) result)?
+            Request<State, Event> request, StateView<State, View> result)?
         request,
     required TResult orElse(),
   }) {
@@ -298,7 +311,7 @@ abstract class ApplicationEffectRequest<
   factory ApplicationEffectRequest(
           {required final ({DateTime createdAt, Ref ref}) refDateTime,
           required final Request<State, Event> request,
-          required final ({State state, View view}) result}) =
+          required final StateView<State, View> result}) =
       _$ApplicationEffectRequestImpl<Event, State, View>;
 
   @override
@@ -306,7 +319,7 @@ abstract class ApplicationEffectRequest<
   @override
   Request<State, Event> get request;
   @override
-  ({State state, View view}) get result;
+  StateView<State, View> get result;
   @override
   @JsonKey(ignore: true)
   _$$ApplicationEffectRequestImplCopyWith<Event, State, View,

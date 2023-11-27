@@ -1,5 +1,5 @@
+import 'package:core_common_test/core_common_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 
 void main() {
   Any.setDefault(any.always(_SampleAProvider()));
@@ -40,7 +40,8 @@ class _SampleA implements CorePersistent {
   }
 }
 
-class _SampleAProvider implements CorePersistentProvider<CorePersistentProviderContext,_SampleA> {
+class _SampleAProvider
+    implements CorePersistentProvider<CorePersistentProviderContext, _SampleA> {
   @override
   Future<void> delete({
     required CorePersistentProviderContext context,

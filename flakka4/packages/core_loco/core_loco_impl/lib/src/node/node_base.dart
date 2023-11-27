@@ -25,7 +25,8 @@ abstract class NodeBase<
   @override
   Future<void> connect() async {
     void handleResult(
-        NodeEventResult<EffectOut, SnapshotOut, NodeState> result) {
+      NodeEventResult<EffectOut, SnapshotOut, NodeState> result,
+    ) {
       if (result.effect != null) {
         child.sink.add(result.effect!);
       }
@@ -36,22 +37,31 @@ abstract class NodeBase<
     }
 
     child.stream.listen(
-      (event) => handleResult(_state.hasValue
-          ? _onSnapshot(
-              _state.value,
-              event,
-            )
-          : _initialStateHandler(event)),
+      (event) => handleResult(
+        _state.hasValue
+            ? _onSnapshot(
+                _state.value,
+                event,
+              )
+            : _initialStateHandler(event),
+      ),
     );
-    await child.connect();
-    await output.first;
+    child.connect();
     input.listen(
-      (event) => handleResult(_onInput(
-        _state.value,
-        event,
-      )),
+      (event) => handleResult(
+        _onInput(
+          _state.hasValue ? _state.value : _stateFactory(),
+          event,
+        ),
+      ),
     );
   }
+
+  late final NodeState Function() _stateFactory;
+
+  //ignore: use_setters_to_change_properties
+  void registerStateFactory(NodeState Function() factory) =>
+      _stateFactory = factory;
 
   //ignore: use_setters_to_change_properties
   void registerInitialStateHandler(
@@ -101,8 +111,12 @@ typedef NodeInitialStateHandler<SnapshotIn, EffectOut, SnapshotOut, NodeState>
 
 typedef NodeInputHandler<EffectIn, EffectOut, SnapshotOut, NodeState>
     = NodeEventResult<EffectOut, SnapshotOut, NodeState> Function(
-        NodeState, EffectIn);
+  NodeState,
+  EffectIn,
+);
 
 typedef NodeSnapshotHandler<SnapshotIn, EffectOut, SnapshotOut, NodeState>
     = NodeEventResult<EffectOut, SnapshotOut, NodeState> Function(
-        NodeState, SnapshotIn);
+  NodeState,
+  SnapshotIn,
+);

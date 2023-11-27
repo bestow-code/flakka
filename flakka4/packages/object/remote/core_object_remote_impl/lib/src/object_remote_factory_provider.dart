@@ -1,17 +1,18 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object_remote/core_object_remote.dart';
+import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 
 import '../core_object_remote_impl.dart';
 
-class ObjectRemoteProvider extends NodeProviderBase<
-    ObjectRemote,
+class ObjectRemoteProvider extends PersistentNodeProvider<CoreProviderContext,
     PersistenceRemoteEffect,
     PersistenceRemoteUpdate,
+    CorePersistenceRemote,
     ObjectRemoteEffect,
-    ObjectRemoteUpdate> implements CoreObjectRemoteProvider<ObjectRemote> {
+    ObjectRemoteUpdate,CoreObjectRemote> implements CoreObjectRemoteProvider<ObjectRemote> {
   ObjectRemoteProvider(
       {required PersistenceRemoteProvider childFactoryProvider})
       : _childFactoryProvider = childFactoryProvider,

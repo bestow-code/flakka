@@ -1,43 +1,19 @@
+import 'dart:async';
+
 import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
-import 'package:core_common_test/core_common_test_scaffolding.dart';
+import 'package:core_common_test/scaffolding.dart';
 
 void main() {
-  Generator<List<_SampleAProviderContext>> providerContext(int instanceCount) =>
-      any.always(List.generate(instanceCount, _SampleAProviderContext.new));
-  Any.setDefault(any.always(_SampleAProvider()));
-  Any.setDefault(any.always(_SampleAKey()));
+  final initialize = any.always((List<_SampleA> subjects) => subjects);
 
-  Generator<TestOperations<int>> operations(
-          int instanceCount, int operationCount) =>
-      any
-          .listWithLength(
-              operationCount,
-              any.intInRange(0, instanceCount - 1).bind((instanceIndex) =>
-                  any.int.map(
-                      (value) => InstanceOperation(instanceIndex, value))))
-          .map((operations) => TestOperations(operations));
-
-  Generator<
-      CoreTestContext<_SampleAProvider, _SampleAProviderContext, _SampleAKey,
-          _SampleA>> testContext(int instanceCount) => any.combine3(
-      any.always(_SampleAProvider()),
-      providerContext(instanceCount),
-      any.always(_SampleAKey()),
-      CoreTestContext<_SampleAProvider, _SampleAProviderContext, _SampleAKey,
-              _SampleA>
-          .new);
-
-  Future<List<_SampleA>> initialize(List<_SampleA> subjects,
-          CoreTestOperationsData<int> operationsData) async =>
-      subjects;
-
-  suite(testContext)((suite) {
-    suite.tester<CoreTestOperationsData<int>, int>(
-      operations,
+  suite('SampleA', _testContext)(($) {
+    tester(
+      $,
+      _operations,
       initialize,
-    )((tester) {
-      tester.test('hello world', (context, subjects, operationsData) {
+    )(($) {
+      test('hello world', $, (context, subjects, operationsData) {
         print(context);
         print(subjects);
         print(operationsData);
@@ -46,9 +22,37 @@ void main() {
   });
 }
 
-class _SampleA {
-  const _SampleA();
-}
+// Test Context
+Generator<
+    CoreTestContext<_SampleAProvider, _SampleAProviderContext, _SampleAKey,
+        _SampleA>> _testContext(int instanceCount) => any.testContext(
+      any.always(_SampleAProvider()),
+      _providerContext(instanceCount),
+      any.always(_SampleAKey()),
+    );
+
+// ProviderContext
+Generator<List<_SampleAProviderContext>> _providerContext(int instanceCount) =>
+    any.always(List.generate(instanceCount, _SampleAProviderContext.new));
+
+// Operations
+Generator<TestOperationsData<int>> _operations(
+  int instanceCount,
+  int operationCount,
+) =>
+    any
+        .listWithLength(
+          operationCount,
+          (instanceCount == 0
+                  ? any.always(0)
+                  : any.intInRange(0, instanceCount))
+              .bind(
+            (instanceIndex) => any.int.map(
+              (value) => InstanceOperation(instanceIndex, value),
+            ),
+          ),
+        )
+        .map(TestOperationsData.new);
 
 class _SampleAProvider
     implements CoreProvider<_SampleAProviderContext, _SampleAKey, _SampleA> {
@@ -63,7 +67,7 @@ class _SampleAProvider
     required _SampleAProviderContext context,
     required CoreKey<_SampleA> key,
   }) async =>
-      _SampleA();
+      const _SampleA();
 }
 
 class _SampleAProviderContext extends ProviderContext {
@@ -73,3 +77,7 @@ class _SampleAProviderContext extends ProviderContext {
 }
 
 class _SampleAKey extends CoreKey<_SampleA> {}
+
+class _SampleA {
+  const _SampleA();
+}

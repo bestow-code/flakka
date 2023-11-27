@@ -6,6 +6,7 @@ import 'package:sembast/sembast.dart';
 class StoreLocalTransactionSembast<T> implements CoreStoreLocalTransaction<T> {
   StoreLocalTransactionSembast({
     required Database database,
+    required this.persistenceId,
     required this.sessionId,
   }) : _database = database;
 
@@ -18,11 +19,14 @@ class StoreLocalTransactionSembast<T> implements CoreStoreLocalTransaction<T> {
       _database.transaction(
         (client) async => transaction(
           StoreLocalTransactionHandlerSembast(
+            persistenceId: persistenceId,
             sessionId: sessionId,
             transaction: client,
           ),
         ),
       );
+  @override
+  final PersistenceId persistenceId;
 
   @override
   final SessionId sessionId;

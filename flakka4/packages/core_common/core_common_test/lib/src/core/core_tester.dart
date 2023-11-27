@@ -2,20 +2,9 @@ import 'dart:async';
 
 import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 abstract class CoreTesterBase<
-    TestContext extends CoreTestContext<Provider, ProviderContext, Key,
-        Subject>,
-    Provider extends CoreProvider<ProviderContext, Key, Subject>,
-    ProviderContext extends CoreProviderContext,
-    Key,
-    Subject> {
-  CoreTesterBase({required this.context});
-
-  final Generator<TestContext> Function(int instanceCount) context;
-}
-
-class CoreTester<
     TestContext extends CoreTestContext<Provider, ProviderContext, Key,
         Subject>,
     Provider extends CoreProvider<ProviderContext, Key, Subject>,
@@ -24,117 +13,78 @@ class CoreTester<
     Subject,
     TestOperationsData extends CoreTestOperationsData<Operation>,
     Operation> {
-  CoreTester(
-      {required Shrinkable<(TestContext, TestOperationsData)> Function(
-                  Random, int)
-              Function(int)
-          contextOperationsData,
-      required Future<List<Subject>> Function(List<Subject>, TestOperationsData)
-          initialize,
-      int instanceCountMin = 2,
-      int? instanceCountMax})
-      : _instanceCountMax = instanceCountMax,
-        _instanceCountMin = instanceCountMin,
-        _initialize = initialize,
-        _contextOperationsData = contextOperationsData;
+  CoreTesterBase({
+    required this.context,
+    required this.operationsData,
+    required this.initialize,
+    this.instanceCountMin = 0,
+    this.instanceCountMax,
+    this.operationCountMin = 0,
+    this.operationCountMax,
+  });
 
-  final Generator<(TestContext, TestOperationsData)> Function(int instanceCount)
-      _contextOperationsData;
+  @protected
+  final Generator<TestContext> Function(
+    int instanceCount,
+  ) context;
 
-  final Future<List<Subject>> Function(List<Subject>, TestOperationsData)
-      _initialize;
+  @protected
+  final Generator<TestOperationsData> Function(
+    int instanceCount,
+    int operationCount,
+  ) operationsData;
 
-  final int _instanceCountMin;
+  final Generator<FutureOr<List<Subject>> Function(List<Subject> subject)>
+      initialize;
 
-  final int? _instanceCountMax;
+  @protected
+  final int instanceCountMin;
 
-  void test(
-    String description,
-    FutureOr<void> Function(
-      TestContext context,
-      List<Subject> subjects,
-      TestOperationsData operationsData,
-    ) body,
-  ) =>
-      Glados(any
-              .intInRange(_instanceCountMin, _instanceCountMax)
-              .bind(_contextOperationsData))
-          .test(
-        description,
-        (contextOperationsData) {
-          final (context, operationsData) = contextOperationsData;
-          return Future.wait(context.providerContext.map(
-                  (e) => context.provider.get(context: e, key: context.key)))
-              .then((subjects) => _initialize(subjects, operationsData))
-              .then((subjects) => body(context, subjects, operationsData));
-        },
-      );
+  @protected
+  final int? instanceCountMax;
+
+  @protected
+  final int operationCountMin;
+
+  @protected
+  final int? operationCountMax;
 }
 
-// class CoreTestGroup<
-//     TestData extends CoreTestData<Provider, ProviderContext, Key, Subject, T>,
-//     Provider extends CoreProvider<ProviderContext, Key, Subject>,
-//     ProviderContext extends CoreProviderContext,
-//     Key,
-//     Subject,
-//     T> {
-//   CoreTestGroup(
-//     Generator<List<T>> generator, {
-//     Generator<Provider>? provider,
-//     Generator<ProviderContext>? providerContext,
-//     Generator<Key>? key,
-//     Generator<TestData>? testData,
-//   })  : _generator = generator,
-//         _provider = provider ?? Any.defaultFor(),
-//         _providerContext = providerContext ?? Any.defaultFor(),
-//         _key = key ?? Any.defaultFor(),
-//         _testData = testData ?? Any.defaultFor();
-//   final Generator<List<T>> _generator;
-//
-//   final Generator<Provider> _provider;
-//   final Generator<ProviderContext> _providerContext;
-//   final Generator<Key> _key;
-//
-//   final Generator<TestData> _testData;
-//
-//   @protected
-//   Generator<TestData> get testData => _testData;
-//
-//   @protected
-//   List<Binding<TestData>> get bindings {
-//     return [
-//       (testData) => _provider.map((value) => testData..provider = value),
-//       (testData) =>
-//           _providerContext.map((value) => testData..providerContext = value),
-//       (testData) => _key.map((value) => testData..key = value),
-//       (testData) => _generator.map((value) => testData..data = value),
-//     ];
-//   }
-//
-//   @protected
-//   Glados<TestData> get tester => Glados(any.combine5(
-//         testData,
-//         _provider,
-//         _providerContext,
-//         _key,
-//         _generator,
-//         (testData, provider, providerContext, key, data) => testData
-//           ..provider = provider
-//           ..providerContext = providerContext
-//           ..key = key
-//           ..data = data,
-//       ));
-//
-//   void test(
-//     String description,
-//     FutureOr<void> Function(
-//       TestData,
-//     ) body,
-//   ) =>
-//       tester.test(
-//         description,
-//         (context) async => body(context
-//           ..subject = await context.provider
-//               .get(context: context.providerContext, key: context.key)),
-//       );
-// }
+class CoreTester<
+        TestContext extends CoreTestContext<Provider, ProviderContext, Key,
+            Subject>,
+        Provider extends CoreProvider<ProviderContext, Key, Subject>,
+        ProviderContext extends CoreProviderContext,
+        Key,
+        Subject,
+        TestOperationsData extends CoreTestOperationsData<Operation>,
+        Operation>
+    extends CoreTesterBase<TestContext, Provider, ProviderContext, Key, Subject,
+        TestOperationsData, Operation> {
+  CoreTester({
+    required super.context,
+    required super.operationsData,
+    required super.initialize,
+    super.instanceCountMin,
+    super.instanceCountMax,
+    super.operationCountMin,
+    super.operationCountMax,
+  });
+
+
+  Glados2<(TestContext, TestOperationsData),
+          FutureOr<List<Subject>> Function(List<Subject> subject)>
+      get tester => Glados2(
+            any.intInRange(instanceCountMin, instanceCountMax).bind(
+                  (instanceCount) =>
+                      any.intInRange(operationCountMin, operationCountMax).bind(
+                            (operationCount) => any.combine2(
+                              context(instanceCount),
+                              operationsData(instanceCount, operationCount),
+                              (a, b) => (a, b),
+                            ),
+                          ),
+                ),
+            initialize,
+          );
+}
