@@ -5,6 +5,9 @@ part 'persistence_remote_effect.freezed.dart';
 
 @freezed
 sealed class PersistenceRemoteEffect with _$PersistenceRemoteEffect {
-  factory PersistenceRemoteEffect.persist(PersistenceRecord data) =
-      PersistenceRemoteEffectPersist;
+  factory PersistenceRemoteEffect.persistOne(PersistenceRecord data) =
+      PersistenceRemoteEffectPersistOne;
+
+  factory PersistenceRemoteEffect.persistAll(Iterable<PersistenceRecord> data) =
+      PersistenceRemoteEffectPersistAll;
 }

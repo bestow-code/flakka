@@ -1,26 +1,29 @@
-import 'package:core_common/core_common.dart';
-import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object/core_object.dart';
 import 'package:core_object_impl/core_object_impl.dart';
 import 'package:core_object_local/core_object_local.dart';
 import 'package:core_object_local_impl/core_object_local_impl.dart';
 import 'package:core_object_remote/core_object_remote.dart';
 import 'package:core_object_remote_impl/core_object_remote_impl.dart';
+import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 
 class ObjectProvider extends BroadcastMergeProviderBase<
-    Object,
+    CoreProviderContext,
+    PersistenceKey,
     ObjectLocalEffect,
     ObjectLocalSnapshot,
+    CoreObjectLocal,
     ObjectRemoteEffect,
-    ObjectRemoteUpdate,
+    ObjectRemoteSnapshot,
+    CoreObjectRemote,
     ObjectEffect,
-    ObjectUpdate> implements CoreObjectProvider<Object> {
+    ObjectSnapshot,
+    CoreObject> implements CoreObjectProvider<Object> {
   ObjectProvider({
     required ObjectLocalProvider child1Provider,
     required ObjectRemoteProvider child2Provider,
   })  : _child1Provider = child1Provider,
         _child2Provider = child2Provider,
-        super(child1Provider: child1Provider, child2Provider: child2Provider);
+        super();
 
   @override
   ObjectLocalProvider get child1Provider => _child1Provider;
@@ -31,18 +34,20 @@ class ObjectProvider extends BroadcastMergeProviderBase<
   final ObjectRemoteProvider _child2Provider;
 
   @override
-  Future<void> dispose({
-    required ProviderContextBase context,
-    required covariant ObjectKey key,
-  }) {
+  Future<void> delete(
+      {required CoreProviderContext context, required PersistenceKey key}) {
+    // TODO: implement delete
     throw UnimplementedError();
   }
 
   @override
-  Future<Object> get(
-      {required ProviderContextBase context, required covariant ObjectKey key}) {
-    throw UnimplementedError();
-  }
+  Future<CoreObject> get(
+          {required CoreProviderContext context,
+          required PersistenceKey key}) async =>
+      ObjectFactory().create(param: (
+        objectLocal: await _child1Provider.get(context: context, key: key),
+        objectRemote: await _child2Provider.get(context: context, key: key)
+      ));
 
 // @override
 // ObjectFactory build(covariant PersistenceFactoryContext param) =>

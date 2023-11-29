@@ -4,7 +4,7 @@ import 'package:sembast/sembast.dart';
 
 class StoreLocalTransactionHandlerSembast
     implements CoreStoreLocalTransactionHandler {
-  StoreLocalTransactionHandlerSembast( {
+  StoreLocalTransactionHandlerSembast({
     required this.persistenceId,
     required this.sessionId,
     required Transaction transaction,
@@ -50,7 +50,6 @@ class StoreLocalTransactionHandlerSembast
   @override
   Future<void> addHead(HeadRecord data) async {
     final current = await head;
-    print(current);
     if (current.sequenceNumber + 1 != data.sequenceNumber) {
       throw ArgumentError(
         'Invalid sequence number: ${data.sequenceNumber} (current: ${current.sequenceNumber}',

@@ -1,90 +1,73 @@
 import 'package:core_object_remote/core_object_remote.dart';
 import 'package:core_object_remote_impl/core_object_remote_impl.dart';
-import 'package:core_object_remote_test/core_object_remote_test.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
-import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_remote_impl/core_persistence_remote_impl.dart';
 import 'package:core_persistence_remote_sembast/core_persistence_remote_sembast.dart';
 import 'package:glados/glados.dart';
 
-Future<ObjectRemote> getSubject(
-  String objectId,
-  ObjectRemoteProvider Function() persistenceProviderRemoteFactory,
-) async {
-  final provider = persistenceProviderRemoteFactory();
-  PersistenceFactoryContextImpl context;
-  context = PersistenceFactoryContextImpl()
-    ..persistenceId = PersistenceId('instance-1');
-  // final factory = provider.build(context);
-  PersistenceFactoryParamImpl param;
-  param = PersistenceFactoryParamImpl()
-    ..parseVersion('0')
-    ..key = ObjectKey(
-      'o/$objectId',
-      base: StorePath('loco_data/test', base: RootPath('users/1')),
-    );
-  await provider.delete(param);
-
-  final persistenceRemote = await provider.get(param, null);
-  return persistenceRemote;
-}
-
 void main() {
-  Glados(
-    any.refValue,
-    // any.persistenceRemoteEffectList,
-  ).test('produce expected output for valid call sequence', (
-    refValue,
-    // calls,
-  ) async {
-    final subject = await getSubject(
-        refValue,
-        () => ObjectRemoteProvider(
-              childFactoryProvider: PersistenceRemoteProvider(
-                adapterFactoryProvider:
-                    PersistenceRemoteAdapterFactoryProviderSembast.inMemory(),
-              ),
-            ));
-    await subject.provision(
-      PersistenceProvisioning.resume(
-        ref: refValue,
-        sequenceNumber: 0,
-      ),
-    );
-    subject.connect();
+  group('append', () {
+    late ProviderContext providerContext;
+    final key = PersistenceKey('1');
+    setUp(() {
+      providerContext = ProviderContext()
+        ..persistenceId = PersistenceId('1')
+        ..sessionId = SessionId('1');
+    });
+    test('emits', () async {
+      final objectRemote = await ObjectRemoteProvider(
+        childProvider: PersistenceRemoteProvider(
+          adapterProvider: PersistenceRemoteAdapterProvider(
+            storeProvider: StoreRemoteProviderSembast.inMemory,
+          ),
+        ),
+      ).get(context: providerContext, key: key);
+      await objectRemote.initialize(ref: '1', createdAt: 0);
 
-    await subject.close();
-    // await Future.wait(
-    //   [
-    //     subject.done,
-    //   ],
-    // );
+      objectRemote.connect();
+      const ref = '2';
+      objectRemote.sink.add(
+        ObjectRemoteEffect.add(
+          ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
+        ),
+      );
+      objectRemote.sink.add(
+        ObjectRemoteEffect.add(
+          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
+        ),
+      );
+      objectRemote.sink.add(
+        ObjectRemoteEffect.add(
+          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
+        ),
+      );
+
+      print(await objectRemote.stream.take(3).toList());
+      print(await objectRemote.stream.take(3).toList());
+    });
   });
-}
-
-Future<void> apply(
-  CoreObjectRemote subject,
-  Iterable<ObjectRemoteEffect> calls,
-// int startSequenceNumber,
-) async {
-  const startSequenceNumber = 0;
-  var sequenceNumber = startSequenceNumber;
-  throw UnimplementedError();
-  // final sequencedCalls = calls
-  //     .map(
-  //       (e) =>
-  //       e.map(
-  //         append: (append) =>
-  //             append.copyWith(
-  //               sequenceNumber: sequenceNumber = sequenceNumber + 1,
-  //             ),
-  //         forward: (forward) =>
-  //             forward.copyWith(
-  //               sequenceNumber: sequenceNumber = sequenceNumber + 1,
-  //             ),
-  //         import: (import) => import,
-  //       ),
-  // )
-  //     .toList();
-  // return Stream.fromIterable(sequencedCalls).pipe(subject.input);
+  // TestContextPersistentNode<CoreObjectRemoteProvider, CoreObjectRemote>(ObjectRemoteProvider.new, )
+  // TestGroupPersistentRemote<CorePersistentProviderContext,
+  //             CoreObjectRemoteProvider, CoreObjectRemote>(
+  //         generator: any.testContextPersistent(),
+  //         provider: any.null_.map(
+  //           (_) => ObjectRemoteProvider(
+  //             childProvider: PersistenceRemoteProvider(
+  //                 adapterProvider: PersistenceRemoteAdapterProvider(
+  //                     storeProvider: StoreRemoteProviderSembast.inMemory)),
+  //           ),
+  //         ))
+  //     .group(any.persistenceRemoteEffectHeadUpdate)
+  //     .test('description', (context, calls) async {
+  //   final persistenceRemote = await context.provider
+  //       .get(context: context.providerContext, key: context.key);
+  //   await persistenceRemote.provision(context.provisioning);
+  //   // final seen = {context.provisioning.ifNew.ref};
+  //
+  //   await Stream<ObjectRemoteEffect>.fromIterable([])
+  //       .pipe(persistenceRemote.sink);
+  //   // expectLater(Stream<ObjectRemoteEffect>.fromIterable([]).pipe(persistenceRemote.input),completes).ignore();
+  //   expectLater(persistenceRemote.stream.toList(), completes).ignore();
+  //   await persistenceRemote.close();
+  //   await persistenceRemote.done;
+  // });
 }

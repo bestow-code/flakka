@@ -20,9 +20,9 @@ ProviderContext extends CoreProviderContext,
         Resource2,
         In,
         Out>> implements CoreResourceFactory<In, Out, BroadcastMerge> {
-  CoreResourceProvider<ProviderContext, Key, Effect1, Update1, Resource1>
-      get child1Provider;
-
-  CoreResourceProvider<ProviderContext, Key, Effect2, Update2, Resource2>
-      get child2Provider;
+  // CoreResourceProvider<ProviderContext, Key, Effect1, Update1, Resource1>
+  //     get child1Provider;
+  //
+  // CoreResourceProvider<ProviderContext, Key, Effect2, Update2, Resource2>
+  //     get child2Provider;
 }

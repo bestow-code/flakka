@@ -1,27 +1,29 @@
-import 'package:core_common/core_common.dart';
+import 'package:core_object_base/core_object_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_remote_update.freezed.dart';
 
 @freezed
-class ObjectRemoteUpdate with _$ObjectRemoteUpdate {
-  factory ObjectRemoteUpdate.head({
-    required ({
-      String ref,
-      int sequenceNumber,
-    })? data,
-  }) = ObjectRemoteUpdateHead;
+class ObjectRemoteSnapshot with _$ObjectRemoteSnapshot {
+  factory ObjectRemoteSnapshot.head({
+    required HeadRecord data,
+  }) = ObjectRemoteSnapshotHead;
 
-  factory ObjectRemoteUpdate.entry({
-    required Map<String, ({Iterable<String> refs, int createdAt})> data,
-  }) = ObjectRemoteUpdateEntry;
+  factory ObjectRemoteSnapshot.entry({
+    required Map<String, EntryRecord> data,
+  }) = ObjectRemoteSnapshotEntry;
 
-  factory ObjectRemoteUpdate.event({
-    required Map<String, JsonMap> data,
-  }) = ObjectRemoteUpdateEvent;
+  factory ObjectRemoteSnapshot.event({
+    required Map<String, EventRecord> data,
+  }) = ObjectRemoteSnapshotEvent;
 }
 
 @freezed
-class ObjectRemoteProvisionState with _$ObjectRemoteProvisionState {
-  factory ObjectRemoteProvisionState() = _ObjectRemoteProvisionState;
+class EntryObject with _$EntryObject {
+  factory EntryObject.event(
+    EntryRecordEvent entry,
+    EventRecord event,
+  ) = EntryObjectEvent;
+
+  factory EntryObject.initial(EntryRecordInitial entry) = EntryObjectInitial;
 }

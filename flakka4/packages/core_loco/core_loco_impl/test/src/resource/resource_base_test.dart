@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common_test/core_common_test.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_loco_impl/core_loco_impl.dart';
 import 'package:core_loco_test/core_loco_test.dart';

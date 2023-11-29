@@ -15,36 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectUpdate {
+mixin _$ObjectSnapshot {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ObjectHead value) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(Map<String, EntryRecord> entry) entry,
+    required TResult Function(Map<String, EventRecord> event) event,
     required TResult Function(Map<String, StateViewObject> data) stateView,
     required TResult Function(String ref) main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ObjectHead value)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(Map<String, EntryRecord> entry)? entry,
+    TResult? Function(Map<String, EventRecord> event)? event,
     TResult? Function(Map<String, StateViewObject> data)? stateView,
     TResult? Function(String ref)? main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ObjectHead value)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(Map<String, EntryRecord> entry)? entry,
+    TResult Function(Map<String, EventRecord> event)? event,
     TResult Function(Map<String, StateViewObject> data)? stateView,
     TResult Function(String ref)? main,
     required TResult orElse(),
@@ -52,45 +46,45 @@ mixin _$ObjectUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateHead value) head,
-    required TResult Function(ObjectUpdateEntry value) entry,
-    required TResult Function(ObjectUpdateEvent value) event,
-    required TResult Function(ObjectUpdateStateView value) stateView,
-    required TResult Function(ObjectUpdateMain value) main,
+    required TResult Function(ObjectSnapshotHead value) head,
+    required TResult Function(ObjectSnapshotEntry value) entry,
+    required TResult Function(ObjectSnapshotEvent value) event,
+    required TResult Function(ObjectSnapshotStateView value) stateView,
+    required TResult Function(ObjectSnapshotMain value) main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateHead value)? head,
-    TResult? Function(ObjectUpdateEntry value)? entry,
-    TResult? Function(ObjectUpdateEvent value)? event,
-    TResult? Function(ObjectUpdateStateView value)? stateView,
-    TResult? Function(ObjectUpdateMain value)? main,
+    TResult? Function(ObjectSnapshotHead value)? head,
+    TResult? Function(ObjectSnapshotEntry value)? entry,
+    TResult? Function(ObjectSnapshotEvent value)? event,
+    TResult? Function(ObjectSnapshotStateView value)? stateView,
+    TResult? Function(ObjectSnapshotMain value)? main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateHead value)? head,
-    TResult Function(ObjectUpdateEntry value)? entry,
-    TResult Function(ObjectUpdateEvent value)? event,
-    TResult Function(ObjectUpdateStateView value)? stateView,
-    TResult Function(ObjectUpdateMain value)? main,
+    TResult Function(ObjectSnapshotHead value)? head,
+    TResult Function(ObjectSnapshotEntry value)? entry,
+    TResult Function(ObjectSnapshotEvent value)? event,
+    TResult Function(ObjectSnapshotStateView value)? stateView,
+    TResult Function(ObjectSnapshotMain value)? main,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectUpdateCopyWith<$Res> {
-  factory $ObjectUpdateCopyWith(
-          ObjectUpdate value, $Res Function(ObjectUpdate) then) =
-      _$ObjectUpdateCopyWithImpl<$Res, ObjectUpdate>;
+abstract class $ObjectSnapshotCopyWith<$Res> {
+  factory $ObjectSnapshotCopyWith(
+          ObjectSnapshot value, $Res Function(ObjectSnapshot) then) =
+      _$ObjectSnapshotCopyWithImpl<$Res, ObjectSnapshot>;
 }
 
 /// @nodoc
-class _$ObjectUpdateCopyWithImpl<$Res, $Val extends ObjectUpdate>
-    implements $ObjectUpdateCopyWith<$Res> {
-  _$ObjectUpdateCopyWithImpl(this._value, this._then);
+class _$ObjectSnapshotCopyWithImpl<$Res, $Val extends ObjectSnapshot>
+    implements $ObjectSnapshotCopyWith<$Res> {
+  _$ObjectSnapshotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -99,119 +93,113 @@ class _$ObjectUpdateCopyWithImpl<$Res, $Val extends ObjectUpdate>
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateHeadImplCopyWith<$Res> {
-  factory _$$ObjectUpdateHeadImplCopyWith(_$ObjectUpdateHeadImpl value,
-          $Res Function(_$ObjectUpdateHeadImpl) then) =
-      __$$ObjectUpdateHeadImplCopyWithImpl<$Res>;
+abstract class _$$ObjectSnapshotHeadImplCopyWith<$Res> {
+  factory _$$ObjectSnapshotHeadImplCopyWith(_$ObjectSnapshotHeadImpl value,
+          $Res Function(_$ObjectSnapshotHeadImpl) then) =
+      __$$ObjectSnapshotHeadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ObjectHead value});
+  $Res call({HeadRecord head});
 
-  $ObjectHeadCopyWith<$Res> get value;
+  $HeadRecordCopyWith<$Res> get head;
 }
 
 /// @nodoc
-class __$$ObjectUpdateHeadImplCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateHeadImpl>
-    implements _$$ObjectUpdateHeadImplCopyWith<$Res> {
-  __$$ObjectUpdateHeadImplCopyWithImpl(_$ObjectUpdateHeadImpl _value,
-      $Res Function(_$ObjectUpdateHeadImpl) _then)
+class __$$ObjectSnapshotHeadImplCopyWithImpl<$Res>
+    extends _$ObjectSnapshotCopyWithImpl<$Res, _$ObjectSnapshotHeadImpl>
+    implements _$$ObjectSnapshotHeadImplCopyWith<$Res> {
+  __$$ObjectSnapshotHeadImplCopyWithImpl(_$ObjectSnapshotHeadImpl _value,
+      $Res Function(_$ObjectSnapshotHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? head = null,
   }) {
-    return _then(_$ObjectUpdateHeadImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as ObjectHead,
+    return _then(_$ObjectSnapshotHeadImpl(
+      null == head
+          ? _value.head
+          : head // ignore: cast_nullable_to_non_nullable
+              as HeadRecord,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ObjectHeadCopyWith<$Res> get value {
-    return $ObjectHeadCopyWith<$Res>(_value.value, (value) {
-      return _then(_value.copyWith(value: value));
+  $HeadRecordCopyWith<$Res> get head {
+    return $HeadRecordCopyWith<$Res>(_value.head, (value) {
+      return _then(_value.copyWith(head: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$ObjectUpdateHeadImpl implements ObjectUpdateHead {
-  _$ObjectUpdateHeadImpl({required this.value});
+class _$ObjectSnapshotHeadImpl implements ObjectSnapshotHead {
+  _$ObjectSnapshotHeadImpl(this.head);
 
   @override
-  final ObjectHead value;
+  final HeadRecord head;
 
   @override
   String toString() {
-    return 'ObjectUpdate.head(value: $value)';
+    return 'ObjectSnapshot.head(head: $head)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateHeadImpl &&
-            (identical(other.value, value) || other.value == value));
+            other is _$ObjectSnapshotHeadImpl &&
+            (identical(other.head, head) || other.head == head));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, head);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateHeadImplCopyWith<_$ObjectUpdateHeadImpl> get copyWith =>
-      __$$ObjectUpdateHeadImplCopyWithImpl<_$ObjectUpdateHeadImpl>(
+  _$$ObjectSnapshotHeadImplCopyWith<_$ObjectSnapshotHeadImpl> get copyWith =>
+      __$$ObjectSnapshotHeadImplCopyWithImpl<_$ObjectSnapshotHeadImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ObjectHead value) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(Map<String, EntryRecord> entry) entry,
+    required TResult Function(Map<String, EventRecord> event) event,
     required TResult Function(Map<String, StateViewObject> data) stateView,
     required TResult Function(String ref) main,
   }) {
-    return head(value);
+    return head(this.head);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ObjectHead value)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(Map<String, EntryRecord> entry)? entry,
+    TResult? Function(Map<String, EventRecord> event)? event,
     TResult? Function(Map<String, StateViewObject> data)? stateView,
     TResult? Function(String ref)? main,
   }) {
-    return head?.call(value);
+    return head?.call(this.head);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ObjectHead value)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(Map<String, EntryRecord> entry)? entry,
+    TResult Function(Map<String, EventRecord> event)? event,
     TResult Function(Map<String, StateViewObject> data)? stateView,
     TResult Function(String ref)? main,
     required TResult orElse(),
   }) {
     if (head != null) {
-      return head(value);
+      return head(this.head);
     }
     return orElse();
   }
@@ -219,11 +207,11 @@ class _$ObjectUpdateHeadImpl implements ObjectUpdateHead {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateHead value) head,
-    required TResult Function(ObjectUpdateEntry value) entry,
-    required TResult Function(ObjectUpdateEvent value) event,
-    required TResult Function(ObjectUpdateStateView value) stateView,
-    required TResult Function(ObjectUpdateMain value) main,
+    required TResult Function(ObjectSnapshotHead value) head,
+    required TResult Function(ObjectSnapshotEntry value) entry,
+    required TResult Function(ObjectSnapshotEvent value) event,
+    required TResult Function(ObjectSnapshotStateView value) stateView,
+    required TResult Function(ObjectSnapshotMain value) main,
   }) {
     return head(this);
   }
@@ -231,11 +219,11 @@ class _$ObjectUpdateHeadImpl implements ObjectUpdateHead {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateHead value)? head,
-    TResult? Function(ObjectUpdateEntry value)? entry,
-    TResult? Function(ObjectUpdateEvent value)? event,
-    TResult? Function(ObjectUpdateStateView value)? stateView,
-    TResult? Function(ObjectUpdateMain value)? main,
+    TResult? Function(ObjectSnapshotHead value)? head,
+    TResult? Function(ObjectSnapshotEntry value)? entry,
+    TResult? Function(ObjectSnapshotEvent value)? event,
+    TResult? Function(ObjectSnapshotStateView value)? stateView,
+    TResult? Function(ObjectSnapshotMain value)? main,
   }) {
     return head?.call(this);
   }
@@ -243,11 +231,11 @@ class _$ObjectUpdateHeadImpl implements ObjectUpdateHead {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateHead value)? head,
-    TResult Function(ObjectUpdateEntry value)? entry,
-    TResult Function(ObjectUpdateEvent value)? event,
-    TResult Function(ObjectUpdateStateView value)? stateView,
-    TResult Function(ObjectUpdateMain value)? main,
+    TResult Function(ObjectSnapshotHead value)? head,
+    TResult Function(ObjectSnapshotEntry value)? entry,
+    TResult Function(ObjectSnapshotEvent value)? event,
+    TResult Function(ObjectSnapshotStateView value)? stateView,
+    TResult Function(ObjectSnapshotMain value)? main,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -257,129 +245,120 @@ class _$ObjectUpdateHeadImpl implements ObjectUpdateHead {
   }
 }
 
-abstract class ObjectUpdateHead implements ObjectUpdate {
-  factory ObjectUpdateHead({required final ObjectHead value}) =
-      _$ObjectUpdateHeadImpl;
+abstract class ObjectSnapshotHead implements ObjectSnapshot {
+  factory ObjectSnapshotHead(final HeadRecord head) = _$ObjectSnapshotHeadImpl;
 
-  ObjectHead get value;
+  HeadRecord get head;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateHeadImplCopyWith<_$ObjectUpdateHeadImpl> get copyWith =>
+  _$$ObjectSnapshotHeadImplCopyWith<_$ObjectSnapshotHeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateEntryImplCopyWith<$Res> {
-  factory _$$ObjectUpdateEntryImplCopyWith(_$ObjectUpdateEntryImpl value,
-          $Res Function(_$ObjectUpdateEntryImpl) then) =
-      __$$ObjectUpdateEntryImplCopyWithImpl<$Res>;
+abstract class _$$ObjectSnapshotEntryImplCopyWith<$Res> {
+  factory _$$ObjectSnapshotEntryImplCopyWith(_$ObjectSnapshotEntryImpl value,
+          $Res Function(_$ObjectSnapshotEntryImpl) then) =
+      __$$ObjectSnapshotEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, ({int createdAt, Iterable<String> refs})> data});
+  $Res call({Map<String, EntryRecord> entry});
 }
 
 /// @nodoc
-class __$$ObjectUpdateEntryImplCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateEntryImpl>
-    implements _$$ObjectUpdateEntryImplCopyWith<$Res> {
-  __$$ObjectUpdateEntryImplCopyWithImpl(_$ObjectUpdateEntryImpl _value,
-      $Res Function(_$ObjectUpdateEntryImpl) _then)
+class __$$ObjectSnapshotEntryImplCopyWithImpl<$Res>
+    extends _$ObjectSnapshotCopyWithImpl<$Res, _$ObjectSnapshotEntryImpl>
+    implements _$$ObjectSnapshotEntryImplCopyWith<$Res> {
+  __$$ObjectSnapshotEntryImplCopyWithImpl(_$ObjectSnapshotEntryImpl _value,
+      $Res Function(_$ObjectSnapshotEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? entry = null,
   }) {
-    return _then(_$ObjectUpdateEntryImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, ({int createdAt, Iterable<String> refs})>,
+    return _then(_$ObjectSnapshotEntryImpl(
+      null == entry
+          ? _value._entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as Map<String, EntryRecord>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ObjectUpdateEntryImpl implements ObjectUpdateEntry {
-  _$ObjectUpdateEntryImpl(
-      {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data})
-      : _data = data;
+class _$ObjectSnapshotEntryImpl implements ObjectSnapshotEntry {
+  _$ObjectSnapshotEntryImpl(final Map<String, EntryRecord> entry)
+      : _entry = entry;
 
-  final Map<String, ({int createdAt, Iterable<String> refs})> _data;
+  final Map<String, EntryRecord> _entry;
   @override
-  Map<String, ({int createdAt, Iterable<String> refs})> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
+  Map<String, EntryRecord> get entry {
+    if (_entry is EqualUnmodifiableMapView) return _entry;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
+    return EqualUnmodifiableMapView(_entry);
   }
 
   @override
   String toString() {
-    return 'ObjectUpdate.entry(data: $data)';
+    return 'ObjectSnapshot.entry(entry: $entry)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateEntryImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            other is _$ObjectSnapshotEntryImpl &&
+            const DeepCollectionEquality().equals(other._entry, _entry));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_entry));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateEntryImplCopyWith<_$ObjectUpdateEntryImpl> get copyWith =>
-      __$$ObjectUpdateEntryImplCopyWithImpl<_$ObjectUpdateEntryImpl>(
+  _$$ObjectSnapshotEntryImplCopyWith<_$ObjectSnapshotEntryImpl> get copyWith =>
+      __$$ObjectSnapshotEntryImplCopyWithImpl<_$ObjectSnapshotEntryImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ObjectHead value) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(Map<String, EntryRecord> entry) entry,
+    required TResult Function(Map<String, EventRecord> event) event,
     required TResult Function(Map<String, StateViewObject> data) stateView,
     required TResult Function(String ref) main,
   }) {
-    return entry(data);
+    return entry(this.entry);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ObjectHead value)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(Map<String, EntryRecord> entry)? entry,
+    TResult? Function(Map<String, EventRecord> event)? event,
     TResult? Function(Map<String, StateViewObject> data)? stateView,
     TResult? Function(String ref)? main,
   }) {
-    return entry?.call(data);
+    return entry?.call(this.entry);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ObjectHead value)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(Map<String, EntryRecord> entry)? entry,
+    TResult Function(Map<String, EventRecord> event)? event,
     TResult Function(Map<String, StateViewObject> data)? stateView,
     TResult Function(String ref)? main,
     required TResult orElse(),
   }) {
     if (entry != null) {
-      return entry(data);
+      return entry(this.entry);
     }
     return orElse();
   }
@@ -387,11 +366,11 @@ class _$ObjectUpdateEntryImpl implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateHead value) head,
-    required TResult Function(ObjectUpdateEntry value) entry,
-    required TResult Function(ObjectUpdateEvent value) event,
-    required TResult Function(ObjectUpdateStateView value) stateView,
-    required TResult Function(ObjectUpdateMain value) main,
+    required TResult Function(ObjectSnapshotHead value) head,
+    required TResult Function(ObjectSnapshotEntry value) entry,
+    required TResult Function(ObjectSnapshotEvent value) event,
+    required TResult Function(ObjectSnapshotStateView value) stateView,
+    required TResult Function(ObjectSnapshotMain value) main,
   }) {
     return entry(this);
   }
@@ -399,11 +378,11 @@ class _$ObjectUpdateEntryImpl implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateHead value)? head,
-    TResult? Function(ObjectUpdateEntry value)? entry,
-    TResult? Function(ObjectUpdateEvent value)? event,
-    TResult? Function(ObjectUpdateStateView value)? stateView,
-    TResult? Function(ObjectUpdateMain value)? main,
+    TResult? Function(ObjectSnapshotHead value)? head,
+    TResult? Function(ObjectSnapshotEntry value)? entry,
+    TResult? Function(ObjectSnapshotEvent value)? event,
+    TResult? Function(ObjectSnapshotStateView value)? stateView,
+    TResult? Function(ObjectSnapshotMain value)? main,
   }) {
     return entry?.call(this);
   }
@@ -411,11 +390,11 @@ class _$ObjectUpdateEntryImpl implements ObjectUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateHead value)? head,
-    TResult Function(ObjectUpdateEntry value)? entry,
-    TResult Function(ObjectUpdateEvent value)? event,
-    TResult Function(ObjectUpdateStateView value)? stateView,
-    TResult Function(ObjectUpdateMain value)? main,
+    TResult Function(ObjectSnapshotHead value)? head,
+    TResult Function(ObjectSnapshotEntry value)? entry,
+    TResult Function(ObjectSnapshotEvent value)? event,
+    TResult Function(ObjectSnapshotStateView value)? stateView,
+    TResult Function(ObjectSnapshotMain value)? main,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -425,128 +404,121 @@ class _$ObjectUpdateEntryImpl implements ObjectUpdateEntry {
   }
 }
 
-abstract class ObjectUpdateEntry implements ObjectUpdate {
-  factory ObjectUpdateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data}) = _$ObjectUpdateEntryImpl;
+abstract class ObjectSnapshotEntry implements ObjectSnapshot {
+  factory ObjectSnapshotEntry(final Map<String, EntryRecord> entry) =
+      _$ObjectSnapshotEntryImpl;
 
-  Map<String, ({int createdAt, Iterable<String> refs})> get data;
+  Map<String, EntryRecord> get entry;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateEntryImplCopyWith<_$ObjectUpdateEntryImpl> get copyWith =>
+  _$$ObjectSnapshotEntryImplCopyWith<_$ObjectSnapshotEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateEventImplCopyWith<$Res> {
-  factory _$$ObjectUpdateEventImplCopyWith(_$ObjectUpdateEventImpl value,
-          $Res Function(_$ObjectUpdateEventImpl) then) =
-      __$$ObjectUpdateEventImplCopyWithImpl<$Res>;
+abstract class _$$ObjectSnapshotEventImplCopyWith<$Res> {
+  factory _$$ObjectSnapshotEventImplCopyWith(_$ObjectSnapshotEventImpl value,
+          $Res Function(_$ObjectSnapshotEventImpl) then) =
+      __$$ObjectSnapshotEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, JsonMap> data});
+  $Res call({Map<String, EventRecord> event});
 }
 
 /// @nodoc
-class __$$ObjectUpdateEventImplCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateEventImpl>
-    implements _$$ObjectUpdateEventImplCopyWith<$Res> {
-  __$$ObjectUpdateEventImplCopyWithImpl(_$ObjectUpdateEventImpl _value,
-      $Res Function(_$ObjectUpdateEventImpl) _then)
+class __$$ObjectSnapshotEventImplCopyWithImpl<$Res>
+    extends _$ObjectSnapshotCopyWithImpl<$Res, _$ObjectSnapshotEventImpl>
+    implements _$$ObjectSnapshotEventImplCopyWith<$Res> {
+  __$$ObjectSnapshotEventImplCopyWithImpl(_$ObjectSnapshotEventImpl _value,
+      $Res Function(_$ObjectSnapshotEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? event = null,
   }) {
-    return _then(_$ObjectUpdateEventImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, JsonMap>,
+    return _then(_$ObjectSnapshotEventImpl(
+      null == event
+          ? _value._event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Map<String, EventRecord>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ObjectUpdateEventImpl implements ObjectUpdateEvent {
-  _$ObjectUpdateEventImpl({required final Map<String, JsonMap> data})
-      : _data = data;
+class _$ObjectSnapshotEventImpl implements ObjectSnapshotEvent {
+  _$ObjectSnapshotEventImpl(final Map<String, EventRecord> event)
+      : _event = event;
 
-  final Map<String, JsonMap> _data;
+  final Map<String, EventRecord> _event;
   @override
-  Map<String, JsonMap> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
+  Map<String, EventRecord> get event {
+    if (_event is EqualUnmodifiableMapView) return _event;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
+    return EqualUnmodifiableMapView(_event);
   }
 
   @override
   String toString() {
-    return 'ObjectUpdate.event(data: $data)';
+    return 'ObjectSnapshot.event(event: $event)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateEventImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            other is _$ObjectSnapshotEventImpl &&
+            const DeepCollectionEquality().equals(other._event, _event));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_event));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateEventImplCopyWith<_$ObjectUpdateEventImpl> get copyWith =>
-      __$$ObjectUpdateEventImplCopyWithImpl<_$ObjectUpdateEventImpl>(
+  _$$ObjectSnapshotEventImplCopyWith<_$ObjectSnapshotEventImpl> get copyWith =>
+      __$$ObjectSnapshotEventImplCopyWithImpl<_$ObjectSnapshotEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ObjectHead value) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(Map<String, EntryRecord> entry) entry,
+    required TResult Function(Map<String, EventRecord> event) event,
     required TResult Function(Map<String, StateViewObject> data) stateView,
     required TResult Function(String ref) main,
   }) {
-    return event(data);
+    return event(this.event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ObjectHead value)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(Map<String, EntryRecord> entry)? entry,
+    TResult? Function(Map<String, EventRecord> event)? event,
     TResult? Function(Map<String, StateViewObject> data)? stateView,
     TResult? Function(String ref)? main,
   }) {
-    return event?.call(data);
+    return event?.call(this.event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ObjectHead value)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(Map<String, EntryRecord> entry)? entry,
+    TResult Function(Map<String, EventRecord> event)? event,
     TResult Function(Map<String, StateViewObject> data)? stateView,
     TResult Function(String ref)? main,
     required TResult orElse(),
   }) {
     if (event != null) {
-      return event(data);
+      return event(this.event);
     }
     return orElse();
   }
@@ -554,11 +526,11 @@ class _$ObjectUpdateEventImpl implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateHead value) head,
-    required TResult Function(ObjectUpdateEntry value) entry,
-    required TResult Function(ObjectUpdateEvent value) event,
-    required TResult Function(ObjectUpdateStateView value) stateView,
-    required TResult Function(ObjectUpdateMain value) main,
+    required TResult Function(ObjectSnapshotHead value) head,
+    required TResult Function(ObjectSnapshotEntry value) entry,
+    required TResult Function(ObjectSnapshotEvent value) event,
+    required TResult Function(ObjectSnapshotStateView value) stateView,
+    required TResult Function(ObjectSnapshotMain value) main,
   }) {
     return event(this);
   }
@@ -566,11 +538,11 @@ class _$ObjectUpdateEventImpl implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateHead value)? head,
-    TResult? Function(ObjectUpdateEntry value)? entry,
-    TResult? Function(ObjectUpdateEvent value)? event,
-    TResult? Function(ObjectUpdateStateView value)? stateView,
-    TResult? Function(ObjectUpdateMain value)? main,
+    TResult? Function(ObjectSnapshotHead value)? head,
+    TResult? Function(ObjectSnapshotEntry value)? entry,
+    TResult? Function(ObjectSnapshotEvent value)? event,
+    TResult? Function(ObjectSnapshotStateView value)? stateView,
+    TResult? Function(ObjectSnapshotMain value)? main,
   }) {
     return event?.call(this);
   }
@@ -578,11 +550,11 @@ class _$ObjectUpdateEventImpl implements ObjectUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateHead value)? head,
-    TResult Function(ObjectUpdateEntry value)? entry,
-    TResult Function(ObjectUpdateEvent value)? event,
-    TResult Function(ObjectUpdateStateView value)? stateView,
-    TResult Function(ObjectUpdateMain value)? main,
+    TResult Function(ObjectSnapshotHead value)? head,
+    TResult Function(ObjectSnapshotEntry value)? entry,
+    TResult Function(ObjectSnapshotEvent value)? event,
+    TResult Function(ObjectSnapshotStateView value)? stateView,
+    TResult Function(ObjectSnapshotMain value)? main,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -592,32 +564,33 @@ class _$ObjectUpdateEventImpl implements ObjectUpdateEvent {
   }
 }
 
-abstract class ObjectUpdateEvent implements ObjectUpdate {
-  factory ObjectUpdateEvent({required final Map<String, JsonMap> data}) =
-      _$ObjectUpdateEventImpl;
+abstract class ObjectSnapshotEvent implements ObjectSnapshot {
+  factory ObjectSnapshotEvent(final Map<String, EventRecord> event) =
+      _$ObjectSnapshotEventImpl;
 
-  Map<String, JsonMap> get data;
+  Map<String, EventRecord> get event;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateEventImplCopyWith<_$ObjectUpdateEventImpl> get copyWith =>
+  _$$ObjectSnapshotEventImplCopyWith<_$ObjectSnapshotEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateStateViewImplCopyWith<$Res> {
-  factory _$$ObjectUpdateStateViewImplCopyWith(
-          _$ObjectUpdateStateViewImpl value,
-          $Res Function(_$ObjectUpdateStateViewImpl) then) =
-      __$$ObjectUpdateStateViewImplCopyWithImpl<$Res>;
+abstract class _$$ObjectSnapshotStateViewImplCopyWith<$Res> {
+  factory _$$ObjectSnapshotStateViewImplCopyWith(
+          _$ObjectSnapshotStateViewImpl value,
+          $Res Function(_$ObjectSnapshotStateViewImpl) then) =
+      __$$ObjectSnapshotStateViewImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, StateViewObject> data});
 }
 
 /// @nodoc
-class __$$ObjectUpdateStateViewImplCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateStateViewImpl>
-    implements _$$ObjectUpdateStateViewImplCopyWith<$Res> {
-  __$$ObjectUpdateStateViewImplCopyWithImpl(_$ObjectUpdateStateViewImpl _value,
-      $Res Function(_$ObjectUpdateStateViewImpl) _then)
+class __$$ObjectSnapshotStateViewImplCopyWithImpl<$Res>
+    extends _$ObjectSnapshotCopyWithImpl<$Res, _$ObjectSnapshotStateViewImpl>
+    implements _$$ObjectSnapshotStateViewImplCopyWith<$Res> {
+  __$$ObjectSnapshotStateViewImplCopyWithImpl(
+      _$ObjectSnapshotStateViewImpl _value,
+      $Res Function(_$ObjectSnapshotStateViewImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -625,7 +598,7 @@ class __$$ObjectUpdateStateViewImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectUpdateStateViewImpl(
+    return _then(_$ObjectSnapshotStateViewImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -636,8 +609,8 @@ class __$$ObjectUpdateStateViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
-  _$ObjectUpdateStateViewImpl(
+class _$ObjectSnapshotStateViewImpl implements ObjectSnapshotStateView {
+  _$ObjectSnapshotStateViewImpl(
       {required final Map<String, StateViewObject> data})
       : _data = data;
 
@@ -651,14 +624,14 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
 
   @override
   String toString() {
-    return 'ObjectUpdate.stateView(data: $data)';
+    return 'ObjectSnapshot.stateView(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateStateViewImpl &&
+            other is _$ObjectSnapshotStateViewImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -669,18 +642,16 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateStateViewImplCopyWith<_$ObjectUpdateStateViewImpl>
-      get copyWith => __$$ObjectUpdateStateViewImplCopyWithImpl<
-          _$ObjectUpdateStateViewImpl>(this, _$identity);
+  _$$ObjectSnapshotStateViewImplCopyWith<_$ObjectSnapshotStateViewImpl>
+      get copyWith => __$$ObjectSnapshotStateViewImplCopyWithImpl<
+          _$ObjectSnapshotStateViewImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ObjectHead value) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(Map<String, EntryRecord> entry) entry,
+    required TResult Function(Map<String, EventRecord> event) event,
     required TResult Function(Map<String, StateViewObject> data) stateView,
     required TResult Function(String ref) main,
   }) {
@@ -690,11 +661,9 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ObjectHead value)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(Map<String, EntryRecord> entry)? entry,
+    TResult? Function(Map<String, EventRecord> event)? event,
     TResult? Function(Map<String, StateViewObject> data)? stateView,
     TResult? Function(String ref)? main,
   }) {
@@ -704,11 +673,9 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ObjectHead value)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(Map<String, EntryRecord> entry)? entry,
+    TResult Function(Map<String, EventRecord> event)? event,
     TResult Function(Map<String, StateViewObject> data)? stateView,
     TResult Function(String ref)? main,
     required TResult orElse(),
@@ -722,11 +689,11 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateHead value) head,
-    required TResult Function(ObjectUpdateEntry value) entry,
-    required TResult Function(ObjectUpdateEvent value) event,
-    required TResult Function(ObjectUpdateStateView value) stateView,
-    required TResult Function(ObjectUpdateMain value) main,
+    required TResult Function(ObjectSnapshotHead value) head,
+    required TResult Function(ObjectSnapshotEntry value) entry,
+    required TResult Function(ObjectSnapshotEvent value) event,
+    required TResult Function(ObjectSnapshotStateView value) stateView,
+    required TResult Function(ObjectSnapshotMain value) main,
   }) {
     return stateView(this);
   }
@@ -734,11 +701,11 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateHead value)? head,
-    TResult? Function(ObjectUpdateEntry value)? entry,
-    TResult? Function(ObjectUpdateEvent value)? event,
-    TResult? Function(ObjectUpdateStateView value)? stateView,
-    TResult? Function(ObjectUpdateMain value)? main,
+    TResult? Function(ObjectSnapshotHead value)? head,
+    TResult? Function(ObjectSnapshotEntry value)? entry,
+    TResult? Function(ObjectSnapshotEvent value)? event,
+    TResult? Function(ObjectSnapshotStateView value)? stateView,
+    TResult? Function(ObjectSnapshotMain value)? main,
   }) {
     return stateView?.call(this);
   }
@@ -746,11 +713,11 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateHead value)? head,
-    TResult Function(ObjectUpdateEntry value)? entry,
-    TResult Function(ObjectUpdateEvent value)? event,
-    TResult Function(ObjectUpdateStateView value)? stateView,
-    TResult Function(ObjectUpdateMain value)? main,
+    TResult Function(ObjectSnapshotHead value)? head,
+    TResult Function(ObjectSnapshotEntry value)? entry,
+    TResult Function(ObjectSnapshotEvent value)? event,
+    TResult Function(ObjectSnapshotStateView value)? stateView,
+    TResult Function(ObjectSnapshotMain value)? main,
     required TResult orElse(),
   }) {
     if (stateView != null) {
@@ -760,32 +727,32 @@ class _$ObjectUpdateStateViewImpl implements ObjectUpdateStateView {
   }
 }
 
-abstract class ObjectUpdateStateView implements ObjectUpdate {
-  factory ObjectUpdateStateView(
+abstract class ObjectSnapshotStateView implements ObjectSnapshot {
+  factory ObjectSnapshotStateView(
           {required final Map<String, StateViewObject> data}) =
-      _$ObjectUpdateStateViewImpl;
+      _$ObjectSnapshotStateViewImpl;
 
   Map<String, StateViewObject> get data;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateStateViewImplCopyWith<_$ObjectUpdateStateViewImpl>
+  _$$ObjectSnapshotStateViewImplCopyWith<_$ObjectSnapshotStateViewImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectUpdateMainImplCopyWith<$Res> {
-  factory _$$ObjectUpdateMainImplCopyWith(_$ObjectUpdateMainImpl value,
-          $Res Function(_$ObjectUpdateMainImpl) then) =
-      __$$ObjectUpdateMainImplCopyWithImpl<$Res>;
+abstract class _$$ObjectSnapshotMainImplCopyWith<$Res> {
+  factory _$$ObjectSnapshotMainImplCopyWith(_$ObjectSnapshotMainImpl value,
+          $Res Function(_$ObjectSnapshotMainImpl) then) =
+      __$$ObjectSnapshotMainImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String ref});
 }
 
 /// @nodoc
-class __$$ObjectUpdateMainImplCopyWithImpl<$Res>
-    extends _$ObjectUpdateCopyWithImpl<$Res, _$ObjectUpdateMainImpl>
-    implements _$$ObjectUpdateMainImplCopyWith<$Res> {
-  __$$ObjectUpdateMainImplCopyWithImpl(_$ObjectUpdateMainImpl _value,
-      $Res Function(_$ObjectUpdateMainImpl) _then)
+class __$$ObjectSnapshotMainImplCopyWithImpl<$Res>
+    extends _$ObjectSnapshotCopyWithImpl<$Res, _$ObjectSnapshotMainImpl>
+    implements _$$ObjectSnapshotMainImplCopyWith<$Res> {
+  __$$ObjectSnapshotMainImplCopyWithImpl(_$ObjectSnapshotMainImpl _value,
+      $Res Function(_$ObjectSnapshotMainImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -793,7 +760,7 @@ class __$$ObjectUpdateMainImplCopyWithImpl<$Res>
   $Res call({
     Object? ref = null,
   }) {
-    return _then(_$ObjectUpdateMainImpl(
+    return _then(_$ObjectSnapshotMainImpl(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -804,22 +771,22 @@ class __$$ObjectUpdateMainImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
-  _$ObjectUpdateMainImpl({required this.ref});
+class _$ObjectSnapshotMainImpl implements ObjectSnapshotMain {
+  _$ObjectSnapshotMainImpl({required this.ref});
 
   @override
   final String ref;
 
   @override
   String toString() {
-    return 'ObjectUpdate.main(ref: $ref)';
+    return 'ObjectSnapshot.main(ref: $ref)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectUpdateMainImpl &&
+            other is _$ObjectSnapshotMainImpl &&
             (identical(other.ref, ref) || other.ref == ref));
   }
 
@@ -829,18 +796,16 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectUpdateMainImplCopyWith<_$ObjectUpdateMainImpl> get copyWith =>
-      __$$ObjectUpdateMainImplCopyWithImpl<_$ObjectUpdateMainImpl>(
+  _$$ObjectSnapshotMainImplCopyWith<_$ObjectSnapshotMainImpl> get copyWith =>
+      __$$ObjectSnapshotMainImplCopyWithImpl<_$ObjectSnapshotMainImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ObjectHead value) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord head) head,
+    required TResult Function(Map<String, EntryRecord> entry) entry,
+    required TResult Function(Map<String, EventRecord> event) event,
     required TResult Function(Map<String, StateViewObject> data) stateView,
     required TResult Function(String ref) main,
   }) {
@@ -850,11 +815,9 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ObjectHead value)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord head)? head,
+    TResult? Function(Map<String, EntryRecord> entry)? entry,
+    TResult? Function(Map<String, EventRecord> event)? event,
     TResult? Function(Map<String, StateViewObject> data)? stateView,
     TResult? Function(String ref)? main,
   }) {
@@ -864,11 +827,9 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ObjectHead value)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord head)? head,
+    TResult Function(Map<String, EntryRecord> entry)? entry,
+    TResult Function(Map<String, EventRecord> event)? event,
     TResult Function(Map<String, StateViewObject> data)? stateView,
     TResult Function(String ref)? main,
     required TResult orElse(),
@@ -882,11 +843,11 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectUpdateHead value) head,
-    required TResult Function(ObjectUpdateEntry value) entry,
-    required TResult Function(ObjectUpdateEvent value) event,
-    required TResult Function(ObjectUpdateStateView value) stateView,
-    required TResult Function(ObjectUpdateMain value) main,
+    required TResult Function(ObjectSnapshotHead value) head,
+    required TResult Function(ObjectSnapshotEntry value) entry,
+    required TResult Function(ObjectSnapshotEvent value) event,
+    required TResult Function(ObjectSnapshotStateView value) stateView,
+    required TResult Function(ObjectSnapshotMain value) main,
   }) {
     return main(this);
   }
@@ -894,11 +855,11 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectUpdateHead value)? head,
-    TResult? Function(ObjectUpdateEntry value)? entry,
-    TResult? Function(ObjectUpdateEvent value)? event,
-    TResult? Function(ObjectUpdateStateView value)? stateView,
-    TResult? Function(ObjectUpdateMain value)? main,
+    TResult? Function(ObjectSnapshotHead value)? head,
+    TResult? Function(ObjectSnapshotEntry value)? entry,
+    TResult? Function(ObjectSnapshotEvent value)? event,
+    TResult? Function(ObjectSnapshotStateView value)? stateView,
+    TResult? Function(ObjectSnapshotMain value)? main,
   }) {
     return main?.call(this);
   }
@@ -906,11 +867,11 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectUpdateHead value)? head,
-    TResult Function(ObjectUpdateEntry value)? entry,
-    TResult Function(ObjectUpdateEvent value)? event,
-    TResult Function(ObjectUpdateStateView value)? stateView,
-    TResult Function(ObjectUpdateMain value)? main,
+    TResult Function(ObjectSnapshotHead value)? head,
+    TResult Function(ObjectSnapshotEntry value)? entry,
+    TResult Function(ObjectSnapshotEvent value)? event,
+    TResult Function(ObjectSnapshotStateView value)? stateView,
+    TResult Function(ObjectSnapshotMain value)? main,
     required TResult orElse(),
   }) {
     if (main != null) {
@@ -920,13 +881,13 @@ class _$ObjectUpdateMainImpl implements ObjectUpdateMain {
   }
 }
 
-abstract class ObjectUpdateMain implements ObjectUpdate {
-  factory ObjectUpdateMain({required final String ref}) =
-      _$ObjectUpdateMainImpl;
+abstract class ObjectSnapshotMain implements ObjectSnapshot {
+  factory ObjectSnapshotMain({required final String ref}) =
+      _$ObjectSnapshotMainImpl;
 
   String get ref;
   @JsonKey(ignore: true)
-  _$$ObjectUpdateMainImplCopyWith<_$ObjectUpdateMainImpl> get copyWith =>
+  _$$ObjectSnapshotMainImplCopyWith<_$ObjectSnapshotMainImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

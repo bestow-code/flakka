@@ -14,7 +14,7 @@ class StoreLocalProviderSembast extends StoreLocalProviderBase {
 
   static StoreLocalProviderSembast get inMemory => StoreLocalProviderSembast(
         databaseFactory: databaseFactoryMemoryFs,
-        storePath: StorePath('/fake/inMemory'),
+        storePath: StorePath('/local/inMemory'),
       );
 
   final DatabaseFactory _databaseFactory;

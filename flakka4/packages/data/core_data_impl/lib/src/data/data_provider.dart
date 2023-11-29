@@ -9,7 +9,7 @@ import '../../core_data_impl.dart';
 class DataProvider extends NodeProviderBase<
     CoreData<dynamic, dynamic, dynamic>,
     ObjectEffect,
-    ObjectUpdate,
+    ObjectSnapshot,
     DataEffect<dynamic, dynamic, dynamic>,
     DataUpdate<dynamic, dynamic, dynamic>> implements CoreDataProvider {
   DataProvider({required ObjectProvider childProvider})

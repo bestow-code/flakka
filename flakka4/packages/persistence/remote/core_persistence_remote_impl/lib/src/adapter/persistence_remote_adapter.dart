@@ -13,7 +13,6 @@ class PersistenceRemoteAdapter extends PersistenceAdapterBase<CoreStoreRemote>
   @override
   Stream<HeadRecord> get headSnapshot =>
       store.queryHead(persistenceId).snapshots().map((event) {
-        print(event.values);
         return event.values.single;
       });
 

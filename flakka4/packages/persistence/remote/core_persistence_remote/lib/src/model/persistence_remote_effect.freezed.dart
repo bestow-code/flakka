@@ -16,42 +16,46 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PersistenceRemoteEffect {
-  PersistenceRecord get data => throw _privateConstructorUsedError;
+  Object get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceRecord data) persist,
+    required TResult Function(PersistenceRecord data) persistOne,
+    required TResult Function(Iterable<PersistenceRecord> data) persistAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRecord data)? persist,
+    TResult? Function(PersistenceRecord data)? persistOne,
+    TResult? Function(Iterable<PersistenceRecord> data)? persistAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceRecord data)? persist,
+    TResult Function(PersistenceRecord data)? persistOne,
+    TResult Function(Iterable<PersistenceRecord> data)? persistAll,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceRemoteEffectPersist value) persist,
+    required TResult Function(PersistenceRemoteEffectPersistOne value)
+        persistOne,
+    required TResult Function(PersistenceRemoteEffectPersistAll value)
+        persistAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRemoteEffectPersist value)? persist,
+    TResult? Function(PersistenceRemoteEffectPersistOne value)? persistOne,
+    TResult? Function(PersistenceRemoteEffectPersistAll value)? persistAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceRemoteEffectPersist value)? persist,
+    TResult Function(PersistenceRemoteEffectPersistOne value)? persistOne,
+    TResult Function(PersistenceRemoteEffectPersistAll value)? persistAll,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PersistenceRemoteEffectCopyWith<PersistenceRemoteEffect> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +64,6 @@ abstract class $PersistenceRemoteEffectCopyWith<$Res> {
   factory $PersistenceRemoteEffectCopyWith(PersistenceRemoteEffect value,
           $Res Function(PersistenceRemoteEffect) then) =
       _$PersistenceRemoteEffectCopyWithImpl<$Res, PersistenceRemoteEffect>;
-  @useResult
-  $Res call({PersistenceRecord data});
-
-  $PersistenceRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -76,52 +76,28 @@ class _$PersistenceRemoteEffectCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as PersistenceRecord,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PersistenceRecordCopyWith<$Res> get data {
-    return $PersistenceRecordCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$PersistenceRemoteEffectPersistImplCopyWith<$Res>
-    implements $PersistenceRemoteEffectCopyWith<$Res> {
-  factory _$$PersistenceRemoteEffectPersistImplCopyWith(
-          _$PersistenceRemoteEffectPersistImpl value,
-          $Res Function(_$PersistenceRemoteEffectPersistImpl) then) =
-      __$$PersistenceRemoteEffectPersistImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$PersistenceRemoteEffectPersistOneImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteEffectPersistOneImplCopyWith(
+          _$PersistenceRemoteEffectPersistOneImpl value,
+          $Res Function(_$PersistenceRemoteEffectPersistOneImpl) then) =
+      __$$PersistenceRemoteEffectPersistOneImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PersistenceRecord data});
 
-  @override
   $PersistenceRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$PersistenceRemoteEffectPersistImplCopyWithImpl<$Res>
+class __$$PersistenceRemoteEffectPersistOneImplCopyWithImpl<$Res>
     extends _$PersistenceRemoteEffectCopyWithImpl<$Res,
-        _$PersistenceRemoteEffectPersistImpl>
-    implements _$$PersistenceRemoteEffectPersistImplCopyWith<$Res> {
-  __$$PersistenceRemoteEffectPersistImplCopyWithImpl(
-      _$PersistenceRemoteEffectPersistImpl _value,
-      $Res Function(_$PersistenceRemoteEffectPersistImpl) _then)
+        _$PersistenceRemoteEffectPersistOneImpl>
+    implements _$$PersistenceRemoteEffectPersistOneImplCopyWith<$Res> {
+  __$$PersistenceRemoteEffectPersistOneImplCopyWithImpl(
+      _$PersistenceRemoteEffectPersistOneImpl _value,
+      $Res Function(_$PersistenceRemoteEffectPersistOneImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -129,34 +105,42 @@ class __$$PersistenceRemoteEffectPersistImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$PersistenceRemoteEffectPersistImpl(
+    return _then(_$PersistenceRemoteEffectPersistOneImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as PersistenceRecord,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PersistenceRecordCopyWith<$Res> get data {
+    return $PersistenceRecordCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$PersistenceRemoteEffectPersistImpl
-    implements PersistenceRemoteEffectPersist {
-  _$PersistenceRemoteEffectPersistImpl(this.data);
+class _$PersistenceRemoteEffectPersistOneImpl
+    implements PersistenceRemoteEffectPersistOne {
+  _$PersistenceRemoteEffectPersistOneImpl(this.data);
 
   @override
   final PersistenceRecord data;
 
   @override
   String toString() {
-    return 'PersistenceRemoteEffect.persist(data: $data)';
+    return 'PersistenceRemoteEffect.persistOne(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersistenceRemoteEffectPersistImpl &&
+            other is _$PersistenceRemoteEffectPersistOneImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -166,35 +150,38 @@ class _$PersistenceRemoteEffectPersistImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersistenceRemoteEffectPersistImplCopyWith<
-          _$PersistenceRemoteEffectPersistImpl>
-      get copyWith => __$$PersistenceRemoteEffectPersistImplCopyWithImpl<
-          _$PersistenceRemoteEffectPersistImpl>(this, _$identity);
+  _$$PersistenceRemoteEffectPersistOneImplCopyWith<
+          _$PersistenceRemoteEffectPersistOneImpl>
+      get copyWith => __$$PersistenceRemoteEffectPersistOneImplCopyWithImpl<
+          _$PersistenceRemoteEffectPersistOneImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PersistenceRecord data) persist,
+    required TResult Function(PersistenceRecord data) persistOne,
+    required TResult Function(Iterable<PersistenceRecord> data) persistAll,
   }) {
-    return persist(data);
+    return persistOne(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRecord data)? persist,
+    TResult? Function(PersistenceRecord data)? persistOne,
+    TResult? Function(Iterable<PersistenceRecord> data)? persistAll,
   }) {
-    return persist?.call(data);
+    return persistOne?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PersistenceRecord data)? persist,
+    TResult Function(PersistenceRecord data)? persistOne,
+    TResult Function(Iterable<PersistenceRecord> data)? persistAll,
     required TResult orElse(),
   }) {
-    if (persist != null) {
-      return persist(data);
+    if (persistOne != null) {
+      return persistOne(data);
     }
     return orElse();
   }
@@ -202,42 +189,193 @@ class _$PersistenceRemoteEffectPersistImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PersistenceRemoteEffectPersist value) persist,
+    required TResult Function(PersistenceRemoteEffectPersistOne value)
+        persistOne,
+    required TResult Function(PersistenceRemoteEffectPersistAll value)
+        persistAll,
   }) {
-    return persist(this);
+    return persistOne(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PersistenceRemoteEffectPersist value)? persist,
+    TResult? Function(PersistenceRemoteEffectPersistOne value)? persistOne,
+    TResult? Function(PersistenceRemoteEffectPersistAll value)? persistAll,
   }) {
-    return persist?.call(this);
+    return persistOne?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PersistenceRemoteEffectPersist value)? persist,
+    TResult Function(PersistenceRemoteEffectPersistOne value)? persistOne,
+    TResult Function(PersistenceRemoteEffectPersistAll value)? persistAll,
     required TResult orElse(),
   }) {
-    if (persist != null) {
-      return persist(this);
+    if (persistOne != null) {
+      return persistOne(this);
     }
     return orElse();
   }
 }
 
-abstract class PersistenceRemoteEffectPersist
+abstract class PersistenceRemoteEffectPersistOne
     implements PersistenceRemoteEffect {
-  factory PersistenceRemoteEffectPersist(final PersistenceRecord data) =
-      _$PersistenceRemoteEffectPersistImpl;
+  factory PersistenceRemoteEffectPersistOne(final PersistenceRecord data) =
+      _$PersistenceRemoteEffectPersistOneImpl;
 
   @override
   PersistenceRecord get data;
-  @override
   @JsonKey(ignore: true)
-  _$$PersistenceRemoteEffectPersistImplCopyWith<
-          _$PersistenceRemoteEffectPersistImpl>
+  _$$PersistenceRemoteEffectPersistOneImplCopyWith<
+          _$PersistenceRemoteEffectPersistOneImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PersistenceRemoteEffectPersistAllImplCopyWith<$Res> {
+  factory _$$PersistenceRemoteEffectPersistAllImplCopyWith(
+          _$PersistenceRemoteEffectPersistAllImpl value,
+          $Res Function(_$PersistenceRemoteEffectPersistAllImpl) then) =
+      __$$PersistenceRemoteEffectPersistAllImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Iterable<PersistenceRecord> data});
+}
+
+/// @nodoc
+class __$$PersistenceRemoteEffectPersistAllImplCopyWithImpl<$Res>
+    extends _$PersistenceRemoteEffectCopyWithImpl<$Res,
+        _$PersistenceRemoteEffectPersistAllImpl>
+    implements _$$PersistenceRemoteEffectPersistAllImplCopyWith<$Res> {
+  __$$PersistenceRemoteEffectPersistAllImplCopyWithImpl(
+      _$PersistenceRemoteEffectPersistAllImpl _value,
+      $Res Function(_$PersistenceRemoteEffectPersistAllImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$PersistenceRemoteEffectPersistAllImpl(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Iterable<PersistenceRecord>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PersistenceRemoteEffectPersistAllImpl
+    implements PersistenceRemoteEffectPersistAll {
+  _$PersistenceRemoteEffectPersistAllImpl(this.data);
+
+  @override
+  final Iterable<PersistenceRecord> data;
+
+  @override
+  String toString() {
+    return 'PersistenceRemoteEffect.persistAll(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersistenceRemoteEffectPersistAllImpl &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersistenceRemoteEffectPersistAllImplCopyWith<
+          _$PersistenceRemoteEffectPersistAllImpl>
+      get copyWith => __$$PersistenceRemoteEffectPersistAllImplCopyWithImpl<
+          _$PersistenceRemoteEffectPersistAllImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PersistenceRecord data) persistOne,
+    required TResult Function(Iterable<PersistenceRecord> data) persistAll,
+  }) {
+    return persistAll(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceRecord data)? persistOne,
+    TResult? Function(Iterable<PersistenceRecord> data)? persistAll,
+  }) {
+    return persistAll?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PersistenceRecord data)? persistOne,
+    TResult Function(Iterable<PersistenceRecord> data)? persistAll,
+    required TResult orElse(),
+  }) {
+    if (persistAll != null) {
+      return persistAll(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PersistenceRemoteEffectPersistOne value)
+        persistOne,
+    required TResult Function(PersistenceRemoteEffectPersistAll value)
+        persistAll,
+  }) {
+    return persistAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PersistenceRemoteEffectPersistOne value)? persistOne,
+    TResult? Function(PersistenceRemoteEffectPersistAll value)? persistAll,
+  }) {
+    return persistAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PersistenceRemoteEffectPersistOne value)? persistOne,
+    TResult Function(PersistenceRemoteEffectPersistAll value)? persistAll,
+    required TResult orElse(),
+  }) {
+    if (persistAll != null) {
+      return persistAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PersistenceRemoteEffectPersistAll
+    implements PersistenceRemoteEffect {
+  factory PersistenceRemoteEffectPersistAll(
+          final Iterable<PersistenceRecord> data) =
+      _$PersistenceRemoteEffectPersistAllImpl;
+
+  @override
+  Iterable<PersistenceRecord> get data;
+  @JsonKey(ignore: true)
+  _$$PersistenceRemoteEffectPersistAllImplCopyWith<
+          _$PersistenceRemoteEffectPersistAllImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

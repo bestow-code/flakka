@@ -50,7 +50,6 @@ class StoreRemoteTransactionHandlerSembast
   @override
   Future<void> addHead(HeadRecord data) async {
     final current = await head;
-    print(current);
     if (current.sequenceNumber + 1 != data.sequenceNumber) {
       throw ArgumentError(
         'Invalid sequence number: ${data.sequenceNumber} (current: ${current.sequenceNumber}',

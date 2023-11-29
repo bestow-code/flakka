@@ -54,7 +54,7 @@ class DataFactory<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  CoreResourceFactory<dynamic, ObjectEffect, ObjectUpdate> get childFactory =>
+  CoreResourceFactory<dynamic, ObjectEffect, ObjectSnapshot> get childFactory =>
       throw UnimplementedError();
 
   @override

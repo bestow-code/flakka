@@ -38,13 +38,7 @@ abstract class NodeBase<
 
     child.stream.listen(
       (event) => handleResult(
-        _state.hasValue
-            ? _onSnapshot(
-                _state.value,
-                event,
-              )
-            : _initialStateHandler(event),
-      ),
+          _onSnapshot(_state.hasValue ? _state.value : _stateFactory(), event)),
     );
     child.connect();
     input.listen(

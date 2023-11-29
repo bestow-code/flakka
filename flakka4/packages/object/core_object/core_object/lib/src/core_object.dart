@@ -11,7 +11,7 @@ abstract interface class CoreObject
             ObjectLocalSnapshot,
             CoreObjectLocal,
             ObjectRemoteEffect,
-            ObjectRemoteUpdate,
+            ObjectRemoteSnapshot,
             CoreObjectRemote,
             ObjectEffect,
-            ObjectUpdate>, CoreProvisioner {}
+            ObjectSnapshot>, CoreProvisioner {}

@@ -36,7 +36,7 @@ class PersistenceLocal // extends AsyncIOBase<PersistenceLocalEffect, Persistenc
   CorePersistenceLocalAdapter get localAdapter => _localAdapter;
 
   final CorePersistenceLocalAdapter _localAdapter;
-  
+
   @override
   Future<void> initialize({required String ref, required int createdAt}) =>
       _localAdapter.initialize(ref: ref, createdAt: createdAt);
@@ -45,21 +45,43 @@ class PersistenceLocal // extends AsyncIOBase<PersistenceLocalEffect, Persistenc
   Future<HeadRecord?> get inspect => _localAdapter.inspect;
 
   final subscription = CompositeSubscription();
-  
+
   @override
-  void connect()  {
-    Rx.merge([
-      _localAdapter.headSnapshot.whereNotNull().map(
-            (snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot),
-      ),
-      _localAdapter.entrySnapshot
-          .where((snapshot) => snapshot.isNotEmpty)
-          .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
-      _localAdapter.eventSnapshot
-          .where((snapshot) => snapshot.isNotEmpty)
-          .map((event) => PersistenceLocalSnapshot.event(snapshot: event)),
-    ]).pipe(output).ignore();
-    subscription.add(input.listen((e) => _localAdapter.persist([e.data])));
+  void connect() {
+    // Rx.merge([
+    //   _localAdapter.headSnapshot.whereNotNull().map(
+    //         (snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot),
+    //   ),
+    //   _localAdapter.eventSnapshot
+    //       .where((snapshot) => snapshot.isNotEmpty)
+    //       .map((event) => PersistenceLocalSnapshot.event(snapshot: event)),
+    //   _localAdapter.entrySnapshot
+    //       .where((snapshot) => snapshot.isNotEmpty)
+    //       .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
+    // ]).pipe(output).ignore();
+    subscription
+      ..add(
+        Rx.merge([
+          _localAdapter.headSnapshot.whereNotNull().map(
+                (snapshot) => PersistenceLocalSnapshot.head(snapshot: snapshot),
+              ),
+          _localAdapter.eventSnapshot
+              .where((snapshot) => snapshot.isNotEmpty)
+              .map((event) => PersistenceLocalSnapshot.event(snapshot: event)),
+          _localAdapter.entrySnapshot
+              .where((snapshot) => snapshot.isNotEmpty)
+              .map((event) => PersistenceLocalSnapshot.entry(snapshot: event)),
+        ]).listen(output.add),
+      )
+      ..add(
+        input.listen(
+          (e) => e.map(
+            persistOne: (persistOne) =>
+                _localAdapter.persist([persistOne.data]),
+            persistAll: (persistAll) => _localAdapter.persist(persistAll.data),
+          ),
+        ),
+      );
   }
 
   @override
@@ -68,5 +90,4 @@ class PersistenceLocal // extends AsyncIOBase<PersistenceLocalEffect, Persistenc
     await subscription.cancel();
     await output.close();
   }
-
 }

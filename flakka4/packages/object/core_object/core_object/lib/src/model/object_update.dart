@@ -1,28 +1,23 @@
 import 'package:core_common/core_common.dart';
+import 'package:core_object/core_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_update.freezed.dart';
 
 @freezed
-class ObjectUpdate with _$ObjectUpdate {
-  factory ObjectUpdate.head({
-    required ObjectHead value,
-  }) = ObjectUpdateHead;
+class ObjectSnapshot with _$ObjectSnapshot {
+  factory ObjectSnapshot.head(HeadRecord head) = ObjectSnapshotHead;
 
-  factory ObjectUpdate.entry({
-    required Map<String, ({Iterable<String> refs, int createdAt})> data,
-  }) = ObjectUpdateEntry;
+  factory ObjectSnapshot.entry(Map<String, EntryRecord> entry) = ObjectSnapshotEntry;
 
-  factory ObjectUpdate.event({
-    required Map<String, JsonMap> data,
-  }) = ObjectUpdateEvent;
+  factory ObjectSnapshot.event(Map<String, EventRecord> event) = ObjectSnapshotEvent;
 
-  factory ObjectUpdate.stateView({required Map<String, StateViewObject> data}) =
-      ObjectUpdateStateView;
+  factory ObjectSnapshot.stateView({required Map<String, StateViewObject> data}) =
+      ObjectSnapshotStateView;
 
-  factory ObjectUpdate.main({
+  factory ObjectSnapshot.main({
     required String ref,
-  }) = ObjectUpdateMain;
+  }) = ObjectSnapshotMain;
 }
 
 @freezed

@@ -20,12 +20,8 @@ mixin _$ObjectState {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)
-        initial,
-    required TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -37,12 +33,8 @@ mixin _$ObjectState {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult? Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -54,12 +46,8 @@ mixin _$ObjectState {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -71,21 +59,18 @@ mixin _$ObjectState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ObjectState value) $default, {
-    required TResult Function(ObjectStateInitial value) initial,
     required TResult Function(ObjectStateLoading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ObjectState value)? $default, {
-    TResult? Function(ObjectStateInitial value)? initial,
     TResult? Function(ObjectStateLoading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ObjectState value)? $default, {
-    TResult Function(ObjectStateInitial value)? initial,
     TResult Function(ObjectStateLoading value)? loading,
     required TResult orElse(),
   }) =>
@@ -150,12 +135,8 @@ class _$ObjectStateImpl implements _ObjectState {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)
-        initial,
-    required TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -170,12 +151,8 @@ class _$ObjectStateImpl implements _ObjectState {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult? Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -190,12 +167,8 @@ class _$ObjectStateImpl implements _ObjectState {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -213,7 +186,6 @@ class _$ObjectStateImpl implements _ObjectState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ObjectState value) $default, {
-    required TResult Function(ObjectStateInitial value) initial,
     required TResult Function(ObjectStateLoading value) loading,
   }) {
     return $default(this);
@@ -223,7 +195,6 @@ class _$ObjectStateImpl implements _ObjectState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ObjectState value)? $default, {
-    TResult? Function(ObjectStateInitial value)? initial,
     TResult? Function(ObjectStateLoading value)? loading,
   }) {
     return $default?.call(this);
@@ -233,7 +204,6 @@ class _$ObjectStateImpl implements _ObjectState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ObjectState value)? $default, {
-    TResult Function(ObjectStateInitial value)? initial,
     TResult Function(ObjectStateLoading value)? loading,
     required TResult orElse(),
   }) {
@@ -249,218 +219,18 @@ abstract class _ObjectState implements ObjectState {
 }
 
 /// @nodoc
-abstract class _$$ObjectStateInitialImplCopyWith<$Res> {
-  factory _$$ObjectStateInitialImplCopyWith(_$ObjectStateInitialImpl value,
-          $Res Function(_$ObjectStateInitialImpl) then) =
-      __$$ObjectStateInitialImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Map<String, EntryRecord> entry, Map<String, EventRecord> event});
-}
-
-/// @nodoc
-class __$$ObjectStateInitialImplCopyWithImpl<$Res>
-    extends _$ObjectStateCopyWithImpl<$Res, _$ObjectStateInitialImpl>
-    implements _$$ObjectStateInitialImplCopyWith<$Res> {
-  __$$ObjectStateInitialImplCopyWithImpl(_$ObjectStateInitialImpl _value,
-      $Res Function(_$ObjectStateInitialImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? entry = null,
-    Object? event = null,
-  }) {
-    return _then(_$ObjectStateInitialImpl(
-      null == entry
-          ? _value._entry
-          : entry // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryRecord>,
-      null == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventRecord>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ObjectStateInitialImpl implements ObjectStateInitial {
-  _$ObjectStateInitialImpl(final Map<String, EntryRecord> entry,
-      final Map<String, EventRecord> event)
-      : _entry = entry,
-        _event = event;
-
-  final Map<String, EntryRecord> _entry;
-  @override
-  Map<String, EntryRecord> get entry {
-    if (_entry is EqualUnmodifiableMapView) return _entry;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_entry);
-  }
-
-  final Map<String, EventRecord> _event;
-  @override
-  Map<String, EventRecord> get event {
-    if (_event is EqualUnmodifiableMapView) return _event;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_event);
-  }
-
-  @override
-  String toString() {
-    return 'ObjectState.initial(entry: $entry, event: $event)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectStateInitialImpl &&
-            const DeepCollectionEquality().equals(other._entry, _entry) &&
-            const DeepCollectionEquality().equals(other._event, _event));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_entry),
-      const DeepCollectionEquality().hash(_event));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectStateInitialImplCopyWith<_$ObjectStateInitialImpl> get copyWith =>
-      __$$ObjectStateInitialImplCopyWithImpl<_$ObjectStateInitialImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)
-        initial,
-    required TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
-            bool localEntryReady,
-            bool localEventReady,
-            bool remoteEntryReady,
-            bool remoteEventReady)
-        loading,
-  }) {
-    return initial(entry, event);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function()? $default, {
-    TResult? Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult? Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
-            bool localEntryReady,
-            bool localEventReady,
-            bool remoteEntryReady,
-            bool remoteEventReady)?
-        loading,
-  }) {
-    return initial?.call(entry, event);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
-            bool localEntryReady,
-            bool localEventReady,
-            bool remoteEntryReady,
-            bool remoteEventReady)?
-        loading,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(entry, event);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ObjectState value) $default, {
-    required TResult Function(ObjectStateInitial value) initial,
-    required TResult Function(ObjectStateLoading value) loading,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ObjectState value)? $default, {
-    TResult? Function(ObjectStateInitial value)? initial,
-    TResult? Function(ObjectStateLoading value)? loading,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ObjectState value)? $default, {
-    TResult Function(ObjectStateInitial value)? initial,
-    TResult Function(ObjectStateLoading value)? loading,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectStateInitial implements ObjectState {
-  factory ObjectStateInitial(final Map<String, EntryRecord> entry,
-      final Map<String, EventRecord> event) = _$ObjectStateInitialImpl;
-
-  Map<String, EntryRecord> get entry;
-  Map<String, EventRecord> get event;
-  @JsonKey(ignore: true)
-  _$$ObjectStateInitialImplCopyWith<_$ObjectStateInitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$ObjectStateLoadingImplCopyWith<$Res> {
   factory _$$ObjectStateLoadingImplCopyWith(_$ObjectStateLoadingImpl value,
           $Res Function(_$ObjectStateLoadingImpl) then) =
       __$$ObjectStateLoadingImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {HeadRecord headConfirmed,
-      Map<String, EntryRecord> entry,
-      Map<String, EventRecord> event,
+      {Map<String, EntryRecord> confirmedEntry,
+      Map<String, EventRecord> confirmedEvent,
       bool localEntryReady,
       bool localEventReady,
       bool remoteEntryReady,
       bool remoteEventReady});
-
-  $HeadRecordCopyWith<$Res> get headConfirmed;
 }
 
 /// @nodoc
@@ -474,26 +244,21 @@ class __$$ObjectStateLoadingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? headConfirmed = null,
-    Object? entry = null,
-    Object? event = null,
+    Object? confirmedEntry = null,
+    Object? confirmedEvent = null,
     Object? localEntryReady = null,
     Object? localEventReady = null,
     Object? remoteEntryReady = null,
     Object? remoteEventReady = null,
   }) {
     return _then(_$ObjectStateLoadingImpl(
-      null == headConfirmed
-          ? _value.headConfirmed
-          : headConfirmed // ignore: cast_nullable_to_non_nullable
-              as HeadRecord,
-      null == entry
-          ? _value._entry
-          : entry // ignore: cast_nullable_to_non_nullable
+      null == confirmedEntry
+          ? _value._confirmedEntry
+          : confirmedEntry // ignore: cast_nullable_to_non_nullable
               as Map<String, EntryRecord>,
-      null == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
+      null == confirmedEvent
+          ? _value._confirmedEvent
+          : confirmedEvent // ignore: cast_nullable_to_non_nullable
               as Map<String, EventRecord>,
       localEntryReady: null == localEntryReady
           ? _value.localEntryReady
@@ -513,46 +278,36 @@ class __$$ObjectStateLoadingImplCopyWithImpl<$Res>
               as bool,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadRecordCopyWith<$Res> get headConfirmed {
-    return $HeadRecordCopyWith<$Res>(_value.headConfirmed, (value) {
-      return _then(_value.copyWith(headConfirmed: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$ObjectStateLoadingImpl implements ObjectStateLoading {
-  _$ObjectStateLoadingImpl(
-      this.headConfirmed,
-      final Map<String, EntryRecord> entry,
-      final Map<String, EventRecord> event,
+  _$ObjectStateLoadingImpl(final Map<String, EntryRecord> confirmedEntry,
+      final Map<String, EventRecord> confirmedEvent,
       {required this.localEntryReady,
       required this.localEventReady,
       required this.remoteEntryReady,
       required this.remoteEventReady})
-      : _entry = entry,
-        _event = event;
+      : _confirmedEntry = confirmedEntry,
+        _confirmedEvent = confirmedEvent;
 
+// HeadRecord headConfirmed,
+  final Map<String, EntryRecord> _confirmedEntry;
+// HeadRecord headConfirmed,
   @override
-  final HeadRecord headConfirmed;
-  final Map<String, EntryRecord> _entry;
-  @override
-  Map<String, EntryRecord> get entry {
-    if (_entry is EqualUnmodifiableMapView) return _entry;
+  Map<String, EntryRecord> get confirmedEntry {
+    if (_confirmedEntry is EqualUnmodifiableMapView) return _confirmedEntry;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_entry);
+    return EqualUnmodifiableMapView(_confirmedEntry);
   }
 
-  final Map<String, EventRecord> _event;
+  final Map<String, EventRecord> _confirmedEvent;
   @override
-  Map<String, EventRecord> get event {
-    if (_event is EqualUnmodifiableMapView) return _event;
+  Map<String, EventRecord> get confirmedEvent {
+    if (_confirmedEvent is EqualUnmodifiableMapView) return _confirmedEvent;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_event);
+    return EqualUnmodifiableMapView(_confirmedEvent);
   }
 
   @override
@@ -566,7 +321,7 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
 
   @override
   String toString() {
-    return 'ObjectState.loading(headConfirmed: $headConfirmed, entry: $entry, event: $event, localEntryReady: $localEntryReady, localEventReady: $localEventReady, remoteEntryReady: $remoteEntryReady, remoteEventReady: $remoteEventReady)';
+    return 'ObjectState.loading(confirmedEntry: $confirmedEntry, confirmedEvent: $confirmedEvent, localEntryReady: $localEntryReady, localEventReady: $localEventReady, remoteEntryReady: $remoteEntryReady, remoteEventReady: $remoteEventReady)';
   }
 
   @override
@@ -574,10 +329,10 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectStateLoadingImpl &&
-            (identical(other.headConfirmed, headConfirmed) ||
-                other.headConfirmed == headConfirmed) &&
-            const DeepCollectionEquality().equals(other._entry, _entry) &&
-            const DeepCollectionEquality().equals(other._event, _event) &&
+            const DeepCollectionEquality()
+                .equals(other._confirmedEntry, _confirmedEntry) &&
+            const DeepCollectionEquality()
+                .equals(other._confirmedEvent, _confirmedEvent) &&
             (identical(other.localEntryReady, localEntryReady) ||
                 other.localEntryReady == localEntryReady) &&
             (identical(other.localEventReady, localEventReady) ||
@@ -591,9 +346,8 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      headConfirmed,
-      const DeepCollectionEquality().hash(_entry),
-      const DeepCollectionEquality().hash(_event),
+      const DeepCollectionEquality().hash(_confirmedEntry),
+      const DeepCollectionEquality().hash(_confirmedEvent),
       localEntryReady,
       localEventReady,
       remoteEntryReady,
@@ -611,19 +365,15 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)
-        initial,
-    required TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
             bool remoteEventReady)
         loading,
   }) {
-    return loading(headConfirmed, entry, event, localEntryReady,
+    return loading(confirmedEntry, confirmedEvent, localEntryReady,
         localEventReady, remoteEntryReady, remoteEventReady);
   }
 
@@ -632,19 +382,15 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult? Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
             bool remoteEventReady)?
         loading,
   }) {
-    return loading?.call(headConfirmed, entry, event, localEntryReady,
+    return loading?.call(confirmedEntry, confirmedEvent, localEntryReady,
         localEventReady, remoteEntryReady, remoteEventReady);
   }
 
@@ -653,12 +399,8 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(
-            Map<String, EntryRecord> entry, Map<String, EventRecord> event)?
-        initial,
-    TResult Function(
-            HeadRecord headConfirmed,
-            Map<String, EntryRecord> entry,
-            Map<String, EventRecord> event,
+            Map<String, EntryRecord> confirmedEntry,
+            Map<String, EventRecord> confirmedEvent,
             bool localEntryReady,
             bool localEventReady,
             bool remoteEntryReady,
@@ -667,7 +409,7 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(headConfirmed, entry, event, localEntryReady,
+      return loading(confirmedEntry, confirmedEvent, localEntryReady,
           localEventReady, remoteEntryReady, remoteEventReady);
     }
     return orElse();
@@ -677,7 +419,6 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ObjectState value) $default, {
-    required TResult Function(ObjectStateInitial value) initial,
     required TResult Function(ObjectStateLoading value) loading,
   }) {
     return loading(this);
@@ -687,7 +428,6 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ObjectState value)? $default, {
-    TResult? Function(ObjectStateInitial value)? initial,
     TResult? Function(ObjectStateLoading value)? loading,
   }) {
     return loading?.call(this);
@@ -697,7 +437,6 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ObjectState value)? $default, {
-    TResult Function(ObjectStateInitial value)? initial,
     TResult Function(ObjectStateLoading value)? loading,
     required TResult orElse(),
   }) {
@@ -709,18 +448,16 @@ class _$ObjectStateLoadingImpl implements ObjectStateLoading {
 }
 
 abstract class ObjectStateLoading implements ObjectState {
-  factory ObjectStateLoading(
-      final HeadRecord headConfirmed,
-      final Map<String, EntryRecord> entry,
-      final Map<String, EventRecord> event,
+  factory ObjectStateLoading(final Map<String, EntryRecord> confirmedEntry,
+      final Map<String, EventRecord> confirmedEvent,
       {required final bool localEntryReady,
       required final bool localEventReady,
       required final bool remoteEntryReady,
       required final bool remoteEventReady}) = _$ObjectStateLoadingImpl;
 
-  HeadRecord get headConfirmed;
-  Map<String, EntryRecord> get entry;
-  Map<String, EventRecord> get event;
+// HeadRecord headConfirmed,
+  Map<String, EntryRecord> get confirmedEntry;
+  Map<String, EventRecord> get confirmedEvent;
   bool get localEntryReady;
   bool get localEventReady;
   bool get remoteEntryReady;

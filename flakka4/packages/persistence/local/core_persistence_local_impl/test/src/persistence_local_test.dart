@@ -24,12 +24,12 @@ void main() {
       persistenceLocal.connect();
       const ref = '2';
       persistenceLocal.sink.add(
-        PersistenceLocalEffect.persist(
+        PersistenceLocalEffect.persistOne(
           PersistenceRecord.event(ref, EventRecord(data: {'value': 1})),
         ),
       );
       persistenceLocal.sink.add(
-        PersistenceLocalEffect.persist(
+        PersistenceLocalEffect.persistOne(
           PersistenceRecord.entry(
             ref,
             EntryRecordEvent(parent: '1', createdAt: 1),
@@ -37,7 +37,7 @@ void main() {
         ),
       );
       persistenceLocal.sink.add(
-        PersistenceLocalEffect.persist(
+        PersistenceLocalEffect.persistOne(
           PersistenceRecord.head(HeadRecord(ref: ref, sequenceNumber: 1)),
         ),
       );

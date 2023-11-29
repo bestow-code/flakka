@@ -16,107 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectRemoteEffect {
+  Object get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)
-        forward,
-    required TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)
-        add,
-    required TResult Function() none,
+    required TResult Function(ObjectAdd data) add,
+    required TResult Function(ObjectImport data) import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult? Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult? Function()? none,
+    TResult? Function(ObjectAdd data)? add,
+    TResult? Function(ObjectImport data)? import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult Function()? none,
+    TResult Function(ObjectAdd data)? add,
+    TResult Function(ObjectImport data)? import,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteEffectAppend value) append,
-    required TResult Function(ObjectRemoteEffectForward value) forward,
     required TResult Function(ObjectRemoteEffectAdd value) add,
-    required TResult Function(ObjectRemoteEffectNone value) none,
+    required TResult Function(ObjectRemoteEffectImport value) import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteEffectAppend value)? append,
-    TResult? Function(ObjectRemoteEffectForward value)? forward,
     TResult? Function(ObjectRemoteEffectAdd value)? add,
-    TResult? Function(ObjectRemoteEffectNone value)? none,
+    TResult? Function(ObjectRemoteEffectImport value)? import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteEffectAppend value)? append,
-    TResult Function(ObjectRemoteEffectForward value)? forward,
     TResult Function(ObjectRemoteEffectAdd value)? add,
-    TResult Function(ObjectRemoteEffectNone value)? none,
+    TResult Function(ObjectRemoteEffectImport value)? import,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,571 +76,15 @@ class _$ObjectRemoteEffectCopyWithImpl<$Res, $Val extends ObjectRemoteEffect>
 }
 
 /// @nodoc
-abstract class _$$ObjectRemoteEffectAppendImplCopyWith<$Res> {
-  factory _$$ObjectRemoteEffectAppendImplCopyWith(
-          _$ObjectRemoteEffectAppendImpl value,
-          $Res Function(_$ObjectRemoteEffectAppendImpl) then) =
-      __$$ObjectRemoteEffectAppendImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {String ref,
-      List<String> parent,
-      Map<String, dynamic>? event,
-      StateViewObject? stateView,
-      int createdAt,
-      int sequenceNumber});
-
-  $StateViewObjectCopyWith<$Res>? get stateView;
-}
-
-/// @nodoc
-class __$$ObjectRemoteEffectAppendImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteEffectCopyWithImpl<$Res,
-        _$ObjectRemoteEffectAppendImpl>
-    implements _$$ObjectRemoteEffectAppendImplCopyWith<$Res> {
-  __$$ObjectRemoteEffectAppendImplCopyWithImpl(
-      _$ObjectRemoteEffectAppendImpl _value,
-      $Res Function(_$ObjectRemoteEffectAppendImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? parent = null,
-    Object? event = freezed,
-    Object? stateView = freezed,
-    Object? createdAt = null,
-    Object? sequenceNumber = null,
-  }) {
-    return _then(_$ObjectRemoteEffectAppendImpl(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as String,
-      parent: null == parent
-          ? _value._parent
-          : parent // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      event: freezed == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      stateView: freezed == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as StateViewObject?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StateViewObjectCopyWith<$Res>? get stateView {
-    if (_value.stateView == null) {
-      return null;
-    }
-
-    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
-      return _then(_value.copyWith(stateView: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$ObjectRemoteEffectAppendImpl implements ObjectRemoteEffectAppend {
-  _$ObjectRemoteEffectAppendImpl(
-      {required this.ref,
-      required final List<String> parent,
-      required final Map<String, dynamic>? event,
-      required this.stateView,
-      required this.createdAt,
-      required this.sequenceNumber})
-      : _parent = parent,
-        _event = event;
-
-  @override
-  final String ref;
-  final List<String> _parent;
-  @override
-  List<String> get parent {
-    if (_parent is EqualUnmodifiableListView) return _parent;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_parent);
-  }
-
-  final Map<String, dynamic>? _event;
-  @override
-  Map<String, dynamic>? get event {
-    final value = _event;
-    if (value == null) return null;
-    if (_event is EqualUnmodifiableMapView) return _event;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
-
-  @override
-  final StateViewObject? stateView;
-  @override
-  final int createdAt;
-  @override
-  final int sequenceNumber;
-
-  @override
-  String toString() {
-    return 'ObjectRemoteEffect.append(ref: $ref, parent: $parent, event: $event, stateView: $stateView, createdAt: $createdAt, sequenceNumber: $sequenceNumber)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteEffectAppendImpl &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            const DeepCollectionEquality().equals(other._parent, _parent) &&
-            const DeepCollectionEquality().equals(other._event, _event) &&
-            (identical(other.stateView, stateView) ||
-                other.stateView == stateView) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      ref,
-      const DeepCollectionEquality().hash(_parent),
-      const DeepCollectionEquality().hash(_event),
-      stateView,
-      createdAt,
-      sequenceNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectRemoteEffectAppendImplCopyWith<_$ObjectRemoteEffectAppendImpl>
-      get copyWith => __$$ObjectRemoteEffectAppendImplCopyWithImpl<
-          _$ObjectRemoteEffectAppendImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)
-        forward,
-    required TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)
-        add,
-    required TResult Function() none,
-  }) {
-    return append(ref, parent, event, stateView, createdAt, sequenceNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult? Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult? Function()? none,
-  }) {
-    return append?.call(
-        ref, parent, event, stateView, createdAt, sequenceNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (append != null) {
-      return append(ref, parent, event, stateView, createdAt, sequenceNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteEffectAppend value) append,
-    required TResult Function(ObjectRemoteEffectForward value) forward,
-    required TResult Function(ObjectRemoteEffectAdd value) add,
-    required TResult Function(ObjectRemoteEffectNone value) none,
-  }) {
-    return append(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteEffectAppend value)? append,
-    TResult? Function(ObjectRemoteEffectForward value)? forward,
-    TResult? Function(ObjectRemoteEffectAdd value)? add,
-    TResult? Function(ObjectRemoteEffectNone value)? none,
-  }) {
-    return append?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteEffectAppend value)? append,
-    TResult Function(ObjectRemoteEffectForward value)? forward,
-    TResult Function(ObjectRemoteEffectAdd value)? add,
-    TResult Function(ObjectRemoteEffectNone value)? none,
-    required TResult orElse(),
-  }) {
-    if (append != null) {
-      return append(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectRemoteEffectAppend implements ObjectRemoteEffect {
-  factory ObjectRemoteEffectAppend(
-      {required final String ref,
-      required final List<String> parent,
-      required final Map<String, dynamic>? event,
-      required final StateViewObject? stateView,
-      required final int createdAt,
-      required final int sequenceNumber}) = _$ObjectRemoteEffectAppendImpl;
-
-  String get ref;
-  List<String> get parent;
-  Map<String, dynamic>? get event;
-  StateViewObject? get stateView;
-  int get createdAt;
-  int get sequenceNumber;
-  @JsonKey(ignore: true)
-  _$$ObjectRemoteEffectAppendImplCopyWith<_$ObjectRemoteEffectAppendImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ObjectRemoteEffectForwardImplCopyWith<$Res> {
-  factory _$$ObjectRemoteEffectForwardImplCopyWith(
-          _$ObjectRemoteEffectForwardImpl value,
-          $Res Function(_$ObjectRemoteEffectForwardImpl) then) =
-      __$$ObjectRemoteEffectForwardImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String ref, StateViewObject? stateView, int sequenceNumber});
-
-  $StateViewObjectCopyWith<$Res>? get stateView;
-}
-
-/// @nodoc
-class __$$ObjectRemoteEffectForwardImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteEffectCopyWithImpl<$Res,
-        _$ObjectRemoteEffectForwardImpl>
-    implements _$$ObjectRemoteEffectForwardImplCopyWith<$Res> {
-  __$$ObjectRemoteEffectForwardImplCopyWithImpl(
-      _$ObjectRemoteEffectForwardImpl _value,
-      $Res Function(_$ObjectRemoteEffectForwardImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ref = null,
-    Object? stateView = freezed,
-    Object? sequenceNumber = null,
-  }) {
-    return _then(_$ObjectRemoteEffectForwardImpl(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as String,
-      stateView: freezed == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
-              as StateViewObject?,
-      sequenceNumber: null == sequenceNumber
-          ? _value.sequenceNumber
-          : sequenceNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StateViewObjectCopyWith<$Res>? get stateView {
-    if (_value.stateView == null) {
-      return null;
-    }
-
-    return $StateViewObjectCopyWith<$Res>(_value.stateView!, (value) {
-      return _then(_value.copyWith(stateView: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$ObjectRemoteEffectForwardImpl implements ObjectRemoteEffectForward {
-  _$ObjectRemoteEffectForwardImpl(
-      {required this.ref,
-      required this.stateView,
-      required this.sequenceNumber});
-
-  @override
-  final String ref;
-  @override
-  final StateViewObject? stateView;
-  @override
-  final int sequenceNumber;
-
-  @override
-  String toString() {
-    return 'ObjectRemoteEffect.forward(ref: $ref, stateView: $stateView, sequenceNumber: $sequenceNumber)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteEffectForwardImpl &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.stateView, stateView) ||
-                other.stateView == stateView) &&
-            (identical(other.sequenceNumber, sequenceNumber) ||
-                other.sequenceNumber == sequenceNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, ref, stateView, sequenceNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectRemoteEffectForwardImplCopyWith<_$ObjectRemoteEffectForwardImpl>
-      get copyWith => __$$ObjectRemoteEffectForwardImplCopyWithImpl<
-          _$ObjectRemoteEffectForwardImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)
-        forward,
-    required TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)
-        add,
-    required TResult Function() none,
-  }) {
-    return forward(ref, stateView, sequenceNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult? Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult? Function()? none,
-  }) {
-    return forward?.call(ref, stateView, sequenceNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult Function()? none,
-    required TResult orElse(),
-  }) {
-    if (forward != null) {
-      return forward(ref, stateView, sequenceNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteEffectAppend value) append,
-    required TResult Function(ObjectRemoteEffectForward value) forward,
-    required TResult Function(ObjectRemoteEffectAdd value) add,
-    required TResult Function(ObjectRemoteEffectNone value) none,
-  }) {
-    return forward(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteEffectAppend value)? append,
-    TResult? Function(ObjectRemoteEffectForward value)? forward,
-    TResult? Function(ObjectRemoteEffectAdd value)? add,
-    TResult? Function(ObjectRemoteEffectNone value)? none,
-  }) {
-    return forward?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteEffectAppend value)? append,
-    TResult Function(ObjectRemoteEffectForward value)? forward,
-    TResult Function(ObjectRemoteEffectAdd value)? add,
-    TResult Function(ObjectRemoteEffectNone value)? none,
-    required TResult orElse(),
-  }) {
-    if (forward != null) {
-      return forward(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectRemoteEffectForward implements ObjectRemoteEffect {
-  factory ObjectRemoteEffectForward(
-      {required final String ref,
-      required final StateViewObject? stateView,
-      required final int sequenceNumber}) = _$ObjectRemoteEffectForwardImpl;
-
-  String get ref;
-  StateViewObject? get stateView;
-  int get sequenceNumber;
-  @JsonKey(ignore: true)
-  _$$ObjectRemoteEffectForwardImplCopyWith<_$ObjectRemoteEffectForwardImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$ObjectRemoteEffectAddImplCopyWith<$Res> {
   factory _$$ObjectRemoteEffectAddImplCopyWith(
           _$ObjectRemoteEffectAddImpl value,
           $Res Function(_$ObjectRemoteEffectAddImpl) then) =
       __$$ObjectRemoteEffectAddImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {Map<
-              String,
-              ({
-                ({int createdAt, String ref, Set<String> refs})? entry,
-                Map<String, dynamic>? event,
-                StateViewObject? stateView
-              })>
-          data});
+  $Res call({ObjectAdd data});
+
+  $ObjectAddCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -722,53 +101,29 @@ class __$$ObjectRemoteEffectAddImplCopyWithImpl<$Res>
     Object? data = null,
   }) {
     return _then(_$ObjectRemoteEffectAddImpl(
-      data: null == data
-          ? _value._data
+      null == data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<
-                  String,
-                  ({
-                    ({int createdAt, String ref, Set<String> refs})? entry,
-                    Map<String, dynamic>? event,
-                    StateViewObject? stateView
-                  })>,
+              as ObjectAdd,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ObjectAddCopyWith<$Res> get data {
+    return $ObjectAddCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
-  _$ObjectRemoteEffectAddImpl(
-      {required final Map<
-              String,
-              ({
-                ({int createdAt, String ref, Set<String> refs})? entry,
-                Map<String, dynamic>? event,
-                StateViewObject? stateView
-              })>
-          data})
-      : _data = data;
+  _$ObjectRemoteEffectAddImpl(this.data);
 
-  final Map<
-      String,
-      ({
-        ({int createdAt, String ref, Set<String> refs})? entry,
-        Map<String, dynamic>? event,
-        StateViewObject? stateView
-      })> _data;
   @override
-  Map<
-      String,
-      ({
-        ({int createdAt, String ref, Set<String> refs})? entry,
-        Map<String, dynamic>? event,
-        StateViewObject? stateView
-      })> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
-  }
+  final ObjectAdd data;
 
   @override
   String toString() {
@@ -780,12 +135,11 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectRemoteEffectAddImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -797,28 +151,8 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)
-        forward,
-    required TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)
-        add,
-    required TResult Function() none,
+    required TResult Function(ObjectAdd data) add,
+    required TResult Function(ObjectImport data) import,
   }) {
     return add(data);
   }
@@ -826,28 +160,8 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult? Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult? Function()? none,
+    TResult? Function(ObjectAdd data)? add,
+    TResult? Function(ObjectImport data)? import,
   }) {
     return add?.call(data);
   }
@@ -855,28 +169,8 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult Function()? none,
+    TResult Function(ObjectAdd data)? add,
+    TResult Function(ObjectImport data)? import,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -888,10 +182,8 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteEffectAppend value) append,
-    required TResult Function(ObjectRemoteEffectForward value) forward,
     required TResult Function(ObjectRemoteEffectAdd value) add,
-    required TResult Function(ObjectRemoteEffectNone value) none,
+    required TResult Function(ObjectRemoteEffectImport value) import,
   }) {
     return add(this);
   }
@@ -899,10 +191,8 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteEffectAppend value)? append,
-    TResult? Function(ObjectRemoteEffectForward value)? forward,
     TResult? Function(ObjectRemoteEffectAdd value)? add,
-    TResult? Function(ObjectRemoteEffectNone value)? none,
+    TResult? Function(ObjectRemoteEffectImport value)? import,
   }) {
     return add?.call(this);
   }
@@ -910,10 +200,8 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteEffectAppend value)? append,
-    TResult Function(ObjectRemoteEffectForward value)? forward,
     TResult Function(ObjectRemoteEffectAdd value)? add,
-    TResult Function(ObjectRemoteEffectNone value)? none,
+    TResult Function(ObjectRemoteEffectImport value)? import,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -924,153 +212,118 @@ class _$ObjectRemoteEffectAddImpl implements ObjectRemoteEffectAdd {
 }
 
 abstract class ObjectRemoteEffectAdd implements ObjectRemoteEffect {
-  factory ObjectRemoteEffectAdd(
-      {required final Map<
-              String,
-              ({
-                ({int createdAt, String ref, Set<String> refs})? entry,
-                Map<String, dynamic>? event,
-                StateViewObject? stateView
-              })>
-          data}) = _$ObjectRemoteEffectAddImpl;
+  factory ObjectRemoteEffectAdd(final ObjectAdd data) =
+      _$ObjectRemoteEffectAddImpl;
 
-  Map<
-      String,
-      ({
-        ({int createdAt, String ref, Set<String> refs})? entry,
-        Map<String, dynamic>? event,
-        StateViewObject? stateView
-      })> get data;
+  @override
+  ObjectAdd get data;
   @JsonKey(ignore: true)
   _$$ObjectRemoteEffectAddImplCopyWith<_$ObjectRemoteEffectAddImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectRemoteEffectNoneImplCopyWith<$Res> {
-  factory _$$ObjectRemoteEffectNoneImplCopyWith(
-          _$ObjectRemoteEffectNoneImpl value,
-          $Res Function(_$ObjectRemoteEffectNoneImpl) then) =
-      __$$ObjectRemoteEffectNoneImplCopyWithImpl<$Res>;
+abstract class _$$ObjectRemoteEffectImportImplCopyWith<$Res> {
+  factory _$$ObjectRemoteEffectImportImplCopyWith(
+          _$ObjectRemoteEffectImportImpl value,
+          $Res Function(_$ObjectRemoteEffectImportImpl) then) =
+      __$$ObjectRemoteEffectImportImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ObjectImport data});
+
+  $ObjectImportCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$ObjectRemoteEffectNoneImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteEffectCopyWithImpl<$Res, _$ObjectRemoteEffectNoneImpl>
-    implements _$$ObjectRemoteEffectNoneImplCopyWith<$Res> {
-  __$$ObjectRemoteEffectNoneImplCopyWithImpl(
-      _$ObjectRemoteEffectNoneImpl _value,
-      $Res Function(_$ObjectRemoteEffectNoneImpl) _then)
+class __$$ObjectRemoteEffectImportImplCopyWithImpl<$Res>
+    extends _$ObjectRemoteEffectCopyWithImpl<$Res,
+        _$ObjectRemoteEffectImportImpl>
+    implements _$$ObjectRemoteEffectImportImplCopyWith<$Res> {
+  __$$ObjectRemoteEffectImportImplCopyWithImpl(
+      _$ObjectRemoteEffectImportImpl _value,
+      $Res Function(_$ObjectRemoteEffectImportImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ObjectRemoteEffectImportImpl(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as ObjectImport,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ObjectImportCopyWith<$Res> get data {
+    return $ObjectImportCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$ObjectRemoteEffectNoneImpl implements ObjectRemoteEffectNone {
-  _$ObjectRemoteEffectNoneImpl();
+class _$ObjectRemoteEffectImportImpl implements ObjectRemoteEffectImport {
+  _$ObjectRemoteEffectImportImpl(this.data);
+
+  @override
+  final ObjectImport data;
 
   @override
   String toString() {
-    return 'ObjectRemoteEffect.none()';
+    return 'ObjectRemoteEffect.import(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteEffectNoneImpl);
+            other is _$ObjectRemoteEffectImportImpl &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectRemoteEffectImportImplCopyWith<_$ObjectRemoteEffectImportImpl>
+      get copyWith => __$$ObjectRemoteEffectImportImplCopyWithImpl<
+          _$ObjectRemoteEffectImportImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)
-        append,
-    required TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)
-        forward,
-    required TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)
-        add,
-    required TResult Function() none,
+    required TResult Function(ObjectAdd data) add,
+    required TResult Function(ObjectImport data) import,
   }) {
-    return none();
+    return import(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult? Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult? Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult? Function()? none,
+    TResult? Function(ObjectAdd data)? add,
+    TResult? Function(ObjectImport data)? import,
   }) {
-    return none?.call();
+    return import?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String ref,
-            List<String> parent,
-            Map<String, dynamic>? event,
-            StateViewObject? stateView,
-            int createdAt,
-            int sequenceNumber)?
-        append,
-    TResult Function(
-            String ref, StateViewObject? stateView, int sequenceNumber)?
-        forward,
-    TResult Function(
-            Map<
-                    String,
-                    ({
-                      ({int createdAt, String ref, Set<String> refs})? entry,
-                      Map<String, dynamic>? event,
-                      StateViewObject? stateView
-                    })>
-                data)?
-        add,
-    TResult Function()? none,
+    TResult Function(ObjectAdd data)? add,
+    TResult Function(ObjectImport data)? import,
     required TResult orElse(),
   }) {
-    if (none != null) {
-      return none();
+    if (import != null) {
+      return import(data);
     }
     return orElse();
   }
@@ -1078,41 +331,42 @@ class _$ObjectRemoteEffectNoneImpl implements ObjectRemoteEffectNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteEffectAppend value) append,
-    required TResult Function(ObjectRemoteEffectForward value) forward,
     required TResult Function(ObjectRemoteEffectAdd value) add,
-    required TResult Function(ObjectRemoteEffectNone value) none,
+    required TResult Function(ObjectRemoteEffectImport value) import,
   }) {
-    return none(this);
+    return import(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteEffectAppend value)? append,
-    TResult? Function(ObjectRemoteEffectForward value)? forward,
     TResult? Function(ObjectRemoteEffectAdd value)? add,
-    TResult? Function(ObjectRemoteEffectNone value)? none,
+    TResult? Function(ObjectRemoteEffectImport value)? import,
   }) {
-    return none?.call(this);
+    return import?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteEffectAppend value)? append,
-    TResult Function(ObjectRemoteEffectForward value)? forward,
     TResult Function(ObjectRemoteEffectAdd value)? add,
-    TResult Function(ObjectRemoteEffectNone value)? none,
+    TResult Function(ObjectRemoteEffectImport value)? import,
     required TResult orElse(),
   }) {
-    if (none != null) {
-      return none(this);
+    if (import != null) {
+      return import(this);
     }
     return orElse();
   }
 }
 
-abstract class ObjectRemoteEffectNone implements ObjectRemoteEffect {
-  factory ObjectRemoteEffectNone() = _$ObjectRemoteEffectNoneImpl;
+abstract class ObjectRemoteEffectImport implements ObjectRemoteEffect {
+  factory ObjectRemoteEffectImport(final ObjectImport data) =
+      _$ObjectRemoteEffectImportImpl;
+
+  @override
+  ObjectImport get data;
+  @JsonKey(ignore: true)
+  _$$ObjectRemoteEffectImportImplCopyWith<_$ObjectRemoteEffectImportImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

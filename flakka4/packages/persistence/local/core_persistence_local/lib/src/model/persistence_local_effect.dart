@@ -5,6 +5,9 @@ part 'persistence_local_effect.freezed.dart';
 
 @freezed
 sealed class PersistenceLocalEffect with _$PersistenceLocalEffect {
-  factory PersistenceLocalEffect.persist(PersistenceRecord data) =
-      PersistenceLocalEffectPersist;
+  factory PersistenceLocalEffect.persistOne(PersistenceRecord data) =
+      PersistenceLocalEffectPersistOne;
+
+  factory PersistenceLocalEffect.persistAll(Iterable<PersistenceRecord> data) =
+      PersistenceLocalEffectPersistAll;
 }

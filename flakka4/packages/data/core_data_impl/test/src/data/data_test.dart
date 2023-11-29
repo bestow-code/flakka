@@ -50,7 +50,7 @@ void main() {
             // print(loco_data.dataConverterFactory.call());
         });
         late ReplaySubject<ObjectEffect> objectEffect;
-        late StreamController<ObjectUpdate> objectUpdate;
+        late StreamController<ObjectSnapshot> objectUpdate;
 
         setUp(() {
             objectEffect = ReplaySubject();

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common_test/core_common_test.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_loco_test/core_loco_test.dart';
 import 'package:glados/glados.dart';
@@ -85,27 +86,28 @@ void Function(
 }
 
 void test<
-        TestContext extends CoreTestContext<Provider, ProviderContext, Key,
-            Resource>,
-        Provider extends CoreResourceProvider<ProviderContext, Key, EffectIn,
-            SnapshotOut, Resource>,
-        ProviderContext extends CoreProviderContext,
-        Key,
-        EffectIn,
-        SnapshotOut,
-        Resource extends CoreResource<EffectIn, SnapshotOut>,
-        TestOperationsData extends CoreTestOperationsData<Operation>,
-        Operation>(
-    String description,
-    CoreResourceTester<TestContext, Provider, ProviderContext, Key, EffectIn,
-            SnapshotOut, Resource, TestOperationsData, Operation>
-        tester,
-    FutureOr<void> Function(
-      TestContext context,
-      List<Resource> subjects,
-      TestOperationsData operationsData,
-      List<Stream<InstanceResult<SnapshotOut>>> results,
-    ) body) {
+    TestContext extends CoreTestContext<Provider, ProviderContext, Key,
+        Resource>,
+    Provider extends CoreResourceProvider<ProviderContext, Key, EffectIn,
+        SnapshotOut, Resource>,
+    ProviderContext extends CoreProviderContext,
+    Key,
+    EffectIn,
+    SnapshotOut,
+    Resource extends CoreResource<EffectIn, SnapshotOut>,
+    TestOperationsData extends CoreTestOperationsData<Operation>,
+    Operation>(
+  String description,
+  CoreResourceTester<TestContext, Provider, ProviderContext, Key, EffectIn,
+          SnapshotOut, Resource, TestOperationsData, Operation>
+      tester,
+  FutureOr<void> Function(
+    TestContext context,
+    List<Resource> subjects,
+    TestOperationsData operationsData,
+    List<Stream<InstanceResult<SnapshotOut>>> results,
+  ) body,
+) {
   tester.tester.test(
     description,
     (contextOperationsData, initialize) async {

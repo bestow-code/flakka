@@ -13,7 +13,6 @@ class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
   @override
   Stream<HeadRecord> get headSnapshot =>
       store.queryHead(persistenceId).snapshots().map((event) {
-        print(event.values);
         return event.values.single;
       });
 

@@ -14,7 +14,7 @@ abstract interface class CoreDataFactory<
             State,
             View,
             ObjectEffect,
-            ObjectUpdate,
+            ObjectSnapshot,
             DataEffect<Event, State, View>,
             DataUpdate<Event, State, View>> {
   @override

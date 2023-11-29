@@ -11,7 +11,7 @@ class Data<Event extends CoreEvent, State extends CoreState,
         State,
         View,
         ObjectEffect,
-        ObjectUpdate,
+        ObjectSnapshot,
         DataEffect<Event, State, View>,
         DataUpdate<Event, State, View>>
     implements CoreData<Event, State, View> {

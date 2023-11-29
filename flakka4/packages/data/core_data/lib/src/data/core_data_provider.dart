@@ -7,7 +7,7 @@ abstract interface class CoreDataProvider
         CoreDataNodeProvider<
             CoreData<dynamic, dynamic, dynamic>,
             ObjectEffect,
-            ObjectUpdate,
+            ObjectSnapshot,
             DataEffect<dynamic, dynamic, dynamic>,
             DataUpdate<dynamic, dynamic, dynamic>> {
   // @override

@@ -15,71 +15,66 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ObjectRemoteUpdate {
-  Object? get data => throw _privateConstructorUsedError;
+mixin _$ObjectRemoteSnapshot {
+  Object get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteUpdateHead value) head,
-    required TResult Function(ObjectRemoteUpdateEntry value) entry,
-    required TResult Function(ObjectRemoteUpdateEvent value) event,
+    required TResult Function(ObjectRemoteSnapshotHead value) head,
+    required TResult Function(ObjectRemoteSnapshotEntry value) entry,
+    required TResult Function(ObjectRemoteSnapshotEvent value) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteUpdateHead value)? head,
-    TResult? Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult? Function(ObjectRemoteUpdateEvent value)? event,
+    TResult? Function(ObjectRemoteSnapshotHead value)? head,
+    TResult? Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult? Function(ObjectRemoteSnapshotEvent value)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteUpdateHead value)? head,
-    TResult Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult Function(ObjectRemoteUpdateEvent value)? event,
+    TResult Function(ObjectRemoteSnapshotHead value)? head,
+    TResult Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult Function(ObjectRemoteSnapshotEvent value)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObjectRemoteUpdateCopyWith<$Res> {
-  factory $ObjectRemoteUpdateCopyWith(
-          ObjectRemoteUpdate value, $Res Function(ObjectRemoteUpdate) then) =
-      _$ObjectRemoteUpdateCopyWithImpl<$Res, ObjectRemoteUpdate>;
+abstract class $ObjectRemoteSnapshotCopyWith<$Res> {
+  factory $ObjectRemoteSnapshotCopyWith(ObjectRemoteSnapshot value,
+          $Res Function(ObjectRemoteSnapshot) then) =
+      _$ObjectRemoteSnapshotCopyWithImpl<$Res, ObjectRemoteSnapshot>;
 }
 
 /// @nodoc
-class _$ObjectRemoteUpdateCopyWithImpl<$Res, $Val extends ObjectRemoteUpdate>
-    implements $ObjectRemoteUpdateCopyWith<$Res> {
-  _$ObjectRemoteUpdateCopyWithImpl(this._value, this._then);
+class _$ObjectRemoteSnapshotCopyWithImpl<$Res,
+        $Val extends ObjectRemoteSnapshot>
+    implements $ObjectRemoteSnapshotCopyWith<$Res> {
+  _$ObjectRemoteSnapshotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,56 +83,67 @@ class _$ObjectRemoteUpdateCopyWithImpl<$Res, $Val extends ObjectRemoteUpdate>
 }
 
 /// @nodoc
-abstract class _$$ObjectRemoteUpdateHeadImplCopyWith<$Res> {
-  factory _$$ObjectRemoteUpdateHeadImplCopyWith(
-          _$ObjectRemoteUpdateHeadImpl value,
-          $Res Function(_$ObjectRemoteUpdateHeadImpl) then) =
-      __$$ObjectRemoteUpdateHeadImplCopyWithImpl<$Res>;
+abstract class _$$ObjectRemoteSnapshotHeadImplCopyWith<$Res> {
+  factory _$$ObjectRemoteSnapshotHeadImplCopyWith(
+          _$ObjectRemoteSnapshotHeadImpl value,
+          $Res Function(_$ObjectRemoteSnapshotHeadImpl) then) =
+      __$$ObjectRemoteSnapshotHeadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({({String ref, int sequenceNumber})? data});
+  $Res call({HeadRecord data});
+
+  $HeadRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$ObjectRemoteUpdateHeadImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteUpdateCopyWithImpl<$Res, _$ObjectRemoteUpdateHeadImpl>
-    implements _$$ObjectRemoteUpdateHeadImplCopyWith<$Res> {
-  __$$ObjectRemoteUpdateHeadImplCopyWithImpl(
-      _$ObjectRemoteUpdateHeadImpl _value,
-      $Res Function(_$ObjectRemoteUpdateHeadImpl) _then)
+class __$$ObjectRemoteSnapshotHeadImplCopyWithImpl<$Res>
+    extends _$ObjectRemoteSnapshotCopyWithImpl<$Res,
+        _$ObjectRemoteSnapshotHeadImpl>
+    implements _$$ObjectRemoteSnapshotHeadImplCopyWith<$Res> {
+  __$$ObjectRemoteSnapshotHeadImplCopyWithImpl(
+      _$ObjectRemoteSnapshotHeadImpl _value,
+      $Res Function(_$ObjectRemoteSnapshotHeadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
-    return _then(_$ObjectRemoteUpdateHeadImpl(
-      data: freezed == data
+    return _then(_$ObjectRemoteSnapshotHeadImpl(
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ({String ref, int sequenceNumber})?,
+              as HeadRecord,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadRecordCopyWith<$Res> get data {
+    return $HeadRecordCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
-  _$ObjectRemoteUpdateHeadImpl({required this.data});
+class _$ObjectRemoteSnapshotHeadImpl implements ObjectRemoteSnapshotHead {
+  _$ObjectRemoteSnapshotHeadImpl({required this.data});
 
   @override
-  final ({String ref, int sequenceNumber})? data;
+  final HeadRecord data;
 
   @override
   String toString() {
-    return 'ObjectRemoteUpdate.head(data: $data)';
+    return 'ObjectRemoteSnapshot.head(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteUpdateHeadImpl &&
+            other is _$ObjectRemoteSnapshotHeadImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -147,18 +153,16 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectRemoteUpdateHeadImplCopyWith<_$ObjectRemoteUpdateHeadImpl>
-      get copyWith => __$$ObjectRemoteUpdateHeadImplCopyWithImpl<
-          _$ObjectRemoteUpdateHeadImpl>(this, _$identity);
+  _$$ObjectRemoteSnapshotHeadImplCopyWith<_$ObjectRemoteSnapshotHeadImpl>
+      get copyWith => __$$ObjectRemoteSnapshotHeadImplCopyWithImpl<
+          _$ObjectRemoteSnapshotHeadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) {
     return head(data);
   }
@@ -166,11 +170,9 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) {
     return head?.call(data);
   }
@@ -178,11 +180,9 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -194,9 +194,9 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteUpdateHead value) head,
-    required TResult Function(ObjectRemoteUpdateEntry value) entry,
-    required TResult Function(ObjectRemoteUpdateEvent value) event,
+    required TResult Function(ObjectRemoteSnapshotHead value) head,
+    required TResult Function(ObjectRemoteSnapshotEntry value) entry,
+    required TResult Function(ObjectRemoteSnapshotEvent value) event,
   }) {
     return head(this);
   }
@@ -204,9 +204,9 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteUpdateHead value)? head,
-    TResult? Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult? Function(ObjectRemoteUpdateEvent value)? event,
+    TResult? Function(ObjectRemoteSnapshotHead value)? head,
+    TResult? Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult? Function(ObjectRemoteSnapshotEvent value)? event,
   }) {
     return head?.call(this);
   }
@@ -214,9 +214,9 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteUpdateHead value)? head,
-    TResult Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult Function(ObjectRemoteUpdateEvent value)? event,
+    TResult Function(ObjectRemoteSnapshotHead value)? head,
+    TResult Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult Function(ObjectRemoteSnapshotEvent value)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -226,36 +226,35 @@ class _$ObjectRemoteUpdateHeadImpl implements ObjectRemoteUpdateHead {
   }
 }
 
-abstract class ObjectRemoteUpdateHead implements ObjectRemoteUpdate {
-  factory ObjectRemoteUpdateHead(
-          {required final ({String ref, int sequenceNumber})? data}) =
-      _$ObjectRemoteUpdateHeadImpl;
+abstract class ObjectRemoteSnapshotHead implements ObjectRemoteSnapshot {
+  factory ObjectRemoteSnapshotHead({required final HeadRecord data}) =
+      _$ObjectRemoteSnapshotHeadImpl;
 
   @override
-  ({String ref, int sequenceNumber})? get data;
+  HeadRecord get data;
   @JsonKey(ignore: true)
-  _$$ObjectRemoteUpdateHeadImplCopyWith<_$ObjectRemoteUpdateHeadImpl>
+  _$$ObjectRemoteSnapshotHeadImplCopyWith<_$ObjectRemoteSnapshotHeadImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectRemoteUpdateEntryImplCopyWith<$Res> {
-  factory _$$ObjectRemoteUpdateEntryImplCopyWith(
-          _$ObjectRemoteUpdateEntryImpl value,
-          $Res Function(_$ObjectRemoteUpdateEntryImpl) then) =
-      __$$ObjectRemoteUpdateEntryImplCopyWithImpl<$Res>;
+abstract class _$$ObjectRemoteSnapshotEntryImplCopyWith<$Res> {
+  factory _$$ObjectRemoteSnapshotEntryImplCopyWith(
+          _$ObjectRemoteSnapshotEntryImpl value,
+          $Res Function(_$ObjectRemoteSnapshotEntryImpl) then) =
+      __$$ObjectRemoteSnapshotEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, ({int createdAt, Iterable<String> refs})> data});
+  $Res call({Map<String, EntryRecord> data});
 }
 
 /// @nodoc
-class __$$ObjectRemoteUpdateEntryImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteUpdateCopyWithImpl<$Res,
-        _$ObjectRemoteUpdateEntryImpl>
-    implements _$$ObjectRemoteUpdateEntryImplCopyWith<$Res> {
-  __$$ObjectRemoteUpdateEntryImplCopyWithImpl(
-      _$ObjectRemoteUpdateEntryImpl _value,
-      $Res Function(_$ObjectRemoteUpdateEntryImpl) _then)
+class __$$ObjectRemoteSnapshotEntryImplCopyWithImpl<$Res>
+    extends _$ObjectRemoteSnapshotCopyWithImpl<$Res,
+        _$ObjectRemoteSnapshotEntryImpl>
+    implements _$$ObjectRemoteSnapshotEntryImplCopyWith<$Res> {
+  __$$ObjectRemoteSnapshotEntryImplCopyWithImpl(
+      _$ObjectRemoteSnapshotEntryImpl _value,
+      $Res Function(_$ObjectRemoteSnapshotEntryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -263,26 +262,25 @@ class __$$ObjectRemoteUpdateEntryImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectRemoteUpdateEntryImpl(
+    return _then(_$ObjectRemoteSnapshotEntryImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, ({int createdAt, Iterable<String> refs})>,
+              as Map<String, EntryRecord>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
-  _$ObjectRemoteUpdateEntryImpl(
-      {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data})
+class _$ObjectRemoteSnapshotEntryImpl implements ObjectRemoteSnapshotEntry {
+  _$ObjectRemoteSnapshotEntryImpl(
+      {required final Map<String, EntryRecord> data})
       : _data = data;
 
-  final Map<String, ({int createdAt, Iterable<String> refs})> _data;
+  final Map<String, EntryRecord> _data;
   @override
-  Map<String, ({int createdAt, Iterable<String> refs})> get data {
+  Map<String, EntryRecord> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -290,14 +288,14 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
 
   @override
   String toString() {
-    return 'ObjectRemoteUpdate.entry(data: $data)';
+    return 'ObjectRemoteSnapshot.entry(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteUpdateEntryImpl &&
+            other is _$ObjectRemoteSnapshotEntryImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -308,18 +306,16 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectRemoteUpdateEntryImplCopyWith<_$ObjectRemoteUpdateEntryImpl>
-      get copyWith => __$$ObjectRemoteUpdateEntryImplCopyWithImpl<
-          _$ObjectRemoteUpdateEntryImpl>(this, _$identity);
+  _$$ObjectRemoteSnapshotEntryImplCopyWith<_$ObjectRemoteSnapshotEntryImpl>
+      get copyWith => __$$ObjectRemoteSnapshotEntryImplCopyWithImpl<
+          _$ObjectRemoteSnapshotEntryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) {
     return entry(data);
   }
@@ -327,11 +323,9 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) {
     return entry?.call(data);
   }
@@ -339,11 +333,9 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -355,9 +347,9 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteUpdateHead value) head,
-    required TResult Function(ObjectRemoteUpdateEntry value) entry,
-    required TResult Function(ObjectRemoteUpdateEvent value) event,
+    required TResult Function(ObjectRemoteSnapshotHead value) head,
+    required TResult Function(ObjectRemoteSnapshotEntry value) entry,
+    required TResult Function(ObjectRemoteSnapshotEvent value) event,
   }) {
     return entry(this);
   }
@@ -365,9 +357,9 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteUpdateHead value)? head,
-    TResult? Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult? Function(ObjectRemoteUpdateEvent value)? event,
+    TResult? Function(ObjectRemoteSnapshotHead value)? head,
+    TResult? Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult? Function(ObjectRemoteSnapshotEvent value)? event,
   }) {
     return entry?.call(this);
   }
@@ -375,9 +367,9 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteUpdateHead value)? head,
-    TResult Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult Function(ObjectRemoteUpdateEvent value)? event,
+    TResult Function(ObjectRemoteSnapshotHead value)? head,
+    TResult Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult Function(ObjectRemoteSnapshotEvent value)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -387,36 +379,36 @@ class _$ObjectRemoteUpdateEntryImpl implements ObjectRemoteUpdateEntry {
   }
 }
 
-abstract class ObjectRemoteUpdateEntry implements ObjectRemoteUpdate {
-  factory ObjectRemoteUpdateEntry(
-      {required final Map<String, ({int createdAt, Iterable<String> refs})>
-          data}) = _$ObjectRemoteUpdateEntryImpl;
+abstract class ObjectRemoteSnapshotEntry implements ObjectRemoteSnapshot {
+  factory ObjectRemoteSnapshotEntry(
+          {required final Map<String, EntryRecord> data}) =
+      _$ObjectRemoteSnapshotEntryImpl;
 
   @override
-  Map<String, ({int createdAt, Iterable<String> refs})> get data;
+  Map<String, EntryRecord> get data;
   @JsonKey(ignore: true)
-  _$$ObjectRemoteUpdateEntryImplCopyWith<_$ObjectRemoteUpdateEntryImpl>
+  _$$ObjectRemoteSnapshotEntryImplCopyWith<_$ObjectRemoteSnapshotEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ObjectRemoteUpdateEventImplCopyWith<$Res> {
-  factory _$$ObjectRemoteUpdateEventImplCopyWith(
-          _$ObjectRemoteUpdateEventImpl value,
-          $Res Function(_$ObjectRemoteUpdateEventImpl) then) =
-      __$$ObjectRemoteUpdateEventImplCopyWithImpl<$Res>;
+abstract class _$$ObjectRemoteSnapshotEventImplCopyWith<$Res> {
+  factory _$$ObjectRemoteSnapshotEventImplCopyWith(
+          _$ObjectRemoteSnapshotEventImpl value,
+          $Res Function(_$ObjectRemoteSnapshotEventImpl) then) =
+      __$$ObjectRemoteSnapshotEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, JsonMap> data});
+  $Res call({Map<String, EventRecord> data});
 }
 
 /// @nodoc
-class __$$ObjectRemoteUpdateEventImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteUpdateCopyWithImpl<$Res,
-        _$ObjectRemoteUpdateEventImpl>
-    implements _$$ObjectRemoteUpdateEventImplCopyWith<$Res> {
-  __$$ObjectRemoteUpdateEventImplCopyWithImpl(
-      _$ObjectRemoteUpdateEventImpl _value,
-      $Res Function(_$ObjectRemoteUpdateEventImpl) _then)
+class __$$ObjectRemoteSnapshotEventImplCopyWithImpl<$Res>
+    extends _$ObjectRemoteSnapshotCopyWithImpl<$Res,
+        _$ObjectRemoteSnapshotEventImpl>
+    implements _$$ObjectRemoteSnapshotEventImplCopyWith<$Res> {
+  __$$ObjectRemoteSnapshotEventImplCopyWithImpl(
+      _$ObjectRemoteSnapshotEventImpl _value,
+      $Res Function(_$ObjectRemoteSnapshotEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -424,24 +416,25 @@ class __$$ObjectRemoteUpdateEventImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ObjectRemoteUpdateEventImpl(
+    return _then(_$ObjectRemoteSnapshotEventImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, JsonMap>,
+              as Map<String, EventRecord>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
-  _$ObjectRemoteUpdateEventImpl({required final Map<String, JsonMap> data})
+class _$ObjectRemoteSnapshotEventImpl implements ObjectRemoteSnapshotEvent {
+  _$ObjectRemoteSnapshotEventImpl(
+      {required final Map<String, EventRecord> data})
       : _data = data;
 
-  final Map<String, JsonMap> _data;
+  final Map<String, EventRecord> _data;
   @override
-  Map<String, JsonMap> get data {
+  Map<String, EventRecord> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -449,14 +442,14 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
 
   @override
   String toString() {
-    return 'ObjectRemoteUpdate.event(data: $data)';
+    return 'ObjectRemoteSnapshot.event(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteUpdateEventImpl &&
+            other is _$ObjectRemoteSnapshotEventImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -467,18 +460,16 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ObjectRemoteUpdateEventImplCopyWith<_$ObjectRemoteUpdateEventImpl>
-      get copyWith => __$$ObjectRemoteUpdateEventImplCopyWithImpl<
-          _$ObjectRemoteUpdateEventImpl>(this, _$identity);
+  _$$ObjectRemoteSnapshotEventImplCopyWith<_$ObjectRemoteSnapshotEventImpl>
+      get copyWith => __$$ObjectRemoteSnapshotEventImplCopyWithImpl<
+          _$ObjectRemoteSnapshotEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(({String ref, int sequenceNumber})? data) head,
-    required TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)
-        entry,
-    required TResult Function(Map<String, JsonMap> data) event,
+    required TResult Function(HeadRecord data) head,
+    required TResult Function(Map<String, EntryRecord> data) entry,
+    required TResult Function(Map<String, EventRecord> data) event,
   }) {
     return event(data);
   }
@@ -486,11 +477,9 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(({String ref, int sequenceNumber})? data)? head,
-    TResult? Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult? Function(Map<String, JsonMap> data)? event,
+    TResult? Function(HeadRecord data)? head,
+    TResult? Function(Map<String, EntryRecord> data)? entry,
+    TResult? Function(Map<String, EventRecord> data)? event,
   }) {
     return event?.call(data);
   }
@@ -498,11 +487,9 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(({String ref, int sequenceNumber})? data)? head,
-    TResult Function(
-            Map<String, ({int createdAt, Iterable<String> refs})> data)?
-        entry,
-    TResult Function(Map<String, JsonMap> data)? event,
+    TResult Function(HeadRecord data)? head,
+    TResult Function(Map<String, EntryRecord> data)? entry,
+    TResult Function(Map<String, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -514,9 +501,9 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ObjectRemoteUpdateHead value) head,
-    required TResult Function(ObjectRemoteUpdateEntry value) entry,
-    required TResult Function(ObjectRemoteUpdateEvent value) event,
+    required TResult Function(ObjectRemoteSnapshotHead value) head,
+    required TResult Function(ObjectRemoteSnapshotEntry value) entry,
+    required TResult Function(ObjectRemoteSnapshotEvent value) event,
   }) {
     return event(this);
   }
@@ -524,9 +511,9 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectRemoteUpdateHead value)? head,
-    TResult? Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult? Function(ObjectRemoteUpdateEvent value)? event,
+    TResult? Function(ObjectRemoteSnapshotHead value)? head,
+    TResult? Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult? Function(ObjectRemoteSnapshotEvent value)? event,
   }) {
     return event?.call(this);
   }
@@ -534,9 +521,9 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectRemoteUpdateHead value)? head,
-    TResult Function(ObjectRemoteUpdateEntry value)? entry,
-    TResult Function(ObjectRemoteUpdateEvent value)? event,
+    TResult Function(ObjectRemoteSnapshotHead value)? head,
+    TResult Function(ObjectRemoteSnapshotEntry value)? entry,
+    TResult Function(ObjectRemoteSnapshotEvent value)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -546,33 +533,72 @@ class _$ObjectRemoteUpdateEventImpl implements ObjectRemoteUpdateEvent {
   }
 }
 
-abstract class ObjectRemoteUpdateEvent implements ObjectRemoteUpdate {
-  factory ObjectRemoteUpdateEvent({required final Map<String, JsonMap> data}) =
-      _$ObjectRemoteUpdateEventImpl;
+abstract class ObjectRemoteSnapshotEvent implements ObjectRemoteSnapshot {
+  factory ObjectRemoteSnapshotEvent(
+          {required final Map<String, EventRecord> data}) =
+      _$ObjectRemoteSnapshotEventImpl;
 
   @override
-  Map<String, JsonMap> get data;
+  Map<String, EventRecord> get data;
   @JsonKey(ignore: true)
-  _$$ObjectRemoteUpdateEventImplCopyWith<_$ObjectRemoteUpdateEventImpl>
+  _$$ObjectRemoteSnapshotEventImplCopyWith<_$ObjectRemoteSnapshotEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ObjectRemoteProvisionState {}
-
-/// @nodoc
-abstract class $ObjectRemoteProvisionStateCopyWith<$Res> {
-  factory $ObjectRemoteProvisionStateCopyWith(ObjectRemoteProvisionState value,
-          $Res Function(ObjectRemoteProvisionState) then) =
-      _$ObjectRemoteProvisionStateCopyWithImpl<$Res,
-          ObjectRemoteProvisionState>;
+mixin _$EntryObject {
+  EntryRecord get entry => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EntryRecordEvent entry, EventRecord event) event,
+    required TResult Function(EntryRecordInitial entry) initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult? Function(EntryRecordInitial entry)? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult Function(EntryRecordInitial entry)? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntryObjectEvent value) event,
+    required TResult Function(EntryObjectInitial value) initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EntryObjectEvent value)? event,
+    TResult? Function(EntryObjectInitial value)? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntryObjectEvent value)? event,
+    TResult Function(EntryObjectInitial value)? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$ObjectRemoteProvisionStateCopyWithImpl<$Res,
-        $Val extends ObjectRemoteProvisionState>
-    implements $ObjectRemoteProvisionStateCopyWith<$Res> {
-  _$ObjectRemoteProvisionStateCopyWithImpl(this._value, this._then);
+abstract class $EntryObjectCopyWith<$Res> {
+  factory $EntryObjectCopyWith(
+          EntryObject value, $Res Function(EntryObject) then) =
+      _$EntryObjectCopyWithImpl<$Res, EntryObject>;
+}
+
+/// @nodoc
+class _$EntryObjectCopyWithImpl<$Res, $Val extends EntryObject>
+    implements $EntryObjectCopyWith<$Res> {
+  _$EntryObjectCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -581,46 +607,293 @@ class _$ObjectRemoteProvisionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ObjectRemoteProvisionStateImplCopyWith<$Res> {
-  factory _$$ObjectRemoteProvisionStateImplCopyWith(
-          _$ObjectRemoteProvisionStateImpl value,
-          $Res Function(_$ObjectRemoteProvisionStateImpl) then) =
-      __$$ObjectRemoteProvisionStateImplCopyWithImpl<$Res>;
+abstract class _$$EntryObjectEventImplCopyWith<$Res> {
+  factory _$$EntryObjectEventImplCopyWith(_$EntryObjectEventImpl value,
+          $Res Function(_$EntryObjectEventImpl) then) =
+      __$$EntryObjectEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EntryRecordEvent entry, EventRecord event});
+
+  $EventRecordCopyWith<$Res> get event;
 }
 
 /// @nodoc
-class __$$ObjectRemoteProvisionStateImplCopyWithImpl<$Res>
-    extends _$ObjectRemoteProvisionStateCopyWithImpl<$Res,
-        _$ObjectRemoteProvisionStateImpl>
-    implements _$$ObjectRemoteProvisionStateImplCopyWith<$Res> {
-  __$$ObjectRemoteProvisionStateImplCopyWithImpl(
-      _$ObjectRemoteProvisionStateImpl _value,
-      $Res Function(_$ObjectRemoteProvisionStateImpl) _then)
+class __$$EntryObjectEventImplCopyWithImpl<$Res>
+    extends _$EntryObjectCopyWithImpl<$Res, _$EntryObjectEventImpl>
+    implements _$$EntryObjectEventImplCopyWith<$Res> {
+  __$$EntryObjectEventImplCopyWithImpl(_$EntryObjectEventImpl _value,
+      $Res Function(_$EntryObjectEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entry = null,
+    Object? event = null,
+  }) {
+    return _then(_$EntryObjectEventImpl(
+      null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as EntryRecordEvent,
+      null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventRecord,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventRecordCopyWith<$Res> get event {
+    return $EventRecordCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$ObjectRemoteProvisionStateImpl implements _ObjectRemoteProvisionState {
-  _$ObjectRemoteProvisionStateImpl();
+class _$EntryObjectEventImpl implements EntryObjectEvent {
+  _$EntryObjectEventImpl(this.entry, this.event);
+
+  @override
+  final EntryRecordEvent entry;
+  @override
+  final EventRecord event;
 
   @override
   String toString() {
-    return 'ObjectRemoteProvisionState()';
+    return 'EntryObject.event(entry: $entry, event: $event)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObjectRemoteProvisionStateImpl);
+            other is _$EntryObjectEventImpl &&
+            (identical(other.entry, entry) || other.entry == entry) &&
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, entry, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EntryObjectEventImplCopyWith<_$EntryObjectEventImpl> get copyWith =>
+      __$$EntryObjectEventImplCopyWithImpl<_$EntryObjectEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EntryRecordEvent entry, EventRecord event) event,
+    required TResult Function(EntryRecordInitial entry) initial,
+  }) {
+    return event(entry, this.event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult? Function(EntryRecordInitial entry)? initial,
+  }) {
+    return event?.call(entry, this.event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult Function(EntryRecordInitial entry)? initial,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(entry, this.event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntryObjectEvent value) event,
+    required TResult Function(EntryObjectInitial value) initial,
+  }) {
+    return event(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EntryObjectEvent value)? event,
+    TResult? Function(EntryObjectInitial value)? initial,
+  }) {
+    return event?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntryObjectEvent value)? event,
+    TResult Function(EntryObjectInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _ObjectRemoteProvisionState
-    implements ObjectRemoteProvisionState {
-  factory _ObjectRemoteProvisionState() = _$ObjectRemoteProvisionStateImpl;
+abstract class EntryObjectEvent implements EntryObject {
+  factory EntryObjectEvent(
+          final EntryRecordEvent entry, final EventRecord event) =
+      _$EntryObjectEventImpl;
+
+  @override
+  EntryRecordEvent get entry;
+  EventRecord get event;
+  @JsonKey(ignore: true)
+  _$$EntryObjectEventImplCopyWith<_$EntryObjectEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EntryObjectInitialImplCopyWith<$Res> {
+  factory _$$EntryObjectInitialImplCopyWith(_$EntryObjectInitialImpl value,
+          $Res Function(_$EntryObjectInitialImpl) then) =
+      __$$EntryObjectInitialImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EntryRecordInitial entry});
+}
+
+/// @nodoc
+class __$$EntryObjectInitialImplCopyWithImpl<$Res>
+    extends _$EntryObjectCopyWithImpl<$Res, _$EntryObjectInitialImpl>
+    implements _$$EntryObjectInitialImplCopyWith<$Res> {
+  __$$EntryObjectInitialImplCopyWithImpl(_$EntryObjectInitialImpl _value,
+      $Res Function(_$EntryObjectInitialImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entry = null,
+  }) {
+    return _then(_$EntryObjectInitialImpl(
+      null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as EntryRecordInitial,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EntryObjectInitialImpl implements EntryObjectInitial {
+  _$EntryObjectInitialImpl(this.entry);
+
+  @override
+  final EntryRecordInitial entry;
+
+  @override
+  String toString() {
+    return 'EntryObject.initial(entry: $entry)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EntryObjectInitialImpl &&
+            (identical(other.entry, entry) || other.entry == entry));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, entry);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EntryObjectInitialImplCopyWith<_$EntryObjectInitialImpl> get copyWith =>
+      __$$EntryObjectInitialImplCopyWithImpl<_$EntryObjectInitialImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EntryRecordEvent entry, EventRecord event) event,
+    required TResult Function(EntryRecordInitial entry) initial,
+  }) {
+    return initial(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult? Function(EntryRecordInitial entry)? initial,
+  }) {
+    return initial?.call(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EntryRecordEvent entry, EventRecord event)? event,
+    TResult Function(EntryRecordInitial entry)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(entry);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntryObjectEvent value) event,
+    required TResult Function(EntryObjectInitial value) initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EntryObjectEvent value)? event,
+    TResult? Function(EntryObjectInitial value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntryObjectEvent value)? event,
+    TResult Function(EntryObjectInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EntryObjectInitial implements EntryObject {
+  factory EntryObjectInitial(final EntryRecordInitial entry) =
+      _$EntryObjectInitialImpl;
+
+  @override
+  EntryRecordInitial get entry;
+  @JsonKey(ignore: true)
+  _$$EntryObjectInitialImplCopyWith<_$EntryObjectInitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

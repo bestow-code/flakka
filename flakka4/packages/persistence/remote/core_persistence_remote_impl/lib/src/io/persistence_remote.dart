@@ -36,7 +36,7 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
   CorePersistenceRemoteAdapter get remoteAdapter => _remoteAdapter;
 
   final CorePersistenceRemoteAdapter _remoteAdapter;
-  
+
   @override
   Future<void> initialize({required String ref, required int createdAt}) =>
       _remoteAdapter.initialize(ref: ref, createdAt: createdAt);
@@ -45,21 +45,30 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
   Future<HeadRecord?> get inspect => _remoteAdapter.inspect;
 
   final subscription = CompositeSubscription();
-  
+
   @override
-  void connect()  {
-    Rx.merge([
+  void connect() {
+    subscription..add(Rx.merge([
       _remoteAdapter.headSnapshot.whereNotNull().map(
             (snapshot) => PersistenceRemoteSnapshot.head(snapshot: snapshot),
-      ),
+          ),
       _remoteAdapter.entrySnapshot
           .where((snapshot) => snapshot.isNotEmpty)
           .map((event) => PersistenceRemoteSnapshot.entry(snapshot: event)),
       _remoteAdapter.eventSnapshot
           .where((snapshot) => snapshot.isNotEmpty)
           .map((event) => PersistenceRemoteSnapshot.event(snapshot: event)),
-    ]).pipe(output).ignore();
-    subscription.add(input.listen((e) => _remoteAdapter.persist([e.data])));
+    ]).listen(output.add))
+      ..add(
+        input.listen(
+              (e) => e.map(
+            persistOne: (persistOne) =>
+                _remoteAdapter.persist([persistOne.data]),
+            persistAll: (persistAll) => _remoteAdapter.persist(persistAll.data),
+          ),
+        ),
+      );
+
   }
 
   @override
@@ -68,5 +77,4 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
     await subscription.cancel();
     await output.close();
   }
-
 }

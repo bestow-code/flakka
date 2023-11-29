@@ -1,40 +1,32 @@
-import 'dart:async';
-
-import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_object/core_object.dart';
+import 'package:core_object_impl/core_object_impl.dart';
 import 'package:core_object_local/core_object_local.dart';
 import 'package:core_object_remote/core_object_remote.dart';
+import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 
 class ObjectFactory extends BroadcastMergeFactoryBase<
-    CoreObject,
-    CoreObjectLocal,
+    CoreProviderContext,
+    PersistenceKey,
     ObjectLocalEffect,
     ObjectLocalSnapshot,
-    CoreObjectRemote,
+    CoreObjectLocal,
     ObjectRemoteEffect,
-    ObjectRemoteUpdate,
+    ObjectRemoteSnapshot,
+    CoreObjectRemote,
     ObjectEffect,
-    ObjectUpdate> implements CoreObjectFactory {
-  ObjectFactory({
-    required super.child1Provider,
-    required super.child2Provider,
-  });
+    ObjectSnapshot,
+    CoreObject> implements CoreObjectFactory {
+  ObjectFactory(//     {
+      //   required super.child1Provider,
+      //   required super.child2Provider,
+      // }
+      );
 
   @override
-  Future<CoreObject> create({
-    required covariant dynamic key,
-    required covariant dynamic param,
-  }) async {
-    throw UnimplementedError();
-    // return Object(
-    //     child1: await child1Provider.get(param: param),
-    //     child2: await child2Provider.get(param: param));
-  }
-
-// @override
-// Future<void> delete(covariant PersistenceAdapterFactoryParam param) =>
-//     Future.wait<void>([
-//       child1Factory.delete(param),
-//       child2Factory.delete(param),
-//     ]);
+  CoreObject create(
+          {required ({
+            CoreObjectLocal objectLocal,
+            CoreObjectRemote objectRemote
+          }) param}) =>
+      Object(child1: param.objectLocal, child2: param.objectRemote);
 }

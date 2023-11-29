@@ -14,7 +14,7 @@ class StoreRemoteProviderSembast extends StoreRemoteProviderBase {
 
   static StoreRemoteProviderSembast get inMemory => StoreRemoteProviderSembast(
         databaseFactory: databaseFactoryMemoryFs,
-        storePath: StorePath('/fake/inMemory'),
+        storePath: StorePath('/remote/inMemory'),
       );
 
   final DatabaseFactory _databaseFactory;

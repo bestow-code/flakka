@@ -7,15 +7,10 @@ part 'object_state.freezed.dart';
 class ObjectState with _$ObjectState {
   factory ObjectState() = _ObjectState;
 
-  factory ObjectState.initial(
-    Map<String, EntryRecord> entry,
-    Map<String, EventRecord> event,
-  ) = ObjectStateInitial;
-
   factory ObjectState.loading(
-    HeadRecord headConfirmed,
-    Map<String, EntryRecord> entry,
-    Map<String, EventRecord> event, {
+    // HeadRecord headConfirmed,
+    Map<String, EntryRecord> confirmedEntry,
+    Map<String, EventRecord> confirmedEvent, {
     required bool localEntryReady,
     required bool localEventReady,
     required bool remoteEntryReady,

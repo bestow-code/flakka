@@ -22,31 +22,50 @@ class ObjectLocal extends PersistentNode<
     );
     registerInputHandler(
       (state, input) => input.map(
-        add: (add) => add.map(
-          add: (add2) => add2.data.map(
-            entry: (entry) => (
+        add: (add) => add.data.map(
+          entry: (entry) {
+            return (
               state: state.copyWith(seenEntry: {entry.ref, ...state.seenEntry}),
-              effect: PersistenceLocalEffect.persist(
+              effect: PersistenceLocalEffect.persistOne(
                   PersistenceRecord.entry(entry.ref, entry.entry)),
               snapshot: null,
-            ),
-            event: (event) => (
-              state: state.copyWith(seenEntry: {event.ref, ...state.seenEntry}),
-              effect: PersistenceLocalEffect.persist(
-                  PersistenceRecord.event(event.ref, event.event)),
-              snapshot: null,
-            ),
-            head: (head) => (
-              state: state,
-              effect: PersistenceLocalEffect.persist(
-                PersistenceRecord.head(head.head),
-              ),
-              snapshot: null,
-            ),
+            );
+          },
+          event: (event) => (
+            state: state.copyWith(seenEntry: {event.ref, ...state.seenEntry}),
+            effect: PersistenceLocalEffect.persistOne(
+                PersistenceRecord.event(event.ref, event.event)),
+            snapshot: null,
           ),
-          import: (import) => throw UnimplementedError(),
+          head: (head) => (
+            state: state,
+            effect: PersistenceLocalEffect.persistOne(
+              PersistenceRecord.head(head.head),
+            ),
+            snapshot: null,
+          ),
         ),
-        import: (import) => throw UnimplementedError(),
+        import: (import) {
+          return import.data.map(entry: (entry) {
+            return (
+              state: state.copyWith(
+                  seenEntry: {...state.seenEntry, ...entry.entry.keys}),
+              effect: PersistenceLocalEffect.persistAll(entry.entry.entries
+                  .where((element) => !state.seenEntry.contains(element.key))
+                  .map((e) => PersistenceRecord.entry(e.key, e.value))),
+              snapshot: null
+            );
+          }, event: (event) {
+            return (
+              state: state.copyWith(
+                  seenEvent: {...state.seenEvent, ...event.event.keys}),
+              effect: PersistenceLocalEffect.persistAll(event.event.entries
+                  .where((element) => !state.seenEvent.contains(element.key))
+                  .map((e) => PersistenceRecord.event(e.key, e.value))),
+              snapshot: null
+            );
+          });
+        },
       ),
     );
     registerSnapshotHandler(
