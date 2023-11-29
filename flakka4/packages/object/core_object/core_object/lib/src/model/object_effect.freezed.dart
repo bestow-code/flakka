@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectEffect {
-  Object get data => throw _privateConstructorUsedError;
+  HeadRecord get head => throw _privateConstructorUsedError;
+  HeadEffectRecord get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord head, HeadEffectRecord data) append,
-    required TResult Function(ImportEffectRecord data) import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult? Function(ImportEffectRecord data)? import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult Function(ImportEffectRecord data)? import,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectEffectAppend value) append,
-    required TResult Function(ObjectEffectImport value) import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectEffectAppend value)? append,
-    TResult? Function(ObjectEffectImport value)? import,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectEffectAppend value)? append,
-    TResult Function(ObjectEffectImport value)? import,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ObjectEffectCopyWith<ObjectEffect> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,6 +61,11 @@ abstract class $ObjectEffectCopyWith<$Res> {
   factory $ObjectEffectCopyWith(
           ObjectEffect value, $Res Function(ObjectEffect) then) =
       _$ObjectEffectCopyWithImpl<$Res, ObjectEffect>;
+  @useResult
+  $Res call({HeadRecord head, HeadEffectRecord data});
+
+  $HeadRecordCopyWith<$Res> get head;
+  $HeadEffectRecordCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -73,17 +77,55 @@ class _$ObjectEffectCopyWithImpl<$Res, $Val extends ObjectEffect>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? head = null,
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      head: null == head
+          ? _value.head
+          : head // ignore: cast_nullable_to_non_nullable
+              as HeadRecord,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as HeadEffectRecord,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadRecordCopyWith<$Res> get head {
+    return $HeadRecordCopyWith<$Res>(_value.head, (value) {
+      return _then(_value.copyWith(head: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadEffectRecordCopyWith<$Res> get data {
+    return $HeadEffectRecordCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$ObjectEffectAppendImplCopyWith<$Res> {
+abstract class _$$ObjectEffectAppendImplCopyWith<$Res>
+    implements $ObjectEffectCopyWith<$Res> {
   factory _$$ObjectEffectAppendImplCopyWith(_$ObjectEffectAppendImpl value,
           $Res Function(_$ObjectEffectAppendImpl) then) =
       __$$ObjectEffectAppendImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({HeadRecord head, HeadEffectRecord data});
 
+  @override
   $HeadRecordCopyWith<$Res> get head;
+  @override
   $HeadEffectRecordCopyWith<$Res> get data;
 }
 
@@ -111,22 +153,6 @@ class __$$ObjectEffectAppendImplCopyWithImpl<$Res>
           : data // ignore: cast_nullable_to_non_nullable
               as HeadEffectRecord,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadRecordCopyWith<$Res> get head {
-    return $HeadRecordCopyWith<$Res>(_value.head, (value) {
-      return _then(_value.copyWith(head: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HeadEffectRecordCopyWith<$Res> get data {
-    return $HeadEffectRecordCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
@@ -168,7 +194,6 @@ class _$ObjectEffectAppendImpl implements ObjectEffectAppend {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord head, HeadEffectRecord data) append,
-    required TResult Function(ImportEffectRecord data) import,
   }) {
     return append(head, data);
   }
@@ -177,7 +202,6 @@ class _$ObjectEffectAppendImpl implements ObjectEffectAppend {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult? Function(ImportEffectRecord data)? import,
   }) {
     return append?.call(head, data);
   }
@@ -186,7 +210,6 @@ class _$ObjectEffectAppendImpl implements ObjectEffectAppend {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult Function(ImportEffectRecord data)? import,
     required TResult orElse(),
   }) {
     if (append != null) {
@@ -199,7 +222,6 @@ class _$ObjectEffectAppendImpl implements ObjectEffectAppend {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectEffectAppend value) append,
-    required TResult Function(ObjectEffectImport value) import,
   }) {
     return append(this);
   }
@@ -208,7 +230,6 @@ class _$ObjectEffectAppendImpl implements ObjectEffectAppend {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectEffectAppend value)? append,
-    TResult? Function(ObjectEffectImport value)? import,
   }) {
     return append?.call(this);
   }
@@ -217,7 +238,6 @@ class _$ObjectEffectAppendImpl implements ObjectEffectAppend {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectEffectAppend value)? append,
-    TResult Function(ObjectEffectImport value)? import,
     required TResult orElse(),
   }) {
     if (append != null) {
@@ -232,156 +252,12 @@ abstract class ObjectEffectAppend implements ObjectEffect {
           final HeadRecord head, final HeadEffectRecord data) =
       _$ObjectEffectAppendImpl;
 
+  @override
   HeadRecord get head;
   @override
   HeadEffectRecord get data;
+  @override
   @JsonKey(ignore: true)
   _$$ObjectEffectAppendImplCopyWith<_$ObjectEffectAppendImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ObjectEffectImportImplCopyWith<$Res> {
-  factory _$$ObjectEffectImportImplCopyWith(_$ObjectEffectImportImpl value,
-          $Res Function(_$ObjectEffectImportImpl) then) =
-      __$$ObjectEffectImportImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ImportEffectRecord data});
-
-  $ImportEffectRecordCopyWith<$Res> get data;
-}
-
-/// @nodoc
-class __$$ObjectEffectImportImplCopyWithImpl<$Res>
-    extends _$ObjectEffectCopyWithImpl<$Res, _$ObjectEffectImportImpl>
-    implements _$$ObjectEffectImportImplCopyWith<$Res> {
-  __$$ObjectEffectImportImplCopyWithImpl(_$ObjectEffectImportImpl _value,
-      $Res Function(_$ObjectEffectImportImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$ObjectEffectImportImpl(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as ImportEffectRecord,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ImportEffectRecordCopyWith<$Res> get data {
-    return $ImportEffectRecordCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$ObjectEffectImportImpl implements ObjectEffectImport {
-  _$ObjectEffectImportImpl(this.data);
-
-  @override
-  final ImportEffectRecord data;
-
-  @override
-  String toString() {
-    return 'ObjectEffect.import(data: $data)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ObjectEffectImportImpl &&
-            (identical(other.data, data) || other.data == data));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ObjectEffectImportImplCopyWith<_$ObjectEffectImportImpl> get copyWith =>
-      __$$ObjectEffectImportImplCopyWithImpl<_$ObjectEffectImportImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(HeadRecord head, HeadEffectRecord data) append,
-    required TResult Function(ImportEffectRecord data) import,
-  }) {
-    return import(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult? Function(ImportEffectRecord data)? import,
-  }) {
-    return import?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HeadRecord head, HeadEffectRecord data)? append,
-    TResult Function(ImportEffectRecord data)? import,
-    required TResult orElse(),
-  }) {
-    if (import != null) {
-      return import(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ObjectEffectAppend value) append,
-    required TResult Function(ObjectEffectImport value) import,
-  }) {
-    return import(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ObjectEffectAppend value)? append,
-    TResult? Function(ObjectEffectImport value)? import,
-  }) {
-    return import?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ObjectEffectAppend value)? append,
-    TResult Function(ObjectEffectImport value)? import,
-    required TResult orElse(),
-  }) {
-    if (import != null) {
-      return import(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ObjectEffectImport implements ObjectEffect {
-  factory ObjectEffectImport(final ImportEffectRecord data) =
-      _$ObjectEffectImportImpl;
-
-  @override
-  ImportEffectRecord get data;
-  @JsonKey(ignore: true)
-  _$$ObjectEffectImportImplCopyWith<_$ObjectEffectImportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

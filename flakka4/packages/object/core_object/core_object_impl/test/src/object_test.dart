@@ -12,10 +12,12 @@ import 'package:glados/glados.dart';
 import 'package:rxdart/rxdart.dart';
 
 void main() {
-  group('loading', () {
+  group('initialization', () {
     late ObjectProvider provider;
     late ProviderContext providerContext;
     final key = PersistenceKey('1');
+    const ref1 = '1';
+    const ref2 = '2';
     setUp(() {
       provider = ObjectProvider(
           child1Provider: ObjectLocalProvider(
@@ -36,96 +38,184 @@ void main() {
         ..persistenceId = PersistenceId('1')
         ..sessionId = SessionId('1');
     });
-    // Scenario: Local has entry/event a, b; Remote has entry/event a, c
-    // Expect: Object emits entry/event a,b,c snapshots, emits a,b,c import
-    //
-    Future<void> prepare() async {
-      final objectLocal =
-          await provider.child1Provider.get(context: providerContext, key: key);
-      await objectLocal.initialize(ref: '1', createdAt: 0);
-      const ref = '2';
-      const ref2a = '2a';
-      const ref2b = '2b';
-      objectLocal.connect();
-      await objectLocal.sink.addStream(Stream.fromIterable([
-        ObjectLocalEffect.add(
-          ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
-        ),
-        ObjectLocalEffect.add(
-          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
-        ),
-        ObjectLocalEffect.add(
-          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
-        ),
-        ObjectLocalEffect.add(
-          ObjectAdd.event(ref2a, EventRecord(data: {'value': 2})),
-        ),
-        ObjectLocalEffect.add(
-          ObjectAdd.entry(ref2a, EntryRecordEvent(parent: ref, createdAt: 1)),
-        ),
-      ]));
-      // await Future<void>.delayed(const Duration(milliseconds: 100));
-      // await objectLocal.input.done;
-      await objectLocal.close();
-      final objectRemote =
-          await provider.child2Provider.get(context: providerContext, key: key);
-      await objectRemote.initialize(ref: '1', createdAt: 0);
-      objectRemote.connect();
-      objectRemote.sink.add(
-        ObjectRemoteEffect.add(
-          ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
-        ),
-      );
-      objectRemote.sink.add(
-        ObjectRemoteEffect.add(
-          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
-        ),
-      );
-      objectRemote.sink.add(
-        ObjectRemoteEffect.add(
-          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
-        ),
-      );
-      objectRemote.sink.add(
-        ObjectRemoteEffect.add(
-          ObjectAdd.event(ref2b, EventRecord(data: {'value': 3})),
-        ),
-      );
-      objectRemote.sink.add(
-        ObjectRemoteEffect.add(
-          ObjectAdd.entry(ref2b, EntryRecordEvent(parent: ref, createdAt: 1)),
-        ),
-      );
-      await Future<void>.delayed(const Duration(milliseconds: 100));
-      await objectRemote.close();
-    }
+    group('provision and append', () {
+      test('new object', () async {
+        final object = await provider.get(context: providerContext, key: key);
+        await object.provision(PersistenceProvisioning.initialize(
+            ifNew: (ref: ref1, createdAt: 0)));
 
-    test('emits', () async {
-      await prepare();
-      final object = await provider.get(context: providerContext, key: key);
-      final result = ReplaySubject<ObjectSnapshot>();
-      final pipeFuture=object.stream.pipe(result);
-      object.connect();
-      await Future<void>.delayed(Duration(milliseconds: 100));
-      await object.close();
-      // print(result.values);
-      // print((object as Object).state);
-      final objectRemote =
-          await provider.child2Provider.get(context: providerContext, key: key);
-      final result2 = ReplaySubject<ObjectRemoteSnapshot>();
-      objectRemote.stream.pipe(result2).ignore();
-      objectRemote.connect();
-      await Future<void>.delayed(Duration(milliseconds: 100));
-      await objectRemote.close();
-      // print(result2.values);
-      final objectLocal =
-          await provider.child1Provider.get(context: providerContext, key: key);
-      final result3 = ReplaySubject<ObjectLocalSnapshot>();
-      objectLocal.stream.pipe(result3).ignore();
-      objectLocal.connect();
-      await Future<void>.delayed(Duration(milliseconds: 100));
-      await objectLocal.close();
-      // print(result3.values);
+        final result = ReplaySubject<ObjectSnapshot>();
+        final pipeFuture = object.stream.pipe(result);
+        object.connect();
+        object.sink.add(ObjectEffect.append(
+            HeadRecord(ref: ref2, sequenceNumber: 1),
+            HeadEffectRecord.event(EntryRecordEvent(parent: ref1, createdAt: 1),
+                EventRecord(data: {'value': 2}))));
+        await Future<void>.delayed(Duration(milliseconds: 250));
+        await object.close();
+        expect(result.values.whereType<ObjectSnapshotEntry>().last.entry.keys,
+            equals([ref1, ref2]));
+        // Examine children
+        final objectRemote = await provider.child2Provider
+            .get(context: providerContext, key: key);
+        final result2 = ReplaySubject<ObjectRemoteSnapshot>();
+        objectRemote.stream.pipe(result2).ignore();
+        objectRemote.connect();
+        await Future<void>.delayed(Duration(milliseconds: 50));
+        await objectRemote.close();
+        expect(
+            result2.values
+                .whereType<ObjectRemoteSnapshotEntry>()
+                .last
+                .data
+                .keys,
+            equals([
+              ref1,
+              ref2,
+            ]));
+        expect(
+            result2.values
+                .whereType<ObjectRemoteSnapshotEvent>()
+                .last
+                .data
+                .keys,
+            equals([
+              ref2,
+            ]));
+
+        final objectLocal = await provider.child1Provider
+            .get(context: providerContext, key: key);
+        final result3 = ReplaySubject<ObjectLocalSnapshot>();
+        objectLocal.stream.pipe(result3).ignore();
+        objectLocal.connect();
+        await Future<void>.delayed(Duration(milliseconds: 50));
+        await objectLocal.close();
+        expect(
+            result3.values.whereType<ObjectLocalSnapshotEntry>().last.data.keys,
+            equals([
+              ref1,
+              ref2,
+            ]));
+        expect(
+            result3.values.whereType<ObjectLocalSnapshotEvent>().last.data.keys,
+            equals([
+              ref2,
+            ]));
+      });
+    });
+    group('loading', () {
+      const ref3a = '3a';
+      const ref3b = '3b';
+      // Scenario: Local has entry/event a, b; Remote has entry/event a, c
+      // Expect: Object emits entry/event a,b,c snapshots, emits a,b,c import
+      //
+      Future<void> prepare() async {
+        await provider.delete(context: providerContext, key: key);
+        final objectLocal = await provider.child1Provider
+            .get(context: providerContext, key: key);
+        await objectLocal.initialize(ref: ref1, createdAt: 0);
+        objectLocal.connect();
+        await objectLocal.sink.addStream(Stream.fromIterable([
+          ObjectLocalEffect.add(
+            ObjectAdd.event(ref2, EventRecord(data: {'value': 1})),
+          ),
+          ObjectLocalEffect.add(
+            ObjectAdd.entry(ref2, EntryRecordEvent(parent: ref1, createdAt: 1)),
+          ),
+          ObjectLocalEffect.add(
+            ObjectAdd.head(HeadRecord(ref: ref2, sequenceNumber: 1)),
+          ),
+          ObjectLocalEffect.add(
+            ObjectAdd.event(ref3a, EventRecord(data: {'value': 2})),
+          ),
+          ObjectLocalEffect.add(
+            ObjectAdd.entry(
+                ref3a, EntryRecordEvent(parent: ref2, createdAt: 1)),
+          ),
+        ]));
+        // await Future<void>.delayed(const Duration(milliseconds: 100));
+        // await objectLocal.input.done;
+        await objectLocal.close();
+        final objectRemote = await provider.child2Provider
+            .get(context: providerContext, key: key);
+        await objectRemote.initialize(ref: ref1, createdAt: 0);
+        objectRemote.connect();
+        objectRemote.sink.add(
+          ObjectRemoteEffect.add(
+            ObjectAdd.event(ref2, EventRecord(data: {'value': 1})),
+          ),
+        );
+        objectRemote.sink.add(
+          ObjectRemoteEffect.add(
+            ObjectAdd.entry(ref2, EntryRecordEvent(parent: ref1, createdAt: 1)),
+          ),
+        );
+        objectRemote.sink.add(
+          ObjectRemoteEffect.add(
+            ObjectAdd.head(HeadRecord(ref: ref2, sequenceNumber: 1)),
+          ),
+        );
+        objectRemote.sink.add(
+          ObjectRemoteEffect.add(
+            ObjectAdd.event(ref3b, EventRecord(data: {'value': 3})),
+          ),
+        );
+        objectRemote.sink.add(
+          ObjectRemoteEffect.add(
+            ObjectAdd.entry(
+                ref3b, EntryRecordEvent(parent: ref2, createdAt: 1)),
+          ),
+        );
+        // await Future<void>.delayed(const Duration(milliseconds: 100));
+        await objectRemote.close();
+      }
+
+      test('emits', () async {
+        await prepare();
+        final object = await provider.get(context: providerContext, key: key);
+        final result = ReplaySubject<ObjectSnapshot>();
+        final pipeFuture = object.stream.pipe(result);
+        object.connect();
+        await Future<void>.delayed(Duration(milliseconds: 50));
+        await object.close();
+        expect(result.values.whereType<ObjectSnapshotEntry>().last.entry.keys,
+            equals([ref1, ref2, ref3a, ref3b]));
+        final objectRemote = await provider.child2Provider
+            .get(context: providerContext, key: key);
+        final result2 = ReplaySubject<ObjectRemoteSnapshot>();
+        objectRemote.stream.pipe(result2).ignore();
+        objectRemote.connect();
+        await Future<void>.delayed(Duration(milliseconds: 50));
+        await objectRemote.close();
+        expect(
+            result2.values
+                .whereType<ObjectRemoteSnapshotEntry>()
+                .last
+                .data
+                .keys,
+            equals([ref1, ref2, ref3a, ref3b]));
+        expect(
+            result2.values
+                .whereType<ObjectRemoteSnapshotEvent>()
+                .last
+                .data
+                .keys,
+            equals([ref2, ref3a, ref3b]));
+
+        final objectLocal = await provider.child1Provider
+            .get(context: providerContext, key: key);
+        final result3 = ReplaySubject<ObjectLocalSnapshot>();
+        objectLocal.stream.pipe(result3).ignore();
+        objectLocal.connect();
+        await Future<void>.delayed(Duration(milliseconds: 50));
+        await objectLocal.close();
+        expect(
+            result3.values.whereType<ObjectLocalSnapshotEntry>().last.data.keys,
+            equals([ref1, ref2, ref3a, ref3b]));
+        expect(
+            result3.values.whereType<ObjectLocalSnapshotEvent>().last.data.keys,
+            equals([ref2, ref3a, ref3b]));
+      });
     });
   });
 }

@@ -24,12 +24,12 @@ void main() {
       persistenceRemote.connect();
       const ref = '2';
       persistenceRemote.sink.add(
-        PersistenceRemoteEffect.persist(
+        PersistenceRemoteEffect.persistOne(
           PersistenceRecord.event(ref, EventRecord(data: {'value': 1})),
         ),
       );
       persistenceRemote.sink.add(
-        PersistenceRemoteEffect.persist(
+        PersistenceRemoteEffect.persistOne(
           PersistenceRecord.entry(
             ref,
             EntryRecordEvent(parent: '1', createdAt: 1),
@@ -37,7 +37,7 @@ void main() {
         ),
       );
       persistenceRemote.sink.add(
-        PersistenceRemoteEffect.persist(
+        PersistenceRemoteEffect.persistOne(
           PersistenceRecord.head(HeadRecord(ref: ref, sequenceNumber: 1)),
         ),
       );

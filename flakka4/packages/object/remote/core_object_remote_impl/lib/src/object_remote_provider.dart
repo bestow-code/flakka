@@ -25,8 +25,7 @@ class ObjectRemoteProvider extends PersistentNodeProvider<CoreProviderContext,
   Future<void> delete(
       {required CoreProviderContext context,
       required PersistenceKey key}) {
-    // TODO: implement delete
-    throw UnimplementedError();
+   return childProvider.delete(context: context, key: key);
   }
 
   @override

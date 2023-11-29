@@ -29,27 +29,21 @@ class Object extends BroadcastMergeBase<
       provisioning.map(
         initialize: (initialize) async {
           final localHead = await child1.inspect;
-          if (localHead != null) {
-            throw UnimplementedError();
-            // final remoteHead = await child2.inspect();
-            // if (localHead != remoteHead) {
-            //   throw UnsupportedError('message')
-            // }
-            // return unawaited(child2.provision(PersistenceProvisioning.resume(
-            //     ref: localHead.ref, sequenceNumber: localHead.sequenceNumber)));
+          if (localHead == null) {
+            final remoteHead = await child2.inspect;
+            if (remoteHead == null) {
+              await child2.initialize(
+                  ref: initialize.ifNew.ref,
+                  createdAt: initialize.ifNew.createdAt);
+              await child1.initialize(
+                  ref: initialize.ifNew.ref,
+                  createdAt: initialize.ifNew.createdAt);
+              return;
+            } else {
+              throw UnimplementedError();
+            }
           } else {
             return;
-            // final remoteHead = await child2.inspect;
-            // if (remoteHead != null) {
-            //   return child1.provision(
-            //     PersistenceProvisioning.resume(
-            //       ref: remoteHead._ref,
-            //       sequenceNumber: remoteHead.sequenceNumber,
-            //     ),
-            //   );
-            // } else {
-            //   return super.provision(provisioning);
-            // }
           }
         },
         resume: (resume) {
@@ -204,5 +198,31 @@ class Object extends BroadcastMergeBase<
     await output.close();
   }
 
-  void _handleInput(ObjectEffect value) {}
+  void _handleInput(ObjectEffect value) {
+    value.map(append: (append) {
+      append.data.map(
+        event: (event) {
+          child1.sink.add(ObjectLocalEffect.add(
+              ObjectAdd.event(append.head.ref, event.data)));
+          child2.sink.add(ObjectRemoteEffect.add(
+              ObjectAdd.event(append.head.ref, event.data)));
+          child1.sink.add(ObjectLocalEffect.add(
+              ObjectAdd.entry(append.head.ref, event.entry)));
+          child2.sink.add(ObjectRemoteEffect.add(
+              ObjectAdd.entry(append.head.ref, event.entry)));
+        },
+        merge: (merge) {
+          child1.sink.add(ObjectLocalEffect.add(
+              ObjectAdd.entry(append.head.ref, merge.entry)));
+          child2.sink.add(ObjectRemoteEffect.add(
+              ObjectAdd.entry(append.head.ref, merge.entry)));
+        },
+        forward: (forward) {},
+      );
+      child1.sink.add(ObjectLocalEffect.add(ObjectAdd.head(append.head)));
+      // TODO: Don't add head to remote during loading if remote isn't ready yet to avoid corruption
+      child2.sink.add(ObjectRemoteEffect.add(ObjectAdd.head(append.head)));
+    });
+    state.map((value) => value, loading: (loading) {});
+  }
 }

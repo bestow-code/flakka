@@ -12,5 +12,4 @@ class ObjectEffect with _$ObjectEffect {
     HeadEffectRecord data,
   ) = ObjectEffectAppend;
 
-  factory ObjectEffect.import(ImportEffectRecord data) = ObjectEffectImport;
 }

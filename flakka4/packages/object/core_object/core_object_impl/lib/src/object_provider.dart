@@ -36,8 +36,10 @@ class ObjectProvider extends BroadcastMergeProviderBase<
   @override
   Future<void> delete(
       {required CoreProviderContext context, required PersistenceKey key}) {
-    // TODO: implement delete
-    throw UnimplementedError();
+    return Future.wait([
+      child1Provider.delete(context: context, key: key),
+      child2Provider.delete(context: context, key: key),
+    ]);
   }
 
   @override
