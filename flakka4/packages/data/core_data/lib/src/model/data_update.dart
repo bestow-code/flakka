@@ -1,4 +1,5 @@
-import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
+// import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'data_update.freezed.dart';
@@ -18,12 +19,12 @@ class DataUpdate<Event extends CoreEvent, State extends CoreState,
     required Set<Ref> pending,
   }) = DataUpdateEntry;
 
-  // factory DataUpdate.stateView({
-  //   required Ref ref,
-  //   required StateView<State, View> Function() stateView,
-  // }) = DataUpdateStateView;
-
   factory DataUpdate.main({
     required Ref ref,
   }) = DataUpdateMain<Event, State, View>;
+
+// factory DataUpdate.stateView({
+//   required Ref ref,
+//   required StateView<State, View> Function() stateView,
+// }) = DataUpdateStateView;
 }

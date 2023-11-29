@@ -1,31 +1,28 @@
-import 'package:core_common/core_common.dart';
-import 'package:core_object/core_object.dart';
-
 import '../../core_data.dart';
 
-abstract interface class CoreDataFactory<
-        Event extends CoreEvent,
-        State extends CoreState,
-        View extends CoreView>
+abstract interface class CoreDataFactory
+// <Event extends CoreEvent,
+//         State extends CoreState, View extends CoreView>
     implements
         CoreDataNodeFactory<
-            CoreData<Event, State, View>,
-            Event,
-            State,
-            View,
+            // Event,
+            // State,
+            // View,
             ObjectEffect,
             ObjectSnapshot,
-            DataEffect<Event, State, View>,
-            DataUpdate<Event, State, View>> {
-  @override
-  Future<CoreData<Event, State, View>> create(({CoreObject object}) param);
+            CoreObject,
+            DataEffect<dynamic,dynamic,dynamic>,
+            DataUpdate<dynamic,dynamic,dynamic>,
+            CoreData<dynamic,dynamic,dynamic>> {
+  // @override
+  // CoreData<dynamic,dynamic,dynamic> create({required ({CoreObject object}) param});
 
-  // @override
-  // CoreResourceFactory<CoreObject, ObjectEffect, ObjectUpdate>
-  //     get childFactory => throw UnimplementedError();
-  //
-  // @override
-  // PersistenceAdapterFactoryContext get context => throw UnimplementedError();
+// @override
+// CoreResourceFactory<CoreObject, ObjectEffect, ObjectUpdate>
+//     get childFactory => throw UnimplementedError();
+//
+// @override
+// PersistenceAdapterFactoryContext get context => throw UnimplementedError();
 
 // @override
 // Future<CoreData<Event,State,View>> create<

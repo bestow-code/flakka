@@ -1,19 +1,19 @@
-import 'package:core_common/core_common.dart';
-import 'package:core_object/core_object.dart';
-
 import '../../core_data.dart';
 
-
-abstract interface
-class CoreDataNodeFactory<
-    DataNode extends CoreDataNode<Event, State, View, Effect, Update, In, Out>,
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView,
-    Effect,
-    Update,
-    In,
-    Out> implements CoreNodeFactory<DataNode, Effect, Update, In, Out> {
+abstract interface class CoreDataNodeFactory<
+// Event extends CoreEvent,
+// State extends CoreState,
+// View extends CoreView,
+        EffectOut,
+        SnapshotIn,
+        Resource extends CoreResource<EffectOut, SnapshotIn>,
+        EffectIn,
+        SnapshotOut,
+        DataNode extends CoreDataNode<dynamic, dynamic, dynamic, EffectOut,
+            SnapshotIn, Resource, EffectIn, SnapshotOut>>
+    implements
+        CoreNodeFactory<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut,
+            DataNode> {
   // @override
   // CoreResourceFactory<dynamic, Effect, Update> get childFactory =>
   //     throw UnimplementedError();

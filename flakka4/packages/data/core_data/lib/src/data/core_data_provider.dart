@@ -1,15 +1,14 @@
-import 'package:core_object/core_object.dart';
-
 import '../../core_data.dart';
 
 abstract interface class CoreDataProvider
     implements
         CoreDataNodeProvider<
-            CoreData<dynamic, dynamic, dynamic>,
             ObjectEffect,
             ObjectSnapshot,
+            CoreObject,
             DataEffect<dynamic, dynamic, dynamic>,
-            DataUpdate<dynamic, dynamic, dynamic>> {
+            DataUpdate<dynamic, dynamic, dynamic>,
+            CoreData<dynamic, dynamic, dynamic>> {
   // @override
   // // TODO: implement childFactoryProvider
   // CoreResourceProvider<dynamic, ObjectEffect, ObjectUpdate>

@@ -1,14 +1,20 @@
-import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 
-abstract class DataNodeBase<DataNodeState,
+abstract class DataNodeBase<
+
         Event extends CoreEvent,
         State extends CoreState,
         View extends CoreView,
-        Effect,
-        Update,
-        In,
-        Out> extends NodeBase<DataNodeState, Effect, Update, In, Out>
-    implements CoreDataNode<Event, State, View, Effect, Update, In, Out> {
+        EffectOut,
+        SnapshotIn,
+        Resource extends CoreResource<EffectOut, SnapshotIn>,
+        EffectIn,
+        SnapshotOut,DataNodeState>
+    extends NodeBase<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut,
+        DataNodeState>
+    implements
+        CoreDataNode<Event, State, View, EffectOut, SnapshotIn, Resource,
+            EffectIn, SnapshotOut> {
   DataNodeBase({required super.child});
 }

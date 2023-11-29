@@ -1,11 +1,11 @@
 import '../../core_loco.dart';
 
 abstract class CoreNodeFactory<
-        EffectIn,
-        SnapshotIn,
-        Resource extends CoreResource<EffectIn, SnapshotIn>,
         EffectOut,
+        SnapshotIn,
+        Resource extends CoreResource<EffectOut, SnapshotIn>,
+        EffectIn,
         SnapshotOut,
-        Node extends CoreNode<EffectIn, SnapshotIn, Resource, EffectOut,
+        Node extends CoreNode<EffectOut, SnapshotIn, Resource, EffectIn,
             SnapshotOut>>
-    implements CoreResourceFactory<EffectOut, SnapshotOut, Node> {}
+    implements CoreResourceFactory<EffectIn, SnapshotOut, Node> {}
