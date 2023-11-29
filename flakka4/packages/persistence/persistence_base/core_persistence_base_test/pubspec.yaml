@@ -16,7 +16,6 @@ dependencies:
   core_persistence_base:
 #  core_persistence_base_impl:
   freezed_annotation: ^2.2.0
-  glados:
   meta: ^1.9.1
   rxdart: ^0.27.7
 

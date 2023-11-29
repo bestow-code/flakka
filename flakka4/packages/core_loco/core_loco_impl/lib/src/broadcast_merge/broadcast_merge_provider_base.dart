@@ -1,9 +1,8 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_loco/core_loco.dart';
 
-import '../../core_loco_impl.dart';
-
 abstract class BroadcastMergeProviderBase<
-ProviderContext extends CoreProviderContext,
+        ProviderContext extends CoreProviderContext,
         Key,
         Effect1,
         Update1,

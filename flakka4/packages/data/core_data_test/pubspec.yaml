@@ -9,9 +9,9 @@ environment:
 
 dependencies:
   async: ^2.11.0
-  core_common: ^0.1.0+2
+  core_common:
   core_data:
-#  core_data_impl:
+  core_data_api:
   core_object_test:
   freezed_annotation: ^2.2.0
   get_it:
@@ -38,5 +38,3 @@ index_generator:
       include:
         - src
       docs: Test kit for Core Entry Store implementations
-      exports:
-        - package: package:core_object_test/core_object_test.dart

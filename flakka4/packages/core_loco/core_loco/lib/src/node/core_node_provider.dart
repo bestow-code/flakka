@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import '../../core_loco.dart';
 
 abstract class CoreNodeProvider<

@@ -1,8 +1,6 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
-import '../../../core_persistence_base_impl.dart';
-
-abstract class StoreProviderBase<
-        ProviderContext extends CoreProviderContext,
+abstract class StoreProviderBase<ProviderContext extends CoreProviderContext,
         Store extends CoreStore>
     implements CoreStoreProvider<ProviderContext, Store> {}

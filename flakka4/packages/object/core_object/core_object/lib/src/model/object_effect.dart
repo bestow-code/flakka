@@ -1,7 +1,5 @@
-import 'package:core_common/core_common.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../core_object.dart';
 
 part 'object_effect.freezed.dart';
 
@@ -11,5 +9,4 @@ class ObjectEffect with _$ObjectEffect {
     HeadRecord head,
     HeadEffectRecord data,
   ) = ObjectEffectAppend;
-
 }

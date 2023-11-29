@@ -4,10 +4,11 @@ description: Common libraries for flakka core platform
 repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: ^3.0.5
+  sdk: ^3.2.0
 
 dependencies:
   core_common:
+  core_loco_impl:
   either_dart:
   freezed_annotation: ^2.2.0
   json_annotation:
@@ -16,11 +17,11 @@ dependencies:
 
 dev_dependencies:
   build_runner:
+  core_common_test:
   freezed:
-  glados:
   json_serializable:
   test: ^1.21.0
-  very_good_analysis: ^5.1.0
+  very_good_analysis:
 
 index_generator:
   exclude:
@@ -31,4 +32,4 @@ index_generator:
         - src
       docs: Common libraries for core_platform
       exports:
-        - package: package:core_common/core_common.dart
+        - package: package:core_loco_impl/core_loco_impl.dart

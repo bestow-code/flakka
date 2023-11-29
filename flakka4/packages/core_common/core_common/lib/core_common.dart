@@ -6,6 +6,9 @@ library core_common;
 export 'package:either_dart/either.dart';
 export 'package:option_result/option_result.dart';
 
+export 'src/core/core_factory.dart';
+export 'src/core/core_provider.dart';
+export 'src/core/core_subject.dart';
 export 'src/core_key.dart';
 export 'src/core_provider_context.dart';
 export 'src/core_provider_v2.dart';

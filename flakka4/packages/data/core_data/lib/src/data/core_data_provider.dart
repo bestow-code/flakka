@@ -1,3 +1,5 @@
+import 'package:core_object/core_object.dart';
+
 import '../../core_data.dart';
 
 abstract interface class CoreDataProvider

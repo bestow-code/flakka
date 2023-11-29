@@ -10,6 +10,8 @@ dependencies:
   bloc:
   core_common:
   core_data:
+  core_data_api:
+  core_loco:
   core_object:
   core_object_impl:
   core_object_local:
@@ -21,10 +23,8 @@ dependencies:
   core_persistence_base_impl:
   core_persistence_local:
   core_persistence_local_impl:
-  core_persistence_local_sembast:
   core_persistence_remote:
   core_persistence_remote_impl:
-  core_persistence_remote_sembast:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
   rxdart: ^0.27.7
@@ -32,9 +32,9 @@ dev_dependencies:
   bloc_test:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
-#  core_data_impl_test:
   core_data_test:
-#  core_object_impl_test:
+  core_persistence_local_sembast:
+  core_persistence_remote_sembast:
   freezed: ^2.3.5
   get_it:
   injectable:

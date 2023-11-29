@@ -1,7 +1,8 @@
+import 'package:core_object/core_object.dart';
+
 import '../../core_data.dart';
 
-abstract interface class CoreDataFactory
-// <Event extends CoreEvent,
+abstract interface class CoreDataFactory // <Event extends CoreEvent,
 //         State extends CoreState, View extends CoreView>
     implements
         CoreDataNodeFactory<
@@ -11,9 +12,9 @@ abstract interface class CoreDataFactory
             ObjectEffect,
             ObjectSnapshot,
             CoreObject,
-            DataEffect<dynamic,dynamic,dynamic>,
-            DataUpdate<dynamic,dynamic,dynamic>,
-            CoreData<dynamic,dynamic,dynamic>> {
+            DataEffect<dynamic, dynamic, dynamic>,
+            DataUpdate<dynamic, dynamic, dynamic>,
+            CoreData<dynamic, dynamic, dynamic>> {
   // @override
   // CoreData<dynamic,dynamic,dynamic> create({required ({CoreObject object}) param});
 

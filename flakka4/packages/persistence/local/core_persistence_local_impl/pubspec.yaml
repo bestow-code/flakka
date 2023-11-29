@@ -9,13 +9,13 @@ environment:
 dependencies:
   collection:
   core_common:
-  core_common_impl:
+  core_common_test:
+  core_loco:
   core_persistence_base:
   core_persistence_base_impl:
   core_persistence_local:
   freezed_annotation: ^2.2.0
   get_it:
-  glados:
   injectable:
   meta: ^1.9.1
   rxdart: ^0.27.7
@@ -24,7 +24,6 @@ dev_dependencies:
   bloc_test:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
-  core_common_test:
   core_persistence_local_sembast:
   core_persistence_local_test:
   freezed: ^2.3.5

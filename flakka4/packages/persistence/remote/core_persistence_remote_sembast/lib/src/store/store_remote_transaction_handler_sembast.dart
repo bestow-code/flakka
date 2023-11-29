@@ -1,10 +1,11 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:sembast/sembast.dart';
 
 class StoreRemoteTransactionHandlerSembast
     implements CoreStoreRemoteTransactionHandler {
-  StoreRemoteTransactionHandlerSembast( {
+  StoreRemoteTransactionHandlerSembast({
     required this.persistenceId,
     required this.sessionId,
     required Transaction transaction,

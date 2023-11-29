@@ -1,4 +1,4 @@
-import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'data_effect.freezed.dart';
@@ -17,7 +17,6 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
 //   required Ref ref,
 //   required Set<Ref> ancestors,
 // }) = DataEffectPublish<Event, State, View>;
-
 }
 
 @freezed

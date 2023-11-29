@@ -4,16 +4,19 @@ description: Common libraries for flakka core platform
 repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: ^3.0.5
+  sdk: ^3.2.0
 
 dependencies:
   bloc:
   core_common:
-  core_common_impl:
   dart_random_choice:
   freezed_annotation: ^2.2.0
   get_it:
   glados:
+    git:
+      url: https://github.com/bestow-code/glados
+      path: glados
+      ref: current
   interleave:
   json_annotation:
   meta: ^1.9.1
@@ -26,7 +29,7 @@ dev_dependencies:
   json_serializable:
   mocktail:
   test: ^1.21.0
-  very_good_analysis: ^5.1.0
+  very_good_analysis:
 
 index_generator:
   exclude:

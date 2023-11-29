@@ -4,12 +4,12 @@ description: Common libraries for flakka core platform
 repository: https://github.com/bestow-code/flakka
 
 environment:
-  sdk: ^3.0.5
+  sdk: ^3.2.0
 
 dependencies:
   bloc: ^8.1.2
   collection:
-  core_common: ^0.1.0+2
+  core_common:
   core_data:
   core_data_impl:
   core_journal:
@@ -26,10 +26,10 @@ dev_dependencies:
 #  core_journal_impl_test:
   core_journal_test:
   freezed: ^2.3.5
-  glados:
+  core_common_test:
   json_serializable: ^6.7.0
   test: ^1.21.0
-  very_good_analysis: ^5.1.0
+  very_good_analysis:
 
 index_generator:
   exclude:

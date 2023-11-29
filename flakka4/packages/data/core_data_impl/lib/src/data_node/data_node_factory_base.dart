@@ -1,21 +1,18 @@
-import 'package:core_common_impl/core_common_impl.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_loco/core_loco.dart';
 
 abstract class DataNodeFactoryBase<
-        DataNode extends CoreDataNode<Event, State, View, Effect, Update, In, Out>,
-        Event extends CoreEvent,
-        State extends CoreState,
-        View extends CoreView,
         Effect,
         Update,
+        Resource extends CoreResource<Effect, Update>,
         In,
-        Out> extends NodeFactoryBase<DataNode, Effect, Update, In, Out>
+        Out,
+        DataNode extends CoreDataNode<dynamic, dynamic, dynamic, Effect, Update,
+            Resource, In, Out>>
+    extends NodeFactoryBase<Effect, Update, Resource, In, Out, DataNode>
     implements
-        CoreDataNodeFactory<DataNode, Event, State, View, Effect, Update, In,
-            Out> {
-  DataNodeFactoryBase({
-    required super.childFactory,
-  });
+        CoreDataNodeFactory<Effect, Update, Resource, In, Out, DataNode> {
+  DataNodeFactoryBase();
 
 //   @override
 //   Future<DataNode> create(

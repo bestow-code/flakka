@@ -1,9 +1,7 @@
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../core_object_base.dart';
-
 part 'object_add.freezed.dart';
-
 
 @freezed
 class ObjectAdd with _$ObjectAdd {

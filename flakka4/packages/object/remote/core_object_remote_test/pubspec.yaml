@@ -9,7 +9,6 @@ environment:
 dependencies:
   bloc:
   core_common:
-  core_common_impl:
   core_object_base:
   core_object_remote:
   core_object_remote_impl:
@@ -27,8 +26,8 @@ dev_dependencies:
   bloc_test:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
+  core_common_test:
   freezed: ^2.3.5
-  glados:
   injectable_generator:
   json_serializable: ^6.7.0
   mocktail: ^1.0.0
@@ -43,5 +42,3 @@ index_generator:
       include:
         - src
       docs: Foundation for Core Entry Store
-      exports:
-        - package: package:core_persistence_remote_test/core_persistence_remote_test.dart

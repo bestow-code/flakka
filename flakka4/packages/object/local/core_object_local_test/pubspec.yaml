@@ -9,7 +9,6 @@ environment:
 dependencies:
   bloc:
   core_common:
-  core_common_impl:
   core_object_base:
   core_object_local:
   core_object_local_impl:
@@ -28,7 +27,7 @@ dev_dependencies:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
   freezed: ^2.3.5
-  glados:
+  core_common_test:
   injectable_generator:
   json_serializable: ^6.7.0
   mocktail: ^1.0.0
@@ -43,5 +42,3 @@ index_generator:
       include:
         - src
       docs: Foundation for Core Entry Store
-      exports:
-        - package: package:core_persistence_local_test/core_persistence_local_test.dart

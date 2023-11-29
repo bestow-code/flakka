@@ -1,8 +1,8 @@
 import 'package:core_data/core_data.dart';
-import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
+import 'package:core_data_api/core_data_api.dart';
+import 'package:core_loco/core_loco.dart';
 
 abstract class DataNodeBase<
-
         Event extends CoreEvent,
         State extends CoreState,
         View extends CoreView,
@@ -10,7 +10,8 @@ abstract class DataNodeBase<
         SnapshotIn,
         Resource extends CoreResource<EffectOut, SnapshotIn>,
         EffectIn,
-        SnapshotOut,DataNodeState>
+        SnapshotOut,
+        DataNodeState>
     extends NodeBase<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut,
         DataNodeState>
     implements

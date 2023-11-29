@@ -9,14 +9,14 @@ environment:
 
 dependencies:
   async: ^2.11.0
-  core_common: ^0.1.0+2
+  core_common:
   core_data:
   core_data_test:
   core_journal:
 #  core_journal_impl:
   freezed_annotation: ^2.2.0
   get_it:
-  glados:
+  core_common_test:
   injectable:
   json_annotation: ^4.8.1
   logging: ^1.2.0

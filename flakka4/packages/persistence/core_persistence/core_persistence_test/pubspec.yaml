@@ -37,5 +37,3 @@ index_generator:
       include:
         - src
       docs: Foundation for Core Entry Store
-      exports:
-        - package: package:core_persistence_base_test/core_persistence_base_test.dart

@@ -3,9 +3,6 @@
 /// Common libraries for core_platform
 library core_data;
 
-export 'package:core_data_api/core_data_api.dart';
-export 'package:core_object/core_object.dart';
-
 export 'src/data/core_data.dart';
 export 'src/data/core_data_factory.dart';
 export 'src/data/core_data_provider.dart';

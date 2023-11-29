@@ -1,6 +1,5 @@
-import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 
 part 'test_model.freezed.dart';
 
@@ -14,7 +13,6 @@ class TestEvent with _$TestEvent implements CoreEvent {
       _$TestEventFromJson(json);
 }
 
-
 @freezed
 class TestState with _$TestState implements CoreState {
   factory TestState(int value) = _TestState;
@@ -22,7 +20,6 @@ class TestState with _$TestState implements CoreState {
   factory TestState.fromJson(Map<String, dynamic> json) =>
       _$TestStateFromJson(json);
 }
-
 
 @freezed
 class TestView with _$TestView implements CoreView {

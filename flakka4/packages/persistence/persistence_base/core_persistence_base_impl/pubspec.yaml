@@ -7,8 +7,8 @@ environment:
   sdk: '^3.0.5'
 
 dependencies:
-
-  core_loco_impl:
+  core_common:
+  core_loco:
   core_persistence_base:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
@@ -35,5 +35,3 @@ index_generator:
       include:
         - src
       docs: Common libraries for core_platform
-      exports:
-        - package: package:core_loco_impl/core_loco_impl.dart

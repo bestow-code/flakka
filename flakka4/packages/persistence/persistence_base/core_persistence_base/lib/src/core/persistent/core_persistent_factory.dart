@@ -1,4 +1,4 @@
-import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:core_common/core_common.dart';
 
 abstract mixin class CorePersistentFactory<Subject>
     implements CoreFactory<Subject> {}

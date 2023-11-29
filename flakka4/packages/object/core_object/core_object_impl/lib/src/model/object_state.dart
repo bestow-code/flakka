@@ -1,4 +1,4 @@
-import 'package:core_object/core_object.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_state.freezed.dart';

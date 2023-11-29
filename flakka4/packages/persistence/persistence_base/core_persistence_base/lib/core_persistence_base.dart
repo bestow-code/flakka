@@ -3,8 +3,6 @@
 /// Foundation for Core Entry Store
 library core_persistence_base;
 
-export 'package:core_loco/core_loco.dart';
-
 export 'src/base/adapter/core_persistence_adapter.dart';
 export 'src/base/adapter/core_persistence_adapter_factory.dart';
 export 'src/base/adapter/core_persistence_adapter_provider.dart';

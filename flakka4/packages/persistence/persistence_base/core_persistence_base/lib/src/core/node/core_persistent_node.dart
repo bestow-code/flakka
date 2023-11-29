@@ -1,3 +1,5 @@
+import 'package:core_loco/core_loco.dart';
+
 import '../../../core_persistence_base.dart';
 
 abstract interface class CorePersistentNode<
@@ -8,4 +10,4 @@ abstract interface class CorePersistentNode<
         SnapshotOut>
     implements
         CoreNode<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut>,
-        CorePersistentResource<EffectIn, SnapshotOut>{}
+        CorePersistentResource<EffectIn, SnapshotOut> {}

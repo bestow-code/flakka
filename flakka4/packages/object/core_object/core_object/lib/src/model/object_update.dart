@@ -1,5 +1,5 @@
 import 'package:core_common/core_common.dart';
-import 'package:core_object/core_object.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_update.freezed.dart';
@@ -8,12 +8,14 @@ part 'object_update.freezed.dart';
 class ObjectSnapshot with _$ObjectSnapshot {
   factory ObjectSnapshot.head(HeadRecord head) = ObjectSnapshotHead;
 
-  factory ObjectSnapshot.entry(Map<String, EntryRecord> entry) = ObjectSnapshotEntry;
+  factory ObjectSnapshot.entry(Map<String, EntryRecord> entry) =
+      ObjectSnapshotEntry;
 
-  factory ObjectSnapshot.event(Map<String, EventRecord> event) = ObjectSnapshotEvent;
+  factory ObjectSnapshot.event(Map<String, EventRecord> event) =
+      ObjectSnapshotEvent;
 
-  factory ObjectSnapshot.stateView({required Map<String, StateViewObject> data}) =
-      ObjectSnapshotStateView;
+  factory ObjectSnapshot.stateView(
+      {required Map<String, StateViewObject> data}) = ObjectSnapshotStateView;
 
   factory ObjectSnapshot.main({
     required String ref,

@@ -10,7 +10,7 @@ dependencies:
   core_common:
   core_loco:
   freezed_annotation: ^2.2.0
-  glados:
+  core_common_test:
   meta: ^1.9.1
   rxdart: ^0.27.7
   version:
@@ -31,5 +31,3 @@ index_generator:
       include:
         - src
       docs: Foundation for Core Entry Store
-      exports:
-        - package: package:core_loco/core_loco.dart

@@ -1,4 +1,4 @@
-import 'package:core_loco/core_loco.dart';
+import 'package:core_common/core_common.dart';
 
 // abstract class ProviderBase<T> implements CoreProvider<T> {}
 

@@ -1,4 +1,4 @@
-import 'package:core_object_base/core_object_base.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'object_local_update.freezed.dart';
@@ -18,12 +18,12 @@ class ObjectLocalSnapshot with _$ObjectLocalSnapshot {
   }) = ObjectLocalSnapshotEvent;
 }
 
-@freezed
-class EntryObject with _$EntryObject {
-  factory EntryObject.event(
-    EntryRecordEvent entry,
-    EventRecord event,
-  ) = EntryObjectEvent;
-
-  factory EntryObject.initial(EntryRecordInitial entry) = EntryObjectInitial;
-}
+// @freezed
+// class EntryObject with _$EntryObject {
+//   factory EntryObject.event(
+//     EntryRecordEvent entry,
+//     EventRecord event,
+//   ) = EntryObjectEvent;
+//
+//   factory EntryObject.initial(EntryRecordInitial entry) = EntryObjectInitial;
+// }

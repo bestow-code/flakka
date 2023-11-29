@@ -1,7 +1,6 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_test/core_persistence_base_test.dart';
-import 'package:core_persistence_remote/core_persistence_remote.dart';
 import 'package:core_persistence_remote_test/core_persistence_remote_test.dart';
 
 // PersistenceRemoteAdapter
@@ -37,7 +36,6 @@ extension TestPersistenceRemoteAdapterContextExtension on Any {
   //   CorePersistentProviderContext context,
   // ) =>
   //         any.providerContextStoreRemoteBinding(context);
-
 
   // Calls
   Generator<List<PersistenceRemoteAdapterCall>>

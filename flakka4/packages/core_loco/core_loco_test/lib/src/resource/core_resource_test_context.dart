@@ -1,8 +1,7 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../core_loco_test.dart';
 
 part 'core_resource_test_context.freezed.dart';
 

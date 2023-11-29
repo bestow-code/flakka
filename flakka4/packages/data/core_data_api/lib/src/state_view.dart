@@ -1,5 +1,6 @@
-import 'package:core_data/core_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../core_data_api.dart';
 
 part 'state_view.freezed.dart';
 

@@ -1,3 +1,4 @@
+import 'package:core_object_base/core_object_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../core_object_local.dart';

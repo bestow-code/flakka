@@ -1,5 +1,7 @@
 import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
 import 'package:core_data_impl/core_data_impl.dart';
+import 'package:core_object/core_object.dart';
 
 class Data<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>

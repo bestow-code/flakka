@@ -9,13 +9,12 @@ environment:
 dependencies:
   collection:
   core_common:
-  core_common_impl:
+  core_loco:
   core_persistence_base:
   core_persistence_base_impl:
   core_persistence_remote:
   freezed_annotation: ^2.2.0
   get_it:
-  glados:
   injectable:
   meta: ^1.9.1
   rxdart: ^0.27.7
