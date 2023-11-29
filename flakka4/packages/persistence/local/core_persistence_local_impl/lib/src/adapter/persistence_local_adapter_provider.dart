@@ -11,6 +11,10 @@ class PersistenceLocalAdapterProvider extends PersistenceAdapterProviderBase<
     implements CorePersistenceLocalAdapterProvider {
   PersistenceLocalAdapterProvider({required this.storeProvider});
 
+  factory PersistenceLocalAdapterProvider.from(
+          CoreStoreLocalProvider storeLocalProvider) =>
+      PersistenceLocalAdapterProvider(storeProvider: storeLocalProvider);
+
   final CoreStoreLocalProvider storeProvider;
 
   @override

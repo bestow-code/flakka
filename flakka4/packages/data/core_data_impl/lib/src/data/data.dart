@@ -2,6 +2,7 @@ import 'package:core_data/core_data.dart';
 import 'package:core_data_api/core_data_api.dart';
 import 'package:core_data_impl/core_data_impl.dart';
 import 'package:core_object/core_object.dart';
+import 'package:core_persistence_base/src/persistence_provisioning.dart';
 
 class Data<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
@@ -13,14 +14,13 @@ class Data<Event extends CoreEvent, State extends CoreState,
         ObjectSnapshot,
         CoreObject,
         DataEffect<Event, State, View>,
-        DataUpdate<Event, State, View>,
+        DataSnapshot<Event, State, View>,
         DataState<Event, State, View>> implements CoreData<Event, State, View> {
   Data({
-    required CoreObject child,
+    required super.child,
     required DataConverter<Event, State, View> Function() dataConverterFactory,
   })  : _child = child,
-        _dataConverterFactory = dataConverterFactory,
-        super(child: child);
+        _dataConverterFactory = dataConverterFactory;
 
   DataConverter<Event, State, View> Function() get dataConverterFactory =>
       _dataConverterFactory;
@@ -30,8 +30,7 @@ class Data<Event extends CoreEvent, State extends CoreState,
   CoreObject get child => _child;
   final CoreObject _child;
 
-// @override
-// Future<void> provision(PersistenceProvisioning provisioning) async {
-//   await super.provision(provisioning);
-// }
+  @override
+  Future<void> provision(PersistenceProvisioning provisioning) =>
+      child.provision(provisioning);
 }

@@ -15,7 +15,7 @@ class DataNodeProvider extends NodeProviderBase<
         ObjectSnapshot,
         CoreObject,
         DataEffect<dynamic, dynamic, dynamic>,
-        DataUpdate<dynamic, dynamic, dynamic>,
+        DataSnapshot<dynamic, dynamic, dynamic>,
         CoreData<dynamic, dynamic, dynamic>>
     implements
         CoreDataNodeProvider<
@@ -23,7 +23,7 @@ class DataNodeProvider extends NodeProviderBase<
             ObjectSnapshot,
             CoreObject,
             DataEffect<dynamic, dynamic, dynamic>,
-            DataUpdate<dynamic, dynamic, dynamic>,
+            DataSnapshot<dynamic, dynamic, dynamic>,
             CoreData<dynamic, dynamic, dynamic>> {
   DataNodeProvider({required ObjectProvider childFactoryProvider})
       : _childFactoryProvider = childFactoryProvider,

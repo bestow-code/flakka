@@ -51,12 +51,12 @@ class _$ObjectSessionsCopyWithImpl<$Res, $Val extends ObjectSessions>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? provisioningInitialize = null,
+    Object? provisioningInitialize = freezed,
     Object? state = null,
     Object? operations = null,
   }) {
     return _then(_value.copyWith(
-      provisioningInitialize: null == provisioningInitialize
+      provisioningInitialize: freezed == provisioningInitialize
           ? _value.provisioningInitialize
           : provisioningInitialize // ignore: cast_nullable_to_non_nullable
               as PersistenceProvisioningInitialize,
@@ -97,12 +97,12 @@ class __$$ObjectSessionsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? provisioningInitialize = null,
+    Object? provisioningInitialize = freezed,
     Object? state = null,
     Object? operations = null,
   }) {
     return _then(_$ObjectSessionsImpl(
-      provisioningInitialize: null == provisioningInitialize
+      provisioningInitialize: freezed == provisioningInitialize
           ? _value.provisioningInitialize
           : provisioningInitialize // ignore: cast_nullable_to_non_nullable
               as PersistenceProvisioningInitialize,
@@ -156,8 +156,8 @@ class _$ObjectSessionsImpl implements _ObjectSessions {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ObjectSessionsImpl &&
-            (identical(other.provisioningInitialize, provisioningInitialize) ||
-                other.provisioningInitialize == provisioningInitialize) &&
+            const DeepCollectionEquality()
+                .equals(other.provisioningInitialize, provisioningInitialize) &&
             const DeepCollectionEquality().equals(other._state, _state) &&
             const DeepCollectionEquality()
                 .equals(other._operations, _operations));
@@ -166,7 +166,7 @@ class _$ObjectSessionsImpl implements _ObjectSessions {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      provisioningInitialize,
+      const DeepCollectionEquality().hash(provisioningInitialize),
       const DeepCollectionEquality().hash(_state),
       const DeepCollectionEquality().hash(_operations));
 

@@ -11,6 +11,9 @@ class PersistenceRemoteAdapterProvider extends PersistenceAdapterProviderBase<
     implements CorePersistenceRemoteAdapterProvider {
   PersistenceRemoteAdapterProvider({required this.storeProvider});
 
+  factory PersistenceRemoteAdapterProvider.from(
+          CoreStoreRemoteProvider storeRemoteProvider) =>
+      PersistenceRemoteAdapterProvider(storeProvider: storeRemoteProvider);
   final CoreStoreRemoteProvider storeProvider;
 
   @override

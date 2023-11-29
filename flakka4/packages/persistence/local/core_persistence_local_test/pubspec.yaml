@@ -17,7 +17,6 @@ dependencies:
   core_persistence_base_impl:
   core_persistence_base_test:
   core_persistence_local:
-  core_persistence_local_impl:
   freezed_annotation: ^2.2.0
   get_it:
   injectable:
@@ -28,7 +27,7 @@ dev_dependencies:
   bloc_test:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
-#  core_persistence_local_test:
+  core_persistence_local_sembast:
   freezed: ^2.3.5
   injectable_generator:
   json_serializable: ^6.7.0

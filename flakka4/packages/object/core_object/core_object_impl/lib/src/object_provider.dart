@@ -7,6 +7,8 @@ import 'package:core_object_local_impl/core_object_local_impl.dart';
 import 'package:core_object_remote/core_object_remote.dart';
 import 'package:core_object_remote_impl/core_object_remote_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
+import 'package:core_persistence_local/core_persistence_local.dart';
+import 'package:core_persistence_remote/core_persistence_remote.dart';
 
 class ObjectProvider extends BroadcastMergeProviderBase<
     CoreProviderContext,
@@ -26,6 +28,12 @@ class ObjectProvider extends BroadcastMergeProviderBase<
   })  : _child1Provider = child1Provider,
         _child2Provider = child2Provider,
         super();
+
+  factory ObjectProvider.from(CoreStoreLocalProvider storeLocalProvider,
+          CoreStoreRemoteProvider storeRemoteProvider) =>
+      ObjectProvider(
+          child1Provider: ObjectLocalProvider.from(storeLocalProvider),
+          child2Provider: ObjectRemoteProvider.from(storeRemoteProvider));
 
   @override
   ObjectLocalProvider get child1Provider => _child1Provider;

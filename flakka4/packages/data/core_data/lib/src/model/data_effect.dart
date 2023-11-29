@@ -7,11 +7,11 @@ part 'data_effect.freezed.dart';
 class DataEffect<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> with _$DataEffect<Event, State, View> {
   factory DataEffect.append({
-    required HeadEffect<Event, State, View> effect,
+    required HeadEffect<Event> effect,
   }) = DataEffectAppend;
 
-  factory DataEffect.persist(Ref ref, StateView<State, View> stateView) =
-      DataEffectPersist;
+  // factory DataEffect.persist(Ref ref, StateView<State, View> stateView) =
+  //     DataEffectPersist;
 
 // factory DataEffect.publish({
 //   required Ref ref,
@@ -20,13 +20,14 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
 }
 
 @freezed
-class HeadEffect<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> with _$HeadEffect<Event, State, View> {
+class HeadEffect<Event extends CoreEvent> with _$HeadEffect<Event> {
   factory HeadEffect.event({
     required Ref ref,
     required Ref parent,
     required Event event,
     required DateTime createdAt,
     required int sequenceNumber,
-  }) = HeadEffectEvent<Event, State, View>;
+  }) = HeadEffectEvent<Event>;
+  // merge
+  // forward
 }

@@ -17,12 +17,3 @@ class ObjectRemoteSnapshot with _$ObjectRemoteSnapshot {
     required Map<String, EventRecord> data,
   }) = ObjectRemoteSnapshotEvent;
 }
-@freezed
-class EntryObject with _$EntryObject {
-  factory EntryObject.event(
-    EntryRecordEvent entry,
-    EventRecord event,
-  ) = EntryObjectEvent;
-
-  factory EntryObject.initial(EntryRecordInitial entry) = EntryObjectInitial;
-}

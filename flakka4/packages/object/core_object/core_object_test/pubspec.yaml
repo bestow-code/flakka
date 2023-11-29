@@ -9,6 +9,7 @@ environment:
 dependencies:
   core_common:
   core_object:
+  core_object_impl:
   core_object_base_test:
   core_object_local_test:
   core_object_remote_test:

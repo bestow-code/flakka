@@ -17,17 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DataState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  ({
-    Map<Ref, DateTime> createdAt,
-    Map<Ref, Set<Ref>> edges,
-    Map<Ref, Event> event
-  }) get ready => throw _privateConstructorUsedError;
-  ({
-    Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-    Map<Ref, Event> event
-  }) get loading => throw _privateConstructorUsedError;
-  Set<Ref> get pending => throw _privateConstructorUsedError;
-  Map<String, Ref> get ref => throw _privateConstructorUsedError;
+  Map<Ref, EntryEvent> get pendingEntry => throw _privateConstructorUsedError;
+  Map<Ref, Event> get pendingEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DataStateCopyWith<Event, State, View, DataState<Event, State, View>>
@@ -42,18 +33,7 @@ abstract class $DataStateCopyWith<Event extends CoreEvent,
       _$DataStateCopyWithImpl<Event, State, View, $Res,
           DataState<Event, State, View>>;
   @useResult
-  $Res call(
-      {({
-        Map<Ref, DateTime> createdAt,
-        Map<Ref, Set<Ref>> edges,
-        Map<Ref, Event> event
-      }) ready,
-      ({
-        Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-        Map<Ref, Event> event
-      }) loading,
-      Set<Ref> pending,
-      Map<String, Ref> ref});
+  $Res call({Map<Ref, EntryEvent> pendingEntry, Map<Ref, Event> pendingEvent});
 }
 
 /// @nodoc
@@ -70,35 +50,18 @@ class _$DataStateCopyWithImpl<Event extends CoreEvent, State extends CoreState,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ready = null,
-    Object? loading = null,
-    Object? pending = null,
-    Object? ref = null,
+    Object? pendingEntry = null,
+    Object? pendingEvent = null,
   }) {
     return _then(_value.copyWith(
-      ready: null == ready
-          ? _value.ready
-          : ready // ignore: cast_nullable_to_non_nullable
-              as ({
-              Map<Ref, DateTime> createdAt,
-              Map<Ref, Set<Ref>> edges,
-              Map<Ref, Event> event
-            }),
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as ({
-              Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-              Map<Ref, Event> event
-            }),
-      pending: null == pending
-          ? _value.pending
-          : pending // ignore: cast_nullable_to_non_nullable
-              as Set<Ref>,
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Map<String, Ref>,
+      pendingEntry: null == pendingEntry
+          ? _value.pendingEntry
+          : pendingEntry // ignore: cast_nullable_to_non_nullable
+              as Map<Ref, EntryEvent>,
+      pendingEvent: null == pendingEvent
+          ? _value.pendingEvent
+          : pendingEvent // ignore: cast_nullable_to_non_nullable
+              as Map<Ref, Event>,
     ) as $Val);
   }
 }
@@ -114,18 +77,7 @@ abstract class _$$DataStateImplCopyWith<
       __$$DataStateImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call(
-      {({
-        Map<Ref, DateTime> createdAt,
-        Map<Ref, Set<Ref>> edges,
-        Map<Ref, Event> event
-      }) ready,
-      ({
-        Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-        Map<Ref, Event> event
-      }) loading,
-      Set<Ref> pending,
-      Map<String, Ref> ref});
+  $Res call({Map<Ref, EntryEvent> pendingEntry, Map<Ref, Event> pendingEvent});
 }
 
 /// @nodoc
@@ -141,35 +93,18 @@ class __$$DataStateImplCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ready = null,
-    Object? loading = null,
-    Object? pending = null,
-    Object? ref = null,
+    Object? pendingEntry = null,
+    Object? pendingEvent = null,
   }) {
     return _then(_$DataStateImpl<Event, State, View>(
-      ready: null == ready
-          ? _value.ready
-          : ready // ignore: cast_nullable_to_non_nullable
-              as ({
-              Map<Ref, DateTime> createdAt,
-              Map<Ref, Set<Ref>> edges,
-              Map<Ref, Event> event
-            }),
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as ({
-              Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-              Map<Ref, Event> event
-            }),
-      pending: null == pending
-          ? _value._pending
-          : pending // ignore: cast_nullable_to_non_nullable
-              as Set<Ref>,
-      ref: null == ref
-          ? _value._ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Map<String, Ref>,
+      pendingEntry: null == pendingEntry
+          ? _value._pendingEntry
+          : pendingEntry // ignore: cast_nullable_to_non_nullable
+              as Map<Ref, EntryEvent>,
+      pendingEvent: null == pendingEvent
+          ? _value._pendingEvent
+          : pendingEvent // ignore: cast_nullable_to_non_nullable
+              as Map<Ref, Event>,
     ));
   }
 }
@@ -179,43 +114,30 @@ class __$$DataStateImplCopyWithImpl<Event extends CoreEvent,
 class _$DataStateImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _DataState<Event, State, View> {
   _$DataStateImpl(
-      {required this.ready,
-      required this.loading,
-      required final Set<Ref> pending,
-      required final Map<String, Ref> ref})
-      : _pending = pending,
-        _ref = ref;
+      {required final Map<Ref, EntryEvent> pendingEntry,
+      required final Map<Ref, Event> pendingEvent})
+      : _pendingEntry = pendingEntry,
+        _pendingEvent = pendingEvent;
 
+  final Map<Ref, EntryEvent> _pendingEntry;
   @override
-  final ({
-    Map<Ref, DateTime> createdAt,
-    Map<Ref, Set<Ref>> edges,
-    Map<Ref, Event> event
-  }) ready;
-  @override
-  final ({
-    Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-    Map<Ref, Event> event
-  }) loading;
-  final Set<Ref> _pending;
-  @override
-  Set<Ref> get pending {
-    if (_pending is EqualUnmodifiableSetView) return _pending;
+  Map<Ref, EntryEvent> get pendingEntry {
+    if (_pendingEntry is EqualUnmodifiableMapView) return _pendingEntry;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_pending);
+    return EqualUnmodifiableMapView(_pendingEntry);
   }
 
-  final Map<String, Ref> _ref;
+  final Map<Ref, Event> _pendingEvent;
   @override
-  Map<String, Ref> get ref {
-    if (_ref is EqualUnmodifiableMapView) return _ref;
+  Map<Ref, Event> get pendingEvent {
+    if (_pendingEvent is EqualUnmodifiableMapView) return _pendingEvent;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_ref);
+    return EqualUnmodifiableMapView(_pendingEvent);
   }
 
   @override
   String toString() {
-    return 'DataState<$Event, $State, $View>(ready: $ready, loading: $loading, pending: $pending, ref: $ref)';
+    return 'DataState<$Event, $State, $View>(pendingEntry: $pendingEntry, pendingEvent: $pendingEvent)';
   }
 
   @override
@@ -223,19 +145,17 @@ class _$DataStateImpl<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataStateImpl<Event, State, View> &&
-            (identical(other.ready, ready) || other.ready == ready) &&
-            (identical(other.loading, loading) || other.loading == loading) &&
-            const DeepCollectionEquality().equals(other._pending, _pending) &&
-            const DeepCollectionEquality().equals(other._ref, _ref));
+            const DeepCollectionEquality()
+                .equals(other._pendingEntry, _pendingEntry) &&
+            const DeepCollectionEquality()
+                .equals(other._pendingEvent, _pendingEvent));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      ready,
-      loading,
-      const DeepCollectionEquality().hash(_pending),
-      const DeepCollectionEquality().hash(_ref));
+      const DeepCollectionEquality().hash(_pendingEntry),
+      const DeepCollectionEquality().hash(_pendingEvent));
 
   @JsonKey(ignore: true)
   @override
@@ -249,34 +169,14 @@ class _$DataStateImpl<Event extends CoreEvent, State extends CoreState,
 abstract class _DataState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataState<Event, State, View> {
   factory _DataState(
-          {required final ({
-            Map<Ref, DateTime> createdAt,
-            Map<Ref, Set<Ref>> edges,
-            Map<Ref, Event> event
-          }) ready,
-          required final ({
-            Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-            Map<Ref, Event> event
-          }) loading,
-          required final Set<Ref> pending,
-          required final Map<String, Ref> ref}) =
+          {required final Map<Ref, EntryEvent> pendingEntry,
+          required final Map<Ref, Event> pendingEvent}) =
       _$DataStateImpl<Event, State, View>;
 
   @override
-  ({
-    Map<Ref, DateTime> createdAt,
-    Map<Ref, Set<Ref>> edges,
-    Map<Ref, Event> event
-  }) get ready;
+  Map<Ref, EntryEvent> get pendingEntry;
   @override
-  ({
-    Map<Ref, ({DateTime createdAt, Iterable<Ref> parent})> entry,
-    Map<Ref, Event> event
-  }) get loading;
-  @override
-  Set<Ref> get pending;
-  @override
-  Map<String, Ref> get ref;
+  Map<Ref, Event> get pendingEvent;
   @override
   @JsonKey(ignore: true)
   _$$DataStateImplCopyWith<Event, State, View,

@@ -10,7 +10,7 @@ class JournalFactory<Event extends CoreEvent, State extends CoreState,
         State,
         View,
         DataEffect<Event, State, View>,
-        DataUpdate<Event, State, View>,
+        DataSnapshot<Event, State, View>,
         JournalEffect<Event, State, View>,
         JournalSnapshot<Event, State, View>>
     implements CoreJournalFactory<Event, State, View> {

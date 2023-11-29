@@ -13,7 +13,7 @@ abstract interface class CoreDataFactory // <Event extends CoreEvent,
             ObjectSnapshot,
             CoreObject,
             DataEffect<dynamic, dynamic, dynamic>,
-            DataUpdate<dynamic, dynamic, dynamic>,
+            DataSnapshot<dynamic, dynamic, dynamic>,
             CoreData<dynamic, dynamic, dynamic>> {
   // @override
   // CoreData<dynamic,dynamic,dynamic> create({required ({CoreObject object}) param});

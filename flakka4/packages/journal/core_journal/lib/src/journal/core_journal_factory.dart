@@ -11,6 +11,6 @@ abstract class CoreJournalFactory<Event extends CoreEvent,
             State,
             View,
             DataEffect<Event, State, View>,
-            DataUpdate<Event, State, View>,
+            DataSnapshot<Event, State, View>,
             JournalEffect<Event, State, View>,
             JournalSnapshot<Event, State, View>> {}

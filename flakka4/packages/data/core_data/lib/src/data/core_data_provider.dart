@@ -9,7 +9,7 @@ abstract interface class CoreDataProvider
             ObjectSnapshot,
             CoreObject,
             DataEffect<dynamic, dynamic, dynamic>,
-            DataUpdate<dynamic, dynamic, dynamic>,
+            DataSnapshot<dynamic, dynamic, dynamic>,
             CoreData<dynamic, dynamic, dynamic>> {
   // @override
   // // TODO: implement childFactoryProvider
