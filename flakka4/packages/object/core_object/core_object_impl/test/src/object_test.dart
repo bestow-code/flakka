@@ -106,8 +106,8 @@ void main() {
     group('loading', () {
       const ref3a = '3a';
       const ref3b = '3b';
-      // Scenario: Local has entry/event a, b; Remote has entry/event a, c
-      // Expect: Object emits entry/event a,b,c snapshots, emits a,b,c import
+      // Scenario: Local has entry/event 3a; Remote has entry/event 3b
+      // Expect: Object/Local/Remote all emit entry/event 1,2,3a,3b snapshots
       //
       Future<void> prepare() async {
         await provider.delete(context: providerContext, key: key);
@@ -133,8 +133,6 @@ void main() {
                 ref3a, EntryRecordEvent(parent: ref2, createdAt: 1)),
           ),
         ]));
-        // await Future<void>.delayed(const Duration(milliseconds: 100));
-        // await objectLocal.input.done;
         await objectLocal.close();
         final objectRemote = await provider.child2Provider
             .get(context: providerContext, key: key);
@@ -166,7 +164,6 @@ void main() {
                 ref3b, EntryRecordEvent(parent: ref2, createdAt: 1)),
           ),
         );
-        // await Future<void>.delayed(const Duration(milliseconds: 100));
         await objectRemote.close();
       }
 
