@@ -26,6 +26,7 @@ dependencies:
   core_persistence_remote:
   core_persistence_remote_impl:
   freezed_annotation: ^2.2.0
+  get_it:
   meta: ^1.9.1
   rxdart: ^0.27.7
 dev_dependencies:
@@ -36,7 +37,6 @@ dev_dependencies:
   core_persistence_local_sembast:
   core_persistence_remote_sembast:
   freezed: ^2.3.5
-  get_it:
   injectable:
   injectable_generator:
   json_serializable: ^6.7.0

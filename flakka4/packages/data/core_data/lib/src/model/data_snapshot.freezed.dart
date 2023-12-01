@@ -19,40 +19,29 @@ mixin _$DataSnapshot<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)
-        entry,
+    required TResult Function(HeadRef head) head,
+    required TResult Function(Map<Ref, Entry<Event>> data) entry,
     required TResult Function(Ref ref) main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)?
-        entry,
+    TResult? Function(HeadRef head)? head,
+    TResult? Function(Map<Ref, Entry<Event>> data)? entry,
     TResult? Function(Ref ref)? main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)?
-        entry,
+    TResult Function(HeadRef head)? head,
+    TResult Function(Map<Ref, Entry<Event>> data)? entry,
     TResult Function(Ref ref)? main,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DataSnapshotHead<Event, State, View> value) head,
     required TResult Function(DataSnapshotEntry<Event, State, View> value)
         entry,
     required TResult Function(DataSnapshotMain<Event, State, View> value) main,
@@ -60,12 +49,14 @@ mixin _$DataSnapshot<Event extends CoreEvent, State extends CoreState,
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataSnapshotHead<Event, State, View> value)? head,
     TResult? Function(DataSnapshotEntry<Event, State, View> value)? entry,
     TResult? Function(DataSnapshotMain<Event, State, View> value)? main,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataSnapshotHead<Event, State, View> value)? head,
     TResult Function(DataSnapshotEntry<Event, State, View> value)? entry,
     TResult Function(DataSnapshotMain<Event, State, View> value)? main,
     required TResult orElse(),
@@ -99,6 +90,169 @@ class _$DataSnapshotCopyWithImpl<
 }
 
 /// @nodoc
+abstract class _$$DataSnapshotHeadImplCopyWith<Event extends CoreEvent,
+    State extends CoreState, View extends CoreView, $Res> {
+  factory _$$DataSnapshotHeadImplCopyWith(
+          _$DataSnapshotHeadImpl<Event, State, View> value,
+          $Res Function(_$DataSnapshotHeadImpl<Event, State, View>) then) =
+      __$$DataSnapshotHeadImplCopyWithImpl<Event, State, View, $Res>;
+  @useResult
+  $Res call({HeadRef head});
+
+  $HeadRefCopyWith<$Res> get head;
+}
+
+/// @nodoc
+class __$$DataSnapshotHeadImplCopyWithImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView, $Res>
+    extends _$DataSnapshotCopyWithImpl<Event, State, View, $Res,
+        _$DataSnapshotHeadImpl<Event, State, View>>
+    implements _$$DataSnapshotHeadImplCopyWith<Event, State, View, $Res> {
+  __$$DataSnapshotHeadImplCopyWithImpl(
+      _$DataSnapshotHeadImpl<Event, State, View> _value,
+      $Res Function(_$DataSnapshotHeadImpl<Event, State, View>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? head = null,
+  }) {
+    return _then(_$DataSnapshotHeadImpl<Event, State, View>(
+      null == head
+          ? _value.head
+          : head // ignore: cast_nullable_to_non_nullable
+              as HeadRef,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HeadRefCopyWith<$Res> get head {
+    return $HeadRefCopyWith<$Res>(_value.head, (value) {
+      return _then(_value.copyWith(head: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DataSnapshotHeadImpl<Event extends CoreEvent, State extends CoreState,
+    View extends CoreView> implements DataSnapshotHead<Event, State, View> {
+  _$DataSnapshotHeadImpl(this.head);
+
+  @override
+  final HeadRef head;
+
+  @override
+  String toString() {
+    return 'DataSnapshot<$Event, $State, $View>.head(head: $head)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataSnapshotHeadImpl<Event, State, View> &&
+            (identical(other.head, head) || other.head == head));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, head);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataSnapshotHeadImplCopyWith<Event, State, View,
+          _$DataSnapshotHeadImpl<Event, State, View>>
+      get copyWith => __$$DataSnapshotHeadImplCopyWithImpl<Event, State, View,
+          _$DataSnapshotHeadImpl<Event, State, View>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HeadRef head) head,
+    required TResult Function(Map<Ref, Entry<Event>> data) entry,
+    required TResult Function(Ref ref) main,
+  }) {
+    return head(this.head);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HeadRef head)? head,
+    TResult? Function(Map<Ref, Entry<Event>> data)? entry,
+    TResult? Function(Ref ref)? main,
+  }) {
+    return head?.call(this.head);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HeadRef head)? head,
+    TResult Function(Map<Ref, Entry<Event>> data)? entry,
+    TResult Function(Ref ref)? main,
+    required TResult orElse(),
+  }) {
+    if (head != null) {
+      return head(this.head);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DataSnapshotHead<Event, State, View> value) head,
+    required TResult Function(DataSnapshotEntry<Event, State, View> value)
+        entry,
+    required TResult Function(DataSnapshotMain<Event, State, View> value) main,
+  }) {
+    return head(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataSnapshotHead<Event, State, View> value)? head,
+    TResult? Function(DataSnapshotEntry<Event, State, View> value)? entry,
+    TResult? Function(DataSnapshotMain<Event, State, View> value)? main,
+  }) {
+    return head?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataSnapshotHead<Event, State, View> value)? head,
+    TResult Function(DataSnapshotEntry<Event, State, View> value)? entry,
+    TResult Function(DataSnapshotMain<Event, State, View> value)? main,
+    required TResult orElse(),
+  }) {
+    if (head != null) {
+      return head(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DataSnapshotHead<
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> implements DataSnapshot<Event, State, View> {
+  factory DataSnapshotHead(final HeadRef head) =
+      _$DataSnapshotHeadImpl<Event, State, View>;
+
+  HeadRef get head;
+  @JsonKey(ignore: true)
+  _$$DataSnapshotHeadImplCopyWith<Event, State, View,
+          _$DataSnapshotHeadImpl<Event, State, View>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$DataSnapshotEntryImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
   factory _$$DataSnapshotEntryImplCopyWith(
@@ -106,10 +260,7 @@ abstract class _$$DataSnapshotEntryImplCopyWith<Event extends CoreEvent,
           $Res Function(_$DataSnapshotEntryImpl<Event, State, View>) then) =
       __$$DataSnapshotEntryImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call(
-      {Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})> Function()
-          data,
-      Set<Ref> pending});
+  $Res call({Map<Ref, Entry<Event>> data});
 }
 
 /// @nodoc
@@ -127,18 +278,12 @@ class __$$DataSnapshotEntryImplCopyWithImpl<Event extends CoreEvent,
   @override
   $Res call({
     Object? data = null,
-    Object? pending = null,
   }) {
     return _then(_$DataSnapshotEntryImpl<Event, State, View>(
-      data: null == data
-          ? _value.data
+      null == data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                  Function(),
-      pending: null == pending
-          ? _value._pending
-          : pending // ignore: cast_nullable_to_non_nullable
-              as Set<Ref>,
+              as Map<Ref, Entry<Event>>,
     ));
   }
 }
@@ -147,23 +292,19 @@ class __$$DataSnapshotEntryImplCopyWithImpl<Event extends CoreEvent,
 
 class _$DataSnapshotEntryImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataSnapshotEntry<Event, State, View> {
-  _$DataSnapshotEntryImpl({required this.data, required final Set<Ref> pending})
-      : _pending = pending;
+  _$DataSnapshotEntryImpl(final Map<Ref, Entry<Event>> data) : _data = data;
 
+  final Map<Ref, Entry<Event>> _data;
   @override
-  final Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-      Function() data;
-  final Set<Ref> _pending;
-  @override
-  Set<Ref> get pending {
-    if (_pending is EqualUnmodifiableSetView) return _pending;
+  Map<Ref, Entry<Event>> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_pending);
+    return EqualUnmodifiableMapView(_data);
   }
 
   @override
   String toString() {
-    return 'DataSnapshot<$Event, $State, $View>.entry(data: $data, pending: $pending)';
+    return 'DataSnapshot<$Event, $State, $View>.entry(data: $data)';
   }
 
   @override
@@ -171,13 +312,12 @@ class _$DataSnapshotEntryImpl<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataSnapshotEntryImpl<Event, State, View> &&
-            (identical(other.data, data) || other.data == data) &&
-            const DeepCollectionEquality().equals(other._pending, _pending));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, data, const DeepCollectionEquality().hash(_pending));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -190,45 +330,33 @@ class _$DataSnapshotEntryImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)
-        entry,
+    required TResult Function(HeadRef head) head,
+    required TResult Function(Map<Ref, Entry<Event>> data) entry,
     required TResult Function(Ref ref) main,
   }) {
-    return entry(data, pending);
+    return entry(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)?
-        entry,
+    TResult? Function(HeadRef head)? head,
+    TResult? Function(Map<Ref, Entry<Event>> data)? entry,
     TResult? Function(Ref ref)? main,
   }) {
-    return entry?.call(data, pending);
+    return entry?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)?
-        entry,
+    TResult Function(HeadRef head)? head,
+    TResult Function(Map<Ref, Entry<Event>> data)? entry,
     TResult Function(Ref ref)? main,
     required TResult orElse(),
   }) {
     if (entry != null) {
-      return entry(data, pending);
+      return entry(data);
     }
     return orElse();
   }
@@ -236,6 +364,7 @@ class _$DataSnapshotEntryImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DataSnapshotHead<Event, State, View> value) head,
     required TResult Function(DataSnapshotEntry<Event, State, View> value)
         entry,
     required TResult Function(DataSnapshotMain<Event, State, View> value) main,
@@ -246,6 +375,7 @@ class _$DataSnapshotEntryImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataSnapshotHead<Event, State, View> value)? head,
     TResult? Function(DataSnapshotEntry<Event, State, View> value)? entry,
     TResult? Function(DataSnapshotMain<Event, State, View> value)? main,
   }) {
@@ -255,6 +385,7 @@ class _$DataSnapshotEntryImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataSnapshotHead<Event, State, View> value)? head,
     TResult Function(DataSnapshotEntry<Event, State, View> value)? entry,
     TResult Function(DataSnapshotMain<Event, State, View> value)? main,
     required TResult orElse(),
@@ -270,17 +401,10 @@ abstract class DataSnapshotEntry<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements DataSnapshot<Event, State, View> {
-  factory DataSnapshotEntry(
-          {required final Map<Ref,
-                      ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                  Function()
-              data,
-          required final Set<Ref> pending}) =
+  factory DataSnapshotEntry(final Map<Ref, Entry<Event>> data) =
       _$DataSnapshotEntryImpl<Event, State, View>;
 
-  Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})> Function()
-      get data;
-  Set<Ref> get pending;
+  Map<Ref, Entry<Event>> get data;
   @JsonKey(ignore: true)
   _$$DataSnapshotEntryImplCopyWith<Event, State, View,
           _$DataSnapshotEntryImpl<Event, State, View>>
@@ -369,12 +493,8 @@ class _$DataSnapshotMainImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)
-        entry,
+    required TResult Function(HeadRef head) head,
+    required TResult Function(Map<Ref, Entry<Event>> data) entry,
     required TResult Function(Ref ref) main,
   }) {
     return main(ref);
@@ -383,12 +503,8 @@ class _$DataSnapshotMainImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)?
-        entry,
+    TResult? Function(HeadRef head)? head,
+    TResult? Function(Map<Ref, Entry<Event>> data)? entry,
     TResult? Function(Ref ref)? main,
   }) {
     return main?.call(ref);
@@ -397,12 +513,8 @@ class _$DataSnapshotMainImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Map<Ref, ({DateTime createdAt, Set<Ref> edges, Event? event})>
-                    Function()
-                data,
-            Set<Ref> pending)?
-        entry,
+    TResult Function(HeadRef head)? head,
+    TResult Function(Map<Ref, Entry<Event>> data)? entry,
     TResult Function(Ref ref)? main,
     required TResult orElse(),
   }) {
@@ -415,6 +527,7 @@ class _$DataSnapshotMainImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DataSnapshotHead<Event, State, View> value) head,
     required TResult Function(DataSnapshotEntry<Event, State, View> value)
         entry,
     required TResult Function(DataSnapshotMain<Event, State, View> value) main,
@@ -425,6 +538,7 @@ class _$DataSnapshotMainImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataSnapshotHead<Event, State, View> value)? head,
     TResult? Function(DataSnapshotEntry<Event, State, View> value)? entry,
     TResult? Function(DataSnapshotMain<Event, State, View> value)? main,
   }) {
@@ -434,6 +548,7 @@ class _$DataSnapshotMainImpl<Event extends CoreEvent, State extends CoreState,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataSnapshotHead<Event, State, View> value)? head,
     TResult Function(DataSnapshotEntry<Event, State, View> value)? entry,
     TResult Function(DataSnapshotMain<Event, State, View> value)? main,
     required TResult orElse(),

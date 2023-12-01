@@ -7,7 +7,7 @@ part 'state_view.freezed.dart';
 @freezed
 class StateView<State extends CoreState, View extends CoreView>
     with _$StateView<State, View> {
-  factory StateView({required State state, required View view}) =
+  factory StateView( State state, View view) =
       _StateView<State, View>;
 }
 

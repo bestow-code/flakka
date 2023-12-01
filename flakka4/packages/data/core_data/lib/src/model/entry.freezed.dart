@@ -15,68 +15,70 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Entry {
+mixin _$Entry<Event extends CoreEvent> {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime createdAt) initial,
-    required TResult Function(Ref parent, DateTime createdAt) event,
+    required TResult Function(Ref parent, Event event, DateTime createdAt)
+        event,
     required TResult Function(List<Ref> parent, DateTime createdAt) merge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime createdAt)? initial,
-    TResult? Function(Ref parent, DateTime createdAt)? event,
+    TResult? Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult? Function(List<Ref> parent, DateTime createdAt)? merge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime createdAt)? initial,
-    TResult Function(Ref parent, DateTime createdAt)? event,
+    TResult Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult Function(List<Ref> parent, DateTime createdAt)? merge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EntryInitial value) initial,
-    required TResult Function(EntryEvent value) event,
-    required TResult Function(EntryMerge value) merge,
+    required TResult Function(EntryInitial<Event> value) initial,
+    required TResult Function(EntryEvent<Event> value) event,
+    required TResult Function(EntryMerge<Event> value) merge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EntryInitial value)? initial,
-    TResult? Function(EntryEvent value)? event,
-    TResult? Function(EntryMerge value)? merge,
+    TResult? Function(EntryInitial<Event> value)? initial,
+    TResult? Function(EntryEvent<Event> value)? event,
+    TResult? Function(EntryMerge<Event> value)? merge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EntryInitial value)? initial,
-    TResult Function(EntryEvent value)? event,
-    TResult Function(EntryMerge value)? merge,
+    TResult Function(EntryInitial<Event> value)? initial,
+    TResult Function(EntryEvent<Event> value)? event,
+    TResult Function(EntryMerge<Event> value)? merge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EntryCopyWith<Entry> get copyWith => throw _privateConstructorUsedError;
+  $EntryCopyWith<Event, Entry<Event>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EntryCopyWith<$Res> {
-  factory $EntryCopyWith(Entry value, $Res Function(Entry) then) =
-      _$EntryCopyWithImpl<$Res, Entry>;
+abstract class $EntryCopyWith<Event extends CoreEvent, $Res> {
+  factory $EntryCopyWith(Entry<Event> value, $Res Function(Entry<Event>) then) =
+      _$EntryCopyWithImpl<Event, $Res, Entry<Event>>;
   @useResult
   $Res call({DateTime createdAt});
 }
 
 /// @nodoc
-class _$EntryCopyWithImpl<$Res, $Val extends Entry>
-    implements $EntryCopyWith<$Res> {
+class _$EntryCopyWithImpl<Event extends CoreEvent, $Res,
+    $Val extends Entry<Event>> implements $EntryCopyWith<Event, $Res> {
   _$EntryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -99,22 +101,22 @@ class _$EntryCopyWithImpl<$Res, $Val extends Entry>
 }
 
 /// @nodoc
-abstract class _$$EntryInitialImplCopyWith<$Res>
-    implements $EntryCopyWith<$Res> {
-  factory _$$EntryInitialImplCopyWith(
-          _$EntryInitialImpl value, $Res Function(_$EntryInitialImpl) then) =
-      __$$EntryInitialImplCopyWithImpl<$Res>;
+abstract class _$$EntryInitialImplCopyWith<Event extends CoreEvent, $Res>
+    implements $EntryCopyWith<Event, $Res> {
+  factory _$$EntryInitialImplCopyWith(_$EntryInitialImpl<Event> value,
+          $Res Function(_$EntryInitialImpl<Event>) then) =
+      __$$EntryInitialImplCopyWithImpl<Event, $Res>;
   @override
   @useResult
   $Res call({DateTime createdAt});
 }
 
 /// @nodoc
-class __$$EntryInitialImplCopyWithImpl<$Res>
-    extends _$EntryCopyWithImpl<$Res, _$EntryInitialImpl>
-    implements _$$EntryInitialImplCopyWith<$Res> {
-  __$$EntryInitialImplCopyWithImpl(
-      _$EntryInitialImpl _value, $Res Function(_$EntryInitialImpl) _then)
+class __$$EntryInitialImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$EntryCopyWithImpl<Event, $Res, _$EntryInitialImpl<Event>>
+    implements _$$EntryInitialImplCopyWith<Event, $Res> {
+  __$$EntryInitialImplCopyWithImpl(_$EntryInitialImpl<Event> _value,
+      $Res Function(_$EntryInitialImpl<Event>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +124,7 @@ class __$$EntryInitialImplCopyWithImpl<$Res>
   $Res call({
     Object? createdAt = null,
   }) {
-    return _then(_$EntryInitialImpl(
+    return _then(_$EntryInitialImpl<Event>(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -133,7 +135,8 @@ class __$$EntryInitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryInitialImpl implements EntryInitial {
+class _$EntryInitialImpl<Event extends CoreEvent>
+    implements EntryInitial<Event> {
   _$EntryInitialImpl({required this.createdAt});
 
   @override
@@ -141,14 +144,14 @@ class _$EntryInitialImpl implements EntryInitial {
 
   @override
   String toString() {
-    return 'Entry.initial(createdAt: $createdAt)';
+    return 'Entry<$Event>.initial(createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryInitialImpl &&
+            other is _$EntryInitialImpl<Event> &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
@@ -159,14 +162,16 @@ class _$EntryInitialImpl implements EntryInitial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryInitialImplCopyWith<_$EntryInitialImpl> get copyWith =>
-      __$$EntryInitialImplCopyWithImpl<_$EntryInitialImpl>(this, _$identity);
+  _$$EntryInitialImplCopyWith<Event, _$EntryInitialImpl<Event>> get copyWith =>
+      __$$EntryInitialImplCopyWithImpl<Event, _$EntryInitialImpl<Event>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime createdAt) initial,
-    required TResult Function(Ref parent, DateTime createdAt) event,
+    required TResult Function(Ref parent, Event event, DateTime createdAt)
+        event,
     required TResult Function(List<Ref> parent, DateTime createdAt) merge,
   }) {
     return initial(createdAt);
@@ -176,7 +181,7 @@ class _$EntryInitialImpl implements EntryInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime createdAt)? initial,
-    TResult? Function(Ref parent, DateTime createdAt)? event,
+    TResult? Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult? Function(List<Ref> parent, DateTime createdAt)? merge,
   }) {
     return initial?.call(createdAt);
@@ -186,7 +191,7 @@ class _$EntryInitialImpl implements EntryInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime createdAt)? initial,
-    TResult Function(Ref parent, DateTime createdAt)? event,
+    TResult Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult Function(List<Ref> parent, DateTime createdAt)? merge,
     required TResult orElse(),
   }) {
@@ -199,9 +204,9 @@ class _$EntryInitialImpl implements EntryInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EntryInitial value) initial,
-    required TResult Function(EntryEvent value) event,
-    required TResult Function(EntryMerge value) merge,
+    required TResult Function(EntryInitial<Event> value) initial,
+    required TResult Function(EntryEvent<Event> value) event,
+    required TResult Function(EntryMerge<Event> value) merge,
   }) {
     return initial(this);
   }
@@ -209,9 +214,9 @@ class _$EntryInitialImpl implements EntryInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EntryInitial value)? initial,
-    TResult? Function(EntryEvent value)? event,
-    TResult? Function(EntryMerge value)? merge,
+    TResult? Function(EntryInitial<Event> value)? initial,
+    TResult? Function(EntryEvent<Event> value)? event,
+    TResult? Function(EntryMerge<Event> value)? merge,
   }) {
     return initial?.call(this);
   }
@@ -219,9 +224,9 @@ class _$EntryInitialImpl implements EntryInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EntryInitial value)? initial,
-    TResult Function(EntryEvent value)? event,
-    TResult Function(EntryMerge value)? merge,
+    TResult Function(EntryInitial<Event> value)? initial,
+    TResult Function(EntryEvent<Event> value)? event,
+    TResult Function(EntryMerge<Event> value)? merge,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -231,49 +236,55 @@ class _$EntryInitialImpl implements EntryInitial {
   }
 }
 
-abstract class EntryInitial implements Entry {
+abstract class EntryInitial<Event extends CoreEvent> implements Entry<Event> {
   factory EntryInitial({required final DateTime createdAt}) =
-      _$EntryInitialImpl;
+      _$EntryInitialImpl<Event>;
 
   @override
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$EntryInitialImplCopyWith<_$EntryInitialImpl> get copyWith =>
+  _$$EntryInitialImplCopyWith<Event, _$EntryInitialImpl<Event>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EntryEventImplCopyWith<$Res> implements $EntryCopyWith<$Res> {
-  factory _$$EntryEventImplCopyWith(
-          _$EntryEventImpl value, $Res Function(_$EntryEventImpl) then) =
-      __$$EntryEventImplCopyWithImpl<$Res>;
+abstract class _$$EntryEventImplCopyWith<Event extends CoreEvent, $Res>
+    implements $EntryCopyWith<Event, $Res> {
+  factory _$$EntryEventImplCopyWith(_$EntryEventImpl<Event> value,
+          $Res Function(_$EntryEventImpl<Event>) then) =
+      __$$EntryEventImplCopyWithImpl<Event, $Res>;
   @override
   @useResult
-  $Res call({Ref parent, DateTime createdAt});
+  $Res call({Ref parent, Event event, DateTime createdAt});
 
   $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
-class __$$EntryEventImplCopyWithImpl<$Res>
-    extends _$EntryCopyWithImpl<$Res, _$EntryEventImpl>
-    implements _$$EntryEventImplCopyWith<$Res> {
-  __$$EntryEventImplCopyWithImpl(
-      _$EntryEventImpl _value, $Res Function(_$EntryEventImpl) _then)
+class __$$EntryEventImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$EntryCopyWithImpl<Event, $Res, _$EntryEventImpl<Event>>
+    implements _$$EntryEventImplCopyWith<Event, $Res> {
+  __$$EntryEventImplCopyWithImpl(_$EntryEventImpl<Event> _value,
+      $Res Function(_$EntryEventImpl<Event>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? parent = null,
+    Object? event = null,
     Object? createdAt = null,
   }) {
-    return _then(_$EntryEventImpl(
+    return _then(_$EntryEventImpl<Event>(
       parent: null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as Ref,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -292,68 +303,75 @@ class __$$EntryEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryEventImpl implements EntryEvent {
-  _$EntryEventImpl({required this.parent, required this.createdAt});
+class _$EntryEventImpl<Event extends CoreEvent> implements EntryEvent<Event> {
+  _$EntryEventImpl(
+      {required this.parent, required this.event, required this.createdAt});
 
   @override
   final Ref parent;
+  @override
+  final Event event;
   @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Entry.event(parent: $parent, createdAt: $createdAt)';
+    return 'Entry<$Event>.event(parent: $parent, event: $event, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryEventImpl &&
+            other is _$EntryEventImpl<Event> &&
             (identical(other.parent, parent) || other.parent == parent) &&
+            const DeepCollectionEquality().equals(other.event, event) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, parent, createdAt);
+  int get hashCode => Object.hash(runtimeType, parent,
+      const DeepCollectionEquality().hash(event), createdAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryEventImplCopyWith<_$EntryEventImpl> get copyWith =>
-      __$$EntryEventImplCopyWithImpl<_$EntryEventImpl>(this, _$identity);
+  _$$EntryEventImplCopyWith<Event, _$EntryEventImpl<Event>> get copyWith =>
+      __$$EntryEventImplCopyWithImpl<Event, _$EntryEventImpl<Event>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime createdAt) initial,
-    required TResult Function(Ref parent, DateTime createdAt) event,
+    required TResult Function(Ref parent, Event event, DateTime createdAt)
+        event,
     required TResult Function(List<Ref> parent, DateTime createdAt) merge,
   }) {
-    return event(parent, createdAt);
+    return event(parent, this.event, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime createdAt)? initial,
-    TResult? Function(Ref parent, DateTime createdAt)? event,
+    TResult? Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult? Function(List<Ref> parent, DateTime createdAt)? merge,
   }) {
-    return event?.call(parent, createdAt);
+    return event?.call(parent, this.event, createdAt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime createdAt)? initial,
-    TResult Function(Ref parent, DateTime createdAt)? event,
+    TResult Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult Function(List<Ref> parent, DateTime createdAt)? merge,
     required TResult orElse(),
   }) {
     if (event != null) {
-      return event(parent, createdAt);
+      return event(parent, this.event, createdAt);
     }
     return orElse();
   }
@@ -361,9 +379,9 @@ class _$EntryEventImpl implements EntryEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EntryInitial value) initial,
-    required TResult Function(EntryEvent value) event,
-    required TResult Function(EntryMerge value) merge,
+    required TResult Function(EntryInitial<Event> value) initial,
+    required TResult Function(EntryEvent<Event> value) event,
+    required TResult Function(EntryMerge<Event> value) merge,
   }) {
     return event(this);
   }
@@ -371,9 +389,9 @@ class _$EntryEventImpl implements EntryEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EntryInitial value)? initial,
-    TResult? Function(EntryEvent value)? event,
-    TResult? Function(EntryMerge value)? merge,
+    TResult? Function(EntryInitial<Event> value)? initial,
+    TResult? Function(EntryEvent<Event> value)? event,
+    TResult? Function(EntryMerge<Event> value)? merge,
   }) {
     return event?.call(this);
   }
@@ -381,9 +399,9 @@ class _$EntryEventImpl implements EntryEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EntryInitial value)? initial,
-    TResult Function(EntryEvent value)? event,
-    TResult Function(EntryMerge value)? merge,
+    TResult Function(EntryInitial<Event> value)? initial,
+    TResult Function(EntryEvent<Event> value)? event,
+    TResult Function(EntryMerge<Event> value)? merge,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -393,36 +411,39 @@ class _$EntryEventImpl implements EntryEvent {
   }
 }
 
-abstract class EntryEvent implements Entry {
+abstract class EntryEvent<Event extends CoreEvent> implements Entry<Event> {
   factory EntryEvent(
       {required final Ref parent,
-      required final DateTime createdAt}) = _$EntryEventImpl;
+      required final Event event,
+      required final DateTime createdAt}) = _$EntryEventImpl<Event>;
 
   Ref get parent;
+  Event get event;
   @override
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$EntryEventImplCopyWith<_$EntryEventImpl> get copyWith =>
+  _$$EntryEventImplCopyWith<Event, _$EntryEventImpl<Event>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EntryMergeImplCopyWith<$Res> implements $EntryCopyWith<$Res> {
-  factory _$$EntryMergeImplCopyWith(
-          _$EntryMergeImpl value, $Res Function(_$EntryMergeImpl) then) =
-      __$$EntryMergeImplCopyWithImpl<$Res>;
+abstract class _$$EntryMergeImplCopyWith<Event extends CoreEvent, $Res>
+    implements $EntryCopyWith<Event, $Res> {
+  factory _$$EntryMergeImplCopyWith(_$EntryMergeImpl<Event> value,
+          $Res Function(_$EntryMergeImpl<Event>) then) =
+      __$$EntryMergeImplCopyWithImpl<Event, $Res>;
   @override
   @useResult
   $Res call({List<Ref> parent, DateTime createdAt});
 }
 
 /// @nodoc
-class __$$EntryMergeImplCopyWithImpl<$Res>
-    extends _$EntryCopyWithImpl<$Res, _$EntryMergeImpl>
-    implements _$$EntryMergeImplCopyWith<$Res> {
-  __$$EntryMergeImplCopyWithImpl(
-      _$EntryMergeImpl _value, $Res Function(_$EntryMergeImpl) _then)
+class __$$EntryMergeImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$EntryCopyWithImpl<Event, $Res, _$EntryMergeImpl<Event>>
+    implements _$$EntryMergeImplCopyWith<Event, $Res> {
+  __$$EntryMergeImplCopyWithImpl(_$EntryMergeImpl<Event> _value,
+      $Res Function(_$EntryMergeImpl<Event>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +452,7 @@ class __$$EntryMergeImplCopyWithImpl<$Res>
     Object? parent = null,
     Object? createdAt = null,
   }) {
-    return _then(_$EntryMergeImpl(
+    return _then(_$EntryMergeImpl<Event>(
       parent: null == parent
           ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
@@ -446,7 +467,7 @@ class __$$EntryMergeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntryMergeImpl implements EntryMerge {
+class _$EntryMergeImpl<Event extends CoreEvent> implements EntryMerge<Event> {
   _$EntryMergeImpl({required final List<Ref> parent, required this.createdAt})
       : _parent = parent;
 
@@ -463,14 +484,14 @@ class _$EntryMergeImpl implements EntryMerge {
 
   @override
   String toString() {
-    return 'Entry.merge(parent: $parent, createdAt: $createdAt)';
+    return 'Entry<$Event>.merge(parent: $parent, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntryMergeImpl &&
+            other is _$EntryMergeImpl<Event> &&
             const DeepCollectionEquality().equals(other._parent, _parent) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -483,14 +504,16 @@ class _$EntryMergeImpl implements EntryMerge {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntryMergeImplCopyWith<_$EntryMergeImpl> get copyWith =>
-      __$$EntryMergeImplCopyWithImpl<_$EntryMergeImpl>(this, _$identity);
+  _$$EntryMergeImplCopyWith<Event, _$EntryMergeImpl<Event>> get copyWith =>
+      __$$EntryMergeImplCopyWithImpl<Event, _$EntryMergeImpl<Event>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime createdAt) initial,
-    required TResult Function(Ref parent, DateTime createdAt) event,
+    required TResult Function(Ref parent, Event event, DateTime createdAt)
+        event,
     required TResult Function(List<Ref> parent, DateTime createdAt) merge,
   }) {
     return merge(parent, createdAt);
@@ -500,7 +523,7 @@ class _$EntryMergeImpl implements EntryMerge {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime createdAt)? initial,
-    TResult? Function(Ref parent, DateTime createdAt)? event,
+    TResult? Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult? Function(List<Ref> parent, DateTime createdAt)? merge,
   }) {
     return merge?.call(parent, createdAt);
@@ -510,7 +533,7 @@ class _$EntryMergeImpl implements EntryMerge {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime createdAt)? initial,
-    TResult Function(Ref parent, DateTime createdAt)? event,
+    TResult Function(Ref parent, Event event, DateTime createdAt)? event,
     TResult Function(List<Ref> parent, DateTime createdAt)? merge,
     required TResult orElse(),
   }) {
@@ -523,9 +546,9 @@ class _$EntryMergeImpl implements EntryMerge {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EntryInitial value) initial,
-    required TResult Function(EntryEvent value) event,
-    required TResult Function(EntryMerge value) merge,
+    required TResult Function(EntryInitial<Event> value) initial,
+    required TResult Function(EntryEvent<Event> value) event,
+    required TResult Function(EntryMerge<Event> value) merge,
   }) {
     return merge(this);
   }
@@ -533,9 +556,9 @@ class _$EntryMergeImpl implements EntryMerge {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EntryInitial value)? initial,
-    TResult? Function(EntryEvent value)? event,
-    TResult? Function(EntryMerge value)? merge,
+    TResult? Function(EntryInitial<Event> value)? initial,
+    TResult? Function(EntryEvent<Event> value)? event,
+    TResult? Function(EntryMerge<Event> value)? merge,
   }) {
     return merge?.call(this);
   }
@@ -543,9 +566,9 @@ class _$EntryMergeImpl implements EntryMerge {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EntryInitial value)? initial,
-    TResult Function(EntryEvent value)? event,
-    TResult Function(EntryMerge value)? merge,
+    TResult Function(EntryInitial<Event> value)? initial,
+    TResult Function(EntryEvent<Event> value)? event,
+    TResult Function(EntryMerge<Event> value)? merge,
     required TResult orElse(),
   }) {
     if (merge != null) {
@@ -555,16 +578,16 @@ class _$EntryMergeImpl implements EntryMerge {
   }
 }
 
-abstract class EntryMerge implements Entry {
+abstract class EntryMerge<Event extends CoreEvent> implements Entry<Event> {
   factory EntryMerge(
       {required final List<Ref> parent,
-      required final DateTime createdAt}) = _$EntryMergeImpl;
+      required final DateTime createdAt}) = _$EntryMergeImpl<Event>;
 
   List<Ref> get parent;
   @override
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$EntryMergeImplCopyWith<_$EntryMergeImpl> get copyWith =>
+  _$$EntryMergeImplCopyWith<Event, _$EntryMergeImpl<Event>> get copyWith =>
       throw _privateConstructorUsedError;
 }

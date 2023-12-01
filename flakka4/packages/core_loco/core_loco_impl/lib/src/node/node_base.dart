@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:core_loco/core_loco.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../core_loco_impl.dart';
-
 abstract class NodeBase<
         EffectOut,
         SnapshotIn,
@@ -23,7 +21,7 @@ abstract class NodeBase<
   final _state = BehaviorSubject<NodeState>();
 
   @override
-  Future<void> connect() async {
+  void connect()  {
     void handleResult(
       NodeEventResult<EffectOut, SnapshotOut, NodeState> result,
     ) {

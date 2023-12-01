@@ -1,15 +1,10 @@
-import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
+import 'package:core_loco/core_loco.dart';
 
 import '../../core_journal.dart';
 
 abstract class CoreJournal<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
     implements
-        CoreDataNode<
-            Event,
-            State,
-            View,
-            DataEffect<Event, State, View>,
-            DataSnapshot<Event, State, View>,
-            JournalEffect<Event, State, View>,
+        CoreResource<JournalEffect<Event, State, View>,
             JournalSnapshot<Event, State, View>> {}

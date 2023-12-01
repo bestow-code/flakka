@@ -588,3 +588,481 @@ abstract class HeadEffectEvent<Event extends CoreEvent>
   _$$HeadEffectEventImplCopyWith<Event, _$HeadEffectEventImpl<Event>>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$HeadEffect2<Event extends CoreEvent> {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event data) event,
+    required TResult Function(Ref parent) merge,
+    required TResult Function() forward,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event data)? event,
+    TResult? Function(Ref parent)? merge,
+    TResult? Function()? forward,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event data)? event,
+    TResult Function(Ref parent)? merge,
+    TResult Function()? forward,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HeadEffect2Event<Event> value) event,
+    required TResult Function(HeadEffect2Merge<Event> value) merge,
+    required TResult Function(HeadEffect2Forward<Event> value) forward,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffect2Event<Event> value)? event,
+    TResult? Function(HeadEffect2Merge<Event> value)? merge,
+    TResult? Function(HeadEffect2Forward<Event> value)? forward,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HeadEffect2Event<Event> value)? event,
+    TResult Function(HeadEffect2Merge<Event> value)? merge,
+    TResult Function(HeadEffect2Forward<Event> value)? forward,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HeadEffect2CopyWith<Event extends CoreEvent, $Res> {
+  factory $HeadEffect2CopyWith(
+          HeadEffect2<Event> value, $Res Function(HeadEffect2<Event>) then) =
+      _$HeadEffect2CopyWithImpl<Event, $Res, HeadEffect2<Event>>;
+}
+
+/// @nodoc
+class _$HeadEffect2CopyWithImpl<Event extends CoreEvent, $Res,
+        $Val extends HeadEffect2<Event>>
+    implements $HeadEffect2CopyWith<Event, $Res> {
+  _$HeadEffect2CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$HeadEffect2EventImplCopyWith<Event extends CoreEvent, $Res> {
+  factory _$$HeadEffect2EventImplCopyWith(_$HeadEffect2EventImpl<Event> value,
+          $Res Function(_$HeadEffect2EventImpl<Event>) then) =
+      __$$HeadEffect2EventImplCopyWithImpl<Event, $Res>;
+  @useResult
+  $Res call({Event data});
+}
+
+/// @nodoc
+class __$$HeadEffect2EventImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$HeadEffect2CopyWithImpl<Event, $Res,
+        _$HeadEffect2EventImpl<Event>>
+    implements _$$HeadEffect2EventImplCopyWith<Event, $Res> {
+  __$$HeadEffect2EventImplCopyWithImpl(_$HeadEffect2EventImpl<Event> _value,
+      $Res Function(_$HeadEffect2EventImpl<Event>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$HeadEffect2EventImpl<Event>(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Event,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HeadEffect2EventImpl<Event extends CoreEvent>
+    implements HeadEffect2Event<Event> {
+  _$HeadEffect2EventImpl(this.data);
+
+  @override
+  final Event data;
+
+  @override
+  String toString() {
+    return 'HeadEffect2<$Event>.event(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HeadEffect2EventImpl<Event> &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HeadEffect2EventImplCopyWith<Event, _$HeadEffect2EventImpl<Event>>
+      get copyWith => __$$HeadEffect2EventImplCopyWithImpl<Event,
+          _$HeadEffect2EventImpl<Event>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event data) event,
+    required TResult Function(Ref parent) merge,
+    required TResult Function() forward,
+  }) {
+    return event(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event data)? event,
+    TResult? Function(Ref parent)? merge,
+    TResult? Function()? forward,
+  }) {
+    return event?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event data)? event,
+    TResult Function(Ref parent)? merge,
+    TResult Function()? forward,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HeadEffect2Event<Event> value) event,
+    required TResult Function(HeadEffect2Merge<Event> value) merge,
+    required TResult Function(HeadEffect2Forward<Event> value) forward,
+  }) {
+    return event(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffect2Event<Event> value)? event,
+    TResult? Function(HeadEffect2Merge<Event> value)? merge,
+    TResult? Function(HeadEffect2Forward<Event> value)? forward,
+  }) {
+    return event?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HeadEffect2Event<Event> value)? event,
+    TResult Function(HeadEffect2Merge<Event> value)? merge,
+    TResult Function(HeadEffect2Forward<Event> value)? forward,
+    required TResult orElse(),
+  }) {
+    if (event != null) {
+      return event(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HeadEffect2Event<Event extends CoreEvent>
+    implements HeadEffect2<Event> {
+  factory HeadEffect2Event(final Event data) = _$HeadEffect2EventImpl<Event>;
+
+  Event get data;
+  @JsonKey(ignore: true)
+  _$$HeadEffect2EventImplCopyWith<Event, _$HeadEffect2EventImpl<Event>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HeadEffect2MergeImplCopyWith<Event extends CoreEvent, $Res> {
+  factory _$$HeadEffect2MergeImplCopyWith(_$HeadEffect2MergeImpl<Event> value,
+          $Res Function(_$HeadEffect2MergeImpl<Event>) then) =
+      __$$HeadEffect2MergeImplCopyWithImpl<Event, $Res>;
+  @useResult
+  $Res call({Ref parent});
+
+  $RefCopyWith<$Res> get parent;
+}
+
+/// @nodoc
+class __$$HeadEffect2MergeImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$HeadEffect2CopyWithImpl<Event, $Res,
+        _$HeadEffect2MergeImpl<Event>>
+    implements _$$HeadEffect2MergeImplCopyWith<Event, $Res> {
+  __$$HeadEffect2MergeImplCopyWithImpl(_$HeadEffect2MergeImpl<Event> _value,
+      $Res Function(_$HeadEffect2MergeImpl<Event>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? parent = null,
+  }) {
+    return _then(_$HeadEffect2MergeImpl<Event>(
+      null == parent
+          ? _value.parent
+          : parent // ignore: cast_nullable_to_non_nullable
+              as Ref,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
+      return _then(_value.copyWith(parent: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$HeadEffect2MergeImpl<Event extends CoreEvent>
+    implements HeadEffect2Merge<Event> {
+  _$HeadEffect2MergeImpl(this.parent);
+
+  @override
+  final Ref parent;
+
+  @override
+  String toString() {
+    return 'HeadEffect2<$Event>.merge(parent: $parent)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HeadEffect2MergeImpl<Event> &&
+            (identical(other.parent, parent) || other.parent == parent));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HeadEffect2MergeImplCopyWith<Event, _$HeadEffect2MergeImpl<Event>>
+      get copyWith => __$$HeadEffect2MergeImplCopyWithImpl<Event,
+          _$HeadEffect2MergeImpl<Event>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event data) event,
+    required TResult Function(Ref parent) merge,
+    required TResult Function() forward,
+  }) {
+    return merge(parent);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event data)? event,
+    TResult? Function(Ref parent)? merge,
+    TResult? Function()? forward,
+  }) {
+    return merge?.call(parent);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event data)? event,
+    TResult Function(Ref parent)? merge,
+    TResult Function()? forward,
+    required TResult orElse(),
+  }) {
+    if (merge != null) {
+      return merge(parent);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HeadEffect2Event<Event> value) event,
+    required TResult Function(HeadEffect2Merge<Event> value) merge,
+    required TResult Function(HeadEffect2Forward<Event> value) forward,
+  }) {
+    return merge(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffect2Event<Event> value)? event,
+    TResult? Function(HeadEffect2Merge<Event> value)? merge,
+    TResult? Function(HeadEffect2Forward<Event> value)? forward,
+  }) {
+    return merge?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HeadEffect2Event<Event> value)? event,
+    TResult Function(HeadEffect2Merge<Event> value)? merge,
+    TResult Function(HeadEffect2Forward<Event> value)? forward,
+    required TResult orElse(),
+  }) {
+    if (merge != null) {
+      return merge(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HeadEffect2Merge<Event extends CoreEvent>
+    implements HeadEffect2<Event> {
+  factory HeadEffect2Merge(final Ref parent) = _$HeadEffect2MergeImpl<Event>;
+
+  Ref get parent;
+  @JsonKey(ignore: true)
+  _$$HeadEffect2MergeImplCopyWith<Event, _$HeadEffect2MergeImpl<Event>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HeadEffect2ForwardImplCopyWith<Event extends CoreEvent,
+    $Res> {
+  factory _$$HeadEffect2ForwardImplCopyWith(
+          _$HeadEffect2ForwardImpl<Event> value,
+          $Res Function(_$HeadEffect2ForwardImpl<Event>) then) =
+      __$$HeadEffect2ForwardImplCopyWithImpl<Event, $Res>;
+}
+
+/// @nodoc
+class __$$HeadEffect2ForwardImplCopyWithImpl<Event extends CoreEvent, $Res>
+    extends _$HeadEffect2CopyWithImpl<Event, $Res,
+        _$HeadEffect2ForwardImpl<Event>>
+    implements _$$HeadEffect2ForwardImplCopyWith<Event, $Res> {
+  __$$HeadEffect2ForwardImplCopyWithImpl(_$HeadEffect2ForwardImpl<Event> _value,
+      $Res Function(_$HeadEffect2ForwardImpl<Event>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$HeadEffect2ForwardImpl<Event extends CoreEvent>
+    implements HeadEffect2Forward<Event> {
+  _$HeadEffect2ForwardImpl();
+
+  @override
+  String toString() {
+    return 'HeadEffect2<$Event>.forward()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HeadEffect2ForwardImpl<Event>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event data) event,
+    required TResult Function(Ref parent) merge,
+    required TResult Function() forward,
+  }) {
+    return forward();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event data)? event,
+    TResult? Function(Ref parent)? merge,
+    TResult? Function()? forward,
+  }) {
+    return forward?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event data)? event,
+    TResult Function(Ref parent)? merge,
+    TResult Function()? forward,
+    required TResult orElse(),
+  }) {
+    if (forward != null) {
+      return forward();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HeadEffect2Event<Event> value) event,
+    required TResult Function(HeadEffect2Merge<Event> value) merge,
+    required TResult Function(HeadEffect2Forward<Event> value) forward,
+  }) {
+    return forward(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HeadEffect2Event<Event> value)? event,
+    TResult? Function(HeadEffect2Merge<Event> value)? merge,
+    TResult? Function(HeadEffect2Forward<Event> value)? forward,
+  }) {
+    return forward?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HeadEffect2Event<Event> value)? event,
+    TResult Function(HeadEffect2Merge<Event> value)? merge,
+    TResult Function(HeadEffect2Forward<Event> value)? forward,
+    required TResult orElse(),
+  }) {
+    if (forward != null) {
+      return forward(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HeadEffect2Forward<Event extends CoreEvent>
+    implements HeadEffect2<Event> {
+  factory HeadEffect2Forward() = _$HeadEffect2ForwardImpl<Event>;
+}

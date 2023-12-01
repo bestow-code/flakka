@@ -447,50 +447,8 @@ abstract class JournalSegmentInitial<
 /// @nodoc
 mixin _$JournalStateEvents<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  Iterable<Event> get events => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(State start, Iterable<Event> events) $default, {
-    required TResult Function(Iterable<Event> events) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State start, Iterable<Event> events)? $default, {
-    TResult? Function(Iterable<Event> events)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State start, Iterable<Event> events)? $default, {
-    TResult Function(Iterable<Event> events)? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JournalStateEvents<Event, State, View> value) $default, {
-    required TResult Function(
-            JournalStateEventsInitial<Event, State, View> value)
-        initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JournalStateEvents<Event, State, View> value)?
-        $default, {
-    TResult? Function(JournalStateEventsInitial<Event, State, View> value)?
-        initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JournalStateEvents<Event, State, View> value)? $default, {
-    TResult Function(JournalStateEventsInitial<Event, State, View> value)?
-        initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  StateView<State, View> get start => throw _privateConstructorUsedError;
+  List<Event> get events => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $JournalStateEventsCopyWith<Event, State, View,
@@ -507,7 +465,9 @@ abstract class $JournalStateEventsCopyWith<Event extends CoreEvent,
       _$JournalStateEventsCopyWithImpl<Event, State, View, $Res,
           JournalStateEvents<Event, State, View>>;
   @useResult
-  $Res call({Iterable<Event> events});
+  $Res call({StateView<State, View> start, List<Event> events});
+
+  $StateViewCopyWith<State, View, $Res> get start;
 }
 
 /// @nodoc
@@ -528,14 +488,27 @@ class _$JournalStateEventsCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? start = null,
     Object? events = null,
   }) {
     return _then(_value.copyWith(
+      start: null == start
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as StateView<State, View>,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
-              as Iterable<Event>,
+              as List<Event>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StateViewCopyWith<State, View, $Res> get start {
+    return $StateViewCopyWith<State, View, $Res>(_value.start, (value) {
+      return _then(_value.copyWith(start: value) as $Val);
+    });
   }
 }
 
@@ -551,7 +524,10 @@ abstract class _$$JournalStateEventsImplCopyWith<
       __$$JournalStateEventsImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call({State start, Iterable<Event> events});
+  $Res call({StateView<State, View> start, List<Event> events});
+
+  @override
+  $StateViewCopyWith<State, View, $Res> get start;
 }
 
 /// @nodoc
@@ -572,14 +548,14 @@ class __$$JournalStateEventsImplCopyWithImpl<Event extends CoreEvent,
     Object? events = null,
   }) {
     return _then(_$JournalStateEventsImpl<Event, State, View>(
-      start: null == start
+      null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as State,
-      events: null == events
-          ? _value.events
+              as StateView<State, View>,
+      null == events
+          ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
-              as Iterable<Event>,
+              as List<Event>,
     ));
   }
 }
@@ -588,12 +564,18 @@ class __$$JournalStateEventsImplCopyWithImpl<Event extends CoreEvent,
 
 class _$JournalStateEventsImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _JournalStateEvents<Event, State, View> {
-  _$JournalStateEventsImpl({required this.start, required this.events});
+  _$JournalStateEventsImpl(this.start, final List<Event> events)
+      : _events = events;
 
   @override
-  final State start;
+  final StateView<State, View> start;
+  final List<Event> _events;
   @override
-  final Iterable<Event> events;
+  List<Event> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_events);
+  }
 
   @override
   String toString() {
@@ -605,15 +587,13 @@ class _$JournalStateEventsImpl<Event extends CoreEvent, State extends CoreState,
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JournalStateEventsImpl<Event, State, View> &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.events, events));
+            (identical(other.start, start) || other.start == start) &&
+            const DeepCollectionEquality().equals(other._events, _events));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(events));
+      runtimeType, start, const DeepCollectionEquality().hash(_events));
 
   @JsonKey(ignore: true)
   @override
@@ -622,73 +602,6 @@ class _$JournalStateEventsImpl<Event extends CoreEvent, State extends CoreState,
           _$JournalStateEventsImpl<Event, State, View>>
       get copyWith => __$$JournalStateEventsImplCopyWithImpl<Event, State, View,
           _$JournalStateEventsImpl<Event, State, View>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(State start, Iterable<Event> events) $default, {
-    required TResult Function(Iterable<Event> events) initial,
-  }) {
-    return $default(start, events);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State start, Iterable<Event> events)? $default, {
-    TResult? Function(Iterable<Event> events)? initial,
-  }) {
-    return $default?.call(start, events);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State start, Iterable<Event> events)? $default, {
-    TResult Function(Iterable<Event> events)? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(start, events);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JournalStateEvents<Event, State, View> value) $default, {
-    required TResult Function(
-            JournalStateEventsInitial<Event, State, View> value)
-        initial,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JournalStateEvents<Event, State, View> value)?
-        $default, {
-    TResult? Function(JournalStateEventsInitial<Event, State, View> value)?
-        initial,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JournalStateEvents<Event, State, View> value)? $default, {
-    TResult Function(JournalStateEventsInitial<Event, State, View> value)?
-        initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _JournalStateEvents<
@@ -696,177 +609,16 @@ abstract class _JournalStateEvents<
     State extends CoreState,
     View extends CoreView> implements JournalStateEvents<Event, State, View> {
   factory _JournalStateEvents(
-          {required final State start, required final Iterable<Event> events}) =
+          final StateView<State, View> start, final List<Event> events) =
       _$JournalStateEventsImpl<Event, State, View>;
 
-  State get start;
   @override
-  Iterable<Event> get events;
+  StateView<State, View> get start;
+  @override
+  List<Event> get events;
   @override
   @JsonKey(ignore: true)
   _$$JournalStateEventsImplCopyWith<Event, State, View,
           _$JournalStateEventsImpl<Event, State, View>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$JournalStateEventsInitialImplCopyWith<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView,
-    $Res> implements $JournalStateEventsCopyWith<Event, State, View, $Res> {
-  factory _$$JournalStateEventsInitialImplCopyWith(
-          _$JournalStateEventsInitialImpl<Event, State, View> value,
-          $Res Function(_$JournalStateEventsInitialImpl<Event, State, View>)
-              then) =
-      __$$JournalStateEventsInitialImplCopyWithImpl<Event, State, View, $Res>;
-  @override
-  @useResult
-  $Res call({Iterable<Event> events});
-}
-
-/// @nodoc
-class __$$JournalStateEventsInitialImplCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$JournalStateEventsCopyWithImpl<Event, State, View, $Res,
-        _$JournalStateEventsInitialImpl<Event, State, View>>
-    implements
-        _$$JournalStateEventsInitialImplCopyWith<Event, State, View, $Res> {
-  __$$JournalStateEventsInitialImplCopyWithImpl(
-      _$JournalStateEventsInitialImpl<Event, State, View> _value,
-      $Res Function(_$JournalStateEventsInitialImpl<Event, State, View>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? events = null,
-  }) {
-    return _then(_$JournalStateEventsInitialImpl<Event, State, View>(
-      events: null == events
-          ? _value.events
-          : events // ignore: cast_nullable_to_non_nullable
-              as Iterable<Event>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$JournalStateEventsInitialImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView>
-    implements JournalStateEventsInitial<Event, State, View> {
-  _$JournalStateEventsInitialImpl({required this.events});
-
-  @override
-  final Iterable<Event> events;
-
-  @override
-  String toString() {
-    return 'JournalStateEvents<$Event, $State, $View>.initial(events: $events)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$JournalStateEventsInitialImpl<Event, State, View> &&
-            const DeepCollectionEquality().equals(other.events, events));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(events));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$JournalStateEventsInitialImplCopyWith<Event, State, View,
-          _$JournalStateEventsInitialImpl<Event, State, View>>
-      get copyWith => __$$JournalStateEventsInitialImplCopyWithImpl<Event,
-              State, View, _$JournalStateEventsInitialImpl<Event, State, View>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(State start, Iterable<Event> events) $default, {
-    required TResult Function(Iterable<Event> events) initial,
-  }) {
-    return initial(events);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State start, Iterable<Event> events)? $default, {
-    TResult? Function(Iterable<Event> events)? initial,
-  }) {
-    return initial?.call(events);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State start, Iterable<Event> events)? $default, {
-    TResult Function(Iterable<Event> events)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(events);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JournalStateEvents<Event, State, View> value) $default, {
-    required TResult Function(
-            JournalStateEventsInitial<Event, State, View> value)
-        initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JournalStateEvents<Event, State, View> value)?
-        $default, {
-    TResult? Function(JournalStateEventsInitial<Event, State, View> value)?
-        initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JournalStateEvents<Event, State, View> value)? $default, {
-    TResult Function(JournalStateEventsInitial<Event, State, View> value)?
-        initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class JournalStateEventsInitial<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> implements JournalStateEvents<Event, State, View> {
-  factory JournalStateEventsInitial({required final Iterable<Event> events}) =
-      _$JournalStateEventsInitialImpl<Event, State, View>;
-
-  @override
-  Iterable<Event> get events;
-  @override
-  @JsonKey(ignore: true)
-  _$$JournalStateEventsInitialImplCopyWith<Event, State, View,
-          _$JournalStateEventsInitialImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }

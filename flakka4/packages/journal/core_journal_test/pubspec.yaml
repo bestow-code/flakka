@@ -10,6 +10,7 @@ environment:
 dependencies:
   async: ^2.11.0
   core_common:
+  core_data_api:
   core_data:
   core_data_test:
   core_journal:

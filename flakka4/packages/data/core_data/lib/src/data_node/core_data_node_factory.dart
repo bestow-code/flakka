@@ -15,8 +15,10 @@ abstract interface class CoreDataNodeFactory<
         DataNode extends CoreDataNode<dynamic, dynamic, dynamic, EffectOut,
             SnapshotIn, Resource, EffectIn, SnapshotOut>>
     implements
-        CoreNodeFactory<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut,
-            DataNode> {
+        CoreTypedFactory<
+            DataNode> // CoreNodeFactory<EffectOut, SnapshotIn, Resource, EffectIn, SnapshotOut,
+//     DataNode>
+{
   // @override
   // CoreResourceFactory<dynamic, Effect, Update> get childFactory =>
   //     throw UnimplementedError();
@@ -66,9 +68,4 @@ abstract interface class CoreDataNodeFactory<
 //   // TODO: implement create
 //   throw UnimplementedError();
 // }
-}
-
-abstract class DataFactoryParam<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView> extends FactoryParam {
-  DataConverter<Event, State, View> get dataConverter;
 }

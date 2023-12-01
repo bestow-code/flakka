@@ -3,5 +3,4 @@
 /// Test kit for Core Entry Store implementations
 library core_data_test;
 
-export 'src/test_data_converter.dart';
 export 'src/test_model.dart';

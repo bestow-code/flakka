@@ -7,9 +7,15 @@ abstract class DataNodeFactoryBase<
         Resource extends CoreResource<Effect, Update>,
         In,
         Out,
-        DataNode extends CoreDataNode<dynamic, dynamic, dynamic, Effect, Update,
-            Resource, In, Out>>
-    extends NodeFactoryBase<Effect, Update, Resource, In, Out, DataNode>
+        DataNode extends CoreDataNode<
+            dynamic,
+            dynamic,
+            dynamic,
+            Effect,
+            Update,
+            Resource,
+            In,
+            Out>> // extends NodeFactoryBase<Effect, Update, Resource, In, Out, DataNode>
     implements
         CoreDataNodeFactory<Effect, Update, Resource, In, Out, DataNode> {
   DataNodeFactoryBase();

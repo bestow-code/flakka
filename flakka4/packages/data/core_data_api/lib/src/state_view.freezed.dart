@@ -94,11 +94,11 @@ class __$$StateViewImplCopyWithImpl<State extends CoreState,
     Object? view = null,
   }) {
     return _then(_$StateViewImpl<State, View>(
-      state: null == state
+      null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as State,
-      view: null == view
+      null == view
           ? _value.view
           : view // ignore: cast_nullable_to_non_nullable
               as View,
@@ -110,7 +110,7 @@ class __$$StateViewImplCopyWithImpl<State extends CoreState,
 
 class _$StateViewImpl<State extends CoreState, View extends CoreView>
     implements _StateView<State, View> {
-  _$StateViewImpl({required this.state, required this.view});
+  _$StateViewImpl(this.state, this.view);
 
   @override
   final State state;
@@ -147,7 +147,7 @@ class _$StateViewImpl<State extends CoreState, View extends CoreView>
 
 abstract class _StateView<State extends CoreState, View extends CoreView>
     implements StateView<State, View> {
-  factory _StateView({required final State state, required final View view}) =
+  factory _StateView(final State state, final View view) =
       _$StateViewImpl<State, View>;
 
   @override

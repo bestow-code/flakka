@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_data_api/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,8 +11,8 @@ class DataEffect<Event extends CoreEvent, State extends CoreState,
     required HeadEffect<Event> effect,
   }) = DataEffectAppend;
 
-  // factory DataEffect.persist(Ref ref, StateView<State, View> stateView) =
-  //     DataEffectPersist;
+// factory DataEffect.persist(Ref ref, StateView<State, View> stateView) =
+//     DataEffectPersist;
 
 // factory DataEffect.publish({
 //   required Ref ref,
@@ -28,6 +29,15 @@ class HeadEffect<Event extends CoreEvent> with _$HeadEffect<Event> {
     required DateTime createdAt,
     required int sequenceNumber,
   }) = HeadEffectEvent<Event>;
-  // merge
-  // forward
+// merge
+// forward
+}
+
+@freezed
+class HeadEffect2<Event extends CoreEvent> with _$HeadEffect2<Event> {
+  factory HeadEffect2.event(Event data) = HeadEffect2Event<Event>;
+
+  factory HeadEffect2.merge(Ref parent) = HeadEffect2Merge;
+
+  factory HeadEffect2.forward() = HeadEffect2Forward;
 }

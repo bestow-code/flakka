@@ -17,8 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DataState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> {
-  Map<Ref, EntryEvent> get pendingEntry => throw _privateConstructorUsedError;
+  Map<Ref, EntryRecordEvent> get pendingEntry =>
+      throw _privateConstructorUsedError;
+  set pendingEntry(Map<Ref, EntryRecordEvent> value) =>
+      throw _privateConstructorUsedError;
   Map<Ref, Event> get pendingEvent => throw _privateConstructorUsedError;
+  set pendingEvent(Map<Ref, Event> value) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DataStateCopyWith<Event, State, View, DataState<Event, State, View>>
@@ -33,7 +37,8 @@ abstract class $DataStateCopyWith<Event extends CoreEvent,
       _$DataStateCopyWithImpl<Event, State, View, $Res,
           DataState<Event, State, View>>;
   @useResult
-  $Res call({Map<Ref, EntryEvent> pendingEntry, Map<Ref, Event> pendingEvent});
+  $Res call(
+      {Map<Ref, EntryRecordEvent> pendingEntry, Map<Ref, Event> pendingEvent});
 }
 
 /// @nodoc
@@ -57,7 +62,7 @@ class _$DataStateCopyWithImpl<Event extends CoreEvent, State extends CoreState,
       pendingEntry: null == pendingEntry
           ? _value.pendingEntry
           : pendingEntry // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, EntryEvent>,
+              as Map<Ref, EntryRecordEvent>,
       pendingEvent: null == pendingEvent
           ? _value.pendingEvent
           : pendingEvent // ignore: cast_nullable_to_non_nullable
@@ -77,7 +82,8 @@ abstract class _$$DataStateImplCopyWith<
       __$$DataStateImplCopyWithImpl<Event, State, View, $Res>;
   @override
   @useResult
-  $Res call({Map<Ref, EntryEvent> pendingEntry, Map<Ref, Event> pendingEvent});
+  $Res call(
+      {Map<Ref, EntryRecordEvent> pendingEntry, Map<Ref, Event> pendingEvent});
 }
 
 /// @nodoc
@@ -98,11 +104,11 @@ class __$$DataStateImplCopyWithImpl<Event extends CoreEvent,
   }) {
     return _then(_$DataStateImpl<Event, State, View>(
       pendingEntry: null == pendingEntry
-          ? _value._pendingEntry
+          ? _value.pendingEntry
           : pendingEntry // ignore: cast_nullable_to_non_nullable
-              as Map<Ref, EntryEvent>,
+              as Map<Ref, EntryRecordEvent>,
       pendingEvent: null == pendingEvent
-          ? _value._pendingEvent
+          ? _value.pendingEvent
           : pendingEvent // ignore: cast_nullable_to_non_nullable
               as Map<Ref, Event>,
     ));
@@ -113,49 +119,17 @@ class __$$DataStateImplCopyWithImpl<Event extends CoreEvent,
 
 class _$DataStateImpl<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements _DataState<Event, State, View> {
-  _$DataStateImpl(
-      {required final Map<Ref, EntryEvent> pendingEntry,
-      required final Map<Ref, Event> pendingEvent})
-      : _pendingEntry = pendingEntry,
-        _pendingEvent = pendingEvent;
+  _$DataStateImpl({required this.pendingEntry, required this.pendingEvent});
 
-  final Map<Ref, EntryEvent> _pendingEntry;
   @override
-  Map<Ref, EntryEvent> get pendingEntry {
-    if (_pendingEntry is EqualUnmodifiableMapView) return _pendingEntry;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_pendingEntry);
-  }
-
-  final Map<Ref, Event> _pendingEvent;
+  Map<Ref, EntryRecordEvent> pendingEntry;
   @override
-  Map<Ref, Event> get pendingEvent {
-    if (_pendingEvent is EqualUnmodifiableMapView) return _pendingEvent;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_pendingEvent);
-  }
+  Map<Ref, Event> pendingEvent;
 
   @override
   String toString() {
     return 'DataState<$Event, $State, $View>(pendingEntry: $pendingEntry, pendingEvent: $pendingEvent)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataStateImpl<Event, State, View> &&
-            const DeepCollectionEquality()
-                .equals(other._pendingEntry, _pendingEntry) &&
-            const DeepCollectionEquality()
-                .equals(other._pendingEvent, _pendingEvent));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_pendingEntry),
-      const DeepCollectionEquality().hash(_pendingEvent));
 
   @JsonKey(ignore: true)
   @override
@@ -169,14 +143,16 @@ class _$DataStateImpl<Event extends CoreEvent, State extends CoreState,
 abstract class _DataState<Event extends CoreEvent, State extends CoreState,
     View extends CoreView> implements DataState<Event, State, View> {
   factory _DataState(
-          {required final Map<Ref, EntryEvent> pendingEntry,
-          required final Map<Ref, Event> pendingEvent}) =
+          {required Map<Ref, EntryRecordEvent> pendingEntry,
+          required Map<Ref, Event> pendingEvent}) =
       _$DataStateImpl<Event, State, View>;
 
   @override
-  Map<Ref, EntryEvent> get pendingEntry;
+  Map<Ref, EntryRecordEvent> get pendingEntry;
+  set pendingEntry(Map<Ref, EntryRecordEvent> value);
   @override
   Map<Ref, Event> get pendingEvent;
+  set pendingEvent(Map<Ref, Event> value);
   @override
   @JsonKey(ignore: true)
   _$$DataStateImplCopyWith<Event, State, View,
