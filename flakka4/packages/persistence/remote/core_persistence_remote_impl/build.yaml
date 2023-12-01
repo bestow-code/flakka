@@ -1,5 +1,7 @@
 targets:
   $default:
+    dependencies:
+      - core_persistence_remote
     builders:
       json_serializable:
         options:

@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../core_persistence_base.dart';
@@ -8,9 +9,9 @@ part 'persistence_record.freezed.dart';
 class PersistenceRecord with _$PersistenceRecord {
   factory PersistenceRecord.head(HeadRecord head) = PersistenceRecordHead;
 
-  factory PersistenceRecord.entry(String ref, EntryRecord entry) =
+  factory PersistenceRecord.entry(Ref ref, EntryRecord entry) =
       PersistenceRecordEntry;
 
-  factory PersistenceRecord.event(String ref, EventRecord event) =
+  factory PersistenceRecord.event(Ref ref, EventRecord event) =
       PersistenceRecordEvent;
 }

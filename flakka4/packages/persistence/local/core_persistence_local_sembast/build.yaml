@@ -1,6 +1,7 @@
 targets:
   $default:
     dependencies:
+      - core_persistence_local
       - core_persistence_local_test
     builders:
       json_serializable:

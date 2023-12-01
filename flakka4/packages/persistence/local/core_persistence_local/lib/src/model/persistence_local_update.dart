@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,10 +11,10 @@ class PersistenceLocalSnapshot with _$PersistenceLocalSnapshot {
   }) = PersistenceLocalSnapshotHead;
 
   factory PersistenceLocalSnapshot.event({
-    required Map<String, EventRecord> snapshot,
+    required Map<Ref, EventRecord> snapshot,
   }) = PersistenceLocalSnapshotEvent;
 
   factory PersistenceLocalSnapshot.entry({
-    required Map<String, EntryRecord> snapshot,
+    required Map<Ref, EntryRecord> snapshot,
   }) = PersistenceLocalSnapshotEntry;
 }

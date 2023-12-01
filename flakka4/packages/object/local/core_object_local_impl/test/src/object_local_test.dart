@@ -24,10 +24,10 @@ void main() {
           ),
         ),
       ).get(context: providerContext, key: key);
-      await objectLocal.initialize(ref: '1', createdAt: 0);
+      await objectLocal.initialize(ref: Ref('1'), createdAt: 0);
 
       objectLocal.connect();
-      const ref = '2';
+      final ref = Ref('2');
       objectLocal.sink.add(
         ObjectLocalEffect.add(
           ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
@@ -35,12 +35,12 @@ void main() {
       );
       objectLocal.sink.add(
         ObjectLocalEffect.add(
-          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
+          ObjectAdd.entry(ref, EntryRecordEvent(parent: Ref('1'), createdAt: 1)),
         ),
       );
       objectLocal.sink.add(
         ObjectLocalEffect.add(
-          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
+          ObjectAdd.head(HeadRecord(ref: Ref('2'), sequenceNumber: 1)),
         ),
       );
 

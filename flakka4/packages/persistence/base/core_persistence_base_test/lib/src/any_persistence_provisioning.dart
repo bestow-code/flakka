@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_test/core_persistence_base_test.dart';
 import 'package:glados/glados.dart';
@@ -18,7 +19,7 @@ extension PersistenceProvisioningInitializeGeneratorExtension on Any {
             any.refValue,
             any.createdAtMillis,
             (ref, createdAt) => PersistenceProvisioningInitialize(
-              ifNew: (ref: ref, createdAt: createdAt),
+              ifNew: (ref: Ref(ref), createdAt: createdAt),
             ),
           );
 // any.nonEmptyLowercaseLetters.map((value) => 'entry-$value');

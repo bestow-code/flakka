@@ -41,11 +41,10 @@ class Data<Event extends CoreEvent, State extends CoreState,
             append: (append) => append.effect.map(event: (event) {
                   _child.sink.add(ObjectEffect.append(
                       HeadRecord(
-                          ref: event.ref.value,
-                          sequenceNumber: event.sequenceNumber),
+                          ref: event.ref, sequenceNumber: event.sequenceNumber),
                       HeadEffectRecord.event(
                           EntryRecordEvent(
-                              parent: event.parent.value,
+                              parent: event.parent,
                               createdAt:
                                   event.createdAt.microsecondsSinceEpoch),
                           EventRecord(
@@ -57,13 +56,13 @@ class Data<Event extends CoreEvent, State extends CoreState,
         snapshot.map(
           head: (head) {
             output.add(DataSnapshot.head(
-                HeadRef(Ref(head.head.ref), head.head.sequenceNumber)));
+                HeadRef(head.head.ref, head.head.sequenceNumber)));
           },
           entry: (entry) {
             final entryOut = <Ref, Entry<Event>>{};
             // final entryPending = <Ref, EntryEvent<Event>>{};
             for (final e in entry.entry.entries) {
-              final ref = Ref(e.key);
+              final ref = e.key;
               e.value.map(
                 initial: (initial) {
                   entryOut[ref] = Entry.initial(
@@ -73,7 +72,7 @@ class Data<Event extends CoreEvent, State extends CoreState,
                 event: (event) {
                   if (_state.pendingEvent.containsKey(ref)) {
                     entryOut[ref] = Entry.event(
-                        parent: Ref(event.parent),
+                        parent: event.parent,
                         event: _state.pendingEvent[ref]!,
                         createdAt: DateTime.fromMicrosecondsSinceEpoch(
                             event.createdAt));
@@ -92,15 +91,16 @@ class Data<Event extends CoreEvent, State extends CoreState,
           event: (event) {
             final entryOut = <Ref, EntryEvent<Event>>{};
             for (final e in event.event.entries) {
-              final ref = Ref(e.key);
+              final ref = e.key;
               if (_state.pendingEntry.containsKey(ref)) {
                 final entryRecord = _state.pendingEntry[ref]!;
 
                 entryOut[ref] = EntryEvent(
-                  parent: Ref(entryRecord.parent),
+                  parent: entryRecord.parent,
                   event: _dataConverter.eventConverter.fromJson(e.value.data),
                   createdAt: DateTime.fromMicrosecondsSinceEpoch(
-                      entryRecord.createdAt),
+                    entryRecord.createdAt,
+                  ),
                 );
                 _state.pendingEntry.remove(ref);
               } else {

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
@@ -38,7 +39,7 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
   final CorePersistenceRemoteAdapter _remoteAdapter;
 
   @override
-  Future<void> initialize({required String ref, required int createdAt}) =>
+  Future<void> initialize({required Ref ref, required int createdAt}) =>
       _remoteAdapter.initialize(ref: ref, createdAt: createdAt);
 
   @override
@@ -49,17 +50,20 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
   @override
   void connect() {
     subscription
-      ..add(Rx.merge([
-        _remoteAdapter.headSnapshot.whereNotNull().map(
-              (snapshot) => PersistenceRemoteSnapshot.head(snapshot: snapshot),
-            ),
-        _remoteAdapter.entrySnapshot
-            .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceRemoteSnapshot.entry(snapshot: event)),
-        _remoteAdapter.eventSnapshot
-            .where((snapshot) => snapshot.isNotEmpty)
-            .map((event) => PersistenceRemoteSnapshot.event(snapshot: event)),
-      ]).listen(output.add))
+      ..add(
+        Rx.merge([
+          _remoteAdapter.headSnapshot.whereNotNull().map(
+                (snapshot) =>
+                    PersistenceRemoteSnapshot.head(snapshot: snapshot),
+              ),
+          _remoteAdapter.entrySnapshot
+              .where((snapshot) => snapshot.isNotEmpty)
+              .map((event) => PersistenceRemoteSnapshot.entry(snapshot: event)),
+          _remoteAdapter.eventSnapshot
+              .where((snapshot) => snapshot.isNotEmpty)
+              .map((event) => PersistenceRemoteSnapshot.event(snapshot: event)),
+        ]).listen(output.add),
+      )
       ..add(
         input.listen(
           (e) => e.map(

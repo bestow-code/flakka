@@ -20,10 +20,10 @@ void main() {
           storeProvider: StoreLocalProviderSembast.inMemory,
         ),
       ).get(context: providerContext, key: key);
-      await persistenceLocal.initialize(ref: '1', createdAt: 0);
+      await persistenceLocal.initialize(ref: Ref('1'), createdAt: 0);
 
       persistenceLocal.connect();
-      const ref = '2';
+      final ref = Ref('2');
       persistenceLocal.sink.add(
         PersistenceLocalEffect.persistOne(
           PersistenceRecord.event(ref, EventRecord(data: {'value': 1})),
@@ -33,7 +33,7 @@ void main() {
         PersistenceLocalEffect.persistOne(
           PersistenceRecord.entry(
             ref,
-            EntryRecordEvent(parent: '1', createdAt: 1),
+            EntryRecordEvent(parent: Ref('1'), createdAt: 1),
           ),
         ),
       );

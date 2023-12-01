@@ -9,7 +9,6 @@ environment:
 dependencies:
   core_common:
   core_loco:
-  core_loco_impl:
   core_object_base:
   core_object_local:
   core_persistence_base:

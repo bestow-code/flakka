@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_object_remote/core_object_remote.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
@@ -91,7 +92,7 @@ class ObjectRemote extends PersistentNode<
   }
 
   @override
-  Future<void> initialize({required String ref, required int createdAt}) =>
+  Future<void> initialize({required Ref ref, required int createdAt}) =>
       child.initialize(ref: ref, createdAt: createdAt);
 
   @override

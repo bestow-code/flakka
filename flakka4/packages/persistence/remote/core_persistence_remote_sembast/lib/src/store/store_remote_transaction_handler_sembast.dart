@@ -64,23 +64,23 @@ class StoreRemoteTransactionHandlerSembast
   }
 
   @override
-  Future<void> putEntry(String ref, EntryRecord data) async {
-    final key = await _ref.entry.record(ref).add(_transaction, data.toJson());
+  Future<void> putEntry(Ref ref, EntryRecord data) async {
+    final key = await _ref.entry.record(ref.value).add(_transaction, data.toJson());
     if (key == null) {
       throw ArgumentError('Entry already exists: ${data.toJson()}');
     }
   }
 
   @override
-  Future<void> putEvent(String ref, EventRecord data) async {
-    final key = await _ref.event.record(ref).add(_transaction, data.toJson());
+  Future<void> putEvent(Ref ref, EventRecord data) async {
+    final key = await _ref.event.record(ref.value).add(_transaction, data.toJson());
     if (key == null) {
       throw Exception('Event already exists: ${data.toJson()}');
     }
   }
 
   @override
-  Future<void> initialize({required String ref, required int createdAt}) async {
+  Future<void> initialize({required Ref ref, required int createdAt}) async {
     final current = await inspect;
     assert(current == null, 'instance already initialized: $current');
 

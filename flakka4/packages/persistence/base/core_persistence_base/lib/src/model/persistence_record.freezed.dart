@@ -19,22 +19,22 @@ mixin _$PersistenceRecord {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord head) head,
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord head)? head,
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord head)? head,
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,8 +157,8 @@ class _$PersistenceRecordHeadImpl implements PersistenceRecordHead {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord head) head,
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
   }) {
     return head(this.head);
   }
@@ -167,8 +167,8 @@ class _$PersistenceRecordHeadImpl implements PersistenceRecordHead {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord head)? head,
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
   }) {
     return head?.call(this.head);
   }
@@ -177,8 +177,8 @@ class _$PersistenceRecordHeadImpl implements PersistenceRecordHead {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord head)? head,
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -239,8 +239,9 @@ abstract class _$$PersistenceRecordEntryImplCopyWith<$Res> {
           $Res Function(_$PersistenceRecordEntryImpl) then) =
       __$$PersistenceRecordEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref, EntryRecord entry});
+  $Res call({Ref ref, EntryRecord entry});
 
+  $RefCopyWith<$Res> get ref;
   $EntryRecordCopyWith<$Res> get entry;
 }
 
@@ -263,12 +264,20 @@ class __$$PersistenceRecordEntryImplCopyWithImpl<$Res>
       null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       null == entry
           ? _value.entry
           : entry // ignore: cast_nullable_to_non_nullable
               as EntryRecord,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 
   @override
@@ -286,7 +295,7 @@ class _$PersistenceRecordEntryImpl implements PersistenceRecordEntry {
   _$PersistenceRecordEntryImpl(this.ref, this.entry);
 
   @override
-  final String ref;
+  final Ref ref;
   @override
   final EntryRecord entry;
 
@@ -318,8 +327,8 @@ class _$PersistenceRecordEntryImpl implements PersistenceRecordEntry {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord head) head,
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
   }) {
     return entry(ref, this.entry);
   }
@@ -328,8 +337,8 @@ class _$PersistenceRecordEntryImpl implements PersistenceRecordEntry {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord head)? head,
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
   }) {
     return entry?.call(ref, this.entry);
   }
@@ -338,8 +347,8 @@ class _$PersistenceRecordEntryImpl implements PersistenceRecordEntry {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord head)? head,
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -384,10 +393,10 @@ class _$PersistenceRecordEntryImpl implements PersistenceRecordEntry {
 }
 
 abstract class PersistenceRecordEntry implements PersistenceRecord {
-  factory PersistenceRecordEntry(final String ref, final EntryRecord entry) =
+  factory PersistenceRecordEntry(final Ref ref, final EntryRecord entry) =
       _$PersistenceRecordEntryImpl;
 
-  String get ref;
+  Ref get ref;
   EntryRecord get entry;
   @JsonKey(ignore: true)
   _$$PersistenceRecordEntryImplCopyWith<_$PersistenceRecordEntryImpl>
@@ -401,8 +410,9 @@ abstract class _$$PersistenceRecordEventImplCopyWith<$Res> {
           $Res Function(_$PersistenceRecordEventImpl) then) =
       __$$PersistenceRecordEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref, EventRecord event});
+  $Res call({Ref ref, EventRecord event});
 
+  $RefCopyWith<$Res> get ref;
   $EventRecordCopyWith<$Res> get event;
 }
 
@@ -425,12 +435,20 @@ class __$$PersistenceRecordEventImplCopyWithImpl<$Res>
       null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as EventRecord,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 
   @override
@@ -448,7 +466,7 @@ class _$PersistenceRecordEventImpl implements PersistenceRecordEvent {
   _$PersistenceRecordEventImpl(this.ref, this.event);
 
   @override
-  final String ref;
+  final Ref ref;
   @override
   final EventRecord event;
 
@@ -480,8 +498,8 @@ class _$PersistenceRecordEventImpl implements PersistenceRecordEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord head) head,
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
   }) {
     return event(ref, this.event);
   }
@@ -490,8 +508,8 @@ class _$PersistenceRecordEventImpl implements PersistenceRecordEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord head)? head,
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
   }) {
     return event?.call(ref, this.event);
   }
@@ -500,8 +518,8 @@ class _$PersistenceRecordEventImpl implements PersistenceRecordEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord head)? head,
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -546,10 +564,10 @@ class _$PersistenceRecordEventImpl implements PersistenceRecordEvent {
 }
 
 abstract class PersistenceRecordEvent implements PersistenceRecord {
-  factory PersistenceRecordEvent(final String ref, final EventRecord event) =
+  factory PersistenceRecordEvent(final Ref ref, final EventRecord event) =
       _$PersistenceRecordEventImpl;
 
-  String get ref;
+  Ref get ref;
   EventRecord get event;
   @JsonKey(ignore: true)
   _$$PersistenceRecordEventImplCopyWith<_$PersistenceRecordEventImpl>

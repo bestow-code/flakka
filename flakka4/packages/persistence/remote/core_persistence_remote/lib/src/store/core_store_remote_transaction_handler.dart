@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 
 abstract class CoreStoreRemoteTransactionHandler implements CoreInitializer{
@@ -8,7 +9,7 @@ abstract class CoreStoreRemoteTransactionHandler implements CoreInitializer{
 
   @override
   Future<void> initialize({
-    required String ref,
+    required Ref ref,
     required int createdAt,
   });
 
@@ -19,7 +20,7 @@ abstract class CoreStoreRemoteTransactionHandler implements CoreInitializer{
 
   Future<void> addHead(HeadRecord data);
 
-  Future<void> putEntry(String ref, EntryRecord data);
+  Future<void> putEntry(Ref ref, EntryRecord data);
 
-  Future<void> putEvent(String ref, EventRecord data);
+  Future<void> putEvent(Ref ref, EventRecord data);
 }

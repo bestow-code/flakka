@@ -20,7 +20,7 @@ HeadRecord _$HeadRecordFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HeadRecord {
-  String get ref => throw _privateConstructorUsedError;
+  Ref get ref => throw _privateConstructorUsedError;
   int get sequenceNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,9 @@ abstract class $HeadRecordCopyWith<$Res> {
           HeadRecord value, $Res Function(HeadRecord) then) =
       _$HeadRecordCopyWithImpl<$Res, HeadRecord>;
   @useResult
-  $Res call({String ref, int sequenceNumber});
+  $Res call({Ref ref, int sequenceNumber});
+
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -58,12 +60,20 @@ class _$HeadRecordCopyWithImpl<$Res, $Val extends HeadRecord>
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       sequenceNumber: null == sequenceNumber
           ? _value.sequenceNumber
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value) as $Val);
+    });
   }
 }
 
@@ -75,7 +85,10 @@ abstract class _$$HeadRecordImplCopyWith<$Res>
       __$$HeadRecordImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String ref, int sequenceNumber});
+  $Res call({Ref ref, int sequenceNumber});
+
+  @override
+  $RefCopyWith<$Res> get ref;
 }
 
 /// @nodoc
@@ -96,7 +109,7 @@ class __$$HeadRecordImplCopyWithImpl<$Res>
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       sequenceNumber: null == sequenceNumber
           ? _value.sequenceNumber
           : sequenceNumber // ignore: cast_nullable_to_non_nullable
@@ -114,7 +127,7 @@ class _$HeadRecordImpl implements _HeadRecord {
       _$$HeadRecordImplFromJson(json);
 
   @override
-  final String ref;
+  final Ref ref;
   @override
   final int sequenceNumber;
 
@@ -153,14 +166,14 @@ class _$HeadRecordImpl implements _HeadRecord {
 
 abstract class _HeadRecord implements HeadRecord {
   factory _HeadRecord(
-      {required final String ref,
+      {required final Ref ref,
       required final int sequenceNumber}) = _$HeadRecordImpl;
 
   factory _HeadRecord.fromJson(Map<String, dynamic> json) =
       _$HeadRecordImpl.fromJson;
 
   @override
-  String get ref;
+  Ref get ref;
   @override
   int get sequenceNumber;
   @override

@@ -18,22 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectAdd {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
     required TResult Function(HeadRecord head) head,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
     TResult? Function(HeadRecord head)? head,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     TResult Function(HeadRecord head)? head,
     required TResult orElse(),
   }) =>
@@ -85,8 +85,9 @@ abstract class _$$ObjectAddEntryImplCopyWith<$Res> {
           $Res Function(_$ObjectAddEntryImpl) then) =
       __$$ObjectAddEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref, EntryRecord entry});
+  $Res call({Ref ref, EntryRecord entry});
 
+  $RefCopyWith<$Res> get ref;
   $EntryRecordCopyWith<$Res> get entry;
 }
 
@@ -108,12 +109,20 @@ class __$$ObjectAddEntryImplCopyWithImpl<$Res>
       null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       null == entry
           ? _value.entry
           : entry // ignore: cast_nullable_to_non_nullable
               as EntryRecord,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 
   @override
@@ -131,7 +140,7 @@ class _$ObjectAddEntryImpl implements ObjectAddEntry {
   _$ObjectAddEntryImpl(this.ref, this.entry);
 
   @override
-  final String ref;
+  final Ref ref;
   @override
   final EntryRecord entry;
 
@@ -162,8 +171,8 @@ class _$ObjectAddEntryImpl implements ObjectAddEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
     required TResult Function(HeadRecord head) head,
   }) {
     return entry(ref, this.entry);
@@ -172,8 +181,8 @@ class _$ObjectAddEntryImpl implements ObjectAddEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
     TResult? Function(HeadRecord head)? head,
   }) {
     return entry?.call(ref, this.entry);
@@ -182,8 +191,8 @@ class _$ObjectAddEntryImpl implements ObjectAddEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     TResult Function(HeadRecord head)? head,
     required TResult orElse(),
   }) {
@@ -229,10 +238,10 @@ class _$ObjectAddEntryImpl implements ObjectAddEntry {
 }
 
 abstract class ObjectAddEntry implements ObjectAdd {
-  factory ObjectAddEntry(final String ref, final EntryRecord entry) =
+  factory ObjectAddEntry(final Ref ref, final EntryRecord entry) =
       _$ObjectAddEntryImpl;
 
-  String get ref;
+  Ref get ref;
   EntryRecord get entry;
   @JsonKey(ignore: true)
   _$$ObjectAddEntryImplCopyWith<_$ObjectAddEntryImpl> get copyWith =>
@@ -245,8 +254,9 @@ abstract class _$$ObjectAddEventImplCopyWith<$Res> {
           $Res Function(_$ObjectAddEventImpl) then) =
       __$$ObjectAddEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ref, EventRecord event});
+  $Res call({Ref ref, EventRecord event});
 
+  $RefCopyWith<$Res> get ref;
   $EventRecordCopyWith<$Res> get event;
 }
 
@@ -268,12 +278,20 @@ class __$$ObjectAddEventImplCopyWithImpl<$Res>
       null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as EventRecord,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get ref {
+    return $RefCopyWith<$Res>(_value.ref, (value) {
+      return _then(_value.copyWith(ref: value));
+    });
   }
 
   @override
@@ -291,7 +309,7 @@ class _$ObjectAddEventImpl implements ObjectAddEvent {
   _$ObjectAddEventImpl(this.ref, this.event);
 
   @override
-  final String ref;
+  final Ref ref;
   @override
   final EventRecord event;
 
@@ -322,8 +340,8 @@ class _$ObjectAddEventImpl implements ObjectAddEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
     required TResult Function(HeadRecord head) head,
   }) {
     return event(ref, this.event);
@@ -332,8 +350,8 @@ class _$ObjectAddEventImpl implements ObjectAddEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
     TResult? Function(HeadRecord head)? head,
   }) {
     return event?.call(ref, this.event);
@@ -342,8 +360,8 @@ class _$ObjectAddEventImpl implements ObjectAddEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     TResult Function(HeadRecord head)? head,
     required TResult orElse(),
   }) {
@@ -389,10 +407,10 @@ class _$ObjectAddEventImpl implements ObjectAddEvent {
 }
 
 abstract class ObjectAddEvent implements ObjectAdd {
-  factory ObjectAddEvent(final String ref, final EventRecord event) =
+  factory ObjectAddEvent(final Ref ref, final EventRecord event) =
       _$ObjectAddEventImpl;
 
-  String get ref;
+  Ref get ref;
   EventRecord get event;
   @JsonKey(ignore: true)
   _$$ObjectAddEventImplCopyWith<_$ObjectAddEventImpl> get copyWith =>
@@ -473,8 +491,8 @@ class _$ObjectAddHeadImpl implements ObjectAddHead {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String ref, EntryRecord entry) entry,
-    required TResult Function(String ref, EventRecord event) event,
+    required TResult Function(Ref ref, EntryRecord entry) entry,
+    required TResult Function(Ref ref, EventRecord event) event,
     required TResult Function(HeadRecord head) head,
   }) {
     return head(this.head);
@@ -483,8 +501,8 @@ class _$ObjectAddHeadImpl implements ObjectAddHead {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ref, EntryRecord entry)? entry,
-    TResult? Function(String ref, EventRecord event)? event,
+    TResult? Function(Ref ref, EntryRecord entry)? entry,
+    TResult? Function(Ref ref, EventRecord event)? event,
     TResult? Function(HeadRecord head)? head,
   }) {
     return head?.call(this.head);
@@ -493,8 +511,8 @@ class _$ObjectAddHeadImpl implements ObjectAddHead {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ref, EntryRecord entry)? entry,
-    TResult Function(String ref, EventRecord event)? event,
+    TResult Function(Ref ref, EntryRecord entry)? entry,
+    TResult Function(Ref ref, EventRecord event)? event,
     TResult Function(HeadRecord head)? head,
     required TResult orElse(),
   }) {

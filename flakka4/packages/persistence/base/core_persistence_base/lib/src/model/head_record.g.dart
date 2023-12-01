@@ -8,12 +8,12 @@ part of 'head_record.dart';
 
 _$HeadRecordImpl _$$HeadRecordImplFromJson(Map<String, dynamic> json) =>
     _$HeadRecordImpl(
-      ref: json['ref'] as String,
+      ref: Ref.fromJson(json['ref'] as Map<String, dynamic>),
       sequenceNumber: json['sequenceNumber'] as int,
     );
 
 Map<String, dynamic> _$$HeadRecordImplToJson(_$HeadRecordImpl instance) =>
     <String, dynamic>{
-      'ref': instance.ref,
+      'ref': instance.ref.toJson(),
       'sequenceNumber': instance.sequenceNumber,
     };

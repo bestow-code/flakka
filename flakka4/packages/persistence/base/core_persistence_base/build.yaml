@@ -1,5 +1,7 @@
 targets:
   $default:
+    dependencies:
+      - core_common
     builders:
       json_serializable:
         options:

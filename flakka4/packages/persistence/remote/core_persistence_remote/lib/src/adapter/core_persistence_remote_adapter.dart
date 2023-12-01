@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 
@@ -24,7 +25,7 @@ abstract interface class CorePersistenceRemoteAdapter
   // Read
   Stream<HeadRecord> get headSnapshot;
 
-  Stream<Map<String, EntryRecord>> get entrySnapshot;
+  Stream<Map<Ref, EntryRecord>> get entrySnapshot;
 
-  Stream<Map<String, EventRecord>> get eventSnapshot;
+  Stream<Map<Ref, EventRecord>> get eventSnapshot;
 }

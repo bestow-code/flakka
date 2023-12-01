@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -17,12 +18,16 @@ class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
       });
 
   @override
-  Stream<Map<String, EntryRecord>> get entrySnapshot =>
-      store.queryEntry().snapshots();
+  Stream<Map<Ref, EntryRecord>> get entrySnapshot => store
+      .queryEntry()
+      .snapshots()
+      .map((event) => event.map((key, value) => MapEntry(Ref(key), value)));
 
   @override
-  Stream<Map<String, EventRecord>> get eventSnapshot =>
-      store.queryEvent().snapshots();
+  Stream<Map<Ref, EventRecord>> get eventSnapshot => store
+      .queryEvent()
+      .snapshots()
+      .map((event) => event.map((key, value) => MapEntry(Ref(key), value)));
 
   @override
   Future<void> persist(Iterable<PersistenceRecord> data) async =>
@@ -37,7 +42,7 @@ class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
       });
 
   @override
-  Future<void> initialize({required String ref, required int createdAt}) =>
+  Future<void> initialize({required Ref ref, required int createdAt}) =>
       store.initialize(ref: ref, createdAt: createdAt);
 
   @override

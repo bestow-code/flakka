@@ -27,7 +27,6 @@ dev_dependencies:
   bloc_test:
   build_runner: ^2.4.5
   build_verify: ^3.1.0
-  core_persistence_local_sembast:
   freezed: ^2.3.5
   injectable_generator:
   json_serializable: ^6.7.0

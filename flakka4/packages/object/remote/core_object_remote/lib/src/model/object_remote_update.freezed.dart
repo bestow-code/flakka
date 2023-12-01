@@ -20,22 +20,22 @@ mixin _$ObjectRemoteSnapshot {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord data) head,
-    required TResult Function(Map<String, EntryRecord> data) entry,
-    required TResult Function(Map<String, EventRecord> data) event,
+    required TResult Function(Map<Ref, EntryRecord> data) entry,
+    required TResult Function(Map<Ref, EventRecord> data) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord data)? head,
-    TResult? Function(Map<String, EntryRecord> data)? entry,
-    TResult? Function(Map<String, EventRecord> data)? event,
+    TResult? Function(Map<Ref, EntryRecord> data)? entry,
+    TResult? Function(Map<Ref, EventRecord> data)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord data)? head,
-    TResult Function(Map<String, EntryRecord> data)? entry,
-    TResult Function(Map<String, EventRecord> data)? event,
+    TResult Function(Map<Ref, EntryRecord> data)? entry,
+    TResult Function(Map<Ref, EventRecord> data)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,8 +161,8 @@ class _$ObjectRemoteSnapshotHeadImpl implements ObjectRemoteSnapshotHead {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord data) head,
-    required TResult Function(Map<String, EntryRecord> data) entry,
-    required TResult Function(Map<String, EventRecord> data) event,
+    required TResult Function(Map<Ref, EntryRecord> data) entry,
+    required TResult Function(Map<Ref, EventRecord> data) event,
   }) {
     return head(data);
   }
@@ -171,8 +171,8 @@ class _$ObjectRemoteSnapshotHeadImpl implements ObjectRemoteSnapshotHead {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord data)? head,
-    TResult? Function(Map<String, EntryRecord> data)? entry,
-    TResult? Function(Map<String, EventRecord> data)? event,
+    TResult? Function(Map<Ref, EntryRecord> data)? entry,
+    TResult? Function(Map<Ref, EventRecord> data)? event,
   }) {
     return head?.call(data);
   }
@@ -181,8 +181,8 @@ class _$ObjectRemoteSnapshotHeadImpl implements ObjectRemoteSnapshotHead {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord data)? head,
-    TResult Function(Map<String, EntryRecord> data)? entry,
-    TResult Function(Map<String, EventRecord> data)? event,
+    TResult Function(Map<Ref, EntryRecord> data)? entry,
+    TResult Function(Map<Ref, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (head != null) {
@@ -244,7 +244,7 @@ abstract class _$$ObjectRemoteSnapshotEntryImplCopyWith<$Res> {
           $Res Function(_$ObjectRemoteSnapshotEntryImpl) then) =
       __$$ObjectRemoteSnapshotEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, EntryRecord> data});
+  $Res call({Map<Ref, EntryRecord> data});
 }
 
 /// @nodoc
@@ -266,7 +266,7 @@ class __$$ObjectRemoteSnapshotEntryImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryRecord>,
+              as Map<Ref, EntryRecord>,
     ));
   }
 }
@@ -274,13 +274,12 @@ class __$$ObjectRemoteSnapshotEntryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectRemoteSnapshotEntryImpl implements ObjectRemoteSnapshotEntry {
-  _$ObjectRemoteSnapshotEntryImpl(
-      {required final Map<String, EntryRecord> data})
+  _$ObjectRemoteSnapshotEntryImpl({required final Map<Ref, EntryRecord> data})
       : _data = data;
 
-  final Map<String, EntryRecord> _data;
+  final Map<Ref, EntryRecord> _data;
   @override
-  Map<String, EntryRecord> get data {
+  Map<Ref, EntryRecord> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -314,8 +313,8 @@ class _$ObjectRemoteSnapshotEntryImpl implements ObjectRemoteSnapshotEntry {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord data) head,
-    required TResult Function(Map<String, EntryRecord> data) entry,
-    required TResult Function(Map<String, EventRecord> data) event,
+    required TResult Function(Map<Ref, EntryRecord> data) entry,
+    required TResult Function(Map<Ref, EventRecord> data) event,
   }) {
     return entry(data);
   }
@@ -324,8 +323,8 @@ class _$ObjectRemoteSnapshotEntryImpl implements ObjectRemoteSnapshotEntry {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord data)? head,
-    TResult? Function(Map<String, EntryRecord> data)? entry,
-    TResult? Function(Map<String, EventRecord> data)? event,
+    TResult? Function(Map<Ref, EntryRecord> data)? entry,
+    TResult? Function(Map<Ref, EventRecord> data)? event,
   }) {
     return entry?.call(data);
   }
@@ -334,8 +333,8 @@ class _$ObjectRemoteSnapshotEntryImpl implements ObjectRemoteSnapshotEntry {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord data)? head,
-    TResult Function(Map<String, EntryRecord> data)? entry,
-    TResult Function(Map<String, EventRecord> data)? event,
+    TResult Function(Map<Ref, EntryRecord> data)? entry,
+    TResult Function(Map<Ref, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -381,11 +380,11 @@ class _$ObjectRemoteSnapshotEntryImpl implements ObjectRemoteSnapshotEntry {
 
 abstract class ObjectRemoteSnapshotEntry implements ObjectRemoteSnapshot {
   factory ObjectRemoteSnapshotEntry(
-          {required final Map<String, EntryRecord> data}) =
+          {required final Map<Ref, EntryRecord> data}) =
       _$ObjectRemoteSnapshotEntryImpl;
 
   @override
-  Map<String, EntryRecord> get data;
+  Map<Ref, EntryRecord> get data;
   @JsonKey(ignore: true)
   _$$ObjectRemoteSnapshotEntryImplCopyWith<_$ObjectRemoteSnapshotEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -398,7 +397,7 @@ abstract class _$$ObjectRemoteSnapshotEventImplCopyWith<$Res> {
           $Res Function(_$ObjectRemoteSnapshotEventImpl) then) =
       __$$ObjectRemoteSnapshotEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, EventRecord> data});
+  $Res call({Map<Ref, EventRecord> data});
 }
 
 /// @nodoc
@@ -420,7 +419,7 @@ class __$$ObjectRemoteSnapshotEventImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventRecord>,
+              as Map<Ref, EventRecord>,
     ));
   }
 }
@@ -428,13 +427,12 @@ class __$$ObjectRemoteSnapshotEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectRemoteSnapshotEventImpl implements ObjectRemoteSnapshotEvent {
-  _$ObjectRemoteSnapshotEventImpl(
-      {required final Map<String, EventRecord> data})
+  _$ObjectRemoteSnapshotEventImpl({required final Map<Ref, EventRecord> data})
       : _data = data;
 
-  final Map<String, EventRecord> _data;
+  final Map<Ref, EventRecord> _data;
   @override
-  Map<String, EventRecord> get data {
+  Map<Ref, EventRecord> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -468,8 +466,8 @@ class _$ObjectRemoteSnapshotEventImpl implements ObjectRemoteSnapshotEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HeadRecord data) head,
-    required TResult Function(Map<String, EntryRecord> data) entry,
-    required TResult Function(Map<String, EventRecord> data) event,
+    required TResult Function(Map<Ref, EntryRecord> data) entry,
+    required TResult Function(Map<Ref, EventRecord> data) event,
   }) {
     return event(data);
   }
@@ -478,8 +476,8 @@ class _$ObjectRemoteSnapshotEventImpl implements ObjectRemoteSnapshotEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HeadRecord data)? head,
-    TResult? Function(Map<String, EntryRecord> data)? entry,
-    TResult? Function(Map<String, EventRecord> data)? event,
+    TResult? Function(Map<Ref, EntryRecord> data)? entry,
+    TResult? Function(Map<Ref, EventRecord> data)? event,
   }) {
     return event?.call(data);
   }
@@ -488,8 +486,8 @@ class _$ObjectRemoteSnapshotEventImpl implements ObjectRemoteSnapshotEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HeadRecord data)? head,
-    TResult Function(Map<String, EntryRecord> data)? entry,
-    TResult Function(Map<String, EventRecord> data)? event,
+    TResult Function(Map<Ref, EntryRecord> data)? entry,
+    TResult Function(Map<Ref, EventRecord> data)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -535,11 +533,11 @@ class _$ObjectRemoteSnapshotEventImpl implements ObjectRemoteSnapshotEvent {
 
 abstract class ObjectRemoteSnapshotEvent implements ObjectRemoteSnapshot {
   factory ObjectRemoteSnapshotEvent(
-          {required final Map<String, EventRecord> data}) =
+          {required final Map<Ref, EventRecord> data}) =
       _$ObjectRemoteSnapshotEventImpl;
 
   @override
-  Map<String, EventRecord> get data;
+  Map<Ref, EventRecord> get data;
   @JsonKey(ignore: true)
   _$$ObjectRemoteSnapshotEventImplCopyWith<_$ObjectRemoteSnapshotEventImpl>
       get copyWith => throw _privateConstructorUsedError;

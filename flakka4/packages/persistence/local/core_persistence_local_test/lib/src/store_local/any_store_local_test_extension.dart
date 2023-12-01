@@ -1,7 +1,7 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_common_test/core_common_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_test/core_persistence_base_test.dart';
-import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:core_persistence_local_test/core_persistence_local_test.dart';
 
 extension AnyStoreLocalTestExtension on Any {
@@ -92,7 +92,7 @@ extension AnyStoreLocalTestExtension on Any {
 
   // Data
   Generator<HeadRecord> get headData => any.refValue.map(
-        (value) => HeadRecord(ref: value, sequenceNumber: 0),
+        (value) => HeadRecord(ref: Ref(value), sequenceNumber: 0),
       );
 
   Generator<EventRecord> get eventData => combine2(

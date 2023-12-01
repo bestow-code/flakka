@@ -55,16 +55,16 @@ void Function() storeRemoteTests(
           storeProvider: providerFactory(),
         ).get(context: providerContext, key: key);
         await adapter.initialize(
-          ref: '1',
+          ref: Ref('1'),
           createdAt: 0,
         );
-        const ref = '2';
+        final ref = Ref('2');
         await adapter.persist(
           [
             PersistenceRecord.event(ref, EventRecord(data: {'value': 1})),
             PersistenceRecord.entry(
               ref,
-              EntryRecordEvent(parent: '1', createdAt: 1),
+              EntryRecordEvent(parent: Ref('1'), createdAt: 1),
             ),
             PersistenceRecord.head(HeadRecord(ref: ref, sequenceNumber: 1)),
           ],

@@ -18,20 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ObjectImport {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<String, EntryRecord> entry) entry,
-    required TResult Function(Map<String, EventRecord> event) event,
+    required TResult Function(Map<Ref, EntryRecord> entry) entry,
+    required TResult Function(Map<Ref, EventRecord> event) event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<String, EntryRecord> entry)? entry,
-    TResult? Function(Map<String, EventRecord> event)? event,
+    TResult? Function(Map<Ref, EntryRecord> entry)? entry,
+    TResult? Function(Map<Ref, EventRecord> event)? event,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<String, EntryRecord> entry)? entry,
-    TResult Function(Map<String, EventRecord> event)? event,
+    TResult Function(Map<Ref, EntryRecord> entry)? entry,
+    TResult Function(Map<Ref, EventRecord> event)? event,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,7 +80,7 @@ abstract class _$$ObjectImportEntryImplCopyWith<$Res> {
           $Res Function(_$ObjectImportEntryImpl) then) =
       __$$ObjectImportEntryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, EntryRecord> entry});
+  $Res call({Map<Ref, EntryRecord> entry});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class __$$ObjectImportEntryImplCopyWithImpl<$Res>
       null == entry
           ? _value._entry
           : entry // ignore: cast_nullable_to_non_nullable
-              as Map<String, EntryRecord>,
+              as Map<Ref, EntryRecord>,
     ));
   }
 }
@@ -108,12 +108,11 @@ class __$$ObjectImportEntryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectImportEntryImpl implements ObjectImportEntry {
-  _$ObjectImportEntryImpl(final Map<String, EntryRecord> entry)
-      : _entry = entry;
+  _$ObjectImportEntryImpl(final Map<Ref, EntryRecord> entry) : _entry = entry;
 
-  final Map<String, EntryRecord> _entry;
+  final Map<Ref, EntryRecord> _entry;
   @override
-  Map<String, EntryRecord> get entry {
+  Map<Ref, EntryRecord> get entry {
     if (_entry is EqualUnmodifiableMapView) return _entry;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_entry);
@@ -146,8 +145,8 @@ class _$ObjectImportEntryImpl implements ObjectImportEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<String, EntryRecord> entry) entry,
-    required TResult Function(Map<String, EventRecord> event) event,
+    required TResult Function(Map<Ref, EntryRecord> entry) entry,
+    required TResult Function(Map<Ref, EventRecord> event) event,
   }) {
     return entry(this.entry);
   }
@@ -155,8 +154,8 @@ class _$ObjectImportEntryImpl implements ObjectImportEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<String, EntryRecord> entry)? entry,
-    TResult? Function(Map<String, EventRecord> event)? event,
+    TResult? Function(Map<Ref, EntryRecord> entry)? entry,
+    TResult? Function(Map<Ref, EventRecord> event)? event,
   }) {
     return entry?.call(this.entry);
   }
@@ -164,8 +163,8 @@ class _$ObjectImportEntryImpl implements ObjectImportEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<String, EntryRecord> entry)? entry,
-    TResult Function(Map<String, EventRecord> event)? event,
+    TResult Function(Map<Ref, EntryRecord> entry)? entry,
+    TResult Function(Map<Ref, EventRecord> event)? event,
     required TResult orElse(),
   }) {
     if (entry != null) {
@@ -207,10 +206,10 @@ class _$ObjectImportEntryImpl implements ObjectImportEntry {
 }
 
 abstract class ObjectImportEntry implements ObjectImport {
-  factory ObjectImportEntry(final Map<String, EntryRecord> entry) =
+  factory ObjectImportEntry(final Map<Ref, EntryRecord> entry) =
       _$ObjectImportEntryImpl;
 
-  Map<String, EntryRecord> get entry;
+  Map<Ref, EntryRecord> get entry;
   @JsonKey(ignore: true)
   _$$ObjectImportEntryImplCopyWith<_$ObjectImportEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -222,7 +221,7 @@ abstract class _$$ObjectImportEventImplCopyWith<$Res> {
           $Res Function(_$ObjectImportEventImpl) then) =
       __$$ObjectImportEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, EventRecord> event});
+  $Res call({Map<Ref, EventRecord> event});
 }
 
 /// @nodoc
@@ -242,7 +241,7 @@ class __$$ObjectImportEventImplCopyWithImpl<$Res>
       null == event
           ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, EventRecord>,
+              as Map<Ref, EventRecord>,
     ));
   }
 }
@@ -250,12 +249,11 @@ class __$$ObjectImportEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectImportEventImpl implements ObjectImportEvent {
-  _$ObjectImportEventImpl(final Map<String, EventRecord> event)
-      : _event = event;
+  _$ObjectImportEventImpl(final Map<Ref, EventRecord> event) : _event = event;
 
-  final Map<String, EventRecord> _event;
+  final Map<Ref, EventRecord> _event;
   @override
-  Map<String, EventRecord> get event {
+  Map<Ref, EventRecord> get event {
     if (_event is EqualUnmodifiableMapView) return _event;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_event);
@@ -288,8 +286,8 @@ class _$ObjectImportEventImpl implements ObjectImportEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<String, EntryRecord> entry) entry,
-    required TResult Function(Map<String, EventRecord> event) event,
+    required TResult Function(Map<Ref, EntryRecord> entry) entry,
+    required TResult Function(Map<Ref, EventRecord> event) event,
   }) {
     return event(this.event);
   }
@@ -297,8 +295,8 @@ class _$ObjectImportEventImpl implements ObjectImportEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<String, EntryRecord> entry)? entry,
-    TResult? Function(Map<String, EventRecord> event)? event,
+    TResult? Function(Map<Ref, EntryRecord> entry)? entry,
+    TResult? Function(Map<Ref, EventRecord> event)? event,
   }) {
     return event?.call(this.event);
   }
@@ -306,8 +304,8 @@ class _$ObjectImportEventImpl implements ObjectImportEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<String, EntryRecord> entry)? entry,
-    TResult Function(Map<String, EventRecord> event)? event,
+    TResult Function(Map<Ref, EntryRecord> entry)? entry,
+    TResult Function(Map<Ref, EventRecord> event)? event,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -349,10 +347,10 @@ class _$ObjectImportEventImpl implements ObjectImportEvent {
 }
 
 abstract class ObjectImportEvent implements ObjectImport {
-  factory ObjectImportEvent(final Map<String, EventRecord> event) =
+  factory ObjectImportEvent(final Map<Ref, EventRecord> event) =
       _$ObjectImportEventImpl;
 
-  Map<String, EventRecord> get event;
+  Map<Ref, EventRecord> get event;
   @JsonKey(ignore: true)
   _$$ObjectImportEventImplCopyWith<_$ObjectImportEventImpl> get copyWith =>
       throw _privateConstructorUsedError;

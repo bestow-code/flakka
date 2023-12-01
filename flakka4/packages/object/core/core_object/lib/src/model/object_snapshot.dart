@@ -8,17 +8,17 @@ part 'object_snapshot.freezed.dart';
 class ObjectSnapshot with _$ObjectSnapshot {
   factory ObjectSnapshot.head(HeadRecord head) = ObjectSnapshotHead;
 
-  factory ObjectSnapshot.entry(Map<String, EntryRecord> entry) =
+  factory ObjectSnapshot.entry(Map<Ref, EntryRecord> entry) =
       ObjectSnapshotEntry;
 
-  factory ObjectSnapshot.event(Map<String, EventRecord> event) =
+  factory ObjectSnapshot.event(Map<Ref, EventRecord> event) =
       ObjectSnapshotEvent;
 
-  factory ObjectSnapshot.stateView(
-      {required Map<String, StateViewObject> data}) = ObjectSnapshotStateView;
+  factory ObjectSnapshot.stateView({required Map<Ref, StateViewObject> data}) =
+      ObjectSnapshotStateView;
 
   factory ObjectSnapshot.main({
-    required String ref,
+    required Ref ref,
   }) = ObjectSnapshotMain;
 }
 

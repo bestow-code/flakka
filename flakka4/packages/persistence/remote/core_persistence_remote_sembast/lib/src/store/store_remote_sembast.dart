@@ -56,7 +56,7 @@ class StoreRemoteSembast extends StoreRemoteBase implements CoreStoreRemote {
 
   @override
   @override
-  Future<void> initialize({required String ref, required int createdAt}) =>
+  Future<void> initialize({required Ref ref, required int createdAt}) =>
       transact<void>(sessionId)
           .run((handler) => handler.initialize(ref: ref, createdAt: createdAt));
 

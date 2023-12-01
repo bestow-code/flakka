@@ -24,10 +24,10 @@ void main() {
           ),
         ),
       ).get(context: providerContext, key: key);
-      await objectRemote.initialize(ref: '1', createdAt: 0);
+      await objectRemote.initialize(ref: Ref('1'), createdAt: 0);
 
       objectRemote.connect();
-      const ref = '2';
+      final ref = Ref('2');
       objectRemote.sink.add(
         ObjectRemoteEffect.add(
           ObjectAdd.event(ref, EventRecord(data: {'value': 1})),
@@ -35,12 +35,12 @@ void main() {
       );
       objectRemote.sink.add(
         ObjectRemoteEffect.add(
-          ObjectAdd.entry(ref, EntryRecordEvent(parent: '1', createdAt: 1)),
+          ObjectAdd.entry(ref, EntryRecordEvent(parent: Ref('1'), createdAt: 1)),
         ),
       );
       objectRemote.sink.add(
         ObjectRemoteEffect.add(
-          ObjectAdd.head(HeadRecord(ref: '2', sequenceNumber: 1)),
+          ObjectAdd.head(HeadRecord(ref: Ref('2'), sequenceNumber: 1)),
         ),
       );
 

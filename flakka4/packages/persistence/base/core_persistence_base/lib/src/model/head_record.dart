@@ -1,7 +1,5 @@
+import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:glados/glados.dart';
-
-import '../../core_persistence_base.dart';
 
 part 'head_record.freezed.dart';
 
@@ -10,7 +8,7 @@ part 'head_record.g.dart';
 @freezed
 class HeadRecord with _$HeadRecord {
   factory HeadRecord({
-    required String ref,
+    required Ref ref,
     required int sequenceNumber,
   }) = _HeadRecord;
 

@@ -5,7 +5,6 @@ import 'dart:async';
 
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_data_api/core_data_api.dart';
 import 'package:core_data_impl/core_data_impl.dart';
 import 'package:core_data_test/core_data_test.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
@@ -45,7 +44,7 @@ void main() {
         final data = await provider.get<TestEvent, TestState, TestView>(
             context: providerContext, key: key);
         await data.provision(PersistenceProvisioning.initialize(
-            ifNew: (ref: ref0.value, createdAt: 0)));
+            ifNew: (ref: ref0, createdAt: 0)));
 
         final result =
             ReplaySubject<DataSnapshot<TestEvent, TestState, TestView>>();

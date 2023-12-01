@@ -1,22 +1,19 @@
+import 'package:core_common/core_common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../core_persistence_base.dart';
 
 part 'persistence_provisioning.freezed.dart';
 
 @freezed
 class PersistenceProvisioning with _$PersistenceProvisioning {
-
   factory PersistenceProvisioning.initialize({
     required ({
-      String ref,
+      Ref ref,
       int createdAt,
-      
     }) ifNew,
   }) = PersistenceProvisioningInitialize;
 
   factory PersistenceProvisioning.resume({
-    required String ref,
+    required Ref ref,
     required int sequenceNumber,
   }) = PersistenceProvisioningResume;
 }

@@ -19,8 +19,8 @@ void main() {
     late ObjectProvider provider;
     late ProviderContext providerContext;
     final key = PersistenceKey('1');
-    const ref1 = '1';
-    const ref2 = '2';
+    final ref1 = Ref('1');
+    final ref2 = Ref('2');
     setUp(() {
       provider = ObjectProvider(
           child1Provider: ObjectLocalProvider(
@@ -107,8 +107,8 @@ void main() {
       });
     });
     group('loading', () {
-      const ref3a = '3a';
-      const ref3b = '3b';
+      final ref3a = Ref('3a');
+      final ref3b = Ref('3b');
       // Scenario: Local has entry/event 3a; Remote has entry/event 3b
       // Expect: Object/Local/Remote all emit entry/event 1,2,3a,3b snapshots
       //

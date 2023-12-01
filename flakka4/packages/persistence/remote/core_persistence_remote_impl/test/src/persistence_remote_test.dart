@@ -20,10 +20,10 @@ void main() {
           storeProvider: StoreRemoteProviderSembast.inMemory,
         ),
       ).get(context: providerContext, key: key);
-      await persistenceRemote.initialize(ref: '1', createdAt: 0);
+      await persistenceRemote.initialize(ref: Ref('1'), createdAt: 0);
 
       persistenceRemote.connect();
-      const ref = '2';
+      final ref = Ref('2');
       persistenceRemote.sink.add(
         PersistenceRemoteEffect.persistOne(
           PersistenceRecord.event(ref, EventRecord(data: {'value': 1})),
@@ -33,7 +33,7 @@ void main() {
         PersistenceRemoteEffect.persistOne(
           PersistenceRecord.entry(
             ref,
-            EntryRecordEvent(parent: '1', createdAt: 1),
+            EntryRecordEvent(parent: Ref('1'), createdAt: 1),
           ),
         ),
       );

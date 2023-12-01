@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
@@ -38,7 +39,7 @@ class PersistenceLocal // extends AsyncIOBase<PersistenceLocalEffect, Persistenc
   final CorePersistenceLocalAdapter _localAdapter;
 
   @override
-  Future<void> initialize({required String ref, required int createdAt}) =>
+  Future<void> initialize({required Ref ref, required int createdAt}) =>
       _localAdapter.initialize(ref: ref, createdAt: createdAt);
 
   @override

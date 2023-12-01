@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ObjectRemoteState {
-  Set<String> get seenEntry => throw _privateConstructorUsedError;
-  Set<String> get seenEvent => throw _privateConstructorUsedError;
+  Set<Ref> get seenEntry => throw _privateConstructorUsedError;
+  Set<Ref> get seenEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ObjectRemoteStateCopyWith<ObjectRemoteState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $ObjectRemoteStateCopyWith<$Res> {
           ObjectRemoteState value, $Res Function(ObjectRemoteState) then) =
       _$ObjectRemoteStateCopyWithImpl<$Res, ObjectRemoteState>;
   @useResult
-  $Res call({Set<String> seenEntry, Set<String> seenEvent});
+  $Res call({Set<Ref> seenEntry, Set<Ref> seenEvent});
 }
 
 /// @nodoc
@@ -53,11 +53,11 @@ class _$ObjectRemoteStateCopyWithImpl<$Res, $Val extends ObjectRemoteState>
       seenEntry: null == seenEntry
           ? _value.seenEntry
           : seenEntry // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Ref>,
       seenEvent: null == seenEvent
           ? _value.seenEvent
           : seenEvent // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Ref>,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$ObjectRemoteStateImplCopyWith<$Res>
       __$$ObjectRemoteStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Set<String> seenEntry, Set<String> seenEvent});
+  $Res call({Set<Ref> seenEntry, Set<Ref> seenEvent});
 }
 
 /// @nodoc
@@ -91,11 +91,11 @@ class __$$ObjectRemoteStateImplCopyWithImpl<$Res>
       null == seenEntry
           ? _value._seenEntry
           : seenEntry // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Ref>,
       null == seenEvent
           ? _value._seenEvent
           : seenEvent // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Ref>,
     ));
   }
 }
@@ -103,22 +103,21 @@ class __$$ObjectRemoteStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectRemoteStateImpl implements _ObjectRemoteState {
-  _$ObjectRemoteStateImpl(
-      final Set<String> seenEntry, final Set<String> seenEvent)
+  _$ObjectRemoteStateImpl(final Set<Ref> seenEntry, final Set<Ref> seenEvent)
       : _seenEntry = seenEntry,
         _seenEvent = seenEvent;
 
-  final Set<String> _seenEntry;
+  final Set<Ref> _seenEntry;
   @override
-  Set<String> get seenEntry {
+  Set<Ref> get seenEntry {
     if (_seenEntry is EqualUnmodifiableSetView) return _seenEntry;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_seenEntry);
   }
 
-  final Set<String> _seenEvent;
+  final Set<Ref> _seenEvent;
   @override
-  Set<String> get seenEvent {
+  Set<Ref> get seenEvent {
     if (_seenEvent is EqualUnmodifiableSetView) return _seenEvent;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_seenEvent);
@@ -156,13 +155,13 @@ class _$ObjectRemoteStateImpl implements _ObjectRemoteState {
 
 abstract class _ObjectRemoteState implements ObjectRemoteState {
   factory _ObjectRemoteState(
-          final Set<String> seenEntry, final Set<String> seenEvent) =
+          final Set<Ref> seenEntry, final Set<Ref> seenEvent) =
       _$ObjectRemoteStateImpl;
 
   @override
-  Set<String> get seenEntry;
+  Set<Ref> get seenEntry;
   @override
-  Set<String> get seenEvent;
+  Set<Ref> get seenEvent;
   @override
   @JsonKey(ignore: true)
   _$$ObjectRemoteStateImplCopyWith<_$ObjectRemoteStateImpl> get copyWith =>

@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,11 +11,11 @@ class ObjectLocalSnapshot with _$ObjectLocalSnapshot {
   }) = ObjectLocalSnapshotHead;
 
   factory ObjectLocalSnapshot.entry({
-    required Map<String, EntryRecord> data,
+    required Map<Ref, EntryRecord> data,
   }) = ObjectLocalSnapshotEntry;
 
   factory ObjectLocalSnapshot.event({
-    required Map<String, EventRecord> data,
+    required Map<Ref, EventRecord> data,
   }) = ObjectLocalSnapshotEvent;
 }
 

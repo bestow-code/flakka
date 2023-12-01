@@ -35,22 +35,22 @@ mixin _$EntryRecord {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int createdAt) initial,
-    required TResult Function(String parent, int createdAt) event,
-    required TResult Function(List<String> parent, int createdAt) merge,
+    required TResult Function(Ref parent, int createdAt) event,
+    required TResult Function(List<Ref> parent, int createdAt) merge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int createdAt)? initial,
-    TResult? Function(String parent, int createdAt)? event,
-    TResult? Function(List<String> parent, int createdAt)? merge,
+    TResult? Function(Ref parent, int createdAt)? event,
+    TResult? Function(List<Ref> parent, int createdAt)? merge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int createdAt)? initial,
-    TResult Function(String parent, int createdAt)? event,
-    TResult Function(List<String> parent, int createdAt)? merge,
+    TResult Function(Ref parent, int createdAt)? event,
+    TResult Function(List<Ref> parent, int createdAt)? merge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -192,8 +192,8 @@ class _$EntryRecordInitialImpl implements EntryRecordInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int createdAt) initial,
-    required TResult Function(String parent, int createdAt) event,
-    required TResult Function(List<String> parent, int createdAt) merge,
+    required TResult Function(Ref parent, int createdAt) event,
+    required TResult Function(List<Ref> parent, int createdAt) merge,
   }) {
     return initial(createdAt);
   }
@@ -202,8 +202,8 @@ class _$EntryRecordInitialImpl implements EntryRecordInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int createdAt)? initial,
-    TResult? Function(String parent, int createdAt)? event,
-    TResult? Function(List<String> parent, int createdAt)? merge,
+    TResult? Function(Ref parent, int createdAt)? event,
+    TResult? Function(List<Ref> parent, int createdAt)? merge,
   }) {
     return initial?.call(createdAt);
   }
@@ -212,8 +212,8 @@ class _$EntryRecordInitialImpl implements EntryRecordInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int createdAt)? initial,
-    TResult Function(String parent, int createdAt)? event,
-    TResult Function(List<String> parent, int createdAt)? merge,
+    TResult Function(Ref parent, int createdAt)? event,
+    TResult Function(List<Ref> parent, int createdAt)? merge,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -287,7 +287,9 @@ abstract class _$$EntryRecordEventImplCopyWith<$Res>
       __$$EntryRecordEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String parent, int createdAt});
+  $Res call({Ref parent, int createdAt});
+
+  $RefCopyWith<$Res> get parent;
 }
 
 /// @nodoc
@@ -308,12 +310,20 @@ class __$$EntryRecordEventImplCopyWithImpl<$Res>
       parent: null == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Ref,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RefCopyWith<$Res> get parent {
+    return $RefCopyWith<$Res>(_value.parent, (value) {
+      return _then(_value.copyWith(parent: value));
+    });
   }
 }
 
@@ -328,7 +338,7 @@ class _$EntryRecordEventImpl implements EntryRecordEvent {
       _$$EntryRecordEventImplFromJson(json);
 
   @override
-  final String parent;
+  final Ref parent;
   @override
   final int createdAt;
 
@@ -365,8 +375,8 @@ class _$EntryRecordEventImpl implements EntryRecordEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int createdAt) initial,
-    required TResult Function(String parent, int createdAt) event,
-    required TResult Function(List<String> parent, int createdAt) merge,
+    required TResult Function(Ref parent, int createdAt) event,
+    required TResult Function(List<Ref> parent, int createdAt) merge,
   }) {
     return event(parent, createdAt);
   }
@@ -375,8 +385,8 @@ class _$EntryRecordEventImpl implements EntryRecordEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int createdAt)? initial,
-    TResult? Function(String parent, int createdAt)? event,
-    TResult? Function(List<String> parent, int createdAt)? merge,
+    TResult? Function(Ref parent, int createdAt)? event,
+    TResult? Function(List<Ref> parent, int createdAt)? merge,
   }) {
     return event?.call(parent, createdAt);
   }
@@ -385,8 +395,8 @@ class _$EntryRecordEventImpl implements EntryRecordEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int createdAt)? initial,
-    TResult Function(String parent, int createdAt)? event,
-    TResult Function(List<String> parent, int createdAt)? merge,
+    TResult Function(Ref parent, int createdAt)? event,
+    TResult Function(List<Ref> parent, int createdAt)? merge,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -439,13 +449,13 @@ class _$EntryRecordEventImpl implements EntryRecordEvent {
 
 abstract class EntryRecordEvent implements EntryRecord {
   factory EntryRecordEvent(
-      {required final String parent,
+      {required final Ref parent,
       required final int createdAt}) = _$EntryRecordEventImpl;
 
   factory EntryRecordEvent.fromJson(Map<String, dynamic> json) =
       _$EntryRecordEventImpl.fromJson;
 
-  String get parent;
+  Ref get parent;
   @override
   int get createdAt;
   @override
@@ -462,7 +472,7 @@ abstract class _$$EntryRecordMergeImplCopyWith<$Res>
       __$$EntryRecordMergeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> parent, int createdAt});
+  $Res call({List<Ref> parent, int createdAt});
 }
 
 /// @nodoc
@@ -483,7 +493,7 @@ class __$$EntryRecordMergeImplCopyWithImpl<$Res>
       parent: null == parent
           ? _value._parent
           : parent // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Ref>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -496,7 +506,7 @@ class __$$EntryRecordMergeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EntryRecordMergeImpl implements EntryRecordMerge {
   _$EntryRecordMergeImpl(
-      {required final List<String> parent,
+      {required final List<Ref> parent,
       required this.createdAt,
       final String? $type})
       : _parent = parent,
@@ -505,9 +515,9 @@ class _$EntryRecordMergeImpl implements EntryRecordMerge {
   factory _$EntryRecordMergeImpl.fromJson(Map<String, dynamic> json) =>
       _$$EntryRecordMergeImplFromJson(json);
 
-  final List<String> _parent;
+  final List<Ref> _parent;
   @override
-  List<String> get parent {
+  List<Ref> get parent {
     if (_parent is EqualUnmodifiableListView) return _parent;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_parent);
@@ -550,8 +560,8 @@ class _$EntryRecordMergeImpl implements EntryRecordMerge {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int createdAt) initial,
-    required TResult Function(String parent, int createdAt) event,
-    required TResult Function(List<String> parent, int createdAt) merge,
+    required TResult Function(Ref parent, int createdAt) event,
+    required TResult Function(List<Ref> parent, int createdAt) merge,
   }) {
     return merge(parent, createdAt);
   }
@@ -560,8 +570,8 @@ class _$EntryRecordMergeImpl implements EntryRecordMerge {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int createdAt)? initial,
-    TResult? Function(String parent, int createdAt)? event,
-    TResult? Function(List<String> parent, int createdAt)? merge,
+    TResult? Function(Ref parent, int createdAt)? event,
+    TResult? Function(List<Ref> parent, int createdAt)? merge,
   }) {
     return merge?.call(parent, createdAt);
   }
@@ -570,8 +580,8 @@ class _$EntryRecordMergeImpl implements EntryRecordMerge {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int createdAt)? initial,
-    TResult Function(String parent, int createdAt)? event,
-    TResult Function(List<String> parent, int createdAt)? merge,
+    TResult Function(Ref parent, int createdAt)? event,
+    TResult Function(List<Ref> parent, int createdAt)? merge,
     required TResult orElse(),
   }) {
     if (merge != null) {
@@ -624,13 +634,13 @@ class _$EntryRecordMergeImpl implements EntryRecordMerge {
 
 abstract class EntryRecordMerge implements EntryRecord {
   factory EntryRecordMerge(
-      {required final List<String> parent,
+      {required final List<Ref> parent,
       required final int createdAt}) = _$EntryRecordMergeImpl;
 
   factory EntryRecordMerge.fromJson(Map<String, dynamic> json) =
       _$EntryRecordMergeImpl.fromJson;
 
-  List<String> get parent;
+  List<Ref> get parent;
   @override
   int get createdAt;
   @override

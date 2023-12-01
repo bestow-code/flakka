@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,8 +10,8 @@ class ObjectState with _$ObjectState {
 
   factory ObjectState.loading(
     // HeadRecord headConfirmed,
-    Map<String, EntryRecord> confirmedEntry,
-    Map<String, EventRecord> confirmedEvent, {
+    Map<Ref, EntryRecord> confirmedEntry,
+    Map<Ref, EventRecord> confirmedEvent, {
     required bool localEntryReady,
     required bool localEventReady,
     required bool remoteEntryReady,

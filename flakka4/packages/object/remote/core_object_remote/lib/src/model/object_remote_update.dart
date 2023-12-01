@@ -1,3 +1,4 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,10 +11,10 @@ class ObjectRemoteSnapshot with _$ObjectRemoteSnapshot {
   }) = ObjectRemoteSnapshotHead;
 
   factory ObjectRemoteSnapshot.entry({
-    required Map<String, EntryRecord> data,
+    required Map<Ref, EntryRecord> data,
   }) = ObjectRemoteSnapshotEntry;
 
   factory ObjectRemoteSnapshot.event({
-    required Map<String, EventRecord> data,
+    required Map<Ref, EventRecord> data,
   }) = ObjectRemoteSnapshotEvent;
 }
