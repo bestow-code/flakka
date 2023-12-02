@@ -12,8 +12,14 @@ packages:
   - 'packages/*/*/*'
   - 'packages/*/*/*/*'
 ignore:
-  #  - packages/core_aggregate/brick_validator/tmp/**
-  - packages/core_aggregate/**
+  #  - packages/core_aggregate/**
+  #  - packages/application/**
+  #  - packages/journal/**
+  #  - packages/data/**
+  #  - packages/object/**
+  #  - packages/persistence/**
+  - packages/aggregate/brick_validator/tmp/**
+  - packages/flakka
   - "**/bricks/*"
   - "**/bricks/**/*"
 scripts:
@@ -97,9 +103,9 @@ scripts:
       melos exec -c 30 -- \
         flutter pub global run index_generator
   build_watcher:
-    run: flutter pub run build_runner watch --delete-conflicting-outputs
+    run: flutter pub run build_runner watch --delete-conflicting-outputs 
     exec:
-      concurrency: 55
+      concurrency: 41
     packageFilters:
       dependsOn:
         - build_runner
