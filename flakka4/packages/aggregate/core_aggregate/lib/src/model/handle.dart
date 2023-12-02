@@ -1,3 +1,4 @@
+import 'package:core_application/core_application.dart';
 import 'package:core_data/core_data.dart';
 
 import '../../core_aggregate.dart';
