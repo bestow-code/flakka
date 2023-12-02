@@ -20,7 +20,9 @@ void main() {
           storeProvider: StoreRemoteProviderSembast.inMemory,
         ),
       ).get(context: providerContext, key: key);
-      await persistenceRemote.initialize(ref: Ref('1'), createdAt: 0);
+      await persistenceRemote.provision(PersistenceProvisioningInitialize(
+        ifNew: (ref: Ref('1'), createdAt: 0),
+      ));
 
       persistenceRemote.connect();
       final ref = Ref('2');

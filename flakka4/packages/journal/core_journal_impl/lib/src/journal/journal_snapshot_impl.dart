@@ -11,17 +11,18 @@ part 'journal_snapshot_impl.freezed.dart';
 
 @freezed
 class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+View extends CoreView>
     with _$JournalSnapshotImpl<Event, State, View>
     implements JournalSnapshot<Event, State, View> {
+
   factory JournalSnapshotImpl({
     required Map<Ref, Set<Ref>> edges,
     required Map<Ref, DateTime> createdAt,
     required Map<Ref, Event> event,
     required Map<Ref, StateView<State, View>> stateView,
-    required Ref main,
     required Ref base,
     required Set<Ref> pending,
+    Ref? main,
   }) = _JournalSnapshotImpl<Event, State, View>;
 
   JournalSnapshotImpl._();
@@ -45,7 +46,7 @@ class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
       ..sort(comparator);
 
     final startRef =
-        baseRefs.lastWhereOrNull((element) => stateView.containsKey(element));
+    baseRefs.lastWhereOrNull((element) => stateView.containsKey(element));
 
     if (startRef == null) {
       throw UnimplementedError('start state not found');
@@ -53,36 +54,39 @@ class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
     final startRefIndex = sortedRefs.indexOf(startRef);
     final resultRefs = sortedRefs.getRange(startRefIndex, sortedRefs.length);
     final resultEvents =
-        resultRefs.map((e) => event[e]).whereNotNull().toList();
+    resultRefs.map((e) => event[e]).whereNotNull().toList();
     return JournalStateEvents(stateView[startRef]!, resultEvents);
   }
 
   @override
   Reconciliation<Event, State, View> reconcile(Ref ref) {
-    return _compareToMain(ref).map(
+    if (main == null) {
+      return Reconciliation.unreconcilable();
+    }
+    return _compareToMain(ref, main!).map(
       equal: (equal) {
         throw UnimplementedError();
       },
       ahead: (ahead) {
         if (ahead.path.every((element) => !pending.contains(element))) {
           return Reconciliation.publish(
-            ref: ref,
-            allowFrom: ahead.path.take(ahead.path.length - 1),
+            ref,
+            allowFrom: ahead.path.take(ahead.path.length - 1).toList(),
           );
         } else {
-          return Reconciliation.pending();
+          return Reconciliation.none();
         }
       },
       behind: (behind) {
         return Reconciliation.forward(
-          ref: behind.main,
-          events: behind.path.map((ref) => event[ref]).whereNotNull(),
+          behind.main,
+          events: behind.path.map((ref) => event[ref]).whereNotNull().toList(),
         );
       },
       diverged: (diverged) {
         return Reconciliation.merge(
-          ref: diverged.main,
-          statePath: JournalStateEvents(
+          diverged.main,
+          stateEvents: JournalStateEvents(
             stateView[base]!,
             diverged.path.map((ref) => event[ref]).whereNotNull().toList(),
           ),
@@ -94,7 +98,7 @@ class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
     );
   }
 
-  EntryComparison _compareToMain(Ref instance) {
+  EntryComparison _compareToMain(Ref instance, Ref main) {
     if (instance == main) {
       return EntryComparison.equal(main: main, instance: instance);
     } else {
@@ -147,10 +151,10 @@ class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
 
   List<Ref> completeFullPath(Ref to, Ref from) {
     final refs =
-        _sort(directed.paths(to, from).expand((element) => element).toSet());
+    _sort(directed.paths(to, from).expand((element) => element).toSet());
     final edges = directed.data;
     final reachable =
-        refs.skip(1).fold(<Ref>{}, (all, ref) => all..addAll(edges[ref] ?? []));
+    refs.skip(1).fold(<Ref>{}, (all, ref) => all..addAll(edges[ref] ?? []));
     return reachable.every(refs.contains) ? refs : [];
   }
 
@@ -158,7 +162,8 @@ class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
     return directed.path(to, from);
   }
 
-  List<Ref> _sort(Iterable<Ref> refs) => refs.sorted((a, b) {
+  List<Ref> _sort(Iterable<Ref> refs) =>
+      refs.sorted((a, b) {
         final dateTimeComparison = createdAt[a]!.compareTo(createdAt[b]!);
         if (dateTimeComparison != 0) {
           return dateTimeComparison;
@@ -169,7 +174,7 @@ class JournalSnapshotImpl<Event extends CoreEvent, State extends CoreState,
 }
 
 int Function(Ref, Ref) refComparator(Map<Ref, DateTime> createdAt) =>
-    (Ref a, Ref b) {
+        (Ref a, Ref b) {
       if (createdAt[a] == null && createdAt[b] == null) {
         return a.value.compareTo(b.value);
       } else if (createdAt[a] != null && createdAt[b] != null) {

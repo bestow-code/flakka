@@ -20,17 +20,18 @@ class Data<Event extends CoreEvent, State extends CoreState,
         DataState<Event, State, View>> implements CoreData<Event, State, View> {
   Data({
     required super.child,
-    required DataConverter<Event, State, View> dataConverter,
+    required CoreDataConverterJson<Event, State, View> dataConverter,
   })  : _child = child,
         _dataConverter = dataConverter;
 
-  DataConverter<Event, State, View> get dataConverterFactory => _dataConverter;
-  final DataConverter<Event, State, View> _dataConverter;
+  CoreDataConverterJson<Event, State, View> get dataConverterFactory => _dataConverter;
+  final CoreDataConverterJson<Event, State, View> _dataConverter;
 
   @override
   CoreObject get child => _child;
   final CoreObject _child;
   final _subscription = CompositeSubscription();
+  // ignore: prefer_final_fields
   var _state = DataState<Event, State, View>.initial();
 
   @override
@@ -49,7 +50,7 @@ class Data<Event extends CoreEvent, State extends CoreState,
                                   event.createdAt.microsecondsSinceEpoch),
                           EventRecord(
                               data: _dataConverter.eventConverter
-                                  .toJson(event.event)))));
+                                  .to(event.event)))));
                 }));
       }))
       ..add(_child.stream.listen((snapshot) {
@@ -97,7 +98,7 @@ class Data<Event extends CoreEvent, State extends CoreState,
 
                 entryOut[ref] = EntryEvent(
                   parent: entryRecord.parent,
-                  event: _dataConverter.eventConverter.fromJson(e.value.data),
+                  event: _dataConverter.eventConverter.from(e.value.data),
                   createdAt: DateTime.fromMicrosecondsSinceEpoch(
                     entryRecord.createdAt,
                   ),
@@ -105,7 +106,7 @@ class Data<Event extends CoreEvent, State extends CoreState,
                 _state.pendingEntry.remove(ref);
               } else {
                 _state.pendingEvent[ref] =
-                    _dataConverter.eventConverter.fromJson(e.value.data);
+                    _dataConverter.eventConverter.from(e.value.data);
               }
             }
           },
@@ -121,6 +122,6 @@ class Data<Event extends CoreEvent, State extends CoreState,
   }
 
   @override
-  Future<void> provision(PersistenceProvisioning provisioning) =>
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) =>
       child.provision(provisioning);
 }

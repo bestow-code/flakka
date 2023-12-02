@@ -98,5 +98,5 @@ class ObjectLocal extends PersistentNode<
       child.initialize(ref: ref, createdAt: createdAt);
 
   @override
-  Future<HeadRecord?> get inspect => child.inspect;
+  Future<HeadRef?> get inspect => child.inspect;
 }

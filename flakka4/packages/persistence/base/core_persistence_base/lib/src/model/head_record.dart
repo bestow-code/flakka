@@ -5,6 +5,7 @@ part 'head_record.freezed.dart';
 
 part 'head_record.g.dart';
 
+// @Deprecated('Use HeadRef')
 @freezed
 class HeadRecord with _$HeadRecord {
   factory HeadRecord({

@@ -1,5 +1,4 @@
-
-import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
 
 typedef EventHandler<Event, T> = T Function(T, Event);
 

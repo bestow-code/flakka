@@ -11,6 +11,7 @@ class JournalState<Event extends CoreEvent, State extends CoreState,
         _$JournalState<Event, State,
             View> // JournalReconciliationFactory<Event, State, View>
 {
+  factory JournalState.initial() = JournalStateInitial;
   const factory JournalState({
     required Ref main,
     required Ref base,

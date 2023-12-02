@@ -2,6 +2,7 @@ import 'package:core_common/core_common.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_base_impl/core_persistence_base_impl.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
+import 'package:rxdart/rxdart.dart';
 
 class PersistenceRemoteAdapter extends PersistenceAdapterBase<CoreStoreRemote>
     implements CorePersistenceRemoteAdapter {
@@ -14,8 +15,8 @@ class PersistenceRemoteAdapter extends PersistenceAdapterBase<CoreStoreRemote>
   @override
   Stream<HeadRecord> get headSnapshot =>
       store.queryHead(persistenceId).snapshots().map((event) {
-        return event.values.single;
-      });
+        return event.values.singleOrNull;
+      }).whereNotNull();
 
   @override
   Stream<Map<Ref, EntryRecord>> get entrySnapshot => store
@@ -42,11 +43,11 @@ class PersistenceRemoteAdapter extends PersistenceAdapterBase<CoreStoreRemote>
       });
 
   @override
-  Future<void> initialize({required Ref ref, required int createdAt}) =>
-      store.initialize(ref: ref, createdAt: createdAt);
+  Future<HeadRef?> get inspect => store.inspect;
 
   @override
-  Future<HeadRecord?> get inspect => store.inspect;
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) =>
+      store.provision(provisioning);
 
 //     @override
 //   Future<void> append(

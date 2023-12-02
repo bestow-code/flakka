@@ -24,14 +24,19 @@ class StoreLocalTransactionHandlerSembast
   );
 
   @override
-  Future<HeadRecord?> get inspect => _ref.head
+  Future<HeadRef?> get inspect => _ref.head
           .findFirst(
         _transaction,
         finder: Finder(sortOrders: [SortOrder(Field.key, false)], limit: 1),
       )
           .then(
         (result) {
-          return result != null ? HeadRecord.fromJson(result.value) : null;
+          if (result != null) {
+            final record = HeadRecord.fromJson(result.value);
+            return HeadRef(record.ref, record.sequenceNumber);
+          } else {
+            return null;
+          }
         },
       );
 
@@ -65,7 +70,8 @@ class StoreLocalTransactionHandlerSembast
 
   @override
   Future<void> putEntry(Ref ref, EntryRecord data) async {
-    final key = await _ref.entry.record(ref.value).add(_transaction, data.toJson());
+    final key =
+        await _ref.entry.record(ref.value).add(_transaction, data.toJson());
     if (key == null) {
       throw ArgumentError('Entry already exists: ${data.toJson()}');
     }
@@ -73,7 +79,8 @@ class StoreLocalTransactionHandlerSembast
 
   @override
   Future<void> putEvent(Ref ref, EventRecord data) async {
-    final key = await _ref.event.record(ref.value).add(_transaction, data.toJson());
+    final key =
+        await _ref.event.record(ref.value).add(_transaction, data.toJson());
     if (key == null) {
       throw Exception('Event already exists: ${data.toJson()}');
     }
@@ -89,6 +96,5 @@ class StoreLocalTransactionHandlerSembast
       HeadRecord(ref: ref, sequenceNumber: 0).toJson(),
     );
     assert(key == 1, 'Initial entry key was not 1 ($key)');
-    await putEntry(ref, EntryRecord.initial(createdAt: createdAt));
   }
 }

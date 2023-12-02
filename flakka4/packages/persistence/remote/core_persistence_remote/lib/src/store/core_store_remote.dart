@@ -4,7 +4,7 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 
 import '../../core_persistence_remote.dart';
 
-abstract interface class CoreStoreRemote implements CoreStore {
+abstract interface class CoreStoreRemote implements CoreStore, CoreProvisioner {
 
   CoreStoreRemoteTransaction<T> transact<T>(
     SessionId sessionId,

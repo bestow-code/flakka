@@ -7,6 +7,7 @@ export 'package:core_data/core_data.dart';
 
 export 'src/journal/core_journal.dart';
 export 'src/journal/core_journal_factory.dart';
+export 'src/journal/core_journal_provider.dart';
 export 'src/journal/model/journal_effect.dart';
 export 'src/journal/model/journal_segment.dart';
 export 'src/journal/model/journal_snapshot.dart';

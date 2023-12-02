@@ -5,13 +5,13 @@ import 'package:glados/glados.dart';
 // import 'package:glados/';
 
 extension AnyUser on Any {
-  Generator<JournalEffect<Event, State, View>> journalEffect<
-          Event extends CoreEvent,
-          State extends CoreState,
-          View extends CoreView>() =>
-      combine2(
-        any.nonEmptyUppercaseLetters,
-        any.int,
-        (refValue, createdAtMillis) => JournalEffect.none(ref: Ref(refValue)),
-      );
+  // Generator<JournalEffect<Event, State, View>> journalEffect<
+  //         Event extends CoreEvent,
+  //         State extends CoreState,
+  //         View extends CoreView>() =>
+  //     combine2(
+  //       any.nonEmptyUppercaseLetters,
+  //       any.int,
+  //       (refValue, createdAtMillis) => JournalEffect.none(ref: Ref(refValue)),
+  //     );
 }

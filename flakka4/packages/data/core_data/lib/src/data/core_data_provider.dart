@@ -1,10 +1,12 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_object/core_object.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 
 import '../../core_data.dart';
 
-abstract interface class CoreDataProvider
+abstract interface class CoreDataProvider<ProviderContext extends CoreProviderContext>
     implements
-        CoreDataNodeProvider<
+        CoreTypedNodeProvider<ProviderContext, PersistenceKey,
             ObjectEffect,
             ObjectSnapshot,
             CoreObject,

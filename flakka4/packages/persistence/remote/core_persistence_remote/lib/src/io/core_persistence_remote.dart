@@ -4,4 +4,4 @@ import 'package:core_persistence_remote/core_persistence_remote.dart';
 abstract interface class CorePersistenceRemote
     implements
         CorePersistentIO<PersistenceRemoteEffect, PersistenceRemoteSnapshot>,
-        CoreInitializer {}
+        CoreInspector, CoreProvisioner {}

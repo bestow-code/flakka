@@ -1,7 +1,6 @@
 import 'package:core_common/core_common.dart';
 import 'package:core_data_api/core_data_api.dart';
 import 'package:core_loco/core_loco.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
 
 import '../../core_data.dart';
 
@@ -23,7 +22,9 @@ import '../../core_data.dart';
 //     //         Out>
 // {}
 
-abstract interface class CoreDataNodeProvider<
+abstract interface class CoreTypedNodeProvider<
+        ProviderContext extends CoreProviderContext,
+        Key,
         EffectOut,
         SnapshotIn,
         Resource extends CoreResource<EffectOut, SnapshotIn>,
@@ -41,7 +42,7 @@ abstract interface class CoreDataNodeProvider<
         //     EffectIn,
         //     SnapshotOut,
         //     DataNode> // CoreDataNodeProducer<DataNode, EffectOut, SnapshotIn, EffectIn, SnapshotOut>
-        CoreTypedProvider<ProviderContext, PersistenceKey, DataNode> {}
+        CoreTypedProvider<ProviderContext, Key, DataNode> {}
 
 // abstract mixin class CoreDataNodeProducer<
 //     DataNode extends CoreDataNode<dynamic, dynamic, dynamic, Effect, Update, In,

@@ -17,7 +17,7 @@ class JournalFactory<Event extends CoreEvent, State extends CoreState,
   JournalFactory();
 
   @override
-  CoreJournal<Event, State, View> create({
+  Journal<Event, State, View> create({
     required ({
       CoreData<Event, State, View> child,
       // StateView<State, View> Function() initialStateViewFactory,

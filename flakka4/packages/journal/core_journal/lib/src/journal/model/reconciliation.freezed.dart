@@ -23,9 +23,7 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -40,9 +38,7 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -57,9 +53,7 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -81,9 +75,8 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -98,8 +91,7 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) =>
@@ -112,8 +104,7 @@ mixin _$Reconciliation<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
@@ -195,9 +186,7 @@ class _$ReconciliationNoneImpl<Event extends CoreEvent, State extends CoreState,
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -215,9 +204,7 @@ class _$ReconciliationNoneImpl<Event extends CoreEvent, State extends CoreState,
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -235,9 +222,7 @@ class _$ReconciliationNoneImpl<Event extends CoreEvent, State extends CoreState,
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -265,9 +250,8 @@ class _$ReconciliationNoneImpl<Event extends CoreEvent, State extends CoreState,
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -285,8 +269,7 @@ class _$ReconciliationNoneImpl<Event extends CoreEvent, State extends CoreState,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
@@ -302,8 +285,7 @@ class _$ReconciliationNoneImpl<Event extends CoreEvent, State extends CoreState,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
@@ -378,9 +360,7 @@ class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -398,9 +378,7 @@ class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -418,9 +396,7 @@ class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -448,9 +424,8 @@ class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -468,8 +443,7 @@ class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
@@ -485,8 +459,7 @@ class _$ReconciliationUnreconcilableImpl<Event extends CoreEvent,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
@@ -612,9 +585,7 @@ class _$ReconciliationPublishImpl<Event extends CoreEvent,
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -632,9 +603,7 @@ class _$ReconciliationPublishImpl<Event extends CoreEvent,
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -652,9 +621,7 @@ class _$ReconciliationPublishImpl<Event extends CoreEvent,
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -682,9 +649,8 @@ class _$ReconciliationPublishImpl<Event extends CoreEvent,
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -702,8 +668,7 @@ class _$ReconciliationPublishImpl<Event extends CoreEvent,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
@@ -719,8 +684,7 @@ class _$ReconciliationPublishImpl<Event extends CoreEvent,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
@@ -804,9 +768,7 @@ class _$ReconciliationPublishPendingImpl<Event extends CoreEvent,
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -824,9 +786,7 @@ class _$ReconciliationPublishPendingImpl<Event extends CoreEvent,
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -844,9 +804,7 @@ class _$ReconciliationPublishPendingImpl<Event extends CoreEvent,
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -874,9 +832,8 @@ class _$ReconciliationPublishPendingImpl<Event extends CoreEvent,
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -894,8 +851,7 @@ class _$ReconciliationPublishPendingImpl<Event extends CoreEvent,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
@@ -911,8 +867,7 @@ class _$ReconciliationPublishPendingImpl<Event extends CoreEvent,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
@@ -933,47 +888,44 @@ abstract class ReconciliationPublishPending<
 }
 
 /// @nodoc
-abstract class _$$ReconciliationFastForwardImplCopyWith<Event extends CoreEvent,
+abstract class _$$ReconciliationForwardImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$ReconciliationFastForwardImplCopyWith(
-          _$ReconciliationFastForwardImpl<Event, State, View> value,
-          $Res Function(_$ReconciliationFastForwardImpl<Event, State, View>)
-              then) =
-      __$$ReconciliationFastForwardImplCopyWithImpl<Event, State, View, $Res>;
+  factory _$$ReconciliationForwardImplCopyWith(
+          _$ReconciliationForwardImpl<Event, State, View> value,
+          $Res Function(_$ReconciliationForwardImpl<Event, State, View>) then) =
+      __$$ReconciliationForwardImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
-  $Res call({Ref ref, JournalStateEvents<Event, State, View> stateEvents});
+  $Res call({Ref ref, List<Event> events});
 
   $RefCopyWith<$Res> get ref;
-  $JournalStateEventsCopyWith<Event, State, View, $Res> get stateEvents;
 }
 
 /// @nodoc
-class __$$ReconciliationFastForwardImplCopyWithImpl<Event extends CoreEvent,
+class __$$ReconciliationForwardImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$ReconciliationCopyWithImpl<Event, State, View, $Res,
-        _$ReconciliationFastForwardImpl<Event, State, View>>
-    implements
-        _$$ReconciliationFastForwardImplCopyWith<Event, State, View, $Res> {
-  __$$ReconciliationFastForwardImplCopyWithImpl(
-      _$ReconciliationFastForwardImpl<Event, State, View> _value,
-      $Res Function(_$ReconciliationFastForwardImpl<Event, State, View>) _then)
+        _$ReconciliationForwardImpl<Event, State, View>>
+    implements _$$ReconciliationForwardImplCopyWith<Event, State, View, $Res> {
+  __$$ReconciliationForwardImplCopyWithImpl(
+      _$ReconciliationForwardImpl<Event, State, View> _value,
+      $Res Function(_$ReconciliationForwardImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? ref = null,
-    Object? stateEvents = null,
+    Object? events = null,
   }) {
-    return _then(_$ReconciliationFastForwardImpl<Event, State, View>(
+    return _then(_$ReconciliationForwardImpl<Event, State, View>(
       null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as Ref,
-      stateEvents: null == stateEvents
-          ? _value.stateEvents
-          : stateEvents // ignore: cast_nullable_to_non_nullable
-              as JournalStateEvents<Event, State, View>,
+      events: null == events
+          ? _value._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<Event>,
     ));
   }
 
@@ -984,55 +936,54 @@ class __$$ReconciliationFastForwardImplCopyWithImpl<Event extends CoreEvent,
       return _then(_value.copyWith(ref: value));
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $JournalStateEventsCopyWith<Event, State, View, $Res> get stateEvents {
-    return $JournalStateEventsCopyWith<Event, State, View, $Res>(
-        _value.stateEvents, (value) {
-      return _then(_value.copyWith(stateEvents: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
+class _$ReconciliationForwardImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
-    implements ReconciliationFastForward<Event, State, View> {
-  _$ReconciliationFastForwardImpl(this.ref, {required this.stateEvents});
+    implements ReconciliationForward<Event, State, View> {
+  _$ReconciliationForwardImpl(this.ref, {required final List<Event> events})
+      : _events = events;
 
   @override
   final Ref ref;
+  final List<Event> _events;
   @override
-  final JournalStateEvents<Event, State, View> stateEvents;
+  List<Event> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_events);
+  }
 
   @override
   String toString() {
-    return 'Reconciliation<$Event, $State, $View>.fastForward(ref: $ref, stateEvents: $stateEvents)';
+    return 'Reconciliation<$Event, $State, $View>.forward(ref: $ref, events: $events)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReconciliationFastForwardImpl<Event, State, View> &&
+            other is _$ReconciliationForwardImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.stateEvents, stateEvents) ||
-                other.stateEvents == stateEvents));
+            const DeepCollectionEquality().equals(other._events, _events));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, stateEvents);
+  int get hashCode => Object.hash(
+      runtimeType, ref, const DeepCollectionEquality().hash(_events));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReconciliationFastForwardImplCopyWith<Event, State, View,
-          _$ReconciliationFastForwardImpl<Event, State, View>>
-      get copyWith => __$$ReconciliationFastForwardImplCopyWithImpl<Event,
-              State, View, _$ReconciliationFastForwardImpl<Event, State, View>>(
-          this, _$identity);
+  _$$ReconciliationForwardImplCopyWith<Event, State, View,
+          _$ReconciliationForwardImpl<Event, State, View>>
+      get copyWith => __$$ReconciliationForwardImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$ReconciliationForwardImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1041,9 +992,7 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -1051,7 +1000,7 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         merge,
   }) {
-    return fastForward(ref, stateEvents);
+    return forward(ref, events);
   }
 
   @override
@@ -1061,9 +1010,7 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -1071,7 +1018,7 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         merge,
   }) {
-    return fastForward?.call(ref, stateEvents);
+    return forward?.call(ref, events);
   }
 
   @override
@@ -1081,9 +1028,7 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -1092,8 +1037,8 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
         merge,
     required TResult orElse(),
   }) {
-    if (fastForward != null) {
-      return fastForward(ref, stateEvents);
+    if (forward != null) {
+      return forward(ref, events);
     }
     return orElse();
   }
@@ -1111,15 +1056,14 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
         merge,
   }) {
-    return fastForward(this);
+    return forward(this);
   }
 
   @override
@@ -1131,12 +1075,11 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
-    return fastForward?.call(this);
+    return forward?.call(this);
   }
 
   @override
@@ -1148,32 +1091,31 @@ class _$ReconciliationFastForwardImpl<Event extends CoreEvent,
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
   }) {
-    if (fastForward != null) {
-      return fastForward(this);
+    if (forward != null) {
+      return forward(this);
     }
     return orElse();
   }
 }
 
-abstract class ReconciliationFastForward<
+abstract class ReconciliationForward<
     Event extends CoreEvent,
     State extends CoreState,
     View extends CoreView> implements Reconciliation<Event, State, View> {
-  factory ReconciliationFastForward(final Ref ref,
-          {required final JournalStateEvents<Event, State, View> stateEvents}) =
-      _$ReconciliationFastForwardImpl<Event, State, View>;
+  factory ReconciliationForward(final Ref ref,
+          {required final List<Event> events}) =
+      _$ReconciliationForwardImpl<Event, State, View>;
 
   Ref get ref;
-  JournalStateEvents<Event, State, View> get stateEvents;
+  List<Event> get events;
   @JsonKey(ignore: true)
-  _$$ReconciliationFastForwardImplCopyWith<Event, State, View,
-          _$ReconciliationFastForwardImpl<Event, State, View>>
+  _$$ReconciliationForwardImplCopyWith<Event, State, View,
+          _$ReconciliationForwardImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1287,9 +1229,7 @@ class _$ReconciliationResetImpl<
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -1307,9 +1247,7 @@ class _$ReconciliationResetImpl<
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -1327,9 +1265,7 @@ class _$ReconciliationResetImpl<
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -1357,9 +1293,8 @@ class _$ReconciliationResetImpl<
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -1377,8 +1312,7 @@ class _$ReconciliationResetImpl<
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
@@ -1394,8 +1328,7 @@ class _$ReconciliationResetImpl<
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),
@@ -1533,9 +1466,7 @@ class _$ReconciliationMergeImpl<
     required TResult Function() unreconcilable,
     required TResult Function(Ref ref, List<Ref> allowFrom) publish,
     required TResult Function() publishPending,
-    required TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)
-        fastForward,
+    required TResult Function(Ref ref, List<Event> events) forward,
     required TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)
         reset,
@@ -1553,9 +1484,7 @@ class _$ReconciliationMergeImpl<
     TResult? Function()? unreconcilable,
     TResult? Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult? Function()? publishPending,
-    TResult? Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult? Function(Ref ref, List<Event> events)? forward,
     TResult? Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -1573,9 +1502,7 @@ class _$ReconciliationMergeImpl<
     TResult Function()? unreconcilable,
     TResult Function(Ref ref, List<Ref> allowFrom)? publish,
     TResult Function()? publishPending,
-    TResult Function(
-            Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
-        fastForward,
+    TResult Function(Ref ref, List<Event> events)? forward,
     TResult Function(
             Ref ref, JournalStateEvents<Event, State, View> stateEvents)?
         reset,
@@ -1603,9 +1530,8 @@ class _$ReconciliationMergeImpl<
     required TResult Function(
             ReconciliationPublishPending<Event, State, View> value)
         publishPending,
-    required TResult Function(
-            ReconciliationFastForward<Event, State, View> value)
-        fastForward,
+    required TResult Function(ReconciliationForward<Event, State, View> value)
+        forward,
     required TResult Function(ReconciliationReset<Event, State, View> value)
         reset,
     required TResult Function(ReconciliationMerge<Event, State, View> value)
@@ -1623,8 +1549,7 @@ class _$ReconciliationMergeImpl<
     TResult? Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult? Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult? Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult? Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult? Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult? Function(ReconciliationMerge<Event, State, View> value)? merge,
   }) {
@@ -1640,8 +1565,7 @@ class _$ReconciliationMergeImpl<
     TResult Function(ReconciliationPublish<Event, State, View> value)? publish,
     TResult Function(ReconciliationPublishPending<Event, State, View> value)?
         publishPending,
-    TResult Function(ReconciliationFastForward<Event, State, View> value)?
-        fastForward,
+    TResult Function(ReconciliationForward<Event, State, View> value)? forward,
     TResult Function(ReconciliationReset<Event, State, View> value)? reset,
     TResult Function(ReconciliationMerge<Event, State, View> value)? merge,
     required TResult orElse(),

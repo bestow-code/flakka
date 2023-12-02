@@ -1,22 +1,20 @@
 import 'package:core_application/core_application.dart';
-import 'package:core_data/core_data.dart';
-import 'package:core_data_impl/core_data_impl.dart';
-import 'package:core_journal/core_journal.dart';
+import 'package:core_common/core_common.dart';
+import 'package:core_data_api/core_data_api.dart';
+import 'package:core_loco/core_loco.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../core_application_impl.dart';
 
 class Application<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
-    extends DataNodeBase<
-        ApplicationState<State, View>,
-        Event,
-        State,
-        View,
+    extends NodeBase<
         JournalEffect<Event, State, View>,
-        JournalUpdate<Event, State, View>,
+        JournalSnapshot<Event, State, View>,
+        CoreJournal<Event, State, View>,
         ApplicationRequest<Event, State>,
-        ApplicationSnapshot<Event, State, View>>
+        ApplicationSnapshot<Event, View>,
+        ApplicationState<State, View>>
     implements CoreApplication<Event, State, View> {
   Application({required this.child}) : super(child: child);
 

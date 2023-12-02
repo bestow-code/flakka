@@ -14,7 +14,7 @@ abstract class CoreStoreLocalTransactionHandler implements CoreInitializer{
   });
 
   @override
-  Future<HeadRecord?> get inspect;
+  Future<HeadRef?> get inspect;
 
   Future<HeadRecord> get head;
 

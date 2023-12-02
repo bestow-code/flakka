@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:core_common/core_common.dart';
 import 'package:core_loco/core_loco.dart';
-import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_local/core_persistence_local.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
@@ -43,7 +42,7 @@ class PersistenceLocal // extends AsyncIOBase<PersistenceLocalEffect, Persistenc
       _localAdapter.initialize(ref: ref, createdAt: createdAt);
 
   @override
-  Future<HeadRecord?> get inspect => _localAdapter.inspect;
+  Future<HeadRef?> get inspect => _localAdapter.inspect;
 
   final subscription = CompositeSubscription();
 

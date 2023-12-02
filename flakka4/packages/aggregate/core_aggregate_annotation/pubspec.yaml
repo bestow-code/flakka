@@ -1,0 +1,21 @@
+name: core_aggregate_annotation
+version: 0.1.2
+description: Metadata classes for annotating Core Aggregate definitions
+repository: https://github.com/bestow-code/flakka
+
+environment:
+  sdk: ^3.0.5
+
+dev_dependencies:
+  dependency_validator: ^3.0.0
+  mocktail: ^0.3.0
+  test: ^1.19.2
+  very_good_analysis: ^3.1.0
+index_generator:
+  exclude:
+    - '**.*.dart'
+  indexes:
+    - path: lib
+      include:
+        - src
+      docs: Metadata classes for annotating Core Aggregate definitions

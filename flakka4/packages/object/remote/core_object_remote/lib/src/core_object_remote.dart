@@ -8,4 +8,4 @@ abstract interface class CoreObjectRemote
     implements
         CoreObjectBase<PersistenceRemoteEffect, PersistenceRemoteSnapshot,
             CorePersistenceRemote, ObjectRemoteEffect, ObjectRemoteSnapshot>,
-        CoreInitializer {}
+        CoreProvisioner {}

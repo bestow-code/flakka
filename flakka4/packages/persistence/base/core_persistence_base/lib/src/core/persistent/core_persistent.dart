@@ -6,12 +6,15 @@ abstract interface class CorePersistent {
   // Future<({String ref, int sequenceNumber})?> inspect();
 }
 
-abstract interface class CoreInitializer implements CorePersistent {
-  Future<HeadRecord?> get inspect;
-
+abstract interface class CoreInitializer
+    implements CoreInspector, CorePersistent {
   Future<void> initialize({required Ref ref, required int createdAt});
 }
 
+abstract interface class CoreInspector implements CorePersistent {
+  Future<HeadRef?> get inspect;
+}
+
 abstract interface class CoreProvisioner implements CorePersistent {
-  Future<void> provision(PersistenceProvisioning provisioning);
+  Future<HeadRef> provision(PersistenceProvisioning provisioning);
 }

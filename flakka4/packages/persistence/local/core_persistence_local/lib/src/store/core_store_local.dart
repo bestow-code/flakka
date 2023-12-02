@@ -4,7 +4,7 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 
 import '../../core_persistence_local.dart';
 
-abstract interface class CoreStoreLocal implements CoreStore {
+abstract interface class CoreStoreLocal implements CoreStore, CoreInitializer {
 
   CoreStoreLocalTransaction<T> transact<T>(
     SessionId sessionId,

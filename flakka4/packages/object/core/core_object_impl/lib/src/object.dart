@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core_common/core_common.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_object/core_object.dart';
 import 'package:core_object_base/core_object_base.dart';
@@ -27,29 +28,21 @@ class Object extends BroadcastMergeBase<
       remoteEventReady: false);
 
   @override
-  Future<void> provision(PersistenceProvisioning provisioning) async =>
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) async =>
       provisioning.map(
         initialize: (initialize) async {
           final localHead = await child1.inspect;
           if (localHead == null) {
-            final remoteHead = await child2.inspect;
-            if (remoteHead == null) {
-              await child2.initialize(
-                  ref: initialize.ifNew.ref,
-                  createdAt: initialize.ifNew.createdAt);
-              await child1.initialize(
-                  ref: initialize.ifNew.ref,
-                  createdAt: initialize.ifNew.createdAt);
-              return;
-            } else {
-              throw UnimplementedError();
-            }
+            final remoteHead = await child2.provision(provisioning);
+            await child1.initialize(
+                ref: remoteHead.ref, createdAt: initialize.ifNew.createdAt);
+            return HeadRef(remoteHead.ref, remoteHead.sequenceNumber);
           } else {
-            return;
+            return localHead;
           }
         },
         resume: (resume) {
-          return Future<void>.value();
+          throw UnimplementedError();
         },
       );
 
@@ -201,32 +194,32 @@ class Object extends BroadcastMergeBase<
   }
 
   void _handleInput(ObjectEffect value) {
-    value.map(
-        append: (append) {
-          append.data.map(
-            event: (event) {
-              child1.sink.add(ObjectLocalEffect.add(
-                  ObjectAdd.event(append.head.ref, event.data)));
-              child2.sink.add(ObjectRemoteEffect.add(
-                  ObjectAdd.event(append.head.ref, event.data)));
-              child1.sink.add(ObjectLocalEffect.add(
-                  ObjectAdd.entry(append.head.ref, event.entry)));
-              child2.sink.add(ObjectRemoteEffect.add(
-                  ObjectAdd.entry(append.head.ref, event.entry)));
-            },
-            merge: (merge) {
-              child1.sink.add(ObjectLocalEffect.add(
-                  ObjectAdd.entry(append.head.ref, merge.entry)));
-              child2.sink.add(ObjectRemoteEffect.add(
-                  ObjectAdd.entry(append.head.ref, merge.entry)));
-            },
-            forward: (forward) {},
-          );
-          child1.sink.add(ObjectLocalEffect.add(ObjectAdd.head(append.head)));
-          // TODO: Don't add head to remote during loading if remote isn't ready yet to avoid corruption
-          child2.sink.add(ObjectRemoteEffect.add(ObjectAdd.head(append.head)));
+    value.map(append: (append) {
+      append.data.map(
+        event: (event) {
+          child1.sink.add(ObjectLocalEffect.add(
+              ObjectAdd.event(append.head.ref, event.data)));
+          child2.sink.add(ObjectRemoteEffect.add(
+              ObjectAdd.event(append.head.ref, event.data)));
+          child1.sink.add(ObjectLocalEffect.add(
+              ObjectAdd.entry(append.head.ref, event.entry)));
+          child2.sink.add(ObjectRemoteEffect.add(
+              ObjectAdd.entry(append.head.ref, event.entry)));
         },
-        publish: (ObjectEffectPublish value) {throw UnimplementedError();});
+        merge: (merge) {
+          child1.sink.add(ObjectLocalEffect.add(
+              ObjectAdd.entry(append.head.ref, merge.entry)));
+          child2.sink.add(ObjectRemoteEffect.add(
+              ObjectAdd.entry(append.head.ref, merge.entry)));
+        },
+        forward: (forward) {},
+      );
+      child1.sink.add(ObjectLocalEffect.add(ObjectAdd.head(append.head)));
+      // TODO: Don't add head to remote during loading if remote isn't ready yet to avoid corruption
+      child2.sink.add(ObjectRemoteEffect.add(ObjectAdd.head(append.head)));
+    }, publish: (ObjectEffectPublish value) {
+      throw UnimplementedError();
+    });
     state.map((value) => value, loading: (loading) {});
   }
 }

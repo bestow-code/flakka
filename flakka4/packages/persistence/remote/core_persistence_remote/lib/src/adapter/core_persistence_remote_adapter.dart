@@ -5,7 +5,7 @@ import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:core_persistence_remote/core_persistence_remote.dart';
 
 abstract interface class CorePersistenceRemoteAdapter
-    implements CorePersistenceAdapter<CoreStoreRemote> {
+    implements CorePersistenceAdapter<CoreStoreRemote>,CoreProvisioner {
   // Write
 
   Future<void> persist(Iterable<PersistenceRecord> data);

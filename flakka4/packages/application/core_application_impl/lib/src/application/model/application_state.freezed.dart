@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApplicationState<State extends CoreState, View extends CoreView> {
-  Ref get ref => throw _privateConstructorUsedError;
-  StateView<State, View> get stateView => throw _privateConstructorUsedError;
+  ({DateTime createdAt, Ref ref}) get refDateTime =>
+      throw _privateConstructorUsedError;
+  StateView<State, View> get result => throw _privateConstructorUsedError;
+  ({bool local, bool remote}) get ready => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplicationStateCopyWith<State, View, ApplicationState<State, View>>
@@ -32,10 +34,12 @@ abstract class $ApplicationStateCopyWith<State extends CoreState,
       _$ApplicationStateCopyWithImpl<State, View, $Res,
           ApplicationState<State, View>>;
   @useResult
-  $Res call({Ref ref, StateView<State, View> stateView});
+  $Res call(
+      {({DateTime createdAt, Ref ref}) refDateTime,
+      StateView<State, View> result,
+      ({bool local, bool remote}) ready});
 
-  $RefCopyWith<$Res> get ref;
-  $StateViewCopyWith<State, View, $Res> get stateView;
+  $StateViewCopyWith<State, View, $Res> get result;
 }
 
 /// @nodoc
@@ -52,34 +56,31 @@ class _$ApplicationStateCopyWithImpl<State extends CoreState,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? stateView = null,
+    Object? refDateTime = null,
+    Object? result = null,
+    Object? ready = null,
   }) {
     return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      stateView: null == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
+      refDateTime: null == refDateTime
+          ? _value.refDateTime
+          : refDateTime // ignore: cast_nullable_to_non_nullable
+              as ({DateTime createdAt, Ref ref}),
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
               as StateView<State, View>,
+      ready: null == ready
+          ? _value.ready
+          : ready // ignore: cast_nullable_to_non_nullable
+              as ({bool local, bool remote}),
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StateViewCopyWith<State, View, $Res> get stateView {
-    return $StateViewCopyWith<State, View, $Res>(_value.stateView, (value) {
-      return _then(_value.copyWith(stateView: value) as $Val);
+  $StateViewCopyWith<State, View, $Res> get result {
+    return $StateViewCopyWith<State, View, $Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
     });
   }
 }
@@ -95,12 +96,13 @@ abstract class _$$ApplicationStateImplCopyWith<
       __$$ApplicationStateImplCopyWithImpl<State, View, $Res>;
   @override
   @useResult
-  $Res call({Ref ref, StateView<State, View> stateView});
+  $Res call(
+      {({DateTime createdAt, Ref ref}) refDateTime,
+      StateView<State, View> result,
+      ({bool local, bool remote}) ready});
 
   @override
-  $RefCopyWith<$Res> get ref;
-  @override
-  $StateViewCopyWith<State, View, $Res> get stateView;
+  $StateViewCopyWith<State, View, $Res> get result;
 }
 
 /// @nodoc
@@ -117,18 +119,23 @@ class __$$ApplicationStateImplCopyWithImpl<State extends CoreState,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? stateView = null,
+    Object? refDateTime = null,
+    Object? result = null,
+    Object? ready = null,
   }) {
     return _then(_$ApplicationStateImpl<State, View>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      stateView: null == stateView
-          ? _value.stateView
-          : stateView // ignore: cast_nullable_to_non_nullable
+      refDateTime: null == refDateTime
+          ? _value.refDateTime
+          : refDateTime // ignore: cast_nullable_to_non_nullable
+              as ({DateTime createdAt, Ref ref}),
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
               as StateView<State, View>,
+      ready: null == ready
+          ? _value.ready
+          : ready // ignore: cast_nullable_to_non_nullable
+              as ({bool local, bool remote}),
     ));
   }
 }
@@ -137,16 +144,19 @@ class __$$ApplicationStateImplCopyWithImpl<State extends CoreState,
 
 class _$ApplicationStateImpl<State extends CoreState, View extends CoreView>
     implements _ApplicationState<State, View> {
-  _$ApplicationStateImpl({required this.ref, required this.stateView});
+  _$ApplicationStateImpl(
+      {required this.refDateTime, required this.result, required this.ready});
 
   @override
-  final Ref ref;
+  final ({DateTime createdAt, Ref ref}) refDateTime;
   @override
-  final StateView<State, View> stateView;
+  final StateView<State, View> result;
+  @override
+  final ({bool local, bool remote}) ready;
 
   @override
   String toString() {
-    return 'ApplicationState<$State, $View>(ref: $ref, stateView: $stateView)';
+    return 'ApplicationState<$State, $View>(refDateTime: $refDateTime, result: $result, ready: $ready)';
   }
 
   @override
@@ -154,13 +164,14 @@ class _$ApplicationStateImpl<State extends CoreState, View extends CoreView>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationStateImpl<State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.stateView, stateView) ||
-                other.stateView == stateView));
+            (identical(other.refDateTime, refDateTime) ||
+                other.refDateTime == refDateTime) &&
+            (identical(other.result, result) || other.result == result) &&
+            (identical(other.ready, ready) || other.ready == ready));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, stateView);
+  int get hashCode => Object.hash(runtimeType, refDateTime, result, ready);
 
   @JsonKey(ignore: true)
   @override
@@ -174,14 +185,17 @@ class _$ApplicationStateImpl<State extends CoreState, View extends CoreView>
 abstract class _ApplicationState<State extends CoreState, View extends CoreView>
     implements ApplicationState<State, View> {
   factory _ApplicationState(
-          {required final Ref ref,
-          required final StateView<State, View> stateView}) =
+          {required final ({DateTime createdAt, Ref ref}) refDateTime,
+          required final StateView<State, View> result,
+          required final ({bool local, bool remote}) ready}) =
       _$ApplicationStateImpl<State, View>;
 
   @override
-  Ref get ref;
+  ({DateTime createdAt, Ref ref}) get refDateTime;
   @override
-  StateView<State, View> get stateView;
+  StateView<State, View> get result;
+  @override
+  ({bool local, bool remote}) get ready;
   @override
   @JsonKey(ignore: true)
   _$$ApplicationStateImplCopyWith<State, View,

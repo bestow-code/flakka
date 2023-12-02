@@ -22,7 +22,7 @@ class DataFactory // extends DataNodeFactoryBase<
   CoreData<Event, State, View> create2<Event extends CoreEvent,
           State extends CoreState, View extends CoreView>({
     required ({
-      DataConverter<Event, State, View> converter,
+      CoreDataConverterJson<Event, State, View> converter,
       CoreObject object
     }) param,
   }) =>
@@ -33,7 +33,7 @@ class DataFactory // extends DataNodeFactoryBase<
           State extends CoreState, View extends CoreView>({
     required ({
       CoreObject object,
-      DataConverter<Event, State, View> converter
+      CoreDataConverterJson<Event, State, View> converter
     }) param,
   }) =>
       Data(child: param.object, dataConverter: param.converter);

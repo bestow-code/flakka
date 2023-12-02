@@ -163,7 +163,7 @@ void main() {
       expect(
         create(ref0),
         equals(Reconciliation<TestEvent, TestState, TestView>.forward(
-            ref: ref1a, events: [testEvent1a])),
+            ref1a, events: [testEvent1a])),
       );
       // 0,1
     });
@@ -174,7 +174,7 @@ void main() {
         create(ref1a),
         equals(
           Reconciliation<TestEvent, TestState, TestView>.forward(
-              ref: ref2, events: [testEvent1b, testEvent1a]),
+              ref2, events: [testEvent1b, testEvent1a]),
         ),
       );
     });
@@ -184,8 +184,8 @@ void main() {
         create(ref1a),
         equals(
           Reconciliation<TestEvent, TestState, TestView>.merge(
-              ref: ref1b,
-              statePath: JournalStateEvents(
+              ref1b,
+              stateEvents: JournalStateEvents(
                 stateView[base]!,
                 [testEvent1b, testEvent1a],
               )),
@@ -198,7 +198,7 @@ void main() {
         create(ref1a),
         equals(
           Reconciliation<TestEvent, TestState, TestView>.publish(
-              ref: ref1a, allowFrom: [ref0]),
+              ref1a, allowFrom: [ref0]),
         ),
       );
     });
@@ -208,7 +208,7 @@ void main() {
       expect(
         create(ref1a),
         equals(
-          Reconciliation<TestEvent, TestState, TestView>.pending(),
+          Reconciliation<TestEvent, TestState, TestView>.none(),
         ),
       );
     });

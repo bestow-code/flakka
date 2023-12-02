@@ -1,8 +1,9 @@
+import 'package:core_common/core_common.dart';
+import 'package:core_data_api/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core_application.dart';
-
 part 'application_snapshot.freezed.dart';
+
 @freezed
 class ApplicationSnapshot<Event extends CoreEvent, View extends CoreView>
     with _$ApplicationSnapshot<Event, View> {

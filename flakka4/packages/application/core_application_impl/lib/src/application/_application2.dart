@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart' hide EventHandler;
 import 'package:core_application/core_application.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
 import 'package:core_journal/core_journal.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -15,7 +16,7 @@ View extends CoreView> extends Cubit<ApplicationState<State, View>>
     implements CoreApplication<Event, State, View> {
   Application3(super.initialState, {
     required StateViewProcessor<Event, State, View> stateViewProcessor,
-    required Stream<JournalUpdate<Event, State, View>> journalUpdate,
+    required Stream<JournalSnapshot<Event, State, View>> journalUpdate,
     required StreamSink<JournalEffect<Event, State, View>> journalEffect,
     required RefDateTimeFactory refDateTimeFactory,
   })

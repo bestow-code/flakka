@@ -12,14 +12,16 @@ import 'package:core_persistence_remote/core_persistence_remote.dart';
 
 class DataProvider
     implements
-        CoreDataNodeProvider<
+        CoreTypedNodeProvider<
+            ProviderContext,
+            PersistenceKey,
             ObjectEffect,
             ObjectSnapshot,
             CoreObject,
             DataEffect<dynamic, dynamic, dynamic>,
             DataSnapshot<dynamic, dynamic, dynamic>,
             CoreData<dynamic, dynamic, dynamic>>,
-        CoreDataProvider {
+        CoreDataProvider<ProviderContext> {
   DataProvider({required ObjectProvider childProvider})
       : _childProvider = childProvider;
 
@@ -40,7 +42,7 @@ class DataProvider
 
   @override
   Future<void> delete({
-    required CoreProviderContext context,
+    required ProviderContext context,
     required PersistenceKey key,
   }) =>
       childProvider.delete(context: context, key: key);
@@ -52,6 +54,6 @@ class DataProvider
           required PersistenceKey key}) async =>
       DataFactory().create(param: (
         object: await childProvider.get(context: context, key: key),
-        converter: context.getConverter<Event,State,View>()
+        converter: context.getConverterJson<Event, State, View>()
       ));
 }

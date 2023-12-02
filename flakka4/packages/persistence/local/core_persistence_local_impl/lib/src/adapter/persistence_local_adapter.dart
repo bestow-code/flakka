@@ -46,7 +46,7 @@ class PersistenceLocalAdapter extends PersistenceAdapterBase<CoreStoreLocal>
       store.initialize(ref: ref, createdAt: createdAt);
 
   @override
-  Future<HeadRecord?> get inspect => store.inspect;
+  Future<HeadRef?> get inspect => store.inspect;
 
 //     @override
 //   Future<void> append(

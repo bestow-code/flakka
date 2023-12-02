@@ -24,7 +24,8 @@ void main() {
           ),
         ),
       ).get(context: providerContext, key: key);
-      await objectRemote.initialize(ref: Ref('1'), createdAt: 0);
+      await objectRemote.provision(PersistenceProvisioningInitialize(
+          ifNew: (ref: Ref('1'), createdAt: 0)));
 
       objectRemote.connect();
       final ref = Ref('2');
@@ -35,7 +36,8 @@ void main() {
       );
       objectRemote.sink.add(
         ObjectRemoteEffect.add(
-          ObjectAdd.entry(ref, EntryRecordEvent(parent: Ref('1'), createdAt: 1)),
+          ObjectAdd.entry(
+              ref, EntryRecordEvent(parent: Ref('1'), createdAt: 1),),
         ),
       );
       objectRemote.sink.add(

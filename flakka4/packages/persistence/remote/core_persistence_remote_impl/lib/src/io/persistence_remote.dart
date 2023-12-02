@@ -39,11 +39,8 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
   final CorePersistenceRemoteAdapter _remoteAdapter;
 
   @override
-  Future<void> initialize({required Ref ref, required int createdAt}) =>
-      _remoteAdapter.initialize(ref: ref, createdAt: createdAt);
-
   @override
-  Future<HeadRecord?> get inspect => _remoteAdapter.inspect;
+  Future<HeadRef?> get inspect => _remoteAdapter.inspect;
 
   final subscription = CompositeSubscription();
 
@@ -81,4 +78,8 @@ class PersistenceRemote // extends AsyncIOBase<PersistenceRemoteEffect, Persiste
     await subscription.cancel();
     await output.close();
   }
+
+  @override
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) =>
+      _remoteAdapter.provision(provisioning);
 }

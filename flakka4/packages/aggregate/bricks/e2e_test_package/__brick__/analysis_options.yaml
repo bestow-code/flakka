@@ -1,0 +1,15 @@
+#include: package:lints/core.yaml
+include: package:very_good_analysis/analysis_options.yaml
+linter:
+  rules:
+    public_member_api_docs: false
+    always_use_package_imports: false
+#    avoid_relative_lib_imports: false
+analyzer:
+  exclude:
+    - lib/**.g.dart
+  enable-experiment:
+    - records
+    - patterns
+    - sealed-class
+    - class-modifiers

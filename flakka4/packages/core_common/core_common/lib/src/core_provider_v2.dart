@@ -2,7 +2,7 @@ import 'core_key.dart';
 import 'core_provider_context.dart';
 
 abstract class CoreProvider<
-    ProviderContext extends CoreProviderContext,
+    ProviderContext,
     Key,
     Subject> {
   Future<Subject> get({

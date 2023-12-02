@@ -92,9 +92,6 @@ class ObjectRemote extends PersistentNode<
   }
 
   @override
-  Future<void> initialize({required Ref ref, required int createdAt}) =>
-      child.initialize(ref: ref, createdAt: createdAt);
-
-  @override
-  Future<HeadRecord?> get inspect => child.inspect;
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) =>
+      child.provision(provisioning);
 }

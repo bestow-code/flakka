@@ -19,19 +19,25 @@ class StoreRemoteTransactionHandlerSembast
   final Transaction _transaction;
   late final _ref = (
     head: StoreRef<int, JsonMap>('head-${persistenceId.value}'),
+    main: StoreRef<int, JsonMap>('head-main'),
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event'),
   );
 
   @override
-  Future<HeadRecord?> get inspect => _ref.head
+  Future<HeadRef?> get inspect => _ref.head
           .findFirst(
         _transaction,
         finder: Finder(sortOrders: [SortOrder(Field.key, false)], limit: 1),
       )
           .then(
         (result) {
-          return result != null ? HeadRecord.fromJson(result.value) : null;
+          if (result != null) {
+            final record = HeadRecord.fromJson(result.value);
+            return HeadRef(record.ref, record.sequenceNumber);
+          } else {
+            return null;
+          }
         },
       );
 
@@ -65,7 +71,8 @@ class StoreRemoteTransactionHandlerSembast
 
   @override
   Future<void> putEntry(Ref ref, EntryRecord data) async {
-    final key = await _ref.entry.record(ref.value).add(_transaction, data.toJson());
+    final key =
+        await _ref.entry.record(ref.value).add(_transaction, data.toJson());
     if (key == null) {
       throw ArgumentError('Entry already exists: ${data.toJson()}');
     }
@@ -73,22 +80,57 @@ class StoreRemoteTransactionHandlerSembast
 
   @override
   Future<void> putEvent(Ref ref, EventRecord data) async {
-    final key = await _ref.event.record(ref.value).add(_transaction, data.toJson());
+    final key =
+        await _ref.event.record(ref.value).add(_transaction, data.toJson());
     if (key == null) {
       throw Exception('Event already exists: ${data.toJson()}');
     }
   }
 
   @override
-  Future<void> initialize({required Ref ref, required int createdAt}) async {
-    final current = await inspect;
-    assert(current == null, 'instance already initialized: $current');
+  // TODO: implement inspectMain
+  Future<HeadRef?> get inspectMain => _ref.main
+      .findFirst(
+    _transaction,
+    finder: Finder(sortOrders: [SortOrder(Field.key, false)], limit: 1),
+  )
+      .then(
+        (result) {
+      if (result != null) {
+        final record = HeadRecord.fromJson(result.value);
+        return HeadRef(record.ref, 0);
+      } else {
+        return null;
+      }
+    },
+  );
 
-    final key = await _ref.head.add(
-      _transaction,
-      HeadRecord(ref: ref, sequenceNumber: 0).toJson(),
+  @override
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) async {
+    return provisioning.map(
+      initialize: (initialize) async {
+        final head = await inspect;
+        if (head != null) {
+          return head;
+        } else {
+          final main = await inspectMain;
+          if (main != null) {
+            return main;
+          } else {
+            final key = await _ref.main.add(
+              _transaction,
+              HeadRecord(ref: initialize.ifNew.ref, sequenceNumber: 0).toJson(),
+            );
+            assert(key == 1, 'Initial entry key was not 1 ($key)');
+            await putEntry(initialize.ifNew.ref,
+                EntryRecord.initial(createdAt: initialize.ifNew.createdAt));
+            return HeadRef(initialize.ifNew.ref, 0);
+          }
+        }
+      },
+      resume: (resume) {
+        throw UnimplementedError();
+      },
     );
-    assert(key == 1, 'Initial entry key was not 1 ($key)');
-    await putEntry(ref, EntryRecord.initial(createdAt: createdAt));
   }
 }

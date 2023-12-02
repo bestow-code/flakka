@@ -19,10 +19,10 @@ class Reconciliation<Event extends CoreEvent, State extends CoreState,
 
   factory Reconciliation.publishPending() = ReconciliationPublishPending;
 
-  factory Reconciliation.fastForward(
+  factory Reconciliation.forward(
     Ref ref, {
-    required JournalStateEvents<Event, State, View> stateEvents,
-  }) = ReconciliationFastForward<Event, State, View>;
+    required List<Event> events,
+  }) = ReconciliationForward<Event, State, View>;
 
   factory Reconciliation.reset(
     Ref ref, {

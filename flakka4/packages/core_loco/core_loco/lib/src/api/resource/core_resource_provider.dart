@@ -3,7 +3,7 @@ import 'package:core_common/core_common.dart';
 import '../../../core_loco.dart';
 
 abstract interface class CoreResourceProvider<
-        ProviderContext extends CoreProviderContext,
+        ProviderContext,
         Key,
         In,
         Out,

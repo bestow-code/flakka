@@ -1,6 +1,8 @@
+import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_object/core_object.dart';
 import 'package:core_object_impl/core_object_impl.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 
 abstract class DataNodeProvider // extends NodeProviderBase<
 //     CoreProviderContext,
@@ -12,7 +14,9 @@ abstract class DataNodeProvider // extends NodeProviderBase<
 //     DataSnapshot<dynamic, dynamic, dynamic>,
 //     CoreData<dynamic, dynamic, dynamic>>
     implements
-        CoreDataNodeProvider<
+        CoreTypedNodeProvider<
+            ProviderContext,
+            PersistenceKey,
             ObjectEffect,
             ObjectSnapshot,
             CoreObject,

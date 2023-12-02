@@ -139,7 +139,8 @@ void main() {
         await objectLocal.close();
         final objectRemote = await provider.child2Provider
             .get(context: providerContext, key: key);
-        await objectRemote.initialize(ref: ref1, createdAt: 0);
+        await objectRemote.provision(PersistenceProvisioningInitialize(
+            ifNew: (ref: ref1, createdAt: 0)));
         objectRemote.connect();
         objectRemote.sink.add(
           ObjectRemoteEffect.add(

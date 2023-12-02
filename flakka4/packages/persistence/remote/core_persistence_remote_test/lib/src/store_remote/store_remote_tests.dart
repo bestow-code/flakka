@@ -54,10 +54,10 @@ void Function() storeRemoteTests(
         final adapter = await PersistenceRemoteAdapterProvider(
           storeProvider: providerFactory(),
         ).get(context: providerContext, key: key);
-        await adapter.initialize(
+        await adapter.provision(PersistenceProvisioningInitialize(ifNew: (
           ref: Ref('1'),
           createdAt: 0,
-        );
+        )));
         final ref = Ref('2');
         await adapter.persist(
           [

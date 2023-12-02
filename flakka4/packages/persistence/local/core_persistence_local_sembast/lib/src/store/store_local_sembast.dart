@@ -61,7 +61,7 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
           .run((handler) => handler.initialize(ref: ref, createdAt: createdAt));
 
   @override
-  Future<HeadRecord?> get inspect => transact<HeadRecord?>(sessionId)
+  Future<HeadRef?> get inspect => transact<HeadRef?>(sessionId)
       .run((transaction) => transaction.inspect);
 }
 

@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:core_data/core_data.dart';
+import 'package:core_data_api/core_data_api.dart';
 
 import '../../core_application.dart';
-
 
 abstract interface class EventSourcedBehavior<
     Adapter extends CoreAdapter,
@@ -58,14 +57,13 @@ class StateViewEventHandler<Event extends CoreEvent, State extends CoreState,
     StateView<State, View> stateView,
     Event event,
   ) =>
-      (
-        state: _state(
-          stateView.state,
-          event,
-        ),
-        view: _view(
-          stateView.view,
-          event,
-        )
-      );
+      StateView(
+          _state(
+            stateView.state,
+            event,
+          ),
+          _view(
+            stateView.view,
+            event,
+          ));
 }

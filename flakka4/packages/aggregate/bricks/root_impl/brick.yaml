@@ -1,0 +1,14 @@
+name: aggregate_root_impl
+description: Resources for building
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.32 <0.1.0"
+
+vars:
+  root_name:
+    type: string
+    description: Name for the aggregate root
+    default: Aggregate1
+    prompt: Aggregate root name

@@ -18,6 +18,7 @@ class StoreRemoteSembast extends StoreRemoteBase implements CoreStoreRemote {
   late final _ref = (
     head: (PersistenceId persistenceId) =>
         StoreRef<int, JsonMap>('head-${persistenceId.value}'),
+    main: StoreRef<int, JsonMap>('head-main'),
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event'),
   );
@@ -55,14 +56,13 @@ class StoreRemoteSembast extends StoreRemoteBase implements CoreStoreRemote {
       );
 
   @override
-  @override
-  Future<void> initialize({required Ref ref, required int createdAt}) =>
-      transact<void>(sessionId)
-          .run((handler) => handler.initialize(ref: ref, createdAt: createdAt));
+  Future<HeadRef?> get inspect =>
+      transact<HeadRef?>(sessionId).run((transaction) => transaction.inspect);
 
   @override
-  Future<HeadRecord?> get inspect => transact<HeadRecord?>(sessionId)
-      .run((transaction) => transaction.inspect);
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) =>
+      transact<HeadRef>(sessionId)
+          .run((transaction) => transaction.provision(provisioning));
 }
 
 class StoreRemoteQuerySembast<K, T> implements CoreQuery<K, T> {
