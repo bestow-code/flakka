@@ -1,5 +1,4 @@
 import 'package:core_application/core_application.dart';
-import '../../../core_application_api.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
 import 'package:core_data/core_data_api.dart';
@@ -7,8 +6,8 @@ import 'package:core_journal/core_journal.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rxdart/rxdart.dart';
 
+import '../../../core_application_api.dart';
 import '../../../core_application_impl.dart';
 
 class Application<Event extends CoreEvent, State extends CoreState,
@@ -144,30 +143,5 @@ class Application<Event extends CoreEvent, State extends CoreState,
       ApplicationProcessor<Event, State, View> processor) {
     _processor = processor;
     return execute;
-  }
-}
-
-class FakeApplication<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> implements CoreApplication<Event, State, View> {
-  @override
-  void Function(RequestHandler<State, Event> handler) bind(
-      ApplicationProcessor<Event, State, View> processor) {
-    _processor = processor;
-
-    void handle(RequestHandler<State, Event> handler) {
-      results.add(_processor.execute(handler));
-    }
-
-    return handle;
-  }
-
-  late final ApplicationProcessor<Event, State, View> _processor;
-
-  final results = ReplaySubject<
-      ProcessorEffect<ApplicationRequestEffect<Event, State, View>>>();
-
-  @override
-  Future<void> connect() async {
-    throw UnimplementedError();
   }
 }

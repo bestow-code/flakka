@@ -1,6 +1,7 @@
 import 'package:core_application/core_application.dart';
 
-import '../../core_aggregate.dart';
+import '../../../core_aggregate.dart';
+
 
 //
 class CoreRoot<

@@ -1,6 +1,6 @@
-import '../../core_aggregate.dart';
-
 //
+import '../../../core_aggregate.dart';
+
 typedef CoreRootStateEventHandler<
 // Event
         RootEvent extends CoreRootEvents<ScopeEventBase, CollectionEventBase,

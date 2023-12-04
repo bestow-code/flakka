@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:core_application/core_application.dart';
+import 'package:core_application/core_application_api.dart';
+import 'package:core_application/core_application_impl.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
-
-import '../core_aggregate.dart';
 
 part 'core_aggregate_application.freezed.dart';
 
@@ -37,7 +37,7 @@ class AggregateApplicationBase<
         Handle,
         Event extends CoreEvent,
         State extends CoreState,
-        View extends CoreView> extends ApplicationBase<Event, State, View>
+        View extends CoreView> extends Application<Event, State, View>
     implements CoreAggregateApplication<Handle, Event, State, View> {
   AggregateApplicationBase(
     super.initialState, {

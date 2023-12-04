@@ -1,15 +1,14 @@
 import 'package:core_application/core_application.dart';
-import 'package:core_data/core_data.dart';
 
-import '../../core_aggregate.dart';
+import '../../../core_aggregate.dart';
 
 //
 class CoreRootHandle<
 // Event
     RootEvent extends CoreRootEvents<ScopeEventBase, CollectionEventBase,
         EntityEventBase, EntityRefBase>,
-    ScopeEventBase extends CoreRootEvent<CollectionEventBase,
-        EntityEventBase, EntityRefBase>,
+    ScopeEventBase extends CoreRootEvent<CollectionEventBase, EntityEventBase,
+        EntityRefBase>,
     CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
         EntityRefBase>,
     EntityEventBase extends CoreEntityEvent,
@@ -45,8 +44,8 @@ class CoreRootHandle<
 
 abstract class CoreScopeHandleBase<
 // Event
-    ScopeEventBase extends CoreRootEvent<CollectionEventBase,
-        EntityEventBase, EntityRefBase>,
+    ScopeEventBase extends CoreRootEvent<CollectionEventBase, EntityEventBase,
+        EntityRefBase>,
     CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
         EntityRefBase>,
     EntityEventBase extends CoreEntityEvent,

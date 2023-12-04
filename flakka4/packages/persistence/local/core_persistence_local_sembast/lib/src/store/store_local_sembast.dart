@@ -17,7 +17,7 @@ class StoreLocalSembast extends StoreLocalBase implements CoreStoreLocal {
   final Database database;
   late final _ref = (
     head: (PersistenceId persistenceId) =>
-        StoreRef<int, JsonMap>('head-${persistenceId.value}'),
+        StoreRef<int, JsonMap>('head-${persistenceId.value}'), // add branch name
     entry: StoreRef<String, JsonMap>('entry'),
     event: StoreRef<String, JsonMap>('event'),
   );

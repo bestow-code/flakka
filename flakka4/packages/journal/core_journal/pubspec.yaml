@@ -35,8 +35,12 @@ index_generator:
     - '**.*.dart'
   indexes:
     - path: lib
+      name: core_journal_api
       include:
         - src/api
+    - path: lib
+      include:
+        - src/base
     - path: lib
       name: core_journal_impl
       include:

@@ -4,7 +4,7 @@ import 'package:core_application/core_application.dart';
 class RootContext {}
 
 abstract mixin class RootBehavior<RootEvent, RootState, RootView>
-    implements EventSourcedBehavior<RootEvent, RootState, RootView> {}
+    implements EventSourcedBehavior2<RootEvent, RootState, RootView> {}
 
 abstract mixin class AggregateBehavior<
         RootEvent,
@@ -15,7 +15,7 @@ abstract mixin class AggregateBehavior<
         EntityView,
         EntityRef>
     implements
-        EventSourcedBehavior<
+        EventSourcedBehavior2<
             RootEvent,
             Map<EntityRef, EntityState>,
             ({
@@ -70,7 +70,7 @@ abstract mixin class CollectionBehavior<
         EntityView,
         EntityRef>
     implements
-        EventSourcedBehavior<CollectionEvent, Map<EntityRef, EntityState>,
+        EventSourcedBehavior2<CollectionEvent, Map<EntityRef, EntityState>,
             Map<EntityRef, EntityView>> {
   @override
   CoreEventHandler<CollectionEvent, Map<EntityRef, EntityState>>
@@ -98,7 +98,7 @@ abstract mixin class CollectionBehavior<
 
 abstract mixin class EntityBehavior<EntityEvent, EntityState, EntityView,
         EntityRef>
-    implements EventSourcedBehavior<EntityEvent, EntityState, EntityView> {}
+    implements EventSourcedBehavior2<EntityEvent, EntityState, EntityView> {}
 
 abstract interface class CoreCollectionView<EntityView, EntityRef> {
   EntityView operator [](EntityRef entityRef);

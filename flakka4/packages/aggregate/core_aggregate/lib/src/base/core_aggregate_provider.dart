@@ -1,7 +1,7 @@
 import 'package:core_common/core_common.dart';
-import 'package:core_application/core_application.dart';
+import 'package:core_journal/core_journal_impl.dart';
 
-import '../core_aggregate.dart';
+import '../../core_aggregate.dart';
 
 // abstract
 class RootProvider // extends ApplicationProvider

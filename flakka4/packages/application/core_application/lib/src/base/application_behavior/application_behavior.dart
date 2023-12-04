@@ -1,32 +1,30 @@
 import 'dart:async';
 
-import '../../../core_application_api.dart';
 import 'package:core_data/core_data_api.dart';
 
 import '../../../core_application.dart';
+import '../../../core_application_api.dart';
 
-//
-// abstract interface class EventSourcedBehavior<
-//     Adapter extends CoreAdapter,
-//     Handle extends CoreHandle,
-//     Event extends CoreEvent,
-//     State extends CoreState,
-//     View extends CoreView> {
-//   State Function() get initialStateFactory;
-//
-//   EventHandler<Event, State> get stateEventHandler;
-//
-//   View Function() get initialViewFactory;
-//
-//   EventHandler<Event, View> get viewEventHandler;
-//
-//   AdapterFactory<Adapter, Event, State, View> get adapterFactory;
-//
-//   HandleFactory<Handle, State, Event> get handleFactory;
-// }
-//
+abstract interface class EventSourcedBehavior<
+    Adapter extends CoreAdapter,
+    Handle extends CoreHandle,
+    Event extends CoreEvent,
+    State extends CoreState,
+    View extends CoreView> {
+  State Function() get initialStateFactory;
 
-abstract interface class EventSourcedBehavior<Event, State, View> {
+  EventHandler<Event, State> get stateEventHandler;
+
+  View Function() get initialViewFactory;
+
+  EventHandler<Event, View> get viewEventHandler;
+
+  AdapterFactory<Adapter, Event, State, View> get adapterFactory;
+
+  HandleFactory<Handle, State, Event> get handleFactory;
+}
+
+abstract interface class EventSourcedBehavior2<Event, State, View> {
   State Function() get initialStateFactory;
 
   CoreEventHandler<Event, State> get stateEventHandler;
@@ -64,12 +62,13 @@ class StateViewEventHandler<Event extends CoreEvent, State extends CoreState,
     Event event,
   ) =>
       StateView(
-          _state(
-            stateView.state,
-            event,
-          ),
-          _view(
-            stateView.view,
-            event,
-          ));
+        _state(
+          stateView.state,
+          event,
+        ),
+        _view(
+          stateView.view,
+          event,
+        ),
+      );
 }

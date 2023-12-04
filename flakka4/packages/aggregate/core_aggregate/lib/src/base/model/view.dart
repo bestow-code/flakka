@@ -1,7 +1,6 @@
-import 'package:core_data/core_data.dart';
 import 'package:core_data/core_data_api.dart';
 
-import '../../core_aggregate.dart';
+import '../../../core_aggregate.dart';
 
 //
 abstract interface class CoreRootView<

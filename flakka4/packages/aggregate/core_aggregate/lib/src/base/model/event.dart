@@ -1,6 +1,6 @@
-import 'package:core_aggregate/src/model/ref.dart';
-import 'package:core_data/core_data.dart';
 import 'package:core_data/core_data_api.dart';
+
+import '../../../core_aggregate.dart';
 
 abstract interface class CoreRootEvents<
     ScopeEvent extends CoreRootEvent<CollectionEvent, EntityEvent, EntityRef>,
@@ -26,7 +26,7 @@ abstract interface class CoreRootEvent<
 //
 //   EntityRef get entity;
 // }
-abstract mixin class CoreCollectionEvent<Event, EntityRef> {
+abstract mixin class CoreCollectionEvent<Event, EntityRef> implements CoreEvent{
   EntityRef get entityRef;
 
   Event get event;

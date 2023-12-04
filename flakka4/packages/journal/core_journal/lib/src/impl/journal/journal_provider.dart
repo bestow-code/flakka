@@ -1,8 +1,6 @@
 import 'package:core_common/core_common.dart';
+import 'package:core_data/core_data_api.dart';
 import 'package:core_data/core_data_impl.dart';
-import 'package:core_data_api/src/core_event.dart';
-import 'package:core_data_api/src/core_state.dart';
-import 'package:core_data_api/src/core_view.dart';
 import 'package:core_journal/core_journal.dart';
 import 'package:core_object_impl/core_object_impl.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';
@@ -49,12 +47,18 @@ class JournalProvider
 
   @override
   Future<Journal<Event, State, View>> get<Event extends CoreEvent,
-          State extends CoreState, View extends CoreView>(
-      {required ProviderContext context, required PersistenceKey key,}) async {
-    return JournalFactory<Event, State, View>().create(param: (
-      child: await _childProvider.get<Event, State, View>(
-          context: context, key: key)
-    ));
+      State extends CoreState, View extends CoreView>({
+    required ProviderContext context,
+    required PersistenceKey key,
+  }) async {
+    return JournalFactory<Event, State, View>().create(
+      param: (
+        child: await _childProvider.get<Event, State, View>(
+          context: context,
+          key: key,
+        )
+      ),
+    );
   }
 
 //
