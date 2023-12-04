@@ -4,8 +4,6 @@ library;
 import 'package:core_aggregate_e2e_tests_test_integration_core_aggregate_e2e_development/aggregate1_api.dart';
 import 'package:core_aggregate_e2e_tests_test_integration_core_aggregate_e2e_development/aggregate1_impl.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_object_store/core_object_store.dart';
-import 'package:core_entry_store_fake/core_entry_store_fake.dart';
 import 'package:test/test.dart';
 
 void main() {

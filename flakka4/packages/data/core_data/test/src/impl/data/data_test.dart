@@ -71,7 +71,7 @@ void main() {
           result.stream,
           emitsInOrder([
             emitsThrough(
-              DataSnapshot<TestEvent, TestState, TestView>.entry({
+              DataSnapshotEntry<TestEvent, TestState, TestView>({
                 ref0: Entry<TestEvent>.initial(createdAt: t0),
                 ref1: Entry<TestEvent>.event(
                   parent: ref0,
@@ -80,7 +80,7 @@ void main() {
                 ),
               }),
             ),
-            DataSnapshot<TestEvent, TestState, TestView>.head(
+            DataSnapshotHead<TestEvent, TestState, TestView>(
               HeadRef(ref1, 1),
             ),
           ]),

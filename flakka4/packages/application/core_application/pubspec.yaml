@@ -14,6 +14,7 @@ dependencies:
   core_common:
   core_application_api:
   core_data_api:
+  core_data:
   core_journal:
   core_loco:
   core_persistence_base:
@@ -27,7 +28,7 @@ dependencies:
 dev_dependencies:
   bloc_test:
   build_runner:
-#  core_application_impl_test:
+  core_application_test:
 #  core_journal_impl_test:
 #  core_object_impl_test:
   freezed:
@@ -45,8 +46,12 @@ index_generator:
     - '**.*.dart'
   indexes:
     - path: lib
+      name: core_application_api
       include:
         - src/api
+    - path: lib
+      include:
+        - src/base
     - path: lib
       name: core_application_impl
       include:

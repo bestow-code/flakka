@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_aggregate_annotation/core_aggregate_annotation.dart';
 import 'package:core_application/core_application.dart';
-import 'package:core_application_api/core_application_api.dart';
+import 'package:core_application/core_application_api.dart';
 import 'package:core_data_api/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -51,24 +51,24 @@ class Counter2Scope extends Counter2Aggregate {
       final stateEventSink = processor.stateEventSink;
       return _handler
           .increment(
-            Aggregate1HandleImpl(stateEventSink),
-            counter2Ref,
-            amount,
-          )
+        Aggregate1HandleImpl(stateEventSink),
+        counter2Ref,
+        amount,
+      )
           .map(
-            none: (none) {
-              completer.complete(none.response);
-              return RequestEffect.none();
-            },
-            fail: (fail) {
-              completer.completeError(Exception(fail.message));
+        none: (none) {
+          completer.complete(none.response);
+          return RequestEffect.none();
+        },
+        fail: (fail) {
+          completer.completeError(Exception(fail.message));
 
-              return RequestEffect.fail(message: fail.message);
-            },
-            persist: (persist) {
-              return RequestEffect.persist(event: stateEventSink.events.single);
-            },
-          );
+          return RequestEffect.fail(message: fail.message);
+        },
+        persist: (persist) {
+          return RequestEffect.persist(event: stateEventSink.events.single);
+        },
+      );
       throw UnimplementedError();
     });
     return completer.future;

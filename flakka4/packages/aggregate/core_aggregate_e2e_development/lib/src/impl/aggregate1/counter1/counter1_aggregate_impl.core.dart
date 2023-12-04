@@ -89,6 +89,7 @@ class Counter1AggregateBehavior
       Counter1State,
       Counter1EntityView,
       Counter1Ref> get collectionBehavior => Counter1CollectionBehavior();
+
   @override
   bool Function(Aggregate1Event event) get hasCollectionEvent =>
       (event) => event.maybeMap(orElse: () => false, counter1: (_) => true);
