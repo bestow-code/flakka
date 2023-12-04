@@ -9,7 +9,6 @@ environment:
 dependencies:
   core_application:
   core_application_api:
-  core_application_impl:
   core_common:
   core_data_api:
   core_journal_api:

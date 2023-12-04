@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   core_application:
-  core_application_impl:
 
 
 #  core_aggregate:
