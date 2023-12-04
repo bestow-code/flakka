@@ -9,10 +9,8 @@ dependencies:
   core_aggregate:
   core_aggregate_annotation:
   core_application:
-  core_application_api:
   core_common:
-  core_data_api:
-  core_journal_api:
+  core_data:
   freezed_annotation:
   json_annotation: ^4.8.1
   signals:

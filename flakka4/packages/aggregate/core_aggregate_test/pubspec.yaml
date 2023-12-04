@@ -10,7 +10,7 @@ dependencies:
   bloc_test:
   core_aggregate:
   core_common:
-  core_data_api:
+  core_data:
   core_application:
   core_application_test:
   directed_graph: ^0.3.9

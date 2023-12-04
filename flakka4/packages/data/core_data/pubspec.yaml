@@ -8,7 +8,6 @@ environment:
 
 dependencies:
   core_common:
-  core_data_api:
   core_loco:
   core_object:
   core_persistence_base:
@@ -32,8 +31,12 @@ index_generator:
     - '**.*.dart'
   indexes:
     - path: lib
+      name: core_data_api
       include:
         - src/api
+    - path: lib
+      include:
+        - src/base
     - path: lib
       name: core_data_impl
       include:

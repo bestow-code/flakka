@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   core_common:
-  core_data_api:
+  core_data:
   freezed_annotation: ^2.2.0
   meta: ^1.9.1
 

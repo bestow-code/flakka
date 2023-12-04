@@ -2,7 +2,7 @@ import 'package:core_application/core_application.dart';
 import '../../../core_application_api.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_data_api/core_data_api.dart';
+import 'package:core_data/core_data_api.dart';
 import 'package:core_journal/core_journal.dart';
 import 'package:core_loco/core_loco.dart';
 import 'package:core_persistence_base/core_persistence_base.dart';

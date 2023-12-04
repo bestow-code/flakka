@@ -12,8 +12,6 @@ dependencies:
   bloc_concurrency: ^0.2.2
   collection: ^1.17.1
   core_common:
-  core_application_api:
-  core_data_api:
   core_data:
   core_journal:
   core_loco:

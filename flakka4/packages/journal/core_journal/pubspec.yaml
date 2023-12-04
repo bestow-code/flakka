@@ -10,7 +10,6 @@ dependencies:
   bloc: ^8.1.2
   core_common:
   core_data:
-  core_data_api:
   core_loco:
   core_object:
   core_persistence_base:

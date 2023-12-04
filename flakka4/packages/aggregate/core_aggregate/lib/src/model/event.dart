@@ -1,6 +1,6 @@
 import 'package:core_aggregate/src/model/ref.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_data_api/core_data_api.dart';
+import 'package:core_data/core_data_api.dart';
 
 abstract interface class CoreRootEvents<
     ScopeEvent extends CoreRootEvent<CollectionEvent, EntityEvent, EntityRef>,

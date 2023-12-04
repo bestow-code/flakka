@@ -1,6 +1,6 @@
 import 'package:core_application/core_application.dart';
 import 'package:core_common/core_common.dart';
-import 'package:core_data_api/core_data_api.dart';
+import 'package:core_data/core_data_api.dart';
 
 abstract interface class CoreApplicationFactory<
         Event extends CoreEvent,

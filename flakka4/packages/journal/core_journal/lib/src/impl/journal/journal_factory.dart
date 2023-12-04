@@ -1,5 +1,5 @@
 import 'package:core_data/core_data.dart';
-import 'package:core_data_api/core_data_api.dart';
+import 'package:core_data/core_data_api.dart';
 import 'package:core_journal/core_journal.dart';
 
 import '../../../core_journal_impl.dart';

@@ -1,5 +1,5 @@
 import 'package:core_common/core_common.dart';
-import 'package:core_data_api/core_data_api.dart';
+import 'package:core_data/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'application_state.freezed.dart';
