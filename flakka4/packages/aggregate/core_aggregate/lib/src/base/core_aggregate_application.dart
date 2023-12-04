@@ -6,7 +6,6 @@ import 'package:core_application/core_application_impl.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rxdart/rxdart.dart';
 
 part 'core_aggregate_application.freezed.dart';
 
@@ -40,28 +39,39 @@ class AggregateApplicationBase<
         View extends CoreView> extends Application<Event, State, View>
     implements CoreAggregateApplication<Handle, Event, State, View> {
   AggregateApplicationBase(
-    super.initialState, {
-    required this.handleFactory,
-    required super.stateViewEventHandler,
-    super.createdAtRefFactory,
-    required super.child,
-  }) {
-    aggregateRequestSink
-        .map(
-          (aggregateHandlerRequest) => Request<State, Event>(
-            (stateEventSink) =>
-                aggregateHandlerRequest.handler(handleFactory(stateEventSink)),
-            ref: aggregateHandlerRequest.ref,
-            createdAt: aggregateHandlerRequest.createdAt,
-          ),
-        )
-        .pipe(requestSink._sink);
-  }
+      {required super.journal,
+      required super.handler,
+      required super.handleStateEvent,
+      required super.handleViewEvent,
+      required super.refDateTimeFactory});
 
   @override
-  final PublishSubject<AggregateRequest<Handle, State, Event>>
-      aggregateRequestSink = PublishSubject();
+  // TODO: implement aggregateRequestSink
+  StreamSink<AggregateRequest<Handle, State, Event>> get aggregateRequestSink =>
+      throw UnimplementedError();
+// // AggregateApplicationBase(
+// //   super.initialState, {
+// //   required this.handleFactory,
+// //   required super.stateViewEventHandler,
+// //   super.createdAtRefFactory,
+// //   required super.child,
+// // }) {
+// //   aggregateRequestSink
+// //       .map(
+// //         (aggregateHandlerRequest) => Request<State, Event>(
+// //           (stateEventSink) =>
+// //               aggregateHandlerRequest.handler(handleFactory(stateEventSink)),
+// //           ref: aggregateHandlerRequest.ref,
+// //           createdAt: aggregateHandlerRequest.createdAt,
+// //         ),
+// //       )
+// //       .pipe(requestSink._sink);
+// }
 
-  final Handle Function(StateEventSink<State, Event> stateEventSink)
-      handleFactory;
+// @override
+// final PublishSubject<AggregateRequest<Handle, State, Event>>
+//     aggregateRequestSink = PublishSubject();
+//
+// final Handle Function(StateEventSink<State, Event> stateEventSink)
+//     handleFactory;
 }

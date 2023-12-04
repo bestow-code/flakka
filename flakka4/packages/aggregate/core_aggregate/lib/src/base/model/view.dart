@@ -9,16 +9,16 @@ abstract interface class CoreRootView<
     CollectionViewBase extends CoreCollectionViewBase<EntityViewBase,
         EntityRefBase>,
     EntityViewBase extends CoreEntityViewBase,
-    EntityRefBase extends CoreEntityRef> implements CoreView {}
+    EntityRefBase extends CoreRef> implements CoreView {}
 
 abstract interface class CoreScopeViewBase<
     CollectionViewBase extends CoreCollectionViewBase<EntityViewBase,
         EntityRefBase>,
     EntityViewBase extends CoreEntityViewBase,
-    EntityRefBase extends CoreEntityRef> implements CoreView {}
+    EntityRefBase extends CoreRef> implements CoreView {}
 
 abstract interface class CoreCollectionViewBase<
     EntityViewBase extends CoreEntityViewBase,
-    EntityRefBase extends CoreEntityRef> implements CoreView {}
+    EntityRefBase extends CoreRef> implements CoreView {}
 
 abstract interface class CoreEntityViewBase implements CoreView {}

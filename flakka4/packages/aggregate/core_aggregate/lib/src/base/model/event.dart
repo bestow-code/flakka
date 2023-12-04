@@ -6,14 +6,14 @@ abstract interface class CoreRootEvents<
     ScopeEvent extends CoreRootEvent<CollectionEvent, EntityEvent, EntityRef>,
     CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
     EntityEvent extends CoreEntityEvent,
-    EntityRef extends CoreEntityRef> implements CoreEvent {
+    EntityRef extends CoreRef> implements CoreEvent {
   List<ScopeEvent> get data;
 }
 
 abstract interface class CoreRootEvent<
     CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
     EntityEvent extends CoreEntityEvent,
-    EntityRef extends CoreEntityRef> implements CoreEvent {
+    EntityRef extends CoreRef> implements CoreEvent {
   EntityEvent get data;
 
   EntityRef get entity;

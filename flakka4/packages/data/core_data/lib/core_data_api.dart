@@ -3,6 +3,7 @@
 library core_data_api;
 
 export 'src/api/core_event.dart';
+export 'src/api/core_ref.dart';
 export 'src/api/core_state.dart';
 export 'src/api/core_typed_factory.dart';
 export 'src/api/core_typed_provider.dart';
