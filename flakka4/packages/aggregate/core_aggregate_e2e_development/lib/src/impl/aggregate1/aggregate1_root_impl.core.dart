@@ -23,7 +23,7 @@ class Aggregate1View with _$Aggregate1View implements CoreView {
 }
 
 @freezed
-class Aggregate1State with _$Aggregate1State {
+class Aggregate1State with _$Aggregate1State implements CoreState {
   factory Aggregate1State({
     required Map<Counter2Ref, Counter2State> counter2,
     required Map<Counter1Ref, Counter1State> counter1,
@@ -47,6 +47,7 @@ class Aggregate1Event with _$Aggregate1Event implements CoreEvent {
     Counter2Ref entityRef,
     Counter2Event event,
   ) = Aggregate1EventCounter2;
+
   @With<CoreCollectionEvent<Counter1Event, Counter1Ref>>()
   factory Aggregate1Event.counter1(
     Counter1Ref entityRef,
@@ -61,6 +62,7 @@ class Aggregate1Event with _$Aggregate1Event implements CoreEvent {
 
 abstract interface class Aggregate1Handle {
   Counter2Collection get counter2;
+
   Counter1Collection get counter1;
 }
 
@@ -73,6 +75,7 @@ class Aggregate1HandleImpl implements Aggregate1Handle {
   Counter2Collection get counter2 => Counter2Collection(
         Counter2CollectionStateEventSinkImpl(stateEventSink),
       );
+
   @override
   Counter1Collection get counter1 => Counter1Collection(
         Counter1CollectionStateEventSinkImpl(stateEventSink),

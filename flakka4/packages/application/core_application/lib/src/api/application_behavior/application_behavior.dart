@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:core_application_api/core_application_api.dart';
 import 'package:core_data_api/core_data_api.dart';
 
-import '../../core_application.dart';
+import '../../../core_application.dart';
 
 //
 // abstract interface class EventSourcedBehavior<

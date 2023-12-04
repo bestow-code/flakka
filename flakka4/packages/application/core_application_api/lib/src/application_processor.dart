@@ -14,8 +14,11 @@ abstract class ApplicationProcessor<Event extends CoreEvent,
   })  : _handleStateEvent = handleStateEvent,
         _handleViewEvent = handleViewEvent;
   final State Function(State state, Event event) _handleStateEvent;
-
+  late State state;
   final View Function(View view, Event event) _handleViewEvent;
+
+  StateEventSinkImpl<State, Event> get stateEventSink =>
+      StateEventSinkImpl(state, stateEventHandler: _handleStateEvent);
 
   ProcessorEffect<ApplicationRequestEffect<Event, State, View>> execute(
     RequestHandler<State, Event> handler,

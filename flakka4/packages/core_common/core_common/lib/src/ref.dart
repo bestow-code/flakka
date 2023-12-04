@@ -16,7 +16,7 @@ class Ref with _$Ref {
   factory Ref.fromJson(Map<String, dynamic> json) => _$RefFromJson(json);
 }
 
-typedef RefDateTime = ({Ref ref, DateTime dateTime});
+typedef RefDateTime = ({Ref ref, DateTime createdAt});
 
 @freezed
 class HeadRef with _$HeadRef {

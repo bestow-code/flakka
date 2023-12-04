@@ -46,6 +46,8 @@ index_generator:
   indexes:
     - path: lib
       include:
-        - src
-      exports:
-        - package: package:core_journal/core_journal.dart
+        - src/api
+    - path: lib
+      name: core_application_impl
+      include:
+        - src/impl

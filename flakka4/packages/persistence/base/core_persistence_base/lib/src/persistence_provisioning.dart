@@ -5,6 +5,12 @@ part 'persistence_provisioning.freezed.dart';
 
 @freezed
 class PersistenceProvisioning with _$PersistenceProvisioning {
+  factory PersistenceProvisioning.from(RefDateTime refDateTime) =>
+      PersistenceProvisioning.initialize(ifNew: (
+        ref: refDateTime.ref,
+        createdAt: refDateTime.createdAt.microsecondsSinceEpoch
+      ));
+
   factory PersistenceProvisioning.initialize({
     required ({
       Ref ref,

@@ -9,8 +9,10 @@ dependencies:
   core_aggregate:
   core_aggregate_annotation:
   core_application:
+  core_application_api:
   core_common:
   core_data_api:
+  core_journal_api:
   freezed_annotation:
   json_annotation: ^4.8.1
 dev_dependencies:
@@ -31,4 +33,4 @@ dev_dependencies:
 index_generator:
   exclude:
     - '**.*.dart'
-  indexes: []
+  indexes: [ ]

@@ -8,3 +8,4 @@ export 'src/application_processor.dart';
 export 'src/request.dart';
 export 'src/request_effect.dart';
 export 'src/request_handler.dart';
+export 'src/state_event_sink.dart';
