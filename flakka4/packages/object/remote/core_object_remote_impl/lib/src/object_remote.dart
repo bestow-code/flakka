@@ -14,7 +14,7 @@ class ObjectRemote extends PersistentNode<
     ObjectRemoteSnapshot,
     ObjectRemoteState> implements CoreObjectRemote {
   ObjectRemote({required super.child}) {
-    registerStateFactory(() => ObjectRemoteState({}, {}));
+    registerInitialStateFactory(() => ObjectRemoteState({}, {}));
     registerInitialStateHandler(
       (snapshot) => snapshot.map(
         head: (head) => throw UnimplementedError(),

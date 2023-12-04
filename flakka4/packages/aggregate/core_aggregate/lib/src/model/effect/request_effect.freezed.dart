@@ -81,25 +81,27 @@ class _$AggregateEffectCopyWithImpl<$Res, $Val extends AggregateEffect>
 }
 
 /// @nodoc
-abstract class _$$AggregateEffectPersistCopyWith<$Res> {
-  factory _$$AggregateEffectPersistCopyWith(_$AggregateEffectPersist value,
-          $Res Function(_$AggregateEffectPersist) then) =
-      __$$AggregateEffectPersistCopyWithImpl<$Res>;
+abstract class _$$AggregateEffectPersistImplCopyWith<$Res> {
+  factory _$$AggregateEffectPersistImplCopyWith(
+          _$AggregateEffectPersistImpl value,
+          $Res Function(_$AggregateEffectPersistImpl) then) =
+      __$$AggregateEffectPersistImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AggregateEffectPersistCopyWithImpl<$Res>
-    extends _$AggregateEffectCopyWithImpl<$Res, _$AggregateEffectPersist>
-    implements _$$AggregateEffectPersistCopyWith<$Res> {
-  __$$AggregateEffectPersistCopyWithImpl(_$AggregateEffectPersist _value,
-      $Res Function(_$AggregateEffectPersist) _then)
+class __$$AggregateEffectPersistImplCopyWithImpl<$Res>
+    extends _$AggregateEffectCopyWithImpl<$Res, _$AggregateEffectPersistImpl>
+    implements _$$AggregateEffectPersistImplCopyWith<$Res> {
+  __$$AggregateEffectPersistImplCopyWithImpl(
+      _$AggregateEffectPersistImpl _value,
+      $Res Function(_$AggregateEffectPersistImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AggregateEffectPersist implements AggregateEffectPersist {
-  _$AggregateEffectPersist();
+class _$AggregateEffectPersistImpl implements AggregateEffectPersist {
+  _$AggregateEffectPersistImpl();
 
   @override
   String toString() {
@@ -109,7 +111,8 @@ class _$AggregateEffectPersist implements AggregateEffectPersist {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AggregateEffectPersist);
+        (other.runtimeType == runtimeType &&
+            other is _$AggregateEffectPersistImpl);
   }
 
   @override
@@ -185,29 +188,29 @@ class _$AggregateEffectPersist implements AggregateEffectPersist {
 }
 
 abstract class AggregateEffectPersist implements AggregateEffect {
-  factory AggregateEffectPersist() = _$AggregateEffectPersist;
+  factory AggregateEffectPersist() = _$AggregateEffectPersistImpl;
 }
 
 /// @nodoc
-abstract class _$$AggregateEffectNoneCopyWith<$Res> {
-  factory _$$AggregateEffectNoneCopyWith(_$AggregateEffectNone value,
-          $Res Function(_$AggregateEffectNone) then) =
-      __$$AggregateEffectNoneCopyWithImpl<$Res>;
+abstract class _$$AggregateEffectNoneImplCopyWith<$Res> {
+  factory _$$AggregateEffectNoneImplCopyWith(_$AggregateEffectNoneImpl value,
+          $Res Function(_$AggregateEffectNoneImpl) then) =
+      __$$AggregateEffectNoneImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AggregateEffectNoneCopyWithImpl<$Res>
-    extends _$AggregateEffectCopyWithImpl<$Res, _$AggregateEffectNone>
-    implements _$$AggregateEffectNoneCopyWith<$Res> {
-  __$$AggregateEffectNoneCopyWithImpl(
-      _$AggregateEffectNone _value, $Res Function(_$AggregateEffectNone) _then)
+class __$$AggregateEffectNoneImplCopyWithImpl<$Res>
+    extends _$AggregateEffectCopyWithImpl<$Res, _$AggregateEffectNoneImpl>
+    implements _$$AggregateEffectNoneImplCopyWith<$Res> {
+  __$$AggregateEffectNoneImplCopyWithImpl(_$AggregateEffectNoneImpl _value,
+      $Res Function(_$AggregateEffectNoneImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AggregateEffectNone implements AggregateEffectNone {
-  _$AggregateEffectNone();
+class _$AggregateEffectNoneImpl implements AggregateEffectNone {
+  _$AggregateEffectNoneImpl();
 
   @override
   String toString() {
@@ -217,7 +220,8 @@ class _$AggregateEffectNone implements AggregateEffectNone {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AggregateEffectNone);
+        (other.runtimeType == runtimeType &&
+            other is _$AggregateEffectNoneImpl);
   }
 
   @override
@@ -293,24 +297,25 @@ class _$AggregateEffectNone implements AggregateEffectNone {
 }
 
 abstract class AggregateEffectNone implements AggregateEffect {
-  factory AggregateEffectNone() = _$AggregateEffectNone;
+  factory AggregateEffectNone() = _$AggregateEffectNoneImpl;
 }
 
 /// @nodoc
-abstract class _$$ApplicationEffectFailCopyWith<$Res> {
-  factory _$$ApplicationEffectFailCopyWith(_$ApplicationEffectFail value,
-          $Res Function(_$ApplicationEffectFail) then) =
-      __$$ApplicationEffectFailCopyWithImpl<$Res>;
+abstract class _$$ApplicationEffectFailImplCopyWith<$Res> {
+  factory _$$ApplicationEffectFailImplCopyWith(
+          _$ApplicationEffectFailImpl value,
+          $Res Function(_$ApplicationEffectFailImpl) then) =
+      __$$ApplicationEffectFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$ApplicationEffectFailCopyWithImpl<$Res>
-    extends _$AggregateEffectCopyWithImpl<$Res, _$ApplicationEffectFail>
-    implements _$$ApplicationEffectFailCopyWith<$Res> {
-  __$$ApplicationEffectFailCopyWithImpl(_$ApplicationEffectFail _value,
-      $Res Function(_$ApplicationEffectFail) _then)
+class __$$ApplicationEffectFailImplCopyWithImpl<$Res>
+    extends _$AggregateEffectCopyWithImpl<$Res, _$ApplicationEffectFailImpl>
+    implements _$$ApplicationEffectFailImplCopyWith<$Res> {
+  __$$ApplicationEffectFailImplCopyWithImpl(_$ApplicationEffectFailImpl _value,
+      $Res Function(_$ApplicationEffectFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -318,7 +323,7 @@ class __$$ApplicationEffectFailCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$ApplicationEffectFail(
+    return _then(_$ApplicationEffectFailImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -329,8 +334,8 @@ class __$$ApplicationEffectFailCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ApplicationEffectFail implements ApplicationEffectFail {
-  _$ApplicationEffectFail({this.message});
+class _$ApplicationEffectFailImpl implements ApplicationEffectFail {
+  _$ApplicationEffectFailImpl({this.message});
 
   @override
   final String? message;
@@ -344,7 +349,7 @@ class _$ApplicationEffectFail implements ApplicationEffectFail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationEffectFail &&
+            other is _$ApplicationEffectFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -354,9 +359,9 @@ class _$ApplicationEffectFail implements ApplicationEffectFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationEffectFailCopyWith<_$ApplicationEffectFail> get copyWith =>
-      __$$ApplicationEffectFailCopyWithImpl<_$ApplicationEffectFail>(
-          this, _$identity);
+  _$$ApplicationEffectFailImplCopyWith<_$ApplicationEffectFailImpl>
+      get copyWith => __$$ApplicationEffectFailImplCopyWithImpl<
+          _$ApplicationEffectFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -429,10 +434,10 @@ class _$ApplicationEffectFail implements ApplicationEffectFail {
 
 abstract class ApplicationEffectFail implements AggregateEffect {
   factory ApplicationEffectFail({final String? message}) =
-      _$ApplicationEffectFail;
+      _$ApplicationEffectFailImpl;
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$ApplicationEffectFailCopyWith<_$ApplicationEffectFail> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ApplicationEffectFailImplCopyWith<_$ApplicationEffectFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

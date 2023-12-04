@@ -99,12 +99,12 @@ class _$AggregateUpdateCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$AggregateUpdateAppendCopyWith<Event extends CoreEvent,
+abstract class _$$AggregateUpdateAppendImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$AggregateUpdateAppendCopyWith(
-          _$AggregateUpdateAppend<Event, State, View> value,
-          $Res Function(_$AggregateUpdateAppend<Event, State, View>) then) =
-      __$$AggregateUpdateAppendCopyWithImpl<Event, State, View, $Res>;
+  factory _$$AggregateUpdateAppendImplCopyWith(
+          _$AggregateUpdateAppendImpl<Event, State, View> value,
+          $Res Function(_$AggregateUpdateAppendImpl<Event, State, View>) then) =
+      __$$AggregateUpdateAppendImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call(
       {Ref ref, Ref parent, Iterable<Event> events, State state, View view});
@@ -114,14 +114,14 @@ abstract class _$$AggregateUpdateAppendCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$AggregateUpdateAppendCopyWithImpl<Event extends CoreEvent,
+class __$$AggregateUpdateAppendImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$AggregateUpdateCopyWithImpl<Event, State, View, $Res,
-        _$AggregateUpdateAppend<Event, State, View>>
-    implements _$$AggregateUpdateAppendCopyWith<Event, State, View, $Res> {
-  __$$AggregateUpdateAppendCopyWithImpl(
-      _$AggregateUpdateAppend<Event, State, View> _value,
-      $Res Function(_$AggregateUpdateAppend<Event, State, View>) _then)
+        _$AggregateUpdateAppendImpl<Event, State, View>>
+    implements _$$AggregateUpdateAppendImplCopyWith<Event, State, View, $Res> {
+  __$$AggregateUpdateAppendImplCopyWithImpl(
+      _$AggregateUpdateAppendImpl<Event, State, View> _value,
+      $Res Function(_$AggregateUpdateAppendImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$AggregateUpdateAppendCopyWithImpl<Event extends CoreEvent,
     Object? state = null,
     Object? view = null,
   }) {
-    return _then(_$AggregateUpdateAppend<Event, State, View>(
+    return _then(_$AggregateUpdateAppendImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -176,10 +176,10 @@ class __$$AggregateUpdateAppendCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$AggregateUpdateAppendImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements AggregateUpdateAppend<Event, State, View> {
-  _$AggregateUpdateAppend(
+  _$AggregateUpdateAppendImpl(
       {required this.ref,
       required this.parent,
       required this.events,
@@ -206,7 +206,7 @@ class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AggregateUpdateAppend<Event, State, View> &&
+            other is _$AggregateUpdateAppendImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.parent, parent) || other.parent == parent) &&
             const DeepCollectionEquality().equals(other.events, events) &&
@@ -226,10 +226,13 @@ class _$AggregateUpdateAppend<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AggregateUpdateAppendCopyWith<Event, State, View,
-          _$AggregateUpdateAppend<Event, State, View>>
-      get copyWith => __$$AggregateUpdateAppendCopyWithImpl<Event, State, View,
-          _$AggregateUpdateAppend<Event, State, View>>(this, _$identity);
+  _$$AggregateUpdateAppendImplCopyWith<Event, State, View,
+          _$AggregateUpdateAppendImpl<Event, State, View>>
+      get copyWith => __$$AggregateUpdateAppendImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$AggregateUpdateAppendImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -315,11 +318,12 @@ abstract class AggregateUpdateAppend<
     State extends CoreState,
     View extends CoreView> implements AggregateUpdate<Event, State, View> {
   factory AggregateUpdateAppend(
-      {required final Ref ref,
-      required final Ref parent,
-      required final Iterable<Event> events,
-      required final State state,
-      required final View view}) = _$AggregateUpdateAppend<Event, State, View>;
+          {required final Ref ref,
+          required final Ref parent,
+          required final Iterable<Event> events,
+          required final State state,
+          required final View view}) =
+      _$AggregateUpdateAppendImpl<Event, State, View>;
 
   Ref get ref;
   Ref get parent;
@@ -327,18 +331,18 @@ abstract class AggregateUpdateAppend<
   State get state;
   View get view;
   @JsonKey(ignore: true)
-  _$$AggregateUpdateAppendCopyWith<Event, State, View,
-          _$AggregateUpdateAppend<Event, State, View>>
+  _$$AggregateUpdateAppendImplCopyWith<Event, State, View,
+          _$AggregateUpdateAppendImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AggregateUpdateDoneCopyWith<Event extends CoreEvent,
+abstract class _$$AggregateUpdateDoneImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$AggregateUpdateDoneCopyWith(
-          _$AggregateUpdateDone<Event, State, View> value,
-          $Res Function(_$AggregateUpdateDone<Event, State, View>) then) =
-      __$$AggregateUpdateDoneCopyWithImpl<Event, State, View, $Res>;
+  factory _$$AggregateUpdateDoneImplCopyWith(
+          _$AggregateUpdateDoneImpl<Event, State, View> value,
+          $Res Function(_$AggregateUpdateDoneImpl<Event, State, View>) then) =
+      __$$AggregateUpdateDoneImplCopyWithImpl<Event, State, View, $Res>;
   @useResult
   $Res call({Ref ref, Ref parent});
 
@@ -347,14 +351,14 @@ abstract class _$$AggregateUpdateDoneCopyWith<Event extends CoreEvent,
 }
 
 /// @nodoc
-class __$$AggregateUpdateDoneCopyWithImpl<Event extends CoreEvent,
+class __$$AggregateUpdateDoneImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$AggregateUpdateCopyWithImpl<Event, State, View, $Res,
-        _$AggregateUpdateDone<Event, State, View>>
-    implements _$$AggregateUpdateDoneCopyWith<Event, State, View, $Res> {
-  __$$AggregateUpdateDoneCopyWithImpl(
-      _$AggregateUpdateDone<Event, State, View> _value,
-      $Res Function(_$AggregateUpdateDone<Event, State, View>) _then)
+        _$AggregateUpdateDoneImpl<Event, State, View>>
+    implements _$$AggregateUpdateDoneImplCopyWith<Event, State, View, $Res> {
+  __$$AggregateUpdateDoneImplCopyWithImpl(
+      _$AggregateUpdateDoneImpl<Event, State, View> _value,
+      $Res Function(_$AggregateUpdateDoneImpl<Event, State, View>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -363,7 +367,7 @@ class __$$AggregateUpdateDoneCopyWithImpl<Event extends CoreEvent,
     Object? ref = null,
     Object? parent = null,
   }) {
-    return _then(_$AggregateUpdateDone<Event, State, View>(
+    return _then(_$AggregateUpdateDoneImpl<Event, State, View>(
       ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
@@ -394,9 +398,11 @@ class __$$AggregateUpdateDoneCopyWithImpl<Event extends CoreEvent,
 
 /// @nodoc
 
-class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
+class _$AggregateUpdateDoneImpl<
+    Event extends CoreEvent,
+    State extends CoreState,
     View extends CoreView> implements AggregateUpdateDone<Event, State, View> {
-  _$AggregateUpdateDone({required this.ref, required this.parent});
+  _$AggregateUpdateDoneImpl({required this.ref, required this.parent});
 
   @override
   final Ref ref;
@@ -412,7 +418,7 @@ class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AggregateUpdateDone<Event, State, View> &&
+            other is _$AggregateUpdateDoneImpl<Event, State, View> &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.parent, parent) || other.parent == parent));
   }
@@ -423,10 +429,13 @@ class _$AggregateUpdateDone<Event extends CoreEvent, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AggregateUpdateDoneCopyWith<Event, State, View,
-          _$AggregateUpdateDone<Event, State, View>>
-      get copyWith => __$$AggregateUpdateDoneCopyWithImpl<Event, State, View,
-          _$AggregateUpdateDone<Event, State, View>>(this, _$identity);
+  _$$AggregateUpdateDoneImplCopyWith<Event, State, View,
+          _$AggregateUpdateDoneImpl<Event, State, View>>
+      get copyWith => __$$AggregateUpdateDoneImplCopyWithImpl<
+          Event,
+          State,
+          View,
+          _$AggregateUpdateDoneImpl<Event, State, View>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -512,44 +521,45 @@ abstract class AggregateUpdateDone<
     State extends CoreState,
     View extends CoreView> implements AggregateUpdate<Event, State, View> {
   factory AggregateUpdateDone(
-      {required final Ref ref,
-      required final Ref parent}) = _$AggregateUpdateDone<Event, State, View>;
+          {required final Ref ref, required final Ref parent}) =
+      _$AggregateUpdateDoneImpl<Event, State, View>;
 
   Ref get ref;
   Ref get parent;
   @JsonKey(ignore: true)
-  _$$AggregateUpdateDoneCopyWith<Event, State, View,
-          _$AggregateUpdateDone<Event, State, View>>
+  _$$AggregateUpdateDoneImplCopyWith<Event, State, View,
+          _$AggregateUpdateDoneImpl<Event, State, View>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AggregateUpdateForwardCopyWith<Event extends CoreEvent,
+abstract class _$$AggregateUpdateForwardImplCopyWith<Event extends CoreEvent,
     State extends CoreState, View extends CoreView, $Res> {
-  factory _$$AggregateUpdateForwardCopyWith(
-          _$AggregateUpdateForward<Event, State, View> value,
-          $Res Function(_$AggregateUpdateForward<Event, State, View>) then) =
-      __$$AggregateUpdateForwardCopyWithImpl<Event, State, View, $Res>;
+  factory _$$AggregateUpdateForwardImplCopyWith(
+          _$AggregateUpdateForwardImpl<Event, State, View> value,
+          $Res Function(_$AggregateUpdateForwardImpl<Event, State, View>)
+              then) =
+      __$$AggregateUpdateForwardImplCopyWithImpl<Event, State, View, $Res>;
 }
 
 /// @nodoc
-class __$$AggregateUpdateForwardCopyWithImpl<Event extends CoreEvent,
+class __$$AggregateUpdateForwardImplCopyWithImpl<Event extends CoreEvent,
         State extends CoreState, View extends CoreView, $Res>
     extends _$AggregateUpdateCopyWithImpl<Event, State, View, $Res,
-        _$AggregateUpdateForward<Event, State, View>>
-    implements _$$AggregateUpdateForwardCopyWith<Event, State, View, $Res> {
-  __$$AggregateUpdateForwardCopyWithImpl(
-      _$AggregateUpdateForward<Event, State, View> _value,
-      $Res Function(_$AggregateUpdateForward<Event, State, View>) _then)
+        _$AggregateUpdateForwardImpl<Event, State, View>>
+    implements _$$AggregateUpdateForwardImplCopyWith<Event, State, View, $Res> {
+  __$$AggregateUpdateForwardImplCopyWithImpl(
+      _$AggregateUpdateForwardImpl<Event, State, View> _value,
+      $Res Function(_$AggregateUpdateForwardImpl<Event, State, View>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AggregateUpdateForward<Event extends CoreEvent, State extends CoreState,
-        View extends CoreView>
+class _$AggregateUpdateForwardImpl<Event extends CoreEvent,
+        State extends CoreState, View extends CoreView>
     implements AggregateUpdateForward<Event, State, View> {
-  _$AggregateUpdateForward();
+  _$AggregateUpdateForwardImpl();
 
   @override
   String toString() {
@@ -560,7 +570,7 @@ class _$AggregateUpdateForward<Event extends CoreEvent, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AggregateUpdateForward<Event, State, View>);
+            other is _$AggregateUpdateForwardImpl<Event, State, View>);
   }
 
   @override
@@ -650,5 +660,5 @@ abstract class AggregateUpdateForward<
     State extends CoreState,
     View extends CoreView> implements AggregateUpdate<Event, State, View> {
   factory AggregateUpdateForward() =
-      _$AggregateUpdateForward<Event, State, View>;
+      _$AggregateUpdateForwardImpl<Event, State, View>;
 }

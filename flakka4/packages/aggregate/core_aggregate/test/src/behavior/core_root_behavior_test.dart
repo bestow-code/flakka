@@ -1,4 +1,5 @@
 import 'package:core_aggregate/core_aggregate.dart';
+import 'package:core_application/core_application.dart';
 import 'package:core_application/src/event_handler.dart';
 import 'package:core_application/src/event_sourced_behavior.dart';
 import 'package:test/test.dart';

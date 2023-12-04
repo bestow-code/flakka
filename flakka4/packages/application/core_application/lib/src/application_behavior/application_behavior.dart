@@ -1,33 +1,39 @@
 import 'dart:async';
 
+import 'package:core_application_api/core_application_api.dart';
 import 'package:core_data_api/core_data_api.dart';
 
 import '../../core_application.dart';
 
-abstract interface class EventSourcedBehavior<
-    Adapter extends CoreAdapter,
-    Handle extends CoreHandle,
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> {
+//
+// abstract interface class EventSourcedBehavior<
+//     Adapter extends CoreAdapter,
+//     Handle extends CoreHandle,
+//     Event extends CoreEvent,
+//     State extends CoreState,
+//     View extends CoreView> {
+//   State Function() get initialStateFactory;
+//
+//   EventHandler<Event, State> get stateEventHandler;
+//
+//   View Function() get initialViewFactory;
+//
+//   EventHandler<Event, View> get viewEventHandler;
+//
+//   AdapterFactory<Adapter, Event, State, View> get adapterFactory;
+//
+//   HandleFactory<Handle, State, Event> get handleFactory;
+// }
+//
+
+abstract interface class EventSourcedBehavior<Event, State, View> {
   State Function() get initialStateFactory;
 
-  EventHandler<Event, State> get stateEventHandler;
+  CoreEventHandler<Event, State> get stateEventHandler;
 
   View Function() get initialViewFactory;
 
-  EventHandler<Event, View> get viewEventHandler;
-
-  AdapterFactory<Adapter, Event, State, View> get adapterFactory;
-
-  HandleFactory<Handle, State, Event> get handleFactory;
-}
-
-abstract interface class ApplicationBehavior<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView> {
-  StateView<State, View> Function() get initialStateViewFactory;
-
-  StateViewEventHandler<Event, State, View> get eventHandler;
+  CoreEventHandler<Event, View> get viewEventHandler;
 }
 
 abstract interface class CoreHandle {}

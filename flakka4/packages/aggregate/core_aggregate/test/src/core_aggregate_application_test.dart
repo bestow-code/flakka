@@ -1,9 +1,6 @@
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data/core_data.dart';
-import 'package:core_data_test/core_data_test.dart';
-import 'package:core_object_store/core_object_store.dart';
-import 'package:core_object_store_test/core_object_store_test.dart';
 import 'package:core_application/core_application.dart';
 import 'package:test/test.dart';
 

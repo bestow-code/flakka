@@ -16,37 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CommandEffect<Event, T> {
-  Iterable<Event> get events => throw _privateConstructorUsedError;
   T get reply => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Iterable<Event> events, T reply) persist,
+    required TResult Function(T reply) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Iterable<Event> events, T reply)? persist,
+    TResult? Function(T reply)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Iterable<Event> events, T reply)? persist,
+    TResult Function(T reply)? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CommandEffectPersist<Event, T> value) persist,
+    required TResult Function(CommandEffectNone<Event, T> value) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommandEffectPersist<Event, T> value)? persist,
+    TResult? Function(CommandEffectNone<Event, T> value)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommandEffectPersist<Event, T> value)? persist,
+    TResult Function(CommandEffectNone<Event, T> value)? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +67,7 @@ abstract class $CommandEffectCopyWith<Event, T, $Res> {
           $Res Function(CommandEffect<Event, T>) then) =
       _$CommandEffectCopyWithImpl<Event, T, $Res, CommandEffect<Event, T>>;
   @useResult
-  $Res call({Iterable<Event> events, T reply});
+  $Res call({T reply});
 }
 
 /// @nodoc
@@ -79,14 +84,9 @@ class _$CommandEffectCopyWithImpl<Event, T, $Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = null,
     Object? reply = freezed,
   }) {
     return _then(_value.copyWith(
-      events: null == events
-          ? _value.events
-          : events // ignore: cast_nullable_to_non_nullable
-              as Iterable<Event>,
       reply: freezed == reply
           ? _value.reply
           : reply // ignore: cast_nullable_to_non_nullable
@@ -96,24 +96,25 @@ class _$CommandEffectCopyWithImpl<Event, T, $Res,
 }
 
 /// @nodoc
-abstract class _$$CommandEffectPersistCopyWith<Event, T, $Res>
+abstract class _$$CommandEffectPersistImplCopyWith<Event, T, $Res>
     implements $CommandEffectCopyWith<Event, T, $Res> {
-  factory _$$CommandEffectPersistCopyWith(
-          _$CommandEffectPersist<Event, T> value,
-          $Res Function(_$CommandEffectPersist<Event, T>) then) =
-      __$$CommandEffectPersistCopyWithImpl<Event, T, $Res>;
+  factory _$$CommandEffectPersistImplCopyWith(
+          _$CommandEffectPersistImpl<Event, T> value,
+          $Res Function(_$CommandEffectPersistImpl<Event, T>) then) =
+      __$$CommandEffectPersistImplCopyWithImpl<Event, T, $Res>;
   @override
   @useResult
   $Res call({Iterable<Event> events, T reply});
 }
 
 /// @nodoc
-class __$$CommandEffectPersistCopyWithImpl<Event, T, $Res>
+class __$$CommandEffectPersistImplCopyWithImpl<Event, T, $Res>
     extends _$CommandEffectCopyWithImpl<Event, T, $Res,
-        _$CommandEffectPersist<Event, T>>
-    implements _$$CommandEffectPersistCopyWith<Event, T, $Res> {
-  __$$CommandEffectPersistCopyWithImpl(_$CommandEffectPersist<Event, T> _value,
-      $Res Function(_$CommandEffectPersist<Event, T>) _then)
+        _$CommandEffectPersistImpl<Event, T>>
+    implements _$$CommandEffectPersistImplCopyWith<Event, T, $Res> {
+  __$$CommandEffectPersistImplCopyWithImpl(
+      _$CommandEffectPersistImpl<Event, T> _value,
+      $Res Function(_$CommandEffectPersistImpl<Event, T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +123,7 @@ class __$$CommandEffectPersistCopyWithImpl<Event, T, $Res>
     Object? events = null,
     Object? reply = freezed,
   }) {
-    return _then(_$CommandEffectPersist<Event, T>(
+    return _then(_$CommandEffectPersistImpl<Event, T>(
       null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -137,9 +138,9 @@ class __$$CommandEffectPersistCopyWithImpl<Event, T, $Res>
 
 /// @nodoc
 
-class _$CommandEffectPersist<Event, T>
+class _$CommandEffectPersistImpl<Event, T>
     implements CommandEffectPersist<Event, T> {
-  _$CommandEffectPersist(this.events, {required this.reply});
+  _$CommandEffectPersistImpl(this.events, {required this.reply});
 
   @override
   final Iterable<Event> events;
@@ -155,7 +156,7 @@ class _$CommandEffectPersist<Event, T>
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CommandEffectPersist<Event, T> &&
+            other is _$CommandEffectPersistImpl<Event, T> &&
             const DeepCollectionEquality().equals(other.events, events) &&
             const DeepCollectionEquality().equals(other.reply, reply));
   }
@@ -169,14 +170,16 @@ class _$CommandEffectPersist<Event, T>
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CommandEffectPersistCopyWith<Event, T, _$CommandEffectPersist<Event, T>>
-      get copyWith => __$$CommandEffectPersistCopyWithImpl<Event, T,
-          _$CommandEffectPersist<Event, T>>(this, _$identity);
+  _$$CommandEffectPersistImplCopyWith<Event, T,
+          _$CommandEffectPersistImpl<Event, T>>
+      get copyWith => __$$CommandEffectPersistImplCopyWithImpl<Event, T,
+          _$CommandEffectPersistImpl<Event, T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Iterable<Event> events, T reply) persist,
+    required TResult Function(T reply) none,
   }) {
     return persist(events, reply);
   }
@@ -185,6 +188,7 @@ class _$CommandEffectPersist<Event, T>
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Iterable<Event> events, T reply)? persist,
+    TResult? Function(T reply)? none,
   }) {
     return persist?.call(events, reply);
   }
@@ -193,6 +197,7 @@ class _$CommandEffectPersist<Event, T>
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Iterable<Event> events, T reply)? persist,
+    TResult Function(T reply)? none,
     required TResult orElse(),
   }) {
     if (persist != null) {
@@ -205,6 +210,7 @@ class _$CommandEffectPersist<Event, T>
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CommandEffectPersist<Event, T> value) persist,
+    required TResult Function(CommandEffectNone<Event, T> value) none,
   }) {
     return persist(this);
   }
@@ -213,6 +219,7 @@ class _$CommandEffectPersist<Event, T>
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommandEffectPersist<Event, T> value)? persist,
+    TResult? Function(CommandEffectNone<Event, T> value)? none,
   }) {
     return persist?.call(this);
   }
@@ -221,6 +228,7 @@ class _$CommandEffectPersist<Event, T>
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommandEffectPersist<Event, T> value)? persist,
+    TResult Function(CommandEffectNone<Event, T> value)? none,
     required TResult orElse(),
   }) {
     if (persist != null) {
@@ -233,14 +241,156 @@ class _$CommandEffectPersist<Event, T>
 abstract class CommandEffectPersist<Event, T>
     implements CommandEffect<Event, T> {
   factory CommandEffectPersist(final Iterable<Event> events,
-      {required final T reply}) = _$CommandEffectPersist<Event, T>;
+      {required final T reply}) = _$CommandEffectPersistImpl<Event, T>;
 
-  @override
   Iterable<Event> get events;
   @override
   T get reply;
   @override
   @JsonKey(ignore: true)
-  _$$CommandEffectPersistCopyWith<Event, T, _$CommandEffectPersist<Event, T>>
+  _$$CommandEffectPersistImplCopyWith<Event, T,
+          _$CommandEffectPersistImpl<Event, T>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CommandEffectNoneImplCopyWith<Event, T, $Res>
+    implements $CommandEffectCopyWith<Event, T, $Res> {
+  factory _$$CommandEffectNoneImplCopyWith(
+          _$CommandEffectNoneImpl<Event, T> value,
+          $Res Function(_$CommandEffectNoneImpl<Event, T>) then) =
+      __$$CommandEffectNoneImplCopyWithImpl<Event, T, $Res>;
+  @override
+  @useResult
+  $Res call({T reply});
+}
+
+/// @nodoc
+class __$$CommandEffectNoneImplCopyWithImpl<Event, T, $Res>
+    extends _$CommandEffectCopyWithImpl<Event, T, $Res,
+        _$CommandEffectNoneImpl<Event, T>>
+    implements _$$CommandEffectNoneImplCopyWith<Event, T, $Res> {
+  __$$CommandEffectNoneImplCopyWithImpl(
+      _$CommandEffectNoneImpl<Event, T> _value,
+      $Res Function(_$CommandEffectNoneImpl<Event, T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reply = freezed,
+  }) {
+    return _then(_$CommandEffectNoneImpl<Event, T>(
+      freezed == reply
+          ? _value.reply
+          : reply // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CommandEffectNoneImpl<Event, T> implements CommandEffectNone<Event, T> {
+  _$CommandEffectNoneImpl(this.reply);
+
+  @override
+  final T reply;
+
+  @override
+  String toString() {
+    return 'CommandEffect<$Event, $T>.none(reply: $reply)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CommandEffectNoneImpl<Event, T> &&
+            const DeepCollectionEquality().equals(other.reply, reply));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(reply));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CommandEffectNoneImplCopyWith<Event, T, _$CommandEffectNoneImpl<Event, T>>
+      get copyWith => __$$CommandEffectNoneImplCopyWithImpl<Event, T,
+          _$CommandEffectNoneImpl<Event, T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Iterable<Event> events, T reply) persist,
+    required TResult Function(T reply) none,
+  }) {
+    return none(reply);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Iterable<Event> events, T reply)? persist,
+    TResult? Function(T reply)? none,
+  }) {
+    return none?.call(reply);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Iterable<Event> events, T reply)? persist,
+    TResult Function(T reply)? none,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none(reply);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CommandEffectPersist<Event, T> value) persist,
+    required TResult Function(CommandEffectNone<Event, T> value) none,
+  }) {
+    return none(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CommandEffectPersist<Event, T> value)? persist,
+    TResult? Function(CommandEffectNone<Event, T> value)? none,
+  }) {
+    return none?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CommandEffectPersist<Event, T> value)? persist,
+    TResult Function(CommandEffectNone<Event, T> value)? none,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommandEffectNone<Event, T> implements CommandEffect<Event, T> {
+  factory CommandEffectNone(final T reply) = _$CommandEffectNoneImpl<Event, T>;
+
+  @override
+  T get reply;
+  @override
+  @JsonKey(ignore: true)
+  _$$CommandEffectNoneImplCopyWith<Event, T, _$CommandEffectNoneImpl<Event, T>>
       get copyWith => throw _privateConstructorUsedError;
 }

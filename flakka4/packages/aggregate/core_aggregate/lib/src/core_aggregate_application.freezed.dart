@@ -97,15 +97,15 @@ class _$AggregateRequestCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$_AggregateRequestCopyWith<
+abstract class _$$AggregateRequestImplCopyWith<
     Handle,
     State extends CoreState,
     Event extends CoreEvent,
     $Res> implements $AggregateRequestCopyWith<Handle, State, Event, $Res> {
-  factory _$$_AggregateRequestCopyWith(
-          _$_AggregateRequest<Handle, State, Event> value,
-          $Res Function(_$_AggregateRequest<Handle, State, Event>) then) =
-      __$$_AggregateRequestCopyWithImpl<Handle, State, Event, $Res>;
+  factory _$$AggregateRequestImplCopyWith(
+          _$AggregateRequestImpl<Handle, State, Event> value,
+          $Res Function(_$AggregateRequestImpl<Handle, State, Event>) then) =
+      __$$AggregateRequestImplCopyWithImpl<Handle, State, Event, $Res>;
   @override
   @useResult
   $Res call(
@@ -118,14 +118,14 @@ abstract class _$$_AggregateRequestCopyWith<
 }
 
 /// @nodoc
-class __$$_AggregateRequestCopyWithImpl<Handle, State extends CoreState,
+class __$$AggregateRequestImplCopyWithImpl<Handle, State extends CoreState,
         Event extends CoreEvent, $Res>
     extends _$AggregateRequestCopyWithImpl<Handle, State, Event, $Res,
-        _$_AggregateRequest<Handle, State, Event>>
-    implements _$$_AggregateRequestCopyWith<Handle, State, Event, $Res> {
-  __$$_AggregateRequestCopyWithImpl(
-      _$_AggregateRequest<Handle, State, Event> _value,
-      $Res Function(_$_AggregateRequest<Handle, State, Event>) _then)
+        _$AggregateRequestImpl<Handle, State, Event>>
+    implements _$$AggregateRequestImplCopyWith<Handle, State, Event, $Res> {
+  __$$AggregateRequestImplCopyWithImpl(
+      _$AggregateRequestImpl<Handle, State, Event> _value,
+      $Res Function(_$AggregateRequestImpl<Handle, State, Event>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -135,7 +135,7 @@ class __$$_AggregateRequestCopyWithImpl<Handle, State extends CoreState,
     Object? ref = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(_$_AggregateRequest<Handle, State, Event>(
+    return _then(_$AggregateRequestImpl<Handle, State, Event>(
       null == handler
           ? _value.handler
           : handler // ignore: cast_nullable_to_non_nullable
@@ -154,10 +154,10 @@ class __$$_AggregateRequestCopyWithImpl<Handle, State extends CoreState,
 
 /// @nodoc
 
-class _$_AggregateRequest<Handle, State extends CoreState,
+class _$AggregateRequestImpl<Handle, State extends CoreState,
         Event extends CoreEvent>
     implements _AggregateRequest<Handle, State, Event> {
-  _$_AggregateRequest(this.handler, {this.ref, this.createdAt});
+  _$AggregateRequestImpl(this.handler, {this.ref, this.createdAt});
 
   @override
   final AggregateRequestHandler<Handle, State, Event> handler;
@@ -175,7 +175,7 @@ class _$_AggregateRequest<Handle, State extends CoreState,
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AggregateRequest<Handle, State, Event> &&
+            other is _$AggregateRequestImpl<Handle, State, Event> &&
             (identical(other.handler, handler) || other.handler == handler) &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.createdAt, createdAt) ||
@@ -188,18 +188,19 @@ class _$_AggregateRequest<Handle, State extends CoreState,
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AggregateRequestCopyWith<Handle, State, Event,
-          _$_AggregateRequest<Handle, State, Event>>
-      get copyWith => __$$_AggregateRequestCopyWithImpl<Handle, State, Event,
-          _$_AggregateRequest<Handle, State, Event>>(this, _$identity);
+  _$$AggregateRequestImplCopyWith<Handle, State, Event,
+          _$AggregateRequestImpl<Handle, State, Event>>
+      get copyWith => __$$AggregateRequestImplCopyWithImpl<Handle, State, Event,
+          _$AggregateRequestImpl<Handle, State, Event>>(this, _$identity);
 }
 
 abstract class _AggregateRequest<Handle, State extends CoreState,
     Event extends CoreEvent> implements AggregateRequest<Handle, State, Event> {
   factory _AggregateRequest(
-      final AggregateRequestHandler<Handle, State, Event> handler,
-      {final Ref? ref,
-      final DateTime? createdAt}) = _$_AggregateRequest<Handle, State, Event>;
+          final AggregateRequestHandler<Handle, State, Event> handler,
+          {final Ref? ref,
+          final DateTime? createdAt}) =
+      _$AggregateRequestImpl<Handle, State, Event>;
 
   @override
   AggregateRequestHandler<Handle, State, Event> get handler;
@@ -209,7 +210,7 @@ abstract class _AggregateRequest<Handle, State extends CoreState,
   DateTime? get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_AggregateRequestCopyWith<Handle, State, Event,
-          _$_AggregateRequest<Handle, State, Event>>
+  _$$AggregateRequestImplCopyWith<Handle, State, Event,
+          _$AggregateRequestImpl<Handle, State, Event>>
       get copyWith => throw _privateConstructorUsedError;
 }

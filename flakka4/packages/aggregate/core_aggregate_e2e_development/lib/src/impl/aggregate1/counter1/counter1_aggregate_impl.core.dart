@@ -24,43 +24,41 @@ abstract interface class Counter1AggregateViewInterface {
 
 abstract mixin class _$Counter1AggregateImpl {}
 
-class Counter1AggregateInternal extends Aggregate1RootAggregate
-    implements Counter1AggregateImpl {
-  final _requestHandler = Counter1RequestHandler();
-
-  Counter1AggregateInternal({required super.application});
-
-  @override
-  Future<int> increment(Counter1Ref counter1Ref, int amount) => evaluate(
-      (handle) => _requestHandler.increment(handle, counter1Ref, amount));
-
-  @override
-  Future<void> reset(Counter1Ref counter1Ref) =>
-      evaluate((handle) => _requestHandler.reset(handle, counter1Ref));
-
-  @override
-  Future<bool> isReset(Counter1Ref counter1Ref) =>
-      evaluate((handle) => _requestHandler.isReset(handle, counter1Ref));
-
-  @override
-  Future<void> fail1(Counter1Ref counter1Ref) =>
-      evaluate((_) => ServiceEffect.fail('failure 1'));
-
-  @override
-  Future<bool> fail2(Counter1Ref counter1Ref) =>
-      evaluate((_) => ServiceEffect.fail('failure 2'));
-
-  @override
-  StateStreamable<int> get total => _Counter1AggregateViewTotal(
-      application.view.current.counter1.aggregate.total);
-
-  @override
-  StateStreamable<Counter1EntityView> operator [](Counter1Ref counter1Ref) {
-    return _Counter1EntityView(
-        application.view.current.counter1.collection[counter1Ref]!);
-  }
-}
-
+// class Counter1AggregateInternal extends Aggregate1RootAggregate implements Counter1AggregateImpl {
+//
+//   final _requestHandler = Counter1RequestHandler();
+//
+//   Counter1AggregateInternal({required super.application});
+//
+//
+//   @override
+//   Future<int> increment(Counter1Ref counter1Ref, int amount) => evaluate(
+//           (handle) => _requestHandler.increment(handle, counter1Ref, amount));
+//
+//   @override
+//   Future<void> reset(Counter1Ref counter1Ref) =>
+//       evaluate((handle) => _requestHandler.reset(handle, counter1Ref));
+//
+//   @override
+//   Future<bool> isReset(Counter1Ref counter1Ref) =>
+//       evaluate((handle) => _requestHandler.isReset(handle, counter1Ref));
+//
+//   @override
+//   Future<void> fail1(Counter1Ref counter1Ref) =>
+//       evaluate((_) => ServiceEffect.fail('failure 1'));
+//
+//   @override
+//   Future<bool> fail2(Counter1Ref counter1Ref) =>
+//       evaluate((_) => ServiceEffect.fail('failure 2'));
+//
+//   @override
+//   StateStreamable<int> get total => _Counter1AggregateViewTotal(application.view.current.counter1.aggregate.total);
+//
+//   @override
+//   StateStreamable<Counter1EntityView> operator [](Counter1Ref counter1Ref) {
+//     return _Counter1EntityView(application.view.current.counter1.collection[counter1Ref]!);
+//   }
+// }
 class _Counter1EntityView extends Cubit<Counter1EntityView> {
   _Counter1EntityView(super.initialState);
 }
@@ -126,6 +124,8 @@ class Counter1EntityImpl implements Counter1Entity {
     return handler.increment(state, amount).when(persist: (events, result) {
       _stateEventSink.addAll(events);
       return result;
+    }, none: (int reply) {
+      throw UnimplementedError();
     });
   }
 
@@ -133,6 +133,8 @@ class Counter1EntityImpl implements Counter1Entity {
   bool reset() => handler.reset(state).when(persist: (events, result) {
         _stateEventSink.addAll(events);
         return result;
+      }, none: (bool reply) {
+        throw UnimplementedError();
       });
 }
 

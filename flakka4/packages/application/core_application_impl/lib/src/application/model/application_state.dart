@@ -5,11 +5,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'application_state.freezed.dart';
 
 @freezed
-class ApplicationState< State extends CoreState,
-View extends CoreView> with _$ApplicationState< State, View> {
-  factory ApplicationState({
-    required ({Ref ref, DateTime createdAt}) refDateTime,
-    required StateView<State, View> result,
-    required ({bool local, bool remote}) ready,
-  }) = _ApplicationState< State, View>;
+class ApplicationState<State extends CoreState, View extends CoreView>
+    with _$ApplicationState<State, View> {
+  factory ApplicationState(
+    Ref ref,
+    State state,
+    View view,
+    int sequenceNumber,
+  ) = _ApplicationState<State, View>;
+
+  factory ApplicationState.initial(
+    Ref ref,
+    int sequenceNumber,
+  ) = ApplicationStateInitial<State,View>;
 }

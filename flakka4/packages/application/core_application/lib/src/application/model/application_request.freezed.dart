@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApplicationRequest<Event extends CoreEvent, State extends CoreState> {
-  Ref get ref => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  RefDateTime get meta => throw _privateConstructorUsedError;
   RequestHandler<State, Event> get handler =>
       throw _privateConstructorUsedError;
 
@@ -34,10 +33,7 @@ abstract class $ApplicationRequestCopyWith<Event extends CoreEvent,
       _$ApplicationRequestCopyWithImpl<Event, State, $Res,
           ApplicationRequest<Event, State>>;
   @useResult
-  $Res call(
-      {Ref ref, DateTime createdAt, RequestHandler<State, Event> handler});
-
-  $RefCopyWith<$Res> get ref;
+  $Res call({RefDateTime meta, RequestHandler<State, Event> handler});
 }
 
 /// @nodoc
@@ -57,32 +53,19 @@ class _$ApplicationRequestCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? createdAt = null,
+    Object? meta = freezed,
     Object? handler = null,
   }) {
     return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      meta: freezed == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as RefDateTime,
       handler: null == handler
           ? _value.handler
           : handler // ignore: cast_nullable_to_non_nullable
               as RequestHandler<State, Event>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
   }
 }
 
@@ -97,11 +80,7 @@ abstract class _$$ApplicationRequestImplCopyWith<
       __$$ApplicationRequestImplCopyWithImpl<Event, State, $Res>;
   @override
   @useResult
-  $Res call(
-      {Ref ref, DateTime createdAt, RequestHandler<State, Event> handler});
-
-  @override
-  $RefCopyWith<$Res> get ref;
+  $Res call({RefDateTime meta, RequestHandler<State, Event> handler});
 }
 
 /// @nodoc
@@ -118,19 +97,14 @@ class __$$ApplicationRequestImplCopyWithImpl<Event extends CoreEvent,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? createdAt = null,
+    Object? meta = freezed,
     Object? handler = null,
   }) {
     return _then(_$ApplicationRequestImpl<Event, State>(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      meta: freezed == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as RefDateTime,
       handler: null == handler
           ? _value.handler
           : handler // ignore: cast_nullable_to_non_nullable
@@ -143,19 +117,16 @@ class __$$ApplicationRequestImplCopyWithImpl<Event extends CoreEvent,
 
 class _$ApplicationRequestImpl<Event extends CoreEvent, State extends CoreState>
     implements _ApplicationRequest<Event, State> {
-  _$ApplicationRequestImpl(
-      {required this.ref, required this.createdAt, required this.handler});
+  _$ApplicationRequestImpl({required this.meta, required this.handler});
 
   @override
-  final Ref ref;
-  @override
-  final DateTime createdAt;
+  final RefDateTime meta;
   @override
   final RequestHandler<State, Event> handler;
 
   @override
   String toString() {
-    return 'ApplicationRequest<$Event, $State>(ref: $ref, createdAt: $createdAt, handler: $handler)';
+    return 'ApplicationRequest<$Event, $State>(meta: $meta, handler: $handler)';
   }
 
   @override
@@ -163,14 +134,13 @@ class _$ApplicationRequestImpl<Event extends CoreEvent, State extends CoreState>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationRequestImpl<Event, State> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            const DeepCollectionEquality().equals(other.meta, meta) &&
             (identical(other.handler, handler) || other.handler == handler));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, createdAt, handler);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(meta), handler);
 
   @JsonKey(ignore: true)
   @override
@@ -184,15 +154,12 @@ class _$ApplicationRequestImpl<Event extends CoreEvent, State extends CoreState>
 abstract class _ApplicationRequest<Event extends CoreEvent,
     State extends CoreState> implements ApplicationRequest<Event, State> {
   factory _ApplicationRequest(
-          {required final Ref ref,
-          required final DateTime createdAt,
+          {required final RefDateTime meta,
           required final RequestHandler<State, Event> handler}) =
       _$ApplicationRequestImpl<Event, State>;
 
   @override
-  Ref get ref;
-  @override
-  DateTime get createdAt;
+  RefDateTime get meta;
   @override
   RequestHandler<State, Event> get handler;
   @override

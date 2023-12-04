@@ -57,7 +57,7 @@ class AggregateApplicationBase<
             createdAt: aggregateHandlerRequest.createdAt,
           ),
         )
-        .pipe(requestSink.sink);
+        .pipe(requestSink._sink);
   }
 
   @override

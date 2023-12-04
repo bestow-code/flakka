@@ -1,7 +1,6 @@
+import 'dart:math';
+
 import 'package:core_common/core_common.dart';
-
-import '../core_data_api.dart';
-
 
 class RefFactory {
   RefFactory([IdFactory? idFactory])
@@ -12,5 +11,28 @@ class RefFactory {
 
   final IdFactory _idFactory;
 
-  Ref create() => Ref(_idFactory.create());
+  Ref next() => Ref(_idFactory.next());
+}
+
+class RefProvider {
+  RefProvider(Random random, [int? length])
+      : _random = random,
+        _length = length;
+
+  factory RefProvider.secure([int? length]) =>
+      RefProvider(Random.secure(), length);
+
+  final Random _random;
+  final int? _length;
+  final _lookUp = <String, Ref>{};
+
+  Ref operator [](String value) => _lookUp.putIfAbsent(value, () => Ref(value));
+
+  Ref get next {
+    var value = AutoIdGenerator.next(_random, _length);
+    while (_lookUp.containsKey(value)) {
+      value = AutoIdGenerator.next(_random, _length);
+    }
+    return _lookUp[value] = Ref(value);
+  }
 }

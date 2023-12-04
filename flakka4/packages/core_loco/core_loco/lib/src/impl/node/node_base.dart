@@ -53,7 +53,7 @@ abstract class NodeBase2<
   late final NodeState Function() _stateFactory;
 
   //ignore: use_setters_to_change_properties
-  void registerStateFactory(NodeState Function() factory) =>
+  void registerInitialStateFactory(NodeState Function() factory) =>
       _stateFactory = factory;
 
   //ignore: use_setters_to_change_properties
@@ -120,25 +120,25 @@ abstract class NodeBase<
 
     child.stream.listen(
       (event) => handleResult(
-          _onSnapshot(_state.hasValue ? _state.value : _stateFactory(), event)),
+          _onSnapshot(_state.hasValue ? _state.value : _initialStateFactory(), event)),
     );
     child.connect();
 
     input.listen(
       (event) => handleResult(
         _onInput(
-          _state.hasValue ? _state.value : _stateFactory(),
+          _state.hasValue ? _state.value : _initialStateFactory(),
           event,
         ),
       ),
     );
   }
 
-  late final NodeState Function() _stateFactory;
+  late final NodeState Function() _initialStateFactory;
 
   //ignore: use_setters_to_change_properties
-  void registerStateFactory(NodeState Function() factory) =>
-      _stateFactory = factory;
+  void registerInitialStateFactory(NodeState Function() factory) =>
+      _initialStateFactory = factory;
 
   //ignore: use_setters_to_change_properties
   void registerInitialStateHandler(

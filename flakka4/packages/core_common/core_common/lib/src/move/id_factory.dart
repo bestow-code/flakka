@@ -18,7 +18,7 @@ class IdFactory {
 
   final String Function() _create;
 
-  String create() => _create();
+  String next() => _create();
 }
 
 abstract class AutoIdGenerator {
@@ -38,6 +38,19 @@ abstract class AutoIdGenerator {
     for (var i = 0; i < autoIdLength; ++i) {
       stringBuffer
           .write(autoIdAlphabet[(param?.random ?? _random).nextInt(maxRandom)]);
+    }
+
+    return stringBuffer.toString();
+  }
+
+  static String next(Random random, [int? length]) {
+    // ignore: no_leading_underscores_for_local_identifiers
+    final _length = length ?? autoIdLength;
+    final stringBuffer = StringBuffer();
+    const maxRandom = autoIdAlphabet.length;
+
+    for (var i = 0; i < _length; ++i) {
+      stringBuffer.write(autoIdAlphabet[random.nextInt(maxRandom)]);
     }
 
     return stringBuffer.toString();

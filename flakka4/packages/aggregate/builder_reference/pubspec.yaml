@@ -1,0 +1,41 @@
+name: builder_reference
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+dependencies:
+  bloc:
+  core_aggregate:
+  core_aggregate_annotation:
+  core_application:
+  core_application_api:
+  core_common:
+  core_data_api:
+  core_journal_api:
+  freezed_annotation:
+  json_annotation: ^4.8.1
+  signals:
+dev_dependencies:
+  bloc_test:
+  build_runner:
+  checks:
+  core_aggregate_build:
+  freezed:
+  json_serializable:
+  lints:
+  matcher:
+  melos: ^3.0.0
+  mocktail: ^0.3.0
+  test: ^1.19.2
+  very_good_analysis:
+
+
+index_generator:
+  exclude:
+    - '**.*.dart'
+  indexes:
+    - path: lib/src/api
+      name: app1_api
+      include:
+        - app1_api/**

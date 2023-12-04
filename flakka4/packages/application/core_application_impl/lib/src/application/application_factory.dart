@@ -1,27 +1,28 @@
-import 'dart:async';
-
 import 'package:core_application/core_application.dart';
-import 'package:core_data/core_data.dart';
-import 'package:core_journal_impl/core_journal_impl.dart';
+import 'package:core_application_api/core_application_api.dart';
+import 'package:core_common/core_common.dart';
+import 'package:core_data_api/core_data_api.dart';
 
-class ApplicationFactory<
-        Application extends CoreApplication<Event, State, View>,
-        Event extends CoreEvent,
-        State extends CoreState,
+import '../../core_application_impl.dart';
+
+class ApplicationFactory<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
-    implements CoreApplicationFactory<Application, Event, State, View> {
-  ApplicationFactory({required this.childFactory});
+    implements CoreApplicationFactory<Event, State, View> {
+  ApplicationFactory();
 
   @override
-  final JournalFactory<Event, State, View> childFactory;
-
-  @override
-  // TODO: implement context
-  get context => throw UnimplementedError();
-
-  @override
-  Future<Application> create(covariant param) {
-    // TODO: implement create
-    throw UnimplementedError();
-  }
+  CoreApplication<Event, State, View> create({
+    required ({
+      CoreJournal<Event, State, View> journal,
+      ApplicationBehavior<Event, State, View> behavior,
+      RefDateTime Function() refDateTimeFactory,
+      Ref Function() refFactory,
+    }) param,
+  }) =>
+      Application(
+        journal: param.journal,
+        handleStateEvent: param.behavior.handleStateEvent,
+        handleViewEvent: param.behavior.handleViewEvent,
+        refDateTimeFactory: param.refDateTimeFactory,
+      );
 }

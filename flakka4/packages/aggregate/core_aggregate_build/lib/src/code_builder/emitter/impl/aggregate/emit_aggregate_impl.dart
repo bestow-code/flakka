@@ -29,41 +29,41 @@ abstract interface class ${aggregate.scope.pascalCase}AggregateViewInterface {
 
 abstract mixin class _\$${aggregate.scope.pascalCase}AggregateImpl {}
 
-class ${aggregate.scope.pascalCase}AggregateInternal extends ${root.scope.pascalCase}RootAggregate implements ${aggregate.scope.pascalCase}AggregateImpl {
-
-  final _requestHandler = ${aggregate.scope.pascalCase}RequestHandler();
-
-  ${aggregate.scope.pascalCase}AggregateInternal({required super.application});
-
-
-  @override
-  Future<int> increment(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref, int amount) => evaluate(
-          (handle) => _requestHandler.increment(handle, ${aggregate.scope.camelCase}Ref, amount));
-
-  @override
-  Future<void> reset(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
-      evaluate((handle) => _requestHandler.reset(handle, ${aggregate.scope.camelCase}Ref));
-
-  @override
-  Future<bool> isReset(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
-      evaluate((handle) => _requestHandler.isReset(handle, ${aggregate.scope.camelCase}Ref));
-
-  @override
-  Future<void> fail1(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
-      evaluate((_) => ServiceEffect.fail('failure 1'));
-
-  @override
-  Future<bool> fail2(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
-      evaluate((_) => ServiceEffect.fail('failure 2'));
-
-  @override
-  StateStreamable<int> get total => _${aggregate.scope.pascalCase}AggregateViewTotal(application.view.current.${aggregate.scope.camelCase}.aggregate.total);
-
-  @override
-  StateStreamable<${aggregate.scope.pascalCase}EntityView> operator [](${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) {
-    return _${aggregate.scope.pascalCase}EntityView(application.view.current.${aggregate.scope.camelCase}.collection[${aggregate.scope.camelCase}Ref]!);
-  }
-}
+// class ${aggregate.scope.pascalCase}AggregateInternal extends ${root.scope.pascalCase}RootAggregate implements ${aggregate.scope.pascalCase}AggregateImpl {
+//
+//   final _requestHandler = ${aggregate.scope.pascalCase}RequestHandler();
+//
+//   ${aggregate.scope.pascalCase}AggregateInternal({required super.application});
+//
+//
+//   @override
+//   Future<int> increment(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref, int amount) => evaluate(
+//           (handle) => _requestHandler.increment(handle, ${aggregate.scope.camelCase}Ref, amount));
+//
+//   @override
+//   Future<void> reset(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
+//       evaluate((handle) => _requestHandler.reset(handle, ${aggregate.scope.camelCase}Ref));
+//
+//   @override
+//   Future<bool> isReset(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
+//       evaluate((handle) => _requestHandler.isReset(handle, ${aggregate.scope.camelCase}Ref));
+//
+//   @override
+//   Future<void> fail1(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
+//       evaluate((_) => ServiceEffect.fail('failure 1'));
+//
+//   @override
+//   Future<bool> fail2(${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) =>
+//       evaluate((_) => ServiceEffect.fail('failure 2'));
+//
+//   @override
+//   StateStreamable<int> get total => _${aggregate.scope.pascalCase}AggregateViewTotal(application.view.current.${aggregate.scope.camelCase}.aggregate.total);
+//
+//   @override
+//   StateStreamable<${aggregate.scope.pascalCase}EntityView> operator [](${aggregate.scope.pascalCase}Ref ${aggregate.scope.camelCase}Ref) {
+//     return _${aggregate.scope.pascalCase}EntityView(application.view.current.${aggregate.scope.camelCase}.collection[${aggregate.scope.camelCase}Ref]!);
+//   }
+// }
 class _${aggregate.scope.pascalCase}EntityView extends Cubit<${aggregate.scope.pascalCase}EntityView> {
   _${aggregate.scope.pascalCase}EntityView(super.initialState);
 }
@@ -123,14 +123,18 @@ class ${aggregate.scope.pascalCase}EntityImpl implements ${aggregate.scope.pasca
     return handler.increment(state, amount).when(persist: (events, result) {
       _stateEventSink.addAll(events);
       return result;
+    }, none: (int reply) {
+      throw UnimplementedError();
     });
   }
 
   @override
   bool reset() => handler.reset(state).when(persist: (events, result) {
-    _stateEventSink.addAll(events);
-    return result;
-  });
+        _stateEventSink.addAll(events);
+        return result;
+      }, none: (bool reply) {
+        throw UnimplementedError();
+      });
 }
 
 class ${aggregate.scope.pascalCase}Collection {

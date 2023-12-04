@@ -57,7 +57,7 @@ class RefDateTimeFactory {
     DateTime createdAt,
     Ref ref,
   }) create() => (
-        ref: _refFactory.create(),
+        ref: _refFactory.next(),
         createdAt: _dateTimeFactory.create(),
       );
 

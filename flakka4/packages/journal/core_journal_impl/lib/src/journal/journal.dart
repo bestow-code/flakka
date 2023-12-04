@@ -28,7 +28,7 @@ class Journal<Event extends CoreEvent, State extends CoreState,
   late final Ref _initialBase;
 
   Journal({required super.child}) {
-    registerStateFactory(JournalState.initial);
+    registerInitialStateFactory(JournalState.initial);
     registerInputHandler(
       (state, effectIn, effectOutSink, snapshotOutSink) {
         snapshotOutSink.add(JournalSnapshotImpl(

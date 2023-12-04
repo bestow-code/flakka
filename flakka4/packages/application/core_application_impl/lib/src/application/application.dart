@@ -1,94 +1,142 @@
 import 'package:core_application/core_application.dart';
+import 'package:core_application_api/core_application_api.dart';
 import 'package:core_common/core_common.dart';
 import 'package:core_data_api/core_data_api.dart';
 import 'package:core_loco/core_loco.dart';
+import 'package:core_persistence_base/core_persistence_base.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../core_application_impl.dart';
 
 class Application<Event extends CoreEvent, State extends CoreState,
         View extends CoreView>
-    extends NodeBase<
+    extends NodeBase2<
         JournalEffect<Event, State, View>,
         JournalSnapshot<Event, State, View>,
         CoreJournal<Event, State, View>,
-        ApplicationRequest<Event, State>,
+        ApplicationEffect<Event, State>,
         ApplicationSnapshot<Event, View>,
         ApplicationState<State, View>>
     implements CoreApplication<Event, State, View> {
-  Application({required this.child}) : super(child: child);
-
-  @override
-  final CoreJournal<Event, State, View> child;
-
-  @override
-  Ref request(RequestHandler<State, Event> handler) {
-    // TODO: implement request
-    throw UnimplementedError();
+  Application({
+    required this.journal,
+    required ApplicationProcessor<Event, State, View> handler,
+    required State Function(State state, Event event) handleStateEvent,
+    required View Function(View view, Event event) handleViewEvent,
+    required RefDateTime Function() refDateTimeFactory,
+  })  : _processor = handler,
+        _handleStateEvent = handleStateEvent,
+        _handleViewEvent = handleViewEvent,
+        _refDateTimeFactory = refDateTimeFactory,
+        super(child: journal) {
+    registerInitialStateFactory(
+      () => ApplicationState.initial(
+        _initialHeadRef.ref,
+        _initialHeadRef.sequenceNumber,
+      ),
+    );
+    registerInputHandler(
+      (state, effectIn, effectOutSink, snapshotOutSink) => state.map(
+        (state) => effectIn.map(
+          request: (request) {
+            return _processor.execute(request.handler).map(
+                  success: (success) => success.result.map(
+                    persist: (persist) {
+                      effectOutSink.add(
+                        JournalEffect.append(
+                          ref: request.meta.ref,
+                          previous: state.ref,
+                          headEffect: HeadEffect2.event(persist.event),
+                          stateView: StateView(persist.state, persist.view),
+                          createdAt: request.meta.dateTime,
+                          sequenceNumber: state.sequenceNumber + 1,
+                        ),
+                      );
+                      snapshotOutSink
+                        ..add(
+                          ApplicationSnapshot.operation(
+                            ApplicationOperation.event(
+                              state.ref,
+                              RefEvent(request.meta.ref, persist.event),
+                              request.meta.dateTime,
+                            ),
+                          ),
+                        )
+                        ..add(
+                          ApplicationSnapshot.view(
+                            persist.view,
+                            request.meta.dateTime,
+                          ),
+                        );
+                      return state.copyWith(
+                        ref: request.meta.ref,
+                        state: persist.state,
+                        view: persist.view,
+                        sequenceNumber: state.sequenceNumber + 1,
+                      );
+                    },
+                    none: (none) {
+                      throw UnimplementedError();
+                    },
+                  ),
+                  failure: (failure) {
+                    throw UnimplementedError();
+                  },
+                );
+          },
+        ),
+        initial: (_) => throw UnimplementedError(),
+      ),
+    );
+    registerSnapshotHandler(
+      (state, snapshotIn, snapshotOutSink, effectOutSink) => state.map(
+        (value) => throw UnimplementedError(),
+        initial: (initial) {
+          final stateEvents = snapshotIn.query(initial.ref);
+          final nextState = stateEvents.events
+              .fold(stateEvents.start.state, _handleStateEvent);
+          final nextView =
+              stateEvents.events.fold(stateEvents.start.view, _handleViewEvent);
+          snapshotOutSink.add(
+            ApplicationSnapshot.view(
+              nextView,
+              DateTime.fromMillisecondsSinceEpoch(
+                0,
+              ), //TODO add createdAt to HeadRef/ApplicationState
+            ),
+          );
+          return ApplicationState(
+            initial.ref,
+            nextState,
+            nextView,
+            initial.sequenceNumber,
+          );
+        },
+      ),
+    );
   }
 
+  final RefDateTime Function() _refDateTimeFactory;
+  final CoreJournal<Event, State, View> journal;
+  final ApplicationProcessor<Event, State, View> _processor;
+  final State Function(State state, Event event) _handleStateEvent;
+
+  final View Function(View view, Event event) _handleViewEvent;
+
   @override
-  // TODO: implement view
   ValueStream<View> get view => throw UnimplementedError();
-// Application(
-//   super.initialStateFactory, {
-//   required super.child,
-//   required StateViewProcessor<Event, State, View> stateViewProcessor,
-// }) : _stateViewProcessor = stateViewProcessor;
-//
-// final StateViewProcessor<Event, State, View> _stateViewProcessor;
-//
-// @override
-// ApplicationState<State, View> buildInitialState(
-//   JournalUpdate<Event, State, View> update,
-// ) {
-//   final result = update.journal.query(Ref('0'));
-//   return result.map(
-//     (value) => ApplicationState(
-//         ref: Ref('0'),
-//         stateView: _stateViewProcessor.apply(value.events, value.initial)),
-//     initial: (initial) => throw UnimplementedError(),
-//   );
-// }
-//
-// @override
-// ({
-//   JournalEffect<Event, State, View>? effect,
-//   ApplicationState<State, View>? state,
-// }) onInput(
-//   ApplicationState<State, View> state,
-//   ApplicationSnapshotRequest<Event, State, View> valueIn,
-// ) =>
-//     valueIn.request.handle(state.stateView.state).map(
-//           persist: (persist) {
-//             final nextStateView =
-//                 _stateViewProcessor.apply([persist.event], state.stateView);
-//             return (
-//               effect: JournalEffect<Event, State, View>.event(
-//                 ref: valueIn.refDateTime.ref,
-//                 event: persist.event,
-//                 stateView: nextStateView,
-//                 createdAt: valueIn.refDateTime.createdAt,
-//               ),
-//               state: (ref: valueIn.refDateTime.ref, stateView: nextStateView),
-//             );
-//           },
-//           none: (none) => (
-//             effect: JournalEffect<Event, State, View>.none(
-//               ref: valueIn.refDateTime.ref,
-//             ),
-//             state: null
-//           ),
-//         );
-//
-// @override
-// ({
-//   ApplicationState<State, View>? state,
-//   View? value,
-// }) onUpdate(
-//   ApplicationState<State, View> state,
-//   JournalUpdate<Event, State, View> update,
-// ) {
-//   throw UnimplementedError();
-// }
+
+  @override
+  void execute(RequestHandler<State, Event> handler) => input.add(
+        ApplicationEffect.request(
+          _refDateTimeFactory(),
+          handler,
+        ),
+      );
+
+  @override
+  Future<HeadRef> provision(PersistenceProvisioning provisioning) =>
+      journal.provision(provisioning).then((value) => _initialHeadRef = value);
+
+  late HeadRef _initialHeadRef;
 }

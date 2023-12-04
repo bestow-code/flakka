@@ -3,7 +3,6 @@ import 'package:core_common/core_common.dart';
 import 'package:core_data_api/core_data_api.dart';
 
 abstract interface class CoreApplicationFactory<
-        Application extends CoreApplication<Event, State, View>,
         Event extends CoreEvent,
         State extends CoreState,
         View extends CoreView>

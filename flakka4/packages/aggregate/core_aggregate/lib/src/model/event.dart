@@ -19,12 +19,17 @@ abstract interface class CoreRootEvent<
   EntityRef get entity;
 }
 
-abstract interface class CoreCollectionEvent<
-    EntityEvent extends CoreEntityEvent,
-    EntityRef extends CoreEntityRef> implements CoreEvent {
-  EntityEvent get data;
+// abstract interface class CoreCollectionEvent<
+//     EntityEvent extends CoreEntityEvent,
+//     EntityRef extends CoreEntityRef> implements CoreEvent {
+//   EntityEvent get data;
+//
+//   EntityRef get entity;
+// }
+abstract mixin class CoreCollectionEvent<Event, EntityRef> {
+  EntityRef get entityRef;
 
-  EntityRef get entity;
+  Event get event;
 }
 
 abstract interface class CoreEntityEvent implements CoreEvent {}

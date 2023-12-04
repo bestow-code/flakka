@@ -81,20 +81,20 @@ class _$ServiceEffectCopyWithImpl<T, $Res, $Val extends ServiceEffect<T>>
 }
 
 /// @nodoc
-abstract class _$$ServiceEffectNoneCopyWith<T, $Res> {
-  factory _$$ServiceEffectNoneCopyWith(_$ServiceEffectNone<T> value,
-          $Res Function(_$ServiceEffectNone<T>) then) =
-      __$$ServiceEffectNoneCopyWithImpl<T, $Res>;
+abstract class _$$ServiceEffectNoneImplCopyWith<T, $Res> {
+  factory _$$ServiceEffectNoneImplCopyWith(_$ServiceEffectNoneImpl<T> value,
+          $Res Function(_$ServiceEffectNoneImpl<T>) then) =
+      __$$ServiceEffectNoneImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T response});
 }
 
 /// @nodoc
-class __$$ServiceEffectNoneCopyWithImpl<T, $Res>
-    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectNone<T>>
-    implements _$$ServiceEffectNoneCopyWith<T, $Res> {
-  __$$ServiceEffectNoneCopyWithImpl(_$ServiceEffectNone<T> _value,
-      $Res Function(_$ServiceEffectNone<T>) _then)
+class __$$ServiceEffectNoneImplCopyWithImpl<T, $Res>
+    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectNoneImpl<T>>
+    implements _$$ServiceEffectNoneImplCopyWith<T, $Res> {
+  __$$ServiceEffectNoneImplCopyWithImpl(_$ServiceEffectNoneImpl<T> _value,
+      $Res Function(_$ServiceEffectNoneImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$ServiceEffectNoneCopyWithImpl<T, $Res>
   $Res call({
     Object? response = freezed,
   }) {
-    return _then(_$ServiceEffectNone<T>(
+    return _then(_$ServiceEffectNoneImpl<T>(
       response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$ServiceEffectNoneCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
-  _$ServiceEffectNone({required this.response});
+class _$ServiceEffectNoneImpl<T> implements ServiceEffectNone<T> {
+  _$ServiceEffectNoneImpl({required this.response});
 
   @override
   final T response;
@@ -128,7 +128,7 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServiceEffectNone<T> &&
+            other is _$ServiceEffectNoneImpl<T> &&
             const DeepCollectionEquality().equals(other.response, response));
   }
 
@@ -139,9 +139,10 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServiceEffectNoneCopyWith<T, _$ServiceEffectNone<T>> get copyWith =>
-      __$$ServiceEffectNoneCopyWithImpl<T, _$ServiceEffectNone<T>>(
-          this, _$identity);
+  _$$ServiceEffectNoneImplCopyWith<T, _$ServiceEffectNoneImpl<T>>
+      get copyWith =>
+          __$$ServiceEffectNoneImplCopyWithImpl<T, _$ServiceEffectNoneImpl<T>>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -214,29 +215,29 @@ class _$ServiceEffectNone<T> implements ServiceEffectNone<T> {
 
 abstract class ServiceEffectNone<T> implements ServiceEffect<T> {
   factory ServiceEffectNone({required final T response}) =
-      _$ServiceEffectNone<T>;
+      _$ServiceEffectNoneImpl<T>;
 
   T get response;
   @JsonKey(ignore: true)
-  _$$ServiceEffectNoneCopyWith<T, _$ServiceEffectNone<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ServiceEffectNoneImplCopyWith<T, _$ServiceEffectNoneImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServiceEffectFailCopyWith<T, $Res> {
-  factory _$$ServiceEffectFailCopyWith(_$ServiceEffectFail<T> value,
-          $Res Function(_$ServiceEffectFail<T>) then) =
-      __$$ServiceEffectFailCopyWithImpl<T, $Res>;
+abstract class _$$ServiceEffectFailImplCopyWith<T, $Res> {
+  factory _$$ServiceEffectFailImplCopyWith(_$ServiceEffectFailImpl<T> value,
+          $Res Function(_$ServiceEffectFailImpl<T>) then) =
+      __$$ServiceEffectFailImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$ServiceEffectFailCopyWithImpl<T, $Res>
-    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectFail<T>>
-    implements _$$ServiceEffectFailCopyWith<T, $Res> {
-  __$$ServiceEffectFailCopyWithImpl(_$ServiceEffectFail<T> _value,
-      $Res Function(_$ServiceEffectFail<T>) _then)
+class __$$ServiceEffectFailImplCopyWithImpl<T, $Res>
+    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectFailImpl<T>>
+    implements _$$ServiceEffectFailImplCopyWith<T, $Res> {
+  __$$ServiceEffectFailImplCopyWithImpl(_$ServiceEffectFailImpl<T> _value,
+      $Res Function(_$ServiceEffectFailImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -244,7 +245,7 @@ class __$$ServiceEffectFailCopyWithImpl<T, $Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$ServiceEffectFail<T>(
+    return _then(_$ServiceEffectFailImpl<T>(
       freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -255,8 +256,8 @@ class __$$ServiceEffectFailCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
-  _$ServiceEffectFail([this.message]);
+class _$ServiceEffectFailImpl<T> implements ServiceEffectFail<T> {
+  _$ServiceEffectFailImpl([this.message]);
 
   @override
   final String? message;
@@ -270,7 +271,7 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServiceEffectFail<T> &&
+            other is _$ServiceEffectFailImpl<T> &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -280,9 +281,10 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServiceEffectFailCopyWith<T, _$ServiceEffectFail<T>> get copyWith =>
-      __$$ServiceEffectFailCopyWithImpl<T, _$ServiceEffectFail<T>>(
-          this, _$identity);
+  _$$ServiceEffectFailImplCopyWith<T, _$ServiceEffectFailImpl<T>>
+      get copyWith =>
+          __$$ServiceEffectFailImplCopyWithImpl<T, _$ServiceEffectFailImpl<T>>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -354,29 +356,31 @@ class _$ServiceEffectFail<T> implements ServiceEffectFail<T> {
 }
 
 abstract class ServiceEffectFail<T> implements ServiceEffect<T> {
-  factory ServiceEffectFail([final String? message]) = _$ServiceEffectFail<T>;
+  factory ServiceEffectFail([final String? message]) =
+      _$ServiceEffectFailImpl<T>;
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$ServiceEffectFailCopyWith<T, _$ServiceEffectFail<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ServiceEffectFailImplCopyWith<T, _$ServiceEffectFailImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServiceEffectPersistCopyWith<T, $Res> {
-  factory _$$ServiceEffectPersistCopyWith(_$ServiceEffectPersist<T> value,
-          $Res Function(_$ServiceEffectPersist<T>) then) =
-      __$$ServiceEffectPersistCopyWithImpl<T, $Res>;
+abstract class _$$ServiceEffectPersistImplCopyWith<T, $Res> {
+  factory _$$ServiceEffectPersistImplCopyWith(
+          _$ServiceEffectPersistImpl<T> value,
+          $Res Function(_$ServiceEffectPersistImpl<T>) then) =
+      __$$ServiceEffectPersistImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T response});
 }
 
 /// @nodoc
-class __$$ServiceEffectPersistCopyWithImpl<T, $Res>
-    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectPersist<T>>
-    implements _$$ServiceEffectPersistCopyWith<T, $Res> {
-  __$$ServiceEffectPersistCopyWithImpl(_$ServiceEffectPersist<T> _value,
-      $Res Function(_$ServiceEffectPersist<T>) _then)
+class __$$ServiceEffectPersistImplCopyWithImpl<T, $Res>
+    extends _$ServiceEffectCopyWithImpl<T, $Res, _$ServiceEffectPersistImpl<T>>
+    implements _$$ServiceEffectPersistImplCopyWith<T, $Res> {
+  __$$ServiceEffectPersistImplCopyWithImpl(_$ServiceEffectPersistImpl<T> _value,
+      $Res Function(_$ServiceEffectPersistImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -384,7 +388,7 @@ class __$$ServiceEffectPersistCopyWithImpl<T, $Res>
   $Res call({
     Object? response = freezed,
   }) {
-    return _then(_$ServiceEffectPersist<T>(
+    return _then(_$ServiceEffectPersistImpl<T>(
       response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -395,8 +399,8 @@ class __$$ServiceEffectPersistCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ServiceEffectPersist<T> implements ServiceEffectPersist<T> {
-  const _$ServiceEffectPersist({required this.response});
+class _$ServiceEffectPersistImpl<T> implements ServiceEffectPersist<T> {
+  const _$ServiceEffectPersistImpl({required this.response});
 
   @override
   final T response;
@@ -410,7 +414,7 @@ class _$ServiceEffectPersist<T> implements ServiceEffectPersist<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServiceEffectPersist<T> &&
+            other is _$ServiceEffectPersistImpl<T> &&
             const DeepCollectionEquality().equals(other.response, response));
   }
 
@@ -421,9 +425,9 @@ class _$ServiceEffectPersist<T> implements ServiceEffectPersist<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServiceEffectPersistCopyWith<T, _$ServiceEffectPersist<T>> get copyWith =>
-      __$$ServiceEffectPersistCopyWithImpl<T, _$ServiceEffectPersist<T>>(
-          this, _$identity);
+  _$$ServiceEffectPersistImplCopyWith<T, _$ServiceEffectPersistImpl<T>>
+      get copyWith => __$$ServiceEffectPersistImplCopyWithImpl<T,
+          _$ServiceEffectPersistImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -496,10 +500,10 @@ class _$ServiceEffectPersist<T> implements ServiceEffectPersist<T> {
 
 abstract class ServiceEffectPersist<T> implements ServiceEffect<T> {
   const factory ServiceEffectPersist({required final T response}) =
-      _$ServiceEffectPersist<T>;
+      _$ServiceEffectPersistImpl<T>;
 
   T get response;
   @JsonKey(ignore: true)
-  _$$ServiceEffectPersistCopyWith<T, _$ServiceEffectPersist<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ServiceEffectPersistImplCopyWith<T, _$ServiceEffectPersistImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

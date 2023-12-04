@@ -1,6 +1,6 @@
 import 'package:core_data_api/core_data_api.dart';
 
-import '../../core_application.dart';
+import '../core_application_api.dart';
 
 class Request<State extends CoreState, Event extends CoreEvent> {
   Request(

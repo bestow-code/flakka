@@ -15,86 +15,73 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState,
-    View extends CoreView> {
-  Ref get ref => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  RequestEffect<Event> Function(StateView<State, View>) get request =>
+mixin _$ApplicationEffect<Event extends CoreEvent, State extends CoreState> {
+  RefDateTime get meta => throw _privateConstructorUsedError;
+  RequestEffect<Event> Function(State) get handler =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, DateTime createdAt,
-            RequestEffect<Event> Function(StateView<State, View>) request)
+    required TResult Function(
+            RefDateTime meta, RequestEffect<Event> Function(State) handler)
         request,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, DateTime createdAt,
-            RequestEffect<Event> Function(StateView<State, View>) request)?
+    TResult? Function(
+            RefDateTime meta, RequestEffect<Event> Function(State) handler)?
         request,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, DateTime createdAt,
-            RequestEffect<Event> Function(StateView<State, View>) request)?
+    TResult Function(
+            RefDateTime meta, RequestEffect<Event> Function(State) handler)?
         request,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(
-            ApplicationEffectRequest<Event, State, View> value)
+    required TResult Function(ApplicationEffectRequest<Event, State> value)
         request,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
-        request,
+    TResult? Function(ApplicationEffectRequest<Event, State> value)? request,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationEffectRequest<Event, State, View> value)?
-        request,
+    TResult Function(ApplicationEffectRequest<Event, State> value)? request,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ApplicationEffectCopyWith<Event, State, View,
-          ApplicationEffect<Event, State, View>>
+  $ApplicationEffectCopyWith<Event, State, ApplicationEffect<Event, State>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ApplicationEffectCopyWith<Event extends CoreEvent,
-    State extends CoreState, View extends CoreView, $Res> {
-  factory $ApplicationEffectCopyWith(
-          ApplicationEffect<Event, State, View> value,
-          $Res Function(ApplicationEffect<Event, State, View>) then) =
-      _$ApplicationEffectCopyWithImpl<Event, State, View, $Res,
-          ApplicationEffect<Event, State, View>>;
+    State extends CoreState, $Res> {
+  factory $ApplicationEffectCopyWith(ApplicationEffect<Event, State> value,
+          $Res Function(ApplicationEffect<Event, State>) then) =
+      _$ApplicationEffectCopyWithImpl<Event, State, $Res,
+          ApplicationEffect<Event, State>>;
   @useResult
-  $Res call(
-      {Ref ref,
-      DateTime createdAt,
-      RequestEffect<Event> Function(StateView<State, View>) request});
-
-  $RefCopyWith<$Res> get ref;
+  $Res call({RefDateTime meta, RequestEffect<Event> Function(State) handler});
 }
 
 /// @nodoc
 class _$ApplicationEffectCopyWithImpl<
         Event extends CoreEvent,
         State extends CoreState,
-        View extends CoreView,
         $Res,
-        $Val extends ApplicationEffect<Event, State, View>>
-    implements $ApplicationEffectCopyWith<Event, State, View, $Res> {
+        $Val extends ApplicationEffect<Event, State>>
+    implements $ApplicationEffectCopyWith<Event, State, $Res> {
   _$ApplicationEffectCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -105,32 +92,19 @@ class _$ApplicationEffectCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? createdAt = null,
-    Object? request = null,
+    Object? meta = freezed,
+    Object? handler = null,
   }) {
     return _then(_value.copyWith(
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      request: null == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as RequestEffect<Event> Function(StateView<State, View>),
+      meta: freezed == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as RefDateTime,
+      handler: null == handler
+          ? _value.handler
+          : handler // ignore: cast_nullable_to_non_nullable
+              as RequestEffect<Event> Function(State),
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RefCopyWith<$Res> get ref {
-    return $RefCopyWith<$Res>(_value.ref, (value) {
-      return _then(_value.copyWith(ref: value) as $Val);
-    });
   }
 }
 
@@ -138,56 +112,42 @@ class _$ApplicationEffectCopyWithImpl<
 abstract class _$$ApplicationEffectRequestImplCopyWith<
     Event extends CoreEvent,
     State extends CoreState,
-    View extends CoreView,
-    $Res> implements $ApplicationEffectCopyWith<Event, State, View, $Res> {
+    $Res> implements $ApplicationEffectCopyWith<Event, State, $Res> {
   factory _$$ApplicationEffectRequestImplCopyWith(
-          _$ApplicationEffectRequestImpl<Event, State, View> value,
-          $Res Function(_$ApplicationEffectRequestImpl<Event, State, View>)
-              then) =
-      __$$ApplicationEffectRequestImplCopyWithImpl<Event, State, View, $Res>;
+          _$ApplicationEffectRequestImpl<Event, State> value,
+          $Res Function(_$ApplicationEffectRequestImpl<Event, State>) then) =
+      __$$ApplicationEffectRequestImplCopyWithImpl<Event, State, $Res>;
   @override
   @useResult
-  $Res call(
-      {Ref ref,
-      DateTime createdAt,
-      RequestEffect<Event> Function(StateView<State, View>) request});
-
-  @override
-  $RefCopyWith<$Res> get ref;
+  $Res call({RefDateTime meta, RequestEffect<Event> Function(State) handler});
 }
 
 /// @nodoc
 class __$$ApplicationEffectRequestImplCopyWithImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView, $Res>
-    extends _$ApplicationEffectCopyWithImpl<Event, State, View, $Res,
-        _$ApplicationEffectRequestImpl<Event, State, View>>
-    implements
-        _$$ApplicationEffectRequestImplCopyWith<Event, State, View, $Res> {
+        State extends CoreState, $Res>
+    extends _$ApplicationEffectCopyWithImpl<Event, State, $Res,
+        _$ApplicationEffectRequestImpl<Event, State>>
+    implements _$$ApplicationEffectRequestImplCopyWith<Event, State, $Res> {
   __$$ApplicationEffectRequestImplCopyWithImpl(
-      _$ApplicationEffectRequestImpl<Event, State, View> _value,
-      $Res Function(_$ApplicationEffectRequestImpl<Event, State, View>) _then)
+      _$ApplicationEffectRequestImpl<Event, State> _value,
+      $Res Function(_$ApplicationEffectRequestImpl<Event, State>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ref = null,
-    Object? createdAt = null,
-    Object? request = null,
+    Object? meta = freezed,
+    Object? handler = null,
   }) {
-    return _then(_$ApplicationEffectRequestImpl<Event, State, View>(
-      null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as Ref,
-      null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      request: null == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as RequestEffect<Event> Function(StateView<State, View>),
+    return _then(_$ApplicationEffectRequestImpl<Event, State>(
+      freezed == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as RefDateTime,
+      null == handler
+          ? _value.handler
+          : handler // ignore: cast_nullable_to_non_nullable
+              as RequestEffect<Event> Function(State),
     ));
   }
 }
@@ -195,78 +155,70 @@ class __$$ApplicationEffectRequestImplCopyWithImpl<Event extends CoreEvent,
 /// @nodoc
 
 class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
-        State extends CoreState, View extends CoreView>
-    implements ApplicationEffectRequest<Event, State, View> {
-  _$ApplicationEffectRequestImpl(this.ref, this.createdAt,
-      {required this.request});
+    State extends CoreState> implements ApplicationEffectRequest<Event, State> {
+  _$ApplicationEffectRequestImpl(this.meta, this.handler);
 
   @override
-  final Ref ref;
+  final RefDateTime meta;
   @override
-  final DateTime createdAt;
-  @override
-  final RequestEffect<Event> Function(StateView<State, View>) request;
+  final RequestEffect<Event> Function(State) handler;
 
   @override
   String toString() {
-    return 'ApplicationEffect<$Event, $State, $View>.request(ref: $ref, createdAt: $createdAt, request: $request)';
+    return 'ApplicationEffect<$Event, $State>.request(meta: $meta, handler: $handler)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationEffectRequestImpl<Event, State, View> &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.request, request) || other.request == request));
+            other is _$ApplicationEffectRequestImpl<Event, State> &&
+            const DeepCollectionEquality().equals(other.meta, meta) &&
+            (identical(other.handler, handler) || other.handler == handler));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, createdAt, request);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(meta), handler);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationEffectRequestImplCopyWith<Event, State, View,
-          _$ApplicationEffectRequestImpl<Event, State, View>>
-      get copyWith => __$$ApplicationEffectRequestImplCopyWithImpl<
-          Event,
-          State,
-          View,
-          _$ApplicationEffectRequestImpl<Event, State, View>>(this, _$identity);
+  _$$ApplicationEffectRequestImplCopyWith<Event, State,
+          _$ApplicationEffectRequestImpl<Event, State>>
+      get copyWith => __$$ApplicationEffectRequestImplCopyWithImpl<Event, State,
+          _$ApplicationEffectRequestImpl<Event, State>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Ref ref, DateTime createdAt,
-            RequestEffect<Event> Function(StateView<State, View>) request)
+    required TResult Function(
+            RefDateTime meta, RequestEffect<Event> Function(State) handler)
         request,
   }) {
-    return request(ref, createdAt, this.request);
+    return request(meta, handler);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Ref ref, DateTime createdAt,
-            RequestEffect<Event> Function(StateView<State, View>) request)?
+    TResult? Function(
+            RefDateTime meta, RequestEffect<Event> Function(State) handler)?
         request,
   }) {
-    return request?.call(ref, createdAt, this.request);
+    return request?.call(meta, handler);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Ref ref, DateTime createdAt,
-            RequestEffect<Event> Function(StateView<State, View>) request)?
+    TResult Function(
+            RefDateTime meta, RequestEffect<Event> Function(State) handler)?
         request,
     required TResult orElse(),
   }) {
     if (request != null) {
-      return request(ref, createdAt, this.request);
+      return request(meta, handler);
     }
     return orElse();
   }
@@ -274,8 +226,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(
-            ApplicationEffectRequest<Event, State, View> value)
+    required TResult Function(ApplicationEffectRequest<Event, State> value)
         request,
   }) {
     return request(this);
@@ -284,8 +235,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationEffectRequest<Event, State, View> value)?
-        request,
+    TResult? Function(ApplicationEffectRequest<Event, State> value)? request,
   }) {
     return request?.call(this);
   }
@@ -293,8 +243,7 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationEffectRequest<Event, State, View> value)?
-        request,
+    TResult Function(ApplicationEffectRequest<Event, State> value)? request,
     required TResult orElse(),
   }) {
     if (request != null) {
@@ -304,23 +253,19 @@ class _$ApplicationEffectRequestImpl<Event extends CoreEvent,
   }
 }
 
-abstract class ApplicationEffectRequest<
-    Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> implements ApplicationEffect<Event, State, View> {
-  factory ApplicationEffectRequest(final Ref ref, final DateTime createdAt,
-      {required final RequestEffect<Event> Function(StateView<State, View>)
-          request}) = _$ApplicationEffectRequestImpl<Event, State, View>;
+abstract class ApplicationEffectRequest<Event extends CoreEvent,
+    State extends CoreState> implements ApplicationEffect<Event, State> {
+  factory ApplicationEffectRequest(final RefDateTime meta,
+          final RequestEffect<Event> Function(State) handler) =
+      _$ApplicationEffectRequestImpl<Event, State>;
 
   @override
-  Ref get ref;
+  RefDateTime get meta;
   @override
-  DateTime get createdAt;
-  @override
-  RequestEffect<Event> Function(StateView<State, View>) get request;
+  RequestEffect<Event> Function(State) get handler;
   @override
   @JsonKey(ignore: true)
-  _$$ApplicationEffectRequestImplCopyWith<Event, State, View,
-          _$ApplicationEffectRequestImpl<Event, State, View>>
+  _$$ApplicationEffectRequestImplCopyWith<Event, State,
+          _$ApplicationEffectRequestImpl<Event, State>>
       get copyWith => throw _privateConstructorUsedError;
 }

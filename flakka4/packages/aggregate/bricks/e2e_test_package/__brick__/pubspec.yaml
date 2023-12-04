@@ -32,20 +32,3 @@ index_generator:
   exclude:
     - '**.*.dart'
   indexes: []
-
-
-dependency_overrides:
-  core_aggregate:
-    path: {{{ packages_rel_path }}}../core_aggregate
-  core_aggregate_annotation:
-    path: {{{ packages_rel_path }}}../core_aggregate_annotation
-  core_aggregate_build:
-    path: {{{ packages_rel_path }}}../core_aggregate_build
-  core_application:
-    path: {{{ packages_rel_path }}}../../application/core_application
-  core_application_impl:
-    path: {{{ packages_rel_path }}}../../application/core_application_impl
-  core_common:
-    path: {{{ packages_rel_path }}}../../core_common/core_common
-  core_data_api:
-    path: {{{ packages_rel_path }}}../../data/core_data_api

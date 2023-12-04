@@ -14,7 +14,7 @@ class ObjectLocal extends PersistentNode<
     ObjectLocalSnapshot,
     ObjectLocalState> implements CoreObjectLocal {
   ObjectLocal({required super.child}) {
-    registerStateFactory(() => ObjectLocalState(<Ref>{}, <Ref>{}));
+    registerInitialStateFactory(() => ObjectLocalState(<Ref>{}, <Ref>{}));
     registerInitialStateHandler(
       (snapshot) => snapshot.map(
         head: (head) => throw UnimplementedError(),

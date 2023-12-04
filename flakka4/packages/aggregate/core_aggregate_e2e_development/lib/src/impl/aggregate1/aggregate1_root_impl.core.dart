@@ -30,15 +30,14 @@ class Aggregate1State with _$Aggregate1State {
   }) = _Aggregate1State;
 }
 
-class Aggregate1EventConverter extends CoreEventConverter<Aggregate1Event> {
-  @override
-  Aggregate1Event fromJson(Map<String, dynamic> jsonObject) =>
-      Aggregate1Event.fromJson(jsonObject);
-
-  @override
-  Map<String, dynamic> toJson(Aggregate1Event event) => event.toJson();
-}
-
+// class ${root.scope.pascalCase}EventConverter extends CoreEventConverter<${root.scope.pascalCase}Event> {
+//   @override
+//   ${root.scope.pascalCase}Event fromJson(Map<String, dynamic> jsonObject) =>
+//       ${root.scope.pascalCase}Event.fromJson(jsonObject);
+//
+//   @override
+//   Map<String, dynamic> toJson(${root.scope.pascalCase}Event event) => event.toJson();
+// }
 @freezed
 class Aggregate1Event with _$Aggregate1Event implements CoreEvent {
   const Aggregate1Event._();
@@ -118,99 +117,96 @@ class Aggregate1RootBehavior
             empty: (_) => state,
           );
 }
-
-class Aggregate1RootAggregate {
-  @protected
-  final Application<Aggregate1Event, Aggregate1State, Aggregate1View>
-      application;
-
-  Aggregate1RootAggregate({
-    required Application<Aggregate1Event, Aggregate1State, Aggregate1View>
-        application,
-  }) : application = application;
-
-  @protected
-  Future<T> evaluate<T>(ServiceEffect<T> Function(Aggregate1Handle) handler) {
-    final completer = Completer<T>();
-    application.evaluate(
-      (stateEventSink) => handler(aggregateHandleFactory(stateEventSink)).map(
-        persist: (persist) => ApplicationEffect.persist(
-            onComplete: () => completer.complete(persist.response)),
-        none: (none) => ApplicationEffect.none(
-            onComplete: () => completer.complete(none.response)),
-        fail: (fail) => ApplicationEffect.fail(
-            message: fail.message,
-            onFail: () => completer.completeError(Exception(fail.message))),
-      ),
-    );
-    return completer.future;
-  }
-
-  @protected
-  Aggregate1Handle Function(
-          StateEventSink<Aggregate1State, Aggregate1Event> stateEventSink)
-      get aggregateHandleFactory =>
-          (stateEventSink) => Aggregate1HandleImpl(stateEventSink);
-}
-
-class Aggregate1RootInternal implements Aggregate1RootImpl {
-  final ApplicationImpl<Aggregate1Event, Aggregate1State, Aggregate1View>
-      _applicationImpl;
-
-  @override
-  late final Counter2Aggregate counter2 = Counter2AggregateInternal(
-    application: _applicationImpl,
-  );
-  @override
-  late final Counter1Aggregate counter1 = Counter1AggregateInternal(
-    application: _applicationImpl,
-  );
-
-  Aggregate1RootInternal({
-    required ApplicationImpl<Aggregate1Event, Aggregate1State, Aggregate1View>
-        applicationImpl,
-  }) : _applicationImpl = applicationImpl;
-
-  @override
-  FutureOr<void> close() => _applicationImpl.close();
-
-  @override
-  bool get isClosed => _applicationImpl.isClosed;
-}
-
-class Aggregate1Factory {
-  Aggregate1Factory({
-    required EntryStoreFactory entryStoreFactory,
-    required EntryFactory entryFactory,
-  })  : _entryFactory = entryFactory,
-        _entryStoreFactory = entryStoreFactory;
-
-  final EntryStoreFactory _entryStoreFactory;
-
-  final EntryFactory _entryFactory;
-
-  Future<Aggregate1Root> create() async {
-    final eventConverter = Aggregate1EventConverter();
-    final entryStore = _entryStoreFactory.create(eventConverter);
-    final journal = await JournalImpl.from(
-        entryStore: entryStore, entryFactory: _entryFactory);
-
-    final behavior = Aggregate1RootBehavior();
-    final application =
-        ApplicationImpl<Aggregate1Event, Aggregate1State, Aggregate1View>(
-      journal: journal,
-      initialStateFactory: behavior.initialStateFactory,
-      stateEventHandler: behavior.stateEventHandler,
-      initialViewFactory: behavior.initialViewFactory,
-      viewEventHandler: behavior.viewEventHandler,
-    );
-
-    final root = Aggregate1RootInternal(
-      applicationImpl: application,
-    );
-
-    application.start();
-    await Future<void>.delayed(Duration.zero);
-    return root;
-  }
-}
+// class Aggregate1RootAggregate {
+//   @protected
+//   final Application<Aggregate1Event, Aggregate1State, Aggregate1View>
+//       application;
+//
+//   Aggregate1RootAggregate({
+//     required Application<Aggregate1Event, Aggregate1State, Aggregate1View>
+//         application,
+//   }) : application = application;
+//
+//   @protected
+//   Future<T> evaluate<T>(ServiceEffect<T> Function(Aggregate1Handle) handler) {
+//     final completer = Completer<T>();
+//     application.evaluate(
+//       (stateEventSink) => handler(aggregateHandleFactory(stateEventSink)).map(
+//         persist: (persist) => ApplicationEffect.persist(
+//             onComplete: () => completer.complete(persist.response)),
+//         none: (none) => ApplicationEffect.none(
+//             onComplete: () => completer.complete(none.response)),
+//         fail: (fail) => ApplicationEffect.fail(
+//             message: fail.message,
+//             onFail: () => completer.completeError(Exception(fail.message))),
+//       ),
+//     );
+//     return completer.future;
+//   }
+//
+//   @protected
+//   Aggregate1Handle Function(
+//           StateEventSink<Aggregate1State, Aggregate1Event> stateEventSink)
+//       get aggregateHandleFactory =>
+//           (stateEventSink) => Aggregate1HandleImpl(stateEventSink);
+// }
+// class ${root.scope.pascalCase}RootInternal implements ${root.scope.pascalCase}RootImpl {
+//   final ApplicationImpl<${root.scope.pascalCase}Event, ${root.scope.pascalCase}State, ${root.scope.pascalCase}View>
+//       _applicationImpl;
+//
+//       ${root.aggregates.map(
+//         (aggregate) => '@override '
+//             'late final ${aggregate.scope.pascalCase}Aggregate ${aggregate.scope.camelCase} = ${aggregate.scope.pascalCase}AggregateInternal( '
+//             'application: _applicationImpl, '
+//             ');',
+//       ).join('\n')}
+//
+//
+//
+//   ${root.scope.pascalCase}RootInternal({
+//     required ApplicationImpl<${root.scope.pascalCase}Event, ${root.scope.pascalCase}State, ${root.scope.pascalCase}View>
+//         applicationImpl,
+//   }) : _applicationImpl = applicationImpl;
+//
+//   @override
+//   FutureOr<void> close() => _applicationImpl.close();
+//
+//   @override
+//   bool get isClosed => _applicationImpl.isClosed;
+// }
+// class ${root.scope.pascalCase}Factory {
+//   ${root.scope.pascalCase}Factory({
+//     required EntryStoreFactory entryStoreFactory,
+//     required EntryFactory entryFactory,
+//   })  : _entryFactory = entryFactory,
+//         _entryStoreFactory = entryStoreFactory;
+//
+//   final EntryStoreFactory _entryStoreFactory;
+//
+//   final EntryFactory _entryFactory;
+//
+//   Future<${root.scope.pascalCase}Root> create() async {
+//     final eventConverter = ${root.scope.pascalCase}EventConverter();
+//     final entryStore = _entryStoreFactory.create(eventConverter);
+//     final journal = await JournalImpl.from(
+//         entryStore: entryStore, entryFactory: _entryFactory);
+//
+//     final behavior = ${root.scope.pascalCase}RootBehavior();
+//     final application =
+//         ApplicationImpl<${root.scope.pascalCase}Event, ${root.scope.pascalCase}State, ${root.scope.pascalCase}View>(
+//       journal: journal,
+//       initialStateFactory: behavior.initialStateFactory,
+//       stateEventHandler: behavior.stateEventHandler,
+//       initialViewFactory: behavior.initialViewFactory,
+//       viewEventHandler: behavior.viewEventHandler,
+//     );
+//
+//     final root = ${root.scope.pascalCase}RootInternal(
+//       applicationImpl: application,
+//     );
+//
+//     application.start();
+//     await Future<void>.delayed(Duration.zero);
+//     return root;
+//   }
+// }

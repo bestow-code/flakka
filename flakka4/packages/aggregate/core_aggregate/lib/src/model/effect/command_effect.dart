@@ -8,4 +8,6 @@ class CommandEffect<Event, T> with _$CommandEffect<Event, T> {
     Iterable<Event> events, {
     required T reply,
   }) = CommandEffectPersist<Event, T>;
+  factory CommandEffect.none(T reply) = CommandEffectNone;
+
 }
