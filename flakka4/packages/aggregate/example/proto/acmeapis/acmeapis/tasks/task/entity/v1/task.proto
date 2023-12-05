@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package acmeapis.tasks.task.entity.v1;
+
+message Task {
+  string label = 1;
+}
