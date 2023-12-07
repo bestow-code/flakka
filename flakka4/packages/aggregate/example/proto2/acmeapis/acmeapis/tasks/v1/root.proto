@@ -1,0 +1,13 @@
+syntax = "proto3";
+package acmeapis.tasks.v1;
+
+import "acmeapis/tasks/task/v1/scope.proto";
+//import "acmeapis/tasks/v1/entity_ref_value.proto";
+
+message Root {
+  Scope scope = 1;
+  message Scope {
+    acmeapis.tasks.task.v1.Scope task = 1;
+  }
+//  option (my_option) = "hello";
+}

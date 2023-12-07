@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package acmeapis.tasks.task.v1;
+
+import "acmeapis/tasks/task/entity/task/v1/task.proto";
+
+message Scope {
+  message Collection {
+    acmeapis.tasks.task.entity.task.v1.Collection task = 1;
+  }
+  Collection collection = 1;
+  string total = 2;
+}

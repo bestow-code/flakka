@@ -20,5 +20,6 @@ export 'src/base/model/effect/service_effect.dart';
 export 'src/base/model/event.dart';
 export 'src/base/model/handle.dart';
 export 'src/base/model/ref.dart';
+export 'src/base/model/request.dart';
 export 'src/base/model/state.dart';
 export 'src/base/model/view.dart';

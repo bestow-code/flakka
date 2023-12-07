@@ -1,0 +1,13 @@
+syntax = "proto3";
+package acmeapis.app1.v1;
+
+import "acmeapis/app1/taskmanager/v1/scope.proto";
+//import "acmeapis/app1/v1/entity_ref_value.proto";
+
+message App1Root {
+  message Scope {
+    acmeapis.app1.taskmanager.v1.TaskScope task = 1;
+  }
+  Scope scope = 1;
+  //  option (my_option) = "hello";
+}

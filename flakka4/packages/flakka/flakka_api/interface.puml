@@ -1,0 +1,63 @@
+@startuml
+class CoreApplication
+class CoreRoot
+ CoreRoot --> CoreApplication
+class CoreScope
+CoreRoot --> CoreScope
+class CoreEntityCollection
+CoreScope --> CoreEntityCollection
+class CoreEntity
+CoreEntityCollection --> CoreEntity
+class CoreRootHandle
+class CoreScopeHandle
+CoreRootHandle --> CoreScopeHandle
+class CoreCollectionHandle
+CoreScopeHandle --> CoreCollectionHandle
+class CoreEntityHandle
+CoreCollectionHandle --> CoreEntityHandle
+@enduml
+@startuml
+
+' configuration for entry store
+' EntryStoreFactory<Aggregate1Event>
+' EntryFactory<Aggregate1Event>
+abstract class CorePersistence<Event extends CoreEvent> {
+  Future<({CoreStore<Event>, Entry initialEntry, EntryRef head})> initialize(String path);
+}
+abstract class CorePersistenceBase<Event> extends CorePersistence {}
+class PersistenceFake extends CorePersistenceBase {}
+' loading / starting aggregate instance
+' Aggregate1Factory
+abstract class CoreApplication {
+  Future<CoreRoot> start(String path);
+}
+
+class FlakkaApp extends CoreApplication {
+  Future<CoreRoot> start(String path);
+
+}
+
+FlakkaApp --> Aggregate1Root
+CoreApplication --> CorePersistence
+
+' providing / following local and remote state (updates),
+' execute commands and append events to the journal
+' Instance of Aggregate1RootImpl
+abstract class CoreRoot<Event extends CoreEvent> extends CoreEventSourcedInstance {}
+
+class Aggregate1Root extends CoreRoot {}
+
+CoreApplication -> CoreRoot
+
+
+
+
+abstract class CoreEntryStore<Event extends CoreEvent>  {
+  Stream<EntryCollectionSnapshot<Event>> getSnapshotStream(EntryRef? start);
+  Future<void> append(Entry<Event> entry);
+  Future<void> fastForward(EntryRef next, {required bool Function(EntryRef previous) isFastForward});
+}
+
+class EntryStoreFake extends CoreEntryStore{}
+
+@enduml

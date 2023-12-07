@@ -1,105 +1,51 @@
 import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_application/core_application.dart';
 
-abstract interface
-class CoreScopeBehavior<
-// Adapter
-        ScopeBase extends CoreScopeBase<
-            ScopeEventBase,
-            CollectionEventBase,
-            EntityEventBase,
-            ScopeStateBase,
-            CollectionStateBase,
-            EntityStateBase,
-            CollectionBase,
-            EntityBase,
-            EntityRefBase>,
-        CollectionBase extends CoreCollectionBase<
-            CollectionEventBase,
-            EntityEventBase,
-            CollectionStateBase,
-            EntityStateBase,
-            EntityBase,
-            EntityRefBase>,
-        EntityBase extends CoreEntity<EntityEventBase, EntityStateBase,
-            EntityRefBase>,
-// Handle
-        ScopeHandleBase extends CoreScopeHandleBase<
-            ScopeEventBase,
-            CollectionEventBase,
-            EntityEventBase,
-            ScopeStateBase,
-            CollectionStateBase,
-            EntityStateBase,
-            CollectionHandleBase,
-            EntityHandleBase,
-            EntityRefBase>,
-        CollectionHandleBase extends CoreCollectionHandleBase<
-            CollectionEventBase,
-            EntityEventBase,
-            CollectionStateBase,
-            EntityStateBase,
-            EntityHandleBase,
-            EntityRefBase>,
-        EntityHandleBase extends CoreEntityHandleBase<EntityEventBase,
-            EntityStateBase, EntityRefBase>,
-// Event
-        ScopeEventBase extends CoreRootEvent<CollectionEventBase, EntityEventBase,
-            EntityRefBase>,
-        CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
-            EntityRefBase>,
-        EntityEventBase extends CoreEntityEvent,
-// State
-        ScopeStateBase extends CoreScopeStateBase<CollectionStateBase,
-            EntityStateBase, EntityRefBase>,
-        CollectionStateBase extends CoreCollectionStateBase<EntityStateBase,
-            EntityRefBase>,
-        EntityStateBase extends CoreEntityStateBase,
-
-// View
-        ScopeViewBase extends CoreScopeViewBase<CollectionViewBase, EntityViewBase,
-            EntityRefBase>,
-        CollectionViewBase extends CoreCollectionViewBase<EntityViewBase,
-            EntityRefBase>,
-        EntityViewBase extends CoreEntityViewBase,
-// Ref
-        EntityRefBase extends CoreEntityRef>
+abstract interface class CoreScopeBehavior<
+        ScopeAdapter extends CoreScopeAdapter<ScopeRequest,ScopeView,
+            CollectionAdapter,CollectionView,CollectionRequest,
+            EntityRef>,
+        ScopeHandleBase extends CoreScopeHandle<
+            ScopeRequest,
+            ScopeEvent,
+            ScopeState,
+            CollectionHandle,
+            CollectionRequest,
+            CollectionEvent,
+            CollectionState,
+            EntityHandle,
+            EntityRequest,
+            EntityEvent,
+            EntityState,
+            EntityRef>,
+        ScopeView extends CoreScopeView<CollectionView, EntityView, EntityRef>,
+        ScopeRequest extends CoreScopeRequest<CollectionRequest, EntityRequest,
+            EntityRef>,
+        ScopeEvent extends CoreScopeEvent<CollectionEvent, EntityEvent, EntityRef>,
+        ScopeState extends CoreScopeState<CollectionState, EntityState, EntityRef>,
+        CollectionAdapter extends CoreCollectionAdapter<CollectionView,
+            CollectionRequest, EntityAdapter, EntityView, EntityRequest, EntityRef>,
+        CollectionHandle extends CoreCollectionHandle<
+            CollectionRequest,
+            CollectionEvent,
+            CollectionState,
+            EntityHandle,
+            EntityRequest,
+            EntityEvent,
+            EntityState,
+            EntityRef>,
+        CollectionView extends CoreCollectionView<EntityView, EntityRef>,
+        CollectionRequest extends CoreCollectionRequest<EntityRequest, EntityRef>,
+        CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
+        CollectionState extends CoreCollectionState<EntityState, EntityRef>,
+        EntityHandle extends CoreEntityHandle<EntityRequest, EntityEvent,
+            EntityState>,
+        EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
+        EntityRequest extends CoreEntityRequest,
+        EntityEvent extends CoreEntityEvent,
+        EntityState extends CoreEntityState,
+        EntityView extends CoreEntityView,
+        EntityRef extends CoreEntityRef>
     implements
-        EventSourcedBehavior<ScopeBase, ScopeHandleBase, ScopeEventBase,
-            ScopeStateBase, ScopeViewBase> {
-  late CoreCollectionBehavior<
-      CollectionBase,
-      EntityBase,
-      CollectionHandleBase,
-      EntityHandleBase,
-      CollectionEventBase,
-      EntityEventBase,
-      CollectionStateBase,
-      EntityStateBase,
-      CollectionViewBase,
-      EntityViewBase,
-      EntityRefBase> collectionBehavior;
-
-  @override
-  AdapterFactory<ScopeBase, ScopeEventBase, ScopeStateBase, ScopeViewBase>
-      get adapterFactory => throw UnimplementedError();
-
-  @override
-  HandleFactory<ScopeHandleBase, ScopeStateBase, ScopeEventBase>
-      get handleFactory => throw UnimplementedError();
-
-  @override
-  ScopeStateBase Function() get initialStateFactory =>
-      throw UnimplementedError();
-
-  @override
-  ScopeViewBase Function() get initialViewFactory => throw UnimplementedError();
-
-  @override
-  EventHandler<ScopeEventBase, ScopeStateBase> get stateEventHandler =>
-      throw UnimplementedError();
-
-  @override
-  EventHandler<ScopeEventBase, ScopeViewBase> get viewEventHandler =>
-      throw UnimplementedError();
-}
+        EventSourcedBehavior<ScopeAdapter, ScopeHandleBase, ScopeEvent,
+            ScopeState, ScopeView> {}

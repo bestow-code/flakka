@@ -1,16 +1,19 @@
 import 'dart:async';
 
 import 'package:core_data/core_data_api.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:signals/signals.dart';
 
 import '../../../core_application.dart';
 import '../../../core_application_api.dart';
 
 abstract interface class EventSourcedBehavior<
-    Adapter extends CoreAdapter,
-    Handle extends CoreHandle,
+    Adapter extends CoreAdapter<View, Request>,
+    Handle extends CoreHandle<Request, Event, State>,
+    View extends CoreView,
+    Request extends CoreRequest,
     Event extends CoreEvent,
-    State extends CoreState,
-    View extends CoreView> {
+    State extends CoreState> {
   State Function() get initialStateFactory;
 
   EventHandler<Event, State> get stateEventHandler;
@@ -19,9 +22,9 @@ abstract interface class EventSourcedBehavior<
 
   EventHandler<Event, View> get viewEventHandler;
 
-  AdapterFactory<Adapter, Event, State, View> get adapterFactory;
+  CoreAdapterFactory<Adapter, Event, State, View> get adapterFactory;
 
-  HandleFactory<Handle, State, Event> get handleFactory;
+  HandleFactory<Request, Event, State, Handle> get handleFactory;
 }
 
 abstract interface class EventSourcedBehavior2<Event, State, View> {
@@ -34,15 +37,32 @@ abstract interface class EventSourcedBehavior2<Event, State, View> {
   CoreEventHandler<Event, View> get viewEventHandler;
 }
 
-abstract interface class CoreHandle {}
+abstract interface class CoreHandle<Request extends CoreRequest,
+    Event extends CoreEvent, State extends CoreState> {}
 
-abstract interface class CoreAdapter {}
+abstract interface class CoreAdapter<View extends CoreView,
+    Request extends CoreRequest> {
+  @protected
+  ({CoreRequestFactory<Request> factory, CoreRequestSink<Request> sink})
+      get request;
 
-typedef HandleFactory<Handle extends CoreHandle, State extends CoreState,
-        Event extends CoreEvent>
+  Computed<View> get view;
+}
+
+abstract interface class CoreRequest {}
+
+// abstract interface class CoreRequestFactory<Request extends CoreRequest> {}
+typedef CoreRequestFactory<Request extends CoreRequest> = Request Function();
+typedef CoreRequestSink<Request extends CoreRequest> = void Function(Request);
+
+typedef HandleFactory<
+        Request extends CoreRequest,
+        Event extends CoreEvent,
+        State extends CoreState,
+        Handle extends CoreHandle<Request, Event, State>>
     = Handle Function(State state);
 
-typedef AdapterFactory<Adapter extends CoreAdapter, Event extends CoreEvent,
+typedef CoreAdapterFactory<Adapter extends CoreAdapter, Event extends CoreEvent,
         State extends CoreState, View extends CoreView>
     = Adapter Function(StreamSink<Request<State, Event>>);
 

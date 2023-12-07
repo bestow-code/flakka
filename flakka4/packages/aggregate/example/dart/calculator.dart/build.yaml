@@ -1,0 +1,10 @@
+builders:
+  source_builder:
+    import: package:calculator/builder.dart
+    builder_factories: [ 'SourceBuilder.from' ]
+    build_extensions: { 'lib/$lib$': [ 'library.core.dart' ] }
+    auto_apply: root_package
+    build_to: source
+    defaults:
+      generate_for:
+        - lib/$lib$

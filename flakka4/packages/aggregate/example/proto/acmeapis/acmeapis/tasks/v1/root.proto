@@ -1,6 +1,0 @@
-syntax = "proto3";
-package acmeapis.tasks.v1;
-import "acmeapis/tasks/task/v1/scope.proto";
-message Root {
-  acmeapis.tasks.task.v1.Scope task = 1;
-}

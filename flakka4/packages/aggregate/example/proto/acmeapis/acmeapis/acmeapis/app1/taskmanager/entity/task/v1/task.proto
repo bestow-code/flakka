@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package acmeapis.app1.taskmanager.entity.task.v1;
+
+import "acmeapis/app1/v1/entity_refs.proto";
+import "dart_options.proto";
+
+option (dart_options.imports) = {
+  mixins: [
+    {
+      name: "CoreApiCollection",
+      import_from: 'package:flakka_api/flakka_api.dart'
+    }
+,    {
+      name: "CoreApiMapEntry",
+      import_from: 'package:flakka_api/flakka_api.dart'
+    }
+  ]
+};
+
+message TaskCollection {
+  option (dart_options.mixin) = 'CoreApiCollection';
+  message MapEntry {
+    option (dart_options.mixin) = 'CoreApiMapEntry';
+    acmeapis.app1.v1.TaskRef key = 1;
+    Task value = 2;
+  }
+  repeated MapEntry all = 1;
+  repeated acmeapis.app1.v1.TaskRef pending = 2;
+}
+
+message Task {
+  //  option (dart_options.mixin) = 'CoreApiEntity';
+  message TaskReady {
+    string label = 1;
+  }
+  message TaskComplete {
+    string label = 1;
+    int64 completed_at = 2;
+  }
+  oneof value {
+    TaskReady ready = 1;
+    TaskComplete complete = 2;
+  }
+}

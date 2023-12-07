@@ -1,0 +1,17 @@
+syntax = "proto3";
+package acmeapis.tasks.v1;
+
+import "acmeapis/tasks/v1/entity_ref_value.proto";
+
+message EntityRef {
+  message Task {
+    EntityRefValue value = 1;
+  }
+  message TaskList {
+    EntityRefValue value = 1;
+  }
+  oneof ref {
+    Task task = 1;
+    TaskList task_list = 2;
+  }
+}

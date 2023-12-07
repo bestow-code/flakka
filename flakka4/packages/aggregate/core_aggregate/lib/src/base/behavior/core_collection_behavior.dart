@@ -2,43 +2,34 @@ import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_application/core_application.dart';
 
 abstract interface class CoreCollectionBehavior<
-        CollectionBase extends CoreCollectionBase<
-            CollectionEventBase,
-            EntityEventBase,
-            CollectionStateBase,
-            EntityStateBase,
-            EntityBase,
-            EntityRefBase>,
-        EntityBase extends CoreEntity<EntityEventBase, EntityStateBase,
-            EntityRefBase>,
-// Handle
-        CollectionHandleBase extends CoreCollectionHandleBase<
-            CollectionEventBase,
-            EntityEventBase,
-            CollectionStateBase,
-            EntityStateBase,
-            EntityHandleBase,
-            EntityRefBase>,
-        EntityHandleBase extends CoreEntityHandleBase<EntityEventBase,
-            EntityStateBase, EntityRefBase>,
-// Event
-        CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
-            EntityRefBase>,
-        EntityEventBase extends CoreEntityEvent,
-// State
-        CollectionStateBase extends CoreCollectionStateBase<EntityStateBase,
-            EntityRefBase>,
-        EntityStateBase extends CoreEntityStateBase,
-
-// View
-        CollectionViewBase extends CoreCollectionViewBase<EntityViewBase,
-            EntityRefBase>,
-        EntityViewBase extends CoreEntityViewBase,
-// Ref
-        EntityRefBase extends CoreEntityRef>
+        CollectionAdapter extends CoreCollectionAdapter<CollectionView,
+            CollectionRequest, EntityAdapter, EntityView, EntityRequest, EntityRef>,
+        CollectionView extends CoreCollectionView<EntityView, EntityRef>,
+        CollectionRequest extends CoreCollectionRequest<EntityRequest, EntityRef>,
+        CollectionHandle extends CoreCollectionHandle<
+            CollectionRequest,
+            CollectionEvent,
+            CollectionState,
+            EntityHandle,
+            EntityRequest,
+            EntityEvent,
+            EntityState,
+            EntityRef>,
+        CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
+        CollectionState extends CoreCollectionState<EntityState, EntityRef>,
+        EntityHandle extends CoreEntityHandle<EntityRequest, EntityEvent,
+            EntityState>,
+        EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
+        EntityRequest extends CoreEntityRequest,
+        EntityEvent extends CoreEntityEvent,
+        EntityState extends CoreEntityState,
+        EntityView extends CoreEntityView,
+        EntityRef extends CoreEntityRef>
     implements
-        EventSourcedBehavior<CollectionBase, CollectionHandleBase,
-            CollectionEventBase, CollectionStateBase, CollectionViewBase> {
-  late CoreEntityBehavior<EntityBase, EntityHandleBase, EntityEventBase,
-      EntityStateBase, EntityViewBase, EntityRefBase> entityBehavior;
-}
+        EventSourcedBehavior<
+            CollectionAdapter,
+            CollectionHandle,
+            CollectionView,
+            CollectionRequest,
+            CollectionEvent,
+            CollectionState> {}

@@ -1,0 +1,6 @@
+syntax = "proto3";
+package bestowcode.flakka.v1;
+
+message EntityRefValue {
+  string value = 1;
+}

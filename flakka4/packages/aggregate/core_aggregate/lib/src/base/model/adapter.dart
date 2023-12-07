@@ -1,297 +1,159 @@
 import 'package:core_application/core_application.dart';
 
 import '../../../core_aggregate.dart';
+// V2
 
+abstract class CoreRootAdapter<
+    RootView extends CoreRootView<ScopeView, CollectionView, EntityView,
+        EntityRef>,
+    RootRequest extends CoreRootRequest<ScopeRequest, CollectionRequest,
+        EntityRequest, EntityRef>,
+    ScopeAdapter extends CoreScopeAdapter<ScopeView,ScopeRequest,CollectionAdapter, CollectionView,
+        CollectionRequest, EntityAdapter, EntityView, EntityRequest, EntityRef>,
+    ScopeView extends CoreScopeView<CollectionView, EntityView, EntityRef>,
+    ScopeRequest extends CoreScopeRequest<CollectionRequest, EntityRequest,
+        EntityRef>,
+    CollectionAdapter extends CoreCollectionAdapter<CollectionView,
+        CollectionRequest, EntityAdapter, EntityView, EntityRequest, EntityRef>,
+    CollectionView extends CoreCollectionView<EntityView, EntityRef>,
+    CollectionRequest extends CoreCollectionRequest<EntityRequest, EntityRef>,
+    EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
+    EntityView extends CoreEntityView,
+    EntityRequest extends CoreEntityRequest,
+    EntityRef extends CoreEntityRef> implements CoreAdapter {}
 
-//
-class CoreRoot<
-//  Adapter
-    ScopeBase extends CoreScopeBase<
-        ScopeEventBase,
-        CollectionEventBase,
-        EntityEventBase,
-        ScopeStateBase,
-        CollectionStateBase,
-        EntityStateBase,
-        CollectionBase,
-        EntityBase,
-        EntityRefBase>,
-    CollectionBase extends CoreCollectionBase<
-        CollectionEventBase,
-        EntityEventBase,
-        CollectionStateBase,
-        EntityStateBase,
-        EntityBase,
-        EntityRefBase>,
-    EntityBase extends CoreEntity<EntityEventBase, EntityStateBase,
-        EntityRefBase>,
-// Handle
-    RootHandle extends CoreRootHandle<
-        RootEvent,
-        ScopeEventBase,
-        CollectionEventBase,
-        EntityEventBase,
-        RootState,
-        ScopeStateBase,
-        CollectionStateBase,
-        EntityStateBase,
-        ScopeHandleBase,
-        CollectionHandleBase,
-        EntityHandleBase,
-        EntityRefBase>,
-    ScopeHandleBase extends CoreScopeHandleBase<
-        ScopeEventBase,
-        CollectionEventBase,
-        EntityEventBase,
-        ScopeStateBase,
-        CollectionStateBase,
-        EntityStateBase,
-        CollectionHandleBase,
-        EntityHandleBase,
-        EntityRefBase>,
-    CollectionHandleBase extends CoreCollectionHandleBase<
-        CollectionEventBase,
-        EntityEventBase,
-        CollectionStateBase,
-        EntityStateBase,
-        EntityHandleBase,
-        EntityRefBase>,
-    EntityHandleBase extends CoreEntityHandleBase<EntityEventBase,
-        EntityStateBase, EntityRefBase>,
-// Event
-    RootEvent extends CoreRootEvents<ScopeEventBase, CollectionEventBase,
-        EntityEventBase, EntityRefBase>,
-    ScopeEventBase extends CoreRootEvent<CollectionEventBase, EntityEventBase,
-        EntityRefBase>,
-    CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
-        EntityRefBase>,
-    EntityEventBase extends CoreEntityEvent,
-// State
-    RootState extends CoreRootState<ScopeStateBase, CollectionStateBase,
-        EntityStateBase, EntityRefBase>,
-    ScopeStateBase extends CoreScopeStateBase<CollectionStateBase,
-        EntityStateBase, EntityRefBase>,
-    CollectionStateBase extends CoreCollectionStateBase<EntityStateBase,
-        EntityRefBase>,
-    EntityStateBase extends CoreEntityStateBase,
-// View
-    RootView extends CoreRootView<ScopeViewBase, CollectionViewBase,
-        EntityViewBase, EntityRefBase>,
-    ScopeViewBase extends CoreScopeViewBase<CollectionViewBase, EntityViewBase,
-        EntityRefBase>,
-    CollectionViewBase extends CoreCollectionViewBase<EntityViewBase, EntityRefBase>,
-    EntityViewBase extends CoreEntityViewBase,
-    EntityRefBase extends CoreEntityRef> implements CoreAdapter {}
-
-abstract class CoreScopeBase<
-// Event
-    ScopeEventBase extends CoreRootEvent<CollectionEventBase, EntityEventBase,
-        EntityRefBase>,
-    CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
-        EntityRefBase>,
-    EntityEventBase extends CoreEntityEvent,
-// State
-    ScopeStateBase extends CoreScopeStateBase<CollectionStateBase,
-        EntityStateBase, EntityRefBase>,
-    CollectionStateBase extends CoreCollectionStateBase<EntityStateBase,
-        EntityRefBase>,
-    EntityStateBase extends CoreEntityStateBase,
-// handler
-    CollectionBase extends CoreCollectionBase<
-        CollectionEventBase,
-        EntityEventBase,
-        CollectionStateBase,
-        EntityStateBase,
-        Entity,
-        EntityRefBase>,
-    Entity extends CoreEntity<EntityEventBase, EntityStateBase, EntityRefBase>,
-    EntityRefBase extends CoreEntityRef> implements CoreAdapter {
-  CollectionBase get collection;
+abstract class CoreScopeAdapter<
+    ScopeView extends CoreScopeView<CollectionView, EntityView, EntityRef>,
+    ScopeRequest extends CoreScopeRequest<CollectionRequest, EntityRequest,
+        EntityRef>,
+    CollectionAdapter extends CoreCollectionAdapter<CollectionView,
+        CollectionRequest, EntityAdapter, EntityView, EntityRequest, EntityRef>,
+    CollectionView extends CoreCollectionView<EntityView, EntityRef>,
+    CollectionRequest extends CoreCollectionRequest<EntityRequest, EntityRef>,
+    EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
+    EntityView extends CoreEntityView,
+    EntityRequest extends CoreEntityRequest,
+    EntityRef extends CoreEntityRef> implements CoreAdapter {
+  CollectionAdapter get collection;
 }
 
-abstract class CoreCollectionBase<
-// Event
-    CollectionEventBase extends CoreCollectionEvent<EntityEventBase,
-        EntityRefBase>,
-    EntityEventBase extends CoreEntityEvent,
-// State
-    CollectionStateBase extends CoreCollectionStateBase<EntityStateBase,
-        EntityRefBase>,
-    EntityStateBase extends CoreEntityStateBase,
-// handler
-    Entity extends CoreEntity<EntityEventBase, EntityStateBase, EntityRefBase>,
-    EntityRefBase extends CoreEntityRef> implements CoreAdapter {
-  Entity operator [](EntityRefBase ref);
+abstract class CoreCollectionAdapter<
+        CollectionView extends CoreCollectionView<EntityView, EntityRef>,
+        CollectionRequest extends CoreCollectionRequest<EntityRequest, EntityRef>,
+        EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
+        EntityView extends CoreEntityView,
+        EntityRequest extends CoreEntityRequest,
+        EntityRef extends CoreEntityRef>
+    implements CoreAdapter<CollectionView, CollectionRequest> {
+  EntityAdapter operator [](EntityRef ref);
 }
 
-class CoreEntity<
-// Event
-    EntityEventBase extends CoreEntityEvent,
-// State
-    EntityStateBase extends CoreEntityStateBase,
-// handler
-    EntityRefBase extends CoreEntityRef> implements CoreAdapter {}
+abstract interface class CoreEntityAdapter<EntityView extends CoreEntityView,
+        EntityRequest extends CoreEntityRequest>
+    implements CoreAdapter<EntityView, EntityRequest> {}
 
-// //
-// abstract class CoreEntityHandle<EntityEvent extends CoreEntityEvent,
-//     EntityState extends CoreEntityStateBase> {
-//   StateEventSink<EntityState, EntityEvent> get stateEventSink;
-// }
-//
-// abstract class EntityHandleBase<EntityEvent extends CoreEntityEvent,
-//         EntityState extends CoreEntityStateBase>
-//     implements CoreEntityHandle<EntityEvent, EntityState> {
-//   EntityHandleBase({
-//     required this.stateEventSink,
-//   });
-//
-//   @override
-//   final StateEventSink<EntityState, EntityEvent> stateEventSink;
-// }
-//
-// abstract class CoreCollectionHandle<
-//     CollectionEvent extends CoreCollectionEvent,
-//     CollectionState extends CoreCollectionState,
-//     CollectionView extends CoreCollectionView> {
-//   StateEventSink<CollectionState, CollectionEvent> get stateEventSink;
-// }
-//
-// class CollectionHandleBase<
-//         CollectionEvent extends CoreCollectionEvent,
-//         CollectionState extends CoreCollectionState,
-//         CollectionView extends CoreCollectionView>
-//     implements
-//         CoreCollectionHandle<CollectionEvent, CollectionState, CollectionView> {
-//   CollectionHandleBase({
-//     required this.stateEventSink,
-//   });
-//
-//   @override
-//   final StateEventSink<CollectionState, CollectionEvent> stateEventSink;
-// }
-//
-// abstract class CoreAggregateScopeHandle<ScopeEvent extends CoreScopeEventBase,
-//     ScopeState extends CoreScopeStateBase, ScopeView extends CoreScopeView> {
-//   ValueStream<ScopeView> get view;
-//
-//   StateEventSink<ScopeState, ScopeEvent> get stateEventSink;
-// }
-//
-// class AggregateScopeHandleBase<ScopeEvent extends CoreScopeEventBase,
-//         ScopeState extends CoreScopeState, ScopeView extends CoreScopeView>
-//     implements CoreAggregateScopeHandle<ScopeEvent, ScopeState, ScopeView> {
-//   AggregateScopeHandleBase({
-//     required this.stateEventSink,
-//     required this.view,
-//   });
-//
-//   @override
-//   final StateEventSink<ScopeState, ScopeEvent> stateEventSink;
-//
-//   @override
-//   final ValueStream<ScopeView> view;
-// }
-//
-// abstract class CoreAggregateRootHandle<RootEvent extends CoreRootEventBase,
-//     RootState extends CoreRootState, RootView extends CoreRootView> {
-//   ValueStream<RootView> get view;
-//
-//   StateEventSink<RootState, RootEvent> get stateEventSink;
-// }
-//
-// class AggregateRootHandleBase<RootEvent extends CoreRootEventBase,
-//         RootState extends CoreRootState, RootView extends CoreRootView>
-//     implements CoreAggregateRootHandle<RootEvent, RootState, RootView> {
-//   AggregateRootHandleBase({
-//     required this.stateEventSink,
-//     required this.view,
-//   });
-//
-//   @override
-//   final StateEventSink<RootState, RootEvent> stateEventSink;
-//
-//   @override
-//   final ValueStream<RootView> view;
-// }
+/*
+*
+* Old
+*
+* */
 
-//
-// abstract interface class CoreRootBase<
-// ScopeBase extends CoreScopeBase,
-// CollectionBase extends CoreCollectionBase,
-// EntityBase extends CoreEntityBase,
-// EntityRefBase extends CoreRef> implements CoreAdapter {}
-//
-// abstract interface class CoreScopeBase<
-// CollectionBase extends CoreCollectionBase,
-// EntityBase extends CoreEntityBase,
-// EntityRefBase extends CoreRef> implements CoreAdapter {
-//   CollectionBase get event;
-// }
-//
-// abstract interface class CoreCollectionBase<EntityBase extends CoreEntityBase,
-// EntityRefBase extends CoreRef> implements CoreAdapter {
-//   EntityBase get event;
-//
-//   EntityRefBase get ref;
-// }
-//
-// abstract interface class CoreEntityBase implements CoreAdapter {}
-//
-// abstract interface class CoreRootBase<
-// ScopeBase extends CoreScopeBase,
-// CollectionBase extends CoreCollectionBase,
-// EntityBase extends CoreEntityBase,
-// EntityRefBase extends CoreRef> implements CoreAdapter {}
+//  V1
+// class CoreRootAdapterV1<
+// //  Adapter
+//     ScopeAdapter extends CoreScopeAdapterV1<
+//         ScopeEvent,
+//         CollectionEvent,
+//         EntityEvent,
+//         ScopeState,
+//         CollectionState,
+//         EntityState,
+//         CollectionAdapter,
+//         EntityAdapter,
+//         EntityRef>,
+//     CollectionAdapter extends CoreCollectionAdapterV1<CollectionEvent,
+//         EntityEvent, CollectionState, EntityState, EntityAdapter, EntityRef>,
+//     EntityAdapter extends CoreEntityAdapterV1<EntityEvent, EntityState,
+//         EntityRef>,
+// // Handle
+//     RootHandle extends CoreRootHandle<
+//         RootEventSequence,
+//         ScopeEvent,
+//         CollectionEvent,
+//         EntityEvent,
+//         RootState,
+//         ScopeState,
+//         CollectionState,
+//         EntityState,
+//         ScopeHandleBase,
+//         CollectionHandleBase,
+//         EntityHandle,
+//         EntityRef>,
+//     ScopeHandleBase extends CoreScopeHandle<
+//         ScopeEvent,
+//         CollectionEvent,
+//         EntityEvent,
+//         ScopeState,
+//         CollectionState,
+//         EntityState,
+//         CollectionHandleBase,
+//         EntityHandle,
+//         EntityRef>,
+//     CollectionHandleBase extends CoreCollectionHandle<CollectionEvent,
+//         EntityEvent, CollectionState, EntityState, EntityHandle, EntityRef>,
+//     EntityHandle extends CoreEntityHandle<EntityEvent, EntityState,
+//         EntityRef>,
+// // Event
+//     RootEventSequence extends CoreRootEventSequence<ScopeEvent, CollectionEvent,
+//         EntityEvent, EntityRef>,
+//     ScopeEvent extends CoreRootEvent<CollectionEvent, EntityEvent, EntityRef>,
+//     CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
+//     EntityEvent extends CoreEntityEvent,
+// // State
+//     RootState extends CoreRootState<ScopeState, CollectionState, EntityState,
+//         EntityRef>,
+//     ScopeState extends CoreScopeState<CollectionState, EntityState, EntityRef>,
+//     CollectionState extends CoreCollectionState<EntityState, EntityRef>,
+//     EntityState extends CoreEntityState,
+// // View
+//     RootView extends CoreRootView<ScopeViewBase, CollectionViewBase, EntityView,
+//         EntityRef>,
+//     ScopeViewBase extends CoreScopeView<CollectionViewBase, EntityView,
+//         EntityRef>,
+//     CollectionViewBase extends CoreCollectionView<EntityView, EntityRef>,
+//     EntityView extends CoreEntityView,
+//     EntityRef extends CoreEntityRef> implements CoreAdapter {}
 
-//
-//
-// abstract class CoreAggregateRoot<Handle, Event extends CoreEvent,
-//     State extends CoreState, View extends CoreView> {
-//   ValueStream<View> get view;
-//
-//   @protected
-//   StreamSink<AggregateRequest<Handle, State, Event>> get aggregateRequestSink;
-//
-// // @protected
-// // void evaluate(
-// //   AggregateEffect Function(Handle) handler,
-// // );
-// }
-//
-// // abstract
-// class AggregateRootBase<
-//         Handle,
-//         Event extends CoreEvent,
-//         State extends CoreState,
-//         View extends CoreView> // extends ApplicationBase<Event, State, View>
-//     implements
-//         CoreAggregateRoot<Handle, Event, State, View> {
-//   // AggregateRootBase(
-//   //   super.initialState, {
-//   //   required this.behavior,
-//   //   required super.createdAtRefFactory,
-//   //   required super.stateViewEventHandler,
-//   // });
-//
-//   // @protected
-//   // final AggregateRootBehavior<Event, State, View> behavior;
-//
-//   @protected
-//   HandleFactory<Handle, Event, State> get aggregateHandleFactory;
-//
-//   @override
-//   StreamSink<AggregateRequest<Handle, State, Event>> get aggregateRequestSink =>
-//       throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement view
-//   ValueStream<View> get view => throw UnimplementedError();
+// abstract class CoreScopeAdapterV1<
+// // Event
+//     ScopeEvent extends CoreRootEvent<CollectionEvent, EntityEvent, EntityRef>,
+//     CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
+//     EntityEvent extends CoreEntityEvent,
+// // State
+//     ScopeState extends CoreScopeState<CollectionState, EntityState, EntityRef>,
+//     CollectionState extends CoreCollectionState<EntityState, EntityRef>,
+//     EntityState extends CoreEntityState,
+// // handler
+//     CollectionAdapter extends CoreCollectionAdapterV1<CollectionEvent,
+//         EntityEvent, CollectionState, EntityState, EntityAdapter, EntityRef>,
+//     EntityAdapter extends CoreEntityAdapterV1<EntityEvent, EntityState,
+//         EntityRef>,
+//     EntityRef extends CoreEntityRef> implements CoreAdapter {
+//   CollectionAdapter get collection;
 // }
 
-// abstract interface class CoreScopeBase<
-// CollectionBase extends CoreCollectionBase,
-// EntityBase extends CoreEntityBase,
-// EntityRefBase extends CoreRef> implements CoreAdapter {
-//   CollectionBase get event;
+// abstract class CoreCollectionAdapterV1<
+//     CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
+//     EntityEvent extends CoreEntityEvent,
+//     CollectionState extends CoreCollectionState<EntityState, EntityRef>,
+//     EntityState extends CoreEntityState,
+//     EntityAdapter extends CoreEntityAdapterV1<EntityEvent, EntityState,
+//         EntityRef>,
+//     EntityRef extends CoreEntityRef> implements CoreAdapter {
+//   EntityAdapter operator [](EntityRef ref);
 // }
-//
+
+// class CoreEntityAdapterV1<
+//     EntityEvent extends CoreEntityEvent,
+//     EntityState extends CoreEntityState,
+//     EntityRef extends CoreEntityRef> implements CoreAdapter {}

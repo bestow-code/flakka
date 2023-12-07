@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package acmeapis.app1.taskmanager.entity.task.v1;
+
+import "acmeapis/app1/v1/entity_refs.proto";
+
+message TaskListCollection {
+  message MapEntry {
+    acmeapis.app1.v1.TaskListRef key = 1;
+    TaskList value = 2;
+  }
+  repeated MapEntry all = 1;
+  repeated acmeapis.app1.v1.TaskListRef deleted = 2;
+}
+message TaskList {
+  message TaskListReady {
+    string name = 1;
+    //    repeated TaskListRef
+  }
+  message TaskListComplete {
+    string label = 1;
+    int64 completed_at = 2;
+  }
+}

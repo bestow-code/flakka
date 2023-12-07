@@ -3,11 +3,11 @@ import 'package:core_application/core_application.dart';
 
 class RootContext {}
 
-abstract mixin class RootBehavior<RootEvent, RootState, RootView>
-    implements EventSourcedBehavior2<RootEvent, RootState, RootView> {}
+abstract mixin class RootBehavior<ScopeEvent, RootState, RootView>
+    implements EventSourcedBehavior2<ScopeEvent, RootState, RootView> {}
 
 abstract mixin class AggregateBehavior<
-        RootEvent,
+        ScopeEvent,
         CollectionEvent extends CoreCollectionEvent<EntityEvent, EntityRef>,
         EntityEvent,
         EntityState,
@@ -16,14 +16,14 @@ abstract mixin class AggregateBehavior<
         EntityRef>
     implements
         EventSourcedBehavior2<
-            RootEvent,
+            ScopeEvent,
             Map<EntityRef, EntityState>,
             ({
               AggregateView aggregate,
               Map<EntityRef, EntityView> collection
             })> {
   @override
-  CoreEventHandler<RootEvent, Map<EntityRef, EntityState>> get stateEventHandler =>
+  CoreEventHandler<ScopeEvent, Map<EntityRef, EntityState>> get stateEventHandler =>
       (state, event) => hasCollectionEvent(event)
           ? collectionBehavior.stateEventHandler(
               state, getCollectionEvent(event))
@@ -34,7 +34,7 @@ abstract mixin class AggregateBehavior<
       collectionBehavior.initialStateFactory;
 
   @override
-  CoreEventHandler<RootEvent,
+  CoreEventHandler<ScopeEvent,
           ({AggregateView aggregate, Map<EntityRef, EntityView> collection})>
       get viewEventHandler => (view, event) => (
             aggregate: aggregateViewEventHandler(view.aggregate, event),
@@ -51,13 +51,13 @@ abstract mixin class AggregateBehavior<
             collection: collectionBehavior.initialViewFactory()
           );
 
-  CoreEventHandler<RootEvent, AggregateView> get aggregateViewEventHandler;
+  CoreEventHandler<ScopeEvent, AggregateView> get aggregateViewEventHandler;
 
   AggregateView Function() get initialAggregateViewFactory;
 
-  bool Function(RootEvent) get hasCollectionEvent;
+  bool Function(ScopeEvent) get hasCollectionEvent;
 
-  CollectionEvent Function(RootEvent) get getCollectionEvent;
+  CollectionEvent Function(ScopeEvent) get getCollectionEvent;
 
   CollectionBehavior<CollectionEvent, EntityEvent, EntityState, EntityView,
       EntityRef> get collectionBehavior;
@@ -100,6 +100,6 @@ abstract mixin class EntityBehavior<EntityEvent, EntityState, EntityView,
         EntityRef>
     implements EventSourcedBehavior2<EntityEvent, EntityState, EntityView> {}
 
-abstract interface class CoreCollectionView<EntityView, EntityRef> {
+abstract interface class CoreCollectionViewV1<EntityView, EntityRef> {
   EntityView operator [](EntityRef entityRef);
 }

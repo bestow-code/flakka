@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package acmeapis.app1.taskmanager.v1;
+
+import "acmeapis/app1/taskmanager/entity/task/v1/task.proto";
+
+message TaskScope {
+  message Collection {
+    acmeapis.app1.taskmanager.entity.task.v1.TaskCollection task = 1;
+  }
+  Collection collection = 1;
+
+  // Scope properties
+  string total = 2;
+}
