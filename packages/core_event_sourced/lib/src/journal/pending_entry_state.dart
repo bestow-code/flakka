@@ -1,1 +1,0 @@
-enum PendingEntryState { memoryOnly, onDisk }

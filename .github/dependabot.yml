@@ -1,8 +1,0 @@
-version: 2
-enable-beta-ecosystems: true
-updates:
-
-  - package-ecosystem: "pub"
-    directory: "/packages/core_common"
-    schedule:
-      interval: "daily"
