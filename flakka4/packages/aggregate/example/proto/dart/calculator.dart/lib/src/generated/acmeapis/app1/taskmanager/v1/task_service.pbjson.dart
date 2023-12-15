@@ -25,3 +25,13 @@ const A$json = {
 final $typed_data.Uint8List aDescriptor = $convert.base64Decode(
     'CgFBEikKBGRhdGUYASABKAsyFS5nb29nbGUudHlwZS5EYXRlVGltZVIEZGF0ZQ==');
 
+const $core.Map<$core.String, $core.dynamic> TaskServiceBase$json = {'1': 'TaskService'};
+
+@$core.Deprecated('Use taskServiceDescriptor instead')
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> TaskServiceBase$messageJson = {
+};
+
+/// Descriptor for `TaskService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List taskServiceDescriptor = $convert.base64Decode(
+    'CgtUYXNrU2VydmljZQ==');
+

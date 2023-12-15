@@ -1,8 +1,10 @@
-mixin CoreApiEntityRef {}
-mixin CoreApiView {}
-mixin CoreApiService {}
+import 'package:calculator/calculator.dart';
 
-mixin CoreApiEntity {}
-mixin CoreApiCollection {}
-mixin CoreApiScope {}
-mixin CoreApiRoot {}
+main(){
+  // CodeGeneratorRequest.fromBuffer(i)
+  CodeGeneratorRequest
+  visit(DescriptorProto request){
+    // request.getExtension(extension)
+    request.getExtension(extension)
+  }
+}

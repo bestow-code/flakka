@@ -3,25 +3,29 @@ syntax = "proto3";
 package acmeapis.app1.taskmanager.entity.task.v1;
 
 import "acmeapis/app1/v1/entity_refs.proto";
-import "dart_options.proto";
+import "google/protobuf/dart_options.proto";
 
 option (dart_options.imports) = {
   mixins: [
     {
-      name: "CoreApiCollection",
+      name: "ApiCollection",
       import_from: 'package:flakka_api/flakka_api.dart'
-    }
-,    {
-      name: "CoreApiMapEntry",
+    },
+    {
+      name: "ApiMapEntry",
+      import_from: 'package:flakka_api/flakka_api.dart'
+    },
+    {
+      name: "ApiEntity",
       import_from: 'package:flakka_api/flakka_api.dart'
     }
   ]
 };
 
 message TaskCollection {
-  option (dart_options.mixin) = 'CoreApiCollection';
+  option (dart_options.mixin) = 'ApiCollection';
   message MapEntry {
-    option (dart_options.mixin) = 'CoreApiMapEntry';
+    option (dart_options.mixin) = 'ApiMapEntry';
     acmeapis.app1.v1.TaskRef key = 1;
     Task value = 2;
   }
@@ -30,7 +34,7 @@ message TaskCollection {
 }
 
 message Task {
-  //  option (dart_options.mixin) = 'CoreApiEntity';
+  option (dart_options.mixin) = 'ApiEntity';
   message TaskReady {
     string label = 1;
   }
@@ -43,3 +47,5 @@ message Task {
     TaskComplete complete = 2;
   }
 }
+
+service TaskEntityService {}

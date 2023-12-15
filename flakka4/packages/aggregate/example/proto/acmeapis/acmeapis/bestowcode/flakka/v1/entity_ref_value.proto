@@ -1,6 +1,20 @@
 syntax = "proto3";
 package bestowcode.flakka.v1;
 
+import "google/type/calendar_period.proto";
+import "google/protobuf/compiler/plugin.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/dart_options.proto";
+
 message EntityRefValue {
   string value = 1;
+  option (dart_options.mixin) = '';
+}
+
+message B {
+
+//  google.protobuf.
+//  google.protobuf.compiler.
+//  google.type.CalendarPeriod a = 1;
+//  google.type.
 }

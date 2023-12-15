@@ -1,0 +1,13 @@
+syntax = 'proto2';
+package v1;
+import 'google/protobuf/dart_options.proto';
+import 'google/protobuf/descriptor.proto';
+//import 'google/protobuf/'
+message  A {
+  option (dart_options.core_context) = ROOT;
+}
+
+
+message View {
+//  bool register = 123;
+}

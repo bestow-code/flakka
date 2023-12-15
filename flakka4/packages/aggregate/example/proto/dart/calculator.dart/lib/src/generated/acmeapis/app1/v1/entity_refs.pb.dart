@@ -14,11 +14,11 @@ import 'dart:core' as $core;
 import 'package:flakka_api/flakka_api.dart' as $mixin;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../bestowcode/flakka/v1/entity_ref_value.pb.dart' as $0;
+import '../../../bestowcode/flakka/v1/entity_ref_value.pb.dart' as $1;
 
-class TaskRef extends $pb.GeneratedMessage with $mixin.CoreApiRef {
+class TaskRef extends $pb.GeneratedMessage with $mixin.ApiRef {
   factory TaskRef({
-    $0.EntityRefValue? value,
+    $1.EntityRefValue? value,
   }) {
     final $result = create();
     if (value != null) {
@@ -31,7 +31,7 @@ class TaskRef extends $pb.GeneratedMessage with $mixin.CoreApiRef {
   factory TaskRef.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TaskRef', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.v1'), createEmptyInstance: create)
-    ..aOM<$0.EntityRefValue>(1, _omitFieldNames ? '' : 'value', subBuilder: $0.EntityRefValue.create)
+    ..aOM<$1.EntityRefValue>(1, _omitFieldNames ? '' : 'value', subBuilder: $1.EntityRefValue.create)
     ..hasRequiredFields = false
   ;
 
@@ -57,20 +57,20 @@ class TaskRef extends $pb.GeneratedMessage with $mixin.CoreApiRef {
   static TaskRef? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.EntityRefValue get value => $_getN(0);
+  $1.EntityRefValue get value => $_getN(0);
   @$pb.TagNumber(1)
-  set value($0.EntityRefValue v) { setField(1, v); }
+  set value($1.EntityRefValue v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasValue() => $_has(0);
   @$pb.TagNumber(1)
   void clearValue() => clearField(1);
   @$pb.TagNumber(1)
-  $0.EntityRefValue ensureValue() => $_ensure(0);
+  $1.EntityRefValue ensureValue() => $_ensure(0);
 }
 
-class TaskListRef extends $pb.GeneratedMessage with $mixin.CoreApiRef {
+class TaskListRef extends $pb.GeneratedMessage with $mixin.ApiRef {
   factory TaskListRef({
-    $0.EntityRefValue? value,
+    $1.EntityRefValue? value,
   }) {
     final $result = create();
     if (value != null) {
@@ -83,7 +83,7 @@ class TaskListRef extends $pb.GeneratedMessage with $mixin.CoreApiRef {
   factory TaskListRef.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TaskListRef', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.v1'), createEmptyInstance: create)
-    ..aOM<$0.EntityRefValue>(1, _omitFieldNames ? '' : 'value', subBuilder: $0.EntityRefValue.create)
+    ..aOM<$1.EntityRefValue>(1, _omitFieldNames ? '' : 'value', subBuilder: $1.EntityRefValue.create)
     ..hasRequiredFields = false
   ;
 
@@ -109,15 +109,15 @@ class TaskListRef extends $pb.GeneratedMessage with $mixin.CoreApiRef {
   static TaskListRef? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.EntityRefValue get value => $_getN(0);
+  $1.EntityRefValue get value => $_getN(0);
   @$pb.TagNumber(1)
-  set value($0.EntityRefValue v) { setField(1, v); }
+  set value($1.EntityRefValue v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasValue() => $_has(0);
   @$pb.TagNumber(1)
   void clearValue() => clearField(1);
   @$pb.TagNumber(1)
-  $0.EntityRefValue ensureValue() => $_ensure(0);
+  $1.EntityRefValue ensureValue() => $_ensure(0);
 }
 
 

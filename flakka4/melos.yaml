@@ -18,7 +18,10 @@ ignore:
   #  - packages/data/**
   #  - packages/object/**
   #  - packages/persistence/**
+#  - packages/aggregate/builder_reference
+#  - packages/aggregate/core_aggregate_e2e_development
   - packages/aggregate/brick_validator/tmp/**
+  - packages/aggregate/bricks/**
   - packages/flakka
   - "**/bricks/*"
   - "**/bricks/**/*"

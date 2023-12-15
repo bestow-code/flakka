@@ -2,22 +2,24 @@ syntax = "proto3";
 package acmeapis.app1.v1;
 
 import "bestowcode/flakka/v1/entity_ref_value.proto";
-import "dart_options.proto";
+import "google/protobuf/dart_options.proto";
+import 'google/protobuf/descriptor.proto';
+
 
 option (dart_options.imports) = {
   mixins: [
     {
-      name: "CoreApiRef",
+      name: "ApiRef",
       import_from: 'package:flakka_api/flakka_api.dart'
     }
   ]
 };
 message TaskRef {
-  option (dart_options.mixin) = 'CoreApiRef';
+  option (dart_options.mixin) = 'ApiRef';
   bestowcode.flakka.v1.EntityRefValue value = 1;
 }
 
 message TaskListRef {
-  option (dart_options.mixin) = 'CoreApiRef';
+  option (dart_options.mixin) = 'ApiRef';
   bestowcode.flakka.v1.EntityRefValue value = 1;
 }

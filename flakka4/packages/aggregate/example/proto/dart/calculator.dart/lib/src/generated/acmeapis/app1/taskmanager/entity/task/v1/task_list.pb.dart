@@ -14,11 +14,11 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../v1/entity_refs.pb.dart' as $1;
+import '../../../../v1/entity_refs.pb.dart' as $2;
 
 class TaskListCollection_MapEntry extends $pb.GeneratedMessage {
   factory TaskListCollection_MapEntry({
-    $1.TaskListRef? key,
+    $2.TaskListRef? key,
     TaskList? value,
   }) {
     final $result = create();
@@ -35,7 +35,7 @@ class TaskListCollection_MapEntry extends $pb.GeneratedMessage {
   factory TaskListCollection_MapEntry.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TaskListCollection.MapEntry', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.taskmanager.entity.task.v1'), createEmptyInstance: create)
-    ..aOM<$1.TaskListRef>(1, _omitFieldNames ? '' : 'key', subBuilder: $1.TaskListRef.create)
+    ..aOM<$2.TaskListRef>(1, _omitFieldNames ? '' : 'key', subBuilder: $2.TaskListRef.create)
     ..aOM<TaskList>(2, _omitFieldNames ? '' : 'value', subBuilder: TaskList.create)
     ..hasRequiredFields = false
   ;
@@ -62,15 +62,15 @@ class TaskListCollection_MapEntry extends $pb.GeneratedMessage {
   static TaskListCollection_MapEntry? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.TaskListRef get key => $_getN(0);
+  $2.TaskListRef get key => $_getN(0);
   @$pb.TagNumber(1)
-  set key($1.TaskListRef v) { setField(1, v); }
+  set key($2.TaskListRef v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasKey() => $_has(0);
   @$pb.TagNumber(1)
   void clearKey() => clearField(1);
   @$pb.TagNumber(1)
-  $1.TaskListRef ensureKey() => $_ensure(0);
+  $2.TaskListRef ensureKey() => $_ensure(0);
 
   @$pb.TagNumber(2)
   TaskList get value => $_getN(1);
@@ -87,7 +87,7 @@ class TaskListCollection_MapEntry extends $pb.GeneratedMessage {
 class TaskListCollection extends $pb.GeneratedMessage {
   factory TaskListCollection({
     $core.Iterable<TaskListCollection_MapEntry>? all,
-    $core.Iterable<$1.TaskListRef>? deleted,
+    $core.Iterable<$2.TaskListRef>? deleted,
   }) {
     final $result = create();
     if (all != null) {
@@ -104,7 +104,7 @@ class TaskListCollection extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TaskListCollection', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.taskmanager.entity.task.v1'), createEmptyInstance: create)
     ..pc<TaskListCollection_MapEntry>(1, _omitFieldNames ? '' : 'all', $pb.PbFieldType.PM, subBuilder: TaskListCollection_MapEntry.create)
-    ..pc<$1.TaskListRef>(2, _omitFieldNames ? '' : 'deleted', $pb.PbFieldType.PM, subBuilder: $1.TaskListRef.create)
+    ..pc<$2.TaskListRef>(2, _omitFieldNames ? '' : 'deleted', $pb.PbFieldType.PM, subBuilder: $2.TaskListRef.create)
     ..hasRequiredFields = false
   ;
 
@@ -133,7 +133,7 @@ class TaskListCollection extends $pb.GeneratedMessage {
   $core.List<TaskListCollection_MapEntry> get all => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<$1.TaskListRef> get deleted => $_getList(1);
+  $core.List<$2.TaskListRef> get deleted => $_getList(1);
 }
 
 class TaskList_TaskListReady extends $pb.GeneratedMessage {

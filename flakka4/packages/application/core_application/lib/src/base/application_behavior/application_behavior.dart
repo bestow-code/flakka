@@ -24,7 +24,7 @@ abstract interface class EventSourcedBehavior<
 
   CoreAdapterFactory<Adapter, Event, State, View> get adapterFactory;
 
-  HandleFactory<Request, Event, State, Handle> get handleFactory;
+  HandleFactory<Handle, Request, Event, State> get handleFactory;
 }
 
 abstract interface class EventSourcedBehavior2<Event, State, View> {
@@ -56,10 +56,10 @@ typedef CoreRequestFactory<Request extends CoreRequest> = Request Function();
 typedef CoreRequestSink<Request extends CoreRequest> = void Function(Request);
 
 typedef HandleFactory<
+        Handle extends CoreHandle<Request, Event, State>,
         Request extends CoreRequest,
         Event extends CoreEvent,
-        State extends CoreState,
-        Handle extends CoreHandle<Request, Event, State>>
+        State extends CoreState>
     = Handle Function(State state);
 
 typedef CoreAdapterFactory<Adapter extends CoreAdapter, Event extends CoreEvent,

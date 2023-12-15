@@ -9,15 +9,16 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
+import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../google/type/datetime.pb.dart' as $3;
+import '../../../../google/type/datetime.pb.dart' as $5;
 
 class A extends $pb.GeneratedMessage {
   factory A({
-    $3.DateTime? date,
+    $5.DateTime? date,
   }) {
     final $result = create();
     if (date != null) {
@@ -30,7 +31,7 @@ class A extends $pb.GeneratedMessage {
   factory A.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'A', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.taskmanager.v1'), createEmptyInstance: create)
-    ..aOM<$3.DateTime>(1, _omitFieldNames ? '' : 'date', subBuilder: $3.DateTime.create)
+    ..aOM<$5.DateTime>(1, _omitFieldNames ? '' : 'date', subBuilder: $5.DateTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -56,15 +57,21 @@ class A extends $pb.GeneratedMessage {
   static A? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.DateTime get date => $_getN(0);
+  $5.DateTime get date => $_getN(0);
   @$pb.TagNumber(1)
-  set date($3.DateTime v) { setField(1, v); }
+  set date($5.DateTime v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasDate() => $_has(0);
   @$pb.TagNumber(1)
   void clearDate() => clearField(1);
   @$pb.TagNumber(1)
-  $3.DateTime ensureDate() => $_ensure(0);
+  $5.DateTime ensureDate() => $_ensure(0);
+}
+
+class TaskServiceApi {
+  $pb.RpcClient _client;
+  TaskServiceApi(this._client);
+
 }
 
 

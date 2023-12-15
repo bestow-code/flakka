@@ -8,8 +8,16 @@ abstract class CoreRootAdapter<
         EntityRef>,
     RootRequest extends CoreRootRequest<ScopeRequest, CollectionRequest,
         EntityRequest, EntityRef>,
-    ScopeAdapter extends CoreScopeAdapter<ScopeView,ScopeRequest,CollectionAdapter, CollectionView,
-        CollectionRequest, EntityAdapter, EntityView, EntityRequest, EntityRef>,
+    ScopeAdapter extends CoreScopeAdapter<
+        ScopeView,
+        ScopeRequest,
+        CollectionAdapter,
+        CollectionView,
+        CollectionRequest,
+        EntityAdapter,
+        EntityView,
+        EntityRequest,
+        EntityRef>,
     ScopeView extends CoreScopeView<CollectionView, EntityView, EntityRef>,
     ScopeRequest extends CoreScopeRequest<CollectionRequest, EntityRequest,
         EntityRef>,
@@ -20,7 +28,7 @@ abstract class CoreRootAdapter<
     EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
     EntityView extends CoreEntityView,
     EntityRequest extends CoreEntityRequest,
-    EntityRef extends CoreEntityRef> implements CoreAdapter {}
+    EntityRef extends CoreEntityRef> implements CoreAdapter<RootView,RootRequest> {}
 
 abstract class CoreScopeAdapter<
     ScopeView extends CoreScopeView<CollectionView, EntityView, EntityRef>,
@@ -33,7 +41,7 @@ abstract class CoreScopeAdapter<
     EntityAdapter extends CoreEntityAdapter<EntityView, EntityRequest>,
     EntityView extends CoreEntityView,
     EntityRequest extends CoreEntityRequest,
-    EntityRef extends CoreEntityRef> implements CoreAdapter {
+    EntityRef extends CoreEntityRef> implements CoreAdapter<ScopeView, ScopeRequest> {
   CollectionAdapter get collection;
 }
 

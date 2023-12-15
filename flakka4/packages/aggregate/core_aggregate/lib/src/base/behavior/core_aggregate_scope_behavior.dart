@@ -2,10 +2,17 @@ import 'package:core_aggregate/core_aggregate.dart';
 import 'package:core_application/core_application.dart';
 
 abstract interface class CoreScopeBehavior<
-        ScopeAdapter extends CoreScopeAdapter<ScopeRequest,ScopeView,
-            CollectionAdapter,CollectionView,CollectionRequest,
+        ScopeAdapter extends CoreScopeAdapter<
+            ScopeView,
+            ScopeRequest,
+            CollectionAdapter,
+            CollectionView,
+            CollectionRequest,
+            EntityAdapter,
+            EntityView,
+            EntityRequest,
             EntityRef>,
-        ScopeHandleBase extends CoreScopeHandle<
+        ScopeHandle extends CoreScopeHandle<
             ScopeRequest,
             ScopeEvent,
             ScopeState,
@@ -47,5 +54,5 @@ abstract interface class CoreScopeBehavior<
         EntityView extends CoreEntityView,
         EntityRef extends CoreEntityRef>
     implements
-        EventSourcedBehavior<ScopeAdapter, ScopeHandleBase, ScopeEvent,
-            ScopeState, ScopeView> {}
+        EventSourcedBehavior<ScopeAdapter, ScopeHandle, ScopeView, ScopeRequest,
+            ScopeEvent, ScopeState> {}

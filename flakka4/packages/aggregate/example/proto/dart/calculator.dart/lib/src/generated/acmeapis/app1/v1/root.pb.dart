@@ -13,11 +13,11 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../taskmanager/v1/scope.pb.dart' as $4;
+import '../taskmanager/v1/scope.pb.dart' as $6;
 
 class App1Root_Scope extends $pb.GeneratedMessage {
   factory App1Root_Scope({
-    $4.TaskScope? task,
+    $6.TaskScope? task,
   }) {
     final $result = create();
     if (task != null) {
@@ -30,7 +30,7 @@ class App1Root_Scope extends $pb.GeneratedMessage {
   factory App1Root_Scope.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'App1Root.Scope', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.v1'), createEmptyInstance: create)
-    ..aOM<$4.TaskScope>(1, _omitFieldNames ? '' : 'task', subBuilder: $4.TaskScope.create)
+    ..aOM<$6.TaskScope>(1, _omitFieldNames ? '' : 'task', subBuilder: $6.TaskScope.create)
     ..hasRequiredFields = false
   ;
 
@@ -56,15 +56,15 @@ class App1Root_Scope extends $pb.GeneratedMessage {
   static App1Root_Scope? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $4.TaskScope get task => $_getN(0);
+  $6.TaskScope get task => $_getN(0);
   @$pb.TagNumber(1)
-  set task($4.TaskScope v) { setField(1, v); }
+  set task($6.TaskScope v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasTask() => $_has(0);
   @$pb.TagNumber(1)
   void clearTask() => clearField(1);
   @$pb.TagNumber(1)
-  $4.TaskScope ensureTask() => $_ensure(0);
+  $6.TaskScope ensureTask() => $_ensure(0);
 }
 
 class App1Root extends $pb.GeneratedMessage {

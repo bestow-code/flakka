@@ -1,4 +1,13 @@
-mixin CoreApiRef {}
+mixin ApiRef {}
+mixin ApiEntity implements CoreApiView, CoreApiEntity {}
+mixin ApiCollection implements CoreApiView, CoreApiEntity {}
+mixin ApiMapEntry {}
+
+mixin CoreApiView {}
+
 mixin CoreApiEntity {}
 mixin CoreApiCollection {}
-mixin CoreApiMapEntry {}
+
+interface class CoreMessageType {}
+
+interface class CoreMessageClass {}

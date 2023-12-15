@@ -1,0 +1,24 @@
+syntax = 'proto3';
+
+import 'google/protobuf/descriptor.proto';
+import 'google/protobuf/compiler/plugin.proto';
+
+package v1;
+
+message _AllDescriptor {
+  google.protobuf.compiler.CodeGeneratorRequest codeGeneratorRequest = 1;
+  google.protobuf.FileDescriptorProto fileDescriptorProto = 2;
+  google.protobuf.DescriptorProto message_type = 4;
+
+  google.protobuf.FieldDescriptorProto field = 2;
+
+  google.protobuf.DescriptorProto nested_type = 3;
+  google.protobuf.EnumDescriptorProto enum_type = 4;
+
+
+  google.protobuf.OneofDescriptorProto oneof_decl = 8;
+
+  google.protobuf.ServiceDescriptorProto service = 6;
+
+
+}

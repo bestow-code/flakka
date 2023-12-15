@@ -9,17 +9,18 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
+import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flakka_api/flakka_api.dart' as $mixin;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../v1/entity_refs.pb.dart' as $1;
+import '../../../../v1/entity_refs.pb.dart' as $2;
 
-class TaskCollection_MapEntry extends $pb.GeneratedMessage with $mixin.CoreApiMapEntry {
+class TaskCollection_MapEntry extends $pb.GeneratedMessage with $mixin.ApiMapEntry {
   factory TaskCollection_MapEntry({
-    $1.TaskRef? key,
+    $2.TaskRef? key,
     Task? value,
   }) {
     final $result = create();
@@ -36,7 +37,7 @@ class TaskCollection_MapEntry extends $pb.GeneratedMessage with $mixin.CoreApiMa
   factory TaskCollection_MapEntry.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TaskCollection.MapEntry', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.taskmanager.entity.task.v1'), createEmptyInstance: create)
-    ..aOM<$1.TaskRef>(1, _omitFieldNames ? '' : 'key', subBuilder: $1.TaskRef.create)
+    ..aOM<$2.TaskRef>(1, _omitFieldNames ? '' : 'key', subBuilder: $2.TaskRef.create)
     ..aOM<Task>(2, _omitFieldNames ? '' : 'value', subBuilder: Task.create)
     ..hasRequiredFields = false
   ;
@@ -63,15 +64,15 @@ class TaskCollection_MapEntry extends $pb.GeneratedMessage with $mixin.CoreApiMa
   static TaskCollection_MapEntry? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.TaskRef get key => $_getN(0);
+  $2.TaskRef get key => $_getN(0);
   @$pb.TagNumber(1)
-  set key($1.TaskRef v) { setField(1, v); }
+  set key($2.TaskRef v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasKey() => $_has(0);
   @$pb.TagNumber(1)
   void clearKey() => clearField(1);
   @$pb.TagNumber(1)
-  $1.TaskRef ensureKey() => $_ensure(0);
+  $2.TaskRef ensureKey() => $_ensure(0);
 
   @$pb.TagNumber(2)
   Task get value => $_getN(1);
@@ -85,10 +86,10 @@ class TaskCollection_MapEntry extends $pb.GeneratedMessage with $mixin.CoreApiMa
   Task ensureValue() => $_ensure(1);
 }
 
-class TaskCollection extends $pb.GeneratedMessage with $mixin.CoreApiCollection {
+class TaskCollection extends $pb.GeneratedMessage with $mixin.ApiCollection {
   factory TaskCollection({
     $core.Iterable<TaskCollection_MapEntry>? all,
-    $core.Iterable<$1.TaskRef>? pending,
+    $core.Iterable<$2.TaskRef>? pending,
   }) {
     final $result = create();
     if (all != null) {
@@ -105,7 +106,7 @@ class TaskCollection extends $pb.GeneratedMessage with $mixin.CoreApiCollection 
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TaskCollection', package: const $pb.PackageName(_omitMessageNames ? '' : 'acmeapis.app1.taskmanager.entity.task.v1'), createEmptyInstance: create)
     ..pc<TaskCollection_MapEntry>(1, _omitFieldNames ? '' : 'all', $pb.PbFieldType.PM, subBuilder: TaskCollection_MapEntry.create)
-    ..pc<$1.TaskRef>(2, _omitFieldNames ? '' : 'pending', $pb.PbFieldType.PM, subBuilder: $1.TaskRef.create)
+    ..pc<$2.TaskRef>(2, _omitFieldNames ? '' : 'pending', $pb.PbFieldType.PM, subBuilder: $2.TaskRef.create)
     ..hasRequiredFields = false
   ;
 
@@ -134,10 +135,9 @@ class TaskCollection extends $pb.GeneratedMessage with $mixin.CoreApiCollection 
   $core.List<TaskCollection_MapEntry> get all => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<$1.TaskRef> get pending => $_getList(1);
+  $core.List<$2.TaskRef> get pending => $_getList(1);
 }
 
-/// option (dart_options.mixin) = 'CoreApiEntity';
 class Task_TaskReady extends $pb.GeneratedMessage {
   factory Task_TaskReady({
     $core.String? label,
@@ -258,7 +258,7 @@ enum Task_Value {
   notSet
 }
 
-class Task extends $pb.GeneratedMessage {
+class Task extends $pb.GeneratedMessage with $mixin.ApiEntity {
   factory Task({
     Task_TaskReady? ready,
     Task_TaskComplete? complete,
@@ -333,6 +333,12 @@ class Task extends $pb.GeneratedMessage {
   void clearComplete() => clearField(2);
   @$pb.TagNumber(2)
   Task_TaskComplete ensureComplete() => $_ensure(1);
+}
+
+class TaskEntityServiceApi {
+  $pb.RpcClient _client;
+  TaskEntityServiceApi(this._client);
+
 }
 
 

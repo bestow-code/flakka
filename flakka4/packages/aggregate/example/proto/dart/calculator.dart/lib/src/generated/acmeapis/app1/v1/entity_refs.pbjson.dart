@@ -19,13 +19,13 @@ const TaskRef$json = {
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 11, '6': '.bestowcode.flakka.v1.EntityRefValue', '10': 'value'},
   ],
-  '7': {'96128839': 'CoreApiRef'},
+  '7': {'96128839': 'ApiRef'},
 };
 
 /// Descriptor for `TaskRef`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List taskRefDescriptor = $convert.base64Decode(
     'CgdUYXNrUmVmEjoKBXZhbHVlGAEgASgLMiQuYmVzdG93Y29kZS5mbGFra2EudjEuRW50aXR5Um'
-    'VmVmFsdWVSBXZhbHVlOhC69NnuAgpDb3JlQXBpUmVm');
+    'VmVmFsdWVSBXZhbHVlOgy69NnuAgZBcGlSZWY=');
 
 @$core.Deprecated('Use taskListRefDescriptor instead')
 const TaskListRef$json = {
@@ -33,11 +33,11 @@ const TaskListRef$json = {
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 11, '6': '.bestowcode.flakka.v1.EntityRefValue', '10': 'value'},
   ],
-  '7': {'96128839': 'CoreApiRef'},
+  '7': {'96128839': 'ApiRef'},
 };
 
 /// Descriptor for `TaskListRef`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List taskListRefDescriptor = $convert.base64Decode(
     'CgtUYXNrTGlzdFJlZhI6CgV2YWx1ZRgBIAEoCzIkLmJlc3Rvd2NvZGUuZmxha2thLnYxLkVudG'
-    'l0eVJlZlZhbHVlUgV2YWx1ZToQuvTZ7gIKQ29yZUFwaVJlZg==');
+    'l0eVJlZlZhbHVlUgV2YWx1ZToMuvTZ7gIGQXBpUmVm');
 
